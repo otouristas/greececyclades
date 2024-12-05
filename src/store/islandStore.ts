@@ -22,7 +22,9 @@ const mockIslands: Island[] = [
       temp: '25°C',
       condition: 'sunny'
     },
-    activities: 45
+    activities: 45,
+    bestTime: 'April to October',
+    idealFor: ['Couples', 'Photographers', 'Wine Lovers']
   },
   {
     id: 2,
@@ -38,7 +40,45 @@ const mockIslands: Island[] = [
       temp: '23°C',
       condition: 'sunny'
     },
-    activities: 38
+    activities: 38,
+    bestTime: 'June to September',
+    idealFor: ['Party Lovers', 'Beach Goers', 'Luxury Seekers']
+  },
+  {
+    id: 3,
+    name: 'Paros',
+    description: 'Paros offers a perfect blend of traditional Cycladic charm and modern amenities, with beautiful beaches and picturesque villages.',
+    shortDescription: 'Traditional charm meets modern comfort',
+    quote: 'A perfect blend of authenticity and sophistication',
+    metaTitle: 'Paros Travel Guide - Authentic Greek Island Experience',
+    metaDescription: 'Experience the authentic charm of Paros. Discover beautiful beaches, traditional villages, and vibrant local culture in this Cycladic gem.',
+    image: 'https://images.unsplash.com/photo-1586615844867-599e3388bba3?auto=format&fit=crop&q=80',
+    highlights: ['Naoussa Village', 'Golden Beach', 'Parikia Old Town', 'Water Sports'],
+    weather: {
+      temp: '24°C',
+      condition: 'sunny'
+    },
+    activities: 32,
+    bestTime: 'May to October',
+    idealFor: ['Families', 'Water Sports Enthusiasts', 'Culture Lovers']
+  },
+  {
+    id: 4,
+    name: 'Sifnos',
+    description: 'Sifnos is renowned for its exceptional cuisine, pottery tradition, and well-preserved walking trails connecting charming hilltop villages.',
+    shortDescription: 'Culinary paradise with traditional charm',
+    quote: 'Where gastronomy meets tradition',
+    metaTitle: 'Sifnos Travel Guide - Culinary Heritage & Traditional Arts',
+    metaDescription: 'Discover Sifnos, the gastronomic heart of the Cyclades. Experience world-class cuisine, pottery traditions, and authentic village life.',
+    image: 'https://images.unsplash.com/photo-1586615844867-599e3388bba3?auto=format&fit=crop&q=80',
+    highlights: ['Kastro Village', 'Local Cuisine', 'Pottery Workshops', 'Hiking Trails'],
+    weather: {
+      temp: '23°C',
+      condition: 'sunny'
+    },
+    activities: 28,
+    bestTime: 'April to October',
+    idealFor: ['Food Lovers', 'Hikers', 'Culture Enthusiasts']
   }
 ];
 

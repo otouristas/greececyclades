@@ -1,60 +1,11 @@
 import { Sun, ArrowRight, CalendarDays, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
-
-// Import island images
-import santoriniImage from '../assets/images/islands/santorini-island.webp';
-import mykonosImage from '../assets/images/islands/mykonos-island.jpg';
-import parosImage from '../assets/images/islands/paros-island.jpg';
-import sifnosImage from '../assets/images/islands/sifnos-island.jpg';
-
-const islands = [
-  {
-    name: 'Santorini',
-    description: 'Famous for its dramatic views, stunning sunsets, and volcanic beaches. Experience the magic of the most romantic island in Greece.',
-    image: santoriniImage,
-    highlights: ['Caldera Views', 'Sunset in Oia', 'Black Sand Beaches', 'Wine Tours'],
-    weather: { temp: '24°C', condition: 'Sunny' },
-    activities: 85,
-    bestTime: 'April to October',
-    idealFor: ['Couples', 'Photographers', 'Wine Lovers'],
-    slug: 'santorini'
-  },
-  {
-    name: 'Mykonos',
-    description: 'Known for its summer party atmosphere, picturesque villages, and cosmopolitan lifestyle. The perfect blend of luxury and tradition.',
-    image: mykonosImage,
-    highlights: ['Little Venice', 'Windmills', 'Paradise Beach', 'Nightlife'],
-    weather: { temp: '22°C', condition: 'Windy' },
-    activities: 92,
-    bestTime: 'June to September',
-    idealFor: ['Party Lovers', 'Beach Goers', 'Luxury Seekers'],
-    slug: 'mykonos'
-  },
-  {
-    name: 'Paros',
-    description: 'A perfect blend of traditional Cycladic architecture, golden beaches, and vibrant nightlife. Discover the authentic Greek island experience.',
-    image: parosImage,
-    highlights: ['Naoussa Village', 'Golden Beach', 'Byzantine Route', 'Water Sports'],
-    weather: { temp: '26°C', condition: 'Sunny' },
-    activities: 75,
-    bestTime: 'May to October',
-    idealFor: ['Families', 'Water Sports Enthusiasts', 'Culture Lovers'],
-    slug: 'paros'
-  },
-  {
-    name: 'Sifnos',
-    description: 'A gastronomic paradise with medieval villages, pristine beaches, and renowned pottery traditions. Experience authentic Cycladic culture.',
-    image: sifnosImage,
-    highlights: ['Kastro Village', 'Pottery Workshops', 'Hiking Trails', 'Local Cuisine'],
-    weather: { temp: '24°C', condition: 'Sunny' },
-    activities: 45,
-    bestTime: 'April to October',
-    idealFor: ['Food Lovers', 'Hikers', 'Culture Enthusiasts'],
-    slug: 'sifnos'
-  }
-];
+import { useIslandStore } from '../store/islandStore';
+import { getIslandSlug } from '../utils/slugify';
 
 export default function IslandGuides() {
+  const { islands } = useIslandStore();
+
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
@@ -86,8 +37,8 @@ export default function IslandGuides() {
         <div className="grid gap-8 md:grid-cols-2">
           {islands.map((island) => (
             <Link 
-              key={island.name}
-              to={`/guides/${island.slug}`}
+              key={island.id}
+              to={`/guides/${getIslandSlug(island.name)}`}
               className="group bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
             >
               <div className="flex flex-col md:flex-row h-full">
@@ -132,7 +83,7 @@ export default function IslandGuides() {
                       <span>Perfect for: {island.idealFor.join(', ')}</span>
                     </div>
                     <div className="flex flex-wrap gap-2">
-                      {island.highlights.slice(0, 3).map((highlight) => (
+                      {island.highlights.slice(0, 3).map((highlight: string) => (
                         <span
                           key={highlight}
                           className="px-3 py-1 bg-blue-50 text-blue-600 text-sm rounded-full"

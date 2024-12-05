@@ -48,7 +48,7 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-40">
+          <div className="fixed inset-0 z-[90]">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}

@@ -29,8 +29,9 @@ export default function AuthModal({ isOpen, onClose }: AuthModalProps) {
   if (!isOpen) return null;
 
   return (
-    <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-      <div className="bg-white rounded-lg p-8 max-w-md w-full mx-4">
+    <div className="fixed inset-0 flex items-center justify-center z-[100]">
+      <div className="fixed inset-0 bg-black/50" onClick={onClose} />
+      <div className="bg-white rounded-lg p-8 max-w-md w-full mx-4 relative">
         <div className="flex justify-between items-center mb-6">
           <h2 className="text-2xl font-bold">
             {isLogin ? 'Sign In' : 'Create Account'}
