@@ -3,29 +3,12 @@ import { ArrowRight } from 'lucide-react';
 import IslandCard from './cards/IslandCard';
 import ActivityCard from './cards/ActivityCard';
 import HotelCard from './cards/HotelCard';
-
-const trendingIslands = [
-  {
-    id: 1,
-    name: 'Santorini',
-    description: 'Famous for its dramatic views, stunning sunsets, and volcanic beaches',
-    image: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&q=80',
-    highlights: ['Caldera Views', 'Sunset in Oia', 'Black Sand Beaches'],
-    weather: { temp: '24°C', condition: 'Sunny' },
-    activities: 85
-  },
-  {
-    id: 2,
-    name: 'Mykonos',
-    description: 'Known for its summer party atmosphere and picturesque villages',
-    image: 'https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&q=80',
-    highlights: ['Little Venice', 'Windmills', 'Paradise Beach'],
-    weather: { temp: '22°C', condition: 'Windy' },
-    activities: 92
-  }
-];
+import { useIslandStore } from '../store/islandStore';
 
 export default function TrendingSection() {
+  const { islands } = useIslandStore();
+  const trendingIslands = islands.slice(0, 2); // Show first 2 islands
+
   return (
     <div className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
