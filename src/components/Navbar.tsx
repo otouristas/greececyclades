@@ -2,16 +2,26 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavigationMenu from './navigation/NavigationMenu';
 import { useAuthStore } from '../store/authStore';
-import { User, LogOut, ChevronDown } from 'lucide-react';
+import { User, LogOut, ChevronDown, MapPin } from 'lucide-react';
 import Logo from './Logo';
 
 interface NavbarProps {
   onAuthClick: () => void;
 }
 
+const getNavigationItems = (isAuthenticated: boolean) => [
+  { path: '/islands', label: 'Islands' },
+  { path: '/guides', label: 'Travel Guides' },
+  { path: '/activities', label: 'Activities' },
+  { path: '/hotels', label: 'Hotels' },
+  { path: '/rent-a-car', label: 'Rent A Car' },
+  ...(isAuthenticated ? [{ path: '/list-property', label: 'List Your Property' }] : []),
+];
+
 export default function Navbar({ onAuthClick }: NavbarProps) {
   const { isAuthenticated, user, logout } = useAuthStore();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const navigationItems = getNavigationItems(isAuthenticated);
 
   const handleLogout = async () => {
     try {
@@ -33,23 +43,26 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <Link to="/islands" className="text-gray-600 hover:text-gray-900">Islands</Link>
-            <Link to="/guides" className="text-gray-600 hover:text-gray-900">Travel Guides</Link>
-            <Link to="/activities" className="text-gray-600 hover:text-gray-900">Activities</Link>
-            <Link to="/hotels" className="text-gray-600 hover:text-gray-900">Hotels</Link>
-            <Link to="/rent-a-car" className="text-gray-600 hover:text-gray-900">Rent A Car</Link>
-            <Link to="/list-property" className="text-gray-600 hover:text-gray-900">List Property</Link>
+            {navigationItems.map((item) => (
+              <Link
+                key={item.path}
+                to={item.path}
+                className="text-gray-600 hover:text-gray-900"
+              >
+                {item.label}
+              </Link>
+            ))}
           </div>
 
           {/* Auth Button & Mobile Menu */}
           <div className="flex items-center gap-4">
             {/* Auth Button - Desktop Only */}
-            <div className="hidden md:block">
+            <div className="hidden md:block relative">
               {isAuthenticated ? (
-                <div className="relative">
+                <>
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-50"
+                    className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-50"
                   >
                     {user?.avatar ? (
                       <img
@@ -65,40 +78,63 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                       </div>
                     )}
                     <span className="font-medium">{user?.name}</span>
-                    <ChevronDown className="h-4 w-4" />
+                    <ChevronDown className={`h-4 w-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
                   </button>
 
+                  {/* Dropdown Menu */}
                   {isDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 border">
-                      <Link
-                        to="/profile"
+                    <>
+                      <div
+                        className="fixed inset-0 z-10"
                         onClick={() => setIsDropdownOpen(false)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2"
-                      >
-                        <User className="h-4 w-4" />
-                        My Profile
-                      </Link>
-                      <button
-                        onClick={handleLogout}
-                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2"
-                      >
-                        <LogOut className="h-4 w-4" />
-                        Sign Out
-                      </button>
-                    </div>
+                      />
+                      <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-1 border z-20">
+                        <div className="px-4 py-2 border-b">
+                          <div className="font-medium text-gray-900">{user?.name}</div>
+                          <div className="text-sm text-gray-500">{user?.email}</div>
+                        </div>
+                        <div className="py-1">
+                          <Link
+                            to="/profile"
+                            onClick={() => setIsDropdownOpen(false)}
+                            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                          >
+                            <User className="h-4 w-4 mr-2" />
+                            My Profile
+                          </Link>
+                          <Link
+                            to="/my-trips"
+                            onClick={() => setIsDropdownOpen(false)}
+                            className="flex items-center px-4 py-2 text-sm text-gray-700 hover:bg-gray-50"
+                          >
+                            <MapPin className="h-4 w-4 mr-2" />
+                            My Trips
+                          </Link>
+                        </div>
+                        <div className="border-t py-1">
+                          <button
+                            onClick={handleLogout}
+                            className="flex items-center w-full px-4 py-2 text-sm text-red-600 hover:bg-red-50"
+                          >
+                            <LogOut className="h-4 w-4 mr-2" />
+                            Sign Out
+                          </button>
+                        </div>
+                      </div>
+                    </>
                   )}
-                </div>
+                </>
               ) : (
                 <button
                   onClick={onAuthClick}
-                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+                  className="px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                 >
                   Sign In
                 </button>
               )}
             </div>
 
-            {/* Mobile Menu */}
+            {/* Mobile Menu Button */}
             <NavigationMenu onAuthClick={onAuthClick} />
           </div>
         </div>

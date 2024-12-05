@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronRight, MapPin, Phone } from 'lucide-react';
+import { Menu, X, ChevronRight, MapPin, Phone, User, LogOut } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import Logo from '../Logo';
 
@@ -9,18 +9,19 @@ interface NavigationMenuProps {
   onAuthClick: () => void;
 }
 
-const navigationItems = [
+const getNavigationItems = (isAuthenticated: boolean) => [
   { path: '/islands', label: 'Islands' },
   { path: '/guides', label: 'Travel Guides' },
   { path: '/activities', label: 'Activities' },
   { path: '/hotels', label: 'Hotels' },
   { path: '/rent-a-car', label: 'Rent A Car' },
-  { path: '/list-property', label: 'List Your Property' },
+  ...(isAuthenticated ? [{ path: '/list-property', label: 'List Your Property' }] : []),
 ];
 
 export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated, user, logout } = useAuthStore();
+  const navigationItems = getNavigationItems(isAuthenticated);
 
   const closeMenu = () => setIsOpen(false);
 
@@ -93,44 +94,50 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
                           <img
                             src={user.avatar}
                             alt={user.name}
-                            className="h-10 w-10 rounded-full"
+                            className="h-12 w-12 rounded-full object-cover"
                           />
                         ) : (
-                          <div className="h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center">
-                            <span className="text-blue-600 font-medium">
+                          <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
+                            <span className="text-blue-600 font-medium text-lg">
                               {user?.name?.charAt(0).toUpperCase()}
                             </span>
                           </div>
                         )}
                         <div>
-                          <p className="font-medium">{user?.name}</p>
-                          <p className="text-sm text-gray-500">{user?.email}</p>
+                          <div className="font-medium text-gray-900">{user?.name}</div>
+                          <div className="text-sm text-gray-500">{user?.email}</div>
                         </div>
                       </div>
-                      <div className="flex flex-col space-y-2">
+                      <div className="space-y-1">
                         <Link
                           to="/profile"
                           onClick={closeMenu}
-                          className="flex items-center justify-between w-full p-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg"
+                          className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
                         >
-                          <span>My Profile</span>
-                          <ChevronRight className="h-5 w-5" />
+                          <User className="h-4 w-4 mr-2" />
+                          My Profile
+                        </Link>
+                        <Link
+                          to="/my-trips"
+                          onClick={closeMenu}
+                          className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
+                        >
+                          <MapPin className="h-4 w-4 mr-2" />
+                          My Trips
                         </Link>
                         <button
                           onClick={handleLogout}
-                          className="flex items-center w-full p-2 text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg"
+                          className="flex items-center w-full px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg"
                         >
-                          <span>Sign Out</span>
+                          <LogOut className="h-4 w-4 mr-2" />
+                          Sign Out
                         </button>
                       </div>
                     </div>
                   ) : (
                     <button
-                      onClick={() => {
-                        onAuthClick();
-                        closeMenu();
-                      }}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
+                      onClick={onAuthClick}
+                      className="w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
                     >
                       Sign In
                     </button>
@@ -138,41 +145,25 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
                 </div>
 
                 {/* Navigation Links */}
-                <nav className="flex-1 py-4">
-                  <div className="px-4 space-y-1">
-                    {navigationItems.map((item) => (
-                      <Link
-                        key={item.path}
-                        to={item.path}
-                        onClick={closeMenu}
-                        className="flex items-center justify-between w-full p-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg group"
-                      >
-                        <span className="font-medium">{item.label}</span>
-                        <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
-                      </Link>
-                    ))}
-                  </div>
-                </nav>
+                <div className="flex-1 py-2">
+                  {navigationItems.map((item) => (
+                    <Link
+                      key={item.path}
+                      to={item.path}
+                      onClick={closeMenu}
+                      className="flex items-center justify-between px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
+                    >
+                      {item.label}
+                      <ChevronRight className="h-4 w-4" />
+                    </Link>
+                  ))}
+                </div>
 
                 {/* Footer */}
-                <div className="p-4 border-t bg-gray-50">
-                  <div className="space-y-3">
-                    <Link 
-                      to="/contact" 
-                      onClick={closeMenu} 
-                      className="flex items-center gap-3 p-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
-                    >
-                      <MapPin className="h-5 w-5" />
-                      <span>Find a Location</span>
-                    </Link>
-                    <Link 
-                      to="/support" 
-                      onClick={closeMenu} 
-                      className="flex items-center gap-3 p-2 text-sm text-gray-600 hover:text-gray-900 hover:bg-gray-100 rounded-lg"
-                    >
-                      <Phone className="h-5 w-5" />
-                      <span>Contact Support</span>
-                    </Link>
+                <div className="p-4 border-t">
+                  <div className="flex items-center space-x-2 text-sm text-gray-500">
+                    <Phone className="h-4 w-4" />
+                    <span>Need help? Call us</span>
                   </div>
                 </div>
               </div>

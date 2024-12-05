@@ -3,6 +3,7 @@ import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithP
 import { auth, googleProvider } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Mail, Lock, User } from 'lucide-react';
+import { useAuthStore } from '../store/authStore';
 
 export default function Auth() {
   const [isSignUp, setIsSignUp] = useState(false);
@@ -12,6 +13,7 @@ export default function Auth() {
   const [error, setError] = useState('');
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
+  const { login } = useAuthStore();
 
   const handleEmailAuth = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -22,8 +24,20 @@ export default function Auth() {
       if (isSignUp) {
         const { user } = await createUserWithEmailAndPassword(auth, email, password);
         await updateProfile(user, { displayName: name });
+        login({
+          id: user.uid,
+          name: user.displayName || name,
+          email: user.email || '',
+          avatar: user.photoURL || undefined,
+        });
       } else {
-        await signInWithEmailAndPassword(auth, email, password);
+        const { user } = await signInWithEmailAndPassword(auth, email, password);
+        login({
+          id: user.uid,
+          name: user.displayName || 'User',
+          email: user.email || '',
+          avatar: user.photoURL || undefined,
+        });
       }
       navigate('/profile');
     } catch (err: any) {
@@ -38,7 +52,13 @@ export default function Auth() {
     setLoading(true);
 
     try {
-      await signInWithPopup(auth, googleProvider);
+      const { user } = await signInWithPopup(auth, googleProvider);
+      login({
+        id: user.uid,
+        name: user.displayName || 'User',
+        email: user.email || '',
+        avatar: user.photoURL || undefined,
+      });
       navigate('/profile');
     } catch (err: any) {
       setError(err.message || 'Google authentication failed');

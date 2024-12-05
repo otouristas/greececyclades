@@ -4,6 +4,7 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ProtectedRoute from './components/ProtectedRoute';
+import AuthStateHandler from './components/AuthStateHandler';
 import Home from './pages/Home';
 import Activities from './pages/Activities';
 import Hotels from './pages/Hotels';
@@ -26,6 +27,7 @@ export default function App() {
   return (
     <HelmetProvider>
       <Router>
+        <AuthStateHandler />
         <AppContent />
       </Router>
     </HelmetProvider>
