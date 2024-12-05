@@ -5,6 +5,7 @@ import { useAuthStore } from '../store/authStore';
 import { auth } from '../config/firebase';
 import { signOut } from 'firebase/auth';
 import Logo from './Logo';
+import NavigationMenu from './navigation/NavigationMenu';
 
 interface NavbarProps {
   onAuthClick: () => void;
@@ -107,7 +108,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                 <button
                   id="user-menu-button"
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 focus:outline-none"
+                  className="hidden md:flex items-center gap-2 px-3 py-2 text-sm font-medium text-gray-700 hover:text-blue-600 focus:outline-none"
                 >
                   {user?.avatar ? (
                     <img
@@ -160,35 +161,28 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
             ) : (
               <button
                 onClick={onAuthClick}
-                className="flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700"
+                className="hidden md:flex items-center gap-2 px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 text-sm transition-colors"
               >
                 <User className="h-4 w-4" />
                 <span>Sign In</span>
               </button>
             )}
 
-            {/* Mobile Menu Button */}
-            <button
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100"
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            >
-              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
+            {/* Mobile Navigation Menu */}
+            <NavigationMenu onAuthClick={onAuthClick} />
           </div>
         </div>
 
         {/* Mobile Menu */}
         {isMobileMenuOpen && (
           <div className="md:hidden py-4 border-t">
-            <div className="space-y-2">
+            <div className="space-y-2 px-4">
               {navLinks.map((link) => (
                 <Link
                   key={link.path}
                   to={link.path}
                   onClick={() => setIsMobileMenuOpen(false)}
-                  className={`block px-4 py-2 text-base font-medium rounded-lg ${
+                  className={`block py-2 text-base font-medium rounded-lg ${
                     location.pathname === link.path
                       ? 'bg-blue-50 text-blue-600'
                       : 'text-gray-700 hover:bg-gray-50'
@@ -197,6 +191,18 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                   {link.label}
                 </Link>
               ))}
+              {!isAuthenticated && (
+                <button
+                  onClick={() => {
+                    onAuthClick();
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="w-full flex items-center justify-center gap-2 mt-4 px-4 py-2 rounded-full bg-blue-600 text-white hover:bg-blue-700 text-sm"
+                >
+                  <User className="h-4 w-4" />
+                  <span>Sign In</span>
+                </button>
+              )}
             </div>
           </div>
         )}

@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronRight } from 'lucide-react';
+import { Menu, X, ChevronRight, User } from 'lucide-react';
+import { useAuthStore } from '../../store/authStore';
+
+interface NavigationMenuProps {
+  onAuthClick: () => void;
+}
 
 const navigationItems = [
   { path: '/islands', label: 'Islands' },
@@ -12,8 +17,9 @@ const navigationItems = [
   { path: '/list-property', label: 'List Your Property' },
 ];
 
-export default function NavigationMenu() {
+export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
+  const { isAuthenticated, user } = useAuthStore();
 
   return (
     <div className="md:hidden">
@@ -61,6 +67,42 @@ export default function NavigationMenu() {
                   >
                     <X className="h-5 w-5" />
                   </button>
+                </div>
+
+                {/* User Section */}
+                <div className="p-4 border-b bg-gray-50">
+                  {isAuthenticated ? (
+                    <div className="flex items-center space-x-3">
+                      {user?.avatar ? (
+                        <img
+                          src={user.avatar}
+                          alt={user.name}
+                          className="w-10 h-10 rounded-full"
+                        />
+                      ) : (
+                        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                          <span className="text-blue-600 font-medium">
+                            {user?.name?.charAt(0).toUpperCase()}
+                          </span>
+                        </div>
+                      )}
+                      <div>
+                        <p className="font-medium text-gray-900">{user?.name}</p>
+                        <p className="text-sm text-gray-500">{user?.email}</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <button
+                      onClick={() => {
+                        onAuthClick();
+                        setIsOpen(false);
+                      }}
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+                    >
+                      <User className="h-4 w-4" />
+                      <span>Sign In</span>
+                    </button>
+                  )}
                 </div>
 
                 {/* Navigation Links */}

@@ -8,6 +8,7 @@ import Amenities from '../components/hotels/Amenities';
 import Location from '../components/hotels/Location';
 import Gallery from '../components/hotels/Gallery';
 import BookingWidget from '../components/BookingWidget';
+import LocalExperiences from '../components/hotels/LocalExperiences';
 import { useHotelStore } from '../store/hotelStore';
 import { generateHotelJsonLD } from '../utils/seo';
 import { getIslandSlug } from '../utils/slugify';
@@ -130,7 +131,12 @@ export default function HotelLanding() {
             </div>
             <Overview hotel={mappedHotel} />
             <Amenities hotel={mappedHotel} />
-            <Location hotel={mappedHotel} />
+            <div className="mb-8">
+              <Location hotel={mappedHotel} />
+            </div>
+            <div className="mb-8">
+              <LocalExperiences hotel={mappedHotel} selectedDates={{ checkIn: null, checkOut: null }} />
+            </div>
             <Gallery hotel={mappedHotel} />
             <FAQ />
           </div>

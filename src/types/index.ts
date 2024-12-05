@@ -20,12 +20,30 @@ export interface Activity {
   category: string;
 }
 
+export interface LocalAttraction {
+  id: string;
+  name: string;
+  description: string;
+  type: 'attraction' | 'restaurant' | 'event';
+  image: string;
+  distance: number;
+  travelTime: {
+    walking?: number;
+    driving?: number;
+  };
+  rating: number;
+  priceRange?: string;
+  eventDate?: string;
+  bookingUrl?: string;
+}
+
 export interface Hotel {
   id: string;
   name: string;
-  location: string;
+  type: 'hotel' | 'villa' | 'resort' | 'boutique';
   island: string;
-  type: string;
+  location: string;
+  description: string;
   image: string;
   images: string[];
   price: {
@@ -36,13 +54,14 @@ export interface Hotel {
   rating: number;
   reviews: number;
   amenities: string[];
-  description: string;
+  features: string[];
   address: string;
   coordinates: {
     lat: number;
     lng: number;
   };
-  features: string[];
+  localAttractions?: LocalAttraction[];
+  featured?: boolean;
 }
 
 export interface Island {
