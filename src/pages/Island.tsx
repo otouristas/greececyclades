@@ -8,20 +8,36 @@ import HotelCard from '../components/hotels/HotelCard';
 import { getIslandSlug } from '../utils/slugify';
 
 const Island = () => {
-  const { slug } = useParams();
+  const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
   const { islands } = useIslandStore();
   const { hotels } = useHotelStore();
 
-  const island = islands.find(i => getIslandSlug(i.name) === slug);
-  const islandHotels = hotels.filter(h => h.island.toLowerCase() === island?.name.toLowerCase());
+  // Find island by slug
+  const island = React.useMemo(() => {
+    if (!slug || !islands.length) return null;
+    return islands.find(i => getIslandSlug(i.name).toLowerCase() === slug.toLowerCase());
+  }, [islands, slug]);
 
+  // Get hotels for this island
+  const islandHotels = React.useMemo(() => {
+    if (!island) return [];
+    return hotels.filter(h => h.island.toLowerCase() === island.name.toLowerCase());
+  }, [hotels, island]);
+
+  // Redirect if island not found
   React.useEffect(() => {
     if (!island && islands.length > 0) {
       navigate('/islands');
     }
   }, [island, islands, navigate]);
 
+  // Show loading state while islands are being fetched
+  if (islands.length === 0) {
+    return <div className="min-h-screen bg-white flex items-center justify-center">Loading...</div>;
+  }
+
+  // Show not found state if island doesn't exist
   if (!island) {
     return null;
   }
@@ -51,67 +67,55 @@ const Island = () => {
         </div>
       </div>
 
-      {/* Island Information */}
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        {/* Weather and Location */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-          <div className="bg-gray-50 p-6 rounded-lg">
-            <div className="flex items-center gap-3 mb-2">
-              <MapPin className="h-6 w-6 text-blue-600" />
-              <h3 className="text-lg font-semibold">Location</h3>
+      {/* Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        {/* Overview */}
+        <div className="grid md:grid-cols-2 gap-12 mb-16">
+          <div>
+            <h2 className="text-3xl font-bold mb-6">About {island.name}</h2>
+            <p className="text-gray-600 mb-6">{island.description}</p>
+            <div className="flex flex-wrap gap-4">
+              {island.highlights.map((highlight) => (
+                <span
+                  key={highlight}
+                  className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full"
+                >
+                  {highlight}
+                </span>
+              ))}
             </div>
-            <p>Cyclades, Aegean Sea</p>
           </div>
-          <div className="bg-gray-50 p-6 rounded-lg">
-            <div className="flex items-center gap-3 mb-2">
-              {island.weather.condition === 'sunny' ? (
-                <Sun className="h-6 w-6 text-yellow-500" />
-              ) : island.weather.condition === 'cloudy' ? (
-                <Cloud className="h-6 w-6 text-gray-500" />
-              ) : (
-                <Umbrella className="h-6 w-6 text-blue-500" />
-              )}
-              <h3 className="text-lg font-semibold">Weather</h3>
-            </div>
-            <p>{island.weather.temp} • {island.weather.condition}</p>
-          </div>
-          <div className="bg-gray-50 p-6 rounded-lg">
-            <div className="flex items-center gap-3 mb-2">
-              <Umbrella className="h-6 w-6 text-blue-600" />
-              <h3 className="text-lg font-semibold">Activities</h3>
-            </div>
-            <p>{island.activities} activities available</p>
-          </div>
-        </div>
-
-        {/* Description */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-6">About {island.name}</h2>
-          <p className="text-gray-600 leading-relaxed mb-6">{island.description}</p>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-            {island.highlights.map((highlight, index) => (
-              <div key={index} className="bg-gray-50 p-4 rounded-lg">
-                <p className="text-sm font-medium">{highlight}</p>
+          <div>
+            <div className="bg-gray-50 p-6 rounded-xl">
+              <h3 className="text-xl font-semibold mb-4">Quick Facts</h3>
+              <div className="space-y-4">
+                <div className="flex items-center gap-3">
+                  <MapPin className="h-5 w-5 text-blue-600" />
+                  <span>Located in the Cyclades, Greece</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Sun className="h-5 w-5 text-yellow-500" />
+                  <span>Average temperature: {island.weather.temp}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Cloud className="h-5 w-5 text-gray-500" />
+                  <span>{island.weather.condition}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <Umbrella className="h-5 w-5 text-blue-500" />
+                  <span>{island.activities} activities available</span>
+                </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
-
-        {/* Quote */}
-        {island.quote && (
-          <div className="mb-12 text-center">
-            <blockquote className="text-2xl italic text-gray-600">
-              "{island.quote}"
-            </blockquote>
-          </div>
-        )}
 
         {/* Hotels */}
         {islandHotels.length > 0 && (
           <div>
-            <h2 className="text-3xl font-bold mb-6">Where to Stay in {island.name}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {islandHotels.map(hotel => (
+            <h2 className="text-3xl font-bold mb-8">Where to Stay</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              {islandHotels.map((hotel) => (
                 <HotelCard key={hotel.id} hotel={hotel} />
               ))}
             </div>

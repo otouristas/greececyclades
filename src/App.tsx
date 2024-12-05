@@ -13,7 +13,7 @@ import RentACar from './pages/RentACar';
 import RentACarLanding from './pages/RentACarLanding';
 import ListingForm from './components/ListingForm';
 import Islands from './pages/Islands';
-import IslandDetail from './pages/IslandDetail';
+import Island from './pages/Island';
 import Sitemap from './pages/Sitemap';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
@@ -71,7 +71,7 @@ function AppContent() {
             </ProtectedRoute>
           } />
           <Route path="/islands" element={<Islands />} />
-          <Route path="/islands/:slug" element={<IslandDetail />} />
+          <Route path="/islands/:slug" element={<Island />} />
           <Route path="/sitemap" element={<Sitemap />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />
