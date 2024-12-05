@@ -1,4 +1,4 @@
-import React from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import NavigationMenu from './navigation/NavigationMenu';
 import { useAuthStore } from '../store/authStore';
@@ -11,7 +11,7 @@ interface NavbarProps {
 
 export default function Navbar({ onAuthClick }: NavbarProps) {
   const { isAuthenticated, user, logout } = useAuthStore();
-  const [isDropdownOpen, setIsDropdownOpen] = React.useState(false);
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
 
   const handleLogout = async () => {
     try {
@@ -49,7 +49,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                 <div className="relative">
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="flex items-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700"
+                    className="flex items-center gap-2 px-4 py-2 text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-50"
                   >
                     {user?.avatar ? (
                       <img
@@ -64,26 +64,26 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                         </span>
                       </div>
                     )}
-                    <span>{user?.name}</span>
+                    <span className="font-medium">{user?.name}</span>
                     <ChevronDown className="h-4 w-4" />
                   </button>
 
                   {isDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 ring-1 ring-black ring-opacity-5">
+                    <div className="absolute right-0 mt-2 w-48 bg-white rounded-lg shadow-lg py-1 border">
                       <Link
                         to="/profile"
                         onClick={() => setIsDropdownOpen(false)}
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 flex items-center gap-2"
                       >
                         <User className="h-4 w-4" />
                         My Profile
                       </Link>
                       <button
                         onClick={handleLogout}
-                        className="block w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 flex items-center gap-2"
+                        className="block w-full text-left px-4 py-2 text-sm text-red-600 hover:bg-red-50 flex items-center gap-2"
                       >
                         <LogOut className="h-4 w-4" />
-                        Log Out
+                        Sign Out
                       </button>
                     </div>
                   )}
