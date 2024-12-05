@@ -23,7 +23,7 @@ const mockIslands: Island[] = [
     quote: 'Where ancient history meets natural beauty',
     metaTitle: 'Naxos Travel Guide - Beaches, History & Adventure',
     metaDescription: 'Explore Naxos, the largest of the Cyclades islands. Discover pristine beaches, ancient ruins, mountain villages, and authentic Greek culture.',
-    image: naxosImage,
+    image: parosImage, // Temporarily using Paros image
     highlights: ['Portara Ancient Gate', 'Plaka Beach', 'Mount Zeus', 'Traditional Villages'],
     weather: {
       temp: '24°C',
