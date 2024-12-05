@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { Menu, X, ChevronRight, User } from 'lucide-react';
+import { Menu, X, ChevronRight, User, MapPin, Phone } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 
 interface NavigationMenuProps {
@@ -20,6 +20,8 @@ const navigationItems = [
 export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { isAuthenticated, user } = useAuthStore();
+
+  const closeMenu = () => setIsOpen(false);
 
   return (
     <div className="md:hidden">
@@ -45,8 +47,9 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              onClick={() => setIsOpen(false)}
-              className="fixed inset-0 bg-black/50 z-40"
+              transition={{ duration: 0.2 }}
+              onClick={closeMenu}
+              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100]"
             />
 
             {/* Menu Panel */}
@@ -54,40 +57,36 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'tween', duration: 0.3 }}
-              className="fixed top-0 right-0 h-full w-[280px] bg-white z-50 shadow-xl"
+              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              className="fixed top-0 right-0 h-full w-[280px] bg-white shadow-xl overflow-y-auto"
             >
               <div className="flex flex-col h-full">
                 {/* Header */}
-                <div className="flex items-center justify-between p-4 border-b">
-                  <h2 className="text-lg font-semibold">Menu</h2>
+                <div className="p-4 border-b flex items-center justify-between">
+                  <Logo />
                   <button
-                    onClick={() => setIsOpen(false)}
-                    className="p-2 text-gray-600 hover:text-gray-900"
+                    onClick={closeMenu}
+                    className="p-2 text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-100"
                   >
-                    <X className="h-5 w-5" />
+                    <X className="h-6 w-6" />
                   </button>
                 </div>
 
                 {/* User Section */}
-                <div className="p-4 border-b bg-gray-50">
+                <div className="p-4 border-b">
                   {isAuthenticated ? (
                     <div className="flex items-center space-x-3">
                       {user?.avatar ? (
                         <img
                           src={user.avatar}
                           alt={user.name}
-                          className="w-10 h-10 rounded-full"
+                          className="h-10 w-10 rounded-full"
                         />
                       ) : (
-                        <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-                          <span className="text-blue-600 font-medium">
-                            {user?.name?.charAt(0).toUpperCase()}
-                          </span>
-                        </div>
+                        <User className="h-10 w-10 p-2 bg-gray-100 rounded-full" />
                       )}
                       <div>
-                        <p className="font-medium text-gray-900">{user?.name}</p>
+                        <p className="font-medium">{user?.name}</p>
                         <p className="text-sm text-gray-500">{user?.email}</p>
                       </div>
                     </div>
@@ -95,39 +94,44 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
                     <button
                       onClick={() => {
                         onAuthClick();
-                        setIsOpen(false);
+                        closeMenu();
                       }}
-                      className="w-full flex items-center justify-center gap-2 px-4 py-2 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-colors"
+                      className="w-full flex items-center justify-center gap-2 px-4 py-2.5 bg-blue-600 text-white rounded-lg hover:bg-blue-700"
                     >
-                      <User className="h-4 w-4" />
-                      <span>Sign In</span>
+                      Sign In
                     </button>
                   )}
                 </div>
 
                 {/* Navigation Links */}
-                <nav className="flex-1 overflow-y-auto py-4">
-                  {navigationItems.map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={() => setIsOpen(false)}
-                      className="flex items-center justify-between px-6 py-3 text-gray-700 hover:bg-gray-50"
-                    >
-                      <span>{item.label}</span>
-                      <ChevronRight className="h-4 w-4" />
-                    </Link>
-                  ))}
+                <nav className="flex-1 p-4">
+                  <div className="space-y-1">
+                    {navigationItems.map((item) => (
+                      <Link
+                        key={item.path}
+                        to={item.path}
+                        onClick={closeMenu}
+                        className="flex items-center justify-between w-full p-3 text-gray-600 hover:text-gray-900 hover:bg-gray-50 rounded-lg group"
+                      >
+                        <span className="font-medium">{item.label}</span>
+                        <ChevronRight className="h-5 w-5 text-gray-400 group-hover:text-gray-600" />
+                      </Link>
+                    ))}
+                  </div>
                 </nav>
 
                 {/* Footer */}
-                <div className="p-4 border-t">
-                  <button
-                    onClick={() => setIsOpen(false)}
-                    className="w-full px-4 py-2 text-center text-sm text-gray-600 hover:text-gray-900"
-                  >
-                    Close Menu
-                  </button>
+                <div className="p-4 border-t bg-gray-50">
+                  <div className="space-y-4">
+                    <a href="#" className="flex items-center gap-3 text-sm text-gray-600 hover:text-gray-900">
+                      <MapPin className="h-5 w-5" />
+                      <span>Find a Location</span>
+                    </a>
+                    <a href="#" className="flex items-center gap-3 text-sm text-gray-600 hover:text-gray-900">
+                      <Phone className="h-5 w-5" />
+                      <span>Contact Support</span>
+                    </a>
+                  </div>
                 </div>
               </div>
             </motion.div>

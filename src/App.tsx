@@ -53,25 +53,25 @@ function AppContent() {
               <Profile />
             </ProtectedRoute>
           } />
-          <Route path="/cycladestripplanner" element={<CycladesTripPlanner />} />
           <Route path="/my-trips" element={
             <ProtectedRoute>
               <MyTrips />
             </ProtectedRoute>
           } />
-          <Route path="/activities" element={<Activities />} />
+          <Route path="/islands" element={<Islands />} />
+          <Route path="/islands/:slug" element={<Island />} />
           <Route path="/hotels" element={<Hotels />} />
-          <Route path="/hotels/:slug" element={<HotelLanding />} />
+          <Route path="/hotels/:id" element={<HotelLanding />} />
+          <Route path="/activities" element={<Activities />} />
           <Route path="/guides" element={<IslandGuides />} />
           <Route path="/rent-a-car" element={<RentACar />} />
           <Route path="/rent-a-car/:id" element={<RentACarLanding />} />
+          <Route path="/trip-planner" element={<CycladesTripPlanner />} />
           <Route path="/list-property" element={
             <ProtectedRoute>
               <ListingForm />
             </ProtectedRoute>
           } />
-          <Route path="/islands" element={<Islands />} />
-          <Route path="/islands/:slug" element={<Island />} />
           <Route path="/sitemap" element={<Sitemap />} />
           <Route path="/privacy" element={<Privacy />} />
           <Route path="/terms" element={<Terms />} />

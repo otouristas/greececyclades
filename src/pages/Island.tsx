@@ -5,7 +5,7 @@ import { useIslandStore } from '../store/islandStore';
 import { useHotelStore } from '../store/hotelStore';
 import { MapPin, Sun, Cloud, Umbrella } from 'lucide-react';
 import HotelCard from '../components/hotels/HotelCard';
-import { getIslandSlug } from '../utils/slugify';
+import { getIslandSlug, compareSlug } from '../utils/slugify';
 
 const Island = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -13,33 +13,33 @@ const Island = () => {
   const { islands } = useIslandStore();
   const { hotels } = useHotelStore();
 
-  // Find island by slug
   const island = React.useMemo(() => {
-    if (!slug || !islands.length) return null;
-    return islands.find(i => getIslandSlug(i.name).toLowerCase() === slug.toLowerCase());
+    if (!slug) return null;
+    return islands.find(island => compareSlug(getIslandSlug(island.name), slug));
   }, [islands, slug]);
 
   // Get hotels for this island
   const islandHotels = React.useMemo(() => {
     if (!island) return [];
-    return hotels.filter(h => h.island.toLowerCase() === island.name.toLowerCase());
+    return hotels.filter(hotel => hotel.island === island.name);
   }, [hotels, island]);
 
-  // Redirect if island not found
-  React.useEffect(() => {
-    if (!island && islands.length > 0) {
-      navigate('/islands');
-    }
-  }, [island, islands, navigate]);
-
-  // Show loading state while islands are being fetched
-  if (islands.length === 0) {
-    return <div className="min-h-screen bg-white flex items-center justify-center">Loading...</div>;
-  }
-
-  // Show not found state if island doesn't exist
+  // Handle loading and not found states
   if (!island) {
-    return null;
+    return (
+      <div className="min-h-screen bg-white flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-2xl font-bold text-gray-900 mb-2">Island Not Found</h1>
+          <p className="text-gray-600 mb-6">We couldn't find the island you're looking for.</p>
+          <button 
+            onClick={() => navigate('/islands')}
+            className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
+          >
+            View All Islands
+          </button>
+        </div>
+      </div>
+    );
   }
 
   return (
@@ -56,6 +56,7 @@ const Island = () => {
             src={island.image}
             alt={island.name}
             className="h-full w-full object-cover"
+            loading="eager"
           />
           <div className="absolute inset-0 bg-black/40" />
         </div>
@@ -78,7 +79,7 @@ const Island = () => {
               {island.highlights.map((highlight) => (
                 <span
                   key={highlight}
-                  className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full"
+                  className="px-4 py-2 bg-blue-50 text-blue-700 rounded-full text-sm"
                 >
                   {highlight}
                 </span>
