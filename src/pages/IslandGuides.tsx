@@ -4,8 +4,6 @@ import { Link } from 'react-router-dom';
 // Import island images
 import santoriniImage from '../assets/images/islands/santorini-island.webp';
 import mykonosImage from '../assets/images/islands/mykonos-island.jpg';
-import naxosImage from '../assets/images/islands/naxos-island.jpg';
-import milosImage from '../assets/images/islands/milos-island.jpg';
 import parosImage from '../assets/images/islands/paros-island.jpg';
 import sifnosImage from '../assets/images/islands/sifnos-island.jpg';
 
@@ -31,28 +29,6 @@ const islands = [
     bestTime: 'June to September',
     idealFor: ['Party Lovers', 'Beach Goers', 'Luxury Seekers'],
     slug: 'mykonos'
-  },
-  {
-    name: 'Naxos',
-    description: 'The largest Cycladic island, perfect for authentic experiences. Discover ancient temples, traditional villages, and endless beaches.',
-    image: naxosImage,
-    highlights: ['Apollo Temple', 'Mountain Villages', 'Local Cuisine', 'Beaches'],
-    weather: { temp: '23°C', condition: 'Clear' },
-    activities: 67,
-    bestTime: 'May to October',
-    idealFor: ['Families', 'History Buffs', 'Food Lovers'],
-    slug: 'naxos'
-  },
-  {
-    name: 'Milos',
-    description: 'A volcanic island known for its stunning beaches, colorful fishing villages, and unique lunar landscapes.',
-    image: milosImage,
-    highlights: ['Sarakiniko Beach', 'Kleftiko Caves', 'Fishing Villages', 'Boat Tours'],
-    weather: { temp: '23°C', condition: 'Clear' },
-    activities: 55,
-    bestTime: 'May to October',
-    idealFor: ['Beach Lovers', 'Photographers', 'Adventure Seekers'],
-    slug: 'milos'
   },
   {
     name: 'Paros',
