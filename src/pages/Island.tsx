@@ -1,21 +1,29 @@
 import React from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import SEO from '../components/SEO';
 import { useIslandStore } from '../store/islandStore';
 import { useHotelStore } from '../store/hotelStore';
 import { MapPin, Sun, Cloud, Umbrella } from 'lucide-react';
 import HotelCard from '../components/hotels/HotelCard';
+import { getIslandSlug } from '../utils/slugify';
 
 const Island = () => {
-  const { islandId } = useParams();
+  const { slug } = useParams();
+  const navigate = useNavigate();
   const { islands } = useIslandStore();
   const { hotels } = useHotelStore();
 
-  const island = islands.find(i => i.id === Number(islandId));
+  const island = islands.find(i => getIslandSlug(i.name) === slug);
   const islandHotels = hotels.filter(h => h.island.toLowerCase() === island?.name.toLowerCase());
 
+  React.useEffect(() => {
+    if (!island && islands.length > 0) {
+      navigate('/islands');
+    }
+  }, [island, islands, navigate]);
+
   if (!island) {
-    return <div>Island not found</div>;
+    return null;
   }
 
   return (
@@ -99,14 +107,16 @@ const Island = () => {
         )}
 
         {/* Hotels */}
-        <div className="mb-12">
-          <h2 className="text-3xl font-bold mb-6">Where to Stay in {island.name}</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {islandHotels.map(hotel => (
-              <HotelCard key={hotel.id} hotel={hotel} />
-            ))}
+        {islandHotels.length > 0 && (
+          <div>
+            <h2 className="text-3xl font-bold mb-6">Where to Stay in {island.name}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {islandHotels.map(hotel => (
+                <HotelCard key={hotel.id} hotel={hotel} />
+              ))}
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
