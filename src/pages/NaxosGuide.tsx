@@ -107,8 +107,85 @@ const NaxosGuide: React.FC = () => {
 
       {/* Main Content */}
       <div className="relative z-10 -mt-20">
+        {/* About Section */}
+        <div className="bg-gray-50 py-24">
+          <div className="container mx-auto px-4">
+            <motion.div
+              initial={{ opacity: 0 }}
+              whileInView={{ opacity: 1 }}
+              viewport={{ once: true }}
+              className="max-w-4xl mx-auto"
+            >
+              <h2 className="text-4xl font-bold mb-12 text-center">Discover Naxos</h2>
+              <div className="prose prose-lg mx-auto">
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  Despite being relatively low-profile compared to the neighboring Cycladic islands,
+                  Naxos is one of the most enticing destinations in Greece! It sits in the center of
+                  the Cyclades islands group, in the heart of the Aegean sea, and is also the biggest of them.
+                </p>
+                <p className="text-gray-700 mb-6 leading-relaxed">
+                  Its glorious ancient past positions it among the strongest influences of the Venetians
+                  and has left behind some remarkable ancient sites. The most iconic of them - and the
+                  trademark of Naxos - is Portara, the remaining gate of an ancient temple dedicated to
+                  the Olympian god Apollo.
+                </p>
+              </div>
+
+              {/* Travel Information */}
+              <div className="mt-16 grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-4">Best Time to Visit</h3>
+                  <p className="text-gray-700">
+                    The best time to visit Naxos is from {naxos.bestTime}. During these months, you'll enjoy:
+                  </p>
+                  <ul className="mt-4 space-y-2 text-gray-700">
+                    <li>• Perfect beach weather</li>
+                    <li>• Warm sea temperatures</li>
+                    <li>• Less crowded than peak season</li>
+                    <li>• Ideal conditions for hiking</li>
+                  </ul>
+                </div>
+
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-4">Must-Visit Locations</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    <li>• Portara (Apollo's Gate)</li>
+                    <li>• Plaka Beach</li>
+                    <li>• Chora (Old Town)</li>
+                    <li>• Mount Zeus (Za)</li>
+                    <li>• Halki Village</li>
+                    <li>• Agios Prokopios Beach</li>
+                  </ul>
+                </div>
+
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-4">Getting Around</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    <li>• Local buses connect major beaches and villages</li>
+                    <li>• Rental cars for mountain village exploration</li>
+                    <li>• Boat tours for beach hopping</li>
+                    <li>• Walking tours in Chora</li>
+                  </ul>
+                </div>
+
+                <div className="bg-white p-8 rounded-lg shadow-md">
+                  <h3 className="text-xl font-semibold mb-4">Local Experiences</h3>
+                  <ul className="space-y-2 text-gray-700">
+                    <li>• Traditional pottery workshops</li>
+                    <li>• Kitesurfing lessons</li>
+                    <li>• Wine tasting tours</li>
+                    <li>• Cooking classes</li>
+                    <li>• Mountain hiking tours</li>
+                  </ul>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+
         {/* Categories Grid */}
-        <div className="container mx-auto px-4 mb-24">
+        <div className="container mx-auto px-4 py-24">
+          <h2 className="text-4xl font-bold mb-12 text-center">Essential Travel Guide</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {categories.map((category, index) => (
               <motion.div
@@ -131,49 +208,6 @@ const NaxosGuide: React.FC = () => {
                 </p>
               </motion.div>
             ))}
-          </div>
-        </div>
-
-        {/* About Section */}
-        <div className="bg-gray-50 py-24">
-          <div className="container mx-auto px-4">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              className="max-w-4xl mx-auto text-center"
-            >
-              <h2 className="text-4xl font-bold mb-12">Discover Naxos</h2>
-              <div className="prose prose-lg mx-auto">
-                <p className="text-gray-700 mb-6 leading-relaxed">
-                  Despite being relatively low-profile compared to the neighboring Cycladic islands,
-                  Naxos is one of the most enticing destinations in Greece! It sits in the center of
-                  the Cyclades islands group, in the heart of the Aegean sea, and is also the biggest of them.
-                </p>
-                <p className="text-gray-700 mb-6 leading-relaxed">
-                  Its glorious ancient past positions it among the strongest influences of the Venetians
-                  and has left behind some remarkable ancient sites. The most iconic of them - and the
-                  trademark of Naxos - is Portara, the remaining gate of an ancient temple dedicated to
-                  the Olympian god Apollo.
-                </p>
-              </div>
-
-              {/* Highlights */}
-              <div className="mt-16 grid grid-cols-2 md:grid-cols-4 gap-8">
-                {naxos.highlights.map((highlight, index) => (
-                  <motion.div
-                    key={highlight}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    transition={{ delay: index * 0.1 }}
-                    viewport={{ once: true }}
-                    className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow"
-                  >
-                    <h3 className="font-semibold text-gray-900">{highlight}</h3>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
           </div>
         </div>
 
