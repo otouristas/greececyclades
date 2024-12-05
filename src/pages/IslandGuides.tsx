@@ -1,11 +1,19 @@
 import { Sun, ArrowRight, CalendarDays, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
+// Import island images
+import santoriniImage from '../assets/images/islands/santorini-island.webp';
+import mykonosImage from '../assets/images/islands/mykonos-island.jpg';
+import naxosImage from '../assets/images/islands/naxos-island.jpg';
+import milosImage from '../assets/images/islands/milos-island.jpg';
+import parosImage from '../assets/images/islands/paros-island.jpg';
+import sifnosImage from '../assets/images/islands/sifnos-island.jpg';
+
 const islands = [
   {
     name: 'Santorini',
     description: 'Famous for its dramatic views, stunning sunsets, and volcanic beaches. Experience the magic of the most romantic island in Greece.',
-    image: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&q=80',
+    image: santoriniImage,
     highlights: ['Caldera Views', 'Sunset in Oia', 'Black Sand Beaches', 'Wine Tours'],
     weather: { temp: '24°C', condition: 'Sunny' },
     activities: 85,
@@ -16,7 +24,7 @@ const islands = [
   {
     name: 'Mykonos',
     description: 'Known for its summer party atmosphere, picturesque villages, and cosmopolitan lifestyle. The perfect blend of luxury and tradition.',
-    image: 'https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&q=80',
+    image: mykonosImage,
     highlights: ['Little Venice', 'Windmills', 'Paradise Beach', 'Nightlife'],
     weather: { temp: '22°C', condition: 'Windy' },
     activities: 92,
@@ -27,7 +35,7 @@ const islands = [
   {
     name: 'Naxos',
     description: 'The largest Cycladic island, perfect for authentic experiences. Discover ancient temples, traditional villages, and endless beaches.',
-    image: 'https://images.unsplash.com/photo-1586861635167-e5223aadc9fe?auto=format&fit=crop&q=80',
+    image: naxosImage,
     highlights: ['Apollo Temple', 'Mountain Villages', 'Local Cuisine', 'Beaches'],
     weather: { temp: '23°C', condition: 'Clear' },
     activities: 67,
@@ -38,13 +46,35 @@ const islands = [
   {
     name: 'Milos',
     description: 'A volcanic island known for its stunning beaches, colorful fishing villages, and unique lunar landscapes.',
-    image: 'https://images.unsplash.com/photo-1602088693260-78f2c76287c1?auto=format&fit=crop&q=80',
+    image: milosImage,
     highlights: ['Sarakiniko Beach', 'Kleftiko Caves', 'Fishing Villages', 'Boat Tours'],
     weather: { temp: '23°C', condition: 'Clear' },
     activities: 55,
     bestTime: 'May to October',
     idealFor: ['Beach Lovers', 'Photographers', 'Adventure Seekers'],
     slug: 'milos'
+  },
+  {
+    name: 'Paros',
+    description: 'A perfect blend of traditional Cycladic architecture, golden beaches, and vibrant nightlife. Discover the authentic Greek island experience.',
+    image: parosImage,
+    highlights: ['Naoussa Village', 'Golden Beach', 'Byzantine Route', 'Water Sports'],
+    weather: { temp: '26°C', condition: 'Sunny' },
+    activities: 75,
+    bestTime: 'May to October',
+    idealFor: ['Families', 'Water Sports Enthusiasts', 'Culture Lovers'],
+    slug: 'paros'
+  },
+  {
+    name: 'Sifnos',
+    description: 'A gastronomic paradise with medieval villages, pristine beaches, and renowned pottery traditions. Experience authentic Cycladic culture.',
+    image: sifnosImage,
+    highlights: ['Kastro Village', 'Pottery Workshops', 'Hiking Trails', 'Local Cuisine'],
+    weather: { temp: '24°C', condition: 'Sunny' },
+    activities: 45,
+    bestTime: 'April to October',
+    idealFor: ['Food Lovers', 'Hikers', 'Culture Enthusiasts'],
+    slug: 'sifnos'
   }
 ];
 

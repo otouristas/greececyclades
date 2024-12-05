@@ -1,12 +1,18 @@
 import { useParams } from 'react-router-dom';
 import { Sun, MapPin, CalendarDays, Users, Clock, Euro, Star, Navigation } from 'lucide-react';
 
+// Import island images
+import santoriniImage from '../assets/images/islands/santorini-island.webp';
+import mykonosImage from '../assets/images/islands/mykonos-island.jpg';
+import parosImage from '../assets/images/islands/paros-island.jpg';
+import sifnosImage from '../assets/images/islands/sifnos-island.jpg';
+
 const islandData = {
   santorini: {
     name: 'Santorini',
     description: 'Famous for its dramatic views, stunning sunsets, and volcanic beaches. Experience the magic of the most romantic island in Greece.',
     longDescription: `Santorini is one of the most iconic Greek islands, known worldwide for its whitewashed, cube-shaped buildings adorned with blue accents, steep cliffs and stunning sunsets. The island is actually a giant volcano caldera, offering unique beaches with red, white and black sand.`,
-    image: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?auto=format&fit=crop&q=80',
+    image: santoriniImage,
     highlights: ['Caldera Views', 'Sunset in Oia', 'Black Sand Beaches', 'Wine Tours'],
     weather: { temp: '24°C', condition: 'Sunny' },
     activities: 85,
@@ -46,7 +52,7 @@ const islandData = {
     name: 'Mykonos',
     description: 'Known for its summer party atmosphere, picturesque villages, and cosmopolitan lifestyle. The perfect blend of luxury and tradition.',
     longDescription: `Mykonos is a vibrant island that perfectly balances traditional Greek charm with modern luxury. Famous for its windmills, pristine beaches, and vibrant nightlife, it attracts visitors from around the world seeking both relaxation and excitement.`,
-    image: 'https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&q=80',
+    image: mykonosImage,
     highlights: ['Little Venice', 'Windmills', 'Paradise Beach', 'Luxury Shopping'],
     weather: { temp: '25°C', condition: 'Sunny' },
     activities: 92,
@@ -80,6 +86,86 @@ const islandData = {
       budget: '€120/day',
       midRange: '€250/day',
       luxury: '€500+/day'
+    }
+  },
+  paros: {
+    name: 'Paros',
+    description: 'A perfect blend of traditional Cycladic architecture, golden beaches, and vibrant nightlife. Discover the authentic Greek island experience.',
+    longDescription: `Paros offers the perfect balance of everything that makes the Greek islands special. With its pristine beaches, charming villages, excellent water sports, and vibrant cultural scene, it's an island that caters to every type of traveler. The island's natural beauty is complemented by its rich history and warm hospitality.`,
+    image: parosImage,
+    highlights: ['Naoussa Village', 'Golden Beach', 'Byzantine Route', 'Water Sports'],
+    weather: { temp: '26°C', condition: 'Sunny' },
+    activities: 75,
+    bestTime: 'May to October',
+    idealFor: ['Families', 'Water Sports Enthusiasts', 'Culture Lovers'],
+    sections: [
+      {
+        title: 'Must-Visit Locations',
+        items: [
+          { name: 'Naoussa', description: 'Charming fishing village with vibrant nightlife and restaurants' },
+          { name: 'Parikia', description: 'Capital town with historic Venetian castle and traditional architecture' },
+          { name: 'Golden Beach', description: 'Long sandy beach perfect for windsurfing and swimming' }
+        ]
+      },
+      {
+        title: 'Local Experiences',
+        items: [
+          { name: 'Water Sports', description: 'World-class windsurfing and kitesurfing at Golden Beach' },
+          { name: 'Wine Tasting', description: 'Sample local wines at traditional Parian wineries' },
+          { name: 'Valley of Butterflies', description: 'Nature walk through this unique ecological park' }
+        ]
+      }
+    ],
+    travelTips: [
+      'Visit the marble quarries that supplied ancient Greek sculptures',
+      'Take a day trip to nearby Antiparos',
+      'Try local specialties like gouna (sun-dried mackerel)',
+      'Book water sports lessons in advance during peak season'
+    ],
+    costs: {
+      budget: '€80/day',
+      midRange: '€150/day',
+      luxury: '€300+/day'
+    }
+  },
+  sifnos: {
+    name: 'Sifnos',
+    description: 'A gastronomic paradise with medieval villages, pristine beaches, and renowned pottery traditions. Experience authentic Cycladic culture.',
+    longDescription: `Sifnos is a hidden gem of the Cyclades, famous for its exceptional cuisine, traditional pottery, and well-preserved medieval villages. The island's network of ancient walking trails connects charming whitewashed villages, offering spectacular views of the Aegean Sea. Its rich culinary heritage and strong ceramic traditions make it a unique cultural destination.`,
+    image: sifnosImage,
+    highlights: ['Kastro Village', 'Pottery Workshops', 'Hiking Trails', 'Local Cuisine'],
+    weather: { temp: '24°C', condition: 'Sunny' },
+    activities: 45,
+    bestTime: 'April to October',
+    idealFor: ['Food Lovers', 'Hikers', 'Culture Enthusiasts'],
+    sections: [
+      {
+        title: 'Must-Visit Locations',
+        items: [
+          { name: 'Kastro', description: 'Medieval village with ancient walls and stunning sea views' },
+          { name: 'Apollonia', description: 'Capital town with traditional architecture and vibrant atmosphere' },
+          { name: 'Chrysopigi Monastery', description: 'Iconic monastery perched on a rocky peninsula' }
+        ]
+      },
+      {
+        title: 'Local Experiences',
+        items: [
+          { name: 'Cooking Classes', description: 'Learn traditional Sifnian recipes from local chefs' },
+          { name: 'Pottery Workshops', description: 'Try your hand at traditional ceramic making' },
+          { name: 'Hiking Trails', description: 'Explore ancient paths connecting traditional villages' }
+        ]
+      }
+    ],
+    travelTips: [
+      'Try the local specialty mastelo (lamb or goat cooked in red wine)',
+      'Visit during the Cycladic Gastronomy Festival in September',
+      'Book pottery workshops in advance',
+      'Bring good walking shoes for the hiking trails'
+    ],
+    costs: {
+      budget: '€70/day',
+      midRange: '€140/day',
+      luxury: '€250+/day'
     }
   }
 };
