@@ -68,7 +68,7 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="absolute right-0 top-0 h-[100dvh] w-[280px] bg-white shadow-xl overflow-y-auto"
+              className="absolute right-0 top-0 h-[100dvh] w-full sm:w-[280px] bg-white shadow-xl overflow-y-auto"
             >
               <div className="flex flex-col h-full">
                 {/* Header */}
