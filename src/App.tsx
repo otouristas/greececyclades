@@ -23,6 +23,7 @@ import Auth from './pages/Auth';
 import Profile from './pages/Profile';
 import CycladesTripPlanner from './pages/CycladesTripPlanner';
 import MyTrips from './pages/MyTrips';
+import NaxosGuide from './pages/NaxosGuide';
 
 export default function App() {
   return (
@@ -68,6 +69,7 @@ function AppContent() {
           <Route path="/activities" element={<Activities />} />
           <Route path="/guides" element={<IslandGuides />} />
           <Route path="/guides/:slug" element={<IslandGuide />} />
+          <Route path="/guides/naxos" element={<NaxosGuide />} />
           <Route path="/rent-a-car" element={<RentACar />} />
           <Route path="/rent-a-car/:id" element={<RentACarLanding />} />
           <Route path="/trip-planner" element={<CycladesTripPlanner />} />

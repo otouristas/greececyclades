@@ -6,6 +6,7 @@ import santoriniImage from '../assets/images/islands/santorini-island.webp';
 import mykonosImage from '../assets/images/islands/mykonos-island.jpg';
 import parosImage from '../assets/images/islands/paros-island.jpg';
 import sifnosImage from '../assets/images/islands/sifnos-island.jpg';
+import naxosImage from '../assets/images/islands/naxos-island.jpg';
 
 interface IslandState {
   islands: Island[];
@@ -16,6 +17,24 @@ interface IslandState {
 const mockIslands: Island[] = [
   {
     id: 1,
+    name: 'Naxos',
+    description: 'Naxos is the largest of the Cyclades islands and, undoubtedly, one of the most beautiful Greek islands! Known for its impressive monuments, fertile valleys, and long sandy beaches.',
+    shortDescription: 'The largest and most diverse Cycladic island',
+    quote: 'Where ancient history meets natural beauty',
+    metaTitle: 'Naxos Travel Guide - Beaches, History & Adventure',
+    metaDescription: 'Explore Naxos, the largest of the Cyclades islands. Discover pristine beaches, ancient ruins, mountain villages, and authentic Greek culture.',
+    image: naxosImage,
+    highlights: ['Portara Ancient Gate', 'Plaka Beach', 'Mount Zeus', 'Traditional Villages'],
+    weather: {
+      temp: '24°C',
+      condition: 'sunny'
+    },
+    activities: 50,
+    bestTime: 'May to October',
+    idealFor: ['Families', 'History Buffs', 'Beach Lovers', 'Hikers']
+  },
+  {
+    id: 2,
     name: 'Santorini',
     description: 'Santorini is one of the most iconic Greek islands, known for its dramatic caldera views, stunning sunsets, and unique volcanic beaches.',
     shortDescription: 'Iconic sunsets and romantic caldera views',
@@ -33,7 +52,7 @@ const mockIslands: Island[] = [
     idealFor: ['Couples', 'Photographers', 'Wine Lovers']
   },
   {
-    id: 2,
+    id: 3,
     name: 'Mykonos',
     description: 'Mykonos is a vibrant cosmopolitan island renowned for its lively atmosphere and beautiful beaches.',
     shortDescription: 'Vibrant nightlife and pristine beaches',
@@ -51,7 +70,7 @@ const mockIslands: Island[] = [
     idealFor: ['Party Lovers', 'Beach Goers', 'Luxury Seekers']
   },
   {
-    id: 3,
+    id: 4,
     name: 'Paros',
     description: 'Paros offers a perfect blend of traditional Cycladic charm and modern amenities, with beautiful beaches and picturesque villages.',
     shortDescription: 'Traditional charm meets modern comfort',
@@ -69,7 +88,7 @@ const mockIslands: Island[] = [
     idealFor: ['Families', 'Beach Lovers', 'Water Sports']
   },
   {
-    id: 7,
+    id: 5,
     name: 'Sifnos',
     description: 'Sifnos is a charming island known for its traditional pottery, excellent cuisine, and beautiful hiking trails.',
     shortDescription: 'Culinary paradise with scenic trails',
