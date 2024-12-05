@@ -30,7 +30,7 @@ export default function Hero() {
               Start Exploring
             </Link>
             <Link
-              to="/cycladestripplanner"
+              to="/trip-planner"
               className="px-8 py-3 bg-white/10 backdrop-blur-md text-white rounded-full font-medium hover:bg-white/20 transition-colors flex items-center gap-2"
             >
               Magic Planner

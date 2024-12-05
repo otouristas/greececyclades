@@ -10,6 +10,7 @@ import Activities from './pages/Activities';
 import Hotels from './pages/Hotels';
 import HotelLanding from './pages/HotelLanding';
 import IslandGuides from './pages/IslandGuides';
+import IslandGuide from './pages/IslandGuide';
 import RentACar from './pages/RentACar';
 import RentACarLanding from './pages/RentACarLanding';
 import ListingForm from './components/ListingForm';
@@ -66,6 +67,7 @@ function AppContent() {
           <Route path="/hotels/:id" element={<HotelLanding />} />
           <Route path="/activities" element={<Activities />} />
           <Route path="/guides" element={<IslandGuides />} />
+          <Route path="/guides/:slug" element={<IslandGuide />} />
           <Route path="/rent-a-car" element={<RentACar />} />
           <Route path="/rent-a-car/:id" element={<RentACarLanding />} />
           <Route path="/trip-planner" element={<CycladesTripPlanner />} />
