@@ -51,7 +51,7 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <>
+          <div className="fixed inset-0" style={{ zIndex: 999 }}>
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -59,7 +59,7 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={closeMenu}
-              className="fixed inset-0 bg-black/50 backdrop-blur-sm z-[100]"
+              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
             />
 
             {/* Menu Panel */}
@@ -68,7 +68,7 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', stiffness: 300, damping: 30 }}
-              className="fixed top-0 right-0 h-full w-[280px] bg-white shadow-xl overflow-y-auto z-[101]"
+              className="absolute right-0 top-0 h-[100dvh] w-[280px] bg-white shadow-xl overflow-y-auto"
             >
               <div className="flex flex-col h-full">
                 {/* Header */}
@@ -177,7 +177,7 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
                 </div>
               </div>
             </motion.div>
-          </>
+          </div>
         )}
       </AnimatePresence>
     </div>
