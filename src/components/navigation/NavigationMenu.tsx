@@ -42,17 +42,13 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
         className="p-2 text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-100"
         aria-label={isOpen ? 'Close menu' : 'Open menu'}
       >
-        {isOpen ? (
-          <X className="h-6 w-6" />
-        ) : (
-          <Menu className="h-6 w-6" />
-        )}
+        {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
       </button>
 
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0" style={{ zIndex: 999 }}>
+          <div className="fixed inset-0 z-[999]">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -68,7 +64,7 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', stiffness: 300, damping: 30 }}
+              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
               className="absolute right-0 top-0 h-[100dvh] w-full sm:w-[280px] bg-white shadow-xl overflow-y-auto"
             >
               <div className="flex flex-col h-full">
@@ -87,10 +83,10 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
 
                 {/* User Section */}
                 <div className="p-4 border-b">
-                  {isAuthenticated ? (
+                  {isAuthenticated && user ? (
                     <div className="space-y-4">
                       <div className="flex items-center space-x-3">
-                        {user?.avatar ? (
+                        {user.avatar ? (
                           <img
                             src={user.avatar}
                             alt={user.name}
@@ -99,13 +95,13 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
                         ) : (
                           <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
                             <span className="text-blue-600 font-medium text-lg">
-                              {user?.name?.charAt(0).toUpperCase()}
+                              {user.name.charAt(0).toUpperCase()}
                             </span>
                           </div>
                         )}
                         <div>
-                          <div className="font-medium text-gray-900">{user?.name}</div>
-                          <div className="text-sm text-gray-500">{user?.email}</div>
+                          <div className="font-medium text-gray-900">{user.name}</div>
+                          <div className="text-sm text-gray-500">{user.email}</div>
                         </div>
                       </div>
                       <div className="space-y-1">

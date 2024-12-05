@@ -9,6 +9,7 @@ export default function AuthStateHandler() {
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
+        // Ensure we're capturing all user data from Firebase
         login({
           id: user.uid,
           name: user.displayName || 'User',
@@ -20,8 +21,9 @@ export default function AuthStateHandler() {
       }
     });
 
+    // Clean up subscription
     return () => unsubscribe();
   }, [login, logout]);
 
-  return null;
+  return null; // This component doesn't render anything
 }
