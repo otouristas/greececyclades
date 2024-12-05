@@ -1,6 +1,12 @@
 import { create } from 'zustand';
 import { Island } from '../types';
 
+// Import island images
+import santoriniImage from '../assets/images/islands/santorini-island.webp';
+import mykonosImage from '../assets/images/islands/mykonos-island.jpg';
+import parosImage from '../assets/images/islands/paros-island.jpg';
+import sifnosImage from '../assets/images/islands/sifnos-island.jpg';
+
 interface IslandState {
   islands: Island[];
   selectedIsland: Island | null;
@@ -16,7 +22,7 @@ const mockIslands: Island[] = [
     quote: 'The island where every sunset tells a different story',
     metaTitle: 'Santorini Travel Guide - Stunning Sunsets & Romantic Escapes',
     metaDescription: 'Discover Santorini, the jewel of the Cyclades. Famous for its sunsets, white-washed houses, and volcanic beaches. Plan your dream getaway now!',
-    image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?auto=format&fit=crop&q=80',
+    image: santoriniImage,
     highlights: ['Caldera Views', 'Sunset in Oia', 'Black Sand Beaches', 'Wine Tasting'],
     weather: {
       temp: '25°C',
@@ -34,7 +40,7 @@ const mockIslands: Island[] = [
     quote: 'Where tradition meets luxury in the heart of the Aegean',
     metaTitle: 'Mykonos Travel Guide - Luxury, Beaches & Nightlife',
     metaDescription: 'Plan your perfect Mykonos getaway. Discover pristine beaches, vibrant nightlife, and iconic windmills in this cosmopolitan Greek paradise.',
-    image: 'https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?auto=format&fit=crop&q=80',
+    image: mykonosImage,
     highlights: ['Little Venice', 'Windmills', 'Paradise Beach', 'Nightlife'],
     weather: {
       temp: '23°C',
@@ -49,10 +55,10 @@ const mockIslands: Island[] = [
     name: 'Paros',
     description: 'Paros offers a perfect blend of traditional Cycladic charm and modern amenities, with beautiful beaches and picturesque villages.',
     shortDescription: 'Traditional charm meets modern comfort',
-    quote: 'A perfect blend of authenticity and sophistication',
+    quote: 'Experience authentic Cycladic life in every corner',
     metaTitle: 'Paros Travel Guide - Authentic Greek Island Experience',
-    metaDescription: 'Experience the authentic charm of Paros. Discover beautiful beaches, traditional villages, and vibrant local culture in this Cycladic gem.',
-    image: 'https://images.unsplash.com/photo-1586615844867-599e3388bba3?auto=format&fit=crop&q=80',
+    metaDescription: 'Visit Paros for its beautiful beaches, traditional villages, and water sports. Perfect for families and couples seeking authentic Greek island life.',
+    image: parosImage,
     highlights: ['Naoussa Village', 'Golden Beach', 'Parikia Old Town', 'Water Sports'],
     weather: {
       temp: '24°C',
@@ -60,24 +66,24 @@ const mockIslands: Island[] = [
     },
     activities: 32,
     bestTime: 'May to October',
-    idealFor: ['Families', 'Water Sports Enthusiasts', 'Culture Lovers']
+    idealFor: ['Families', 'Beach Lovers', 'Water Sports']
   },
   {
-    id: 4,
+    id: 7,
     name: 'Sifnos',
-    description: 'Sifnos is renowned for its exceptional cuisine, pottery tradition, and well-preserved walking trails connecting charming hilltop villages.',
-    shortDescription: 'Culinary paradise with traditional charm',
+    description: 'Sifnos is a charming island known for its traditional pottery, excellent cuisine, and beautiful hiking trails.',
+    shortDescription: 'Culinary paradise with scenic trails',
     quote: 'Where gastronomy meets tradition',
-    metaTitle: 'Sifnos Travel Guide - Culinary Heritage & Traditional Arts',
-    metaDescription: 'Discover Sifnos, the gastronomic heart of the Cyclades. Experience world-class cuisine, pottery traditions, and authentic village life.',
-    image: 'https://images.unsplash.com/photo-1586615844867-599e3388bba3?auto=format&fit=crop&q=80',
-    highlights: ['Kastro Village', 'Local Cuisine', 'Pottery Workshops', 'Hiking Trails'],
+    metaTitle: 'Sifnos Travel Guide - Culinary Delights & Traditional Charm',
+    metaDescription: 'Explore Sifnos, a hidden gem of the Cyclades known for its gastronomy, pottery, and hiking trails. Perfect for food lovers and outdoor enthusiasts.',
+    image: sifnosImage,
+    highlights: ['Traditional Pottery', 'Gastronomy', 'Hiking Trails', 'Kastro Village'],
     weather: {
-      temp: '23°C',
+      temp: '22°C',
       condition: 'sunny'
     },
-    activities: 28,
-    bestTime: 'April to October',
+    activities: 25,
+    bestTime: 'May to September',
     idealFor: ['Food Lovers', 'Hikers', 'Culture Enthusiasts']
   }
 ];
