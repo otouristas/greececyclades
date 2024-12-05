@@ -48,7 +48,7 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-[999]">
+          <div className="fixed inset-0 z-40">
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
@@ -56,7 +56,7 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={closeMenu}
-              className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+              className="absolute inset-0 bg-black/20 backdrop-blur-sm"
             />
 
             {/* Menu Panel */}
