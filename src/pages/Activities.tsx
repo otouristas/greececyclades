@@ -11,9 +11,9 @@ const mockActivities: Activity[] = [
     title: 'Sunset Sailing Cruise',
     description: 'Experience the magic of Santorinis famous sunset aboard a luxury catamaran. Enjoy swimming, snorkeling, and a BBQ dinner with wine.',
     location: 'Santorini',
-    image: 'https://images.unsplash.com/photo-1588401667987-e06480c453b9?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1588401667987-e06480c453b9?auto=format&fit=crop&q=80&w=800',
     price: '€120',
-    duration: '5 hours',
+    duration: '4-6 hours',
     rating: 4.9,
     reviews: 245,
     category: 'Water Activities'
@@ -23,9 +23,9 @@ const mockActivities: Activity[] = [
     title: 'Wine Tasting Tour',
     description: 'Discover Santorinis unique wine culture with visits to three traditional wineries. Learn about volcanic wines and enjoy local delicacies.',
     location: 'Santorini',
-    image: 'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&q=80&w=800',
     price: '€85',
-    duration: '4 hours',
+    duration: '2-4 hours',
     rating: 4.8,
     reviews: 189,
     category: 'Food & Wine'
@@ -35,9 +35,9 @@ const mockActivities: Activity[] = [
     title: 'Photography Workshop',
     description: 'Capture the beauty of Mykonos with a professional photographer. Perfect for all skill levels, includes camera tips and local insights.',
     location: 'Mykonos',
-    image: 'https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&q=80&w=800',
     price: '€95',
-    duration: '3 hours',
+    duration: '2-4 hours',
     rating: 4.7,
     reviews: 156,
     category: 'Arts & Culture'
@@ -47,9 +47,9 @@ const mockActivities: Activity[] = [
     title: 'Hiking Adventure',
     description: 'Explore the ancient trails of Naxos with an experienced guide. Discover hidden villages, Byzantine churches, and breathtaking viewpoints.',
     location: 'Naxos',
-    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&q=80',
+    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&q=80&w=800',
     price: '€65',
-    duration: '6 hours',
+    duration: '6+ hours',
     rating: 4.9,
     reviews: 132,
     category: 'Adventure'
@@ -68,7 +68,6 @@ export default function Activities() {
   const { activities, filters, setActivities, setFilters } = useActivityStore();
 
   useEffect(() => {
-    // In a real app, this would be an API call
     setActivities(mockActivities);
   }, [setActivities]);
 

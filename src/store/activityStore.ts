@@ -12,13 +12,10 @@ interface ActivityFilters {
 interface ActivityState {
   activities: Activity[];
   filters: ActivityFilters;
-  selectedActivity: Activity | null;
   loading: boolean;
   error: string | null;
   setActivities: (activities: Activity[]) => void;
   setFilters: (filters: Partial<ActivityFilters>) => void;
-  resetFilters: () => void;
-  setSelectedActivity: (activity: Activity | null) => void;
   setLoading: (loading: boolean) => void;
   setError: (error: string | null) => void;
 }
@@ -34,17 +31,13 @@ const defaultFilters: ActivityFilters = {
 export const useActivityStore = create<ActivityState>((set) => ({
   activities: [],
   filters: defaultFilters,
-  selectedActivity: null,
   loading: false,
   error: null,
-
   setActivities: (activities) => set({ activities }),
-  setFilters: (filters) =>
+  setFilters: (newFilters) =>
     set((state) => ({
-      filters: { ...state.filters, ...filters },
+      filters: { ...state.filters, ...newFilters },
     })),
-  resetFilters: () => set({ filters: defaultFilters }),
-  setSelectedActivity: (activity) => set({ selectedActivity: activity }),
   setLoading: (loading) => set({ loading }),
   setError: (error) => set({ error }),
 }));
