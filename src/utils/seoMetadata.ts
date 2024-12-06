@@ -98,30 +98,69 @@ export const TERMS_SEO: SEOMetadata = {
   ogImage: '/images/terms-service.jpg'
 };
 
-// Dynamic SEO generators for individual pages
-export const generateIslandSEO = (islandName: string): SEOMetadata => ({
-  title: `${islandName} Travel Guide 2024 | Hotels, Beaches & Things to Do | Expert Tips`,
-  description: `Plan your perfect ${islandName} vacation with our comprehensive 2024 guide. Discover the best hotels, beaches, restaurants, and activities in ${islandName}. Local tips and insider guides for an unforgettable Greek island experience.`,
-  keywords: [...DEFAULT_KEYWORDS, islandName, `${islandName} Hotels`, `${islandName} Beaches`, `${islandName} Activities`, `${islandName} Guide`],
-  ogTitle: `Discover ${islandName} | Complete Island Guide 2024`,
-  ogDescription: `Everything you need to know about visiting ${islandName}. Find the best places to stay, eat, and explore.`,
-  ogImage: `/images/islands/${islandName.toLowerCase()}.jpg`
-});
+export const GUIDES_SEO: SEOMetadata = {
+  title: 'Cyclades Travel Guides 2025 | Expert Island Guides & Tips | Greece',
+  description: 'Comprehensive travel guides for the Cyclades islands. Discover insider tips, local secrets, and expert advice for planning your perfect Greek island vacation in 2025.',
+  keywords: [...DEFAULT_KEYWORDS, 'Travel Guide', 'Island Guide', 'Travel Tips', 'Local Advice', 'Island Information'],
+  ogTitle: 'Expert Cyclades Travel Guides 2025 | Plan Your Greek Island Adventure',
+  ogDescription: 'In-depth travel guides for the Cyclades islands. Everything you need to know about visiting the Greek islands.',
+  ogImage: '/images/guides-overview.jpg'
+};
 
-export const generateHotelSEO = (hotelName: string, location: string): SEOMetadata => ({
-  title: `${hotelName} | Luxury Hotel in ${location} | Reviews & Best Rates 2024`,
-  description: `Book your stay at ${hotelName} in ${location}. View photos, read reviews, and find the best rates for this stunning Cyclades accommodation. Experience Greek island luxury at its finest.`,
-  keywords: [...DEFAULT_KEYWORDS, hotelName, `${location} Hotels`, 'Luxury Accommodation', 'Hotel Booking', `${location} Luxury Hotels`],
-  ogTitle: `${hotelName} | Luxury Stay in ${location}`,
-  ogDescription: `Experience exceptional hospitality at ${hotelName}, one of the finest hotels in ${location}.`,
-  ogImage: `/images/hotels/${hotelName.toLowerCase().replace(/\s+/g, '-')}.jpg`
-});
+export function generateGuideSEO(islandName: string): SEOMetadata {
+  const formattedName = islandName.charAt(0).toUpperCase() + islandName.slice(1).toLowerCase();
+  return {
+    title: `${formattedName} Travel Guide 2025 | Best Things to Do, See & Experience`,
+    description: `Complete guide to ${formattedName} island. Discover the best beaches, villages, restaurants, activities, and accommodation options for your 2025 ${formattedName} vacation.`,
+    keywords: [...DEFAULT_KEYWORDS, formattedName, `${formattedName} Guide`, `${formattedName} Travel`, `${formattedName} Vacation`, `${formattedName} Tips`],
+    ogTitle: `${formattedName} Island Guide 2025 | Expert Travel Tips & Local Secrets`,
+    ogDescription: `Everything you need to know about visiting ${formattedName}. Local tips, hidden gems, and essential information for the perfect island experience.`,
+    ogImage: `/images/guides/${islandName.toLowerCase()}-guide.jpg`
+  };
+}
 
-export const generateActivitySEO = (activityName: string, location: string): SEOMetadata => ({
-  title: `${activityName} in ${location} | Best Tours & Experiences 2024 | Book Now`,
-  description: `Experience the best ${activityName} in ${location}. Book authentic local experiences, read reviews, and get insider tips for making the most of your Cyclades adventure.`,
-  keywords: [...DEFAULT_KEYWORDS, `${location} Activities`, `${location} Tours`, activityName, 'Book Activities', 'Local Experiences'],
-  ogTitle: `${activityName} Experience in ${location} | Must-Do Activity`,
-  ogDescription: `Don't miss this amazing ${activityName} experience during your stay in ${location}.`,
-  ogImage: `/images/activities/${activityName.toLowerCase().replace(/\s+/g, '-')}-${location.toLowerCase()}.jpg`
-});
+export function generateIslandSEO(islandName: string): SEOMetadata {
+  const formattedName = islandName.charAt(0).toUpperCase() + islandName.slice(1).toLowerCase();
+  return {
+    title: `Visit ${formattedName} Island | Greece Cyclades`,
+    description: `Plan your perfect vacation to ${formattedName} island in the Cyclades. Discover beautiful beaches, traditional villages, local cuisine, and authentic experiences for 2025.`,
+    keywords: [...DEFAULT_KEYWORDS, formattedName, `${formattedName} Island`, `Visit ${formattedName}`, `${formattedName} Holidays`, `${formattedName} Greece`],
+    ogTitle: `Discover ${formattedName} Island | Your 2025 Travel Guide`,
+    ogDescription: `Experience the magic of ${formattedName} - from stunning beaches to charming villages. Find the best places to stay, eat, and explore.`,
+    ogImage: `/images/islands/${islandName.toLowerCase()}-overview.jpg`
+  };
+}
+
+export function generateIslandSEO(islandName: string): SEOMetadata {
+  const formattedName = islandName.charAt(0).toUpperCase() + islandName.slice(1).toLowerCase();
+  return {
+    title: `${formattedName} Travel Guide 2024 | Hotels, Beaches & Things to Do | Expert Tips`,
+    description: `Plan your perfect ${formattedName} vacation with our comprehensive 2024 guide. Discover the best hotels, beaches, restaurants, and activities in ${formattedName}. Local tips and insider guides for an unforgettable Greek island experience.`,
+    keywords: [...DEFAULT_KEYWORDS, formattedName, `${formattedName} Hotels`, `${formattedName} Beaches`, `${formattedName} Activities`, `${formattedName} Guide`],
+    ogTitle: `Discover ${formattedName} | Complete Island Guide 2024`,
+    ogDescription: `Everything you need to know about visiting ${formattedName}. Find the best places to stay, eat, and explore.`,
+    ogImage: `/images/islands/${islandName.toLowerCase()}.jpg`
+  };
+}
+
+export function generateHotelSEO(hotelName: string, location: string): SEOMetadata {
+  return {
+    title: `${hotelName} | Luxury Hotel in ${location} | Reviews & Best Rates 2024`,
+    description: `Book your stay at ${hotelName} in ${location}. View photos, read reviews, and find the best rates for this stunning Cyclades accommodation. Experience Greek island luxury at its finest.`,
+    keywords: [...DEFAULT_KEYWORDS, hotelName, `${location} Hotels`, 'Luxury Accommodation', 'Hotel Booking', `${location} Luxury Hotels`],
+    ogTitle: `${hotelName} | Luxury Stay in ${location}`,
+    ogDescription: `Experience exceptional hospitality at ${hotelName}, one of the finest hotels in ${location}.`,
+    ogImage: `/images/hotels/${hotelName.toLowerCase().replace(/\s+/g, '-')}.jpg`
+  };
+}
+
+export function generateActivitySEO(activityName: string, location: string): SEOMetadata {
+  return {
+    title: `${activityName} in ${location} | Best Tours & Experiences 2024 | Book Now`,
+    description: `Experience the best ${activityName} in ${location}. Book authentic local experiences, read reviews, and get insider tips for making the most of your Cyclades adventure.`,
+    keywords: [...DEFAULT_KEYWORDS, `${location} Activities`, `${location} Tours`, activityName, 'Book Activities', 'Local Experiences'],
+    ogTitle: `${activityName} Experience in ${location} | Must-Do Activity`,
+    ogDescription: `Don't miss this amazing ${activityName} experience during your stay in ${location}.`,
+    ogImage: `/images/activities/${activityName.toLowerCase().replace(/\s+/g, '-')}-${location.toLowerCase()}.jpg`
+  };
+}

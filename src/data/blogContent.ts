@@ -1,5 +1,5 @@
 export const mykonosContent = `
-# Mykonos 2024: Complete Guide to the Island of the Winds
+# Mykonos 2025: Complete Guide to the Island of the Winds
 
 Welcome to Mykonos, the Cyclades' most cosmopolitan island. From pristine beaches to world-class nightlife, this guide will help you discover everything this stunning island has to offer.
 
@@ -14,138 +14,213 @@ Welcome to Mykonos, the Cyclades' most cosmopolitan island. From pristine beache
 8. [Travel Tips](#travel-tips)
 
 ## Why Visit Mykonos {#why-visit}
-Mykonos perfectly blends traditional Cycladic charm with modern luxury. The island's iconic windmills, pristine beaches, and vibrant nightlife make it a must-visit destination for travelers seeking both relaxation and excitement.
+Mykonos perfectly blends traditional Cycladic charm with modern luxury. The island's iconic windmills, pristine beaches, and vibrant nightlife make it a must-visit destination for travelers seeking both relaxation and excitement. The island has evolved from a bohemian paradise to a world-class luxury destination while maintaining its authentic Greek character.
 
 ## Best Time to Visit {#best-time}
-- **Peak Season (July-August)**: Bustling nightlife and perfect beach weather
-- **Shoulder Season (May-June, September-October)**: Pleasant weather with fewer crowds
-- **Off Season (November-April)**: Quiet and authentic, but some venues closed
+- **Peak Season (July-August)**: 
+  - Perfect beach weather with temperatures 25-30°C
+  - Vibrant nightlife and events
+  - Celebrity spotting opportunities
+  - Higher prices and advance bookings required
+
+- **Shoulder Season (May-June, September-October)**:
+  - Pleasant temperatures 20-25°C
+  - Lower hotel rates
+  - Less crowded beaches
+  - Better restaurant availability
+
+- **Off Season (November-April)**:
+  - Authentic local experience
+  - Lowest prices
+  - Some venues closed
+  - Possible ferry disruptions
 
 ## Where to Stay {#where-to-stay}
 ### Luxury Options
-- [Cavo Tagoo](/hotels/cavo-tagoo): Famous for its infinity pool and sunset views
-- [Belvedere Mykonos](/hotels/belvedere-mykonos): Central location with exceptional service
-- [Myconian Villa Collection](/hotels/myconian-villa-collection): Private villas with stunning views
+- [Cavo Tagoo](/hotels/cavo-tagoo):
+  - Iconic infinity pool with floating sunbeds
+  - Cave pool suites with private pools
+  - Award-winning Japanese fusion restaurant
+  - Spectacular sunset views
+  - Starting from €800/night
+
+- [Belvedere Mykonos](/hotels/belvedere-mykonos):
+  - Central Mykonos Town location
+  - Six Senses Spa
+  - Matsuhisa restaurant by Nobu
+  - Designer interiors
+  - Starting from €600/night
+
+- [Myconian Villa Collection](/hotels/myconian-villa-collection):
+  - Private infinity pools
+  - Personal butler service
+  - Panoramic ocean views
+  - Luxury spa treatments
+  - Starting from €700/night
 
 ### Mid-Range Choices
-- Semeli Hotel: Great location in Mykonos Town
-- Petasos Beach Resort: Beautiful beachfront property
+- Semeli Hotel:
+  - Heart of Mykonos Town
+  - Modern Cycladic design
+  - Thioni Restaurant
+  - Pool with sea views
+  - Starting from €300/night
+
+- Petasos Beach Resort:
+  - Private beach access
+  - Two-tier infinity pool
+  - Wellness center
+  - Sea-view rooms
+  - Starting from €250/night
 
 ## Beaches {#beaches}
-1. **Paradise Beach**: Party atmosphere and water sports
-2. **Super Paradise**: Famous for its beach clubs
-3. **Psarou**: Celebrity spotting and luxury services
-4. **Ornos**: Family-friendly with calm waters
-5. **Agios Sostis**: Secluded and pristine
+1. **Paradise Beach**:
+   - Famous party beach
+   - [Paradise Beach Club](/activities/paradise-beach-club)
+   - Water sports rentals
+   - Beach bars and restaurants
+   - Regular bus service from Mykonos Town
+
+2. **Super Paradise**:
+   - LGBTQ+ friendly
+   - [Jackie O' Beach Club](/activities/jackie-o-beach)
+   - Crystal clear waters
+   - Premium sunbed service
+   - Accessible by boat or shuttle
+
+3. **Psarou Beach**:
+   - Celebrity favorite
+   - [Nammos Restaurant](/restaurants/nammos)
+   - Luxury boutiques
+   - Premium sunbed service
+   - Water sports center
+
+4. **Ornos Beach**:
+   - Family-friendly
+   - Shallow waters
+   - Multiple restaurants
+   - Water sports facilities
+   - Regular bus connection
+
+5. **Agios Sostis**:
+   - Secluded natural beach
+   - No facilities (bring water)
+   - [Kiki's Tavern](/restaurants/kikis-tavern) nearby
+   - Crystal clear waters
+   - No public transport
 
 ## Nightlife {#nightlife}
-- **Little Venice**: Waterfront cocktail bars
-- **Scandinavian Bar**: Popular party spot
-- **Cavo Paradiso**: World-famous club
-- **180° Sunset Bar**: Best sunset views
+- **Little Venice**:
+  - [Caprice Bar](/nightlife/caprice): Famous sunset cocktails
+  - [Scarpa Bar](/nightlife/scarpa): Local favorite
+  - [Galleraki](/nightlife/galleraki): Romantic atmosphere
+  - Best sunset views
+  - Historic location
+
+- **Scandinavian Bar**:
+  - Central party location
+  - Multiple dance floors
+  - International DJs
+  - Mixed crowd
+  - Open until sunrise
+
+- **Cavo Paradiso**:
+  - World-famous club
+  - International DJ lineup
+  - Paradise Beach location
+  - Sunrise parties
+  - Advance booking recommended
+
+- **180° Sunset Bar**:
+  - Panoramic views
+  - Premium cocktails
+  - Resident DJs
+  - Sophisticated atmosphere
+  - Reservation required
 
 ## Activities {#activities}
-1. [Delos Day Trip](/activities/delos-day-trip): Ancient ruins and history
-2. [Windmills Tour](/activities/mykonos-windmills-tour): Iconic photo opportunities
-3. [Beach Hopping](/activities/mykonos-beach-hopping): Visit multiple beaches in one day
-4. Walking Tours: Explore Mykonos Town's narrow streets
+1. [Delos Day Trip](/activities/delos-day-trip):
+   - UNESCO World Heritage site
+   - Ancient Greek ruins
+   - Apollo's sanctuary
+   - Museum visit
+   - Half-day tour
+
+2. [Windmills Tour](/activities/mykonos-windmills-tour):
+   - Historic 16th-century windmills
+   - Photography opportunities
+   - Cultural insights
+   - Sunset views
+   - Walking tour
+
+3. [Beach Hopping](/activities/mykonos-beach-hopping):
+   - Visit 5-6 beaches
+   - Swimming stops
+   - Lunch included
+   - Professional guide
+   - Transportation provided
+
+4. [Old Town Walking Tour](/activities/mykonos-town-tour):
+   - Hidden alleys
+   - Local stories
+   - Photography spots
+   - Food tastings
+   - Cultural insights
 
 ## Day Trips {#day-trips}
-- **Delos**: UNESCO World Heritage site
-- **Rhenia**: Pristine, uninhabited beaches
-- **Tinos**: Religious significance and traditional villages
+1. [Delos Island](/islands/delos):
+   - Morning departure
+   - Guided tour available
+   - Ancient ruins
+   - Museum visit
+   - Half-day trip
+
+2. [Rhenia Island](/islands/rhenia):
+   - Secluded beaches
+   - Swimming spots
+   - Snorkeling
+   - Lunch included
+   - Full-day trip
+
+3. [Tinos Island](/islands/tinos):
+   - Religious sites
+   - Traditional villages
+   - Local food
+   - Cultural experience
+   - Full-day trip
 
 ## Travel Tips {#travel-tips}
-1. Book accommodations early, especially for July-August
-2. Use our [Trip Planner](/trip-planner) to organize your stay
-3. Consider [renting a car](/rent-a-car) for beach exploration
-4. Make dinner reservations in advance
-5. Bring a light jacket for evening sea breezes
+1. **Transportation**:
+   - [Rent a car](/rent-a-car) for beach access
+   - Use public buses for main routes
+   - Water taxis between beaches
+   - Airport transfers recommended
 
-## Getting Around
-- Local buses connect major beaches and towns
-- Taxis are limited but reliable
-- [Car rentals](/rent-a-car) recommended for flexibility
+2. **Dining**:
+   - Reserve restaurants in advance
+   - Try local specialties
+   - Lunch at beach clubs
+   - Traditional tavernas inland
 
-## Where to Eat
-1. **Kastro's**: Romantic dining in Little Venice
-2. **Krama**: Modern Greek cuisine
-3. **M-eating**: Fine dining experience
-4. **Fokos Taverna**: Traditional Greek food
+3. **Money Saving**:
+   - Book early for better rates
+   - Visit in shoulder season
+   - Use public transport
+   - Stay in Mykonos Town
 
-Ready to experience Mykonos? Use our [Trip Planner](/trip-planner) to create your perfect itinerary!
-`;
+4. **Must-Know**:
+   - Strong winds in August
+   - Sunscreen essential
+   - Beach club reservations needed
+   - Cash for small businesses
 
-export const parosContent = `
-# Paros 2024: Your Guide to the Cyclades' Best-Kept Secret
-
-Discover Paros, an island that perfectly balances traditional Greek charm with modern amenities. From golden beaches to picturesque villages, Paros offers an authentic Cycladic experience.
-
-## Table of Contents
-1. [Why Choose Paros](#why-choose)
-2. [Best Time to Visit](#best-time)
-3. [Where to Stay](#where-to-stay)
-4. [Must-Visit Villages](#villages)
-5. [Beaches](#beaches)
-6. [Activities](#activities)
-7. [Travel Tips](#travel-tips)
-
-## Why Choose Paros {#why-choose}
-Paros offers the perfect blend of everything that makes the Greek islands special: beautiful beaches, traditional villages, great food, and vibrant nightlife, all without the overwhelming crowds of more famous islands.
-
-## Best Time to Visit {#best-time}
-- **High Season (July-August)**: Perfect weather and festive atmosphere
-- **Shoulder Season (May-June, September-October)**: Ideal conditions with fewer tourists
-- **Low Season (November-April)**: Quiet and authentic experience
-
-## Where to Stay {#where-to-stay}
-### Luxury Accommodations
-- [Parilio Hotel](/hotels/parilio-hotel): Minimalist luxury
-- [Yria Boutique Hotel](/hotels/yria-boutique-hotel): Beachfront elegance
-- [Paros Agnanti](/hotels/paros-agnanti): Stunning views
-
-### Mid-Range Options
-- Paros Palace
-- Archipelagos Resort
-
-## Must-Visit Villages {#villages}
-1. **Naoussa**: Charming fishing port with restaurants and bars
-2. **Parikia**: The capital with its historic center
-3. **Lefkes**: Mountain village with traditional architecture
-4. **Marpissa**: Authentic medieval village
-5. **Prodromos**: Picture-perfect whitewashed streets
-
-## Beaches {#beaches}
-- **Kolimbithres**: Unique rock formations
-- **Golden Beach**: Perfect for windsurfing
-- **Santa Maria**: Crystal clear waters
-- **Logaras**: Family-friendly
-- **Faragas**: Secluded beauty
-
-## Activities {#activities}
-1. [Windsurfing](/activities/paros-windsurfing): World-class conditions
-2. [Food Tours](/activities/naoussa-food-tour): Traditional flavors
-3. [Hiking Trails](/activities/lefkes-hiking): Ancient marble paths
-4. Water Sports: Kitesurfing, SUP, diving
-
-## Travel Tips {#travel-tips}
-1. Use our [Trip Planner](/trip-planner) for the perfect itinerary
-2. Consider [renting a car](/rent-a-car) to explore the island
-3. Book accommodations in advance for high season
-4. Try local products: wine, olive oil, cheese
-
-## Getting Around
-- Reliable bus network
-- Taxi services available
-- [Car rental](/rent-a-car) recommended for flexibility
-
-Ready to discover Paros? Start planning your trip with our [Trip Planner](/trip-planner)!
+Ready to experience Mykonos? Start planning with our [Trip Planner](/trip-planner)!
 `;
 
 export const naxosContent = `
-# Naxos 2024: Experience Authentic Greek Island Life
+# Naxos 2025: Experience Authentic Greek Island Life
 
-Welcome to Naxos, the largest and most fertile of the Cyclades islands. With its impressive mountains, endless beaches, and rich history, Naxos offers an authentic Greek island experience.
+Welcome to Naxos, the largest and most fertile of the Cyclades islands. With its impressive mountains, endless beaches, and rich history, Naxos offers an authentic Greek island experience that combines ancient culture with modern comfort.
 
 ## Table of Contents
 1. [Why Visit Naxos](#why-visit)
@@ -158,62 +233,434 @@ Welcome to Naxos, the largest and most fertile of the Cyclades islands. With its
 8. [Travel Tips](#travel-tips)
 
 ## Why Visit Naxos {#why-visit}
-Naxos combines everything you'd want from a Greek island: stunning beaches, mountain villages, ancient ruins, and excellent local cuisine, all while maintaining its authentic character.
+Naxos is a unique blend of everything that makes Greek islands special. The island boasts:
+- Highest mountain in Cyclades (Zeus Mountain)
+- Best agricultural production
+- Ancient marble quarries
+- Longest beaches in Greece
+- Rich mythological history
+- Authentic village life
+- Outstanding local cuisine
 
 ## Best Time to Visit {#best-time}
-- **Summer (June-September)**: Perfect beach weather
-- **Spring (April-May)**: Ideal for hiking and exploring
-- **Fall (September-October)**: Warm seas and harvest season
+- **Summer (June-September)**:
+  - Temperatures 25-30°C
+  - Perfect beach conditions
+  - All facilities open
+  - Water sports season
+  - Cultural festivals
+
+- **Spring (April-May)**:
+  - Temperatures 18-23°C
+  - Wildflowers blooming
+  - Hiking conditions perfect
+  - Easter celebrations
+  - Lower prices
+
+- **Fall (September-October)**:
+  - Temperatures 20-25°C
+  - Warm sea waters
+  - Wine harvest season
+  - Local festivals
+  - Fewer tourists
 
 ## Where to Stay {#where-to-stay}
 ### Luxury Options
-- [Naxian Collection](/hotels/naxian-collection): Boutique luxury villas
-- [Kavos Naxos](/hotels/kavos-naxos): Stylish apartments with views
-- [Naxos Resort](/hotels/naxos-resort): Beachfront luxury
+- [Naxian Collection](/hotels/naxian-collection):
+  - Private pool villas
+  - Organic restaurant
+  - Wine cellar
+  - Spa services
+  - Starting from €450/night
+
+- [Kavos Naxos](/hotels/kavos-naxos):
+  - Sea view suites
+  - Infinity pool
+  - Mediterranean gardens
+  - Art gallery
+  - Starting from €350/night
+
+- [Naxos Resort](/hotels/naxos-resort):
+  - Beachfront location
+  - Wellness center
+  - Traditional architecture
+  - Family rooms
+  - Starting from €300/night
 
 ### Mid-Range Choices
-- Porto Naxos Hotel
-- Naxos Palace Hotel
+- Porto Naxos Hotel:
+  - Swimming pool
+  - Restaurant
+  - Garden views
+  - Close to town
+  - Starting from €150/night
+
+- Naxos Palace Hotel:
+  - Family-friendly
+  - Large pool
+  - Free parking
+  - Breakfast included
+  - Starting from €120/night
 
 ## Beaches {#beaches}
-1. **Agios Prokopios**: Crystal clear waters
-2. **Plaka**: Long sandy beach
-3. **Mikri Vigla**: Perfect for windsurfing
-4. **Agia Anna**: Family-friendly
-5. **Hawaii Beach**: Hidden gem
+1. **Agios Prokopios**:
+   - Crystal clear waters
+   - [Beach clubs](/activities/agios-prokopios-beach)
+   - Water sports
+   - Restaurants
+   - Bus service
+
+2. **Plaka Beach**:
+   - 4km long sandy beach
+   - Beach bars
+   - Naturist sections
+   - Cedar trees
+   - Sunset views
+
+3. **Mikri Vigla**:
+   - [Kitesurfing center](/activities/mikri-vigla-kitesurfing)
+   - Two beaches
+   - Wind conditions
+   - Traditional tavernas
+   - Accommodation nearby
+
+4. **Agia Anna**:
+   - Family-friendly
+   - Shallow waters
+   - Fishing port
+   - Beachfront hotels
+   - Easy access
+
+5. **Hawaii Beach**:
+   - Hidden location
+   - Natural shade
+   - Quiet atmosphere
+   - Clear waters
+   - Walking trails
 
 ## Mountain Villages {#villages}
-- **Halki**: Former capital with mansions
-- **Apiranthos**: Marble-paved streets
-- **Filoti**: Largest mountain village
-- **Koronos**: Traditional character
-- **Sangri**: Ancient temples nearby
+- **Halki**:
+   - Former capital
+   - [Kitron distillery](/activities/kitron-tour)
+   - Venetian towers
+   - Art galleries
+   - Traditional cafes
+
+- **Apiranthos**:
+   - Marble village
+   - Folk museums
+   - Local weaving
+   - Mountain views
+   - Traditional architecture
+
+- **Filoti**:
+   - Largest mountain village
+   - [Zeus Cave hiking](/activities/zeus-cave-hike)
+   - Local festivals
+   - Traditional tavernas
+   - Historic churches
+
+- **Koronos**:
+   - Wine production
+   - Traditional festivals
+   - Local tavernas
+   - Hiking trails
+   - Valley views
+
+- **Sangri**:
+   - Ancient temples
+   - Olive groves
+   - Byzantine churches
+   - Archaeological site
+   - Guided tours
 
 ## Activities {#activities}
-1. [Temple Tours](/activities/naxos-temple-tour): Ancient Greek history
-2. [Village Exploration](/activities/mountain-village-exploration): Authentic culture
-3. [Kitesurfing](/activities/kitesurfing-mikri-vigla): Perfect conditions
-4. Hiking: Ancient marble paths
+1. [Temple Tours](/activities/naxos-temple-tour):
+   - Temple of Apollo
+   - Temple of Demeter
+   - Guided options
+   - Photography spots
+   - Historical insights
+
+2. [Village Exploration](/activities/mountain-village-exploration):
+   - Traditional life
+   - Local products
+   - Cultural events
+   - Photography
+   - Guide available
+
+3. [Kitesurfing](/activities/kitesurfing-mikri-vigla):
+   - Professional instruction
+   - Equipment rental
+   - All levels
+   - Perfect conditions
+   - Safety briefing
+
+4. [Hiking Trails](/activities/naxos-hiking):
+   - Ancient paths
+   - Mountain routes
+   - Coastal walks
+   - Village connections
+   - Guided tours
 
 ## Local Cuisine {#cuisine}
-- **Naxian Potatoes**: Famous across Greece
-- **Graviera Cheese**: Local specialty
-- **Kitron Liqueur**: Traditional drink
-- **Local Meat**: From mountain-raised animals
+- **Naxian Specialties**:
+  - [Naxos Potatoes](/culinary/naxos-potatoes)
+  - [Arseniko Cheese](/culinary/naxos-cheese)
+  - [Kitron Liqueur](/culinary/kitron)
+  - Local meat dishes
+  - Fresh seafood
+
+- **Where to Eat**:
+  - [Traditional Tavernas](/restaurants/naxos)
+  - Mountain village eateries
+  - Waterfront restaurants
+  - Local markets
+  - Wine bars
 
 ## Travel Tips {#travel-tips}
-1. Use our [Trip Planner](/trip-planner) to organize your stay
-2. [Rent a car](/rent-a-car) to explore mountain villages
-3. Try local products at traditional tavernas
-4. Visit the Portara at sunset
+1. **Transportation**:
+   - [Rent a car](/rent-a-car) for villages
+   - Local bus network
+   - Taxi services
+   - Bike rentals
+
+2. **Activities**:
+   - Book water sports early
+   - Join guided tours
+   - Visit during festivals
+   - Take cooking classes
+
+3. **Food & Drink**:
+   - Try local wine
+   - Fresh fish tavernas
+   - Local cheese varieties
+   - Traditional souma spirit
+
+4. **Practical Info**:
+   - ATMs available
+   - Medical facilities
+   - Tourist offices
+   - Local markets
 
 Ready to explore Naxos? Start planning with our [Trip Planner](/trip-planner)!
 `;
 
-export const sifnosContent = `
-# Sifnos 2024: A Gastronomic Journey Through the Cyclades
+export const parosContent = `
+# Paros 2025: Your Guide to the Cyclades' Best-Kept Secret
 
-Welcome to Sifnos, the culinary capital of the Cyclades. Known for its pottery, gastronomy, and traditional villages, Sifnos offers an authentic Greek island experience.
+Discover Paros, an island that perfectly balances traditional Greek charm with modern amenities. From golden beaches to picturesque villages, Paros offers an authentic Cycladic experience without the overwhelming crowds.
+
+## Table of Contents
+1. [Why Choose Paros](#why-choose)
+2. [Best Time to Visit](#best-time)
+3. [Where to Stay](#where-to-stay)
+4. [Must-Visit Villages](#villages)
+5. [Beaches](#beaches)
+6. [Activities](#activities)
+7. [Travel Tips](#travel-tips)
+
+## Why Choose Paros {#why-choose}
+Paros offers the perfect blend of everything that makes the Greek islands special. The island boasts:
+- Beautiful beaches
+- Traditional villages
+- Great food
+- Vibrant nightlife
+- Authentic local experience
+
+## Best Time to Visit {#best-time}
+- **High Season (July-August)**:
+  - Temperatures 28-32°C
+  - Vibrant nightlife scene
+  - All facilities open
+  - Water sports conditions perfect
+  - Advance booking essential
+
+- **Shoulder Season (May-June, September-October)**:
+  - Temperatures 22-27°C
+  - Perfect for outdoor activities
+  - Lower accommodation rates
+  - Quieter beaches
+  - Better restaurant availability
+
+- **Low Season (November-April)**:
+  - Temperatures 12-18°C
+  - Local life experience
+  - Lowest prices
+  - Some facilities closed
+  - Great for photography
+
+## Where to Stay {#where-to-stay}
+### Luxury Accommodations
+- [Parilio Hotel](/hotels/parilio-hotel):
+  - Minimalist Cycladic design
+  - Spa center
+  - Fine dining restaurant
+  - Pool with mountain views
+  - Starting from €400/night
+
+- [Yria Boutique Hotel](/hotels/yria-boutique-hotel):
+  - Beachfront location
+  - Private gardens
+  - Gourmet restaurant
+  - Tennis courts
+  - Starting from €350/night
+
+- [Paros Agnanti](/hotels/paros-agnanti):
+  - Panoramic sea views
+  - Infinity pool
+  - Shuttle service
+  - Traditional architecture
+  - Starting from €300/night
+
+### Mid-Range Options
+- Paros Palace:
+  - Close to Parikia
+  - Sea view rooms
+  - Swimming pool
+  - Family-friendly
+  - Starting from €150/night
+
+- Archipelagos Resort:
+  - Naoussa location
+  - Traditional style
+  - Beach access
+  - Restaurant
+  - Starting from €180/night
+
+## Must-Visit Villages {#villages}
+1. **Naoussa**:
+   - Venetian port
+   - [Fish restaurants](/restaurants/naoussa)
+   - Boutique shopping
+   - Vibrant nightlife
+   - Art galleries
+
+2. **Parikia**:
+   - Ancient windmill
+   - [Panagia Ekatontapiliani](/activities/ekatontapiliani)
+   - Waterfront tavernas
+   - Shopping streets
+   - Ferry port
+
+3. **Lefkes**:
+   - Mountain views
+   - Marble streets
+   - Traditional cafes
+   - Byzantine church
+   - Hiking trails
+
+4. **Marpissa**:
+   - Medieval architecture
+   - Local museums
+   - Windmills
+   - Traditional festivals
+   - Quiet atmosphere
+
+5. **Prodromos**:
+   - White-washed houses
+   - Hidden churches
+   - Local tavernas
+   - Photography spots
+   - Traditional events
+
+## Beaches {#beaches}
+- **Kolimbithres**:
+  - Unique granite formations
+  - Natural swimming pools
+  - Beach bars
+  - Water sports
+  - Boat access
+
+- **Golden Beach**:
+  - [Windsurfing center](/activities/golden-beach-windsurfing)
+  - Professional instruction
+  - Beach facilities
+  - Restaurants nearby
+  - Regular bus service
+
+- **Santa Maria**:
+  - Crystal waters
+  - [Diving center](/activities/santa-maria-diving)
+  - Beach clubs
+  - Water sports
+  - Family-friendly
+
+- **Logaras**:
+  - Protected bay
+  - Shallow waters
+  - Beachfront tavernas
+  - Accommodation nearby
+  - Easy access
+
+- **Faragas**:
+  - Secluded location
+  - Natural shade
+  - Beach bar
+  - Clear waters
+  - Parking available
+
+## Activities {#activities}
+1. [Windsurfing](/activities/paros-windsurfing):
+   - World-class conditions
+   - Equipment rental
+   - Professional instruction
+   - All levels welcome
+   - Competition venue
+
+2. [Food Tours](/activities/naoussa-food-tour):
+   - Local products
+   - Wine tasting
+   - Cooking lessons
+   - Market visits
+   - Traditional recipes
+
+3. [Hiking Trails](/activities/lefkes-hiking):
+   - Byzantine Route
+   - Mountain views
+   - Ancient marble paths
+   - Village connections
+   - Guided options
+
+4. Water Sports:
+   - [Kitesurfing](/activities/paros-kitesurfing)
+   - [SUP tours](/activities/paros-sup)
+   - [Scuba diving](/activities/paros-diving)
+   - [Sailing lessons](/activities/paros-sailing)
+   - Equipment rental
+
+## Travel Tips {#travel-tips}
+1. **Transportation**:
+   - [Rent a car](/rent-a-car) for flexibility
+   - Regular bus service
+   - Water taxis available
+   - Cycling popular
+
+2. **Activities**:
+   - Book water sports early
+   - Join guided tours
+   - Visit marble quarries
+   - Take cooking classes
+
+3. **Food & Drink**:
+   - Try local wine
+   - Fresh fish tavernas
+   - Local cheese varieties
+   - Traditional souma spirit
+
+4. **Practical Info**:
+   - ATMs in main towns
+   - Medical center in Parikia
+   - Tourist info offices
+   - Local markets
+
+Ready to discover Paros? Start planning your trip with our [Trip Planner](/trip-planner)!
+`;
+
+export const sifnosContent = `
+# Sifnos 2025: A Gastronomic Journey Through the Cyclades
+
+Welcome to Sifnos, the culinary capital of the Cyclades. Known for its pottery, gastronomy, and traditional villages, Sifnos offers an authentic Greek island experience that will delight all your senses.
 
 ## Table of Contents
 1. [Why Visit Sifnos](#why-visit)
@@ -226,118 +673,235 @@ Welcome to Sifnos, the culinary capital of the Cyclades. Known for its pottery, 
 8. [Travel Tips](#travel-tips)
 
 ## Why Visit Sifnos {#why-visit}
-Sifnos is famous for its traditional cuisine, ceramic workshops, and well-preserved villages. The island offers a perfect blend of culinary experiences, cultural activities, and beautiful landscapes.
+Sifnos stands out in the Cyclades for several reasons:
+- Culinary excellence and traditions
+- Famous ceramic workshops
+- 365 churches and monasteries
+- Well-preserved medieval villages
+- Hiking network of 100km
+- Beautiful sandy beaches
+- Traditional festivals
 
 ## Best Time to Visit {#best-time}
-- **Peak Season (July-August)**: Warmest weather and festivals
-- **Spring (April-June)**: Perfect for hiking and cooking classes
-- **Fall (September-October)**: Pleasant weather and fewer tourists
+- **Peak Season (July-August)**:
+  - Temperatures 25-30°C
+  - Cultural festivals
+  - All restaurants open
+  - Cooking classes available
+  - Advance booking needed
+
+- **Spring (April-June)**:
+  - Temperatures 20-25°C
+  - Perfect hiking weather
+  - Easter celebrations
+  - Lower prices
+  - Wildflowers blooming
+
+- **Fall (September-October)**:
+  - Temperatures 22-27°C
+  - Religious festivals
+  - Harvest activities
+  - Fewer tourists
+  - Pleasant swimming
 
 ## Where to Stay {#where-to-stay}
 ### Luxury Options
-- [Verina Astra](/hotels/verina-astra): Stunning sea views
-- [Kamaroti Suites](/hotels/kamaroti-suites): Boutique experience
-- [Niriedes Hotel](/hotels/niriedes-hotel): Traditional architecture
+- [Verina Astra](/hotels/verina-astra):
+  - Infinity pool
+  - Gourmet restaurant
+  - Sea view suites
+  - Spa services
+  - Starting from €400/night
+
+- [Kamaroti Suites](/hotels/kamaroti-suites):
+  - Traditional architecture
+  - Pool with view
+  - Cooking classes
+  - Garden restaurant
+  - Starting from €350/night
+
+- [Niriedes Hotel](/hotels/niriedes-hotel):
+  - Cycladic design
+  - Wellness center
+  - Panoramic views
+  - Private terraces
+  - Starting from €300/night
 
 ### Mid-Range Choices
-- Gerofinikas Boutique Hotel
-- Sifnos House
+- Gerofinikas Boutique Hotel:
+  - Central location
+  - Swimming pool
+  - Traditional style
+  - Breakfast included
+  - Starting from €150/night
+
+- Sifnos House:
+  - Near beach
+  - Family-run
+  - Garden views
+  - Local breakfast
+  - Starting from €120/night
 
 ## Gastronomy {#gastronomy}
 ### Traditional Dishes
-- Revithada (Chickpea Soup)
-- Mastelo (Lamb or Goat)
-- Local Cheeses
-- Honey Pies
+- **Revithada**:
+  - Traditional chickpea soup
+  - Slow-cooked in clay pot
+  - Sunday specialty
+  - Local olive oil
+  - Fresh herbs
+
+- **Mastelo**:
+  - Lamb or goat
+  - Wine-marinated
+  - Clay pot cooked
+  - Easter tradition
+  - Vine leaves
+
+- **Local Cheeses**:
+  - [Manoura](/culinary/sifnos-cheese)
+  - Fresh mizithra
+  - Aged graviera
+  - Wine-preserved
+  - Cheese platters
 
 ### Cooking Classes
-- [Traditional Cooking Lessons](/activities/sifnos-cooking-class)
-- Pottery Workshop Visits
-- Local Market Tours
+- [Traditional Cooking Lessons](/activities/sifnos-cooking-class):
+  - Local recipes
+  - Clay pot cooking
+  - Market visits
+  - Wine pairing
+  - Take-home recipes
+
+- [Pottery Workshop Visits](/activities/pottery-workshop):
+  - Traditional techniques
+  - Make your own pot
+  - Local clay
+  - Artist meetings
+  - Studio tours
 
 ## Villages {#villages}
-1. **Apollonia**: The capital
-2. **Kastro**: Medieval settlement
-3. **Artemonas**: Neoclassical architecture
-4. **Faros**: Fishing village
-5. **Vathi**: Beautiful bay
+1. **Apollonia**:
+   - Island capital
+   - [Shopping street](/activities/apollonia-shopping)
+   - Nightlife
+   - Museums
+   - Restaurants
+
+2. **Kastro**:
+   - Medieval settlement
+   - Ancient walls
+   - Archaeological museum
+   - Sunset views
+   - Historic churches
+
+3. **Artemonas**:
+   - Neoclassical mansions
+   - Traditional bakeries
+   - Quiet atmosphere
+   - Walking paths
+   - Local festivals
+
+4. **Faros**:
+   - Fishing village
+   - Three beaches
+   - Fresh seafood
+   - Hiking trails
+   - Peaceful setting
+
+5. **Vathi**:
+   - Protected bay
+   - Pottery workshops
+   - Beach tavernas
+   - Swimming spot
+   - Traditional port
 
 ## Activities {#activities}
-1. [Cooking Classes](/activities/sifnos-cooking-class): Learn local recipes
-2. [Pottery Workshops](/activities/pottery-workshop): Traditional crafts
-3. [Hiking Trails](/activities/hiking-trails): Ancient paths
-4. Church Visits: 365 churches and monasteries
+1. [Cooking Classes](/activities/sifnos-cooking-class):
+   - Traditional recipes
+   - Local ingredients
+   - Professional chefs
+   - Market visits
+   - Wine tasting
+
+2. [Pottery Workshops](/activities/pottery-workshop):
+   - Clay techniques
+   - Local traditions
+   - Create souvenirs
+   - Artist guidance
+   - Studio visits
+
+3. [Hiking Trails](/activities/hiking-trails):
+   - Ancient paths
+   - Monastery routes
+   - Coastal walks
+   - Village connections
+   - Guided options
+
+4. [Church Tours](/activities/sifnos-churches):
+   - Historic monasteries
+   - Byzantine art
+   - Religious festivals
+   - Photography
+   - Local history
 
 ## Beaches {#beaches}
-- **Platis Gialos**: Long sandy beach
-- **Vathi**: Protected bay
-- **Chrissopigi**: Near monastery
-- **Faros**: Three consecutive coves
+- **Platis Gialos**:
+  - Long sandy beach
+  - [Beach clubs](/activities/platis-gialos-beach)
+  - Water sports
+  - Restaurants
+  - Easy access
+
+- **Vathi**:
+  - Protected bay
+  - Shallow waters
+  - Pottery shops
+  - Traditional tavernas
+  - Family-friendly
+
+- **Chrissopigi**:
+  - Iconic monastery
+  - Crystal waters
+  - Natural shade
+  - Photography spot
+  - Peaceful setting
+
+- **Faros**:
+  - Three coves
+  - Swimming spots
+  - Walking paths
+  - Fresh fish
+  - Local atmosphere
 
 ## Travel Tips {#travel-tips}
-1. Book cooking classes in advance
-2. Use our [Trip Planner](/trip-planner) to organize activities
-3. Visit during a local festival
-4. Try traditional clay-pot cooking
+1. **Culinary Experiences**:
+   - Book cooking classes early
+   - Try Sunday revithada
+   - Visit local festivals
+   - Food photography
+   - Wine tastings
+
+2. **Activities**:
+   - Join pottery workshops
+   - Take hiking maps
+   - Visit monasteries
+   - Photography tours
+   - Beach hopping
+
+3. **Transportation**:
+   - [Rent a car](/rent-a-car)
+   - Local bus service
+   - Walking paths
+   - Taxi available
+   - Boat trips
+
+4. **Practical Info**:
+   - ATMs in Apollonia
+   - Medical center
+   - Tourist office
+   - Local markets
+   - Festival calendar
 
 Ready to experience Sifnos? Plan your culinary adventure with our [Trip Planner](/trip-planner)!
-`;
-
-export const antiparosContent = `
-# Antiparos 2024: Your Guide to the Perfect Island Escape
-
-Discover Antiparos, a small island that offers an authentic and relaxed Greek island experience. Known for its impressive cave, beautiful beaches, and laid-back atmosphere.
-
-## Table of Contents
-1. [Why Visit Antiparos](#why-visit)
-2. [Best Time to Visit](#best-time)
-3. [Where to Stay](#where-to-stay)
-4. [Beaches](#beaches)
-5. [Activities](#activities)
-6. [Day Trips](#day-trips)
-7. [Travel Tips](#travel-tips)
-
-## Why Visit Antiparos {#why-visit}
-Antiparos offers a more relaxed alternative to its bigger neighbor Paros. With its impressive cave, secluded beaches, and charming main town, it's perfect for those seeking authenticity and tranquility.
-
-## Best Time to Visit {#best-time}
-- **Summer (June-September)**: Perfect beach weather
-- **Spring (April-May)**: Ideal for hiking and cave visits
-- **Fall (September-October)**: Quiet with warm waters
-
-## Where to Stay {#where-to-stay}
-### Luxury Options
-- [The Rooster](/hotels/rooster-antiparos): Wellness resort
-- [Kouros Village](/hotels/kouros-village): Traditional style
-- [Beach House](/hotels/beach-house): Beachfront location
-
-### Mid-Range Choices
-- Artemis Hotel
-- Nicolas Studios
-
-## Beaches {#beaches}
-1. **Soros**: Long sandy beach
-2. **Agios Georgios**: Crystal waters
-3. **Glyfa**: Secluded bay
-4. **Camping Beach**: Popular spot
-5. **Faneromeni**: Remote beauty
-
-## Activities {#activities}
-1. [Cave Tour](/activities/antiparos-cave-tour): Impressive stalactites
-2. [Beach Hopping](/activities/beach-hopping): Discover hidden coves
-3. [Sunset Sailing](/activities/sunset-sailing): Around the island
-4. Hiking: Natural trails
-
-## Day Trips {#day-trips}
-- **Despotiko**: Ancient sanctuary
-- **Paros**: Easy access
-- **Round-the-Island Boat Tour**: Secret beaches
-
-## Travel Tips {#travel-tips}
-1. Use our [Trip Planner](/trip-planner) for your itinerary
-2. Book cave tours in advance
-3. Consider staying in Paros and visiting as a day trip
-4. Rent a bike or scooter to explore
-
-Ready to discover Antiparos? Start planning with our [Trip Planner](/trip-planner)!
 `;

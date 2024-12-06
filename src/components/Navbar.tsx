@@ -15,7 +15,7 @@ const getNavigationItems = (isAuthenticated: boolean) => [
   { path: '/activities', label: 'Activities' },
   { path: '/hotels', label: 'Hotels' },
   { path: '/rent-a-car', label: 'Rent A Car' },
-  ...(isAuthenticated ? [{ path: '/list-property', label: 'Blog' }] : []),
+  ...(isAuthenticated ? [{ path: '/blog', label: 'Blog' }] : []),
 ];
 
 export default function Navbar({ onAuthClick }: NavbarProps) {
