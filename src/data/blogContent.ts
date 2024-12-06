@@ -639,7 +639,7 @@ Paros offers the perfect blend of everything that makes the Greek islands specia
 2. **Activities**:
    - Book water sports early
    - Join guided tours
-   - Visit marble quarries
+   - Visit during festivals
    - Take cooking classes
 
 3. **Food & Drink**:
@@ -904,4 +904,186 @@ Sifnos stands out in the Cyclades for several reasons:
    - Festival calendar
 
 Ready to experience Sifnos? Plan your culinary adventure with our [Trip Planner](/trip-planner)!
+`;
+
+export const antiparosContent = `
+# Antiparos 2025: Hidden Gem of the Cyclades
+
+Welcome to Antiparos, a charming island that offers an authentic Greek experience away from the crowds. Known for its stunning cave, beautiful beaches, and relaxed atmosphere, Antiparos is perfect for those seeking tranquility and natural beauty.
+
+## Table of Contents
+1. [Why Visit Antiparos](#why-visit)
+2. [Best Time to Visit](#best-time)
+3. [Where to Stay](#where-to-stay)
+4. [Beaches](#beaches)
+5. [Activities](#activities)
+6. [Villages](#villages)
+7. [Travel Tips](#travel-tips)
+
+## Why Visit Antiparos {#why-visit}
+Antiparos offers:
+- Spectacular cave formations
+- Pristine, uncrowded beaches
+- Traditional Cycladic villages
+- Excellent hiking trails
+- Fresh local cuisine
+- Celebrity spotting
+- Peaceful atmosphere
+
+## Best Time to Visit {#best-time}
+- **Peak Season (July-August)**:
+  - Temperatures 25-30°C
+  - All facilities open
+  - Lively atmosphere
+  - Beach activities
+  - Cultural events
+
+- **Shoulder Season (May-June, September-October)**:
+  - Temperatures 20-25°C
+  - Fewer tourists
+  - Lower prices
+  - Perfect hiking
+  - Local festivals
+
+## Where to Stay {#where-to-stay}
+### Luxury Options
+- [Kouros Village](/hotels/kouros-village):
+  - Sea view rooms
+  - Pool facilities
+  - Restaurant
+  - Spa services
+  - Starting from €300/night
+
+- [Beach House Antiparos](/hotels/beach-house):
+  - Beachfront location
+  - Private villas
+  - Pool access
+  - Garden setting
+  - Starting from €250/night
+
+### Mid-Range Choices
+- Kastro Apartments:
+  - Central location
+  - Traditional style
+  - Kitchenette
+  - Sea views
+  - From €120/night
+
+- Antiparos View:
+  - Quiet area
+  - Family-run
+  - Pool access
+  - Breakfast included
+  - From €100/night
+
+## Beaches {#beaches}
+- **Soros Beach**:
+  - Golden sand
+  - [Beach club](/activities/soros-beach-club)
+  - Water sports
+  - Tavernas
+  - Parking available
+
+- **Psaraliki**:
+  - Twin beaches
+  - Family-friendly
+  - Shallow waters
+  - Beach facilities
+  - Walking distance
+
+- **Camping Beach**:
+  - Natural setting
+  - Camping allowed
+  - Tree shade
+  - Clear waters
+  - Basic facilities
+
+- **Glyfa**:
+  - Remote location
+  - Natural beauty
+  - Quiet atmosphere
+  - No facilities
+  - Worth the trip
+
+## Activities {#activities}
+1. [Cave of Antiparos](/activities/antiparos-cave):
+   - Stalactites
+   - Stalagmites
+   - Guided tours
+   - Historic site
+   - Photo opportunities
+
+2. [Water Sports](/activities/antiparos-water-sports):
+   - Windsurfing
+   - Kitesurfing
+   - SUP rental
+   - Kayaking
+   - Diving lessons
+
+3. [Hiking Trails](/activities/antiparos-hiking):
+   - Coastal paths
+   - Mountain routes
+   - Village walks
+   - Nature spotting
+   - Guided options
+
+4. [Boat Tours](/activities/antiparos-boat-tours):
+   - Island hopping
+   - Blue lagoon
+   - Snorkeling
+   - Private charters
+   - Sunset cruises
+
+## Villages {#villages}
+1. **Antiparos Town**:
+   - Venetian castle
+   - Shopping street
+   - Restaurants
+   - Nightlife
+   - Main port
+
+2. **Agios Georgios**:
+   - Fishing village
+   - Fresh seafood
+   - Quiet beaches
+   - Sunset views
+   - Local life
+
+3. **Kampos**:
+   - Agricultural area
+   - Local products
+   - Traditional life
+   - Walking trails
+   - Rural charm
+
+## Travel Tips {#travel-tips}
+1. **Getting Around**:
+   - [Rent a car](/rent-a-car)
+   - Local bus service
+   - Walking paths
+   - Bike rental
+   - Water taxis
+
+2. **Food & Drink**:
+   - Fresh seafood
+   - Local tavernas
+   - Wine tasting
+   - Greek coffee
+   - Beach bars
+
+3. **Best Practices**:
+   - Book ahead in summer
+   - Respect quiet hours
+   - Carry water
+   - Sun protection
+   - Cash for small shops
+
+4. **Practical Info**:
+   - ATMs available
+   - Medical center
+   - Ferry schedules
+   - Local markets
+   - WiFi spots
+
+Ready to experience the authentic charm of Antiparos? Start planning your trip with our [Trip Planner](/trip-planner)!
 `;
