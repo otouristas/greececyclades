@@ -5,6 +5,12 @@ export interface SEOProps {
   ogImage?: string;
   ogType?: string;
   canonicalUrl?: string;
+  article?: {
+    publishedTime: string;
+    modifiedTime: string;
+    author: string;
+    tags: string[];
+  };
 }
 
 const DEFAULT_KEYWORDS = [
@@ -142,6 +148,17 @@ interface HotelListItem {
   type: string;
   island: string;
   image?: string;
+}
+
+interface BlogPost {
+  title: string;
+  description: string;
+  tags: string[];
+  slug: string;
+  featuredImage: string;
+  date: string;
+  lastModified?: string;
+  author: string;
 }
 
 export function generateHotelJsonLD(hotel: HotelStructuredData): string {
@@ -301,5 +318,32 @@ export function generateSitemapSEO(): SEOProps {
     keywords: [...DEFAULT_KEYWORDS, 'sitemap', 'pages', 'navigation', 'site structure', 'website map'],
     ogType: 'website',
     canonicalUrl: '/sitemap'
+  };
+}
+
+export function generateBlogSEO(): SEOProps {
+  return {
+    title: 'Travel Blog | Greece Cyclades',
+    description: 'Discover the best travel guides, tips, and stories about the Cyclades islands. Expert advice on islands, activities, accommodations, and more.',
+    keywords: [...DEFAULT_KEYWORDS, 'travel blog', 'travel guides', 'greek islands blog', 'cyclades travel tips'],
+    ogType: 'website',
+    canonicalUrl: '/blog'
+  };
+}
+
+export function generateBlogPostSEO(post: BlogPost): SEOProps {
+  return {
+    title: `${post.title} | Greece Cyclades Blog`,
+    description: post.description,
+    keywords: [...DEFAULT_KEYWORDS, ...post.tags],
+    ogType: 'article',
+    canonicalUrl: `/blog/${post.slug}`,
+    ogImage: post.featuredImage,
+    article: {
+      publishedTime: post.date,
+      modifiedTime: post.lastModified || post.date,
+      author: post.author,
+      tags: post.tags
+    }
   };
 }

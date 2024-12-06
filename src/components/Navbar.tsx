@@ -1,5 +1,5 @@
 import { useState, useRef, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import NavigationMenu from './navigation/NavigationMenu';
 import { useAuthStore } from '../store/authStore';
 import { User, LogOut, ChevronDown, MapPin } from 'lucide-react';
@@ -15,7 +15,7 @@ const getNavigationItems = (isAuthenticated: boolean) => [
   { path: '/activities', label: 'Activities' },
   { path: '/hotels', label: 'Hotels' },
   { path: '/rent-a-car', label: 'Rent A Car' },
-  ...(isAuthenticated ? [{ path: '/list-property', label: 'List Your Property' }] : []),
+  ...(isAuthenticated ? [{ path: '/list-property', label: 'Blog' }] : []),
 ];
 
 export default function Navbar({ onAuthClick }: NavbarProps) {
@@ -23,6 +23,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const dropdownRef = useRef<HTMLDivElement>(null);
   const navigationItems = getNavigationItems(isAuthenticated);
+  const location = useLocation();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
@@ -59,7 +60,9 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
               <Link
                 key={item.path}
                 to={item.path}
-                className="text-gray-600 hover:text-gray-900"
+                className={`text-gray-800 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium ${
+                  location.pathname === item.path ? 'text-blue-600' : ''
+                }`}
               >
                 {item.label}
               </Link>

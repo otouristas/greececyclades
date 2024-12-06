@@ -24,6 +24,8 @@ import Profile from './pages/Profile';
 import CycladesTripPlanner from './pages/CycladesTripPlanner';
 import MyTrips from './pages/MyTrips';
 import NaxosGuide from './pages/NaxosGuide';
+import Blog from './pages/Blog';
+import BlogPost from './pages/BlogPost';
 
 export default function App() {
   return (
@@ -67,6 +69,8 @@ function AppContent() {
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/hotels/:id" element={<HotelLanding />} />
           <Route path="/activities" element={<Activities />} />
+          <Route path="/blog" element={<Blog />} />
+          <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/guides" element={<IslandGuides />} />
           <Route path="/guides/:slug" element={<IslandGuide />} />
           <Route path="/guides/naxos" element={<NaxosGuide />} />
