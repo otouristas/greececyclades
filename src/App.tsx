@@ -7,6 +7,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import AuthStateHandler from './components/AuthStateHandler';
 import Home from './pages/Home';
 import Activities from './pages/Activities';
+import ActivityDetail from './pages/ActivityDetail';
 import Hotels from './pages/Hotels';
 import HotelLanding from './pages/HotelLanding';
 import IslandGuides from './pages/IslandGuides';
@@ -70,6 +71,7 @@ function AppContent() {
           <Route path="/hotels" element={<Hotels />} />
           <Route path="/hotels/:id" element={<HotelLanding />} />
           <Route path="/activities" element={<Activities />} />
+          <Route path="/activities/:slug" element={<ActivityDetail />} />
           <Route path="/blog" element={<Blog />} />
           <Route path="/blog/:slug" element={<BlogPost />} />
           <Route path="/guides" element={<IslandGuides />} />

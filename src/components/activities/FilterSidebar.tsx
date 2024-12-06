@@ -17,6 +17,8 @@ export default function FilterSidebar({ isOpen, onClose }: FilterSidebarProps) {
     setFilters({ ...filters, [key]: value });
   };
 
+  const currentPriceRange = filters.priceRange || { min: 0, max: 500 };
+
   return (
     <div
       className={`fixed right-0 top-0 h-screen w-80 bg-white shadow-lg transform transition-transform duration-300 ease-in-out z-40 ${
@@ -99,7 +101,7 @@ export default function FilterSidebar({ isOpen, onClose }: FilterSidebarProps) {
             min="0"
             max="500"
             step="50"
-            value={filters.priceRange?.max || 500}
+            value={currentPriceRange.max}
             onChange={(e) =>
               handleFilterChange('priceRange', {
                 min: 0,
@@ -111,7 +113,7 @@ export default function FilterSidebar({ isOpen, onClose }: FilterSidebarProps) {
           <div className="flex justify-between mt-2">
             <span className="text-sm text-gray-600">€0</span>
             <span className="text-sm text-gray-600">
-              €{filters.priceRange?.max || 500}
+              €{currentPriceRange.max}
             </span>
           </div>
         </div>

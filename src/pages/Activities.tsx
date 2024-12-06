@@ -1,185 +1,133 @@
-import { useState, useEffect } from 'react';
-import { Ship, Mountain, Wine, Camera, SlidersHorizontal } from 'lucide-react';
-import { useActivityStore } from '../store/activityStore';
-import ActivityCard from '../components/activities/ActivityCard';
-import FilterSidebar from '../components/activities/FilterSidebar';
-import SEO from '../components/SEO';
-import { generateActivitiesSEO } from '../utils/seo';
-import { Activity } from '../types';
+import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
+import { activities, Activity, ActivityCategory } from '../data/activitiesData';
+import { Filter, Search, MapPin, Clock } from 'lucide-react';
 
-const mockActivities: Activity[] = [
-  {
-    id: 1,
-    title: 'Sunset Sailing Cruise',
-    description: 'Experience the magic of Santorinis famous sunset aboard a luxury catamaran. Enjoy swimming, snorkeling, and a BBQ dinner with wine.',
-    location: 'Santorini',
-    image: 'https://images.unsplash.com/photo-1588401667987-e06480c453b9?auto=format&fit=crop&q=80&w=800',
-    price: '€120',
-    duration: '4-6 hours',
-    rating: 4.9,
-    reviews: 245,
-    category: 'Water Activities'
-  },
-  {
-    id: 2,
-    title: 'Wine Tasting Tour',
-    description: 'Discover Santorinis unique wine culture with visits to three traditional wineries. Learn about volcanic wines and enjoy local delicacies.',
-    location: 'Santorini',
-    image: 'https://images.unsplash.com/photo-1516594915697-87eb3b1c14ea?auto=format&fit=crop&q=80&w=800',
-    price: '€85',
-    duration: '2-4 hours',
-    rating: 4.8,
-    reviews: 189,
-    category: 'Food & Wine'
-  },
-  {
-    id: 3,
-    title: 'Photography Workshop',
-    description: 'Capture the beauty of Mykonos with a professional photographer. Perfect for all skill levels, includes camera tips and local insights.',
-    location: 'Mykonos',
-    image: 'https://images.unsplash.com/photo-1523206489230-c012c64b2b48?auto=format&fit=crop&q=80&w=800',
-    price: '€95',
-    duration: '2-4 hours',
-    rating: 4.7,
-    reviews: 156,
-    category: 'Arts & Culture'
-  },
-  {
-    id: 4,
-    title: 'Hiking Adventure',
-    description: 'Explore the ancient trails of Naxos with an experienced guide. Discover hidden villages, Byzantine churches, and breathtaking viewpoints.',
-    location: 'Naxos',
-    image: 'https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&q=80&w=800',
-    price: '€65',
-    duration: '6+ hours',
-    rating: 4.9,
-    reviews: 132,
-    category: 'Adventure'
-  }
-];
-
-const categories = [
-  { icon: Ship, name: 'Water Activities' },
-  { icon: Mountain, name: 'Adventure' },
-  { icon: Wine, name: 'Food & Wine' },
-  { icon: Camera, name: 'Arts & Culture' }
-];
+interface CategoryOption {
+  id: ActivityCategory | 'all';
+  name: string;
+}
 
 export default function Activities() {
-  const [isFilterOpen, setIsFilterOpen] = useState(false);
-  const { activities, filters, setActivities, setFilters } = useActivityStore();
+  const [selectedCategory, setSelectedCategory] = useState<ActivityCategory | 'all'>('all');
+  const [searchQuery, setSearchQuery] = useState('');
 
-  useEffect(() => {
-    if (activities.length === 0) {
-      setActivities(mockActivities);
-    }
-  }, [activities.length, setActivities]);
+  const categories: CategoryOption[] = [
+    { id: 'all', name: 'All Activities' },
+    { id: 'water-sports', name: 'Water Sports' },
+    { id: 'tours', name: 'Tours' },
+    { id: 'cultural', name: 'Cultural' },
+    { id: 'food-wine', name: 'Food & Wine' },
+    { id: 'adventure', name: 'Adventure' }
+  ];
 
   const filteredActivities = activities.filter((activity) => {
-    if (filters.category && activity.category !== filters.category) return false;
-    if (filters.location && activity.location !== filters.location) return false;
-    if (filters.rating && activity.rating < filters.rating) return false;
-    if (
-      filters.priceRange &&
-      parseFloat(activity.price.replace('€', '')) > filters.priceRange.max
-    ) {
-      return false;
-    }
-    if (filters.duration && activity.duration !== filters.duration) return false;
-    return true;
+    const matchesCategory = selectedCategory === 'all' || activity.category === selectedCategory;
+    const matchesSearch = activity.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         activity.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+                         activity.location.toLowerCase().includes(searchQuery.toLowerCase());
+    return matchesCategory && matchesSearch;
   });
 
   return (
-    <>
-      <SEO {...generateActivitiesSEO()} />
+    <div className="min-h-screen bg-gray-50">
+      {/* Hero Section */}
+      <div className="relative bg-blue-600 h-[40vh] flex items-center justify-center">
+        <div className="absolute inset-0 overflow-hidden">
+          <img
+            src="/images/activities/activities-hero.jpg"
+            alt="Cyclades Activities"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-black opacity-40"></div>
+        </div>
+        <div className="relative z-10 text-center px-4">
+          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            Discover Cyclades Activities
+          </h1>
+          <p className="text-xl text-white max-w-2xl mx-auto">
+            Experience the best of Greek island life with our curated selection of activities
+          </p>
+        </div>
+      </div>
 
-      <div className="pt-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          {/* Header */}
-          <div className="flex justify-between items-center mb-8">
-            <div>
-              <h1 className="text-3xl font-bold text-gray-900">Activities</h1>
-              <p className="mt-2 text-gray-600">
-                Discover unique experiences in the Cyclades
-              </p>
-            </div>
-
-            <button
-              onClick={() => setIsFilterOpen(true)}
-              className="flex items-center gap-2 px-4 py-2 text-gray-700 bg-white border rounded-lg hover:bg-gray-50 transition-colors"
-            >
-              <SlidersHorizontal className="h-5 w-5" />
-              <span>Filters</span>
-            </button>
-          </div>
-
-          {/* Category Pills */}
-          <div className="flex gap-3 mb-8 overflow-x-auto pb-4 scrollbar-hide">
+      {/* Filters and Search */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="flex flex-col md:flex-row gap-4 items-center justify-between mb-8">
+          <div className="flex items-center gap-4 overflow-x-auto w-full md:w-auto">
             {categories.map((category) => (
               <button
-                key={category.name}
-                onClick={() =>
-                  setFilters({
-                    category: filters.category === category.name ? null : category.name,
-                  })
-                }
-                className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-colors whitespace-nowrap ${
-                  filters.category === category.name
-                    ? 'bg-blue-50 border-blue-200 text-blue-700'
-                    : 'bg-white hover:bg-gray-50 text-gray-700'
-                }`}
+                key={category.id}
+                onClick={() => setSelectedCategory(category.id)}
+                className={`px-4 py-2 rounded-full ${
+                  selectedCategory === category.id
+                    ? 'bg-blue-600 text-white'
+                    : 'bg-white text-gray-600 hover:bg-gray-100'
+                } transition-colors duration-200`}
               >
-                <category.icon className="h-5 w-5" />
-                <span>{category.name}</span>
+                {category.name}
               </button>
             ))}
           </div>
-
-          {/* Results Count */}
-          <div className="mb-6 text-gray-600">
-            {filteredActivities.length} activities found
-            {Object.values(filters).some((f) => f !== null) && (
-              <button
-                onClick={() => setFilters({})}
-                className="ml-3 text-blue-600 hover:text-blue-700"
-              >
-                Clear all filters
-              </button>
-            )}
+          <div className="relative w-full md:w-64">
+            <input
+              type="text"
+              placeholder="Search activities..."
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+              className="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+            <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-4 h-4" />
           </div>
-
-          {/* Activity Grid */}
-          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-            {filteredActivities.map((activity) => (
-              <ActivityCard key={activity.id} activity={activity} />
-            ))}
-          </div>
-
-          {/* No Results */}
-          {filteredActivities.length === 0 && (
-            <div className="text-center py-12">
-              <p className="text-gray-500 mb-4">No activities found matching your filters</p>
-              <button
-                onClick={() => setFilters({})}
-                className="text-blue-600 hover:text-blue-700"
-              >
-                Clear all filters
-              </button>
-            </div>
-          )}
         </div>
 
-        {/* Filter Sidebar */}
-        <FilterSidebar isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
-
-        {/* Backdrop */}
-        {isFilterOpen && (
-          <div
-            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30"
-            onClick={() => setIsFilterOpen(false)}
-          />
-        )}
+        {/* Activities Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {filteredActivities.map((activity) => (
+            <ActivityCard key={activity.id} activity={activity} />
+          ))}
+        </div>
       </div>
-    </>
+    </div>
+  );
+}
+
+interface ActivityCardProps {
+  activity: Activity;
+}
+
+function ActivityCard({ activity }: ActivityCardProps) {
+  return (
+    <Link
+      to={`/activities/${activity.slug}`}
+      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
+    >
+      <div className="relative h-48">
+        <img
+          src={activity.images.main}
+          alt={activity.title}
+          className="w-full h-full object-cover"
+        />
+        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
+          <span className="inline-block px-3 py-1 text-sm text-white bg-blue-600 rounded-full">
+            {activity.price.display}
+          </span>
+        </div>
+      </div>
+      <div className="p-4">
+        <h3 className="text-xl font-semibold text-gray-900 mb-2">{activity.title}</h3>
+        <p className="text-gray-600 text-sm mb-4">{activity.shortDescription}</p>
+        <div className="flex items-center justify-between text-sm text-gray-500">
+          <span className="flex items-center gap-1">
+            <MapPin className="w-4 h-4" />
+            {activity.location}
+          </span>
+          <span className="flex items-center gap-1">
+            <Clock className="w-4 h-4" />
+            {activity.duration}
+          </span>
+        </div>
+      </div>
+    </Link>
   );
 }
