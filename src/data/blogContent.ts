@@ -392,7 +392,7 @@ Naxos is a unique blend of everything that makes Greek islands special. The isla
 3. [Kitesurfing](/activities/kitesurfing-mikri-vigla):
    - Professional instruction
    - Equipment rental
-   - All levels
+   - All levels welcome
    - Perfect conditions
    - Safety briefing
 
@@ -738,7 +738,7 @@ Sifnos stands out in the Cyclades for several reasons:
 - Sifnos House:
   - Near beach
   - Family-run
-  - Garden views
+  - Pool access
   - Local breakfast
   - Starting from €120/night
 
@@ -1073,10 +1073,10 @@ Antiparos offers:
 
 3. **Best Practices**:
    - Book ahead in summer
-   - Respect quiet hours
-   - Carry water
-   - Sun protection
-   - Cash for small shops
+   - Sunset reservations
+   - Morning activities
+   - Water bottles
+   - Comfortable shoes
 
 4. **Practical Info**:
    - ATMs available
@@ -1086,4 +1086,203 @@ Antiparos offers:
    - WiFi spots
 
 Ready to experience the authentic charm of Antiparos? Start planning your trip with our [Trip Planner](/trip-planner)!
+`;
+
+export const santoriniContent = `
+# Santorini 2025: Ultimate Guide to the Volcanic Paradise
+
+Welcome to Santorini, the crown jewel of the Cyclades. Famous for its dramatic caldera views, stunning sunsets, and unique volcanic landscape, this guide will help you plan the perfect Santorini experience.
+
+## Table of Contents
+1. [Why Visit Santorini](#why-visit)
+2. [Best Time to Visit](#best-time)
+3. [Where to Stay](#where-to-stay)
+4. [Villages](#villages)
+5. [Beaches](#beaches)
+6. [Activities](#activities)
+7. [Food & Wine](#food-wine)
+8. [Travel Tips](#travel-tips)
+
+## Why Visit Santorini {#why-visit}
+Santorini offers:
+- Breathtaking caldera views
+- World-famous sunsets
+- Unique volcanic beaches
+- Luxury cave hotels
+- Award-winning wineries
+- Rich history
+- Romantic atmosphere
+
+## Best Time to Visit {#best-time}
+- **Peak Season (June-September)**:
+  - Temperatures 25-30°C
+  - Stunning sunsets
+  - All venues open
+  - Vibrant atmosphere
+  - Advance booking needed
+
+- **Shoulder Season (April-May, October)**:
+  - Temperatures 20-25°C
+  - Fewer crowds
+  - Better prices
+  - Pleasant weather
+  - Perfect for hiking
+
+## Where to Stay {#where-to-stay}
+### Luxury Caldera Hotels
+- [Grace Santorini](/hotels/grace-santorini):
+  - Infinity pool
+  - Caldera views
+  - Gourmet dining
+  - Spa services
+  - From €800/night
+
+- [Katikies](/hotels/katikies):
+  - Cave suites
+  - Private terraces
+  - Fine dining
+  - Exclusive service
+  - From €700/night
+
+### Boutique Options
+- [Absolute Bliss](/hotels/absolute-bliss):
+  - Sunset views
+  - Private jacuzzis
+  - Personalized service
+  - Breakfast included
+  - From €400/night
+
+### Mid-Range Choices
+- Santorini View:
+  - Caldera location
+  - Pool access
+  - Traditional style
+  - Sea views
+  - From €200/night
+
+## Villages {#villages}
+1. **Oia**:
+   - [Sunset point](/activities/oia-sunset)
+   - Blue domes
+   - Luxury shopping
+   - Fine dining
+   - Art galleries
+
+2. **Fira**:
+   - Island capital
+   - [Cable car](/activities/fira-cable-car)
+   - Nightlife
+   - Shopping
+   - Museums
+
+3. **Imerovigli**:
+   - Highest point
+   - Skaros Rock
+   - Quiet luxury
+   - Best views
+   - Hiking trails
+
+4. **Firostefani**:
+   - Walking distance to Fira
+   - Caldera views
+   - Traditional feel
+   - Local tavernas
+   - Sunset views
+
+## Beaches {#beaches}
+- **Red Beach**:
+  - Volcanic red sand
+  - [Snorkeling spot](/activities/red-beach-snorkeling)
+  - Dramatic cliffs
+  - Photo opportunity
+  - Unique experience
+
+- **Perissa**:
+  - Black sand
+  - Beach clubs
+  - Water sports
+  - Restaurants
+  - Family-friendly
+
+- **Kamari**:
+  - Organized beach
+  - [Diving center](/activities/kamari-diving)
+  - Beachfront dining
+  - Evening movies
+  - Shopping street
+
+## Activities {#activities}
+1. [Caldera Cruise](/activities/caldera-cruise):
+   - Hot springs
+   - Volcano visit
+   - Sunset views
+   - Swimming stops
+   - Lunch included
+
+2. [Wine Tours](/activities/santorini-wine-tour):
+   - Ancient vineyards
+   - Wine tasting
+   - Local varieties
+   - Cave wineries
+   - Sunset options
+
+3. [Photography Tours](/activities/santorini-photo-tour):
+   - Blue domes
+   - Hidden spots
+   - Sunset locations
+   - Professional guide
+   - All levels
+
+4. [Cooking Classes](/activities/santorini-cooking):
+   - Local recipes
+   - Wine pairing
+   - Market visit
+   - Traditional venue
+   - Take-home recipes
+
+## Food & Wine {#food-wine}
+1. **Local Specialties**:
+   - Fava beans
+   - White eggplant
+   - Cherry tomatoes
+   - Fresh fish
+   - Local wines
+
+2. **Wine Varieties**:
+   - Assyrtiko
+   - Nykteri
+   - Vinsanto
+   - Local blends
+   - Wine museums
+
+3. **Dining Experiences**:
+   - [Caldera restaurants](/restaurants/santorini-caldera)
+   - Traditional tavernas
+   - Wine restaurants
+   - Sunset dining
+   - Local cafes
+
+## Travel Tips {#travel-tips}
+1. **Getting Around**:
+   - [Rent a car](/rent-a-car)
+   - Local buses
+   - Private transfers
+   - ATV rental
+   - Walking paths
+
+2. **Best Practices**:
+   - Book early
+   - Sunset reservations
+   - Morning activities
+   - Water bottles
+   - Comfortable shoes
+
+3. **Practical Info**:
+   - Airport transfers
+   - Ferry schedules
+   - ATM locations
+   - Medical services
+   - Emergency contacts
+
+Ready to experience the magic of Santorini? Start planning with our [Trip Planner](/trip-planner)!
 `;

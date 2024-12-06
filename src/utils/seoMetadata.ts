@@ -99,22 +99,22 @@ export const TERMS_SEO: SEOMetadata = {
 };
 
 export const GUIDES_SEO: SEOMetadata = {
-  title: 'Cyclades Travel Guides 2025 | Expert Island Guides & Tips | Greece',
-  description: 'Comprehensive travel guides for the Cyclades islands. Discover insider tips, local secrets, and expert advice for planning your perfect Greek island vacation in 2025.',
-  keywords: [...DEFAULT_KEYWORDS, 'Travel Guide', 'Island Guide', 'Travel Tips', 'Local Advice', 'Island Information'],
-  ogTitle: 'Expert Cyclades Travel Guides 2025 | Plan Your Greek Island Adventure',
-  ogDescription: 'In-depth travel guides for the Cyclades islands. Everything you need to know about visiting the Greek islands.',
+  title: 'Cyclades Island Guides 2025 | Expert Travel Tips & Local Insights',
+  description: 'Comprehensive guides to the Cyclades islands. From Santorini to Mykonos, Paros to Naxos - discover insider tips, best beaches, hotels, and activities for your perfect Greek vacation.',
+  keywords: [...DEFAULT_KEYWORDS, 'Island Guides', 'Travel Tips', 'Local Insights', 'Best Places', 'Island Hopping Guide'],
+  ogTitle: 'Cyclades Island Travel Guides 2025 | Expert Local Tips',
+  ogDescription: 'Plan your perfect Greek island vacation with our detailed Cyclades guides. Local insights, hidden gems, and expert travel tips for each unique island.',
   ogImage: '/images/guides-overview.jpg'
 };
 
 export function generateGuideSEO(islandName: string): SEOMetadata {
-  const formattedName = islandName.charAt(0).toUpperCase() + islandName.slice(1).toLowerCase();
+  const currentYear = 2025;
   return {
-    title: `${formattedName} Travel Guide 2025 | Best Things to Do, See & Experience`,
-    description: `Complete guide to ${formattedName} island. Discover the best beaches, villages, restaurants, activities, and accommodation options for your 2025 ${formattedName} vacation.`,
-    keywords: [...DEFAULT_KEYWORDS, formattedName, `${formattedName} Guide`, `${formattedName} Travel`, `${formattedName} Vacation`, `${formattedName} Tips`],
-    ogTitle: `${formattedName} Island Guide 2025 | Expert Travel Tips & Local Secrets`,
-    ogDescription: `Everything you need to know about visiting ${formattedName}. Local tips, hidden gems, and essential information for the perfect island experience.`,
+    title: `${islandName} Travel Guide ${currentYear} | Complete Island Guide & Tips`,
+    description: `Plan your perfect ${islandName} vacation with our comprehensive ${currentYear} guide. Discover the best hotels, beaches, restaurants, and activities. Local insights and expert travel tips.`,
+    keywords: [...DEFAULT_KEYWORDS, islandName, `${islandName} Guide`, `${islandName} Travel`, `${islandName} Vacation`, `${islandName} Tips`],
+    ogTitle: `${islandName} Island Guide ${currentYear} | Expert Travel Tips & Local Insights`,
+    ogDescription: `Everything you need to know about visiting ${islandName}. From best beaches to hidden gems, restaurants to activities - plan your perfect ${islandName} vacation.`,
     ogImage: `/images/guides/${islandName.toLowerCase()}-guide.jpg`
   };
 }

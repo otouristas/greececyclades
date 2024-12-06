@@ -4,10 +4,28 @@ import {
   parosContent,
   naxosContent,
   sifnosContent,
-  antiparosContent
+  antiparosContent,
+  santoriniContent
 } from './blogContent';
 
 export const blogPosts: BlogPost[] = [
+  {
+    id: 'santorini-island-guide-2025',
+    slug: 'santorini-island-guide-2025',
+    title: 'Santorini 2025: Ultimate Guide to the Volcanic Paradise',
+    description: 'Discover the magic of Santorini with our comprehensive 2025 guide. From caldera views to wine tasting, find everything you need to plan your perfect Santorini vacation.',
+    author: 'Greece Cyclades Team',
+    date: '2025-01-15',
+    lastModified: '2025-01-15',
+    featuredImage: '/images/blog/santorini-oia-sunset.jpg',
+    category: 'Island Guides',
+    tags: ['Santorini', 'Travel Guide', 'Greek Islands', 'Caldera', 'Sunsets', 'Wine Tours', 'Luxury Travel'],
+    readTime: 15,
+    relatedIslands: ['mykonos', 'paros', 'naxos'],
+    relatedActivities: ['santorini-wine-tour', 'santorini-sunset-cruise', 'santorini-donkey-ride'],
+    relatedHotels: ['katikies-santorini', 'mystique-santorini', 'andronis-luxury-suites'],
+    content: santoriniContent
+  },
   {
     id: 'mykonos-island-guide-2025',
     slug: 'mykonos-island-guide-2025',

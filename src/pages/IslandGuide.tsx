@@ -45,139 +45,150 @@ const islandData = {
       'Make dinner reservations for sunset times'
     ],
     costs: {
-      budget: '€100/day',
-      midRange: '€200/day',
-      luxury: '€400+/day'
+      budget: '€150/day',
+      midRange: '€300/day',
+      luxury: '€500+/day'
     }
   },
   mykonos: {
     name: 'Mykonos',
-    description: 'Known for its summer party atmosphere, picturesque villages, and cosmopolitan lifestyle. The perfect blend of luxury and tradition.',
-    longDescription: `Mykonos is a vibrant island that perfectly balances traditional Greek charm with modern luxury. Famous for its windmills, pristine beaches, and vibrant nightlife, it attracts visitors from around the world seeking both relaxation and excitement.`,
+    description: 'The cosmopolitan gem of the Cyclades, known for its vibrant nightlife, pristine beaches, and iconic windmills.',
+    longDescription: `Mykonos combines glamorous beaches, award-winning restaurants, and legendary nightlife with traditional Cycladic charm. From celebrity spotting in Little Venice to watching the sunset at the windmills, the island offers a perfect blend of luxury and authenticity.`,
     image: mykonosImage,
-    highlights: ['Little Venice', 'Windmills', 'Paradise Beach', 'Luxury Shopping'],
-    weather: { temp: '25°C', condition: 'Sunny' },
-    activities: 92,
+    highlights: ['Windmills', 'Little Venice', 'Paradise Beach', 'Luxury Shopping'],
+    weather: { temp: '26°C', condition: 'Sunny' },
+    activities: 95,
     bestTime: 'May to September',
-    idealFor: ['Party Lovers', 'Beach Enthusiasts', 'Luxury Travelers'],
+    idealFor: ['Party Lovers', 'Luxury Travelers', 'Beach Enthusiasts'],
     sections: [
       {
         title: 'Must-Visit Locations',
         items: [
-          { name: 'Little Venice', description: 'Picturesque neighborhood with buildings right on the water' },
-          { name: 'Windmills', description: 'Iconic 16th-century windmills overlooking the town' },
-          { name: 'Paradise Beach', description: 'Famous beach known for its parties and water sports' }
+          { name: 'Little Venice', description: 'Picturesque waterfront with restaurants and bars' },
+          { name: 'Paradise Beach', description: 'Famous beach club and party destination' },
+          { name: 'Windmills', description: 'Iconic 16th-century windmills with sunset views' }
         ]
       },
       {
         title: 'Local Experiences',
         items: [
-          { name: 'Beach Clubs', description: 'Experience the famous Mykonian beach party scene' },
-          { name: 'Food Tours', description: 'Taste traditional Greek cuisine in local tavernas' },
+          { name: 'Beach Clubs', description: 'Experience world-famous beach parties and DJs' },
+          { name: 'Food Tours', description: 'Taste traditional Greek cuisine and local specialties' },
           { name: 'Boat Tours', description: 'Visit nearby islands and hidden beaches' }
         ]
       }
     ],
     travelTips: [
-      'Book nightclub tables in advance during peak season',
-      'Expect higher prices in July and August',
+      'Book clubs and restaurants in advance during peak season',
+      'Stay in Mykonos Town for easy access to nightlife',
       'Use water taxis to reach popular beaches',
-      'Visit the town early morning for the best photos'
+      'Be prepared for premium prices everywhere'
     ],
     costs: {
-      budget: '€120/day',
-      midRange: '€250/day',
-      luxury: '€500+/day'
+      budget: '€200/day',
+      midRange: '€400/day',
+      luxury: '€800+/day'
     }
   },
   paros: {
     name: 'Paros',
-    description: 'A perfect blend of traditional Cycladic architecture, golden beaches, and vibrant nightlife. Discover the authentic Greek island experience.',
-    longDescription: `Paros offers the perfect balance of everything that makes the Greek islands special. With its pristine beaches, charming villages, excellent water sports, and vibrant cultural scene, it's an island that caters to every type of traveler. The island's natural beauty is complemented by its rich history and warm hospitality.`,
+    description: 'The perfect blend of traditional Cycladic charm and modern amenities, ideal for families and water sports enthusiasts.',
+    longDescription: `Paros offers the perfect balance of everything that makes Greek islands special. With its pristine beaches, charming villages, excellent water sports, and vibrant cultural scene, it's an island that caters to every type of traveler.`,
     image: parosImage,
-    highlights: ['Naoussa Village', 'Golden Beach', 'Byzantine Route', 'Water Sports'],
-    weather: { temp: '26°C', condition: 'Sunny' },
+    highlights: ['Naoussa Village', 'Golden Beach', 'Windsurfing', 'Traditional Villages'],
+    weather: { temp: '25°C', condition: 'Sunny' },
     activities: 75,
-    bestTime: 'May to October',
-    idealFor: ['Families', 'Water Sports Enthusiasts', 'Culture Lovers'],
+    bestTime: 'June to September',
+    idealFor: ['Families', 'Water Sports Fans', 'Culture Lovers'],
     sections: [
       {
         title: 'Must-Visit Locations',
         items: [
-          { name: 'Naoussa', description: 'Charming fishing village with vibrant nightlife and restaurants' },
-          { name: 'Parikia', description: 'Capital town with historic Venetian castle and traditional architecture' },
-          { name: 'Golden Beach', description: 'Long sandy beach perfect for windsurfing and swimming' }
+          { name: 'Naoussa', description: 'Charming fishing village with great restaurants' },
+          { name: 'Golden Beach', description: 'Perfect for windsurfing and water sports' },
+          { name: 'Parikia', description: 'Historic port town with Venetian castle' }
         ]
       },
       {
         title: 'Local Experiences',
         items: [
-          { name: 'Water Sports', description: 'World-class windsurfing and kitesurfing at Golden Beach' },
-          { name: 'Wine Tasting', description: 'Sample local wines at traditional Parian wineries' },
-          { name: 'Valley of Butterflies', description: 'Nature walk through this unique ecological park' }
+          { name: 'Windsurfing', description: 'World-class conditions at Golden Beach' },
+          { name: 'Village Tours', description: 'Explore traditional mountain villages' },
+          { name: 'Cooking Classes', description: 'Learn to make local Parian dishes' }
         ]
       }
     ],
     travelTips: [
-      'Visit the marble quarries that supplied ancient Greek sculptures',
-      'Take a day trip to nearby Antiparos',
-      'Try local specialties like gouna (sun-dried mackerel)',
-      'Book water sports lessons in advance during peak season'
+      'Book windsurfing lessons in advance during summer',
+      'Use local buses to explore the island',
+      'Visit the marble quarries for unique history',
+      'Try local wine varieties at traditional wineries'
+    ],
+    costs: {
+      budget: '€100/day',
+      midRange: '€200/day',
+      luxury: '€400+/day'
+    }
+  },
+  sifnos: {
+    name: 'Sifnos',
+    description: 'A foodie paradise with rich culinary traditions, beautiful hiking trails, and serene beaches.',
+    longDescription: `Sifnos is renowned for its exceptional cuisine and pottery traditions. The island combines beautiful beaches with a network of ancient walking paths connecting traditional villages, making it perfect for both relaxation and active holidays.`,
+    image: sifnosImage,
+    highlights: ['Gastronomy', 'Pottery', 'Hiking Trails', 'Traditional Villages'],
+    weather: { temp: '23°C', condition: 'Sunny' },
+    activities: 60,
+    bestTime: 'May to October',
+    idealFor: ['Food Lovers', 'Hikers', 'Cultural Travelers'],
+    sections: [
+      {
+        title: 'Must-Visit Locations',
+        items: [
+          { name: 'Kastro', description: 'Medieval village with amazing sea views' },
+          { name: 'Apollonia', description: 'Charming capital with great restaurants' },
+          { name: 'Chrysopigi Monastery', description: 'Iconic monastery by the sea' }
+        ]
+      },
+      {
+        title: 'Local Experiences',
+        items: [
+          { name: 'Cooking Workshops', description: 'Learn traditional Sifnian recipes' },
+          { name: 'Pottery Classes', description: 'Create traditional ceramics' },
+          { name: 'Hiking Tours', description: 'Explore ancient trails and villages' }
+        ]
+      }
+    ],
+    travelTips: [
+      'Try the local specialty "mastelo" (lamb or goat)',
+      'Book pottery workshops in advance',
+      'Bring good walking shoes for the trails',
+      'Visit during the Cycladic Food Festival in September'
     ],
     costs: {
       budget: '€80/day',
       midRange: '€150/day',
       luxury: '€300+/day'
     }
-  },
-  sifnos: {
-    name: 'Sifnos',
-    description: 'A gastronomic paradise with medieval villages, pristine beaches, and renowned pottery traditions. Experience authentic Cycladic culture.',
-    longDescription: `Sifnos is a hidden gem of the Cyclades, famous for its exceptional cuisine, traditional pottery, and well-preserved medieval villages. The island's network of ancient walking trails connects charming whitewashed villages, offering spectacular views of the Aegean Sea. Its rich culinary heritage and strong ceramic traditions make it a unique cultural destination.`,
-    image: sifnosImage,
-    highlights: ['Kastro Village', 'Pottery Workshops', 'Hiking Trails', 'Local Cuisine'],
-    weather: { temp: '24°C', condition: 'Sunny' },
-    activities: 45,
-    bestTime: 'April to October',
-    idealFor: ['Food Lovers', 'Hikers', 'Culture Enthusiasts'],
-    sections: [
-      {
-        title: 'Must-Visit Locations',
-        items: [
-          { name: 'Kastro', description: 'Medieval village with ancient walls and stunning sea views' },
-          { name: 'Apollonia', description: 'Capital town with traditional architecture and vibrant atmosphere' },
-          { name: 'Chrysopigi Monastery', description: 'Iconic monastery perched on a rocky peninsula' }
-        ]
-      },
-      {
-        title: 'Local Experiences',
-        items: [
-          { name: 'Cooking Classes', description: 'Learn traditional Sifnian recipes from local chefs' },
-          { name: 'Pottery Workshops', description: 'Try your hand at traditional ceramic making' },
-          { name: 'Hiking Trails', description: 'Explore ancient paths connecting traditional villages' }
-        ]
-      }
-    ],
-    travelTips: [
-      'Try the local specialty mastelo (lamb or goat cooked in red wine)',
-      'Visit during the Cycladic Gastronomy Festival in September',
-      'Book pottery workshops in advance',
-      'Bring good walking shoes for the hiking trails'
-    ],
-    costs: {
-      budget: '€70/day',
-      midRange: '€140/day',
-      luxury: '€250+/day'
-    }
   }
 };
 
 export default function IslandGuide() {
-  const { islandName } = useParams<{ islandName: string }>();
+  const { slug } = useParams<{ slug: string }>();
+  const islandName = slug?.toLowerCase();
   const island = islandData[islandName as keyof typeof islandData];
 
   if (!island) {
-    return <div>Island not found</div>;
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-3xl font-bold text-gray-900 mb-4">Island Guide Not Found</h1>
+          <p className="text-gray-600 mb-8">Sorry, we couldn't find a guide for this island.</p>
+          <a href="/guides" className="text-blue-600 hover:text-blue-700 font-medium">
+            View All Island Guides
+          </a>
+        </div>
+      </div>
+    );
   }
 
   return (

@@ -16,6 +16,7 @@ const getNavigationItems = (isAuthenticated: boolean) => [
   { path: '/hotels', label: 'Hotels' },
   { path: '/rent-a-car', label: 'Rent A Car' },
   ...(isAuthenticated ? [{ path: '/blog', label: 'Blog' }] : []),
+  { path: '/contact', label: 'Contact' },
 ];
 
 export default function Navbar({ onAuthClick }: NavbarProps) {
@@ -55,12 +56,12 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
+          <div className="hidden md:flex items-center gap-6">
             {navigationItems.map((item) => (
               <Link
                 key={item.path}
                 to={item.path}
-                className={`text-gray-800 hover:text-blue-600 px-3 py-2 rounded-md text-sm font-medium ${
+                className={`text-gray-600 hover:text-blue-600 ${
                   location.pathname === item.path ? 'text-blue-600' : ''
                 }`}
               >

@@ -26,6 +26,7 @@ import MyTrips from './pages/MyTrips';
 import NaxosGuide from './pages/NaxosGuide';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import Contact from './pages/Contact';
 
 export default function App() {
   return (
@@ -77,6 +78,7 @@ function AppContent() {
           <Route path="/rent-a-car" element={<RentACar />} />
           <Route path="/rent-a-car/:id" element={<RentACarLanding />} />
           <Route path="/trip-planner" element={<CycladesTripPlanner />} />
+          <Route path="/contact" element={<Contact />} />
           <Route path="/list-property" element={
             <ProtectedRoute>
               <ListingForm />
