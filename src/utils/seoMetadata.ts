@@ -131,21 +131,9 @@ export function generateIslandSEO(islandName: string): SEOMetadata {
   };
 }
 
-export function generateIslandSEO(islandName: string): SEOMetadata {
-  const formattedName = islandName.charAt(0).toUpperCase() + islandName.slice(1).toLowerCase();
-  return {
-    title: `${formattedName} Travel Guide 2024 | Hotels, Beaches & Things to Do | Expert Tips`,
-    description: `Plan your perfect ${formattedName} vacation with our comprehensive 2024 guide. Discover the best hotels, beaches, restaurants, and activities in ${formattedName}. Local tips and insider guides for an unforgettable Greek island experience.`,
-    keywords: [...DEFAULT_KEYWORDS, formattedName, `${formattedName} Hotels`, `${formattedName} Beaches`, `${formattedName} Activities`, `${formattedName} Guide`],
-    ogTitle: `Discover ${formattedName} | Complete Island Guide 2024`,
-    ogDescription: `Everything you need to know about visiting ${formattedName}. Find the best places to stay, eat, and explore.`,
-    ogImage: `/images/islands/${islandName.toLowerCase()}.jpg`
-  };
-}
-
 export function generateHotelSEO(hotelName: string, location: string): SEOMetadata {
   return {
-    title: `${hotelName} | Luxury Hotel in ${location} | Reviews & Best Rates 2024`,
+    title: `${hotelName} | Luxury Hotel in ${location} | Reviews & Best Rates 2025`,
     description: `Book your stay at ${hotelName} in ${location}. View photos, read reviews, and find the best rates for this stunning Cyclades accommodation. Experience Greek island luxury at its finest.`,
     keywords: [...DEFAULT_KEYWORDS, hotelName, `${location} Hotels`, 'Luxury Accommodation', 'Hotel Booking', `${location} Luxury Hotels`],
     ogTitle: `${hotelName} | Luxury Stay in ${location}`,
@@ -156,7 +144,7 @@ export function generateHotelSEO(hotelName: string, location: string): SEOMetada
 
 export function generateActivitySEO(activityName: string, location: string): SEOMetadata {
   return {
-    title: `${activityName} in ${location} | Best Tours & Experiences 2024 | Book Now`,
+    title: `${activityName} in ${location} | Best Tours & Experiences 2025 | Book Now`,
     description: `Experience the best ${activityName} in ${location}. Book authentic local experiences, read reviews, and get insider tips for making the most of your Cyclades adventure.`,
     keywords: [...DEFAULT_KEYWORDS, `${location} Activities`, `${location} Tours`, activityName, 'Book Activities', 'Local Experiences'],
     ogTitle: `${activityName} Experience in ${location} | Must-Do Activity`,
