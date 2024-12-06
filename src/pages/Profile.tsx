@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
+import SEO from '../components/SEO';
 import { auth } from '../config/firebase';
 import { Heart, MessageSquare, MapPin, Plus, Settings, X } from 'lucide-react';
 import { generateProfileSEO } from '../utils/seo';
@@ -190,148 +191,140 @@ export default function Profile() {
   if (!auth.currentUser) return null;
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Helmet>
-        {Object.entries(generateProfileSEO()).map(([key, value]) => {
-          if (key === 'title') return <title key={key}>{value as string}</title>;
-          if (key === 'description') return <meta key={key} name="description" content={value as string} />;
-          if (key === 'keywords') return <meta key={key} name="keywords" content={(value as string[]).join(', ')} />;
-          if (key === 'ogType') return <meta key={key} property="og:type" content={value as string} />;
-          if (key === 'canonicalUrl') return <link key={key} rel="canonical" href={value as string} />;
-          if (key.startsWith('og')) return <meta key={key} property={`og:${key.slice(2).toLowerCase()}`} content={value as string} />;
-          return null;
-        })}
-      </Helmet>
-      {/* Profile Header */}
-      <div className="pt-20 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
-        <div className="bg-white rounded-xl shadow-sm p-8">
-          <div className="flex flex-col md:flex-row gap-8 items-start">
-            {/* Profile Picture */}
-            <div className="flex-shrink-0">
-              <img
-                src="https://instagram.fath3-4.fna.fbcdn.net/v/t51.2885-19/469222829_895249452726168_4100497481490358698_n.jpg?stp=dst-jpg_s320x320_tt6&_nc_ht=instagram.fath3-4.fna.fbcdn.net&_nc_cat=100&_nc_ohc=_FexR_LiFocQ7kNvgGKVoMV&_nc_gid=1372eba398d84e38aa9e34d48e7ea14c&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AYAHAPOyY2QgI1Ag8bKVa9HJm40zjPuzfo9E1yP82YYGLA&oe=67563951&_nc_sid=8b3546"
-                alt="Profile"
-                className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
-              />
-            </div>
-
-            {/* Profile Info */}
-            <div className="flex-grow space-y-4">
-              <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-                <h1 className="text-2xl font-bold text-gray-900">
-                  {auth.currentUser.displayName || 'User'}
-                </h1>
-                <div className="flex gap-3">
-                  <button
-                    onClick={() => setIsCreateModalOpen(true)}
-                    className="inline-flex items-center px-4 py-2 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
-                  >
-                    <Plus className="w-4 h-4 mr-2" />
-                    Create Post
-                  </button>
-                  <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-full shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
-                    <Settings className="w-4 h-4 mr-2" />
-                    Edit Profile
-                  </button>
-                </div>
-              </div>
-
-              {/* Stats */}
-              <div className="flex gap-6">
-                <div className="text-center">
-                  <div className="text-xl font-semibold">{profileData.posts.length}</div>
-                  <div className="text-sm text-gray-500">Posts</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl font-semibold">{profileData.followers}</div>
-                  <div className="text-sm text-gray-500">Followers</div>
-                </div>
-                <div className="text-center">
-                  <div className="text-xl font-semibold">{profileData.following}</div>
-                  <div className="text-sm text-gray-500">Following</div>
-                </div>
-              </div>
-
-              {/* Bio */}
-              <div className="space-y-2">
-                <p className="text-gray-700">{profileData.bio}</p>
-                <p className="text-blue-600 hover:underline cursor-pointer">
-                  {profileData.website}
-                </p>
-                <div className="flex items-center text-gray-500">
-                  <MapPin className="w-4 h-4 mr-1" />
-                  {profileData.location}
-                </div>
-              </div>
-
-              {/* Interests */}
-              <div className="flex flex-wrap gap-2">
-                {profileData.interests.map((interest, index) => (
-                  <span
-                    key={index}
-                    className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700"
-                  >
-                    {interest}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      {/* Posts Grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {profileData.posts.map((post) => (
-            <div key={post.id} className="bg-white rounded-xl shadow-sm overflow-hidden">
-              <div className="relative pb-[100%]">
+    <>
+      <SEO {...generateProfileSEO()} />
+      <div className="min-h-screen bg-gray-50">
+        {/* Profile Header */}
+        <div className="pt-20 pb-8 px-4 sm:px-6 lg:px-8 max-w-7xl mx-auto">
+          <div className="bg-white rounded-xl shadow-sm p-8">
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              {/* Profile Picture */}
+              <div className="flex-shrink-0">
                 <img
-                  src={post.imageUrl}
-                  alt={post.description}
-                  className="absolute inset-0 w-full h-full object-cover"
+                  src="https://instagram.fath3-4.fna.fbcdn.net/v/t51.2885-19/469222829_895249452726168_4100497481490358698_n.jpg?stp=dst-jpg_s320x320_tt6&_nc_ht=instagram.fath3-4.fna.fbcdn.net&_nc_cat=100&_nc_ohc=_FexR_LiFocQ7kNvgGKVoMV&_nc_gid=1372eba398d84e38aa9e34d48e7ea14c&edm=AOQ1c0wBAAAA&ccb=7-5&oh=00_AYAHAPOyY2QgI1Ag8bKVa9HJm40zjPuzfo9E1yP82YYGLA&oe=67563951&_nc_sid=8b3546"
+                  alt="Profile"
+                  className="w-32 h-32 rounded-full object-cover border-4 border-white shadow-lg"
                 />
               </div>
-              <div className="p-4">
-                <div className="flex items-center justify-between mb-2">
-                  <div className="flex items-center text-gray-500 text-sm">
-                    <MapPin className="w-4 h-4 mr-1" />
-                    {post.location}
-                  </div>
-                  <div className="flex items-center gap-3">
-                    <span className="flex items-center text-gray-500">
-                      <Heart className="w-4 h-4 mr-1" />
-                      {post.likes}
-                    </span>
-                    <span className="flex items-center text-gray-500">
-                      <MessageSquare className="w-4 h-4 mr-1" />
-                      {post.comments}
-                    </span>
+
+              {/* Profile Info */}
+              <div className="flex-grow space-y-4">
+                <div className="flex flex-col sm:flex-row sm:items-center gap-4">
+                  <h1 className="text-2xl font-bold text-gray-900">
+                    {auth.currentUser.displayName || 'User'}
+                  </h1>
+                  <div className="flex gap-3">
+                    <button
+                      onClick={() => setIsCreateModalOpen(true)}
+                      className="inline-flex items-center px-4 py-2 border border-transparent rounded-full shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700"
+                    >
+                      <Plus className="w-4 h-4 mr-2" />
+                      Create Post
+                    </button>
+                    <button className="inline-flex items-center px-4 py-2 border border-gray-300 rounded-full shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
+                      <Settings className="w-4 h-4 mr-2" />
+                      Edit Profile
+                    </button>
                   </div>
                 </div>
-                <p className="text-gray-700 text-sm">{post.description}</p>
-                <div className="mt-2 flex flex-wrap gap-1">
-                  {post.tags.map((tag, index) => (
+
+                {/* Stats */}
+                <div className="flex gap-6">
+                  <div className="text-center">
+                    <div className="text-xl font-semibold">{profileData.posts.length}</div>
+                    <div className="text-sm text-gray-500">Posts</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-xl font-semibold">{profileData.followers}</div>
+                    <div className="text-sm text-gray-500">Followers</div>
+                  </div>
+                  <div className="text-center">
+                    <div className="text-xl font-semibold">{profileData.following}</div>
+                    <div className="text-sm text-gray-500">Following</div>
+                  </div>
+                </div>
+
+                {/* Bio */}
+                <div className="space-y-2">
+                  <p className="text-gray-700">{profileData.bio}</p>
+                  <p className="text-blue-600 hover:underline cursor-pointer">
+                    {profileData.website}
+                  </p>
+                  <div className="flex items-center text-gray-500">
+                    <MapPin className="w-4 h-4 mr-1" />
+                    {profileData.location}
+                  </div>
+                </div>
+
+                {/* Interests */}
+                <div className="flex flex-wrap gap-2">
+                  {profileData.interests.map((interest, index) => (
                     <span
                       key={index}
-                      className="text-blue-600 text-sm hover:underline cursor-pointer"
+                      className="px-3 py-1 bg-gray-100 rounded-full text-sm text-gray-700"
                     >
-                      #{tag}
+                      {interest}
                     </span>
                   ))}
                 </div>
               </div>
             </div>
-          ))}
+          </div>
         </div>
-      </div>
 
-      {/* Create Post Modal */}
-      <CreatePostModal
-        isOpen={isCreateModalOpen}
-        onClose={() => setIsCreateModalOpen(false)}
-        onSubmit={handleCreatePost}
-      />
-    </div>
+        {/* Posts Grid */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {profileData.posts.map((post) => (
+              <div key={post.id} className="bg-white rounded-xl shadow-sm overflow-hidden">
+                <div className="relative pb-[100%]">
+                  <img
+                    src={post.imageUrl}
+                    alt={post.description}
+                    className="absolute inset-0 w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-4">
+                  <div className="flex items-center justify-between mb-2">
+                    <div className="flex items-center text-gray-500 text-sm">
+                      <MapPin className="w-4 h-4 mr-1" />
+                      {post.location}
+                    </div>
+                    <div className="flex items-center gap-3">
+                      <span className="flex items-center text-gray-500">
+                        <Heart className="w-4 h-4 mr-1" />
+                        {post.likes}
+                      </span>
+                      <span className="flex items-center text-gray-500">
+                        <MessageSquare className="w-4 h-4 mr-1" />
+                        {post.comments}
+                      </span>
+                    </div>
+                  </div>
+                  <p className="text-gray-700 text-sm">{post.description}</p>
+                  <div className="mt-2 flex flex-wrap gap-1">
+                    {post.tags.map((tag, index) => (
+                      <span
+                        key={index}
+                        className="text-blue-600 text-sm hover:underline cursor-pointer"
+                      >
+                        #{tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Create Post Modal */}
+        <CreatePostModal
+          isOpen={isCreateModalOpen}
+          onClose={() => setIsCreateModalOpen(false)}
+          onSubmit={handleCreatePost}
+        />
+      </div>
+    </>
   );
 }

@@ -66,6 +66,47 @@ export function generateProfileSEO(): SEOProps {
   };
 }
 
+export function generateIslandsSEO(): SEOProps {
+  return {
+    title: 'Discover Cyclades Islands - Your Complete Travel Guide',
+    description: 'Explore the stunning Cyclades archipelago. Find detailed guides for Santorini, Mykonos, and more. Plan your perfect Greek island getaway today.',
+    keywords: [...DEFAULT_KEYWORDS, 'island guide', 'santorini', 'mykonos', 'naxos', 'paros', 'island hopping'],
+    ogType: 'website',
+    canonicalUrl: '/islands'
+  };
+}
+
+export function generateIslandDetailSEO(islandName: string, description: string, image: string): SEOProps {
+  return {
+    title: `${islandName} Travel Guide | Discover the Best of Cyclades`,
+    description: description || `Plan your perfect trip to ${islandName}. Discover the best hotels, activities, restaurants, and local tips for an unforgettable Cyclades experience.`,
+    keywords: [...DEFAULT_KEYWORDS, islandName.toLowerCase(), 'travel guide', 'hotels', 'activities', 'restaurants', 'local tips'],
+    ogType: 'article',
+    canonicalUrl: `/islands/${islandName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    ogImage: image
+  };
+}
+
+export function generateActivitiesSEO(): SEOProps {
+  return {
+    title: 'Cyclades Activities & Tours | Unforgettable Greek Island Experiences',
+    description: 'Book authentic experiences in the Cyclades islands. From sailing cruises and wine tastings to hiking adventures and photography tours. Find your perfect island activity.',
+    keywords: [...DEFAULT_KEYWORDS, 'activities', 'tours', 'experiences', 'sailing', 'wine tasting', 'hiking', 'photography', 'local experiences'],
+    ogType: 'website',
+    canonicalUrl: '/activities'
+  };
+}
+
+export function generateRentACarSEO(): SEOProps {
+  return {
+    title: 'Car Rental in Cyclades Islands | Best Rates & Premium Fleet',
+    description: 'Rent a car in the Cyclades islands. From compact cars to luxury vehicles, find the perfect car for your Greek island adventure. Best rates guaranteed.',
+    keywords: [...DEFAULT_KEYWORDS, 'car rental', 'vehicle hire', 'auto rental', 'transportation', 'driving in greece', 'island transportation'],
+    ogType: 'website',
+    canonicalUrl: '/rent-a-car'
+  };
+}
+
 export function generateSlug(name: string, island: string): string {
   return `${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${island.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
 }
@@ -191,4 +232,74 @@ export function generateTripPlannerJsonLD(): string {
   };
 
   return JSON.stringify(structuredData);
+}
+
+export function generateAuthSEO(): SEOProps {
+  return {
+    title: 'Sign In or Create Account | Greece Cyclades',
+    description: 'Sign in to your Greece Cyclades account or create a new one. Plan your perfect Greek island vacation with personalized recommendations and saved itineraries.',
+    keywords: [...DEFAULT_KEYWORDS, 'sign in', 'login', 'create account', 'register', 'user account'],
+    ogType: 'website',
+    canonicalUrl: '/auth'
+  };
+}
+
+export function generateSignInSEO(): SEOProps {
+  return {
+    title: 'Sign In | Greece Cyclades',
+    description: 'Sign in to your Greece Cyclades account. Access your saved trips, bookings, and personalized travel recommendations.',
+    keywords: [...DEFAULT_KEYWORDS, 'sign in', 'login', 'user account', 'access account'],
+    ogType: 'website',
+    canonicalUrl: '/signin'
+  };
+}
+
+export function generateSignUpSEO(): SEOProps {
+  return {
+    title: 'Create Account | Greece Cyclades',
+    description: 'Create your Greece Cyclades account. Start planning your dream vacation in the Greek islands with personalized recommendations and trip planning tools.',
+    keywords: [...DEFAULT_KEYWORDS, 'create account', 'register', 'sign up', 'new user', 'join'],
+    ogType: 'website',
+    canonicalUrl: '/signup'
+  };
+}
+
+export function generatePrivacySEO(): SEOProps {
+  return {
+    title: 'Privacy Policy | Greece Cyclades',
+    description: 'Learn about how we collect, use, and protect your personal information when you use Greece Cyclades. Our commitment to your privacy and data security.',
+    keywords: [...DEFAULT_KEYWORDS, 'privacy policy', 'data protection', 'personal information', 'privacy', 'security'],
+    ogType: 'website',
+    canonicalUrl: '/privacy'
+  };
+}
+
+export function generateTermsSEO(): SEOProps {
+  return {
+    title: 'Terms of Service | Greece Cyclades',
+    description: 'Read our terms of service and user agreement for Greece Cyclades. Understand your rights and responsibilities when using our travel planning services.',
+    keywords: [...DEFAULT_KEYWORDS, 'terms of service', 'user agreement', 'legal', 'conditions', 'terms of use'],
+    ogType: 'website',
+    canonicalUrl: '/terms'
+  };
+}
+
+export function generateMyTripsSEO(): SEOProps {
+  return {
+    title: 'My Trips | Greece Cyclades',
+    description: 'View and manage your planned trips to the Cyclades islands. Access your personalized itineraries, bookings, and travel plans in one place.',
+    keywords: [...DEFAULT_KEYWORDS, 'my trips', 'itinerary', 'travel plans', 'bookings', 'saved trips'],
+    ogType: 'website',
+    canonicalUrl: '/my-trips'
+  };
+}
+
+export function generateSitemapSEO(): SEOProps {
+  return {
+    title: 'Sitemap | Greece Cyclades',
+    description: 'Complete sitemap of Greece Cyclades. Find all our pages about Greek islands, hotels, activities, travel guides, and services.',
+    keywords: [...DEFAULT_KEYWORDS, 'sitemap', 'pages', 'navigation', 'site structure', 'website map'],
+    ogType: 'website',
+    canonicalUrl: '/sitemap'
+  };
 }

@@ -14,6 +14,7 @@ import VehicleCard from '../components/vehicles/VehicleCard';
 import SEO from '../components/SEO';
 import { type Hotel } from '../types';
 import { getIslandSlug } from '../utils/slugify';
+import { generateIslandDetailSEO } from '../utils/seo';
 
 export default function IslandDetail() {
   const { id: slug } = useParams();
@@ -39,11 +40,11 @@ export default function IslandDetail() {
 
   return (
     <>
-      <SEO 
-        title={selectedIsland.metaTitle}
-        description={selectedIsland.metaDescription}
-        image={selectedIsland.image}
-      />
+      <SEO {...generateIslandDetailSEO(
+        selectedIsland.name,
+        selectedIsland.description,
+        selectedIsland.image
+      )} />
 
       <div className="bg-white pt-16">
         {/* Hero Section */}

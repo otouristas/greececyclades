@@ -1,13 +1,11 @@
 import React from 'react';
 import SEO from '../components/SEO';
+import { generateTermsSEO } from '../utils/seo';
 
 export default function Terms() {
   return (
     <>
-      <SEO
-        title="Terms of Service - Discover Cyclades"
-        description="Read our terms of service to understand your rights and responsibilities when using Discover Cyclades."
-      />
+      <SEO {...generateTermsSEO()} />
       
       <div className="pt-24 pb-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">

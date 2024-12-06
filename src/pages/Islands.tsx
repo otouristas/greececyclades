@@ -5,16 +5,14 @@ import { useIslandStore } from '../store/islandStore';
 import SEO from '../components/SEO';
 import SearchBar from '../components/SearchBar';
 import { getIslandSlug } from '../utils/slugify';
+import { generateIslandsSEO } from '../utils/seo';
 
 export default function Islands() {
   const { islands } = useIslandStore();
 
   return (
     <>
-      <SEO 
-        title="Discover Cyclades Islands - Your Complete Travel Guide"
-        description="Explore the stunning Cyclades archipelago. Find detailed guides for Santorini, Mykonos, and more. Plan your perfect Greek island getaway today."
-      />
+      <SEO {...generateIslandsSEO()} />
 
       <div className="pt-16 bg-gray-50">
         <div className="bg-blue-600 text-white py-16">

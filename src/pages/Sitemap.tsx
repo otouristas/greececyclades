@@ -2,16 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { useIslandStore } from '../store/islandStore';
 import SEO from '../components/SEO';
+import { generateSitemapSEO } from '../utils/seo';
 
 export default function Sitemap() {
   const { islands } = useIslandStore();
 
   return (
     <>
-      <SEO
-        title="Sitemap - Discover Cyclades"
-        description="Complete sitemap of Discover Cyclades. Find all our pages about Greek islands, hotels, activities, and travel guides."
-      />
+      <SEO {...generateSitemapSEO()} />
 
       <div className="pt-24 pb-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

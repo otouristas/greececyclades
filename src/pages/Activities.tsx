@@ -3,6 +3,8 @@ import { Ship, Mountain, Wine, Camera, SlidersHorizontal } from 'lucide-react';
 import { useActivityStore } from '../store/activityStore';
 import ActivityCard from '../components/activities/ActivityCard';
 import FilterSidebar from '../components/activities/FilterSidebar';
+import SEO from '../components/SEO';
+import { generateActivitiesSEO } from '../utils/seo';
 import { Activity } from '../types';
 
 const mockActivities: Activity[] = [
@@ -68,8 +70,10 @@ export default function Activities() {
   const { activities, filters, setActivities, setFilters } = useActivityStore();
 
   useEffect(() => {
-    setActivities(mockActivities);
-  }, [setActivities]);
+    if (activities.length === 0) {
+      setActivities(mockActivities);
+    }
+  }, [activities.length, setActivities]);
 
   const filteredActivities = activities.filter((activity) => {
     if (filters.category && activity.category !== filters.category) return false;
@@ -86,92 +90,96 @@ export default function Activities() {
   });
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* Header */}
-        <div className="flex justify-between items-center mb-8">
-          <div>
-            <h1 className="text-3xl font-bold text-gray-900">Activities</h1>
-            <p className="mt-2 text-gray-600">
-              Discover unique experiences in the Cyclades
-            </p>
+    <>
+      <SEO {...generateActivitiesSEO()} />
+
+      <div className="pt-16 bg-gray-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          {/* Header */}
+          <div className="flex justify-between items-center mb-8">
+            <div>
+              <h1 className="text-3xl font-bold text-gray-900">Activities</h1>
+              <p className="mt-2 text-gray-600">
+                Discover unique experiences in the Cyclades
+              </p>
+            </div>
+
+            <button
+              onClick={() => setIsFilterOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 text-gray-700 bg-white border rounded-lg hover:bg-gray-50 transition-colors"
+            >
+              <SlidersHorizontal className="h-5 w-5" />
+              <span>Filters</span>
+            </button>
           </div>
 
-          <button
-            onClick={() => setIsFilterOpen(true)}
-            className="flex items-center gap-2 px-4 py-2 text-gray-700 bg-white border rounded-lg hover:bg-gray-50 transition-colors"
-          >
-            <SlidersHorizontal className="h-5 w-5" />
-            <span>Filters</span>
-          </button>
-        </div>
+          {/* Category Pills */}
+          <div className="flex gap-3 mb-8 overflow-x-auto pb-4 scrollbar-hide">
+            {categories.map((category) => (
+              <button
+                key={category.name}
+                onClick={() =>
+                  setFilters({
+                    category: filters.category === category.name ? null : category.name,
+                  })
+                }
+                className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-colors whitespace-nowrap ${
+                  filters.category === category.name
+                    ? 'bg-blue-50 border-blue-200 text-blue-700'
+                    : 'bg-white hover:bg-gray-50 text-gray-700'
+                }`}
+              >
+                <category.icon className="h-5 w-5" />
+                <span>{category.name}</span>
+              </button>
+            ))}
+          </div>
 
-        {/* Category Pills */}
-        <div className="flex gap-3 mb-8 overflow-x-auto pb-4 scrollbar-hide">
-          {categories.map((category) => (
-            <button
-              key={category.name}
-              onClick={() =>
-                setFilters({
-                  category: filters.category === category.name ? null : category.name,
-                })
-              }
-              className={`flex items-center gap-2 px-4 py-2 rounded-full border transition-colors whitespace-nowrap ${
-                filters.category === category.name
-                  ? 'bg-blue-50 border-blue-200 text-blue-700'
-                  : 'bg-white hover:bg-gray-50 text-gray-700'
-              }`}
-            >
-              <category.icon className="h-5 w-5" />
-              <span>{category.name}</span>
-            </button>
-          ))}
-        </div>
+          {/* Results Count */}
+          <div className="mb-6 text-gray-600">
+            {filteredActivities.length} activities found
+            {Object.values(filters).some((f) => f !== null) && (
+              <button
+                onClick={() => setFilters({})}
+                className="ml-3 text-blue-600 hover:text-blue-700"
+              >
+                Clear all filters
+              </button>
+            )}
+          </div>
 
-        {/* Results Count */}
-        <div className="mb-6 text-gray-600">
-          {filteredActivities.length} activities found
-          {Object.values(filters).some((f) => f !== null) && (
-            <button
-              onClick={() => setFilters({})}
-              className="ml-3 text-blue-600 hover:text-blue-700"
-            >
-              Clear all filters
-            </button>
+          {/* Activity Grid */}
+          <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {filteredActivities.map((activity) => (
+              <ActivityCard key={activity.id} activity={activity} />
+            ))}
+          </div>
+
+          {/* No Results */}
+          {filteredActivities.length === 0 && (
+            <div className="text-center py-12">
+              <p className="text-gray-500 mb-4">No activities found matching your filters</p>
+              <button
+                onClick={() => setFilters({})}
+                className="text-blue-600 hover:text-blue-700"
+              >
+                Clear all filters
+              </button>
+            </div>
           )}
         </div>
 
-        {/* Activity Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {filteredActivities.map((activity) => (
-            <ActivityCard key={activity.id} activity={activity} />
-          ))}
-        </div>
+        {/* Filter Sidebar */}
+        <FilterSidebar isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
 
-        {/* No Results */}
-        {filteredActivities.length === 0 && (
-          <div className="text-center py-12">
-            <p className="text-gray-500 mb-4">No activities found matching your filters</p>
-            <button
-              onClick={() => setFilters({})}
-              className="text-blue-600 hover:text-blue-700"
-            >
-              Clear all filters
-            </button>
-          </div>
+        {/* Backdrop */}
+        {isFilterOpen && (
+          <div
+            className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30"
+            onClick={() => setIsFilterOpen(false)}
+          />
         )}
       </div>
-
-      {/* Filter Sidebar */}
-      <FilterSidebar isOpen={isFilterOpen} onClose={() => setIsFilterOpen(false)} />
-
-      {/* Backdrop */}
-      {isFilterOpen && (
-        <div
-          className="fixed inset-0 bg-black/20 backdrop-blur-sm z-30"
-          onClick={() => setIsFilterOpen(false)}
-        />
-      )}
-    </div>
+    </>
   );
 }

@@ -1,13 +1,11 @@
 import React from 'react';
 import SEO from '../components/SEO';
+import { generatePrivacySEO } from '../utils/seo';
 
 export default function Privacy() {
   return (
     <>
-      <SEO
-        title="Privacy Policy - Discover Cyclades"
-        description="Learn about how we collect, use, and protect your personal information when you use Discover Cyclades."
-      />
+      <SEO {...generatePrivacySEO()} />
       
       <div className="pt-24 pb-16">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
