@@ -25,7 +25,7 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/seo@kasiotisg.com', {
+      const response = await fetch('https://formsubmit.co/ajax/help@greececyclades.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -101,7 +101,7 @@ export default function Contact() {
                   </div>
                   <div>
                     <h3 className="font-medium text-gray-900">Email</h3>
-                    <p className="text-gray-600">seo@kasiotisg.com</p>
+                    <p className="text-gray-600">help@greececyclades.com</p>
                   </div>
                 </div>
 
