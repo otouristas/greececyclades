@@ -1,11 +1,15 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useIslandStore } from '../store/islandStore';
+import { useHotelStore } from '../store/hotelStore';
 import SEO from '../components/SEO';
 import { generateSitemapSEO } from '../utils/seo';
+import { generateSlug } from '../utils/seo';
+import { getIslandSlug } from '../utils/slugify';
 
 export default function Sitemap() {
   const { islands } = useIslandStore();
+  const { hotels } = useHotelStore();
 
   return (
     <>
@@ -48,10 +52,27 @@ export default function Sitemap() {
                 {islands.map((island) => (
                   <li key={island.id}>
                     <Link 
-                      to={`/islands/${island.id}`}
+                      to={`/islands/${getIslandSlug(island.name)}`}
                       className="text-blue-600 hover:underline"
                     >
                       {island.name}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {/* Hotels */}
+            <div>
+              <h2 className="text-xl font-semibold mb-4">Hotels</h2>
+              <ul className="space-y-2">
+                {hotels.map((hotel) => (
+                  <li key={hotel.id}>
+                    <Link 
+                      to={`/hotels/${generateSlug(hotel.name, hotel.location.island)}`}
+                      className="text-blue-600 hover:underline"
+                    >
+                      {hotel.name}
                     </Link>
                   </li>
                 ))}

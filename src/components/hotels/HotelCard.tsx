@@ -1,23 +1,44 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, MapPin } from 'lucide-react';
-import { Hotel } from '../../types';
+import { Star, MapPin, Wifi, Waves, UtensilsCrossed, Sparkles, Mountain, Car, LucideIcon, Users, Brush, Flower2, Umbrella, Baby, ParkingCircle } from 'lucide-react';
+import { Hotel, HotelFeature } from '../../types/hotel';
 import { generateSlug } from '../../utils/seo';
-import { formatPrice } from '../../utils/price';
+
+const featureIcons: Record<HotelFeature, LucideIcon> = {
+  'WiFi': Wifi,
+  'Pool': Waves,
+  'Restaurant': UtensilsCrossed,
+  'Spa': Sparkles,
+  'Private Pool': Waves,
+  'Fine Dining': UtensilsCrossed,
+  'Sea View': Mountain,
+  'Room Service': UtensilsCrossed,
+  'Airport Transfer': Car,
+  'Infinity Pool': Waves,
+  'Beach Access': Umbrella,
+  'Fitness Center': Users,
+  'Bar': UtensilsCrossed,
+  'Concierge': Users,
+  'Free Parking': ParkingCircle,
+  'Adults Only': Users,
+  'Cycladic Design': Brush,
+  'Garden View': Flower2,
+  'Beachfront': Umbrella,
+  'Family Friendly': Baby
+};
 
 interface HotelCardProps {
   hotel: Hotel;
 }
 
 const HotelCard: React.FC<HotelCardProps> = ({ hotel }) => {
-  const slug = generateSlug(hotel.name, hotel.island);
-
+  const hotelSlug = generateSlug(hotel.name, hotel.location.island);
   return (
-    <Link to={`/hotels/${slug}`} className="group">
+    <Link to={`/hotels/${hotelSlug}`} className="group">
       <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">
         <div className="relative h-48">
           <img
-            src={hotel.image}
+            src={hotel.images.main}
             alt={hotel.name}
             className="w-full h-full object-cover"
           />
@@ -25,10 +46,10 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel }) => {
             <div className="flex items-center gap-2">
               <div className="flex items-center text-yellow-400">
                 <Star className="h-4 w-4 fill-current" />
-                <span className="ml-1 text-white text-sm">{hotel.rating}</span>
+                <span className="ml-1 text-white text-sm">{hotel.starRating}</span>
               </div>
               <span className="text-white text-sm">•</span>
-              <span className="text-white text-sm">{hotel.reviews} reviews</span>
+              <span className="text-white text-sm">{hotel.category}</span>
             </div>
           </div>
         </div>
@@ -38,21 +59,31 @@ const HotelCard: React.FC<HotelCardProps> = ({ hotel }) => {
           
           <div className="flex items-center text-gray-600 mb-3">
             <MapPin className="h-4 w-4 mr-1" />
-            <span className="text-sm">{hotel.location}</span>
+            <span className="text-sm">{hotel.location.area}, {hotel.location.island}</span>
           </div>
           
           <p className="text-gray-600 text-sm mb-4 line-clamp-2">
-            {hotel.description}
+            {hotel.shortDescription}
           </p>
           
           <div className="flex items-center justify-between">
             <div>
               <p className="text-sm text-gray-500">From</p>
               <p className="text-lg font-semibold text-blue-600">
-                {formatPrice(hotel.price)}
+                €{hotel.priceRange.min}
               </p>
             </div>
-            <span className="text-sm text-gray-500">per night</span>
+            <div className="flex gap-2">
+              {hotel.keyFeatures.slice(0, 2).map((feature, index) => {
+                const Icon = featureIcons[feature] || null;
+                return (
+                  <span key={index} className="px-2 py-1 bg-gray-100 text-gray-600 text-xs rounded-full flex items-center gap-1">
+                    {Icon && <Icon className="h-3 w-3" />}
+                    {feature}
+                  </span>
+                );
+              })}
+            </div>
           </div>
         </div>
       </div>

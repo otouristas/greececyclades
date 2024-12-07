@@ -66,25 +66,24 @@ function mapHotelToViewType(hotel: any): Hotel {
 }
 
 export default function HotelLanding() {
-  const { id: slug } = useParams();
+  const { slug } = useParams<{ slug: string }>();
   const navigate = useNavigate();
-  const { hotels, selectedHotel, setSelectedHotel } = useHotelStore();
+  const { selectedHotel, fetchHotelBySlug } = useHotelStore();
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
   React.useEffect(() => {
-    if (slug && hotels.length > 0) {
-      const hotel = hotels.find(
-        hotel => getIslandSlug(hotel.name) === slug
-      );
-      if (hotel) {
-        setSelectedHotel(hotel);
-      } else {
-        navigate('/hotels');
-      }
+    if (slug) {
+      fetchHotelBySlug(slug);
     }
-  }, [slug, hotels, navigate, setSelectedHotel]);
+  }, [slug, fetchHotelBySlug]);
 
-  if (!selectedHotel) return null;
+  if (!selectedHotel) {
+    return (
+      <div className="flex items-center justify-center min-h-screen">
+        <div className="animate-spin rounded-full h-32 w-32 border-t-2 border-b-2 border-blue-500"></div>
+      </div>
+    );
+  }
 
   const mappedHotel = mapHotelToViewType(selectedHotel);
   const hotelStructuredData = {

@@ -14,41 +14,70 @@ export interface HotelRoom {
   amenities: string[];
 }
 
+export type HotelCategory = 'Luxury' | 'Boutique' | 'Resort' | 'Villa';
+
+export type HotelFeature = 
+  | 'WiFi'
+  | 'Pool'
+  | 'Restaurant'
+  | 'Spa'
+  | 'Private Pool'
+  | 'Fine Dining'
+  | 'Sea View'
+  | 'Room Service'
+  | 'Airport Transfer'
+  | 'Infinity Pool'
+  | 'Beach Access'
+  | 'Fitness Center'
+  | 'Bar'
+  | 'Concierge'
+  | 'Free Parking'
+  | 'Adults Only'
+  | 'Cycladic Design'
+  | 'Garden View'
+  | 'Beachfront'
+  | 'Family Friendly';
+
+export interface HotelLocation {
+  island: string;
+  area: string;
+  coordinates?: {
+    latitude: number;
+    longitude: number;
+  };
+}
+
+export interface HotelPriceRange {
+  min: number;
+  max: number;
+  currency?: string;
+}
+
+export interface HotelImages {
+  main: string;
+  gallery: string[];
+}
+
 export interface Hotel {
   id: string;
   name: string;
-  description: string;
+  location: HotelLocation;
+  category: HotelCategory;
+  priceRange: HotelPriceRange;
+  starRating: number;
+  keyFeatures: HotelFeature[];
   shortDescription: string;
-  islandId: string;
-  location: {
-    latitude: number;
-    longitude: number;
-    address: string;
-    city: string;
-  };
-  rating: number;
-  reviewCount: number;
-  priceRange: {
-    min: number;
-    max: number;
-    currency: string;
-  };
-  images: string[];
-  amenities: string[];
+  description: string;
   rooms: HotelRoom[];
-  checkIn: string;
-  checkOut: string;
-  policies: {
-    cancellation: string;
-    children: string;
-    pets: string;
+  amenities: string[];
+  images: HotelImages;
+  bookingUrl?: string;
+  checkIn?: string;
+  checkOut?: string;
+  policies?: {
+    cancellation?: string;
+    children?: string;
+    pets?: string;
   };
-  contactInfo: {
-    phone: string;
-    email: string;
-    website?: string;
-  };
-  featured: boolean;
-  createdAt: Date;
-  updatedAt: Date;
+  roomTypes?: string[];
 }

@@ -1,65 +1,13 @@
-export type ActivityCategory = 'water-sports' | 'tours' | 'cultural' | 'food-wine' | 'adventure';
-export type ActivityDifficulty = 'easy' | 'moderate' | 'challenging';
-
-export interface Activity {
-  id: string;
-  title: string;
-  slug: string;
-  shortDescription: string;
-  description: string;
-  location: string;
-  island: string;
-  duration: string;
-  price: {
-    amount: number;
-    currency: string;
-    display: string;
-  };
-  included: string[];
-  notIncluded: string[];
-  highlights: string[];
-  images: {
-    main: string;
-    gallery: string[];
-  };
-  category: ActivityCategory;
-  difficulty: ActivityDifficulty;
-  bestTime: string;
-  minParticipants: number;
-  maxParticipants: number;
-  bookingNotice: string;
-  cancellationPolicy: string;
-  meetingPoint: string;
-  requirements?: string[];
-  tags: string[];
-  languages: string[];
-  providedEquipment?: string[];
-  startTimes: string[];
-}
+import { Activity, ActivityCategory, ActivityDifficulty } from '../types/activity';
 
 export const activities: Activity[] = [
   {
     id: 'santorini-catamaran-sunset',
     title: 'Premium Santorini Catamaran Sunset Cruise',
-    slug: 'santorini-catamaran-sunset-cruise',
-    shortDescription: 'Experience the magic of Santorinis world-famous sunset aboard a luxury catamaran with a premium BBQ dinner.',
-    description: `Embark on an unforgettable 5-hour sailing journey around Santorinis caldera on our premium sunset cruise. Our modern catamaran offers the perfect setting to experience the world-famous Santorini sunset in style and comfort.
-
-Your journey begins at the Amoudi Bay port, where youll be welcomed aboard our spacious catamaran. As we set sail, youll cruise past the iconic red and white beaches, with opportunities to swim and snorkel in the crystal-clear Aegean waters.
-
-Visit the famous volcanic hot springs, where you can enjoy a therapeutic mud bath and swim in the warm waters. Our experienced crew will share fascinating insights about Santorinis volcanic history and formation.
-
-As the day progresses, well find the perfect spot to watch the legendary Santorini sunset. Witness the sky transform into a canvas of orange, pink, and purple hues while enjoying a freshly prepared Greek BBQ dinner served with local wine.
-
-This premium experience includes:
-• Spacious modern catamaran with both sun and shade areas
-• Professional crew and experienced captain
-• Premium Greek BBQ dinner with local wine
-• Swimming and snorkeling stops at the best locations
-• Hot springs visit
-• Spectacular sunset views
-• Transportation from and to your hotel`,
-    location: 'Amoudi Bay',
+    slug: 'santorini-catamaran-sunset',
+    shortDescription: 'Experience the magic of Santorini from the water with our premium catamaran sunset cruise.',
+    description: 'Set sail on our luxurious catamaran for an unforgettable sunset cruise around Santorini. Visit the famous Red and White beaches, swim in crystal-clear waters, and enjoy a delicious BBQ dinner on board.',
+    location: 'Vlychada Port',
     island: 'Santorini',
     duration: '5 hours',
     price: {
@@ -68,55 +16,46 @@ This premium experience includes:
       display: '€150'
     },
     included: [
-      'Round-trip hotel transfers',
-      'Premium Greek BBQ dinner',
-      'Unlimited local wine and soft drinks',
+      'Hotel pickup and drop-off',
+      'BBQ dinner',
+      'Open bar',
       'Snorkeling equipment',
-      'Towels',
-      'Professional crew',
-      'Onboard WiFi',
-      'Safety equipment',
-      'Insurance'
+      'Towels'
     ],
     notIncluded: [
-      'Additional alcoholic beverages',
-      'Professional photos (available for purchase)',
-      'Gratuities (optional)',
+      'Gratuities',
       'Personal expenses'
     ],
     highlights: [
-      'Sail around Santorinis caldera on a luxury catamaran',
-      'Swim in crystal-clear waters at Red and White beaches',
-      'Visit the volcanic hot springs',
-      'Watch the famous Santorini sunset',
-      'Enjoy a premium Greek BBQ dinner with local wine',
-      'Small group experience (max 20 guests)',
-      'Professional crew and commentary'
+      'Sunset views of Santorini',
+      'Swimming and snorkeling stops',
+      'Visit to Red and White beaches',
+      'Gourmet BBQ dinner',
+      'Premium drinks included'
     ],
     images: {
-      main: '/images/activities/santorini-sailing-main.jpg',
+      main: '/images/activities/santorini-catamaran-main.jpg',
       gallery: [
-        '/images/activities/santorini-sailing-1.jpg',
-        '/images/activities/santorini-sailing-2.jpg',
-        '/images/activities/santorini-sailing-3.jpg',
-        '/images/activities/santorini-sailing-4.jpg'
+        '/images/activities/santorini-catamaran-1.jpg',
+        '/images/activities/santorini-catamaran-2.jpg',
+        '/images/activities/santorini-catamaran-3.jpg'
       ]
     },
     category: 'water-sports',
     difficulty: 'easy',
-    bestTime: 'April to October',
+    bestTime: 'May to October',
     minParticipants: 2,
     maxParticipants: 20,
-    bookingNotice: '24 hours in advance',
-    cancellationPolicy: 'Full refund if cancelled at least 24 hours before the activity starts',
-    meetingPoint: 'Hotel pickup included',
+    bookingNotice: 'Book at least 24 hours in advance',
+    cancellationPolicy: 'Free cancellation up to 24 hours before the activity',
+    meetingPoint: 'Vlychada Port or hotel pickup',
     requirements: [
       'Suitable for all ages',
       'Not recommended for pregnant women',
       'Bring sunscreen, hat, and swimwear',
       'Comfortable walking shoes recommended'
     ],
-    tags: ['sailing', 'sunset', 'swimming', 'snorkeling', 'dinner', 'cruise', 'catamaran'],
+    tags: ['sailing', 'sunset', 'swimming', 'cruise', 'dinner'],
     languages: ['English', 'Greek'],
     providedEquipment: [
       'Snorkeling gear',
@@ -124,7 +63,7 @@ This premium experience includes:
       'Life jackets',
       'Safety equipment'
     ],
-    startTimes: ['15:00', '15:30'],
+    startTimes: ['15:00', '15:30']
   },
   {
     id: 'milos-sea-kayaking',
@@ -293,3 +232,5 @@ Throughout the class, you'll discover the stories behind each dish and learn abo
     startTimes: ['10:00', '16:00'],
   }
 ];
+
+export type { Activity, ActivityCategory, ActivityDifficulty };

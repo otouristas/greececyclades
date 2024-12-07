@@ -1,4 +1,7 @@
 export * from './vehicle';
+export * from './hotel';
+export * from './island';
+export * from './blog';
 
 export interface User {
   id: string;
@@ -35,50 +38,6 @@ export interface LocalAttraction {
   priceRange?: string;
   eventDate?: string;
   bookingUrl?: string;
-}
-
-export interface Hotel {
-  id: string;
-  name: string;
-  type: 'hotel' | 'villa' | 'resort' | 'boutique';
-  island: string;
-  location: string;
-  description: string;
-  image: string;
-  images: string[];
-  price: {
-    from: number;
-    currency: string;
-  };
-  priceRange: string;
-  rating: number;
-  reviews: number;
-  amenities: string[];
-  features: string[];
-  address: string;
-  coordinates: {
-    lat: number;
-    lng: number;
-  };
-  localAttractions?: LocalAttraction[];
-  featured?: boolean;
-}
-
-export interface Island {
-  id: number;
-  name: string;
-  description: string;
-  shortDescription: string;
-  quote: string;
-  metaTitle: string;
-  metaDescription: string;
-  image: string;
-  highlights: string[];
-  weather: {
-    temp: string;
-    condition: string;
-  };
-  activities: number;
 }
 
 export interface TravelGuide {

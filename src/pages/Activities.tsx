@@ -1,7 +1,10 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { activities, Activity, ActivityCategory } from '../data/activitiesData';
-import { Filter, Search, MapPin, Clock } from 'lucide-react';
+import { activities } from '../data/activitiesData';
+import type { Activity, ActivityCategory } from '../types/activity';
+import { Search, MapPin, Clock } from 'lucide-react';
+import SEO from '../components/SEO';
+import { generateActivitiesSEO } from '../utils/seo';
 
 interface CategoryOption {
   id: ActivityCategory | 'all';
@@ -31,6 +34,7 @@ export default function Activities() {
 
   return (
     <div className="min-h-screen bg-gray-50">
+      <SEO {...generateActivitiesSEO()} />
       {/* Hero Section */}
       <div className="relative bg-blue-600 h-[40vh] flex items-center justify-center">
         <div className="absolute inset-0 overflow-hidden">

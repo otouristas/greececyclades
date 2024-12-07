@@ -69,7 +69,7 @@ function AppContent() {
           <Route path="/islands" element={<Islands />} />
           <Route path="/islands/:slug" element={<Island />} />
           <Route path="/hotels" element={<Hotels />} />
-          <Route path="/hotels/:id" element={<HotelLanding />} />
+          <Route path="/hotels/:slug" element={<HotelLanding />} />
           <Route path="/activities" element={<Activities />} />
           <Route path="/activities/:slug" element={<ActivityDetail />} />
           <Route path="/blog" element={<Blog />} />

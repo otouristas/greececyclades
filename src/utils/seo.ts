@@ -1,3 +1,6 @@
+import { Hotel } from '../types/hotel';
+import { Activity } from '../types/activity';
+
 export interface SEOProps {
   title: string;
   description: string;
@@ -22,13 +25,25 @@ const DEFAULT_KEYWORDS = [
   'mediterranean'
 ];
 
-export function generateHotelSEO(hotelName: string, island: string, type: string): SEOProps {
+export function generateHotelSEO(hotel: Hotel): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS,
+    hotel.category.toLowerCase(),
+    'hotels',
+    'accommodation',
+    hotel.location.island.toLowerCase(),
+    hotel.location.area.toLowerCase(),
+    ...hotel.keyFeatures,
+    ...hotel.amenities
+  ];
+
   return {
-    title: `${hotelName} - Luxury ${type} in ${island} | Greece Cyclades`,
-    description: `Experience luxury stay at ${hotelName}, a beautiful ${type.toLowerCase()} in ${island}. Book your dream vacation in the Cyclades islands of Greece.`,
-    keywords: ['luxury hotel', 'cyclades', 'greece', island.toLowerCase(), type.toLowerCase(), 'accommodation', 'vacation'],
+    title: `${hotel.name} | ${hotel.category} Hotel in ${hotel.location.island}`,
+    description: hotel.description || hotel.shortDescription,
+    keywords,
     ogType: 'website',
-    canonicalUrl: `/hotels/${generateSlug(hotelName, island)}`
+    ogImage: hotel.images.main,
+    canonicalUrl: `/hotels/${generateSlug(hotel.name, hotel.location.island)}`
   };
 }
 
@@ -97,9 +112,43 @@ export function generateActivitiesSEO(): SEOProps {
   return {
     title: 'Cyclades Activities & Tours | Unforgettable Greek Island Experiences',
     description: 'Book authentic experiences in the Cyclades islands. From sailing cruises and wine tastings to hiking adventures and photography tours. Find your perfect island activity.',
-    keywords: [...DEFAULT_KEYWORDS, 'activities', 'tours', 'experiences', 'sailing', 'wine tasting', 'hiking', 'photography', 'local experiences'],
+    keywords: [
+      ...DEFAULT_KEYWORDS,
+      'activities',
+      'tours',
+      'experiences',
+      'water sports',
+      'cultural tours',
+      'food tours',
+      'wine tasting',
+      'sailing',
+      'hiking',
+      'adventure'
+    ],
     ogType: 'website',
+    ogImage: '/images/activities-hero.jpg',
     canonicalUrl: '/activities'
+  };
+}
+
+export function generateActivityDetailSEO(activity: Activity): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS,
+    activity.category,
+    'activities',
+    'tours',
+    'experiences',
+    activity.island.toLowerCase(),
+    activity.location.toLowerCase(),
+    ...activity.tags || []
+  ];
+
+  return {
+    title: `${activity.title} | ${activity.island} Activity`,
+    description: activity.shortDescription,
+    keywords,
+    ogType: 'website',
+    ogImage: activity.images.main
   };
 }
 
@@ -113,8 +162,13 @@ export function generateRentACarSEO(): SEOProps {
   };
 }
 
-export function generateSlug(name: string, island: string): string {
-  return `${name.toLowerCase().replace(/[^a-z0-9]+/g, '-')}-${island.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`;
+export function generateSlug(name: string, island?: string): string {
+  const nameSlug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  if (!island) {
+    return nameSlug;
+  }
+  const islandSlug = island.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+  return `${nameSlug}-${islandSlug}`;
 }
 
 export function generateHotelPageTitle(name: string, type: string, island: string): string {
@@ -145,9 +199,10 @@ interface HotelListItem {
   id: string | number;
   name: string;
   description: string;
-  type: string;
+  category: string;
   island: string;
   image?: string;
+  bookingUrl?: string;
 }
 
 interface BlogPost {
@@ -206,7 +261,7 @@ export function generateHotelsListingJsonLD(hotels: HotelListItem[]): string {
         "name": hotel.name,
         "description": hotel.description,
         "image": hotel.image,
-        "url": `https://greececyclades.com/hotels/${generateSlug(hotel.name, hotel.island)}`,
+        "url": `https://greececyclades.com/hotels/${hotel.id}`,
         "address": {
           "@type": "PostalAddress",
           "addressLocality": hotel.island,
