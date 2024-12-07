@@ -12,7 +12,7 @@ import LocalTips from '../components/islands/LocalTips';
 import HotelCard from '../components/cards/HotelCard';
 import VehicleCard from '../components/vehicles/VehicleCard';
 import SEO from '../components/SEO';
-import { type Hotel } from '../types';
+import { Hotel } from '../types/hotel';
 import { getIslandSlug } from '../utils/slugify';
 import { generateIslandDetailSEO } from '../utils/seo';
 
@@ -156,13 +156,32 @@ export default function IslandDetail() {
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
               {hotels.slice(0, 3).map((hotel) => {
                 const mappedHotel: Hotel = {
-                  ...hotel,
-                  location: hotel.island || selectedIsland?.name || '',
-                  image: Array.isArray(hotel.images) ? hotel.images[0] : hotel.image,
-                  priceRange: hotel.priceRange || '€€',
-                  address: hotel.address || hotel.island || '',
-                  coordinates: hotel.coordinates || { lat: 0, lng: 0 },
-                  features: hotel.amenities || []
+                  id: hotel.id || '',
+                  name: hotel.name || '',
+                  location: {
+                    island: selectedIsland?.name || '',
+                    area: selectedIsland?.name || '',
+                    coordinates: {
+                      latitude: 0,
+                      longitude: 0
+                    }
+                  },
+                  category: 'Resort',
+                  priceRange: {
+                    min: hotel.priceRange?.min || 0,
+                    max: hotel.priceRange?.max || 0,
+                    currency: hotel.priceRange?.currency || 'EUR'
+                  },
+                  starRating: 4,
+                  keyFeatures: [],
+                  shortDescription: hotel.description || '',
+                  description: hotel.description || '',
+                  rooms: [],
+                  amenities: [],
+                  images: {
+                    main: '',
+                    gallery: []
+                  }
                 };
                 return <HotelCard key={hotel.id} hotel={mappedHotel} />;
               })}

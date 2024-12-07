@@ -36,7 +36,20 @@ export type HotelFeature =
   | 'Cycladic Design'
   | 'Garden View'
   | 'Beachfront'
-  | 'Family Friendly';
+  | 'Family Friendly'
+  | 'Wellness Center'
+  | 'Private Beach'
+  | 'Gourmet Restaurant'
+  | 'Sea View Rooms'
+  | 'Private Villas'
+  | 'Minimalist Design'
+  | 'Private Terraces'
+  | 'Eco-Friendly'
+  | 'Beachfront Location'
+  | 'Water Sports'
+  | 'Sunset Views'
+  | 'Beach Club'
+  | 'Designer Interiors';
 
 export interface HotelLocation {
   island: string;
@@ -56,6 +69,12 @@ export interface HotelPriceRange {
 export interface HotelImages {
   main: string;
   gallery: string[];
+}
+
+export interface HotelReview {
+  rating: number;
+  count: number;
+  highlights: string[];
 }
 
 export interface Hotel {
@@ -79,5 +98,6 @@ export interface Hotel {
     children?: string;
     pets?: string;
   };
+  reviews?: HotelReview;
   roomTypes?: string[];
 }

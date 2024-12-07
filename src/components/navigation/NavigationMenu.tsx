@@ -15,7 +15,8 @@ const getNavigationItems = (isAuthenticated: boolean) => [
   { path: '/activities', label: 'Activities' },
   { path: '/hotels', label: 'Hotels' },
   { path: '/rent-a-car', label: 'Rent A Car' },
-  ...(isAuthenticated ? [{ path: '/list-property', label: 'List Your Property' }] : []),
+  ...(isAuthenticated ? [{ path: '/blog', label: 'Blog' }] : []),
+  { path: '/contact', label: 'Contact' },
 ];
 
 export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {

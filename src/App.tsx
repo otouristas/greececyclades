@@ -25,9 +25,20 @@ import Profile from './pages/Profile';
 import CycladesTripPlanner from './pages/CycladesTripPlanner';
 import MyTrips from './pages/MyTrips';
 import NaxosGuide from './pages/NaxosGuide';
+import AntiparosGuide from './pages/AntiparosGuide';
+import KoufonisiaGuide from './pages/KoufonisiaGuide';
+import KimolosGuide from './pages/KimolosGuide';
+import SyrosGuide from './pages/SyrosGuide';
+import AndrosGuide from './pages/AndrosGuide';
+import TinosGuide from './pages/TinosGuide';
+import KeaGuide from './pages/KeaGuide';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import Contact from './pages/Contact';
+import SantoriniGuide from './pages/SantoriniGuide';
+import MykonosGuide from './pages/MykonosGuide';
+import ParosGuide from './pages/ParosGuide';
+import SifnosGuide from './pages/SifnosGuide';
 
 export default function App() {
   return (
@@ -77,6 +88,17 @@ function AppContent() {
           <Route path="/guides" element={<IslandGuides />} />
           <Route path="/guides/:slug" element={<IslandGuide />} />
           <Route path="/guides/naxos" element={<NaxosGuide />} />
+          <Route path="/guides/antiparos" element={<AntiparosGuide />} />
+          <Route path="/guides/koufonisia" element={<KoufonisiaGuide />} />
+          <Route path="/guides/kimolos" element={<KimolosGuide />} />
+          <Route path="/guides/syros" element={<SyrosGuide />} />
+          <Route path="/guides/andros" element={<AndrosGuide />} />
+          <Route path="/guides/tinos" element={<TinosGuide />} />
+          <Route path="/guides/kea" element={<KeaGuide />} />
+          <Route path="/guides/santorini" element={<SantoriniGuide />} />
+          <Route path="/guides/mykonos" element={<MykonosGuide />} />
+          <Route path="/guides/paros" element={<ParosGuide />} />
+          <Route path="/guides/sifnos" element={<SifnosGuide />} />
           <Route path="/rent-a-car" element={<RentACar />} />
           <Route path="/rent-a-car/:id" element={<RentACarLanding />} />
           <Route path="/trip-planner" element={<CycladesTripPlanner />} />

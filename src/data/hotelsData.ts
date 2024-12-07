@@ -23,7 +23,7 @@ export const hotels: Hotel[] = [
       'Private Pool',
       'Sea View',
       'Fine Dining',
-      'Spa',
+      'Wellness Center',
       'Room Service',
       'Cycladic Design'
     ],
@@ -139,7 +139,7 @@ export const hotels: Hotel[] = [
       'Private Pool',
       'Sea View',
       'Fine Dining',
-      'Spa',
+      'Wellness Center',
       'Adults Only',
       'Cycladic Design'
     ],
@@ -219,90 +219,350 @@ export const hotels: Hotel[] = [
       island: 'Paros',
       area: 'Punda Beach',
       coordinates: {
-        latitude: 37.0833,
-        longitude: 25.1333
+        latitude: 37.0169,
+        longitude: 25.2487
       }
     },
     category: 'Resort',
     priceRange: {
-      min: 300,
-      max: 800,
+      min: 450,
+      max: 1200,
       currency: 'EUR'
     },
     starRating: 5,
     keyFeatures: [
       'Pool',
-      'Beach Access',
+      'Restaurant',
       'Spa',
-      'Fine Dining',
-      'Family Friendly'
+      'WiFi',
+      'Beach Access',
+      'Fitness Center',
+      'Bar',
+      'Room Service',
+      'Concierge',
+      'Free Parking',
+      'Sea View',
+      'Wellness Center',
+      'Gourmet Restaurant',
+      'Private Terraces',
+      'Water Sports'
     ],
-    shortDescription: 'A luxury resort offering stunning views of the Aegean Sea.',
-    description: 'Summer Senses is a luxury resort in Paros, offering elegant accommodation with private terraces, two impressive pools with uninterrupted sea views, and a world-class spa.',
-    checkIn: '15:00',
-    checkOut: '11:00',
+    shortDescription: 'A luxury resort offering stunning views of the Aegean Sea and exceptional amenities.',
+    description: 'Summer Senses Luxury Resort offers a serene escape on the stunning island of Paros. This elegant resort combines modern luxury with traditional Cycladic design, featuring spacious rooms, world-class dining, and exceptional wellness facilities.',
     rooms: [
       {
-        id: 'ssr-001',
+        id: 'ssr-deluxe',
         name: 'Deluxe Room',
-        description: 'Modern room with private balcony and garden views.',
+        description: 'Elegant room with modern amenities and private balcony',
         maxOccupancy: 2,
-        pricePerNight: 300,
-        images: [
-          '/images/rooms/summer-senses/deluxe-1.jpg',
-          '/images/rooms/summer-senses/deluxe-2.jpg'
-        ],
-        amenities: [
-          'WiFi',
-          'Room Service',
-          'Garden View',
-          'Bar'
-        ]
+        pricePerNight: 450,
+        images: ['/images/hotels/summer-senses/deluxe-1.jpg', '/images/hotels/summer-senses/deluxe-2.jpg'],
+        amenities: ['Sea View', 'Air Conditioning', 'Mini Bar', 'Free WiFi']
       },
       {
-        id: 'ssr-002',
+        id: 'ssr-premium',
         name: 'Premium Suite',
-        description: 'Spacious suite with sea view and luxury amenities.',
+        description: 'Spacious suite with separate living area and premium sea views',
         maxOccupancy: 3,
-        pricePerNight: 500,
-        images: [
-          '/images/rooms/summer-senses/premium-1.jpg',
-          '/images/rooms/summer-senses/premium-2.jpg'
-        ],
-        amenities: [
-          'Sea View',
-          'WiFi',
-          'Room Service',
-          'Bar',
-          'Spa'
-        ]
+        pricePerNight: 750,
+        images: ['/images/hotels/summer-senses/premium-1.jpg', '/images/hotels/summer-senses/premium-2.jpg'],
+        amenities: ['Sea View', 'Private Terrace', 'Living Room', 'Premium Amenities']
+      },
+      {
+        id: 'ssr-pool',
+        name: 'Pool Suite',
+        description: 'Luxury suite with private pool and panoramic views',
+        maxOccupancy: 4,
+        pricePerNight: 1200,
+        images: ['/images/hotels/summer-senses/pool-1.jpg', '/images/hotels/summer-senses/pool-2.jpg'],
+        amenities: ['Private Pool', 'Sea View', 'Living Room', 'Butler Service']
       }
     ],
     amenities: [
       'Pool',
       'Restaurant',
-      'Bar',
       'Spa',
-      'Beach Access',
-      'Room Service',
       'WiFi',
-      'Concierge'
+      'Beach Access',
+      'Fitness Center',
+      'Bar',
+      'Room Service',
+      'Concierge',
+      'Free Parking',
+      'Sea View',
+      'Wellness Center',
+      'Gourmet Restaurant',
+      'Private Terraces',
+      'Water Sports'
     ],
     images: {
       main: '/images/hotels/summer-senses/main.jpg',
       gallery: [
         '/images/hotels/summer-senses/gallery-1.jpg',
         '/images/hotels/summer-senses/gallery-2.jpg',
-        '/images/hotels/summer-senses/gallery-3.jpg'
+        '/images/hotels/summer-senses/gallery-3.jpg',
+        '/images/hotels/summer-senses/gallery-4.jpg'
       ]
     },
     bookingUrl: 'https://summersenses.com',
+    checkIn: '15:00',
+    checkOut: '11:00',
     policies: {
       cancellation: 'Free cancellation up to 7 days before check-in',
       children: 'Children of all ages are welcome',
       pets: 'No pets allowed'
     },
-    roomTypes: undefined
+    reviews: {
+      rating: 4.7,
+      count: 312,
+      highlights: [
+        'Exceptional service',
+        'Beautiful pools',
+        'Great location',
+        'Excellent dining'
+      ]
+    }
+  },
+  {
+    id: 'skinopi-lodge',
+    name: 'Skinopi Lodge',
+    location: {
+      island: 'Milos',
+      area: 'Skinopi',
+      coordinates: {
+        latitude: 36.7225,
+        longitude: 24.4145
+      }
+    },
+    category: 'Boutique',
+    priceRange: {
+      min: 400,
+      max: 900,
+      currency: 'EUR'
+    },
+    starRating: 5,
+    keyFeatures: [
+      'Private Villas',
+      'Sea View',
+      'Minimalist Design',
+      'Private Terraces',
+      'Beach Access',
+      'Eco-Friendly'
+    ],
+    shortDescription: 'Exclusive eco-friendly lodge with minimalist design and stunning sea views.',
+    description: 'Skinopi Lodge is a collection of three luxury villas perched above the Aegean Sea in Milos. Each villa is a masterpiece of minimalist architecture, designed to blend seamlessly with the natural landscape. The lodge offers ultimate privacy, spectacular views, and a unique connection to both the sea and the island\'s rugged beauty. Perfect for those seeking an exclusive, design-focused retreat.',
+    checkIn: '15:00',
+    checkOut: '11:00',
+    rooms: [
+      {
+        id: 'sl-001',
+        name: 'Sea View Villa',
+        description: 'Minimalist villa with floor-to-ceiling windows, private terrace, and direct sea views. Features custom-designed furniture and local materials.',
+        maxOccupancy: 3,
+        pricePerNight: 600,
+        images: [
+          '/images/rooms/skinopi/villa-1.jpg',
+          '/images/rooms/skinopi/villa-2.jpg'
+        ],
+        amenities: [
+          'Sea View',
+          'Private Terrace',
+          'Kitchen',
+          'WiFi',
+          'Air Conditioning',
+          'Custom Furniture'
+        ]
+      }
+    ],
+    images: {
+      main: '/images/hotels/skinopi/main.jpg',
+      gallery: [
+        '/images/hotels/skinopi-1.jpg',
+        '/images/hotels/skinopi-2.jpg',
+        '/images/hotels/skinopi-3.jpg'
+      ]
+    },
+    amenities: [
+      'Free WiFi',
+      'Private Parking',
+      'Sea Access',
+      'Daily Housekeeping',
+      'Concierge Service',
+      'Airport Transfer',
+      'Breakfast Delivery'
+    ],
+    reviews: {
+      rating: 4.9,
+      count: 87,
+      highlights: [
+        'Stunning architecture',
+        'Privacy',
+        'Amazing views',
+        'Attentive service'
+      ]
+    }
+  },
+  {
+    id: 'paros-luxury-resort',
+    name: 'Paros Luxury Resort',
+    location: {
+      island: 'Paros',
+      area: 'Naoussa',
+      coordinates: {
+        latitude: 37.1232,
+        longitude: 25.2395
+      }
+    },
+    category: 'Luxury',
+    priceRange: {
+      min: 450,
+      max: 1200,
+      currency: 'EUR'
+    },
+    starRating: 5,
+    keyFeatures: [
+      'Beachfront Location',
+      'Infinity Pool',
+      'Wellness Center',
+      'Gourmet Restaurant',
+      'Water Sports',
+      'Private Beach'
+    ],
+    shortDescription: 'Exclusive beachfront resort combining luxury with authentic Cycladic charm.',
+    description: 'Paros Luxury Resort offers an unparalleled experience of Greek island hospitality. Located in the vibrant town of Naoussa, the resort features elegant suites and villas, world-class dining venues, a comprehensive spa, and direct access to a pristine beach. The architecture seamlessly blends contemporary luxury with traditional Cycladic elements, creating a sophisticated yet authentic atmosphere.',
+    checkIn: '14:00',
+    checkOut: '12:00',
+    rooms: [
+      {
+        id: 'plr-001',
+        name: 'Deluxe Suite with Pool',
+        description: 'Spacious suite featuring a private pool, sea views, and luxurious furnishings. Perfect blend of modern comfort and traditional design.',
+        maxOccupancy: 3,
+        pricePerNight: 700,
+        images: [
+          '/images/rooms/paros-luxury/deluxe-suite-1.jpg',
+          '/images/rooms/paros-luxury/deluxe-suite-2.jpg'
+        ],
+        amenities: [
+          'Private Pool',
+          'Sea View',
+          'Terrace',
+          'WiFi',
+          'Room Service',
+          'Mini Bar'
+        ]
+      }
+    ],
+    images: {
+      main: '/images/hotels/paros-luxury-main.jpg',
+      gallery: [
+        '/images/hotels/paros-luxury-1.jpg',
+        '/images/hotels/paros-luxury-2.jpg',
+        '/images/hotels/paros-luxury-3.jpg'
+      ]
+    },
+    amenities: [
+      'Free WiFi',
+      'Room Service',
+      'Multiple Restaurants',
+      'Bars',
+      'Spa Center',
+      'Fitness Center',
+      'Private Beach',
+      'Water Sports',
+      'Kids Club'
+    ],
+    reviews: {
+      rating: 4.8,
+      count: 312,
+      highlights: [
+        'Excellent location',
+        'Outstanding service',
+        'Beautiful facilities',
+        'Great food'
+      ]
+    }
+  },
+  {
+    id: 'mykonos-breeze',
+    name: 'Mykonos Breeze',
+    location: {
+      island: 'Mykonos',
+      area: 'Agios Ioannis',
+      coordinates: {
+        latitude: 37.4147,
+        longitude: 25.3284
+      }
+    },
+    category: 'Luxury',
+    priceRange: {
+      min: 500,
+      max: 1300,
+      currency: 'EUR'
+    },
+    starRating: 5,
+    keyFeatures: [
+      'Sunset Views',
+      'Infinity Pool',
+      'Beach Club',
+      'Gourmet Restaurant',
+      'Wellness Center',
+      'Designer Interiors'
+    ],
+    shortDescription: 'Contemporary luxury hotel with stunning views and world-class amenities.',
+    description: 'Mykonos Breeze is a haven of sophisticated luxury, offering breathtaking views of the Aegean Sea and the famous Mykonian sunset. The hotel combines contemporary design with traditional Cycladic architecture, featuring spacious suites, a stunning infinity pool, and a private beach club. The property\'s world-class restaurant serves innovative Mediterranean cuisine, while the wellness center provides a serene escape.',
+    checkIn: '15:00',
+    checkOut: '11:00',
+    rooms: [
+      {
+        id: 'mb-001',
+        name: 'Premium Sea View Suite',
+        description: 'Elegantly appointed suite with panoramic sea views, private terrace, and designer furnishings. Features modern amenities and authentic Mykonian style.',
+        maxOccupancy: 3,
+        pricePerNight: 800,
+        images: [
+          '/images/rooms/mykonos-breeze/premium-suite-1.jpg',
+          '/images/rooms/mykonos-breeze/premium-suite-2.jpg'
+        ],
+        amenities: [
+          'Sea View',
+          'Private Terrace',
+          'WiFi',
+          'Room Service',
+          'Mini Bar',
+          'Smart TV'
+        ]
+      }
+    ],
+    images: {
+      main: '/images/hotels/mykonos-breeze-main.jpg',
+      gallery: [
+        '/images/hotels/mykonos-breeze-1.jpg',
+        '/images/hotels/mykonos-breeze-2.jpg',
+        '/images/hotels/mykonos-breeze-3.jpg'
+      ]
+    },
+    amenities: [
+      'Free WiFi',
+      'Room Service',
+      'Restaurant',
+      'Beach Club',
+      'Infinity Pool',
+      'Spa',
+      'Fitness Center',
+      'Concierge',
+      'Helicopter Transfer'
+    ],
+    reviews: {
+      rating: 4.9,
+      count: 276,
+      highlights: [
+        'Incredible views',
+        'Luxurious rooms',
+        'Excellent service',
+        'Perfect location'
+      ]
+    }
   },
   {
     id: 'nissaki-beach-hotel',
@@ -327,7 +587,8 @@ export const hotels: Hotel[] = [
       'Fine Dining',
       'Pool',
       'Sea View',
-      'Family Friendly'
+      'Family Friendly',
+      'Room Service'
     ],
     shortDescription: 'Located right on Agios Georgios Beach, combining elegance with comfort.',
     description: 'Located directly on the pristine St. George Beach, Nissaki Beach Hotel offers a perfect blend of traditional Cycladic architecture and modern comfort. Enjoy spectacular sea views and direct beach access.',
@@ -416,7 +677,9 @@ export const hotels: Hotel[] = [
       'Sea View',
       'Private Pool',
       'Cycladic Design',
-      'Beach Access'
+      'Beach Access',
+      'Eco-Friendly',
+      'Room Service'
     ],
     shortDescription: 'A romantic villa retreat overlooking the Aegean Sea, perfect for couples.',
     description: 'Perched on the caldera cliffs, these traditional villas offer breathtaking views of the Aegean Sea. Each villa features private terraces and authentic Cycladic architecture combined with modern amenities.',
@@ -506,7 +769,8 @@ export const hotels: Hotel[] = [
       'Sea View',
       'WiFi',
       'Room Service',
-      'Cycladic Design'
+      'Cycladic Design',
+      'Beach Access'
     ],
     shortDescription: 'Intimate boutique villas with stunning caldera views.',
     description: 'A charming boutique hotel that seamlessly blends into Milos\'s traditional architecture. Featuring cave-style rooms and suites that offer a unique and authentic Greek island experience.',
@@ -553,78 +817,6 @@ export const hotels: Hotel[] = [
     roomTypes: undefined
   },
   {
-    id: 'paros-luxury-resort',
-    name: 'Paros Luxury Resort',
-    location: {
-      island: 'Paros',
-      area: 'Naoussa',
-      coordinates: {
-        latitude: 37.1234,
-        longitude: 25.2144
-      }
-    },
-    category: 'Luxury',
-    priceRange: {
-      min: 500,
-      max: 1200,
-      currency: 'EUR'
-    },
-    starRating: 5,
-    keyFeatures: [
-      'Beach Access',
-      'Infinity Pool',
-      'Spa',
-      'Fine Dining',
-      'Beach Access'
-    ],
-    shortDescription: 'Modern luxury resort with private beach access in Naoussa.',
-    description: 'Set along the pristine coastline of Naoussa, Paros Luxury Resort combines contemporary design with traditional Greek hospitality. The resort features a private beach, world-class spa facilities, and gourmet dining options, making it the perfect choice for discerning travelers.',
-    checkIn: '15:00',
-    checkOut: '11:00',
-    rooms: [
-      {
-        id: 'plr-001',
-        name: 'Beachfront Suite',
-        description: 'Elegant suite with direct beach access and sea views.',
-        maxOccupancy: 4,
-        pricePerNight: 700,
-        images: [
-          '/images/rooms/paros-luxury/beachfront-1.jpg',
-          '/images/rooms/paros-luxury/beachfront-2.jpg'
-        ],
-        amenities: [
-          'Beach Access',
-          'Sea View',
-          'WiFi',
-          'Room Service',
-          'Spa Access'
-        ]
-      }
-    ],
-    images: {
-      main: '/images/hotels/paros-luxury-main.jpg',
-      gallery: [
-        '/images/hotels/paros-luxury-1.jpg',
-        '/images/hotels/paros-luxury-2.jpg',
-        '/images/hotels/paros-luxury-3.jpg'
-      ]
-    },
-    amenities: [
-      'Pool',
-      'Spa',
-      'Restaurant',
-      'Beach Access',
-      'WiFi',
-      'Room Service'
-    ],
-    policies: {
-      cancellation: 'Free cancellation up to 14 days before check-in',
-      children: 'Family friendly with kids club',
-      pets: 'Small pets allowed with additional fee'
-    },
-    roomTypes: undefined
-  },
-  {
     id: 'milos-hideaway',
     name: 'Milos Hideaway',
     location: {
@@ -647,7 +839,8 @@ export const hotels: Hotel[] = [
       'Pool',
       'Restaurant',
       'Beach Access',
-      'Garden View'
+      'Garden View',
+      'Room Service'
     ],
     shortDescription: 'Charming boutique hotel in the picturesque village of Pollonia.',
     description: 'A family-run hotel offering authentic Greek hospitality in the heart of Sifnos. Traditional Cycladic architecture meets modern comfort, surrounded by beautiful gardens and local charm.',
@@ -689,77 +882,6 @@ export const hotels: Hotel[] = [
     policies: {
       cancellation: 'Free cancellation up to 7 days before check-in',
       children: 'Children over 12 welcome',
-      pets: 'No pets allowed'
-    },
-    roomTypes: undefined
-  },
-  {
-    id: 'mykonos-breeze',
-    name: 'Mykonos Breeze',
-    location: {
-      island: 'Mykonos',
-      area: 'Ornos',
-      coordinates: {
-        latitude: 37.4246,
-        longitude: 25.3217
-      }
-    },
-    category: 'Luxury',
-    priceRange: {
-      min: 400,
-      max: 1000,
-      currency: 'EUR'
-    },
-    starRating: 5,
-    keyFeatures: [
-      'Beach Access',
-      'Infinity Pool',
-      'Spa',
-      'Fine Dining',
-      'Adults Only'
-    ],
-    shortDescription: 'Modern beachfront resort offering sophisticated luxury in Ornos.',
-    description: 'Mykonos Breeze is a sophisticated adults-only resort that combines contemporary luxury with the vibrant energy of Mykonos. Located on Ornos Beach, the resort features stunning sea views, world-class dining, and an award-winning spa.',
-    checkIn: '15:00',
-    checkOut: '11:00',
-    rooms: [
-      {
-        id: 'mb-001',
-        name: 'Deluxe Sea View Room',
-        description: 'Modern room with panoramic views of Ornos Bay.',
-        maxOccupancy: 2,
-        pricePerNight: 500,
-        images: [
-          '/images/rooms/mykonos-breeze/deluxe-1.jpg',
-          '/images/rooms/mykonos-breeze/deluxe-2.jpg'
-        ],
-        amenities: [
-          'Sea View',
-          'WiFi',
-          'Room Service',
-          'Spa Access'
-        ]
-      }
-    ],
-    images: {
-      main: '/images/hotels/mykonos-breeze-main.jpg',
-      gallery: [
-        '/images/hotels/mykonos-breeze-1.jpg',
-        '/images/hotels/mykonos-breeze-2.jpg',
-        '/images/hotels/mykonos-breeze-3.jpg'
-      ]
-    },
-    amenities: [
-      'Pool',
-      'Spa',
-      'Restaurant',
-      'Beach Access',
-      'WiFi',
-      'Room Service'
-    ],
-    policies: {
-      cancellation: 'Free cancellation up to 14 days before check-in',
-      children: 'Adults only (18+)',
       pets: 'No pets allowed'
     },
     roomTypes: undefined

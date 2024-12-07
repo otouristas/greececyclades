@@ -1,6 +1,6 @@
 import React from 'react';
 import { Play, Calendar, Phone } from 'lucide-react';
-import { Hotel } from '../../types';
+import { Hotel } from '../../types/hotel';
 
 interface HeroSectionProps {
   hotel: Hotel;
@@ -27,7 +27,7 @@ export default function HeroSection({ hotel, onBookNow }: HeroSectionProps) {
             {hotel.name}
           </h1>
           <p className="text-xl text-white/90 mb-8">
-            Luxurious Beachfront Hotel in {hotel.location}
+            Luxurious Beachfront Hotel in {hotel.location.area}, {hotel.location.island}
           </p>
 
           <div className="flex flex-wrap gap-4">

@@ -3,7 +3,7 @@ import { useParams } from 'react-router-dom';
 import { Star, MapPin } from 'lucide-react';
 import { useHotelStore } from '../store/hotelStore';
 import SEO from '../components/SEO';
-import { generateHotelSEO } from '../utils/seo';
+import { generateHotelSEO } from '../utils/seoMetadata';
 import { Hotel, HotelRoom } from '../types/hotel';
 
 export default function HotelDetail() {
@@ -15,7 +15,7 @@ export default function HotelDetail() {
     if (slug) {
       fetchHotelBySlug(slug);
     }
-  }, [slug]);
+  }, [slug, fetchHotelBySlug]);
 
   if (!selectedHotel) {
     console.log('HotelDetail: No selected hotel, showing loading');
@@ -28,7 +28,7 @@ export default function HotelDetail() {
 
   console.log('HotelDetail: Rendering hotel:', selectedHotel.name);
 
-  const seoData = generateHotelSEO(selectedHotel);
+  const seoData = generateHotelSEO(selectedHotel.name, selectedHotel.location.island);
 
   return (
     <>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { useState } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import SEO from '../components/SEO';
 import HeroSection from '../components/hotels/HeroSection';
 import Overview from '../components/hotels/Overview';
@@ -11,9 +11,8 @@ import BookingWidget from '../components/BookingWidget';
 import LocalExperiences from '../components/hotels/LocalExperiences';
 import { useHotelStore } from '../store/hotelStore';
 import { generateHotelJsonLD } from '../utils/seo';
-import { getIslandSlug } from '../utils/slugify';
 import FAQ from '../components/FAQ';
-import { Hotel } from '../types';
+import { Hotel } from '../types/hotel';
 
 interface PriceObject {
   from: number;
@@ -34,40 +33,37 @@ function getPriceRangeFromPrice(price: PriceObject | string | number): string {
 
 function mapHotelToViewType(hotel: any): Hotel {
   return {
-    id: hotel.id,
-    name: hotel.name,
-    location: hotel.island,
-    island: hotel.island,
-    type: hotel.type || 'Hotel',
-    image: Array.isArray(hotel.images) ? hotel.images[0] : hotel.image,
-    images: Array.isArray(hotel.images) ? hotel.images : [hotel.image],
-    price: typeof hotel.price === 'object' && 'from' in hotel.price
-      ? hotel.price
-      : {
-          from: typeof hotel.price === 'number' 
-            ? hotel.price 
-            : typeof hotel.price === 'string'
-              ? parseInt(hotel.price.replace(/[^0-9]/g, ''))
-              : 0,
-          currency: 'EUR'
-        },
-    priceRange: getPriceRangeFromPrice(hotel.price),
-    rating: hotel.rating || 4,
-    reviews: hotel.reviews || Math.floor(Math.random() * 500) + 100,
-    amenities: Array.isArray(hotel.amenities) ? hotel.amenities : [],
-    description: hotel.description || '',
-    address: hotel.address || hotel.island,
-    coordinates: {
-      lat: hotel.coordinates?.lat || 0,
-      lng: hotel.coordinates?.lng || 0
+    id: hotel.id || '',
+    name: hotel.name || '',
+    location: {
+      island: hotel.location?.island || '',
+      area: hotel.location?.area || '',
+      coordinates: {
+        latitude: hotel.location?.coordinates?.latitude || 0,
+        longitude: hotel.location?.coordinates?.longitude || 0
+      }
     },
-    features: Array.isArray(hotel.amenities) ? hotel.amenities : []
+    category: 'Resort',
+    priceRange: {
+      min: hotel.priceRange?.min || 0,
+      max: hotel.priceRange?.max || 0,
+      currency: hotel.priceRange?.currency || 'EUR'
+    },
+    starRating: hotel.starRating || 4,
+    keyFeatures: hotel.keyFeatures || [],
+    shortDescription: hotel.shortDescription || hotel.description || '',
+    description: hotel.description || '',
+    rooms: hotel.rooms || [],
+    amenities: hotel.amenities || [],
+    images: {
+      main: '',
+      gallery: []
+    }
   };
 }
 
 export default function HotelLanding() {
   const { slug } = useParams<{ slug: string }>();
-  const navigate = useNavigate();
   const { selectedHotel, fetchHotelBySlug } = useHotelStore();
   const [isBookingOpen, setIsBookingOpen] = useState(false);
 
@@ -89,19 +85,19 @@ export default function HotelLanding() {
   const hotelStructuredData = {
     name: mappedHotel.name,
     description: mappedHotel.description,
-    image: mappedHotel.images,
-    priceRange: getPriceRangeFromPrice(mappedHotel.price),
+    image: mappedHotel.images.gallery,
+    priceRange: getPriceRangeFromPrice(mappedHotel.priceRange.min),
     address: {
-      streetAddress: mappedHotel.location,
-      addressLocality: mappedHotel.island,
+      streetAddress: mappedHotel.location.area,
+      addressLocality: mappedHotel.location.island,
       addressRegion: 'Cyclades',
       addressCountry: 'Greece'
     },
     geo: {
-      latitude: mappedHotel.coordinates.lat,
-      longitude: mappedHotel.coordinates.lng
+      latitude: mappedHotel.location.coordinates?.latitude || 0,
+      longitude: mappedHotel.location.coordinates?.longitude || 0
     },
-    starRating: mappedHotel.rating,
+    starRating: mappedHotel.starRating,
     amenities: mappedHotel.amenities
   };
 
@@ -134,7 +130,7 @@ export default function HotelLanding() {
               <Location hotel={mappedHotel} />
             </div>
             <div className="mb-8">
-              <LocalExperiences hotel={mappedHotel} selectedDates={{ checkIn: null, checkOut: null }} />
+              <LocalExperiences hotel={mappedHotel} selectedDates={{ checkIn: '', checkOut: '' }} />
             </div>
             <Gallery hotel={mappedHotel} />
             <FAQ />

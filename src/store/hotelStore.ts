@@ -1,7 +1,7 @@
 import { create } from 'zustand';
 import { Hotel } from '../types/hotel';
 import { hotelService } from '../services/localHotelService';
-import { generateSlug } from '../utils/seo';
+import { generateSlug } from '../utils/seoMetadata';
 
 interface HotelState {
   hotels: Hotel[];

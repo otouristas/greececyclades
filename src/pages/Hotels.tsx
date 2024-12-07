@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import SEO from '../components/SEO';
 import { Building2, Home, Hotel, Umbrella, Palmtree, Moon, Mountain, Car, Search, MapPin } from 'lucide-react';
 import { useHotelStore } from '../store/hotelStore';
-import { generateHotelsSEO, generateHotelsListingJsonLD } from '../utils/seo';
+import { generateHotelsSEO, generateHotelsListingJsonLD } from '../utils/seoMetadata';
 import HotelCard from '../components/hotels/HotelCard';
 
 const propertyTypes = [

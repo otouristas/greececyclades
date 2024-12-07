@@ -1,12 +1,16 @@
 import { Hotel } from '../types/hotel';
 import { hotels } from '../data/hotelsData';
-import { generateSlug } from '../utils/seo';
+import { generateSlug } from '../utils/seoMetadata';
 
 export const hotelService = {
   // Get hotel by slug
   async getHotelBySlug(slug: string): Promise<Hotel | null> {
     console.log('Looking for hotel with slug:', slug);
-    const hotel = hotels.find(hotel => generateSlug(hotel.name, hotel.location.island) === slug);
+    const hotel = hotels.find(hotel => {
+      const generatedSlug = generateSlug(hotel.name, hotel.location.island);
+      console.log(`Comparing hotel: ${hotel.name}, generated slug: ${generatedSlug}, target slug: ${slug}`);
+      return generatedSlug === slug;
+    });
     console.log('Found hotel:', hotel?.name || 'null');
     return hotel || null;
   },

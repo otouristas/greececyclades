@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Star, MapPin, Wifi, Waves, UtensilsCrossed, Sparkles, Mountain, Car, LucideIcon, Users, Brush, Flower2, Umbrella, Baby, ParkingCircle } from 'lucide-react';
+import { Star, MapPin, Wifi, Waves, UtensilsCrossed, Sparkles, Mountain, Car, LucideIcon, Users, Brush, Flower2, Umbrella, Baby, ParkingCircle, Home } from 'lucide-react';
 import { Hotel, HotelFeature } from '../../types/hotel';
-import { generateSlug } from '../../utils/seo';
+import { generateSlug } from '../../utils/seoMetadata';
 
 const featureIcons: Record<HotelFeature, LucideIcon> = {
   'WiFi': Wifi,
@@ -24,7 +24,20 @@ const featureIcons: Record<HotelFeature, LucideIcon> = {
   'Cycladic Design': Brush,
   'Garden View': Flower2,
   'Beachfront': Umbrella,
-  'Family Friendly': Baby
+  'Family Friendly': Baby,
+  'Wellness Center': Sparkles,
+  'Private Beach': Umbrella,
+  'Gourmet Restaurant': UtensilsCrossed,
+  'Sea View Rooms': Mountain,
+  'Private Villas': Home,
+  'Minimalist Design': Brush,
+  'Private Terraces': Mountain,
+  'Eco-Friendly': Flower2,
+  'Beachfront Location': Umbrella,
+  'Water Sports': Waves,
+  'Sunset Views': Mountain,
+  'Beach Club': Umbrella,
+  'Designer Interiors': Brush
 };
 
 interface HotelCardProps {

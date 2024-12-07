@@ -1,5 +1,5 @@
 import React from 'react';
-import { Hotel } from '../../types';
+import { Hotel } from '../../types/hotel';
 import { MapPin, Plane, Ship, Bus, Car } from 'lucide-react';
 
 interface LocationProps {
@@ -17,7 +17,7 @@ export default function Location({ hotel }: LocationProps) {
             <MapPin className="h-6 w-6 text-blue-600 mt-1" />
             <div>
               <h3 className="font-medium mb-1">Address</h3>
-              <p className="text-gray-600">{hotel.location}</p>
+              <p className="text-gray-600">{hotel.location.area}, {hotel.location.island}</p>
             </div>
           </div>
 
