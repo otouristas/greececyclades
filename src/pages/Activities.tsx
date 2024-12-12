@@ -1,10 +1,10 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
-import { activities } from '../data/activitiesData';
-import type { Activity, ActivityCategory } from '../types/activity';
-import { Search, MapPin, Clock } from 'lucide-react';
+import activities from '../data/activitiesData';
+import { ActivityCategory } from '../types/activity';
+import { Search } from 'lucide-react';
 import SEO from '../components/SEO';
 import { generateActivitiesSEO } from '../utils/seo';
+import ActivityCard from '../components/activities/ActivityCard';
 
 interface CategoryOption {
   id: ActivityCategory | 'all';
@@ -17,11 +17,11 @@ export default function Activities() {
 
   const categories: CategoryOption[] = [
     { id: 'all', name: 'All Activities' },
-    { id: 'water-sports', name: 'Water Sports' },
-    { id: 'tours', name: 'Tours' },
-    { id: 'cultural', name: 'Cultural' },
-    { id: 'food-wine', name: 'Food & Wine' },
-    { id: 'adventure', name: 'Adventure' }
+    { id: ActivityCategory.WaterSports, name: 'Water Sports' },
+    { id: ActivityCategory.Tours, name: 'Tours' },
+    { id: ActivityCategory.Cultural, name: 'Cultural' },
+    { id: ActivityCategory.FoodWine, name: 'Food & Wine' },
+    { id: ActivityCategory.Adventure, name: 'Adventure' }
   ];
 
   const filteredActivities = activities.filter((activity) => {
@@ -87,51 +87,11 @@ export default function Activities() {
 
         {/* Activities Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {filteredActivities.map((activity) => (
-            <ActivityCard key={activity.id} activity={activity} />
+          {filteredActivities.map((activity, index) => (
+            <ActivityCard key={`${activity.id}-${index}`} activity={activity} />
           ))}
         </div>
       </div>
     </div>
-  );
-}
-
-interface ActivityCardProps {
-  activity: Activity;
-}
-
-function ActivityCard({ activity }: ActivityCardProps) {
-  return (
-    <Link
-      to={`/activities/${activity.slug}`}
-      className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-200"
-    >
-      <div className="relative h-48">
-        <img
-          src={activity.images.main}
-          alt={activity.title}
-          className="w-full h-full object-cover"
-        />
-        <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/60 to-transparent p-4">
-          <span className="inline-block px-3 py-1 text-sm text-white bg-blue-600 rounded-full">
-            {activity.price.display}
-          </span>
-        </div>
-      </div>
-      <div className="p-4">
-        <h3 className="text-xl font-semibold text-gray-900 mb-2">{activity.title}</h3>
-        <p className="text-gray-600 text-sm mb-4">{activity.shortDescription}</p>
-        <div className="flex items-center justify-between text-sm text-gray-500">
-          <span className="flex items-center gap-1">
-            <MapPin className="w-4 h-4" />
-            {activity.location}
-          </span>
-          <span className="flex items-center gap-1">
-            <Clock className="w-4 h-4" />
-            {activity.duration}
-          </span>
-        </div>
-      </div>
-    </Link>
   );
 }

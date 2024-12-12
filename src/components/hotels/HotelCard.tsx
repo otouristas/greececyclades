@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { Star, MapPin, Wifi, Waves, UtensilsCrossed, Sparkles, Mountain, Car, LucideIcon, Users, Brush, Flower2, Umbrella, Baby, ParkingCircle, Home } from 'lucide-react';
 import { Hotel, HotelFeature } from '../../types/hotel';
-import { generateSlug } from '../../utils/seoMetadata';
+import { getHotelSlug } from '../../utils/slugs';
 
 const featureIcons: Record<HotelFeature, LucideIcon> = {
   'WiFi': Wifi,
@@ -45,7 +45,7 @@ interface HotelCardProps {
 }
 
 const HotelCard: React.FC<HotelCardProps> = ({ hotel }) => {
-  const hotelSlug = generateSlug(hotel.name, hotel.location.island);
+  const hotelSlug = getHotelSlug(hotel.name, hotel.location.island);
   return (
     <Link to={`/hotels/${hotelSlug}`} className="group">
       <div className="bg-white rounded-lg shadow-md overflow-hidden transition-transform duration-300 group-hover:scale-[1.02]">

@@ -1,17 +1,19 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import { activities } from '../data/activitiesData';
+import activities from '../data/activitiesData';
 import { Activity } from '../types/activity';
-import { Clock, MapPin, Users, Calendar, AlertCircle, Check, ChevronLeft } from 'lucide-react';
+import { Clock, MapPin, Users, Calendar, AlertCircle, Check } from 'lucide-react';
 import SEO from '../components/SEO';
-import { generateActivityDetailSEO } from '../utils/seo';
+import { generateActivitySEO } from '../utils/seo';
 
 export default function ActivityDetail() {
-  const { slug } = useParams<{ slug: string }>();
+  const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
-  const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [] = useState<string | null>(null);
+  const [imageError, setImageError] = useState<boolean>(false);
 
-  const activity = activities.find((a: Activity) => a.slug === slug);
+  const activity = activities.find((a: Activity) => a.id === id);
+  const defaultImage = '/images/activities/activities-hero.jpg';
 
   if (!activity) {
     return (
@@ -29,188 +31,156 @@ export default function ActivityDetail() {
     );
   }
 
+  const handleImageError = () => {
+    setImageError(true);
+  };
+
+  const mainImage = imageError || !activity.images?.main ? defaultImage : activity.images.main;
+
   return (
     <>
-      <SEO {...generateActivityDetailSEO(activity)} />
+      <SEO {...generateActivitySEO(activity)} />
       <div className="min-h-screen bg-gray-50">
         {/* Image Gallery */}
         <div className="relative h-[60vh]">
           <img
-            src={activity.images.main}
+            src={mainImage}
             alt={activity.title}
             className="w-full h-full object-cover"
+            onError={handleImageError}
           />
-          <div className="absolute inset-0 bg-black/30"></div>
-          <button
-            onClick={() => navigate('/activities')}
-            className="absolute top-4 left-4 z-10 flex items-center gap-2 px-4 py-2 bg-white/90 rounded-full text-gray-800 hover:bg-white transition-colors"
-          >
-            <ChevronLeft className="w-5 h-5" />
-            Back to Activities
-          </button>
+          <div className="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center">
+            <div className="text-center text-white">
+              <h1 className="text-4xl md:text-6xl font-bold mb-4">{activity.title}</h1>
+              <p className="text-xl md:text-2xl">{activity.location}, {activity.island}</p>
+            </div>
+          </div>
         </div>
 
-        {/* Content */}
-        <div className="max-w-7xl mx-auto px-4 py-8">
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-            {/* Main Content */}
-            <div className="lg:col-span-2">
-              <h1 className="text-3xl font-bold text-gray-900 mb-4">{activity.title}</h1>
-              
-              <div className="flex flex-wrap gap-4 mb-6">
-                <div className="flex items-center gap-2 text-gray-600">
-                  <MapPin className="w-5 h-5" />
-                  <span>{activity.location}, {activity.island}</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Clock className="w-5 h-5" />
-                  <span>{activity.duration}</span>
-                </div>
-                <div className="flex items-center gap-2 text-gray-600">
-                  <Users className="w-5 h-5" />
-                  <span>{activity.minParticipants}-{activity.maxParticipants} people</span>
-                </div>
-              </div>
-
-              <div className="prose max-w-none mb-8">
-                <p className="text-gray-700 whitespace-pre-line">{activity.description}</p>
-              </div>
-
-              <div className="mb-8">
-                <h2 className="text-xl font-semibold mb-4">Highlights</h2>
-                <ul className="grid grid-cols-1 md:grid-cols-2 gap-3">
-                  {activity.highlights.map((highlight, index) => (
-                    <li key={index} className="flex items-start gap-2">
-                      <Check className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-                <div>
-                  <h2 className="text-xl font-semibold mb-4">What's Included</h2>
-                  <ul className="space-y-2">
-                    {activity.included.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <Check className="w-5 h-5 text-green-500 mt-1 flex-shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-                <div>
-                  <h2 className="text-xl font-semibold mb-4">Not Included</h2>
-                  <ul className="space-y-2">
-                    {activity.notIncluded.map((item, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <AlertCircle className="w-5 h-5 text-red-500 mt-1 flex-shrink-0" />
-                        <span>{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              {activity.requirements && (
-                <div className="mb-8">
-                  <h2 className="text-xl font-semibold mb-4">Requirements</h2>
-                  <ul className="space-y-2">
-                    {activity.requirements.map((req, index) => (
-                      <li key={index} className="flex items-start gap-2">
-                        <AlertCircle className="w-5 h-5 text-blue-500 mt-1 flex-shrink-0" />
-                        <span>{req}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              )}
-
-              {/* Image Gallery */}
+        {/* Main Content */}
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          {/* Quick Info */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-12">
+            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center space-x-3">
+              <Clock className="h-6 w-6 text-blue-600" />
               <div>
-                <h2 className="text-xl font-semibold mb-4">Gallery</h2>
-                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                  {activity.images.gallery.map((image, index) => (
-                    <button
-                      key={index}
-                      onClick={() => setSelectedImage(image)}
-                      className="aspect-square rounded-lg overflow-hidden"
-                    >
-                      <img
-                        src={image}
-                        alt={`${activity.title} gallery ${index + 1}`}
-                        className="w-full h-full object-cover hover:scale-105 transition-transform duration-200"
-                      />
-                    </button>
+                <p className="text-sm text-gray-600">Duration</p>
+                <p className="font-semibold">{activity.duration}</p>
+              </div>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center space-x-3">
+              <Users className="h-6 w-6 text-blue-600" />
+              <div>
+                <p className="text-sm text-gray-600">Group Size</p>
+                <p className="font-semibold">Max {activity.maxGroupSize} people</p>
+              </div>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center space-x-3">
+              <MapPin className="h-6 w-6 text-blue-600" />
+              <div>
+                <p className="text-sm text-gray-600">Location</p>
+                <p className="font-semibold">{activity.location}</p>
+              </div>
+            </div>
+            <div className="bg-white p-4 rounded-lg shadow-sm flex items-center space-x-3">
+              <Calendar className="h-6 w-6 text-blue-600" />
+              <div>
+                <p className="text-sm text-gray-600">Available</p>
+                <p className="font-semibold">{activity.availableSeasons?.join(', ') || 'Year-round'}</p>
+              </div>
+            </div>
+          </div>
+
+          {/* Description */}
+          <div className="mb-12">
+            <h2 className="text-3xl font-semibold mb-6">About This Activity</h2>
+            <p className="text-gray-600 leading-relaxed whitespace-pre-line">{activity.description}</p>
+          </div>
+
+          {/* Highlights */}
+          {activity.highlights && activity.highlights.length > 0 && (
+            <div className="mb-12">
+              <h2 className="text-3xl font-semibold mb-6">Highlights</h2>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                {activity.highlights.map((highlight, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <Check className="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                    <p className="text-gray-700">{highlight}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+
+          {/* What's Included */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            <div>
+              <h2 className="text-3xl font-semibold mb-6">What's Included</h2>
+              <div className="space-y-3">
+                {activity.included.map((item, index) => (
+                  <div key={index} className="flex items-start space-x-3">
+                    <Check className="h-6 w-6 text-green-500 flex-shrink-0 mt-1" />
+                    <p className="text-gray-700">{item}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {activity.notIncluded && activity.notIncluded.length > 0 && (
+              <div>
+                <h2 className="text-3xl font-semibold mb-6">Not Included</h2>
+                <div className="space-y-3">
+                  {activity.notIncluded.map((item, index) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <AlertCircle className="h-6 w-6 text-red-500 flex-shrink-0 mt-1" />
+                      <p className="text-gray-700">{item}</p>
+                    </div>
                   ))}
                 </div>
               </div>
-            </div>
+            )}
+          </div>
 
-            {/* Booking Card */}
-            <div className="lg:col-span-1">
-              <div className="sticky top-8">
-                <div className="bg-white rounded-lg shadow-lg p-6">
-                  <div className="text-3xl font-bold text-gray-900 mb-4">
-                    {activity.price.display}
-                  </div>
-                  
-                  <div className="space-y-4 mb-6">
-                    <div className="flex items-center gap-2">
-                      <Calendar className="w-5 h-5 text-gray-500" />
-                      <div>
-                        <div className="font-medium">Best Time</div>
-                        <div className="text-sm text-gray-600">{activity.bestTime}</div>
-                      </div>
+          {/* Additional Info */}
+          <div className="grid md:grid-cols-2 gap-8 mb-12">
+            {/* Requirements */}
+            {activity.requirements && activity.requirements.length > 0 && (
+              <div>
+                <h2 className="text-3xl font-semibold mb-6">Requirements</h2>
+                <div className="space-y-3">
+                  {activity.requirements.map((req, index) => (
+                    <div key={index} className="flex items-start space-x-3">
+                      <AlertCircle className="h-6 w-6 text-blue-500 flex-shrink-0 mt-1" />
+                      <p className="text-gray-700">{req}</p>
                     </div>
-                    <div className="flex items-center gap-2">
-                      <Clock className="w-5 h-5 text-gray-500" />
-                      <div>
-                        <div className="font-medium">Duration</div>
-                        <div className="text-sm text-gray-600">{activity.duration}</div>
-                      </div>
-                    </div>
-                    <div className="flex items-center gap-2">
-                      <MapPin className="w-5 h-5 text-gray-500" />
-                      <div>
-                        <div className="font-medium">Meeting Point</div>
-                        <div className="text-sm text-gray-600">{activity.meetingPoint}</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <button className="w-full bg-blue-600 text-white py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors">
-                    Book Now
-                  </button>
-
-                  <div className="mt-4 text-sm text-gray-600">
-                    <p className="mb-2">
-                      <strong>Booking Notice:</strong> {activity.bookingNotice}
-                    </p>
-                    <p>
-                      <strong>Cancellation Policy:</strong> {activity.cancellationPolicy}
-                    </p>
-                  </div>
+                  ))}
                 </div>
+              </div>
+            )}
+
+            {/* Meeting Point */}
+            <div>
+              <h2 className="text-3xl font-semibold mb-6">Meeting Point</h2>
+              <div className="flex items-start space-x-3">
+                <MapPin className="h-6 w-6 text-blue-500 flex-shrink-0 mt-1" />
+                <p className="text-gray-700">{activity.meetingPoint}</p>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* Image Modal */}
-        {selectedImage && (
-          <div
-            className="fixed inset-0 bg-black/90 z-50 flex items-center justify-center p-4"
-            onClick={() => setSelectedImage(null)}
-          >
-            <img
-              src={selectedImage}
-              alt="Gallery"
-              className="max-w-full max-h-[90vh] object-contain"
-            />
+          {/* Booking Section */}
+          <div className="bg-white rounded-lg shadow-lg p-6">
+            <div className="flex justify-between items-center mb-6">
+              <h2 className="text-3xl font-semibold">Book Now</h2>
+              <div>
+                <p className="text-sm text-gray-600">Price per person</p>
+                <p className="text-3xl font-bold text-blue-600">{activity.price.display}</p>
+              </div>
+            </div>
+            <button className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-semibold hover:bg-blue-700 transition-colors">
+              Check Availability
+            </button>
           </div>
-        )}
+        </div>
       </div>
     </>
   );

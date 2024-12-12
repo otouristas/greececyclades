@@ -1,0 +1,229 @@
+# Hero Images
+/images/hero/home-hero.jpg
+/images/hero/hotels-hero.jpg
+/images/hero/activities-hero.jpg
+/images/hero/islands-hero.jpg
+/images/hero/car-rental-hero.jpg
+/images/hero/contact-hero.jpg
+/images/hero/culinary-hero.jpg
+/images/hero/trip-planner-hero.jpg
+
+# Island Hero Images
+/images/hero/islands/mykonos-hero.jpg
+/images/hero/islands/santorini-hero.jpg
+/images/hero/islands/paros-hero.jpg
+/images/hero/islands/naxos-hero.jpg
+/images/hero/islands/milos-hero.jpg
+/images/hero/islands/sifnos-hero.jpg
+/images/hero/islands/antiparos-hero.jpg
+/images/hero/islands/kimolos-hero.jpg
+/images/hero/islands/koufonisia-hero.jpg
+/images/hero/islands/andros-hero.jpg
+/images/hero/islands/tinos-hero.jpg
+/images/hero/islands/syros-hero.jpg
+/images/hero/islands/kea-hero.jpg
+
+# Hotel Images
+## Andronis Luxury Suites
+/images/hotels/andronis/main.jpg
+/images/hotels/andronis/room1.jpg
+/images/hotels/andronis/room2.jpg
+
+## Mystique Hotel
+/images/hotels/mystique/main.jpg
+/images/hotels/mystique/exterior.jpg
+/images/hotels/mystique/pool.jpg
+/images/hotels/mystique/restaurant.jpg
+/images/hotels/mystique/spa.jpg
+
+## Summer Senses
+/images/hotels/summer-senses/deluxe-1.jpg
+/images/hotels/summer-senses/premium-1.jpg
+/images/hotels/summer-senses/pool-1.jpg
+
+## Skinopi Lodge
+/images/rooms/skinopi/villa-1.jpg
+
+## Paros Luxury Resort
+/images/hotels/paros-luxury-main.jpg
+/images/hotels/paros-luxury-1.jpg
+/images/hotels/paros-luxury-2.jpg
+/images/hotels/paros-luxury-3.jpg
+/images/rooms/paros-luxury/deluxe-suite-1.jpg
+
+## Nissaki Beach Hotel
+/images/hotels/nissaki/main.jpg
+/images/hotels/nissaki/gallery-1.jpg
+/images/hotels/nissaki/gallery-2.jpg
+/images/hotels/nissaki/gallery-3.jpg
+/images/rooms/nissaki/standard-1.jpg
+
+## Caldera Villas
+/images/hotels/caldera-villas-main.jpg
+/images/hotels/caldera-villas-1.jpg
+/images/hotels/caldera-villas-2.jpg
+/images/hotels/caldera-villas-3.jpg
+/images/rooms/caldera/superior-villa-1.jpg
+
+## Milos Hideaway
+/images/hotels/milos-hideaway-main.jpg
+/images/hotels/milos-hideaway-1.jpg
+/images/hotels/milos-hideaway-2.jpg
+/images/hotels/milos-hideaway-3.jpg
+
+## Niriedes Hotel
+/images/hotels/niriedes/exterior.jpg
+/images/hotels/niriedes/pool.jpg
+/images/hotels/niriedes/room.jpg
+/images/hotels/niriedes/restaurant.jpg
+/images/rooms/niriedes/sea-view-1.jpg
+
+## Naxos Resort
+/images/hotels/naxos-resort/exterior.jpg
+/images/hotels/naxos-resort/beach.jpg
+/images/hotels/naxos-resort/pool.jpg
+/images/hotels/naxos-resort/restaurant.jpg
+/images/rooms/naxos-resort/deluxe-room-1.jpg
+
+## Naxian Collection
+/images/hotels/naxian-collection/exterior.jpg
+/images/hotels/naxian-collection/pool.jpg
+/images/hotels/naxian-collection/villa.jpg
+/images/hotels/naxian-collection/restaurant.jpg
+/images/rooms/naxian-collection/deluxe-villa-1.jpg
+
+## Paros Agnanti
+/images/hotels/paros-agnanti/exterior.jpg
+/images/hotels/paros-agnanti/pool.jpg
+/images/hotels/paros-agnanti/room.jpg
+/images/hotels/paros-agnanti/view.jpg
+/images/rooms/paros-agnanti/deluxe-room-1.jpg
+
+## Cavo Tagoo
+/images/rooms/cavo-tagoo/deluxe-suite-1.jpg
+
+## Verina Astra
+/images/rooms/verina-astra/deluxe-suite-1.jpg
+
+## Kamaroti Suites
+/images/hotels/kamaroti-suites/exterior.jpg
+/images/hotels/kamaroti-suites/pool.jpg
+/images/hotels/kamaroti-suites/suite.jpg
+/images/hotels/kamaroti-suites/garden.jpg
+/images/rooms/kamaroti-suites/deluxe-suite-1.jpg
+
+## Beach House
+/images/rooms/beach-house/deluxe-suite-1.jpg
+
+## Grace Santorini
+/images/hotels/grace-santorini/exterior.jpg
+/images/hotels/grace-santorini/pool.jpg
+/images/hotels/grace-santorini/suite.jpg
+/images/hotels/grace-santorini/restaurant.jpg
+/images/hotels/grace-santorini/suite.jpg
+
+## Absolute Bliss
+/images/hotels/absolute-bliss/exterior.jpg
+/images/hotels/absolute-bliss/suite.jpg
+/images/hotels/absolute-bliss/pool.jpg
+/images/hotels/absolute-bliss/restaurant.jpg
+/images/rooms/absolute-bliss/deluxe-suite-1.jpg
+
+# Car Rental Images
+/images/cars/economy/main.jpg
+/images/cars/economy/gallery-1.jpg
+/images/cars/economy/gallery-2.jpg
+/images/cars/economy/gallery-3.jpg
+
+/images/cars/compact/main.jpg
+/images/cars/compact/gallery-1.jpg
+/images/cars/compact/gallery-2.jpg
+/images/cars/compact/gallery-3.jpg
+
+/images/cars/midsize/main.jpg
+/images/cars/midsize/gallery-1.jpg
+/images/cars/midsize/gallery-2.jpg
+/images/cars/midsize/gallery-3.jpg
+
+/images/cars/suv/main.jpg
+/images/cars/suv/gallery-1.jpg
+/images/cars/suv/gallery-2.jpg
+/images/cars/suv/gallery-3.jpg
+
+/images/cars/luxury/main.jpg
+/images/cars/luxury/gallery-1.jpg
+/images/cars/luxury/gallery-2.jpg
+/images/cars/luxury/gallery-3.jpg
+
+/images/cars/convertible/main.jpg
+/images/cars/convertible/gallery-1.jpg
+/images/cars/convertible/gallery-2.jpg
+/images/cars/convertible/gallery-3.jpg
+
+# Activity Images
+## Water Sports
+/images/activities/mikri-vigla-kitesurfing-main.jpg
+/images/activities/mikri-vigla-kitesurfing-1.jpg
+/images/activities/mikri-vigla-kitesurfing-2.jpg
+/images/activities/mikri-vigla-kitesurfing-3.jpg
+
+/images/activities/golden-beach-windsurfing-main.jpg
+/images/activities/golden-beach-windsurfing-1.jpg
+/images/activities/golden-beach-windsurfing-2.jpg
+/images/activities/golden-beach-windsurfing-3.jpg
+
+## Sailing & Cruises
+/images/activities/paros-sailing-main.jpg
+/images/activities/paros-sailing-1.jpg
+/images/activities/paros-sailing-2.jpg
+/images/activities/paros-sailing-3.jpg
+
+## Hiking & Nature
+/images/activities/zeus-cave-hike-main.jpg
+/images/activities/zeus-cave-hike-1.jpg
+/images/activities/zeus-cave-hike-2.jpg
+/images/activities/zeus-cave-hike-3.jpg
+
+/images/activities/naxos-hiking-main.jpg
+/images/activities/naxos-hiking-1.jpg
+/images/activities/naxos-hiking-2.jpg
+/images/activities/naxos-hiking-3.jpg
+
+## Cultural & Food
+/images/activities/santorini-cooking-main.jpg
+/images/activities/santorini-cooking-1.jpg
+/images/activities/santorini-cooking-2.jpg
+/images/activities/santorini-cooking-3.jpg
+
+/images/activities/fira-cable-car-main.jpg
+/images/activities/fira-cable-car-1.jpg
+/images/activities/fira-cable-car-2.jpg
+/images/activities/fira-cable-car-3.jpg
+
+# Beach Club Images
+## Jackie O' Beach Club
+/images/beach-clubs/jackie-o/main.jpg
+/images/beach-clubs/jackie-o/pool.jpg
+/images/beach-clubs/jackie-o/restaurant.jpg
+/images/beach-clubs/jackie-o/beach.jpg
+/images/beach-clubs/jackie-o/sunset.jpg
+
+## Soros Beach Club
+/images/beach-clubs/soros/main.jpg
+/images/beach-clubs/soros/beach.jpg
+/images/beach-clubs/soros/restaurant.jpg
+/images/beach-clubs/soros/sunbeds.jpg
+/images/beach-clubs/soros/dj-set.jpg
+
+# Attraction Images
+/images/attractions/red-beach.jpg
+/images/restaurants/metaxy-mas.jpg
+
+# Contact Page
+/images/contact-cyclades.jpg
+
+# Placeholders
+https://placehold.co/1920x1080/1a1a1a/ffffff?text=Hotel+Hero+Image
+https://placehold.co/800x600/1a1a1a/ffffff?text=Gallery+Image
+https://placehold.co/600x400/1a1a1a/ffffff?text=Room+Image
+https://placehold.co/400x300/1a1a1a/ffffff?text=Feature+Image

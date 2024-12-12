@@ -3,11 +3,11 @@
   <!-- Home Page -->
   <url>
     <loc>https://greececyclades.com/</loc>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
 
-  <!-- Main Sections -->
+  <!-- Main Navigation -->
   <url>
     <loc>https://greececyclades.com/islands</loc>
     <changefreq>weekly</changefreq>
@@ -24,6 +24,11 @@
     <priority>0.8</priority>
   </url>
   <url>
+    <loc>https://greececyclades.com/culinary</loc>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://greececyclades.com/hotels</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
@@ -32,6 +37,33 @@
     <loc>https://greececyclades.com/rent-a-car</loc>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Additional Pages -->
+  <url>
+    <loc>https://greececyclades.com/blog</loc>
+    <changefreq>weekly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/contact</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/about</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/list-property</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/trip-planner</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
   </url>
 
   <!-- Individual Islands -->
@@ -120,5 +152,17 @@
     <lastmod>2024-01-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+  </url>
+
+  <!-- Legal Pages -->
+  <url>
+    <loc>https://greececyclades.com/privacy</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/terms</loc>
+    <changefreq>monthly</changefreq>
+    <priority>0.4</priority>
   </url>
 </urlset>

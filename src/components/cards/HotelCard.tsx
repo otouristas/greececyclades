@@ -1,6 +1,6 @@
 import { MapPin, Star, Wifi, Waves, UtensilsCrossed, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
-import { Hotel } from '../../types';
+import { Hotel } from '../../types/hotel';
 import { formatPrice } from '../../utils/price';
 
 const amenityIcons = {
@@ -16,60 +16,58 @@ interface HotelCardProps {
 
 export default function HotelCard({ hotel }: HotelCardProps) {
   return (
-    <Link to={`/hotels/${hotel.id}`} className="block">
-      <div className="bg-white rounded-xl shadow-sm overflow-hidden flex flex-col md:flex-row">
-        <div className="relative md:w-2/5">
+    <Link to={`/hotels/${hotel.slug}`} className="block group">
+      <div className="bg-white rounded-xl shadow-sm overflow-hidden transition-transform duration-300 hover:-translate-y-1">
+        <div className="relative aspect-[4/3] overflow-hidden">
           <img
-            src={hotel.image}
+            src={hotel.images[0]}
             alt={hotel.name}
-            className="w-full h-full object-cover"
+            className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
           />
-          <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium">
-            From {formatPrice(hotel.price)}/night
+          <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
+          <div className="absolute top-4 right-4 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-full text-sm font-medium">
+            From {formatPrice(hotel.priceRange.min, hotel.priceRange.currency)}/night
+          </div>
+          <div className="absolute bottom-4 left-4 flex items-center gap-1.5 text-white">
+            <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
+            <span className="font-medium">{hotel.rating.toFixed(1)}</span>
+            <span className="text-sm text-white/90">({hotel.reviews})</span>
           </div>
         </div>
 
-        <div className="p-6 md:w-3/5">
+        <div className="p-5">
           <div className="flex items-center gap-2 text-sm text-gray-500">
-            <MapPin className="h-4 w-4" />
-            {hotel.location}
+            <MapPin className="h-4 w-4 flex-shrink-0" />
+            <span className="truncate">{`${hotel.location.area}, ${hotel.location.island}`}</span>
           </div>
 
-          <h3 className="mt-2 text-xl font-semibold text-gray-900">
+          <h3 className="mt-2 text-lg font-semibold text-gray-900 group-hover:text-blue-600 transition-colors">
             {hotel.name}
           </h3>
 
-          <p className="mt-2 text-gray-600 text-sm">
+          <div className="mt-2 flex items-center gap-3">
+            <span className="px-2.5 py-0.5 bg-blue-50 text-blue-700 rounded-full text-sm font-medium">
+              {hotel.category}
+            </span>
+            <div className="flex flex-wrap gap-3">
+              {hotel.amenities.slice(0, 3).map((amenity) => {
+                const Icon = amenityIcons[amenity as keyof typeof amenityIcons];
+                return (
+                  <div
+                    key={amenity}
+                    className="flex items-center gap-1 text-sm text-gray-500"
+                  >
+                    {Icon && <Icon className="h-4 w-4 flex-shrink-0" />}
+                    <span>{amenity}</span>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+
+          <p className="mt-3 text-gray-600 text-sm line-clamp-2">
             {hotel.description}
           </p>
-
-          <div className="mt-4 flex flex-wrap gap-3">
-            {hotel.amenities.map((amenity) => {
-              const Icon = amenityIcons[amenity as keyof typeof amenityIcons];
-              return (
-                <div
-                  key={amenity}
-                  className="flex items-center gap-1 text-sm text-gray-600"
-                >
-                  <Icon className="h-4 w-4" />
-                  <span>{amenity}</span>
-                </div>
-              );
-            })}
-          </div>
-
-          <div className="mt-4 flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <Star className="h-5 w-5 text-yellow-400 fill-yellow-400" />
-              <span className="font-medium">{hotel.rating}</span>
-              <span className="text-sm text-gray-500">
-                ({hotel.reviews} reviews)
-              </span>
-            </div>
-            <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
-              View Details
-            </button>
-          </div>
         </div>
       </div>
     </Link>

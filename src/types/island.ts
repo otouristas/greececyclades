@@ -9,23 +9,27 @@ export type StayDuration = typeof STAY_DURATION[keyof typeof STAY_DURATION];
 export type IslandSize = keyof typeof STAY_DURATION;
 
 // Available months for visiting
-export const AVAILABLE_MONTHS = [
-  'May', 'June', 'July', 'August', 'September', 'October'
-] as const;
-export type AvailableMonth = typeof AVAILABLE_MONTHS[number];
+export enum AvailableMonth {
+  APRIL = 'April',
+  MAY = 'May',
+  JUNE = 'June',
+  JULY = 'July',
+  AUGUST = 'August',
+  SEPTEMBER = 'September',
+  OCTOBER = 'October'
+}
 
 // Island characteristics
-export const ISLAND_VIBES = [
-  'romantic',
-  'peaceful',
-  'lively',
-  'adventurous',
-  'traditional',
-  'luxurious',
-  'cultural',
-  'scenic'
-] as const;
-export type IslandVibe = typeof ISLAND_VIBES[number];
+export enum IslandVibe {
+  ROMANTIC = 'romantic',
+  PEACEFUL = 'peaceful',
+  LIVELY = 'lively',
+  ADVENTUROUS = 'adventurous',
+  TRADITIONAL = 'traditional',
+  LUXURIOUS = 'luxurious',
+  CULTURAL = 'cultural',
+  SCENIC = 'scenic'
+}
 
 // Available activities
 export const ISLAND_ACTIVITIES = [
@@ -47,26 +51,51 @@ export const ISLAND_ACTIVITIES = [
 ] as const;
 export type IslandActivity = typeof ISLAND_ACTIVITIES[number];
 
-// Base interface for island data
-export interface BaseIsland {
-  id: number;
+export interface Island {
+  id: string;
   name: string;
   description: string;
-  activities: readonly IslandActivity[];
-  bestMonths: readonly AvailableMonth[];
-  size: IslandSize;
-  mustSee: readonly string[];
+  shortDescription: string;
+  quote: string;
+  metaTitle: string;
+  metaDescription: string;
+  activities: IslandActivity[];
+  bestMonths: AvailableMonth[];
+  averageStay: number;
+  mustSee: string[];
   image: string;
-  vibes: readonly IslandVibe[];
+  vibes: IslandVibe[];
+  size: keyof typeof STAY_DURATION;
+  slug: string;
+  heroImage: string;
+  highlights: string[];
+  weather: {
+    summer: string;
+    winter: string;
+    spring: string;
+    autumn: string;
+  };
+  bestTime: {
+    months: AvailableMonth[];
+    reason: string;
+  };
+  idealFor: string[];
 }
 
-// Extended interface with computed properties
-export interface Island extends BaseIsland {
-  readonly averageStay: StayDuration;
+export interface TripPreferences {
+  duration: number;
+  month: AvailableMonth;
+  vibes: IslandVibe[];
+  pace: 'relaxed' | 'moderate' | 'active';
 }
 
-// Type for ensuring correct structure with getters
-export type IslandData = Omit<Island, 'averageStay'> & {
-  readonly size: IslandSize;
-  get averageStay(): StayDuration;
-};
+export interface TripPlan {
+  islands: Island[];
+  duration: number;
+  month: AvailableMonth;
+  vibes: IslandVibe[];
+  pace: 'relaxed' | 'moderate' | 'active';
+  aiSuggestions?: string;
+  userId?: string;
+  createdAt?: Date;
+}

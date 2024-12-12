@@ -1,5 +1,38 @@
-export type ActivityCategory = 'water-sports' | 'tours' | 'cultural' | 'food-wine' | 'adventure';
-export type ActivityDifficulty = 'easy' | 'moderate' | 'challenging';
+export enum ActivityCategory {
+  WaterSports = 'water-sports',
+  Tours = 'tours',
+  Cultural = 'cultural',
+  FoodWine = 'food-wine',
+  Adventure = 'adventure',
+  Nature = 'nature',
+  Beach = 'beach',
+  Sightseeing = 'sightseeing',
+  Culture = 'culture',
+  Entertainment = 'entertainment',
+  Culinary = 'culinary',
+  Food = "Food",
+  Water = "Water",
+  BeachLife = "BeachLife"
+}
+
+export enum ActivityDifficulty {
+  Easy = 'easy',
+  Intermediate = 'intermediate',
+  Challenging = 'challenging',
+  Moderate = "Moderate"
+}
+
+interface Review {
+  author: string;
+  rating: number;
+  date: string;
+  comment: string;
+}
+
+interface Rating {
+  overall: number;
+  totalReviews: number;
+}
 
 export interface Activity {
   id: string;
@@ -16,23 +49,31 @@ export interface Activity {
     display: string;
   };
   included: string[];
-  notIncluded: string[];
-  highlights: string[];
+  notIncluded?: string[];
+  difficulty: ActivityDifficulty;
+  category: ActivityCategory;
+  maxGroupSize?: number;
+  startTimes?: string[];
+  availableSeasons?: string[];
+  requirements?: string[];
+  meetingPoint: string;
   images: {
     main: string;
     gallery: string[];
   };
-  category: ActivityCategory;
-  difficulty: ActivityDifficulty;
-  bestTime: string;
-  minParticipants: number;
-  maxParticipants: number;
-  bookingNotice: string;
-  cancellationPolicy: string;
-  meetingPoint: string;
-  requirements?: string[];
   tags?: string[];
   languages?: string[];
   providedEquipment?: string[];
-  startTimes?: string[];
+  rating?: Rating;
+  reviews?: Review[];
+  seoMeta?: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
+  bestTime?: string;
+  minParticipants?: number;
+  bookingNotice?: string;
+  cancellationPolicy?: string;
+  highlights?: string[];
 }

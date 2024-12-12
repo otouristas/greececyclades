@@ -60,9 +60,28 @@ const ParosGuide: React.FC = () => {
     }
   ];
 
+  const seoData = {
+    title: "Paros Travel Guide 2025 - Best Beaches, Villages & Things to Do",
+    description: "Discover the authentic charm of Paros with our complete 2025 travel guide. From golden beaches and traditional villages to water sports and local cuisine.",
+    keywords: [
+      'Paros travel guide',
+      'Naoussa Paros',
+      'Parikia',
+      'Golden Beach',
+      'Greek islands',
+      'Paros villages',
+      'Paros beaches',
+      'water sports Paros',
+      'Paros restaurants',
+      'best time to visit Paros'
+    ],
+    ogImage: paros.image,
+    ogType: 'article'
+  };
+
   return (
     <div className="min-h-screen bg-white" ref={containerRef}>
-      <SEO {...generateGuideSEO('Paros')} />
+      <SEO {...seoData} />
       
       {/* Parallax Hero Section */}
       <div className="relative h-screen overflow-hidden">

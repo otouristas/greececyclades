@@ -3,17 +3,9 @@ interface Price {
   currency: string;
 }
 
-export const formatPrice = (price: Price | string | number | undefined): string => {
-  if (!price) return '€0';
-  
-  if (typeof price === 'object' && 'from' in price) {
-    const currencySymbol = price.currency === 'EUR' ? '€' : price.currency;
-    return `${currencySymbol}${price.from}`;
-  }
-  
-  if (typeof price === 'number') {
-    return `€${price}`;
-  }
-  
-  return `€${price}`;
+export const formatPrice = (price: number, currency: string = 'EUR'): string => {
+  if (typeof price !== 'number') return '€0';
+
+  const currencySymbol = currency === 'EUR' ? '€' : currency;
+  return `${currencySymbol}${price.toLocaleString()}`;
 };

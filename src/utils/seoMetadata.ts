@@ -6,6 +6,7 @@ interface SEOMetadata {
   ogTitle?: string;
   ogDescription?: string;
   ogImage?: string;
+  ogType?: string;
 }
 
 export const DEFAULT_KEYWORDS = [
@@ -207,4 +208,15 @@ export function generateHotelsListingJsonLD(hotels: Array<{
   };
 
   return JSON.stringify(jsonLD);
+}
+
+export function generateSitemapSEO(): SEOMetadata {
+  return {
+    title: 'Sitemap | Greece Cyclades',
+    description: 'Complete sitemap of Greece Cyclades website. Find all our pages about islands, hotels, activities, and travel guides.',
+    keywords: [...DEFAULT_KEYWORDS, 'sitemap', 'website map', 'all pages', 'navigation'],
+    ogType: 'website',
+    ogImage: '/images/cyclades-overview.jpg',
+    canonicalUrl: '/sitemap'
+  };
 }

@@ -62,7 +62,24 @@ const NaxosGuide: React.FC = () => {
 
   return (
     <div className="min-h-screen bg-white" ref={containerRef}>
-      <SEO {...generateGuideSEO('Naxos')} />
+      <SEO 
+        title="Naxos Travel Guide 2025 - Best Beaches, Mountains & Things to Do"
+        description="Experience the diverse beauty of Naxos with our comprehensive 2025 travel guide. From pristine beaches and mountain villages to ancient ruins and local gastronomy."
+        keywords={[
+          'Naxos travel guide',
+          'Naxos beaches',
+          'Mount Zeus',
+          'Chora Naxos',
+          'Greek islands',
+          'Naxos villages',
+          'ancient ruins',
+          'hiking Naxos',
+          'Naxos food',
+          'best time to visit Naxos'
+        ]}
+        ogImage={naxos.image}
+        ogType="article"
+      />
       
       {/* Parallax Hero Section */}
       <div className="relative h-screen overflow-hidden">

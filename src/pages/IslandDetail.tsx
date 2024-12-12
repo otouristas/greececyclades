@@ -1,10 +1,9 @@
 import { useEffect } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
-import { MapPin, Navigation, Sun, Waves, Hotel as HotelIcon, Car, Map, Compass, Calendar } from 'lucide-react';
+import { MapPin, Navigation, Sun, Waves, Hotel as HotelIcon, Car, Map, Compass, Calendar, Clock, Users, Sailboat, Info } from 'lucide-react';
 import { useIslandStore } from '../store/islandStore';
 import { useHotelStore } from '../store/hotelStore';
 import { useVehicleStore } from '../store/vehicleStore';
-import SearchBar from '../components/SearchBar';
 import TransportInfo from '../components/islands/TransportInfo';
 import BestTimeToVisit from '../components/islands/BestTimeToVisit';
 import IslandHighlights from '../components/islands/IslandHighlights';
@@ -17,7 +16,7 @@ import { getIslandSlug } from '../utils/slugify';
 import { generateIslandDetailSEO } from '../utils/seo';
 
 export default function IslandDetail() {
-  const { id: slug } = useParams();
+  const { slug } = useParams();
   const navigate = useNavigate();
   const { islands, selectedIsland, setSelectedIsland } = useIslandStore();
   const { hotels } = useHotelStore();
@@ -46,7 +45,7 @@ export default function IslandDetail() {
         selectedIsland.image
       )} />
 
-      <div className="bg-white pt-16">
+      <div className="bg-white">
         {/* Hero Section */}
         <div className="relative h-[70vh]">
           <div 
@@ -58,7 +57,7 @@ export default function IslandDetail() {
             <div className="absolute inset-0 bg-black/30" />
           </div>
           <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="h-full flex flex-col justify-between py-12">
+            <div className="h-full flex flex-col justify-center py-12">
               <div className="max-w-3xl">
                 <div className="flex items-center gap-2 text-white/90 mb-4">
                   <MapPin className="h-5 w-5" />
@@ -68,9 +67,9 @@ export default function IslandDetail() {
                   {selectedIsland.name}
                 </h1>
                 <p className="text-xl text-white/90 mb-8">
-                  {selectedIsland.quote}
+                  {selectedIsland.shortDescription}
                 </p>
-                <div className="flex items-center gap-6 text-white">
+                <div className="flex flex-wrap items-center gap-6 text-white">
                   <div className="flex items-center gap-2">
                     <Sun className="h-5 w-5" />
                     <span>{selectedIsland.weather.temp}</span>
@@ -80,76 +79,53 @@ export default function IslandDetail() {
                     <span>{selectedIsland.weather.condition}</span>
                   </div>
                   <div className="flex items-center gap-2">
-                    <Navigation className="h-5 w-5" />
-                    <span>{selectedIsland.activities} Activities</span>
+                    <Clock className="h-5 w-5" />
+                    <span>Best Time: {selectedIsland.bestTime}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <Users className="h-5 w-5" />
+                    <span>Ideal for: {selectedIsland.idealFor.join(', ')}</span>
                   </div>
                 </div>
-              </div>
-              
-              <div className="w-full max-w-2xl mx-auto">
-                <SearchBar />
               </div>
             </div>
           </div>
         </div>
 
-        {/* Quick Links */}
-        <div className="border-b sticky top-16 bg-white z-30">
+        {/* Quick Actions */}
+        <div className="bg-white shadow-lg py-6 relative z-10">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex overflow-x-auto py-4 gap-8">
-              <a href="#highlights" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 whitespace-nowrap">
-                <Compass className="h-5 w-5" />
-                <span>Highlights</span>
-              </a>
-              <a href="#transport" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 whitespace-nowrap">
-                <Navigation className="h-5 w-5" />
-                <span>Getting Here</span>
-              </a>
-              <a href="#best-time" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 whitespace-nowrap">
-                <Calendar className="h-5 w-5" />
-                <span>Best Time to Visit</span>
-              </a>
-              <a href="#hotels" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 whitespace-nowrap">
-                <HotelIcon className="h-5 w-5" />
-                <span>Where to Stay</span>
-              </a>
-              <a href="#activities" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 whitespace-nowrap">
-                <Map className="h-5 w-5" />
-                <span>Things to Do</span>
-              </a>
-              <a href="#car-rental" className="flex items-center gap-2 text-gray-600 hover:text-blue-600 whitespace-nowrap">
-                <Car className="h-5 w-5" />
-                <span>Car Rental</span>
-              </a>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <Link to="#hotels" className="flex flex-col items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                <HotelIcon className="h-6 w-6 text-blue-600 mb-2" />
+                <span className="text-sm font-medium text-blue-900">Book Hotels</span>
+              </Link>
+              <Link to="#car-rental" className="flex flex-col items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                <Car className="h-6 w-6 text-blue-600 mb-2" />
+                <span className="text-sm font-medium text-blue-900">Rent a Car</span>
+              </Link>
+              <Link to="#transport" className="flex flex-col items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                <Sailboat className="h-6 w-6 text-blue-600 mb-2" />
+                <span className="text-sm font-medium text-blue-900">Ferry Times</span>
+              </Link>
+              <Link to={`/guides/${selectedIsland.name.toLowerCase()}`} className="flex flex-col items-center p-4 bg-blue-50 rounded-lg hover:bg-blue-100 transition-colors">
+                <Info className="h-6 w-6 text-blue-600 mb-2" />
+                <span className="text-sm font-medium text-blue-900">Full Guide</span>
+              </Link>
             </div>
           </div>
         </div>
 
         {/* Content Sections */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-16">
-          {/* Highlights Section */}
-          <section id="highlights">
-            <h2 className="text-3xl font-bold mb-8">Highlights of {selectedIsland.name}</h2>
-            <IslandHighlights island={selectedIsland} />
-          </section>
-
-          {/* Transport Section */}
-          <section id="transport">
-            <h2 className="text-3xl font-bold mb-8">Getting to {selectedIsland.name}</h2>
-            <TransportInfo island={selectedIsland} />
-          </section>
-
-          {/* Best Time to Visit */}
-          <section id="best-time">
-            <h2 className="text-3xl font-bold mb-8">Best Time to Visit</h2>
-            <BestTimeToVisit island={selectedIsland} />
-          </section>
-
           {/* Where to Stay */}
-          <section id="hotels">
+          <section id="hotels" className="bg-white rounded-2xl shadow-sm p-8">
             <div className="flex justify-between items-center mb-8">
-              <h2 className="text-3xl font-bold">Where to Stay in {selectedIsland.name}</h2>
-              <Link to="/hotels" className="text-blue-600 hover:text-blue-700">
+              <div>
+                <h2 className="text-3xl font-bold mb-2">Where to Stay</h2>
+                <p className="text-gray-600">Best hotels and accommodations in {selectedIsland.name}</p>
+              </div>
+              <Link to="/hotels" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
                 View all hotels
               </Link>
             </div>
@@ -188,18 +164,30 @@ export default function IslandDetail() {
             </div>
           </section>
 
-          {/* Car Rental */}
-          <section id="car-rental">
-            <div className="flex items-center gap-4 mb-8">
-              <h2 className="text-3xl font-bold">Rent a Car in {selectedIsland.name}</h2>
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-600">Provided by</span>
-                <img
-                  src="https://rentacarantiparos.gr/wp-content/uploads/2024/03/Aggelos-Rentals-Logo-Small.png"
-                  alt="AGGELOS Rentals"
-                  className="h-8"
-                />
+          {/* Transport Section */}
+          <section id="transport" className="bg-white rounded-2xl shadow-sm p-8">
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h2 className="text-3xl font-bold mb-2">Getting Here</h2>
+                <p className="text-gray-600">Ferry schedules and transportation options</p>
               </div>
+              <a href="#" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                Book Ferry
+              </a>
+            </div>
+            <TransportInfo island={selectedIsland} />
+          </section>
+
+          {/* Car Rental */}
+          <section id="car-rental" className="bg-white rounded-2xl shadow-sm p-8">
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h2 className="text-3xl font-bold mb-2">Rent a Car</h2>
+                <p className="text-gray-600">Available vehicles in {selectedIsland.name}</p>
+              </div>
+              <Link to="/rent-a-car" className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                View all vehicles
+              </Link>
             </div>
             <div className="grid md:grid-cols-3 gap-6">
               {vehicles.slice(0, 3).map((vehicle) => (
@@ -210,10 +198,18 @@ export default function IslandDetail() {
             </div>
           </section>
 
-          {/* Local Tips Section */}
-          <section id="tips">
-            <h2 className="text-3xl font-bold mb-8">Local Tips</h2>
-            <LocalTips island={selectedIsland} />
+          {/* Highlights Section */}
+          <section id="highlights" className="bg-white rounded-2xl shadow-sm p-8">
+            <div className="flex justify-between items-center mb-8">
+              <div>
+                <h2 className="text-3xl font-bold mb-2">Island Highlights</h2>
+                <p className="text-gray-600">Must-see places and experiences</p>
+              </div>
+              <Link to={`/guides/${selectedIsland.name.toLowerCase()}`} className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                Read full guide
+              </Link>
+            </div>
+            <IslandHighlights island={selectedIsland} />
           </section>
         </div>
       </div>

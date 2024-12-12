@@ -1,7 +1,7 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { Facebook, Twitter, Instagram, Youtube, Mail } from 'lucide-react';
 import { getIslandSlug } from '../utils/slugify';
+import Logo from './Logo';
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -11,7 +11,9 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
           <div>
-            <h3 className="text-xl font-bold mb-4">Discover Cyclades</h3>
+            <div className="mb-4">
+              <Logo variant="white" />
+            </div>
             <p className="text-gray-400 text-sm">
               Your trusted guide to exploring the Greek islands with curated accommodations,
               activities, and local experiences.
@@ -21,6 +23,8 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Quick Links</h4>
             <ul className="space-y-2 text-gray-400">
+              <li><Link to="/blog" className="hover:text-white transition-colors">Blog</Link></li>
+              <li><Link to="/contact" className="hover:text-white transition-colors">Contact</Link></li>
               <li><Link to="/about" className="hover:text-white transition-colors">About Us</Link></li>
               <li><Link to="/list-property" className="hover:text-white transition-colors">List Your Property</Link></li>
               <li><Link to="/guides" className="hover:text-white transition-colors">Travel Guides</Link></li>

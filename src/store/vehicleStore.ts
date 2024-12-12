@@ -12,10 +12,14 @@ interface VehicleState {
 }
 
 const defaultFilters: VehicleFilters = {
-  priceRange: { min: 0, max: 200 },
-  vehicleType: null,
-  transmission: null,
-  passengers: null
+    priceRange: { min: 0, max: 200 },
+    vehicleType: null,
+    transmission: null,
+    passengers: null,
+    features: null,
+    location: null,
+    pickupDate: null,
+    returnDate: null
 };
 
 const mockVehicles: Vehicle[] = [
@@ -36,7 +40,9 @@ const mockVehicles: Vehicle[] = [
     features: ['7 Seats', 'GPS Navigation', 'Bluetooth', 'Cruise Control', 'Parking Sensors'],
     location: 'All Locations',
     company: 'AGGELOS Rentals',
-    mileage: 'Unlimited'
+    mileage: 'Unlimited',
+    description: 'Experience luxury and comfort with the Mercedes GLB 2022. This spacious 7-seater SUV combines elegant design with practical functionality, perfect for families or groups exploring the islands. With its powerful diesel engine and smooth automatic transmission, it offers both performance and efficiency.',
+    idealFor: ['Family Trips', 'Group Travel', 'Mountain Exploration', 'Long Distance Drives']
   },
   {
     id: 2,
@@ -52,10 +58,12 @@ const mockVehicles: Vehicle[] = [
     luggage: 2,
     rating: 4.8,
     reviews: 142,
-    features: ['4x4', 'Hybrid Engine', 'GPS Navigation', 'Bluetooth', 'Parking Sensors'],
+    features: ['Hybrid Engine', 'Off-road Capability', 'GPS Navigation', 'Bluetooth', 'Parking Sensors'],
     location: 'All Locations',
     company: 'AGGELOS Rentals',
-    mileage: 'Unlimited'
+    mileage: 'Unlimited',
+    description: 'The Jeep Renegade UPLAND 4xe combines eco-friendly hybrid technology with rugged off-road capability. Perfect for adventurous spirits who want to explore both coastal roads and mountain trails while minimizing their environmental impact.',
+    idealFor: ['Beach Adventures', 'Off-road Exploration', 'Eco-conscious Travelers', 'Mountain Drives']
   },
   {
     id: 3,
@@ -74,7 +82,9 @@ const mockVehicles: Vehicle[] = [
     features: ['4x4', 'Panoramic Roof', 'GPS Navigation', 'Bluetooth', 'Parking Sensors'],
     location: 'All Locations',
     company: 'AGGELOS Rentals',
-    mileage: 'Unlimited'
+    mileage: 'Unlimited',
+    description: 'Experience the thrill of off-road adventures with the Jeep Renegade 4x4 Panorama. Its 4x4 capability and panoramic roof make it perfect for exploring rugged landscapes and taking in breathtaking views.',
+    idealFor: ['Off-road Adventures', 'Mountain Exploration', 'Scenic Drives', 'Nature Lovers']
   },
   {
     id: 4,
@@ -93,7 +103,9 @@ const mockVehicles: Vehicle[] = [
     features: ['Air Conditioning', 'GPS Navigation', 'Bluetooth', 'Parking Sensors'],
     location: 'All Locations',
     company: 'AGGELOS Rentals',
-    mileage: 'Unlimited'
+    mileage: 'Unlimited',
+    description: 'The Jeep Renegade Automatic offers a comfortable and convenient driving experience. Its smooth automatic transmission and spacious interior make it perfect for city exploration and short trips.',
+    idealFor: ['City Exploration', 'Short Trips', 'Family Travel', 'Easy Parking']
   },
   {
     id: 5,
@@ -112,7 +124,9 @@ const mockVehicles: Vehicle[] = [
     features: ['Air Conditioning', 'GPS Navigation', 'Bluetooth', 'Parking Sensors'],
     location: 'All Locations',
     company: 'AGGELOS Rentals',
-    mileage: 'Unlimited'
+    mileage: 'Unlimited',
+    description: 'The Jeep Renegade Manual offers a fun and engaging driving experience. Its manual transmission and agile handling make it perfect for those who enjoy driving and want to explore the islands with precision.',
+    idealFor: ['Driving Enthusiasts', 'Island Exploration', 'Mountain Roads', 'Scenic Drives']
   },
   {
     id: 6,
@@ -131,7 +145,9 @@ const mockVehicles: Vehicle[] = [
     features: ['4x4', 'Air Conditioning', 'Bluetooth', 'Compact Size'],
     location: 'All Locations',
     company: 'AGGELOS Rentals',
-    mileage: 'Unlimited'
+    mileage: 'Unlimited',
+    description: 'The Suzuki Jimny 2018 is a rugged and reliable off-road vehicle. Its 4x4 capability and compact size make it perfect for navigating narrow island roads and exploring remote areas.',
+    idealFor: ['Off-road Adventures', 'Island Exploration', 'Mountain Trails', 'Nature Lovers']
   },
   {
     id: 7,
@@ -150,7 +166,9 @@ const mockVehicles: Vehicle[] = [
     features: ['7 Seats', 'Air Conditioning', 'Bluetooth', 'Large Cargo Space'],
     location: 'All Locations',
     company: 'AGGELOS Rentals',
-    mileage: 'Unlimited'
+    mileage: 'Unlimited',
+    description: 'The Fiat Doblo 7 pax is a spacious and practical van perfect for large families or groups. Its 7 seats and ample cargo space make it ideal for road trips and island exploration.',
+    idealFor: ['Family Vacations', 'Group Travel', 'Road Trips', 'Cargo Space']
   },
   {
     id: 8,
@@ -169,7 +187,93 @@ const mockVehicles: Vehicle[] = [
     features: ['Air Conditioning', 'Bluetooth', 'Fuel Efficient', 'Easy Parking'],
     location: 'All Locations',
     company: 'AGGELOS Rentals',
-    mileage: 'Unlimited'
+    mileage: 'Unlimited',
+    description: 'The Citroen C3 Automatic is a fuel-efficient and easy-to-drive car perfect for city exploration and short trips. Its compact size and smooth automatic transmission make it ideal for navigating narrow island streets.',
+    idealFor: ['City Exploration', 'Short Trips', 'Fuel Efficiency', 'Easy Parking']
+  },
+  {
+    id: 9,
+    make: 'Fiat',
+    model: '500',
+    type: VehicleType.CAR,
+    category: 'Compact',
+    image: 'https://images.unsplash.com/photo-1503376780353-7e6692767b70?auto=format&fit=crop&q=80',
+    price: 45,
+    seats: 4,
+    transmission: 'Manual',
+    fuelType: 'Gasoline',
+    luggage: 1,
+    rating: 4.7,
+    reviews: 198,
+    features: ['Compact Size', 'Fuel Efficient', 'Air Conditioning', 'Bluetooth', 'USB Port'],
+    location: 'All Locations',
+    company: 'AGGELOS Rentals',
+    mileage: 'Unlimited',
+    description: 'The iconic Fiat 500 is the perfect choice for navigating narrow island streets and finding parking in busy towns. Its compact size and excellent fuel efficiency make it ideal for couples or solo travelers looking to explore the islands with ease.',
+    idealFor: ['City Exploration', 'Couples', 'Solo Travelers', 'Easy Parking']
+  },
+  {
+    id: 10,
+    make: 'Vespa',
+    model: 'Primavera 125',
+    type: VehicleType.SCOOTER,
+    category: 'Scooter',
+    image: 'https://images.unsplash.com/photo-1621952906898-7af1e8195767?auto=format&fit=crop&q=80',
+    price: 25,
+    seats: 2,
+    transmission: 'Automatic',
+    fuelType: 'Gasoline',
+    luggage: 1,
+    rating: 4.9,
+    reviews: 234,
+    features: ['Storage Under Seat', 'Fuel Efficient', 'Easy to Ride', 'Light Weight'],
+    location: 'All Locations',
+    company: 'AGGELOS Rentals',
+    mileage: 'Unlimited',
+    description: 'Experience the freedom of island life with the stylish Vespa Primavera 125. This classic Italian scooter offers the perfect blend of style and practicality, making it ideal for quick trips to the beach or romantic sunset rides along coastal roads.',
+    idealFor: ['Beach Trips', 'Town Cruising', 'Romantic Rides', 'Quick Errands']
+  },
+  {
+    id: 11,
+    make: 'Yamaha',
+    model: 'XMAX 300',
+    type: VehicleType.SCOOTER,
+    category: 'Maxi Scooter',
+    image: 'https://images.unsplash.com/photo-1609630875171-b1321377ee65?auto=format&fit=crop&q=80',
+    price: 35,
+    seats: 2,
+    transmission: 'Automatic',
+    fuelType: 'Gasoline',
+    luggage: 2,
+    rating: 4.8,
+    reviews: 167,
+    features: ['Large Storage', 'Powerful Engine', 'ABS', 'Digital Display', 'USB Port'],
+    location: 'All Locations',
+    company: 'AGGELOS Rentals',
+    mileage: 'Unlimited',
+    description: 'The Yamaha XMAX 300 is a powerful and comfortable maxi scooter that\'s perfect for longer rides and island hopping. With its ample storage space and stable handling, it\'s ideal for those who want the convenience of a scooter with the comfort and power of a larger bike.',
+    idealFor: ['Island Exploration', 'Long Distance Rides', 'Comfortable Touring', 'Storage Space']
+  },
+  {
+    id: 12,
+    make: 'Peugeot',
+    model: '3008',
+    type: VehicleType.SUV,
+    category: 'SUV',
+    image: 'https://images.unsplash.com/photo-1549399542-7e3f8b79c341?auto=format&fit=crop&q=80',
+    price: 95,
+    seats: 5,
+    transmission: 'Automatic',
+    fuelType: 'Diesel',
+    luggage: 3,
+    rating: 4.7,
+    reviews: 145,
+    features: ['Panoramic Roof', 'GPS Navigation', 'Parking Camera', 'Climate Control', 'Apple CarPlay'],
+    location: 'All Locations',
+    company: 'AGGELOS Rentals',
+    mileage: 'Unlimited',
+    description: 'The Peugeot 3008 combines French elegance with practical functionality. Its comfortable interior and advanced features make it perfect for families wanting to explore the islands in style. The elevated driving position offers great visibility while the spacious trunk accommodates all your vacation needs.',
+    idealFor: ['Family Vacations', 'Scenic Drives', 'Beach Days', 'Shopping Trips']
   }
 ];
 

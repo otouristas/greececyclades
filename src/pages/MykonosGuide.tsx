@@ -1,232 +1,268 @@
-import React, { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { FaShip, FaHotel, FaMapMarkedAlt, FaUmbrellaBeach, FaRoute, FaUtensils } from 'react-icons/fa';
-import { useIslandStore } from '../store/islandStore';
+import React from 'react';
+import { Link } from 'react-router-dom';
+import { FaShip, FaHotel, FaMapMarkedAlt, FaUmbrellaBeach, FaRoute, FaUtensils, FaWineGlass, FaCameraRetro, FaSun, FaCalendarAlt, FaMusic, FaGlassCheers } from 'react-icons/fa';
 import SEO from '../components/SEO';
-import { generateGuideSEO } from '../utils/seoMetadata';
+import IslandGuideHero from '../components/guides/IslandGuideHero';
+import { islandGuides } from '../data/islandsData';
 
 const MykonosGuide: React.FC = () => {
-  const navigate = useNavigate();
-  const { islands } = useIslandStore();
-  const mykonos = islands.find(island => island.name === 'Mykonos');
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
+  const mykonos = islandGuides.find(island => island.id === 'mykonos');
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  if (!mykonos) {
+    return <div>Island not found</div>;
+  }
 
-  if (!mykonos) return null;
-
-  const categories = [
-    {
-      icon: <FaShip className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
-      title: 'How to Get There?',
-      description: 'Ferry routes and travel options',
-      link: '/transport'
-    },
-    {
-      icon: <FaHotel className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
-      title: 'Best Hotels',
-      description: 'Accommodations for every budget',
-      link: '/hotels'
-    },
-    {
-      icon: <FaMapMarkedAlt className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
-      title: 'What to Do?',
-      description: 'Activities and attractions',
-      link: '/activities'
-    },
-    {
-      icon: <FaUmbrellaBeach className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
-      title: 'Where to Swim?',
-      description: 'Best beaches and swimming spots',
-      link: '/beaches'
-    },
-    {
-      icon: <FaRoute className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
-      title: 'Tours & Activities',
-      description: 'Guided experiences',
-      link: '/tours'
-    },
-    {
-      icon: <FaUtensils className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
-      title: 'Where to Eat & Drink?',
-      description: 'Restaurants and bars',
-      link: '/dining'
-    }
-  ];
+  const seoData = {
+    title: "Mykonos Travel Guide 2025 - Best Beaches, Nightlife & Things to Do",
+    description: "Plan your perfect Mykonos vacation with our comprehensive 2025 travel guide. From pristine beaches and vibrant nightlife to traditional villages and luxury experiences.",
+    keywords: [
+      'Mykonos travel guide',
+      'Mykonos beaches',
+      'Mykonos nightlife',
+      'Little Venice Mykonos',
+      'Mykonos windmills',
+      'Greek islands',
+      'luxury hotels Mykonos',
+      'beach clubs Mykonos',
+      'Mykonos restaurants',
+      'best time to visit Mykonos'
+    ],
+    ogImage: mykonos.image,
+    ogType: 'article'
+  };
 
   return (
-    <div className="min-h-screen bg-white" ref={containerRef}>
-      <SEO {...generateGuideSEO('Mykonos')} />
-      
-      {/* Parallax Hero Section */}
-      <div className="relative h-screen overflow-hidden">
-        <motion.div 
-          style={{ y, opacity }}
-          className="absolute inset-0"
-        >
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed"
-            style={{ 
-              backgroundImage: `url(${mykonos.image})`,
-              transform: 'scale(1.1)'
-            }}
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm" />
-        </motion.div>
+    <>
+      <SEO {...seoData} />
+      <div className="min-h-screen bg-gray-50">
+        <IslandGuideHero {...mykonos} />
         
-        <div className="relative h-full flex flex-col justify-center items-center text-white px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-center max-w-4xl"
-          >
-            <h1 className="text-6xl font-bold mb-6 tracking-tight">
-              Welcome to Mykonos
-            </h1>
-            <p className="text-2xl font-light mb-8 leading-relaxed">
-              {mykonos.quote}
+        {/* Introduction Section */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+          <div className="prose prose-lg max-w-none mb-16">
+            <h2 className="text-3xl font-bold mb-6">Welcome to Mykonos</h2>
+            <p className="text-gray-700 leading-relaxed">
+              Welcome to Mykonos, Greece's most glamorous island destination. Known for its vibrant nightlife, 
+              pristine beaches, and cosmopolitan atmosphere, Mykonos perfectly blends traditional Cycladic charm 
+              with modern luxury and excitement.
             </p>
-            <div className="flex gap-4 justify-center">
-              {mykonos.idealFor.map((ideal, index) => (
-                <span 
-                  key={index}
-                  className="px-4 py-2 bg-white bg-opacity-20 backdrop-blur-md rounded-full text-sm"
-                >
-                  {ideal}
-                </span>
-              ))}
+            <p className="text-gray-700 leading-relaxed">
+              From the iconic windmills and the charming Little Venice to world-famous beach clubs and 
+              gourmet restaurants, Mykonos offers an unforgettable experience for luxury seekers, party enthusiasts, 
+              and culture lovers alike.
+            </p>
+          </div>
+
+          {/* Quick Navigation Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+            <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <FaUmbrellaBeach className="text-3xl text-blue-500 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Famous Beaches</h3>
+              <p className="text-gray-600 mb-4">Discover world-renowned beaches from Paradise to Super Paradise.</p>
+              <Link to="#beaches" className="text-blue-500 hover:text-blue-600">Explore beaches →</Link>
             </div>
-          </motion.div>
+            
+            <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <FaGlassCheers className="text-3xl text-blue-500 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Vibrant Nightlife</h3>
+              <p className="text-gray-600 mb-4">Experience the legendary parties and beach clubs.</p>
+              <Link to="#nightlife" className="text-blue-500 hover:text-blue-600">Discover nightlife →</Link>
+            </div>
+            
+            <div className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
+              <FaHotel className="text-3xl text-blue-500 mb-4" />
+              <h3 className="text-xl font-semibold mb-2">Luxury Stays</h3>
+              <p className="text-gray-600 mb-4">Find the perfect boutique hotel or luxury resort.</p>
+              <Link to="#accommodation" className="text-blue-500 hover:text-blue-600">View hotels →</Link>
+            </div>
+          </div>
+
+          {/* When to Visit Section */}
+          <section id="when-to-visit" className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">When to Visit Mykonos</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <FaSun className="text-3xl text-blue-500 mb-4" />
+                <h3 className="font-semibold text-xl mb-2">Peak Season</h3>
+                <p className="text-gray-600">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                  <li>• Vibrant atmosphere</li>
+                  <li>• Best nightlife</li>
+                  <li>• Warmest weather</li>
+                </ul>
+              </div>
+              
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
+                <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
+                <p className="text-gray-600">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                  <li>• Pleasant weather</li>
+                  <li>• Fewer crowds</li>
+                  <li>• Better rates</li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <FaMusic className="text-3xl text-blue-500 mb-4" />
+                <h3 className="font-semibold text-xl mb-2">Party Season</h3>
+                <p className="text-gray-600">June to September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                  <li>• Beach parties</li>
+                  <li>• Famous DJs</li>
+                  <li>• Club events</li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
+                <h3 className="font-semibold text-xl mb-2">Best for Photos</h3>
+                <p className="text-gray-600">April-May, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                  <li>• Golden light</li>
+                  <li>• Clear skies</li>
+                  <li>• Less crowded</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Must-Visit Locations */}
+          <section id="locations" className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Must-Visit Locations</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <img 
+                  src="https://source.unsplash.com/1600x900/?mykonos,windmills" 
+                  alt="Mykonos Windmills" 
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">Windmills & Little Venice</h3>
+                  <p className="text-gray-600 mb-4">
+                    The iconic windmills and the picturesque Little Venice quarter are the most 
+                    photographed spots in Mykonos, offering stunning sunset views.
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>• Sunset viewpoint</li>
+                    <li>• Historic landmarks</li>
+                    <li>• Waterfront dining</li>
+                    <li>• Art galleries</li>
+                  </ul>
+                </div>
+              </div>
+
+              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <img 
+                  src="https://source.unsplash.com/1600x900/?mykonos,beach" 
+                  alt="Paradise Beach" 
+                  className="w-full h-48 object-cover"
+                />
+                <div className="p-6">
+                  <h3 className="text-xl font-semibold mb-2">Paradise Beach</h3>
+                  <p className="text-gray-600 mb-4">
+                    The most famous beach in Mykonos, known for its crystal-clear waters, 
+                    golden sand, and legendary beach parties.
+                  </p>
+                  <ul className="space-y-2 text-sm text-gray-600">
+                    <li>• Beach clubs</li>
+                    <li>• Water sports</li>
+                    <li>• Beachfront bars</li>
+                    <li>• Sunset parties</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Activities Section */}
+          <section id="activities" className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Top Things to Do</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="font-semibold text-xl mb-4">Beach Life</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li>• Paradise Beach parties</li>
+                  <li>• Super Paradise Beach</li>
+                  <li>• Psarou Beach lounging</li>
+                  <li>• Water sports activities</li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="font-semibold text-xl mb-4">Cultural Experiences</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li>• Windmills tour</li>
+                  <li>• Little Venice exploration</li>
+                  <li>• Delos archaeological site</li>
+                  <li>• Local art galleries</li>
+                </ul>
+              </div>
+
+              <div className="bg-white p-6 rounded-lg shadow-md">
+                <h3 className="font-semibold text-xl mb-4">Nightlife & Entertainment</h3>
+                <ul className="space-y-3 text-gray-600">
+                  <li>• Beach club parties</li>
+                  <li>• Sunset cocktails</li>
+                  <li>• Live music venues</li>
+                  <li>• Club hopping</li>
+                </ul>
+              </div>
+            </div>
+          </section>
+
+          {/* Travel Tips */}
+          <section id="tips" className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Essential Travel Tips</h2>
+            <div className="bg-white rounded-lg shadow-md p-8">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div>
+                  <h3 className="text-xl font-semibold mb-4">Getting Around</h3>
+                  <ul className="space-y-3 text-gray-600">
+                    <li>• Rent an ATV for beach hopping</li>
+                    <li>• Use water taxis between beaches</li>
+                    <li>• Book airport transfers ahead</li>
+                    <li>• Walk in Mykonos Town</li>
+                  </ul>
+                </div>
+
+                <div>
+                  <h3 className="text-xl font-semibold mb-4">Money Saving Tips</h3>
+                  <ul className="space-y-3 text-gray-600">
+                    <li>• Book accommodations early</li>
+                    <li>• Visit in shoulder season</li>
+                    <li>• Use local buses</li>
+                    <li>• Eat at local tavernas</li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          {/* Call to Action */}
+          <section className="text-center bg-white rounded-lg shadow-md p-8">
+            <h2 className="text-3xl font-bold mb-4">Ready to Experience Mykonos?</h2>
+            <p className="text-lg text-gray-700 mb-8">
+              Start planning your perfect getaway to the island of winds and luxury
+            </p>
+            <div className="flex justify-center gap-4">
+              <Link 
+                to="/trip-planner" 
+                className="bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors"
+              >
+                Plan My Trip
+              </Link>
+              <Link 
+                to="/hotels?location=mykonos" 
+                className="bg-white text-blue-500 border border-blue-500 px-8 py-3 rounded-lg hover:bg-blue-50 transition-colors"
+              >
+                Find Hotels
+              </Link>
+            </div>
+          </section>
         </div>
       </div>
-
-      {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* SEO Description */}
-        <section className="mb-16">
-          <div className="prose max-w-none">
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Welcome to Mykonos, the crown jewel of the Cyclades islands, where cosmopolitan luxury 
-              meets traditional Greek charm. Known for its vibrant nightlife, pristine beaches, and 
-              iconic windmills, Mykonos offers an unparalleled blend of sophistication and natural 
-              beauty. From the picturesque alleys of Mykonos Town (Chora) to the crystal-clear waters 
-              of Paradise Beach, from world-class restaurants to legendary beach clubs, this guide will 
-              help you discover why Mykonos has become one of the most sought-after destinations in 
-              the Mediterranean.
-            </p>
-          </div>
-        </section>
-
-        {/* Best Time to Visit */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Best Time to Visit</h2>
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            {mykonos.bestTime}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="font-semibold mb-2">Weather</h3>
-              <p>{mykonos.weather.temp}, {mykonos.weather.condition}</p>
-            </div>
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="font-semibold mb-2">Peak Season</h3>
-              <p>June to September</p>
-            </div>
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="font-semibold mb-2">Shoulder Season</h3>
-              <p>April-May, October</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Must Visit Locations */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Must Visit Locations</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {mykonos.highlights.map((highlight, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="p-6">
-                  <h3 className="font-semibold text-xl mb-2">{highlight}</h3>
-                  <p className="text-gray-600">Explore this amazing location</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Getting Around */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Getting Around</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Transportation Options</h3>
-              <ul className="space-y-3">
-                <li>Local buses connecting major towns</li>
-                <li>Rental cars and ATVs</li>
-                <li>Taxi services</li>
-                <li>Organized tours</li>
-              </ul>
-            </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Tips</h3>
-              <ul className="space-y-3">
-                <li>Book transportation in advance during peak season</li>
-                <li>Consider renting a vehicle for flexibility</li>
-                <li>Use the bus system for budget-friendly travel</li>
-                <li>Walking is possible between some nearby attractions</li>
-              </ul>
-            </div>
-          </div>
-        </section>
-
-        {/* Categories Grid */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Explore Mykonos</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {categories.map((category, index) => (
-              <div
-                key={index}
-                onClick={() => navigate(category.link)}
-                className="group cursor-pointer bg-white rounded-lg shadow-md p-6 hover:bg-blue-500 transition-colors duration-300"
-              >
-                <div className="flex items-center space-x-4">
-                  {category.icon}
-                  <div>
-                    <h3 className="font-semibold text-gray-900 group-hover:text-white">
-                      {category.title}
-                    </h3>
-                    <p className="text-gray-600 group-hover:text-white">
-                      {category.description}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Call to Action */}
-        <section className="text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Plan Your Trip?</h2>
-          <p className="text-lg text-gray-700 mb-8">
-            Start planning your perfect Mykonos getaway today
-          </p>
-          <button
-            onClick={() => navigate('/trip-planner')}
-            className="bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors"
-          >
-            Plan My Trip
-          </button>
-        </section>
-      </div>
-    </div>
+    </>
   );
 };
 

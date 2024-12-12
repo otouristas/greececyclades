@@ -1,57 +1,43 @@
 import { Hotel } from '../types/hotel';
 import { Activity } from '../types/activity';
+import { SEOProps, ArticleSEO } from '../types/seo';
+import { getHotelSlug, getIslandSlug } from './slugs';
 
-export interface SEOProps {
-  title: string;
-  description: string;
-  keywords?: string[];
-  ogImage?: string;
-  ogType?: string;
-  canonicalUrl?: string;
-  article?: {
-    publishedTime: string;
-    modifiedTime: string;
-    author: string;
-    tags: string[];
-  };
-}
-
-const DEFAULT_KEYWORDS = [
-  'cyclades',
-  'greece',
-  'greek islands',
-  'travel',
-  'vacation',
-  'mediterranean'
-];
+export const DEFAULT_KEYWORDS = [
+  'Greece',
+  'Cyclades',
+  'Greek Islands',
+  'Travel',
+  'Vacation',
+  'Activities',
+  'Experiences'
+].join(', ');
 
 export function generateHotelSEO(hotel: Hotel): SEOProps {
   const keywords = [
-    ...DEFAULT_KEYWORDS,
-    hotel.category.toLowerCase(),
-    'hotels',
-    'accommodation',
-    hotel.location.island.toLowerCase(),
-    hotel.location.area.toLowerCase(),
-    ...hotel.keyFeatures,
-    ...hotel.amenities
-  ];
+    ...DEFAULT_KEYWORDS.split(', '),
+    hotel.location.area,
+    hotel.location.island,
+    hotel.name,
+    ...hotel.amenities,
+    ...hotel.rooms.map(room => room.type)
+  ].join(', ');
 
   return {
-    title: `${hotel.name} | ${hotel.category} Hotel in ${hotel.location.island}`,
-    description: hotel.description || hotel.shortDescription,
+    title: `${hotel.name} - Luxury Hotel in ${hotel.location.area}, ${hotel.location.island}`,
+    description: hotel.description.substring(0, 160),
     keywords,
+    ogImage: hotel.images[0],
     ogType: 'website',
-    ogImage: hotel.images.main,
-    canonicalUrl: `/hotels/${generateSlug(hotel.name, hotel.location.island)}`
+    canonicalUrl: `/hotels/${getHotelSlug(hotel.name, hotel.location.island)}`
   };
 }
 
 export function generateHotelsSEO(): SEOProps {
   return {
     title: 'Luxury Hotels in Cyclades Islands | Greece Cyclades',
-    description: 'Discover and book luxury hotels, villas, and resorts across the Cyclades islands. Find your perfect stay in Santorini, Mykonos, Naxos, and more.',
-    keywords: [...DEFAULT_KEYWORDS, 'luxury hotels', 'villas', 'resorts', 'santorini', 'mykonos', 'naxos', 'accommodation'],
+    description: 'Discover the finest luxury hotels across the Cyclades islands. From Santorini to Mykonos, find your perfect stay in the Greek islands.',
+    keywords: DEFAULT_KEYWORDS,
     ogType: 'website',
     canonicalUrl: '/hotels'
   };
@@ -59,19 +45,291 @@ export function generateHotelsSEO(): SEOProps {
 
 export function generateHomeSEO(): SEOProps {
   return {
-    title: 'Greece Cyclades | Your Guide to the Greek Islands',
-    description: 'Plan your perfect trip to the Cyclades islands. Discover beautiful hotels, local experiences, and travel tips for Santorini, Mykonos, and more.',
-    keywords: [...DEFAULT_KEYWORDS, 'travel guide', 'island hopping', 'beaches', 'culture'],
+    title: 'Greece Cyclades - Your Ultimate Guide to the Greek Islands',
+    description: 'Plan your perfect Greek island vacation with our comprehensive guide to the Cyclades. Discover hotels, activities, restaurants, and local experiences.',
+    keywords: DEFAULT_KEYWORDS,
     ogType: 'website',
     canonicalUrl: '/'
   };
 }
 
+export function generateIslandSEO(island: string): SEOProps {
+  const formattedIsland = island.charAt(0).toUpperCase() + island.slice(1).toLowerCase();
+  const slug = getIslandSlug(island);
+  
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    formattedIsland,
+    'island guide',
+    'travel guide'
+  ].join(', ');
+
+  return {
+    title: `${formattedIsland} Travel Guide | Greece Cyclades`,
+    description: `Discover the best of ${formattedIsland}. Find hotels, activities, restaurants, and local experiences on this beautiful Cycladic island.`,
+    keywords,
+    ogType: 'website',
+    canonicalUrl: `/islands/${slug}`
+  };
+}
+
+export function generateActivitySEO(activity: Activity): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    activity.location,
+    activity.island,
+    activity.category,
+    ...(activity.tags || []),
+    activity.difficulty
+  ].join(', ');
+
+  // Use custom SEO meta if provided, otherwise generate default
+  const title = activity.seoMeta?.title || `${activity.title} in ${activity.location} | Greece Cyclades`;
+  const description = activity.seoMeta?.description || activity.shortDescription;
+  const seoKeywords = activity.seoMeta?.keywords || keywords;
+
+  return {
+    title,
+    description: description.substring(0, 160),
+    keywords: seoKeywords,
+    ogImage: activity.images.main,
+    ogType: 'website',
+    canonicalUrl: `/activities/${activity.slug}`
+  };
+}
+
+export function generateActivitiesSEO(): SEOProps {
+  return {
+    title: 'Activities & Experiences in Cyclades Islands | Greece Cyclades',
+    description: 'Discover amazing activities and experiences across the Cyclades islands. From water sports to cultural tours, find your perfect Greek island adventure.',
+    keywords: DEFAULT_KEYWORDS,
+    ogType: 'website',
+    canonicalUrl: '/activities'
+  };
+}
+
+export function generateBlogSEO(post: {
+  title: string;
+  description: string;
+  slug: string;
+  author: string;
+  publishedAt: string;
+  updatedAt: string;
+  tags: string[];
+}): SEOProps {
+  const article: ArticleSEO = {
+    publishedTime: post.publishedAt,
+    modifiedTime: post.updatedAt,
+    author: post.author,
+    tags: post.tags
+  };
+
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    ...post.tags
+  ].join(', ');
+
+  return {
+    title: `${post.title} | Greece Cyclades Blog`,
+    description: post.description.substring(0, 160),
+    keywords,
+    ogType: 'article',
+    canonicalUrl: `/blog/${post.slug}`,
+    article
+  };
+}
+
+export function generateBlogPostSEO(post: {
+  title: string;
+  description: string;
+  slug: string;
+  author: string;
+  publishedAt: string;
+  updatedAt: string;
+  tags: string[];
+  image?: string;
+}): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    ...post.tags,
+    'blog',
+    'travel blog',
+    'travel guide'
+  ].join(', ');
+
+  return {
+    title: `${post.title} | Greece Cyclades Blog`,
+    description: post.description.substring(0, 160),
+    keywords,
+    ogImage: post.image,
+    ogType: 'article',
+    canonicalUrl: `/blog/${post.slug}`,
+    article: {
+      author: post.author,
+      publishedTime: post.publishedAt,
+      modifiedTime: post.updatedAt,
+      tags: post.tags
+    }
+  };
+}
+
+export function generateBlogsSEO(): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    'blog',
+    'travel tips',
+    'island life',
+    'local guides'
+  ].join(', ');
+
+  return {
+    title: 'Greece Cyclades Blog - Travel Tips & Island Life',
+    description: 'Read our latest blog posts about traveling in the Cyclades islands. Get insider tips, local recommendations, and travel inspiration.',
+    keywords,
+    ogType: 'website',
+    canonicalUrl: '/blog'
+  };
+}
+
+export function generateAuthSEO(): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    'sign in',
+    'login',
+    'create account',
+    'register',
+    'user account'
+  ].join(', ');
+
+  return {
+    title: 'Sign In or Create Account | Greece Cyclades',
+    description: 'Sign in to your Greece Cyclades account or create a new one. Plan your perfect Greek island vacation with personalized recommendations and saved itineraries.',
+    keywords,
+    ogType: 'website',
+    canonicalUrl: '/auth'
+  };
+}
+
+export function generateSignInSEO(): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    'sign in',
+    'login',
+    'user account',
+    'access account'
+  ].join(', ');
+
+  return {
+    title: 'Sign In | Greece Cyclades',
+    description: 'Sign in to your Greece Cyclades account. Access your saved trips, bookings, and personalized travel recommendations.',
+    keywords,
+    ogType: 'website',
+    canonicalUrl: '/signin'
+  };
+}
+
+export function generateSignUpSEO(): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    'create account',
+    'register',
+    'sign up',
+    'new user',
+    'join'
+  ].join(', ');
+
+  return {
+    title: 'Create Account | Greece Cyclades',
+    description: 'Create your Greece Cyclades account. Start planning your dream vacation in the Greek islands with personalized recommendations and trip planning tools.',
+    keywords,
+    ogType: 'website',
+    canonicalUrl: '/signup'
+  };
+}
+
+export function generatePrivacySEO(): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    'privacy policy',
+    'data protection',
+    'personal information',
+    'privacy',
+    'security'
+  ].join(', ');
+
+  return {
+    title: 'Privacy Policy | Greece Cyclades',
+    description: 'Learn about how we collect, use, and protect your personal information when you use Greece Cyclades. Our commitment to your privacy and data security.',
+    keywords,
+    ogType: 'website',
+    canonicalUrl: '/privacy'
+  };
+}
+
+export function generateTermsSEO(): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    'terms of service',
+    'user agreement',
+    'legal',
+    'conditions',
+    'terms of use'
+  ].join(', ');
+
+  return {
+    title: 'Terms of Service | Greece Cyclades',
+    description: 'Read our terms of service and user agreement for Greece Cyclades. Understand your rights and responsibilities when using our travel planning services.',
+    keywords,
+    ogType: 'website',
+    canonicalUrl: '/terms'
+  };
+}
+
+export function generateMyTripsSEO(): SEOProps {
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    'my trips',
+    'itinerary',
+    'travel plans',
+    'bookings',
+    'saved trips'
+  ].join(', ');
+
+  return {
+    title: 'My Trips | Greece Cyclades',
+    description: 'View and manage your planned trips to the Cyclades islands. Access your personalized itineraries, bookings, and travel plans in one place.',
+    keywords,
+    ogType: 'website',
+    canonicalUrl: '/my-trips'
+  };
+}
+
+export function generateSitemapSEO(): SEOProps {
+  return {
+    title: 'Sitemap | Greece Cyclades',
+    description: 'Navigate through our complete site structure. Find all pages, hotels, activities, and island guides in one place.',
+    keywords: [
+      ...DEFAULT_KEYWORDS.split(', '),
+      'sitemap',
+      'site structure',
+      'navigation'
+    ],
+    ogType: 'website',
+    canonicalUrl: '/sitemap'
+  };
+}
+
 export function generateTripPlannerSEO(): SEOProps {
   return {
-    title: 'AI Trip Planner for Cyclades Islands | Greece Cyclades',
-    description: 'Create your personalized Cyclades island-hopping itinerary with our AI-powered trip planner. Get custom recommendations for hotels, activities, and more.',
-    keywords: [...DEFAULT_KEYWORDS, 'trip planner', 'itinerary', 'island hopping', 'travel planning', 'AI travel'],
+    title: "Plan Your 2025 Cyclades Island Hopping Trip | Interactive Trip Planner",
+    description: "Create your perfect 2025 Greek island hopping itinerary with our interactive trip planner. Get personalized recommendations for islands, hotels, and activities.",
+    keywords: [
+      ...DEFAULT_KEYWORDS.split(', '),
+      'trip planner',
+      'island hopping itinerary',
+      'travel planning',
+      'greek islands vacation'
+    ].join(', '),
     ogType: 'website',
     canonicalUrl: '/trip-planner'
   };
@@ -81,7 +339,7 @@ export function generateProfileSEO(): SEOProps {
   return {
     title: 'My Profile | Greece Cyclades',
     description: 'Manage your Greece Cyclades profile, view saved trips, and customize your travel preferences.',
-    keywords: [...DEFAULT_KEYWORDS, 'user profile', 'account', 'saved trips'],
+    keywords: [...DEFAULT_KEYWORDS.split(', '), 'user profile', 'account', 'saved trips'].join(', '),
     ogType: 'profile',
     canonicalUrl: '/profile'
   };
@@ -91,7 +349,7 @@ export function generateIslandsSEO(): SEOProps {
   return {
     title: 'Discover Cyclades Islands - Your Complete Travel Guide',
     description: 'Explore the stunning Cyclades archipelago. Find detailed guides for Santorini, Mykonos, and more. Plan your perfect Greek island getaway today.',
-    keywords: [...DEFAULT_KEYWORDS, 'island guide', 'santorini', 'mykonos', 'naxos', 'paros', 'island hopping'],
+    keywords: [...DEFAULT_KEYWORDS.split(', '), 'island guide', 'santorini', 'mykonos', 'naxos', 'paros', 'island hopping'].join(', '),
     ogType: 'website',
     canonicalUrl: '/islands'
   };
@@ -99,103 +357,144 @@ export function generateIslandsSEO(): SEOProps {
 
 export function generateIslandDetailSEO(islandName: string, description: string, image: string): SEOProps {
   return {
-    title: `${islandName} Travel Guide | Discover the Best of Cyclades`,
+    title: `${islandName} Island | Discover Cyclades`,
     description: description || `Plan your perfect trip to ${islandName}. Discover the best hotels, activities, restaurants, and local tips for an unforgettable Cyclades experience.`,
-    keywords: [...DEFAULT_KEYWORDS, islandName.toLowerCase(), 'travel guide', 'hotels', 'activities', 'restaurants', 'local tips'],
+    keywords: [...DEFAULT_KEYWORDS.split(', '), islandName.toLowerCase(), 'travel guide', 'hotels', 'activities', 'restaurants', 'local tips'].join(', '),
     ogType: 'article',
-    canonicalUrl: `/islands/${islandName.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`,
+    canonicalUrl: `/islands/${getIslandSlug(islandName)}`,
     ogImage: image
   };
 }
 
-export function generateActivitiesSEO(): SEOProps {
-  return {
-    title: 'Cyclades Activities & Tours | Unforgettable Greek Island Experiences',
-    description: 'Book authentic experiences in the Cyclades islands. From sailing cruises and wine tastings to hiking adventures and photography tours. Find your perfect island activity.',
-    keywords: [
-      ...DEFAULT_KEYWORDS,
-      'activities',
-      'tours',
-      'experiences',
-      'water sports',
-      'cultural tours',
-      'food tours',
-      'wine tasting',
-      'sailing',
-      'hiking',
-      'adventure'
-    ],
-    ogType: 'website',
-    ogImage: '/images/activities-hero.jpg',
-    canonicalUrl: '/activities'
-  };
-}
-
-export function generateActivityDetailSEO(activity: Activity): SEOProps {
-  const keywords = [
-    ...DEFAULT_KEYWORDS,
-    activity.category,
-    'activities',
-    'tours',
-    'experiences',
-    activity.island.toLowerCase(),
-    activity.location.toLowerCase(),
-    ...activity.tags || []
-  ];
-
-  return {
-    title: `${activity.title} | ${activity.island} Activity`,
-    description: activity.shortDescription,
-    keywords,
-    ogType: 'website',
-    ogImage: activity.images.main
-  };
-}
-
 export function generateRentACarSEO(): SEOProps {
+  const currentYear = new Date().getFullYear();
+  
   return {
-    title: 'Car Rental in Cyclades Islands | Best Rates & Premium Fleet',
-    description: 'Rent a car in the Cyclades islands. From compact cars to luxury vehicles, find the perfect car for your Greek island adventure. Best rates guaranteed.',
-    keywords: [...DEFAULT_KEYWORDS, 'car rental', 'vehicle hire', 'auto rental', 'transportation', 'driving in greece', 'island transportation'],
-    ogType: 'website',
-    canonicalUrl: '/rent-a-car'
+    title: `Rent a Car in Cyclades Islands ${currentYear} | Best Car Rental Deals`,
+    description: `Find the perfect vehicle for your Greek island adventure. Compare cars, ATVs, scooters & more. Best prices, trusted providers, and instant booking for Cyclades islands.`,
+    keywords: ['car rental cyclades', 'rent a car greek islands', 'vehicle rental greece', 'scooter rental cyclades', 'ATV rental greece'].join(', '),
+    canonicalUrl: '/rent-a-car',
+    ogImage: 'https://antiparosrentacar.com/datafiles/Antiparos%20n%20Paros%20Rent%20A%20Car.webp'
   };
 }
 
-export function generateSlug(name: string, island?: string): string {
-  const nameSlug = name.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  if (!island) {
-    return nameSlug;
-  }
-  const islandSlug = island.toLowerCase().replace(/[^a-z0-9]+/g, '-');
-  return `${nameSlug}-${islandSlug}`;
+export function generateVehicleDetailSEO(vehicle: { make: string; model: string; category: string; description: string; image: string }): SEOProps {
+  const currentYear = new Date().getFullYear();
+  const vehicleName = `${vehicle.make} ${vehicle.model}`;
+  
+  return {
+    title: `Rent ${vehicleName} in Cyclades ${currentYear} | ${vehicle.category} Rental`,
+    description: vehicle.description.slice(0, 160),
+    keywords: [
+      `${vehicleName.toLowerCase()} rental`,
+      `rent ${vehicle.make.toLowerCase()}`,
+      `${vehicle.category.toLowerCase()} rental cyclades`,
+      'car hire greek islands'
+    ].join(', '),
+    canonicalUrl: `/rent-a-car/${getHotelSlug(vehicle.make, vehicle.model)}`,
+    ogImage: vehicle.image
+  };
 }
 
-export function generateHotelPageTitle(name: string, type: string, island: string): string {
-  const capitalizedType = type.charAt(0).toUpperCase() + type.slice(1);
-  return `${name} - ${capitalizedType} in ${island}, Greece`;
+export function generateIslandGuideSEO(islandName: string, _description: string, image: string): SEOProps {
+  const currentYear = new Date('2024-12-11T22:49:27+02:00').getFullYear();
+  
+  return {
+    title: `${islandName} Travel Guide ${currentYear} | Best Things to Do & See`,
+    description: `Complete ${islandName} travel guide for ${currentYear}. Discover the best beaches, villages, activities, and local experiences in this beautiful Cycladic island.`,
+    keywords: [
+      ...DEFAULT_KEYWORDS.split(', '),
+      islandName.toLowerCase(),
+      `${islandName.toLowerCase()} travel guide`,
+      `${islandName.toLowerCase()} greece`,
+      `${islandName.toLowerCase()} beaches`,
+      `${islandName.toLowerCase()} hotels`,
+      'where to stay',
+      'things to do',
+      'best time to visit',
+      'greek island hopping'
+    ].join(', '),
+    ogType: 'article',
+    ogImage: image,
+    canonicalUrl: `/guides/${getIslandSlug(islandName)}`
+  };
 }
 
-interface HotelStructuredData {
+export function generateHotelJsonLD(hotel: {
   name: string;
   description: string;
-  image: string[];
-  priceRange: string;
+  images: string[];
+  rating?: number;
+  totalReviews?: number;
+  priceRange?: string;
   address: {
-    streetAddress: string;
-    addressLocality: string;
-    addressRegion: string;
-    addressCountry: string;
+    street: string;
+    city: string;
+    state?: string;
+    postalCode?: string;
+    country: string;
   };
-  geo: {
-    latitude: number;
-    longitude: number;
-  };
-  starRating: number;
   amenities: string[];
+  rooms: {
+    type: string;
+    description: string;
+    price: {
+      amount: number;
+      currency: string;
+    };
+    occupancy: {
+      min: number;
+      max: number;
+    };
+  }[];
+}): string {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Hotel',
+    name: hotel.name,
+    description: hotel.description,
+    image: hotel.images,
+    address: {
+      '@type': 'PostalAddress',
+      streetAddress: hotel.address.street,
+      addressLocality: hotel.address.city,
+      addressRegion: hotel.address.state,
+      postalCode: hotel.address.postalCode,
+      addressCountry: hotel.address.country
+    },
+    amenityFeature: hotel.amenities.map(amenity => ({
+      '@type': 'LocationFeatureSpecification',
+      name: amenity
+    })),
+    ...(hotel.rating && {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: hotel.rating,
+        reviewCount: hotel.totalReviews || 0
+      }
+    }),
+    ...(hotel.priceRange && { priceRange: hotel.priceRange }),
+    containsPlace: hotel.rooms.map(room => ({
+      '@type': 'HotelRoom',
+      name: room.type,
+      description: room.description,
+      occupancy: {
+        '@type': 'QuantitativeValue',
+        minValue: room.occupancy.min,
+        maxValue: room.occupancy.max
+      },
+      offers: {
+        '@type': 'Offer',
+        price: room.price.amount,
+        priceCurrency: room.price.currency
+      }
+    }))
+  };
+
+  return JSON.stringify(structuredData);
 }
 
-interface HotelListItem {
+export function generateHotelsListingJsonLD(hotels: {
   id: string | number;
   name: string;
   description: string;
@@ -203,75 +502,29 @@ interface HotelListItem {
   island: string;
   image?: string;
   bookingUrl?: string;
-}
-
-interface BlogPost {
-  title: string;
-  description: string;
-  tags: string[];
-  slug: string;
-  featuredImage: string;
-  date: string;
-  lastModified?: string;
-  author: string;
-}
-
-export function generateHotelJsonLD(hotel: HotelStructuredData): string {
+}[]): string {
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Hotel",
-    "name": hotel.name,
-    "description": hotel.description,
-    "image": hotel.image,
-    "priceRange": hotel.priceRange,
-    "address": {
-      "@type": "PostalAddress",
-      "streetAddress": hotel.address.streetAddress,
-      "addressLocality": hotel.address.addressLocality,
-      "addressRegion": hotel.address.addressRegion,
-      "addressCountry": hotel.address.addressCountry
-    },
-    "geo": {
-      "@type": "GeoCoordinates",
-      "latitude": hotel.geo.latitude,
-      "longitude": hotel.geo.longitude
-    },
-    "starRating": {
-      "@type": "Rating",
-      "ratingValue": hotel.starRating
-    },
-    "amenityFeature": hotel.amenities.map(amenity => ({
-      "@type": "LocationFeatureSpecification",
-      "name": amenity
-    }))
-  };
-
-  return JSON.stringify(structuredData);
-}
-
-export function generateHotelsListingJsonLD(hotels: HotelListItem[]): string {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "ItemList",
-    "itemListElement": hotels.map((hotel, index) => ({
-      "@type": "ListItem",
-      "position": index + 1,
-      "item": {
-        "@type": "Hotel",
-        "name": hotel.name,
-        "description": hotel.description,
-        "image": hotel.image,
-        "url": `https://greececyclades.com/hotels/${hotel.id}`,
-        "address": {
-          "@type": "PostalAddress",
-          "addressLocality": hotel.island,
-          "addressRegion": "Cyclades",
-          "addressCountry": "Greece"
+    '@context': 'https://schema.org',
+    '@type': 'ItemList',
+    itemListElement: hotels.map((hotel, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      item: {
+        '@type': 'Hotel',
+        name: hotel.name,
+        description: hotel.description,
+        image: hotel.image,
+        url: `https://greececyclades.com/hotels/${hotel.id}`,
+        address: {
+          '@type': 'PostalAddress',
+          addressLocality: hotel.island,
+          addressRegion: 'Cyclades',
+          addressCountry: 'Greece'
         }
       }
     })),
-    "numberOfItems": hotels.length,
-    "itemListOrder": "https://schema.org/ItemListUnordered"
+    numberOfItems: hotels.length,
+    itemListOrder: 'https://schema.org/ItemListUnordered'
   };
 
   return JSON.stringify(structuredData);
@@ -279,126 +532,29 @@ export function generateHotelsListingJsonLD(hotels: HotelListItem[]): string {
 
 export function generateTripPlannerJsonLD(): string {
   const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "TravelAgency",
-    "name": "Greece Cyclades Trip Planner",
-    "description": "AI-powered trip planning service for the Cyclades islands of Greece",
-    "url": "https://greececyclades.com/trip-planner",
-    "areaServed": {
-      "@type": "Place",
-      "name": "Cyclades Islands",
-      "address": {
-        "@type": "PostalAddress",
-        "addressRegion": "Cyclades",
-        "addressCountry": "Greece"
+    '@context': 'https://schema.org',
+    '@type': 'TravelAgency',
+    name: 'Greece Cyclades Trip Planner',
+    description: 'AI-powered trip planning service for the Cyclades islands of Greece',
+    url: 'https://greececyclades.com/trip-planner',
+    areaServed: {
+      '@type': 'Place',
+      name: 'Cyclades Islands',
+      address: {
+        '@type': 'PostalAddress',
+        addressRegion: 'Cyclades',
+        addressCountry: 'Greece'
       }
     },
-    "makesOffer": {
-      "@type": "Offer",
-      "itemOffered": {
-        "@type": "Service",
-        "name": "Personalized Trip Planning",
-        "description": "AI-powered personalized trip planning for the Cyclades islands, including itinerary creation, island recommendations, and activity suggestions"
+    makesOffer: {
+      '@type': 'Offer',
+      itemOffered: {
+        '@type': 'Service',
+        name: 'Personalized Trip Planning',
+        description: 'AI-powered personalized trip planning for the Cyclades islands, including itinerary creation, island recommendations, and activity suggestions'
       }
     }
   };
 
   return JSON.stringify(structuredData);
-}
-
-export function generateAuthSEO(): SEOProps {
-  return {
-    title: 'Sign In or Create Account | Greece Cyclades',
-    description: 'Sign in to your Greece Cyclades account or create a new one. Plan your perfect Greek island vacation with personalized recommendations and saved itineraries.',
-    keywords: [...DEFAULT_KEYWORDS, 'sign in', 'login', 'create account', 'register', 'user account'],
-    ogType: 'website',
-    canonicalUrl: '/auth'
-  };
-}
-
-export function generateSignInSEO(): SEOProps {
-  return {
-    title: 'Sign In | Greece Cyclades',
-    description: 'Sign in to your Greece Cyclades account. Access your saved trips, bookings, and personalized travel recommendations.',
-    keywords: [...DEFAULT_KEYWORDS, 'sign in', 'login', 'user account', 'access account'],
-    ogType: 'website',
-    canonicalUrl: '/signin'
-  };
-}
-
-export function generateSignUpSEO(): SEOProps {
-  return {
-    title: 'Create Account | Greece Cyclades',
-    description: 'Create your Greece Cyclades account. Start planning your dream vacation in the Greek islands with personalized recommendations and trip planning tools.',
-    keywords: [...DEFAULT_KEYWORDS, 'create account', 'register', 'sign up', 'new user', 'join'],
-    ogType: 'website',
-    canonicalUrl: '/signup'
-  };
-}
-
-export function generatePrivacySEO(): SEOProps {
-  return {
-    title: 'Privacy Policy | Greece Cyclades',
-    description: 'Learn about how we collect, use, and protect your personal information when you use Greece Cyclades. Our commitment to your privacy and data security.',
-    keywords: [...DEFAULT_KEYWORDS, 'privacy policy', 'data protection', 'personal information', 'privacy', 'security'],
-    ogType: 'website',
-    canonicalUrl: '/privacy'
-  };
-}
-
-export function generateTermsSEO(): SEOProps {
-  return {
-    title: 'Terms of Service | Greece Cyclades',
-    description: 'Read our terms of service and user agreement for Greece Cyclades. Understand your rights and responsibilities when using our travel planning services.',
-    keywords: [...DEFAULT_KEYWORDS, 'terms of service', 'user agreement', 'legal', 'conditions', 'terms of use'],
-    ogType: 'website',
-    canonicalUrl: '/terms'
-  };
-}
-
-export function generateMyTripsSEO(): SEOProps {
-  return {
-    title: 'My Trips | Greece Cyclades',
-    description: 'View and manage your planned trips to the Cyclades islands. Access your personalized itineraries, bookings, and travel plans in one place.',
-    keywords: [...DEFAULT_KEYWORDS, 'my trips', 'itinerary', 'travel plans', 'bookings', 'saved trips'],
-    ogType: 'website',
-    canonicalUrl: '/my-trips'
-  };
-}
-
-export function generateSitemapSEO(): SEOProps {
-  return {
-    title: 'Sitemap | Greece Cyclades',
-    description: 'Complete sitemap of Greece Cyclades. Find all our pages about Greek islands, hotels, activities, travel guides, and services.',
-    keywords: [...DEFAULT_KEYWORDS, 'sitemap', 'pages', 'navigation', 'site structure', 'website map'],
-    ogType: 'website',
-    canonicalUrl: '/sitemap'
-  };
-}
-
-export function generateBlogSEO(): SEOProps {
-  return {
-    title: 'Travel Blog | Greece Cyclades',
-    description: 'Discover the best travel guides, tips, and stories about the Cyclades islands. Expert advice on islands, activities, accommodations, and more.',
-    keywords: [...DEFAULT_KEYWORDS, 'travel blog', 'travel guides', 'greek islands blog', 'cyclades travel tips'],
-    ogType: 'website',
-    canonicalUrl: '/blog'
-  };
-}
-
-export function generateBlogPostSEO(post: BlogPost): SEOProps {
-  return {
-    title: `${post.title} | Greece Cyclades Blog`,
-    description: post.description,
-    keywords: [...DEFAULT_KEYWORDS, ...post.tags],
-    ogType: 'article',
-    canonicalUrl: `/blog/${post.slug}`,
-    ogImage: post.featuredImage,
-    article: {
-      publishedTime: post.date,
-      modifiedTime: post.lastModified || post.date,
-      author: post.author,
-      tags: post.tags
-    }
-  };
 }

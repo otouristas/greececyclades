@@ -1,27 +1,11 @@
 import { create } from 'zustand';
 import { Island } from '../types';
 
-// Import island images
-import santoriniImage from '../assets/images/islands/santorini-island.webp';
-import mykonosImage from '../assets/images/islands/mykonos-island.jpg';
-import parosImage from '../assets/images/islands/paros-island.jpg';
-import sifnosImage from '../assets/images/islands/sifnos-island.jpg';
-import naxosImage from '../assets/images/islands/naxos-island.jpg';
-
 interface IslandState {
   islands: Island[];
   selectedIsland: Island | null;
   setSelectedIsland: (island: Island | null) => void;
 }
-
-// Temporarily reuse existing images for new islands
-const antiparosImage = parosImage;
-const koufonisiaImage = naxosImage;
-const kimolosImage = sifnosImage;
-const syrosImage = mykonosImage;
-const androsImage = naxosImage;
-const tinosImage = santoriniImage;
-const keaImage = parosImage;
 
 const mockIslands: Island[] = [
   {
@@ -32,7 +16,7 @@ const mockIslands: Island[] = [
     quote: 'Where ancient history meets natural beauty',
     metaTitle: 'Naxos Travel Guide - Beaches, History & Adventure',
     metaDescription: 'Explore Naxos, the largest of the Cyclades islands. Discover pristine beaches, ancient ruins, mountain villages, and authentic Greek culture.',
-    image: naxosImage,
+    image: '/images/islands/naxos.jpg',
     highlights: ['Portara Ancient Gate', 'Plaka Beach', 'Mount Zeus', 'Traditional Villages'],
     weather: {
       temp: '24°C',
@@ -49,81 +33,135 @@ const mockIslands: Island[] = [
     shortDescription: 'Iconic sunsets and romantic caldera views',
     quote: 'The island where every sunset tells a different story',
     metaTitle: 'Santorini Travel Guide - Stunning Sunsets & Romantic Escapes',
-    metaDescription: 'Discover Santorini, the jewel of the Cyclades. Famous for its sunsets, white-washed houses, and volcanic beaches. Plan your dream getaway now!',
-    image: santoriniImage,
-    highlights: ['Caldera Views', 'Sunset in Oia', 'Black Sand Beaches', 'Wine Tasting'],
+    metaDescription: 'Experience the magic of Santorini. From caldera views and wine tasting to black sand beaches and ancient ruins.',
+    image: '/images/islands/santorini.jpg',
+    highlights: ['Oia Sunset', 'Caldera Views', 'Wine Tasting', 'Volcanic Beaches'],
     weather: {
       temp: '25°C',
       condition: 'sunny'
     },
-    activities: 45,
+    activities: 75,
     bestTime: 'April to October',
     idealFor: ['Couples', 'Photographers', 'Wine Lovers', 'Luxury Travelers']
   },
   {
     id: 3,
     name: 'Mykonos',
-    description: 'Mykonos is a vibrant cosmopolitan island renowned for its lively atmosphere and beautiful beaches.',
-    shortDescription: 'Vibrant nightlife and pristine beaches',
-    quote: 'Where tradition meets luxury in the heart of the Aegean',
-    metaTitle: 'Mykonos Travel Guide - Luxury, Beaches & Nightlife',
-    metaDescription: 'Plan your perfect Mykonos getaway. Discover pristine beaches, vibrant nightlife, and iconic windmills in this cosmopolitan Greek paradise.',
-    image: mykonosImage,
-    highlights: ['Little Venice', 'Windmills', 'Paradise Beach', 'Nightlife'],
+    description: 'The cosmopolitan gem of the Cyclades, known for its vibrant nightlife, iconic windmills, and pristine beaches.',
+    shortDescription: 'Vibrant nightlife and cosmopolitan atmosphere',
+    quote: 'Where luxury meets tradition in perfect harmony',
+    metaTitle: 'Mykonos Travel Guide - Beaches, Nightlife & Luxury',
+    metaDescription: 'Discover the vibrant island of Mykonos. From world-class beaches and nightlife to traditional villages and windmills.',
+    image: '/images/islands/mykonos.jpg',
+    highlights: ['Little Venice', 'Windmills', 'Paradise Beach', 'Chora Town'],
     weather: {
-      temp: '23°C',
+      temp: '26°C',
       condition: 'sunny'
     },
-    activities: 38,
-    bestTime: 'June to September',
-    idealFor: ['Party Lovers', 'Beach Goers', 'Luxury Seekers']
+    activities: 80,
+    bestTime: 'May to September',
+    idealFor: ['Party Lovers', 'Beach Enthusiasts', 'Luxury Travelers', 'Foodies']
   },
   {
     id: 4,
     name: 'Paros',
-    description: 'Paros offers a perfect blend of traditional Cycladic charm and modern amenities, with beautiful beaches and picturesque villages.',
-    shortDescription: 'Traditional charm meets modern comfort',
-    quote: 'Experience authentic Cycladic life in every corner',
-    metaTitle: 'Paros Travel Guide - Authentic Greek Island Experience',
-    metaDescription: 'Visit Paros for its beautiful beaches, traditional villages, and water sports. Perfect for families and couples seeking authentic Greek island life.',
-    image: parosImage,
+    description: 'A perfect blend of traditional Cycladic architecture, golden beaches, and vibrant nightlife. Known for its excellent water sports conditions.',
+    shortDescription: 'Perfect blend of tradition and modern life',
+    quote: 'The heart of the Cyclades',
+    metaTitle: 'Paros Travel Guide - Beaches, Villages & Water Sports',
+    metaDescription: 'Explore the charming island of Paros. From traditional villages and water sports to golden beaches and local cuisine.',
+    image: '/images/islands/paros.jpg',
     highlights: ['Naoussa Village', 'Golden Beach', 'Parikia Old Town', 'Water Sports'],
     weather: {
-      temp: '24°C',
+      temp: '25°C',
       condition: 'sunny'
     },
-    activities: 32,
+    activities: 60,
     bestTime: 'May to October',
-    idealFor: ['Families', 'Beach Lovers', 'Water Sports']
+    idealFor: ['Water Sports Enthusiasts', 'Couples', 'Families', 'Culture Lovers']
   },
   {
     id: 5,
     name: 'Sifnos',
-    description: 'Sifnos is a charming island known for its traditional pottery, excellent cuisine, and beautiful hiking trails.',
-    shortDescription: 'Culinary paradise with scenic trails',
-    quote: 'Where gastronomy meets tradition',
-    metaTitle: 'Sifnos Travel Guide - Culinary Delights & Traditional Charm',
-    metaDescription: 'Explore Sifnos, a hidden gem of the Cyclades known for its gastronomy, pottery, and hiking trails. Perfect for food lovers and outdoor enthusiasts.',
-    image: sifnosImage,
-    highlights: ['Traditional Pottery', 'Gastronomy', 'Hiking Trails', 'Kastro Village'],
+    description: 'A gastronomic paradise known for its pottery, traditional Cycladic architecture, and beautiful hiking trails.',
+    shortDescription: 'Gastronomic delights and pottery traditions',
+    quote: 'Where tradition meets culinary excellence',
+    metaTitle: 'Sifnos Travel Guide - Food, Pottery & Hiking',
+    metaDescription: 'Discover the authentic island of Sifnos. Experience traditional pottery, exquisite local cuisine, and scenic hiking trails.',
+    image: '/images/islands/sifnos.jpg',
+    highlights: ['Traditional Pottery', 'Kastro Village', 'Hiking Trails', 'Local Cuisine'],
     weather: {
-      temp: '22°C',
+      temp: '24°C',
       condition: 'sunny'
     },
-    activities: 25,
-    bestTime: 'May to September',
-    idealFor: ['Food Lovers', 'Hikers', 'Culture Enthusiasts']
+    activities: 45,
+    bestTime: 'May to October',
+    idealFor: ['Food Lovers', 'Hikers', 'Culture Enthusiasts', 'Pottery Fans']
   },
   {
     id: 6,
+    name: 'Milos',
+    description: 'Known for its stunning lunar landscapes, colorful fishing villages, and unique volcanic beaches.',
+    shortDescription: 'Volcanic landscapes and colorful beaches',
+    quote: 'Where the colors of the earth meet the sea',
+    metaTitle: 'Milos Travel Guide - Beaches, Landscapes & Culture',
+    metaDescription: 'Experience the unique beauty of Milos. From lunar landscapes and colorful beaches to traditional fishing villages.',
+    image: '/images/islands/milos.jpg',
+    highlights: ['Sarakiniko Beach', 'Kleftiko Caves', 'Plaka Village', 'Volcanic Landscapes'],
+    weather: {
+      temp: '25°C',
+      condition: 'sunny'
+    },
+    activities: 55,
+    bestTime: 'May to October',
+    idealFor: ['Nature Lovers', 'Photographers', 'Beach Enthusiasts', 'Adventure Seekers']
+  },
+  {
+    id: 7,
+    name: 'Ios',
+    description: 'Famous for its beautiful beaches, vibrant nightlife, and charming Cycladic architecture.',
+    shortDescription: 'Beautiful beaches and vibrant nightlife',
+    quote: 'Where youth meets timeless beauty',
+    metaTitle: 'Ios Travel Guide - Beaches, Nightlife & Adventure',
+    metaDescription: 'Discover the energetic island of Ios. From stunning beaches and nightlife to traditional villages.',
+    image: '/images/islands/ios.jpg',
+    highlights: ['Mylopotas Beach', 'Chora Village', 'Homer\'s Tomb', 'Nightlife'],
+    weather: {
+      temp: '26°C',
+      condition: 'sunny'
+    },
+    activities: 40,
+    bestTime: 'June to September',
+    idealFor: ['Young Travelers', 'Beach Lovers', 'Party Enthusiasts', 'Adventure Seekers']
+  },
+  {
+    id: 8,
+    name: 'Tinos',
+    description: 'A spiritual center known for its religious significance, traditional marble craftsmanship, and authentic village life.',
+    shortDescription: 'Religious heritage and marble artistry',
+    quote: 'Island of faith and artistry',
+    metaTitle: 'Tinos Travel Guide - Pilgrimage, Art & Tradition',
+    metaDescription: 'Explore the spiritual island of Tinos. From religious sites and marble villages to authentic Greek culture.',
+    image: '/images/islands/tinos.jpg',
+    highlights: ['Church of Panagia', 'Marble Villages', 'Dovecotes', 'Traditional Crafts'],
+    weather: {
+      temp: '24°C',
+      condition: 'sunny'
+    },
+    activities: 35,
+    bestTime: 'April to October',
+    idealFor: ['Pilgrims', 'Art Lovers', 'Culture Enthusiasts', 'Peace Seekers']
+  },
+  {
+    id: 9,
     name: 'Antiparos',
-    description: 'A charming small island known for its peaceful atmosphere, beautiful caves, and pristine beaches. The perfect escape for those seeking tranquility.',
-    shortDescription: 'Peaceful island with stunning caves',
+    description: 'A charming small island known for its peaceful atmosphere, beautiful caves, and pristine beaches. Perfect for those seeking tranquility and natural beauty.',
+    shortDescription: 'Peaceful caves and pristine beaches',
     quote: 'Where serenity meets natural wonder',
     metaTitle: 'Antiparos Travel Guide - Caves, Beaches & Tranquility',
-    metaDescription: 'Discover Antiparos, a peaceful Cycladic gem with stunning caves, pristine beaches, and authentic Greek charm. Plan your serene escape today!',
-    image: antiparosImage,
-    highlights: ['Antiparos Cave', 'Sifneiko Beach', 'Venetian Castle', 'Traditional Chora'],
+    metaDescription: 'Discover the peaceful island of Antiparos. From stunning caves and pristine beaches to traditional village life.',
+    image: '/images/islands/antiparos.jpg',
+    highlights: ['Antiparos Cave', 'Pristine Beaches', 'Kastro Village', 'Sunset Views'],
     weather: {
       temp: '24°C',
       condition: 'sunny'
@@ -133,117 +171,99 @@ const mockIslands: Island[] = [
     idealFor: ['Peace Seekers', 'Beach Lovers', 'Cave Explorers', 'Couples']
   },
   {
-    id: 7,
+    id: 10,
     name: 'Koufonisia',
-    description: 'A hidden gem with turquoise waters, white sandy beaches, and authentic island life. Experience the true essence of Cycladic simplicity.',
-    shortDescription: 'Hidden paradise with turquoise waters',
-    quote: 'Where simplicity meets paradise',
-    metaTitle: 'Koufonisia Travel Guide - Hidden Beaches & Island Life',
-    metaDescription: 'Explore Koufonisia, a hidden Cycladic paradise with crystal-clear waters and authentic Greek island life. Plan your perfect escape now!',
-    image: koufonisiaImage,
-    highlights: ['Pori Beach', 'Pano Koufonisi', 'Sea Caves', 'Traditional Fishing Villages'],
+    description: 'A hidden gem with exotic beaches, crystal-clear waters, and traditional Cycladic charm. Known for its stunning swimming spots and laid-back atmosphere.',
+    shortDescription: 'Crystal waters and Cycladic charm',
+    quote: 'Paradise found in the Lesser Cyclades',
+    metaTitle: 'Koufonisia Travel Guide - Beaches & Island Life',
+    metaDescription: 'Experience the hidden gem of Koufonisia. From exotic beaches and swimming spots to authentic island life.',
+    image: '/images/islands/koufonisia.jpg',
+    highlights: ['Pori Beach', 'Swimming Caves', 'Chora Village', 'Local Life'],
     weather: {
       temp: '25°C',
       condition: 'sunny'
     },
     activities: 25,
     bestTime: 'June to September',
-    idealFor: ['Beach Enthusiasts', 'Swimmers', 'Relaxation Seekers', 'Adventure Travelers']
-  },
-  {
-    id: 8,
-    name: 'Kimolos',
-    description: 'An unspoiled volcanic island with unique geology, thermal springs, and traditional villages. A paradise for nature lovers and geology enthusiasts.',
-    shortDescription: 'Volcanic beauty and thermal springs',
-    quote: 'Where earth\'s wonders come alive',
-    metaTitle: 'Kimolos Travel Guide - Volcanic Landscapes & Thermal Springs',
-    metaDescription: 'Discover Kimolos, a volcanic Cycladic treasure with unique geology, thermal springs, and authentic village life. Plan your natural escape today!',
-    image: kimolosImage,
-    highlights: ['Prassa Beach', 'Skiadi Rock', 'Thermal Springs', 'Chorio Village'],
-    weather: {
-      temp: '23°C',
-      condition: 'sunny'
-    },
-    activities: 28,
-    bestTime: 'May to October',
-    idealFor: ['Nature Lovers', 'Geology Enthusiasts', 'Authentic Experience Seekers']
-  },
-  {
-    id: 9,
-    name: 'Syros',
-    description: 'The capital of Cyclades, featuring neoclassical architecture, vibrant culture, and year-round life. A unique blend of Orthodox and Catholic heritage.',
-    shortDescription: 'Cultural capital of the Cyclades',
-    quote: 'Where culture meets island life',
-    metaTitle: 'Syros Travel Guide - Culture, Architecture & History',
-    metaDescription: 'Experience Syros, the cultural heart of the Cyclades with its neoclassical architecture and vibrant arts scene. Plan your cultural journey now!',
-    image: syrosImage,
-    highlights: ['Ermoupolis', 'Apollo Theater', 'Ano Syros', 'Vaporia District'],
-    weather: {
-      temp: '24°C',
-      condition: 'sunny'
-    },
-    activities: 40,
-    bestTime: 'April to October',
-    idealFor: ['Culture Enthusiasts', 'Architecture Lovers', 'Urban Explorers', 'History Buffs']
-  },
-  {
-    id: 10,
-    name: 'Andros',
-    description: 'A hiker\'s paradise with lush valleys, waterfalls, and rich maritime heritage. The perfect blend of nature and culture.',
-    shortDescription: 'Hiking trails and maritime heritage',
-    quote: 'Where nature meets maritime history',
-    metaTitle: 'Andros Travel Guide - Hiking & Maritime Heritage',
-    metaDescription: 'Explore Andros, a hiker\'s paradise with waterfalls, ancient trails, and rich maritime history. Plan your adventure today!',
-    image: androsImage,
-    highlights: ['Hiking Trails', 'Waterfalls', 'Maritime Museum', 'Chora Old Town'],
-    weather: {
-      temp: '23°C',
-      condition: 'sunny'
-    },
-    activities: 35,
-    bestTime: 'April to October',
-    idealFor: ['Hikers', 'Nature Lovers', 'Art Enthusiasts', 'History Buffs']
+    idealFor: ['Beach Enthusiasts', 'Swimmers', 'Off-the-beaten-path Travelers', 'Nature Lovers']
   },
   {
     id: 11,
-    name: 'Tinos',
-    description: 'Known for its religious significance, traditional marble crafts, and picturesque villages. A unique blend of spirituality and artistry.',
-    shortDescription: 'Religious heritage and marble crafts',
-    quote: 'Where faith meets artistry',
-    metaTitle: 'Tinos Travel Guide - Pilgrimage & Traditional Arts',
-    metaDescription: 'Discover Tinos, an island of religious significance, marble craftsmanship, and authentic village life. Plan your spiritual journey now!',
-    image: tinosImage,
-    highlights: ['Panagia Church', 'Marble Villages', 'Dovecotes', 'Volax Village'],
+    name: 'Kimolos',
+    description: 'An unspoiled island with volcanic landscapes, thermal springs, and authentic Greek island life. Perfect for those seeking an authentic Cycladic experience.',
+    shortDescription: 'Volcanic beauty and thermal springs',
+    quote: 'Where authenticity meets volcanic beauty',
+    metaTitle: 'Kimolos Travel Guide - Nature & Authenticity',
+    metaDescription: 'Explore unspoiled Kimolos. From volcanic landscapes and thermal springs to authentic Greek island life.',
+    image: '/images/islands/kimolos.jpg',
+    highlights: ['Thermal Springs', 'Volcanic Beaches', 'Traditional Villages', 'Local Cuisine'],
+    weather: {
+      temp: '23°C',
+      condition: 'sunny'
+    },
+    activities: 20,
+    bestTime: 'May to October',
+    idealFor: ['Nature Lovers', 'Hikers', 'Authenticity Seekers', 'Geology Enthusiasts']
+  },
+  {
+    id: 12,
+    name: 'Syros',
+    description: 'The capital of Cyclades, featuring neoclassical architecture, vibrant culture, and beautiful beaches. A perfect blend of history and modern life.',
+    shortDescription: 'Cultural capital with neoclassical charm',
+    quote: 'Where history meets modern elegance',
+    metaTitle: 'Syros Travel Guide - Culture, Architecture & Beaches',
+    metaDescription: 'Visit the capital of Cyclades. From neoclassical architecture and culture to beautiful beaches.',
+    image: '/images/islands/syros.jpg',
+    highlights: ['Ermoupoli Town', 'Apollo Theater', 'Ano Syros', 'Beaches'],
     weather: {
       temp: '24°C',
       condition: 'sunny'
     },
-    activities: 38,
-    bestTime: 'May to September',
-    idealFor: ['Pilgrims', 'Art Lovers', 'Culture Enthusiasts', 'Food Enthusiasts']
+    activities: 45,
+    bestTime: 'April to October',
+    idealFor: ['Culture Enthusiasts', 'Architecture Lovers', 'Foodies', 'History Buffs']
   },
   {
-    id: 12,
-    name: 'Kea',
-    description: 'The closest Cycladic island to Athens, offering hiking trails, diving spots, and ancient ruins. Perfect for quick escapes and weekend adventures.',
-    shortDescription: 'Athens\' closest island escape',
-    quote: 'Where weekend dreams come true',
-    metaTitle: 'Kea Travel Guide - Weekend Escapes & Ancient Ruins',
-    metaDescription: 'Experience Kea, the closest Cycladic island to Athens with hiking trails, diving spots, and ancient ruins. Plan your perfect weekend getaway!',
-    image: keaImage,
-    highlights: ['Lion of Kea', 'Ancient Carthaea', 'Diving Sites', 'Hiking Network'],
+    id: 13,
+    name: 'Andros',
+    description: "A hiker's paradise with lush valleys, waterfalls, and traditional villages. Known for its diverse landscapes and rich maritime history.",
+    shortDescription: 'Hiking trails and waterfalls',
+    quote: 'Where nature paints the perfect trail',
+    metaTitle: 'Andros Travel Guide - Hiking, Nature & Culture',
+    metaDescription: 'Discover the green island of Andros. From hiking trails and waterfalls to traditional villages.',
+    image: '/images/islands/andros.jpg',
+    highlights: ['Hiking Trails', 'Waterfalls', 'Maritime Museum', 'Traditional Villages'],
     weather: {
-      temp: '25°C',
+      temp: '22°C',
+      condition: 'partly cloudy'
+    },
+    activities: 40,
+    bestTime: 'April to November',
+    idealFor: ['Hikers', 'Nature Photographers', 'Cultural Tourists', 'Adventure Seekers']
+  },
+  {
+    id: 14,
+    name: 'Kea',
+    description: 'The closest Cycladic island to Athens, offering hiking trails, ancient ruins, and secluded beaches. Perfect for quick escapes and weekend trips.',
+    shortDescription: 'Ancient ruins and hiking trails',
+    quote: 'Gateway to the Cyclades',
+    metaTitle: 'Kea Travel Guide - History, Hiking & Beaches',
+    metaDescription: 'Experience Kea, the closest Cycladic island to Athens. From ancient ruins and hiking to secluded beaches.',
+    image: '/images/islands/kea.jpg',
+    highlights: ['Ancient Carthaea', 'Hiking Network', 'Lion of Kea', 'Secluded Beaches'],
+    weather: {
+      temp: '24°C',
       condition: 'sunny'
     },
-    activities: 32,
-    bestTime: 'April to October',
-    idealFor: ['Weekend Travelers', 'Divers', 'History Enthusiasts', 'Hikers']
+    activities: 35,
+    bestTime: 'May to October',
+    idealFor: ['Weekend Travelers', 'Hikers', 'History Buffs', 'Nature Lovers']
   }
 ];
 
 export const useIslandStore = create<IslandState>((set) => ({
   islands: mockIslands,
   selectedIsland: null,
-  setSelectedIsland: (island) => set({ selectedIsland: island }),
+  setSelectedIsland: (island) => set({ selectedIsland: island })
 }));

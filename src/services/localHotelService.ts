@@ -1,16 +1,11 @@
 import { Hotel } from '../types/hotel';
 import { hotels } from '../data/hotelsData';
-import { generateSlug } from '../utils/seoMetadata';
 
 export const hotelService = {
   // Get hotel by slug
   async getHotelBySlug(slug: string): Promise<Hotel | null> {
     console.log('Looking for hotel with slug:', slug);
-    const hotel = hotels.find(hotel => {
-      const generatedSlug = generateSlug(hotel.name, hotel.location.island);
-      console.log(`Comparing hotel: ${hotel.name}, generated slug: ${generatedSlug}, target slug: ${slug}`);
-      return generatedSlug === slug;
-    });
+    const hotel = hotels.find(hotel => hotel.slug === slug);
     console.log('Found hotel:', hotel?.name || 'null');
     return hotel || null;
   },
@@ -35,6 +30,8 @@ export const hotelService = {
     maxPrice?: number;
     category?: string;
     amenities?: string[];
+    checkIn?: string;
+    checkOut?: string;
   }): Promise<Hotel[]> {
     let filteredHotels = hotels;
 
@@ -56,9 +53,9 @@ export const hotelService = {
       );
     }
 
-    if (criteria.category) {
+    if (criteria.category && criteria.category !== 'all') {
       filteredHotels = filteredHotels.filter(
-        hotel => hotel.category === criteria.category
+        hotel => hotel.category.toLowerCase() === criteria.category!.toLowerCase()
       );
     }
 
@@ -68,6 +65,16 @@ export const hotelService = {
           hotel.amenities.includes(amenity)
         )
       );
+    }
+
+    // Filter by availability if dates are provided
+    if (criteria.checkIn && criteria.checkOut) {
+      const checkInDate = new Date(criteria.checkIn);
+      const checkOutDate = new Date(criteria.checkOut);
+      
+      // For now, we'll just return all hotels since we don't have real availability data
+      // In a real application, you would check against hotel availability here
+      console.log('Checking availability for dates:', { checkIn: checkInDate, checkOut: checkOutDate });
     }
 
     return filteredHotels;

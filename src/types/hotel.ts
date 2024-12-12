@@ -6,15 +6,23 @@ export interface HotelAmenity {
 
 export interface HotelRoom {
   id: string;
-  name: string;
+  type: string;
   description: string;
+  price: number;
+  image: string;
   maxOccupancy: number;
-  pricePerNight: number;
-  images: string[];
+  bedType: string;
+  size: number;
   amenities: string[];
 }
 
-export type HotelCategory = 'Luxury' | 'Boutique' | 'Resort' | 'Villa';
+export enum HotelCategory {
+  UltraLuxury = 'Ultra Luxury',
+  Luxury = 'Luxury',
+  Boutique = 'Boutique',
+  Resort = 'Resort',
+  Villa = 'Villa'
+}
 
 export type HotelFeature = 
   | 'WiFi'
@@ -54,6 +62,7 @@ export type HotelFeature =
 export interface HotelLocation {
   island: string;
   area: string;
+  address?: string;
   coordinates?: {
     latitude: number;
     longitude: number;
@@ -77,27 +86,41 @@ export interface HotelReview {
   highlights: string[];
 }
 
+export interface SeoMetadata {
+  title: string;
+  description: string;
+  keywords: string[];
+}
+
 export interface Hotel {
   id: string;
+  slug: string;
   name: string;
-  location: HotelLocation;
-  category: HotelCategory;
-  priceRange: HotelPriceRange;
-  starRating: number;
-  keyFeatures: HotelFeature[];
-  shortDescription: string;
   description: string;
-  rooms: HotelRoom[];
-  amenities: string[];
-  images: HotelImages;
-  bookingUrl?: string;
-  checkIn?: string;
-  checkOut?: string;
-  policies?: {
-    cancellation?: string;
-    children?: string;
-    pets?: string;
+  location: {
+    island: string;
+    area: string;
+    address?: string;
+    coordinates?: {
+      latitude: number;
+      longitude: number;
+    };
   };
-  reviews?: HotelReview;
-  roomTypes?: string[];
+  images: string[];
+  amenities: string[];
+  rooms: HotelRoom[];
+  rating: number;
+  reviews: number;
+  category: HotelCategory;
+  features: HotelFeature[];
+  priceRange: {
+    min: number;
+    max: number;
+    currency: string;
+  };
+  seoMeta?: {
+    title: string;
+    description: string;
+    keywords: string[];
+  };
 }

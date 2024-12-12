@@ -4,7 +4,10 @@ export enum VehicleType {
   MOTO = 'moto',
   SCOOTER = 'scooter',
   ATV = 'atv',
-  BUGGY = 'buggy'
+  BUGGY = 'buggy',
+  SUV = "SUV",
+  VAN = "VAN",
+  LUXURY = "LUXURY"
 }
 
 export interface Vehicle {
@@ -25,6 +28,8 @@ export interface Vehicle {
   location: string;
   company: string;
   mileage: string;
+  description: string;
+  idealFor: string[];
 }
 
 export interface VehicleFilters {
@@ -35,4 +40,8 @@ export interface VehicleFilters {
   vehicleType: VehicleType | null;
   transmission: string | null;
   passengers: number | null;
+  features: string[] | null;
+  location: string | null;
+  pickupDate: string | null;
+  returnDate: string | null;
 }

@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { Link } from 'react-router-dom';
-import { Menu, X, ChevronRight, MapPin, Phone, User, LogOut } from 'lucide-react';
+import { Link, useLocation } from 'react-router-dom';
+import { Menu, X, ChevronRight, ChevronDown, MapPin, User, LogOut } from 'lucide-react';
 import { useAuthStore } from '../../store/authStore';
 import Logo from '../Logo';
 
@@ -9,22 +9,31 @@ interface NavigationMenuProps {
   onAuthClick: () => void;
 }
 
-const getNavigationItems = (isAuthenticated: boolean) => [
-  { path: '/islands', label: 'Islands' },
+const navigationItems = [
+  { path: '/islands', label: 'Cyclades Islands' },
   { path: '/guides', label: 'Travel Guides' },
-  { path: '/activities', label: 'Activities' },
+  { 
+    path: '/activities', 
+    label: 'Activities',
+    children: [
+      { path: '/activities', label: 'All Activities' },
+      { path: '/culinary', label: 'Culinary' }
+    ]
+  },
   { path: '/hotels', label: 'Hotels' },
-  { path: '/rent-a-car', label: 'Rent A Car' },
-  ...(isAuthenticated ? [{ path: '/blog', label: 'Blog' }] : []),
-  { path: '/contact', label: 'Contact' },
+  { path: '/rent-a-car', label: 'Rent a Car' },
 ];
 
 export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
   const [isOpen, setIsOpen] = useState(false);
-  const { isAuthenticated, user, logout } = useAuthStore();
-  const navigationItems = getNavigationItems(isAuthenticated);
+  const [expandedItem, setExpandedItem] = useState<string | null>(null);
+  const { user, logout } = useAuthStore();
+  const location = useLocation();
 
-  const closeMenu = () => setIsOpen(false);
+  const closeMenu = () => {
+    setIsOpen(false);
+    setExpandedItem(null);
+  };
 
   const handleLogout = async () => {
     try {
@@ -49,15 +58,14 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
       {/* Mobile Menu */}
       <AnimatePresence>
         {isOpen && (
-          <div className="fixed inset-0 z-[90]">
+          <>
             {/* Backdrop */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
+              className="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
               onClick={closeMenu}
-              className="absolute inset-0 bg-black/20 backdrop-blur-sm"
             />
 
             {/* Menu Panel */}
@@ -65,107 +73,150 @@ export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {
               initial={{ x: '100%' }}
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
-              transition={{ type: 'spring', damping: 30, stiffness: 300 }}
-              className="absolute right-0 top-0 h-[100dvh] w-full sm:w-[280px] bg-white shadow-xl overflow-y-auto"
+              transition={{ type: 'spring', damping: 20 }}
+              className="fixed right-0 top-0 h-full w-full bg-white shadow-xl z-50 overflow-y-auto"
             >
               <div className="flex flex-col h-full">
                 {/* Header */}
-                <div className="p-4 border-b flex items-center justify-between">
-                  <Link to="/" onClick={closeMenu} className="flex-shrink-0">
-                    <Logo />
-                  </Link>
-                  <button
-                    onClick={closeMenu}
-                    className="p-2 text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-100"
-                  >
-                    <X className="h-6 w-6" />
-                  </button>
-                </div>
-
-                {/* User Section */}
                 <div className="p-4 border-b">
-                  {isAuthenticated && user ? (
-                    <div className="space-y-4">
-                      <div className="flex items-center space-x-3">
-                        {user.avatar ? (
-                          <img
-                            src={user.avatar}
-                            alt={user.name}
-                            className="h-12 w-12 rounded-full object-cover"
-                          />
-                        ) : (
-                          <div className="h-12 w-12 rounded-full bg-blue-100 flex items-center justify-center">
-                            <span className="text-blue-600 font-medium text-lg">
-                              {user.name.charAt(0).toUpperCase()}
-                            </span>
-                          </div>
-                        )}
-                        <div>
-                          <div className="font-medium text-gray-900">{user.name}</div>
-                          <div className="text-sm text-gray-500">{user.email}</div>
-                        </div>
-                      </div>
-                      <div className="space-y-1">
-                        <Link
-                          to="/profile"
-                          onClick={closeMenu}
-                          className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
-                        >
-                          <User className="h-4 w-4 mr-2" />
-                          My Profile
-                        </Link>
-                        <Link
-                          to="/my-trips"
-                          onClick={closeMenu}
-                          className="flex items-center w-full px-3 py-2 text-sm text-gray-700 hover:bg-gray-50 rounded-lg"
-                        >
-                          <MapPin className="h-4 w-4 mr-2" />
-                          My Trips
-                        </Link>
-                        <button
-                          onClick={handleLogout}
-                          className="flex items-center w-full px-3 py-2 text-sm text-red-600 hover:bg-red-50 rounded-lg"
-                        >
-                          <LogOut className="h-4 w-4 mr-2" />
-                          Sign Out
-                        </button>
-                      </div>
-                    </div>
-                  ) : (
+                  <div className="flex items-center justify-between max-w-7xl mx-auto w-full">
+                    <Link to="/" onClick={closeMenu}>
+                      <Logo />
+                    </Link>
                     <button
-                      onClick={onAuthClick}
-                      className="w-full px-4 py-2 text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-lg"
+                      onClick={closeMenu}
+                      className="p-2 text-gray-600 hover:text-gray-900 rounded-lg hover:bg-gray-100"
                     >
-                      Sign In
+                      <X className="h-6 w-6" />
                     </button>
-                  )}
+                  </div>
                 </div>
 
                 {/* Navigation Links */}
-                <div className="flex-1 py-2">
-                  {navigationItems.map((item) => (
-                    <Link
-                      key={item.path}
-                      to={item.path}
-                      onClick={closeMenu}
-                      className="flex items-center justify-between px-4 py-2 text-gray-600 hover:text-gray-900 hover:bg-gray-50"
-                    >
-                      {item.label}
-                      <ChevronRight className="h-4 w-4" />
-                    </Link>
-                  ))}
+                <div className="flex-1 py-4 overflow-y-auto">
+                  <div className="max-w-7xl mx-auto w-full px-4">
+                    <div className="space-y-1">
+                      {navigationItems.map((item) => (
+                        <div key={item.path}>
+                          {item.children ? (
+                            <>
+                              <button
+                                onClick={() => setExpandedItem(expandedItem === item.path ? null : item.path)}
+                                className={`flex items-center w-full gap-2 px-4 py-3 text-base text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg ${
+                                  location.pathname.startsWith(item.path) ? 'text-blue-600 font-medium' : ''
+                                }`}
+                              >
+                                {item.label}
+                                <ChevronDown 
+                                  className={`h-4 w-4 ml-auto transition-transform duration-200 ${
+                                    expandedItem === item.path ? 'rotate-180' : ''
+                                  }`}
+                                />
+                              </button>
+                              {expandedItem === item.path && (
+                                <div className="mt-1 space-y-1">
+                                  {item.children.map((child) => (
+                                    <Link
+                                      key={child.path}
+                                      to={child.path}
+                                      onClick={closeMenu}
+                                      className={`flex items-center gap-2 px-8 py-3 text-base text-gray-600 hover:text-blue-600 hover:bg-blue-50 rounded-lg ${
+                                        location.pathname === child.path ? 'text-blue-600 font-medium' : ''
+                                      }`}
+                                    >
+                                      {child.label}
+                                    </Link>
+                                  ))}
+                                </div>
+                              )}
+                            </>
+                          ) : (
+                            <Link
+                              to={item.path}
+                              onClick={closeMenu}
+                              className={`flex items-center gap-2 px-4 py-3 text-base text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg ${
+                                location.pathname === item.path ? 'text-blue-600 font-medium' : ''
+                              }`}
+                            >
+                              {item.label}
+                              <ChevronRight className="h-4 w-4 ml-auto" />
+                            </Link>
+                          )}
+                        </div>
+                      ))}
+                    </div>
+                  </div>
                 </div>
 
-                {/* Footer */}
-                <div className="p-4 border-t">
-                  <div className="flex items-center space-x-2 text-sm text-gray-500">
-                    <Phone className="h-4 w-4" />
-                    <span>Need help? Call us</span>
+                {/* Auth Section */}
+                <div className="border-t">
+                  <div className="max-w-7xl mx-auto w-full px-4 py-4">
+                    {user ? (
+                      <div className="space-y-4">
+                        <div className="flex items-center gap-3 px-4 py-2">
+                          {user.avatar ? (
+                            <img
+                              src={user.avatar}
+                              alt={user.name}
+                              className="w-10 h-10 rounded-full object-cover"
+                            />
+                          ) : (
+                            <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
+                              <span className="text-blue-600 font-medium">
+                                {user.name.charAt(0).toUpperCase()}
+                              </span>
+                            </div>
+                          )}
+                          <div>
+                            <div className="font-medium text-gray-900">{user.name}</div>
+                            <div className="text-sm text-gray-500">{user.email}</div>
+                          </div>
+                        </div>
+                        <div className="space-y-1">
+                          <Link
+                            to="/profile"
+                            onClick={closeMenu}
+                            className="flex items-center w-full px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg"
+                          >
+                            <User className="h-5 w-5 mr-3" />
+                            My Profile
+                          </Link>
+                          <Link
+                            to="/my-trips"
+                            onClick={closeMenu}
+                            className="flex items-center w-full px-4 py-3 text-gray-700 hover:text-blue-600 hover:bg-blue-50 rounded-lg"
+                          >
+                            <MapPin className="h-5 w-5 mr-3" />
+                            My Trips
+                          </Link>
+                          <button
+                            onClick={() => {
+                              handleLogout();
+                              closeMenu();
+                            }}
+                            className="flex items-center w-full px-4 py-3 text-red-600 hover:bg-red-50 rounded-lg"
+                          >
+                            <LogOut className="h-5 w-5 mr-3" />
+                            Sign Out
+                          </button>
+                        </div>
+                      </div>
+                    ) : (
+                      <button
+                        onClick={() => {
+                          onAuthClick();
+                          closeMenu();
+                        }}
+                        className="w-full px-4 py-3 text-center text-white bg-blue-600 hover:bg-blue-700 rounded-lg font-medium"
+                      >
+                        Sign In
+                      </button>
+                    )}
                   </div>
                 </div>
               </div>
             </motion.div>
-          </div>
+          </>
         )}
       </AnimatePresence>
     </div>

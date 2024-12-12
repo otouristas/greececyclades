@@ -1,12 +1,14 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import SEO from '../components/SEO';
 import { useIslandStore } from '../store/islandStore';
 import { useHotelStore } from '../store/hotelStore';
-import { MapPin, Sun, Cloud, Umbrella } from 'lucide-react';
-import HotelCard from '../components/hotels/HotelCard';
+import { culinaryData } from '../data/culinaryData';
+import { CulinaryCategory } from '../types/culinary';
+import SEO from '../components/SEO';
 import { getIslandSlug, compareSlug } from '../utils/slugify';
 import { generateIslandSEO } from '../utils/seoMetadata';
+import { MapPin, Sun, Cloud, Umbrella, UtensilsCrossed } from 'lucide-react';
+import HotelCard from '../components/hotels/HotelCard';
 
 const Island = () => {
   const { slug } = useParams<{ slug: string }>();
@@ -22,8 +24,27 @@ const Island = () => {
   // Get hotels for this island
   const islandHotels = React.useMemo(() => {
     if (!island) return [];
-    return hotels.filter(hotel => hotel.island === island.name);
+    return hotels.filter(hotel => hotel.location.island === island.name);
   }, [hotels, island]);
+
+  // Get culinary experiences for this island
+  const islandCulinary = React.useMemo(() => {
+    if (!island) return [];
+    return culinaryData.filter(exp => 
+      exp.location.toLowerCase().includes(island.name.toLowerCase())
+    );
+  }, [island]);
+
+  const groupedCulinary = React.useMemo(() => {
+    return islandCulinary.reduce((acc, exp) => {
+      const category = exp.category;
+      if (!acc[category]) {
+        acc[category] = [];
+      }
+      acc[category].push(exp);
+      return acc;
+    }, {} as Record<CulinaryCategory, typeof islandCulinary>);
+  }, [islandCulinary]);
 
   // Handle loading and not found states
   if (!island) {
@@ -45,10 +66,10 @@ const Island = () => {
 
   return (
     <>
-      <SEO {...generateIslandSEO(island.name)} />
+      <SEO {...generateIslandSEO(island.name, island.description, island.image)} />
       <div className="min-h-screen bg-white">
         {/* Hero Section */}
-        <div className="relative h-[60vh] w-full">
+        <div className="relative h-[60vh] w-full mt-0">
           <div className="absolute inset-0">
             <img
               src={island.image}
@@ -67,7 +88,7 @@ const Island = () => {
         </div>
 
         {/* Content */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Overview */}
           <div className="grid md:grid-cols-2 gap-12 mb-16">
             <div>
@@ -108,6 +129,55 @@ const Island = () => {
               </div>
             </div>
           </div>
+
+          {/* Culinary Experiences Section */}
+          {islandCulinary.length > 0 && (
+            <section className="py-16 bg-gray-50">
+              <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div className="flex items-center gap-2 mb-8">
+                  <UtensilsCrossed className="h-6 w-6 text-blue-600" />
+                  <h2 className="text-3xl font-bold text-gray-900">Local Culinary Experiences</h2>
+                </div>
+
+                {Object.entries(groupedCulinary).map(([category, experiences]) => (
+                  <div key={category} className="mb-12 last:mb-0">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-6">{category}</h3>
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                      {experiences.map((experience) => (
+                        <div key={experience.id} className="bg-white rounded-xl shadow-sm overflow-hidden">
+                          <div className="p-6">
+                            <div className="flex items-center gap-2 mb-4">
+                              <span className="px-3 py-1 bg-blue-100 text-blue-700 text-sm font-medium rounded-full">
+                                {experience.category}
+                              </span>
+                              <span className="text-sm text-gray-500">{experience.duration}</span>
+                            </div>
+                            
+                            <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                              {experience.title}
+                            </h3>
+                            
+                            <p className="text-gray-600 mb-4">
+                              {experience.shortDescription}
+                            </p>
+                            
+                            <div className="flex items-center justify-between">
+                              <span className="text-lg font-semibold text-blue-600">
+                                {experience.price.display}
+                              </span>
+                              <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
+                                Book Now
+                              </button>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
 
           {/* Hotels */}
           {islandHotels.length > 0 && (

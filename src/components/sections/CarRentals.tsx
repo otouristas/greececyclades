@@ -1,8 +1,9 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { ArrowRight } from 'lucide-react';
 import { useVehicleStore } from '../../store/vehicleStore';
 import VehicleCard from '../vehicles/VehicleCard';
+import { getVehicleSlug } from '../../utils/slugs';
+import { Vehicle } from '../../types/vehicle';
 
 export default function CarRentals() {
   const { vehicles } = useVehicleStore();
@@ -27,7 +28,11 @@ export default function CarRentals() {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           {featuredVehicles.map((vehicle) => (
-            <div key={vehicle.id}>
+            <Link 
+              key={vehicle.id} 
+              to={`/rent-a-car/${getVehicleSlug(vehicle.make, vehicle.model)}`}
+              className="group"
+            >
               <VehicleCard vehicle={vehicle} compact />
               <div className="mt-2 text-center">
                 <img
@@ -39,7 +44,7 @@ export default function CarRentals() {
                   Provided by AGGELOS Rentals
                 </div>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
       </div>

@@ -6,9 +6,17 @@ interface FilterSidebarProps {
   onClose: () => void;
 }
 
-const locations = ['Santorini', 'Mykonos', 'Naxos', 'Paros', 'Milos'];
-const durations = ['2-4 hours', '4-6 hours', '6+ hours'];
-const categories = ['Water Activities', 'Adventure', 'Food & Wine', 'Arts & Culture'];
+const locations = ['Santorini', 'Mykonos', 'Naxos', 'Paros', 'Antiparos', 'Sifnos', 'Milos'];
+const durations = ['2-4 hours', '4-6 hours', '6+ hours', 'Full Day'];
+const categories = [
+  'Water Activities',
+  'Adventure',
+  'Food & Wine',
+  'Arts & Culture',
+  'Beach Activities',
+  'Cultural Tours',
+  'Shopping'
+];
 
 export default function FilterSidebar({ isOpen, onClose }: FilterSidebarProps) {
   const { filters, setFilters } = useActivityStore();

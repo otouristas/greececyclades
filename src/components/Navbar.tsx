@@ -9,27 +9,39 @@ interface NavbarProps {
   onAuthClick: () => void;
 }
 
-const getNavigationItems = (isAuthenticated: boolean) => [
-  { path: '/islands', label: 'Islands' },
+const navigationItems = [
+  { path: '/islands', label: 'Cyclades Islands' },
   { path: '/guides', label: 'Travel Guides' },
-  { path: '/activities', label: 'Activities' },
+  { 
+    path: '/activities', 
+    label: 'Activities',
+    children: [
+      { path: '/activities', label: 'All Activities' },
+      { path: '/culinary', label: 'Culinary' }
+    ]
+  },
   { path: '/hotels', label: 'Hotels' },
-  { path: '/rent-a-car', label: 'Rent A Car' },
-  ...(isAuthenticated ? [{ path: '/blog', label: 'Blog' }] : []),
-  { path: '/contact', label: 'Contact' },
+  { path: '/rent-a-car', label: 'Rent a Car' },
 ];
 
 export default function Navbar({ onAuthClick }: NavbarProps) {
-  const { isAuthenticated, user, logout } = useAuthStore();
+  const { user, logout } = useAuthStore();
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
-  const dropdownRef = useRef<HTMLDivElement>(null);
-  const navigationItems = getNavigationItems(isAuthenticated);
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const userDropdownRef = useRef<HTMLDivElement>(null);
+  const navDropdownRef = useRef<HTMLDivElement>(null);
   const location = useLocation();
 
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
+      // Handle user dropdown
+      if (userDropdownRef.current && !userDropdownRef.current.contains(event.target as Node)) {
         setIsDropdownOpen(false);
+      }
+      
+      // Handle navigation dropdowns
+      if (navDropdownRef.current && !navDropdownRef.current.contains(event.target as Node)) {
+        setActiveDropdown(null);
       }
     }
 
@@ -56,26 +68,61 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-6">
+          <div className="hidden md:flex items-center gap-4 lg:gap-6" ref={navDropdownRef}>
             {navigationItems.map((item) => (
-              <Link
-                key={item.path}
-                to={item.path}
-                className={`text-gray-600 hover:text-blue-600 ${
-                  location.pathname === item.path ? 'text-blue-600' : ''
-                }`}
-              >
-                {item.label}
-              </Link>
+              <div key={item.path} className="relative">
+                {item.children ? (
+                  <>
+                    <button
+                      onClick={() => setActiveDropdown(activeDropdown === item.path ? null : item.path)}
+                      className={`flex items-center gap-1 text-sm lg:text-base text-gray-600 hover:text-blue-600 ${
+                        location.pathname.startsWith(item.path) || activeDropdown === item.path
+                          ? 'text-blue-600 font-medium'
+                          : ''
+                      }`}
+                    >
+                      {item.label}
+                      <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${
+                        activeDropdown === item.path ? 'rotate-180' : ''
+                      }`} />
+                    </button>
+                    {activeDropdown === item.path && (
+                      <div className="absolute top-full left-0 mt-1 w-48 bg-white rounded-lg shadow-lg py-1 border z-50">
+                        {item.children.map((child) => (
+                          <Link
+                            key={child.path}
+                            to={child.path}
+                            onClick={() => setActiveDropdown(null)}
+                            className={`block px-4 py-2 text-sm text-gray-700 hover:bg-gray-50 ${
+                              location.pathname === child.path ? 'text-blue-600 font-medium' : ''
+                            }`}
+                          >
+                            {child.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
+                  </>
+                ) : (
+                  <Link
+                    to={item.path}
+                    className={`text-sm lg:text-base text-gray-600 hover:text-blue-600 ${
+                      location.pathname === item.path ? 'text-blue-600 font-medium' : ''
+                    }`}
+                  >
+                    {item.label}
+                  </Link>
+                )}
+              </div>
             ))}
           </div>
 
           {/* Auth Button & Mobile Menu */}
-          <div className="flex items-center gap-4">
+          <div className="flex items-center gap-2 sm:gap-4">
             {/* Auth Button - Desktop Only */}
             <div className="hidden md:block">
-              {isAuthenticated && user ? (
-                <div className="relative" ref={dropdownRef}>
+              {user ? (
+                <div className="relative" ref={userDropdownRef}>
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
                     className="flex items-center gap-2 px-3 py-2 text-gray-700 hover:text-gray-900 rounded-lg hover:bg-gray-50"
@@ -103,7 +150,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
 
                   {/* Dropdown Menu */}
                   {isDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-1 border">
+                    <div className="absolute right-0 mt-2 w-56 bg-white rounded-lg shadow-lg py-1 border z-50">
                       <div className="px-4 py-2 border-b">
                         <div className="font-medium text-gray-900">{user.name}</div>
                         <div className="text-sm text-gray-500">{user.email}</div>

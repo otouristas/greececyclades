@@ -2,12 +2,12 @@ import React from 'react';
 import { blogPosts } from '../data/blogPosts';
 import BlogCard from '../components/blog/BlogCard';
 import SEO from '../components/SEO';
-import { generateBlogSEO } from '../utils/seo';
+import { generateBlogsSEO } from '../utils/seo';
 
 export default function Blog() {
   return (
     <>
-      <SEO {...generateBlogSEO()} />
+      <SEO {...generateBlogsSEO()} />
       <div className="bg-gray-50 min-h-screen py-12">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">

@@ -7,6 +7,8 @@ interface TripPlan {
   islands: Island[];
   duration: number;
   month: string;
+  vibes: string[];
+  pace: 'relaxed' | 'moderate' | 'active';
   aiSuggestions: string;
   createdAt: Date;
   userId: string;
@@ -14,7 +16,7 @@ interface TripPlan {
 
 interface TripStore {
   trips: TripPlan[];
-  addTrip: (trip: Omit<TripPlan, 'id' | 'createdAt'>) => void;
+  addTrip: (trip: Omit<TripPlan, 'id'>) => void;
   deleteTrip: (tripId: string) => void;
   getTripsByUserId: (userId: string) => TripPlan[];
 }
@@ -27,7 +29,6 @@ export const useTripStore = create<TripStore>()(
         const newTrip: TripPlan = {
           ...trip,
           id: Date.now().toString(),
-          createdAt: new Date(),
         };
         set((state) => ({
           trips: [newTrip, ...state.trips],
