@@ -1,10 +1,9 @@
-import React from 'react';
 import { useParams, Link, useLocation } from 'react-router-dom';
 import { blogPosts } from '../data/blogPosts';
 import BlogContent from '../components/blog/BlogContent';
 import SocialShare from '../components/blog/SocialShare';
 import SEO from '../components/SEO';
-import { generateBlogPostSEO } from '../utils/seo';
+import { SITE_TAGLINE } from '../constants/seo';
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -30,7 +29,17 @@ export default function BlogPost() {
 
   return (
     <>
-      <SEO {...generateBlogPostSEO(post)} />
+      <SEO 
+        title={`${post.title} ${SITE_TAGLINE}`}
+        description={post.description}
+        ogImage={post.featuredImage}
+        article={{
+          publishedTime: post.publishedAt,
+          modifiedTime: post.updatedAt || post.publishedAt,
+          author: post.author,
+          tags: post.tags
+        }}
+      />
       <div className="bg-gray-50 min-h-screen py-12">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <article>
@@ -39,7 +48,7 @@ export default function BlogPost() {
                 {post.title}
               </h1>
               <div className="flex items-center justify-center text-gray-600 space-x-4 mb-6">
-                <span>{new Date(post.date).toLocaleDateString()}</span>
+                <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
                 <span>•</span>
                 <span>{post.readTime} min read</span>
                 <span>•</span>

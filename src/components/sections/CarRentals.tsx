@@ -34,16 +34,6 @@ export default function CarRentals() {
               className="group"
             >
               <VehicleCard vehicle={vehicle} compact />
-              <div className="mt-2 text-center">
-                <img
-                  src="https://rentacarantiparos.gr/wp-content/uploads/2024/03/Aggelos-Rentals-Logo-Small.png"
-                  alt="AGGELOS Rentals"
-                  className="h-6 mx-auto"
-                />
-                <div className="text-xs text-gray-600 mt-1">
-                  Provided by AGGELOS Rentals
-                </div>
-              </div>
             </Link>
           ))}
         </div>

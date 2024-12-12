@@ -3,6 +3,7 @@ import { UtensilsCrossed, Search } from 'lucide-react';
 import { culinaryData } from '../data/culinaryData';
 import { CulinaryCategory } from '../types/culinary';
 import SEO from '../components/SEO';
+import { SITE_TAGLINE } from '../constants/seo';
 
 export default function Culinary() {
   const [selectedCategory, setSelectedCategory] = useState<CulinaryCategory | 'all'>('all');
@@ -28,9 +29,9 @@ export default function Culinary() {
   return (
     <div className="min-h-screen bg-gray-50">
       <SEO 
-        title="Cyclades Culinary Experiences - Food Tours & Cooking Classes"
-        description="Discover authentic Greek cuisine through our curated culinary experiences in the Cyclades islands. From cooking classes to wine tours."
-        keywords={['Greek cuisine', 'cooking classes', 'food tours', 'wine tasting', 'culinary experiences']}
+        title={`Cyclades Food & Dining Guide ${SITE_TAGLINE}`}
+        description="Discover the rich culinary heritage of the Cyclades islands. Find the best restaurants, local dishes, cooking classes, and food experiences."
+        ogImage="/images/culinary-hero.jpg"
       />
 
       {/* Hero Section */}

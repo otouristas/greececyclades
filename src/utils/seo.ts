@@ -24,7 +24,7 @@ export function generateHotelSEO(hotel: Hotel): SEOProps {
   ].join(', ');
 
   return {
-    title: `${hotel.name} - Luxury Hotel in ${hotel.location.area}, ${hotel.location.island}`,
+    title: `${hotel.name} in ${hotel.location.island} | Greececyclades.com`,
     description: hotel.description.substring(0, 160),
     keywords,
     ogImage: hotel.images[0],
@@ -35,7 +35,7 @@ export function generateHotelSEO(hotel: Hotel): SEOProps {
 
 export function generateHotelsSEO(): SEOProps {
   return {
-    title: 'Luxury Hotels in Cyclades Islands | Greece Cyclades',
+    title: 'Luxury Hotels in the Cyclades | Greececyclades.com',
     description: 'Discover the finest luxury hotels across the Cyclades islands. From Santorini to Mykonos, find your perfect stay in the Greek islands.',
     keywords: DEFAULT_KEYWORDS,
     ogType: 'website',
@@ -45,7 +45,7 @@ export function generateHotelsSEO(): SEOProps {
 
 export function generateHomeSEO(): SEOProps {
   return {
-    title: 'Greece Cyclades - Your Ultimate Guide to the Greek Islands',
+    title: 'Discover the Cyclades Islands | Greececyclades.com',
     description: 'Plan your perfect Greek island vacation with our comprehensive guide to the Cyclades. Discover hotels, activities, restaurants, and local experiences.',
     keywords: DEFAULT_KEYWORDS,
     ogType: 'website',
@@ -149,27 +149,21 @@ export function generateBlogPostSEO(post: {
   tags: string[];
   image?: string;
 }): SEOProps {
-  const keywords = [
-    ...DEFAULT_KEYWORDS.split(', '),
-    ...post.tags,
-    'blog',
-    'travel blog',
-    'travel guide'
-  ].join(', ');
+  const article: ArticleSEO = {
+    publishedTime: post.publishedAt,
+    modifiedTime: post.updatedAt,
+    author: post.author,
+    tags: post.tags
+  };
 
   return {
-    title: `${post.title} | Greece Cyclades Blog`,
-    description: post.description.substring(0, 160),
-    keywords,
-    ogImage: post.image,
+    title: `${post.title} | Greececyclades.com`,
+    description: post.description,
+    keywords: [...DEFAULT_KEYWORDS.split(', '), ...post.tags].join(', '),
     ogType: 'article',
     canonicalUrl: `/blog/${post.slug}`,
-    article: {
-      author: post.author,
-      publishedTime: post.publishedAt,
-      modifiedTime: post.updatedAt,
-      tags: post.tags
-    }
+    ogImage: post.image,
+    article
   };
 }
 
@@ -355,14 +349,14 @@ export function generateIslandsSEO(): SEOProps {
   };
 }
 
-export function generateIslandDetailSEO(islandName: string, description: string, image: string): SEOProps {
+export function generateIslandDetailSEO(islandName: string, image: string): SEOProps {
   return {
-    title: `${islandName} Island | Discover Cyclades`,
-    description: description || `Plan your perfect trip to ${islandName}. Discover the best hotels, activities, restaurants, and local tips for an unforgettable Cyclades experience.`,
-    keywords: [...DEFAULT_KEYWORDS.split(', '), islandName.toLowerCase(), 'travel guide', 'hotels', 'activities', 'restaurants', 'local tips'].join(', '),
-    ogType: 'article',
-    canonicalUrl: `/islands/${getIslandSlug(islandName)}`,
-    ogImage: image
+    title: `Visit ${islandName} in Cyclades | Greececyclades.com`,
+    description: `Discover the best of ${islandName}. Find hotels, activities, restaurants, and local experiences on this beautiful Cycladic island.`,
+    keywords: `${DEFAULT_KEYWORDS}, ${islandName}, Greek Island, Island Guide`,
+    ogImage: image,
+    ogType: 'website',
+    canonicalUrl: `/islands/${getIslandSlug(islandName)}`
   };
 }
 
@@ -396,26 +390,13 @@ export function generateVehicleDetailSEO(vehicle: { make: string; model: string;
   };
 }
 
-export function generateIslandGuideSEO(islandName: string, _description: string, image: string): SEOProps {
-  const currentYear = new Date('2024-12-11T22:49:27+02:00').getFullYear();
-  
+export function generateIslandGuideSEO(islandName: string, image: string): SEOProps {
   return {
-    title: `${islandName} Travel Guide ${currentYear} | Best Things to Do & See`,
-    description: `Complete ${islandName} travel guide for ${currentYear}. Discover the best beaches, villages, activities, and local experiences in this beautiful Cycladic island.`,
-    keywords: [
-      ...DEFAULT_KEYWORDS.split(', '),
-      islandName.toLowerCase(),
-      `${islandName.toLowerCase()} travel guide`,
-      `${islandName.toLowerCase()} greece`,
-      `${islandName.toLowerCase()} beaches`,
-      `${islandName.toLowerCase()} hotels`,
-      'where to stay',
-      'things to do',
-      'best time to visit',
-      'greek island hopping'
-    ].join(', '),
-    ogType: 'article',
+    title: `${islandName} Travel Guide 2025 | Greececyclades.com`,
+    description: `Complete travel guide to ${islandName} for 2025. Discover the best beaches, hotels, restaurants, activities, and local tips for your perfect vacation.`,
+    keywords: `${DEFAULT_KEYWORDS}, ${islandName}, travel guide, beaches, hotels, restaurants, activities`,
     ogImage: image,
+    ogType: 'article',
     canonicalUrl: `/guides/${getIslandSlug(islandName)}`
   };
 }

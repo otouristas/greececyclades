@@ -15,8 +15,8 @@ export const restaurantsData: Restaurant[] = [
       }
     },
     description: `Experience fine dining with breathtaking caldera views in Santorini. Our restaurant offers a perfect blend of Mediterranean cuisine and romantic atmosphere, making every meal memorable. Watch the famous Santorini sunset while enjoying carefully crafted dishes made with local ingredients.`,
-    cuisineType: [CuisineType.Mediterranean, CuisineType.Greek, CuisineType.Seafood],
-    priceRange: PriceRange.Luxury,
+    cuisine: [CuisineType.MEDITERRANEAN, CuisineType.GREEK, CuisineType.SEAFOOD],
+    priceRange: PriceRange.LUXURY,
     averagePrice: 120,
     openingHours: {
       monday: '18:00-23:00',
@@ -56,8 +56,8 @@ export const restaurantsData: Restaurant[] = [
       }
     },
     description: `Iconic no-electricity taverna serving traditional Greek cuisine. Famous for its grilled meats and fresh salads, Kiki's offers an authentic dining experience with a stunning beach view. No reservations, first-come-first-served basis.`,
-    cuisineType: [CuisineType.Greek, CuisineType.BBQ],
-    priceRange: PriceRange.Moderate,
+    cuisine: [CuisineType.GREEK, CuisineType.BBQ],
+    priceRange: PriceRange.MODERATE,
     averagePrice: 40,
     openingHours: {
       monday: '12:30-18:00',
@@ -96,8 +96,8 @@ export const restaurantsData: Restaurant[] = [
       }
     },
     description: `World-renowned beach restaurant offering luxury dining experience. Features fresh Mediterranean cuisine, extensive wine list, and vibrant atmosphere. Known for celebrity visits and exclusive beach club setting.`,
-    cuisineType: [CuisineType.Mediterranean, CuisineType.Seafood, CuisineType.International],
-    priceRange: PriceRange.Luxury,
+    cuisine: [CuisineType.MEDITERRANEAN, CuisineType.SEAFOOD, CuisineType.INTERNATIONAL],
+    priceRange: PriceRange.LUXURY,
     averagePrice: 200,
     openingHours: {
       monday: '12:00-00:00',
@@ -137,8 +137,8 @@ export const restaurantsData: Restaurant[] = [
       }
     },
     description: `Traditional Greek taverna in the heart of Naxos Town, featuring local specialties and fresh seafood. Known for its authentic Naxian dishes, locally-sourced ingredients, and warm family atmosphere.`,
-    cuisineType: [CuisineType.Greek, CuisineType.Seafood],
-    priceRange: PriceRange.Moderate,
+    cuisine: [CuisineType.GREEK, CuisineType.SEAFOOD],
+    priceRange: PriceRange.MODERATE,
     averagePrice: 35,
     openingHours: {
       monday: '12:00-23:00',
@@ -177,8 +177,8 @@ export const restaurantsData: Restaurant[] = [
       }
     },
     description: `Seafood restaurant in the picturesque port of Naoussa, offering fresh catch of the day and traditional Greek dishes. Known for its waterfront location and exceptional fish dishes prepared with local recipes.`,
-    cuisineType: [CuisineType.Seafood, CuisineType.Greek],
-    priceRange: PriceRange.Upscale,
+    cuisine: [CuisineType.SEAFOOD, CuisineType.GREEK],
+    priceRange: PriceRange.UPSCALE,
     averagePrice: 60,
     openingHours: {
       monday: '12:00-23:00',

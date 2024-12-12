@@ -84,7 +84,14 @@ const IslandGuideTemplate: React.FC<Props> = ({ island, content }) => {
     <>
       <SEO {...seoData} />
       <div className="min-h-screen bg-gray-50">
-        <IslandGuideHero {...island} />
+        <IslandGuideHero
+          id={island.id}
+          name={island.name}
+          description={island.description}
+          image={island.image}
+          bestTime={island.bestTime.reason}
+          idealFor={island.idealFor}
+        />
         
         {/* Introduction Section */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">

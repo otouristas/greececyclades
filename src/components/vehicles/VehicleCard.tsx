@@ -1,6 +1,5 @@
-import React from 'react';
-import { Star, Users, Fuel, Cog, Briefcase } from 'lucide-react';
 import { Vehicle } from '../../types/vehicle';
+import { Star, Users, Cog, Fuel, Briefcase } from 'lucide-react';
 
 interface VehicleCardProps {
   vehicle: Vehicle;
@@ -56,15 +55,8 @@ export default function VehicleCard({ vehicle, compact = false }: VehicleCardPro
         </div>
 
         <div className="mt-4 flex items-center justify-between">
-          <div className="flex items-center gap-4">
-            <div className="text-sm text-gray-500">
-              ({vehicle.reviews} reviews)
-            </div>
-            <img
-              src="https://rentacarantiparos.gr/wp-content/uploads/2024/03/Aggelos-Rentals-Logo-Small.png"
-              alt="AGGELOS Rentals"
-              className="h-6"
-            />
+          <div className="text-sm text-gray-500">
+            ({vehicle.reviews} reviews)
           </div>
           <button className="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors">
             Select

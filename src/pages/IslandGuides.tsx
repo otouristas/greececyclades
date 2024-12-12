@@ -1,14 +1,31 @@
-import { Sun, ArrowRight, CalendarDays, Users, Search, Map, Compass, PlaneLanding } from 'lucide-react';
+import { Sun, ArrowRight, CalendarDays, Users, Map, Compass, PlaneLanding } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import SEO from '../components/SEO';
 import SearchBar from '../components/search/SearchBar';
-import { ISLANDS_SEO } from '../utils/seoMetadata';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { islandGuides } from '../data/islandsData';
+import { SITE_TAGLINE } from '../constants/seo';
 
 export default function IslandGuides() {
   return (
     <>
-      <SEO {...ISLANDS_SEO} />
+      <SEO 
+        title={`Cyclades Islands Travel Guides ${SITE_TAGLINE}`}
+        description="Comprehensive travel guides for all Cyclades islands. Find insider tips, local recommendations, and detailed information for your perfect Greek island vacation."
+        ogImage="/images/guides-hero.jpg"
+      />
+      
+      {/* Breadcrumbs */}
+      <div className="bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <Breadcrumbs
+            items={[
+              { label: 'Guides', path: '/guides' }
+            ]}
+          />
+        </div>
+      </div>
+
       <div className="min-h-screen bg-gray-50">
         {/* Hero Section */}
         <div className="relative min-h-[85vh] flex items-center">

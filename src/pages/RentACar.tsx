@@ -1,6 +1,5 @@
-import React from 'react';
 import SEO from '../components/SEO';
-import { generateRentACarSEO } from '../utils/seo';
+import { SITE_TAGLINE } from '../constants/seo';
 import SearchForm from '../components/vehicles/SearchForm';
 import FilterSidebar from '../components/vehicles/FilterSidebar';
 import VehicleGrid from '../components/vehicles/VehicleGrid';
@@ -13,7 +12,11 @@ export default function RentACar() {
 
   return (
     <>
-      <SEO {...generateRentACarSEO()} />
+      <SEO 
+        title={`Car Rental in Cyclades ${SITE_TAGLINE}`}
+        description="Find and book the perfect vehicle for your Cyclades island adventure. Compare cars, scooters, and ATVs with our trusted rental partners."
+        ogImage="/images/rentals-hero.jpg"
+      />
 
       <div className="bg-white">
         {/* Hero Section */}

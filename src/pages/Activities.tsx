@@ -4,7 +4,9 @@ import { ActivityCategory } from '../types/activity';
 import { Search } from 'lucide-react';
 import SEO from '../components/SEO';
 import { generateActivitiesSEO } from '../utils/seo';
+import { SITE_TAGLINE } from '../constants/seo';
 import ActivityCard from '../components/activities/ActivityCard';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 interface CategoryOption {
   id: ActivityCategory | 'all';
@@ -34,7 +36,23 @@ export default function Activities() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <SEO {...generateActivitiesSEO()} />
+      <SEO 
+        title={`Best Activities in Cyclades ${SITE_TAGLINE}`}
+        description="Explore exciting activities and experiences across the Cyclades islands. From water sports to cultural tours, find the perfect activities for your Greek vacation."
+        ogImage="/images/activities-hero.jpg"
+      />
+      
+      {/* Breadcrumbs */}
+      <div className="bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <Breadcrumbs
+            items={[
+              { label: 'Activities', path: '/activities' }
+            ]}
+          />
+        </div>
+      </div>
+
       {/* Hero Section */}
       <div className="relative bg-blue-600 h-[40vh] flex items-center justify-center">
         <div className="absolute inset-0 overflow-hidden">

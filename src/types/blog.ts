@@ -5,8 +5,8 @@ export interface BlogPost {
   description: string;
   content: string;
   author: string;
-  date: string;
-  lastModified?: string;
+  publishedAt: string; 
+  updatedAt?: string; 
   featuredImage: string;
   category: BlogCategory;
   tags: string[];

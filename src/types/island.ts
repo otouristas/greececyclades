@@ -16,7 +16,8 @@ export enum AvailableMonth {
   JULY = 'July',
   AUGUST = 'August',
   SEPTEMBER = 'September',
-  OCTOBER = 'October'
+  OCTOBER = 'October',
+  NOVEMBER = 'November'
 }
 
 // Island characteristics

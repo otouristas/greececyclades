@@ -1,22 +1,23 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
-import { MapPin, Navigation, Sun, Waves, Map, Compass, ArrowRight, Anchor } from 'lucide-react';
+import { Navigation, Sun, Map, Compass, ArrowRight, Anchor } from 'lucide-react';
 import { useIslandStore } from '../store/islandStore';
 import SEO from '../components/SEO';
+import { slugify } from '../utils/slugify';
+import { SITE_TAGLINE } from '../constants/seo';
 
 export default function Islands() {
   const { islands } = useIslandStore();
-
-  const getIslandSlug = (name: string) => {
-    return name.toLowerCase().replace(' ', '-');
-  };
+  
+  console.log('Islands page - Available islands:', islands);
+  console.log('Islands page - First island slug:', islands[0] ? slugify(islands[0].name) : 'no islands');
+  console.log('Islands page - All slugs:', islands.map(i => ({ name: i.name, slug: slugify(i.name) })));
 
   return (
     <>
       <SEO 
-        title="Cyclades Islands | Your Guide to Greek Island Paradise"
-        description="Explore the stunning Cyclades islands in Greece. Find detailed information about each unique island, from popular destinations like Santorini and Mykonos to hidden gems."
-        image="/images/cyclades-islands.jpg"
+        title={`Cyclades Islands: Complete Travel Guide ${SITE_TAGLINE}`}
+        description="Explore the stunning Cyclades islands in Greece. Find detailed information about each island, including Santorini, Mykonos, Naxos, and more. Plan your perfect Greek island vacation."
+        ogImage="/images/cyclades-islands.jpg"
       />
 
       <div className="bg-gray-50">
@@ -96,8 +97,8 @@ export default function Islands() {
             {islands.map((island) => (
               <Link 
                 key={island.id}
-                to={`/islands/${getIslandSlug(island.name)}`}
-                className="group bg-white rounded-2xl shadow-sm overflow-hidden hover:shadow-md transition-shadow"
+                to={`/islands/${slugify(island.name)}`}
+                className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
               >
                 <div className="aspect-w-16 aspect-h-9 relative">
                   <img
@@ -115,11 +116,11 @@ export default function Islands() {
                   <div className="flex items-center gap-4 text-sm text-gray-600 mb-4">
                     <div className="flex items-center gap-1">
                       <Sun className="h-4 w-4" />
-                      {island.bestTime}
+                      {island.bestTime.months.join(', ')}
                     </div>
                     <div className="flex items-center gap-1">
                       <Navigation className="h-4 w-4" />
-                      {island.activities} Activities
+                      {island.activities.length} Activities
                     </div>
                   </div>
                   <p className="text-gray-600 mb-4">{island.description}</p>

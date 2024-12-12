@@ -2,35 +2,35 @@ import { Link } from 'react-router-dom';
 import { ArrowRight, Sun, Map, Compass, Plane, Building2, Car, Camera, UtensilsCrossed, Sparkles, Waves } from 'lucide-react';
 import HeroSection from '../components/shared/HeroSection';
 import SEO from '../components/SEO';
+import { SITE_TAGLINE } from '../constants/seo';
 
 export default function Home() {
   const seoData = {
-    title: "Explore the Cyclades Islands | Touristas AI",
+    title: `Discover Cyclades Islands ${SITE_TAGLINE}`,
     description: "Discover the magic of the Cyclades islands with our AI-powered travel guide. Plan your perfect Greek island-hopping adventure today."
   };
 
   const jsonLD = {
     "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Touristas AI - Cyclades Travel Guide",
-    "description": "AI-powered travel guide for the Cyclades islands",
-    "url": "https://touristas.ai",
-    "potentialAction": {
-      "@type": "SearchAction",
-      "target": {
-        "@type": "EntryPoint",
-        "urlTemplate": "https://touristas.ai/search?q={search_term_string}"
-      },
-      "query-input": "required name=search_term_string"
+    "@type": "TravelAgency",
+    "name": "Greececyclades.com",
+    "description": "Your complete guide to the Cyclades islands in Greece",
+    "url": "https://greececyclades.com",
+    "areaServed": {
+      "@type": "AdministrativeArea",
+      "name": "Cyclades Islands",
+      "containedInPlace": {
+        "@type": "Country",
+        "name": "Greece"
+      }
     }
   };
 
   return (
     <>
       <SEO 
-        title={seoData.title}
-        description={seoData.description}
-        jsonLD={jsonLD}
+        {...seoData}
+        structuredData={JSON.stringify(jsonLD)}
       />
 
       <div>

@@ -1,5 +1,12 @@
 import { Island, IslandActivity, AvailableMonth, IslandVibe } from '../types/island';
 
+const defaultWeather = {
+  summer: 'Hot and dry with temperatures around 25-30°C',
+  winter: 'Mild with occasional rain, 10-15°C',
+  spring: 'Pleasant and warm, 15-20°C',
+  autumn: 'Warm with occasional rain, 20-25°C'
+};
+
 export const islands: Island[] = [
   {
     id: '1',
@@ -52,12 +59,7 @@ export const islands: Island[] = [
       'Exceptional wine tasting',
       'Luxury cave hotels'
     ],
-    weather: {
-      summer: 'Hot and dry with temperatures around 25-30°C',
-      winter: 'Mild with occasional rain, 10-15°C',
-      spring: 'Pleasant and warm, 15-20°C',
-      autumn: 'Warm with occasional rain, 20-25°C'
-    },
+    weather: defaultWeather,
     bestTime: {
       months: [
         AvailableMonth.MAY,
@@ -200,12 +202,7 @@ export const islands: Island[] = [
       'Traditional mountain villages',
       'Local cuisine and wine'
     ],
-    weather: {
-      summer: 'Hot and dry with temperatures around 25-30°C',
-      winter: 'Mild with occasional rain, 10-15°C',
-      spring: 'Pleasant and warm, 15-20°C',
-      autumn: 'Warm with occasional rain, 20-25°C'
-    },
+    weather: defaultWeather,
     bestTime: {
       months: [
         AvailableMonth.MAY,
@@ -273,12 +270,7 @@ export const islands: Island[] = [
       'Authentic villages and local cuisine',
       'Mining history and museums'
     ],
-    weather: {
-      summer: 'Hot and dry with temperatures around 25-30°C',
-      winter: 'Mild with occasional rain, 10-15°C',
-      spring: 'Pleasant and warm, 15-20°C',
-      autumn: 'Warm with occasional rain, 20-25°C'
-    },
+    weather: defaultWeather,
     bestTime: {
       months: [
         AvailableMonth.MAY,
@@ -346,12 +338,7 @@ export const islands: Island[] = [
       'Water sports and activities',
       'Modern amenities and nightlife'
     ],
-    weather: {
-      summer: 'Hot and dry with temperatures around 25-30°C',
-      winter: 'Mild with occasional rain, 10-15°C',
-      spring: 'Pleasant and warm, 15-20°C',
-      autumn: 'Warm with occasional rain, 20-25°C'
-    },
+    weather: defaultWeather,
     bestTime: {
       months: [
         AvailableMonth.MAY,
@@ -420,12 +407,7 @@ export const islands: Island[] = [
       'Hiking trails and scenic landscapes',
       'Authentic villages and local culture'
     ],
-    weather: {
-      summer: 'Hot and dry with temperatures around 25-30°C',
-      winter: 'Mild with occasional rain, 10-15°C',
-      spring: 'Pleasant and warm, 15-20°C',
-      autumn: 'Warm with occasional rain, 20-25°C'
-    },
+    weather: defaultWeather,
     bestTime: {
       months: [
         AvailableMonth.MAY,
@@ -494,12 +476,7 @@ export const islands: Island[] = [
       'Relaxed atmosphere and laid-back vibe',
       'Authentic villages and local culture'
     ],
-    weather: {
-      summer: 'Hot and dry with temperatures around 25-30°C',
-      winter: 'Mild with occasional rain, 10-15°C',
-      spring: 'Pleasant and warm, 15-20°C',
-      autumn: 'Warm with occasional rain, 20-25°C'
-    },
+    weather: defaultWeather,
     bestTime: {
       months: [
         AvailableMonth.JUNE,
@@ -569,12 +546,7 @@ export const islands: Island[] = [
       'Artistic traditions and marble crafts',
       'Stunning landscapes and natural beauty'
     ],
-    weather: {
-      summer: 'Hot and dry with temperatures around 25-30°C',
-      winter: 'Mild with occasional rain, 10-15°C',
-      spring: 'Pleasant and warm, 15-20°C',
-      autumn: 'Warm with occasional rain, 20-25°C'
-    },
+    weather: defaultWeather,
     bestTime: {
       months: [
         AvailableMonth.APRIL,
@@ -645,12 +617,7 @@ export const islands: Island[] = [
       'Rich history and historical sites',
       'Stunning beaches and crystal-clear waters'
     ],
-    weather: {
-      summer: 'Hot and dry with temperatures around 25-30°C',
-      winter: 'Mild with occasional rain, 10-15°C',
-      spring: 'Pleasant and warm, 15-20°C',
-      autumn: 'Warm with occasional rain, 20-25°C'
-    },
+    weather: defaultWeather,
     bestTime: {
       months: [
         AvailableMonth.APRIL,
@@ -677,8 +644,10 @@ export interface IslandGuide {
   description: string;
   image: string;
   weather: {
-    temp: string;
-    condition: string;
+    summer: string;
+    winter: string;
+    spring: string;
+    autumn: string;
   };
   bestTime: string;
   idealFor: string[];
@@ -691,8 +660,10 @@ export const islandGuides: IslandGuide[] = [
     description: 'Discover the magic of Santorini with our comprehensive guide. From the best sunset spots to hidden gems.',
     image: '/images/guides/santorini-guide.jpg',
     weather: {
-      temp: '25°C',
-      condition: 'Sunny'
+      summer: 'Hot and dry with temperatures around 25-30°C',
+      winter: 'Mild with occasional rain, 10-15°C',
+      spring: 'Pleasant and warm, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'May to October',
     idealFor: ['Couples', 'Photographers', 'Wine Lovers']
@@ -703,8 +674,10 @@ export const islandGuides: IslandGuide[] = [
     description: 'Everything you need to know about Mykonos - from beach clubs to traditional tavernas.',
     image: '/images/guides/mykonos-guide.jpg',
     weather: {
-      temp: '27°C',
-      condition: 'Sunny'
+      summer: 'Hot with strong meltemi winds, 25-30°C',
+      winter: 'Mild with some rain, 12-15°C',
+      spring: 'Warm and pleasant, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'June to September',
     idealFor: ['Party Lovers', 'Beach Goers', 'Luxury Travelers']
@@ -715,8 +688,10 @@ export const islandGuides: IslandGuide[] = [
     description: 'Explore the largest Cycladic island with pristine beaches and mountain villages.',
     image: '/images/guides/naxos-guide.jpg',
     weather: {
-      temp: '26°C',
-      condition: 'Sunny'
+      summer: 'Hot and dry with temperatures around 25-30°C',
+      winter: 'Mild with occasional rain, 10-15°C',
+      spring: 'Pleasant and warm, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'May to October',
     idealFor: ['Families', 'Beach Lovers', 'History Buffs']
@@ -727,8 +702,10 @@ export const islandGuides: IslandGuide[] = [
     description: 'Your guide to Paros - traditional villages, water sports, and local culture.',
     image: '/images/guides/paros-guide.jpg',
     weather: {
-      temp: '25°C',
-      condition: 'Sunny'
+      summer: 'Hot and dry with temperatures around 25-30°C',
+      winter: 'Mild with occasional rain, 10-15°C',
+      spring: 'Pleasant and warm, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'May to October',
     idealFor: ['Water Sports', 'Culture', 'Relaxation']
@@ -739,8 +716,10 @@ export const islandGuides: IslandGuide[] = [
     description: 'Discover the volcanic island of Milos with its unique beaches and landscapes.',
     image: '/images/guides/milos-guide.jpg',
     weather: {
-      temp: '24°C',
-      condition: 'Sunny'
+      summer: 'Hot and dry with temperatures around 25-30°C',
+      winter: 'Mild with occasional rain, 10-15°C',
+      spring: 'Pleasant and warm, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'May to September',
     idealFor: ['Adventure', 'Photography', 'Beach Lovers']
@@ -751,8 +730,10 @@ export const islandGuides: IslandGuide[] = [
     description: 'Your complete guide to Ios - beaches, nightlife, and hidden coves.',
     image: '/images/guides/ios-guide.jpg',
     weather: {
-      temp: '26°C',
-      condition: 'Sunny'
+      summer: 'Hot with strong meltemi winds, 25-30°C',
+      winter: 'Mild with some rain, 12-15°C',
+      spring: 'Warm and pleasant, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'June to September',
     idealFor: ['Young Travelers', 'Beach Lovers', 'Party Goers']
@@ -763,8 +744,10 @@ export const islandGuides: IslandGuide[] = [
     description: 'Experience authentic Greek island life in untouched Folegandros.',
     image: '/images/guides/folegandros-guide.jpg',
     weather: {
-      temp: '24°C',
-      condition: 'Sunny'
+      summer: 'Hot and dry with temperatures around 25-30°C',
+      winter: 'Mild with occasional rain, 10-15°C',
+      spring: 'Pleasant and warm, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'May to September',
     idealFor: ['Peace Seekers', 'Hikers', 'Authentic Experience']
@@ -775,8 +758,10 @@ export const islandGuides: IslandGuide[] = [
     description: 'Explore the capital of Cyclades with its unique architecture and culture.',
     image: '/images/guides/syros-guide.jpg',
     weather: {
-      temp: '25°C',
-      condition: 'Sunny'
+      summer: 'Hot and dry with temperatures around 25-30°C',
+      winter: 'Mild with occasional rain, 10-15°C',
+      spring: 'Pleasant and warm, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'April to October',
     idealFor: ['Culture', 'Architecture', 'Local Life']
@@ -787,8 +772,10 @@ export const islandGuides: IslandGuide[] = [
     description: 'Discover the dramatic landscapes and spiritual atmosphere of Amorgos.',
     image: '/images/guides/amorgos-guide.jpg',
     weather: {
-      temp: '24°C',
-      condition: 'Sunny'
+      summer: 'Hot and dry with temperatures around 25-30°C',
+      winter: 'Mild with occasional rain, 10-15°C',
+      spring: 'Pleasant and warm, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'May to September',
     idealFor: ['Hikers', 'Nature Lovers', 'Peace Seekers']
@@ -799,8 +786,10 @@ export const islandGuides: IslandGuide[] = [
     description: 'Your guide to the culinary capital of the Cyclades.',
     image: '/images/guides/sifnos-guide.jpg',
     weather: {
-      temp: '25°C',
-      condition: 'Sunny'
+      summer: 'Hot and dry with temperatures around 25-30°C',
+      winter: 'Mild with occasional rain, 10-15°C',
+      spring: 'Pleasant and warm, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'May to September',
     idealFor: ['Food Lovers', 'Culture', 'Relaxation']

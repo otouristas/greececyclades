@@ -19,21 +19,4 @@ export interface ActivityFilters {
   duration: string | null;
 }
 
-export interface Island {
-  id: number;
-  name: string;
-  description: string;
-  shortDescription: string;
-  quote: string;
-  metaTitle: string;
-  metaDescription: string;
-  image: string;
-  highlights: string[];
-  weather: {
-    temp: string;
-    condition: string;
-  };
-  activities: number;
-  bestTime: string;
-  idealFor: string[];
-}
+export type { Island } from './types/island';

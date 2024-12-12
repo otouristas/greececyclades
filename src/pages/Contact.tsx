@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Mail, Phone, MapPin, Send, Loader2 } from 'lucide-react';
 import SEO from '../components/SEO';
+import { SITE_TAGLINE } from '../constants/seo';
 
 interface FormData {
   name: string;
@@ -60,8 +61,9 @@ export default function Contact() {
   return (
     <>
       <SEO 
-        title="Contact Us | Greece Cyclades Travel Guide"
-        description="Get in touch with our travel experts. We're here to help you plan your perfect Greek islands vacation in the Cyclades."
+        title={`Contact Us ${SITE_TAGLINE}`}
+        description="Get in touch with our team for any questions about traveling in the Cyclades islands. We're here to help plan your perfect Greek vacation."
+        ogImage="/images/contact-hero.jpg"
       />
       
       <div className="min-h-screen bg-gray-50">

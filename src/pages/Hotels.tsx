@@ -3,6 +3,8 @@ import { Building2, Car, Search, MapPin, Wifi, Waves, UtensilsCrossed, Sparkles,
 import { useHotelStore } from '../store/hotelStore';
 import HotelCard from '../components/cards/HotelCard';
 import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { SITE_TAGLINE } from '../constants/seo';
 
 const propertyTypes = [
   { id: 'all', label: 'All Properties' },
@@ -51,27 +53,6 @@ const islands = [
   'Tinos'
 ];
 
-const generateHotelsSEO = () => ({
-  title: "Luxury Hotels in the Cyclades Islands | Touristas AI",
-  description: "Discover the finest luxury hotels and resorts across the Cyclades islands. From Santorini's caldera views to Mykonos' beachfront villas."
-});
-
-const generateHotelsJsonLD = () => ({
-  "@context": "https://schema.org",
-  "@type": "Hotel",
-  "name": "Cyclades Luxury Hotels",
-  "description": "Luxury hotels and resorts in the Cyclades islands",
-  "url": "https://touristas.ai/hotels",
-  "areaServed": {
-    "@type": "AdministrativeArea",
-    "name": "Cyclades Islands",
-    "containedInPlace": {
-      "@type": "Country",
-      "name": "Greece"
-    }
-  }
-});
-
 export default function Hotels() {
   const { hotels, searchHotels, fetchHotelsByIsland } = useHotelStore();
   const [selectedType, setSelectedType] = useState('all');
@@ -109,17 +90,54 @@ export default function Hotels() {
     handleFiltersChange();
   }, [selectedType, selectedIsland, priceRange, selectedAmenities, checkIn, checkOut]);
 
-  const seoData = generateHotelsSEO();
-  const jsonLD = generateHotelsJsonLD();
+  const jsonLD = {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "name": "Hotels in Cyclades Islands",
+    "description": "Browse and book hotels across the Cyclades islands of Greece",
+    "itemListElement": hotels.map((hotel, index) => ({
+      "@type": "ListItem",
+      "position": index + 1,
+      "item": {
+        "@type": "Hotel",
+        "name": hotel.name,
+        "description": hotel.description,
+        "image": hotel.images[0],
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": hotel.location.area,
+          "addressRegion": hotel.location.island,
+          "addressCountry": "Greece"
+        },
+        "priceRange": hotel.priceRange,
+        "amenityFeature": hotel.amenities.map(amenity => ({
+          "@type": "LocationFeatureSpecification",
+          "name": amenity
+        }))
+      }
+    }))
+  };
 
   return (
     <>
       <SEO 
-        title={seoData.title}
-        description={seoData.description}
-        jsonLD={jsonLD}
+        title={`Best Hotels in Cyclades Islands ${SITE_TAGLINE}`}
+        description="Find and book the perfect hotel in the Cyclades islands. From luxury resorts to boutique hotels, discover accommodations that match your style and budget."
+        ogImage="/images/hotels-cyclades.jpg"
+        structuredData={JSON.stringify(jsonLD)}
       />
       
+      {/* Breadcrumbs */}
+      <div className="bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <Breadcrumbs
+            items={[
+              { label: 'Accommodation', path: '/hotels' }
+            ]}
+          />
+        </div>
+      </div>
+
       {/* Hero Section with Search */}
       <div className="relative min-h-[85vh] lg:h-[85vh] overflow-hidden">
         <div className="absolute inset-0">

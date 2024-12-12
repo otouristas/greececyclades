@@ -4,7 +4,7 @@ import activities from '../data/activitiesData';
 import { Activity } from '../types/activity';
 import { Clock, MapPin, Users, Calendar, AlertCircle, Check } from 'lucide-react';
 import SEO from '../components/SEO';
-import { generateActivitySEO } from '../utils/seo';
+import Breadcrumbs from '../components/Breadcrumbs';
 
 export default function ActivityDetail() {
   const { id } = useParams<{ id: string }>();
@@ -39,7 +39,25 @@ export default function ActivityDetail() {
 
   return (
     <>
-      <SEO {...generateActivitySEO(activity)} />
+      <SEO 
+        title={`${activity.title} | Activities in ${activity.location}`}
+        description={activity.description.slice(0, 160)}
+      />
+      
+      {/* Breadcrumbs */}
+      <div className="bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <Breadcrumbs
+            items={[
+              { label: 'Activities', path: '/activities' },
+              { label: activity.category, path: `/activities?category=${activity.category}` },
+              { label: activity.title, path: `/activities/${id}` }
+            ]}
+          />
+        </div>
+      </div>
+
+      {/* Content */}
       <div className="min-h-screen bg-gray-50">
         {/* Image Gallery */}
         <div className="relative h-[60vh]">

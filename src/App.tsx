@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
@@ -30,6 +30,14 @@ import Culinary from './pages/Culinary';
 import Islands from './pages/Islands';
 import IslandDetail from './pages/IslandDetail';
 import VehicleDetail from './pages/VehicleDetail';
+import FerryTickets from './pages/FerryTickets';
+import FerrySearchResults from './pages/FerrySearchResults';
+import NotFound from './pages/NotFound';
+import BackToTop from './components/BackToTop';
+
+import { ToastProvider } from './contexts/ToastContext';
+
+import './styles/fonts.css';
 
 export default function App() {
   const handleAuthClick = () => {
@@ -37,44 +45,50 @@ export default function App() {
   };
 
   return (
-    <HelmetProvider>
-      <Router>
-        <ScrollToTop />
-        <AuthStateHandler />
-        <div className="flex flex-col min-h-screen">
-          <Navbar onAuthClick={handleAuthClick} />
-          <main className="flex-grow">
-            <Routes>
-              <Route path="/" element={<Home />} />
-              <Route path="/contact" element={<Contact />} />
-              <Route path="/blog" element={<Blog />} />
-              <Route path="/blog/:slug" element={<BlogPost />} />
-              <Route path="/islands" element={<Islands />} />
-              <Route path="/islands/:slug" element={<IslandDetail />} />
-              <Route path="/guides" element={<IslandGuides />} />
-              <Route path="/guides/santorini" element={<SantoriniGuide />} />
-              <Route path="/guides/:slug" element={<IslandGuidePage />} />
-              <Route path="/activities" element={<Activities />} />
-              <Route path="/activities/:id" element={<ActivityDetail />} />
-              <Route path="/rent-a-car" element={<RentACar />} />
-              <Route path="/rent-a-car/:slug" element={<VehicleDetail />} />
-              <Route path="/hotels" element={<Hotels />} />
-              <Route path="/hotels/:slug" element={<HotelDetail />} />
-              <Route path="/culinary" element={<Culinary />} />
-              <Route path="/auth" element={<Auth />} />
-              <Route path="/signin" element={<SignIn />} />
-              <Route path="/signup" element={<SignUp />} />
-              <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
-              <Route path="/trip-planner" element={<ProtectedRoute><CycladesTripPlanner /></ProtectedRoute>} />
-              <Route path="/my-trips" element={<ProtectedRoute><MyTrips /></ProtectedRoute>} />
-              <Route path="/privacy" element={<Privacy />} />
-              <Route path="/terms" element={<Terms />} />
-              <Route path="/sitemap" element={<Sitemap />} />
-            </Routes>
-          </main>
-          <Footer />
-        </div>
-      </Router>
-    </HelmetProvider>
+    <ToastProvider>
+      <HelmetProvider>
+        <Router>
+          <ScrollToTop />
+          <AuthStateHandler />
+          <div className="flex flex-col min-h-screen">
+            <Navbar onAuthClick={handleAuthClick} />
+            <main className="flex-grow">
+              <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path="/contact" element={<Contact />} />
+                <Route path="/blog" element={<Blog />} />
+                <Route path="/blog/:slug" element={<BlogPost />} />
+                <Route path="/islands" element={<Islands />} />
+                <Route path="/islands/:slug" element={<IslandDetail />} />
+                <Route path="/guides" element={<IslandGuides />} />
+                <Route path="/guides/santorini" element={<SantoriniGuide />} />
+                <Route path="/guides/:slug" element={<IslandGuidePage />} />
+                <Route path="/activities" element={<Activities />} />
+                <Route path="/activities/:id" element={<ActivityDetail />} />
+                <Route path="/rent-a-car" element={<RentACar />} />
+                <Route path="/ferry-tickets" element={<FerryTickets />} />
+                <Route path="/rent-a-car/:slug" element={<VehicleDetail />} />
+                <Route path="/hotels" element={<Hotels />} />
+                <Route path="/hotels/:slug" element={<HotelDetail />} />
+                <Route path="/culinary" element={<Culinary />} />
+                <Route path="/auth" element={<Auth />} />
+                <Route path="/signin" element={<SignIn />} />
+                <Route path="/signup" element={<SignUp />} />
+                <Route path="/profile" element={<ProtectedRoute><Profile /></ProtectedRoute>} />
+                <Route path="/trip-planner" element={<ProtectedRoute><CycladesTripPlanner /></ProtectedRoute>} />
+                <Route path="/my-trips" element={<ProtectedRoute><MyTrips /></ProtectedRoute>} />
+                <Route path="/ferry-search-results" element={<FerrySearchResults />} />
+                <Route path="/privacy" element={<Privacy />} />
+                <Route path="/terms" element={<Terms />} />
+                <Route path="/sitemap" element={<Sitemap />} />
+                <Route path="*" element={<NotFound />} />
+              </Routes>
+            </main>
+            <Footer />
+            <BackToTop />
+          </div>
+        </Router>
+      </HelmetProvider>
+    </ToastProvider>
   );
 }

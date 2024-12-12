@@ -1,14 +1,11 @@
-import { Sun, MapPin, Calendar, Users, ArrowRight, Heart, Camera, Ship } from 'lucide-react';
+import { FC, useEffect, useState } from 'react';
+import { Calendar, Users, Camera, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 interface IslandGuideHeroProps {
   name: string;
   description: string;
   image: string;
-  weather: {
-    temp: string;
-    condition: string;
-  };
   bestTime: string;
   idealFor: string[];
 }
@@ -17,87 +14,75 @@ export default function IslandGuideHero({
   name,
   description,
   image,
-  weather,
   bestTime,
   idealFor,
 }: IslandGuideHeroProps) {
   return (
-    <div className="relative min-h-[85vh] flex items-end pb-20">
+    <div className="relative min-h-[75vh] md:min-h-[85vh] flex items-end pb-12 md:pb-20">
       {/* Background Image */}
       <div className="absolute inset-0">
-        <div className="relative h-full w-full">
-          <img
-            src={image}
-            alt={`${name} Island`}
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
-        </div>
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/50 to-black/30 z-10" />
+        <img
+          src={image}
+          alt={name}
+          className="w-full h-full object-cover"
+        />
       </div>
 
       {/* Content */}
-      <div className="relative w-full">
+      <div className="relative z-20 w-full">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl">
-            {/* Quick Info Bar */}
-            <div className="flex flex-wrap gap-4 mb-6 text-white/90">
-              <div className="flex items-center gap-2">
-                <MapPin className="h-5 w-5 text-blue-400" />
-                <span>Cyclades, Greece</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Sun className="h-5 w-5 text-blue-400" />
-                <span>{weather.temp} · {weather.condition}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Calendar className="h-5 w-5 text-blue-400" />
-                <span>Best Time: {bestTime}</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Users className="h-5 w-5 text-blue-400" />
-                <span>Perfect for: {idealFor.join(', ')}</span>
-              </div>
-            </div>
-
-            {/* Title and Description */}
-            <h1 className="text-5xl md:text-7xl font-bold text-white mb-4">
+          {/* Title and Description */}
+          <div className="max-w-3xl mt-8 sm:mt-0">
+            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
               {name}
             </h1>
-            <p className="text-xl text-gray-200 mb-8 max-w-2xl">
+            <p className="text-lg text-white/90 mb-8">
               {description}
             </p>
+          </div>
 
-            {/* Action Buttons */}
-            <div className="flex flex-wrap gap-4">
+          {/* Action Buttons and Info */}
+          <div className="space-y-6">
+            {/* Primary Action */}
+            <div className="flex">
               <Link
                 to={`/trip-planner?island=${name.toLowerCase()}`}
-                className="px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all transform hover:scale-105 flex items-center gap-2"
+                className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 hover:bg-blue-600 rounded-lg text-white font-medium transition-colors"
               >
-                Plan Your Visit
-                <ArrowRight className="h-5 w-5" />
+                Plan Your Trip
+                <ArrowRight className="h-5 w-5 ml-2" />
               </Link>
-              <button className="px-6 py-3 bg-white/10 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/20 transition-all transform hover:scale-105 flex items-center gap-2">
-                <Heart className="h-5 w-5" />
-                Save to Favorites
-              </button>
             </div>
 
-            {/* Quick Links */}
-            <div className="flex flex-wrap gap-4 mt-8">
+            {/* Secondary Actions */}
+            <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 to="#photos"
-                className="flex items-center gap-2 text-white/90 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-lg text-white font-medium transition-colors"
               >
-                <Camera className="h-5 w-5" />
-                <span>View Photos</span>
+                <Camera className="h-5 w-5 mr-2" />
+                View Photos
               </Link>
               <Link
                 to="#activities"
-                className="flex items-center gap-2 text-white/90 hover:text-white transition-colors"
+                className="inline-flex items-center justify-center px-6 py-3 bg-white/10 hover:bg-white/20 backdrop-blur-sm rounded-lg text-white font-medium transition-colors"
               >
-                <Ship className="h-5 w-5" />
-                <span>Explore Activities</span>
+                <Clock className="h-5 w-5 mr-2" />
+                Explore Activities
               </Link>
+            </div>
+
+            {/* Info Bar */}
+            <div className="flex flex-col sm:flex-row gap-4 text-white/90 text-sm sm:text-base">
+              <div className="flex items-center gap-2">
+                <Calendar className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                <span>Best Time: {bestTime}</span>
+              </div>
+              <div className="flex items-center gap-2">
+                <Users className="h-5 w-5 text-blue-400 flex-shrink-0" />
+                <span>Perfect for: {idealFor.join(', ')}</span>
+              </div>
             </div>
           </div>
         </div>

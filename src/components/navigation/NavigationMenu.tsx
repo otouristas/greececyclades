@@ -22,6 +22,7 @@ const navigationItems = [
   },
   { path: '/hotels', label: 'Hotels' },
   { path: '/rent-a-car', label: 'Rent a Car' },
+  { path: '/ferry-tickets', label: 'Ferry Tickets' }
 ];
 
 export default function NavigationMenu({ onAuthClick }: NavigationMenuProps) {

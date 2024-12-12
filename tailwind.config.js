@@ -5,6 +5,9 @@ export default {
   ],
   theme: {
     extend: {
+      fontFamily: {
+        sans: ['Roboto', 'sans-serif'],
+      },
       animation: {
         'subtle-zoom': 'subtle-zoom 20s ease-in-out infinite alternate',
       },

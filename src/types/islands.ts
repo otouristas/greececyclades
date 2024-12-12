@@ -23,12 +23,7 @@ export interface Island {
   slug: string;
   heroImage: string;
   highlights: string[];
-  weather: {
-    summer: string;
-    winter: string;
-    spring: string;
-    autumn: string;
-  };
+  weather: Weather;
   bestTime: {
     months: string[];
     reason: string;

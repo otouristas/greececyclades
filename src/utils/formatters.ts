@@ -1,19 +1,30 @@
-import { IslandSize, STAY_DURATION } from '../types/island';
-import { PACE_FACTORS } from '../types';
+import { IslandSize, STAY_DURATION, AvailableMonth } from '../types/island';
 
-type TripPace = keyof typeof PACE_FACTORS;
-
-// Format island size for display (e.g., "MAJOR" -> "Major Island")
-export const formatIslandSize = (size: IslandSize): string => {
-  const formatted = size.toLowerCase().replace('_', ' ');
-  return formatted.charAt(0).toUpperCase() + formatted.slice(1) + ' Island';
+// Format island size for display (e.g., "MAJOR" -> "major")
+export const formatSize = (size: IslandSize): string => {
+  return size.toLowerCase();
 };
 
-// Format stay duration for display with pace context
-export const formatStayDuration = (days: number, pace?: TripPace): string => {
-  const stayText = `${days} day${days !== 1 ? 's' : ''}`;
-  if (!pace || pace === 'moderate') return stayText;
+// Format stay duration for display
+export const formatStayDuration = (stay: keyof typeof STAY_DURATION): string => {
+  switch (stay) {
+    case 'MAJOR':
+      return '4-5 days';
+    case 'MEDIUM':
+      return '2-3 days';
+    case 'MINOR':
+      return '1-2 days';
+    default:
+      return '2-3 days';
+  }
+};
 
-  const paceText = pace === 'relaxed' ? 'relaxed pace' : 'active pace';
-  return `${stayText} at ${paceText}`;
+// Format month enums into readable strings
+export const formatMonth = (month: AvailableMonth): string => {
+  return month; // The enum values are already in proper case (e.g., "April", "May", etc.)
+};
+
+export const formatMonthsList = (months: AvailableMonth[]): string => {
+  if (!Array.isArray(months)) return '';
+  return months.map(formatMonth).join(', ');
 };
