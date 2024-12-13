@@ -39,7 +39,7 @@ export default function SearchForm() {
           />
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-white mb-2">
               Pick-up Date
@@ -50,9 +50,14 @@ export default function SearchForm() {
                 value={pickupDate}
                 onChange={(e) => setPickupDate(e.target.value)}
                 min={new Date().toISOString().split('T')[0]}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 text-white [color-scheme:dark]"
+                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 text-white appearance-none [color-scheme:dark]"
+                style={{
+                  backgroundImage: 'none',
+                  WebkitAppearance: 'none',
+                  MozAppearance: 'none'
+                }}
               />
-              <Calendar className="absolute left-3 top-3.5 h-5 w-5 text-white/60" />
+              <Calendar className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
             </div>
           </div>
 
@@ -66,14 +71,19 @@ export default function SearchForm() {
                 value={returnDate}
                 onChange={(e) => setReturnDate(e.target.value)}
                 min={pickupDate || new Date().toISOString().split('T')[0]}
-                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 text-white [color-scheme:dark]"
+                className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 text-white appearance-none [color-scheme:dark]"
+                style={{
+                  backgroundImage: 'none',
+                  WebkitAppearance: 'none',
+                  MozAppearance: 'none'
+                }}
               />
-              <Calendar className="absolute left-3 top-3.5 h-5 w-5 text-white/60" />
+              <Calendar className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
             </div>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <label className="block text-sm font-medium text-white mb-2">
               Vehicle Type
@@ -83,6 +93,11 @@ export default function SearchForm() {
                 value={vehicleType}
                 onChange={(e) => setVehicleType(e.target.value as VehicleType)}
                 className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 text-white appearance-none"
+                style={{
+                  backgroundImage: 'none',
+                  WebkitAppearance: 'none',
+                  MozAppearance: 'none'
+                }}
               >
                 {Object.values(VehicleType).map((type) => (
                   <option key={type} value={type} className="text-gray-900">
@@ -90,7 +105,12 @@ export default function SearchForm() {
                   </option>
                 ))}
               </select>
-              <Car className="absolute left-3 top-3.5 h-5 w-5 text-white/60" />
+              <Car className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                </svg>
+              </div>
             </div>
           </div>
 
@@ -103,11 +123,21 @@ export default function SearchForm() {
                 value={age}
                 onChange={(e) => setAge(e.target.value)}
                 className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 text-white appearance-none"
+                style={{
+                  backgroundImage: 'none',
+                  WebkitAppearance: 'none',
+                  MozAppearance: 'none'
+                }}
               >
                 <option value="18-24" className="text-gray-900">18-24 years</option>
                 <option value="25+" className="text-gray-900">25+ years</option>
               </select>
-              <User className="absolute left-3 top-3.5 h-5 w-5 text-white/60" />
+              <User className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
+              <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                  <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                </svg>
+              </div>
             </div>
           </div>
         </div>

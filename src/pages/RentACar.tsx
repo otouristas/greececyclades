@@ -19,7 +19,7 @@ export default function RentACar() {
 
       <main className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="relative h-screen pt-[72px]">
+        <section className="relative bg-gray-900">
           {/* Background Image */}
           <div className="absolute inset-0">
             <img
@@ -31,50 +31,52 @@ export default function RentACar() {
           </div>
 
           {/* Hero Content Container */}
-          <div className="relative h-[calc(100vh-72px)] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="h-full flex items-center">
-              <div className="w-full grid lg:grid-cols-2 gap-8 items-center">
-                {/* Search Form */}
-                <div className="order-2 lg:order-1 bg-white/10 backdrop-blur-md p-6 rounded-2xl border border-white/20">
+          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Main Content */}
+            <div className="pt-32 lg:pt-40 pb-40 lg:pb-48">
+              <div className="max-w-2xl mx-auto text-center text-white space-y-8">
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+                  Explore the Cyclades<br />
+                  <span className="text-blue-400">Your Way</span>
+                </h1>
+                <p className="text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-xl mx-auto">
+                  Discover the freedom of exploring the Greek islands with our premium fleet. 
+                  From compact cars to luxury SUVs, find your perfect ride.
+                </p>
+              </div>
+
+              {/* Search Form */}
+              <div className="max-w-3xl mx-auto mt-12">
+                <div className="bg-white/10 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-white/20 shadow-xl">
                   <SearchForm />
                 </div>
+              </div>
 
-                {/* Hero Content */}
-                <div className="order-1 lg:order-2 text-white space-y-6">
-                  <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                    Explore the Cyclades<br />
-                    <span className="text-blue-400">Your Way</span>
-                  </h1>
-                  <p className="text-lg sm:text-xl text-white/90 leading-relaxed max-w-xl">
-                    Discover the freedom of exploring the Greek islands with our premium fleet. 
-                    From compact cars to luxury SUVs, find your perfect ride.
-                  </p>
-                  
-                  {/* Features */}
-                  <div className="grid grid-cols-2 gap-4">
-                    <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                      <Car className="h-6 w-6 text-blue-400 mb-2" />
-                      <h3 className="font-semibold">Latest Models</h3>
-                      <p className="text-sm text-white/80">Premium vehicles updated yearly</p>
-                    </div>
+              {/* Features */}
+              <div className="max-w-4xl mx-auto mt-8">
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20 text-center">
+                    <Car className="h-5 w-5 text-blue-400 mb-1.5 mx-auto" />
+                    <h3 className="font-semibold text-sm text-white">Latest Models</h3>
+                    <p className="text-xs text-white/80">Premium vehicles updated yearly</p>
+                  </div>
 
-                    <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                      <Shield className="h-6 w-6 text-blue-400 mb-2" />
-                      <h3 className="font-semibold">Full Insurance</h3>
-                      <p className="text-sm text-white/80">Comprehensive coverage included</p>
-                    </div>
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20 text-center">
+                    <Shield className="h-5 w-5 text-blue-400 mb-1.5 mx-auto" />
+                    <h3 className="font-semibold text-sm text-white">Full Insurance</h3>
+                    <p className="text-xs text-white/80">Comprehensive coverage included</p>
+                  </div>
 
-                    <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                      <Fuel className="h-6 w-6 text-blue-400 mb-2" />
-                      <h3 className="font-semibold">Flexible Fuel</h3>
-                      <p className="text-sm text-white/80">Multiple fuel options available</p>
-                    </div>
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20 text-center">
+                    <Fuel className="h-5 w-5 text-blue-400 mb-1.5 mx-auto" />
+                    <h3 className="font-semibold text-sm text-white">Flexible Fuel</h3>
+                    <p className="text-xs text-white/80">Multiple fuel options available</p>
+                  </div>
 
-                    <div className="bg-white/10 backdrop-blur-sm p-4 rounded-xl border border-white/20">
-                      <Settings2 className="h-6 w-6 text-blue-400 mb-2" />
-                      <h3 className="font-semibold">24/7 Support</h3>
-                      <p className="text-sm text-white/80">Round-the-clock assistance</p>
-                    </div>
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20 text-center">
+                    <Settings2 className="h-5 w-5 text-blue-400 mb-1.5 mx-auto" />
+                    <h3 className="font-semibold text-sm text-white">24/7 Support</h3>
+                    <p className="text-xs text-white/80">Round-the-clock assistance</p>
                   </div>
                 </div>
               </div>
@@ -83,16 +85,14 @@ export default function RentACar() {
         </section>
 
         {/* Vehicle Grid Section */}
-        <section className="py-12">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="flex flex-col lg:flex-row gap-8">
+        <section className="bg-white py-12">
+          <div className="max-w-7xl mx-auto">
+            <div className="flex flex-col lg:flex-row">
               {/* Sidebar */}
-              <div className="lg:w-64 flex-shrink-0">
-                <FilterSidebar />
-              </div>
+              <FilterSidebar />
 
               {/* Main Content */}
-              <div className="flex-1">
+              <div className="flex-1 px-4 sm:px-6 lg:px-8 mt-4 lg:mt-0">
                 <VehicleGrid vehicles={vehicles} />
               </div>
             </div>

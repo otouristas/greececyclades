@@ -121,172 +121,225 @@ export default function Hotels() {
   return (
     <>
       <SEO 
-        title={`Best Hotels in Cyclades Islands ${SITE_TAGLINE}`}
-        description="Find and book the perfect hotel in the Cyclades islands. From luxury resorts to boutique hotels, discover accommodations that match your style and budget."
-        ogImage="/images/hotels-cyclades.jpg"
-        structuredData={JSON.stringify(jsonLD)}
+        title="Hotels in Cyclades | Greece Cyclades"
+        description={`Find and book hotels in the Greek Islands. ${SITE_TAGLINE}`}
       />
+      <Breadcrumbs />
       
-      {/* Breadcrumbs */}
-      <div className="bg-gray-50 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Breadcrumbs
-            items={[
-              { label: 'Accommodation', path: '/hotels' }
-            ]}
-          />
-        </div>
-      </div>
-
-      {/* Hero Section with Search */}
-      <div className="relative min-h-[85vh] lg:h-[85vh] overflow-hidden">
+      {/* Hero Section */}
+      <section className="relative bg-gray-900">
+        {/* Background Image */}
         <div className="absolute inset-0">
-          <img 
-            src="/images/hero/santorini-hotels.jpg" 
-            alt="Luxury hotels in Cyclades" 
-            className="w-full h-full object-cover brightness-[0.6]"
+          <img
+            src="https://images.unsplash.com/photo-1582719478250-c89cae4dc85b?q=80&w=2670&auto=format&fit=crop"
+            alt="Luxury Hotel in Cyclades"
+            className="w-full h-full object-cover brightness-75"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-black/95 via-black/80 to-black/60" />
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/70 to-black/40" />
         </div>
-        
-        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-0">
-          <div className="h-full grid lg:grid-cols-2 gap-8 items-center">
-            {/* Hero Content */}
-            <div className="text-white space-y-4 lg:space-y-6">
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-tight">
-                Luxury Stays in<br />
-                <span className="text-blue-400">The Cyclades</span>
+
+        {/* Hero Content Container */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          {/* Main Content */}
+          <div className="pt-32 lg:pt-40 pb-40 lg:pb-48">
+            <div className="max-w-2xl mx-auto text-center text-white space-y-8">
+              <h1 className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold leading-tight">
+                Find Perfect Hotels in<br />
+                <span className="text-blue-400">Greek Islands</span>
               </h1>
-              <p className="text-xl sm:text-2xl text-white/90 leading-relaxed">
-                Experience unparalleled luxury in the heart of the Greek islands. 
-                From boutique hotels to stunning resorts, find your perfect stay.
+              <p className="text-base sm:text-lg lg:text-xl text-white/90 leading-relaxed max-w-xl mx-auto">
+                Discover luxury hotels, boutique resorts, and stunning villas across the Cyclades islands.
               </p>
-              
-              {/* Features */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 mt-6 lg:mt-8">
-                <div className="bg-white/10 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-white/20">
-                  <Building2 className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400 mb-2" />
-                  <h3 className="font-semibold text-sm sm:text-base">Premium Properties</h3>
-                  <p className="text-xs sm:text-sm text-white/80">Hand-picked luxury accommodations</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-white/20">
-                  <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400 mb-2" />
-                  <h3 className="font-semibold text-sm sm:text-base">Exclusive Amenities</h3>
-                  <p className="text-xs sm:text-sm text-white/80">World-class facilities and services</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-white/20">
-                  <Waves className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400 mb-2" />
-                  <h3 className="font-semibold text-sm sm:text-base">Sea Views</h3>
-                  <p className="text-xs sm:text-sm text-white/80">Breathtaking Aegean vistas</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-3 sm:p-4 rounded-xl border border-white/20">
-                  <Car className="h-5 w-5 sm:h-6 sm:w-6 text-blue-400 mb-2" />
-                  <h3 className="font-semibold text-sm sm:text-base">Transfer Service</h3>
-                  <p className="text-xs sm:text-sm text-white/80">Complimentary airport transfers</p>
-                </div>
-              </div>
             </div>
 
             {/* Search Form */}
-            <div className="bg-white/10 backdrop-blur-md p-6 sm:p-8 rounded-2xl border border-white/20">
-              <div className="space-y-3 sm:space-y-4">
-                <div className="relative">
-                  <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <select
-                    value={selectedIsland}
-                    onChange={(e) => setSelectedIsland(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/90 backdrop-blur-sm rounded-lg border border-white/30 text-gray-800 focus:ring-2 focus:ring-blue-500"
-                  >
-                    {islands.map((island) => (
-                      <option key={island} value={island}>{island}</option>
-                    ))}
-                  </select>
-                </div>
+            <div className="max-w-3xl mx-auto mt-12">
+              <div className="bg-white/10 backdrop-blur-md p-4 sm:p-6 rounded-2xl border border-white/20 shadow-xl">
+                <form onSubmit={(e) => { e.preventDefault(); handleFiltersChange(); }} className="space-y-6">
+                  <div className="grid gap-6">
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-white mb-2">
+                          Island
+                        </label>
+                        <div className="relative">
+                          <select
+                            value={selectedIsland}
+                            onChange={(e) => setSelectedIsland(e.target.value)}
+                            className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 text-white appearance-none"
+                            style={{
+                              backgroundImage: 'none',
+                              WebkitAppearance: 'none',
+                              MozAppearance: 'none'
+                            }}
+                          >
+                            {islands.map(island => (
+                              <option key={island} value={island} className="text-gray-900">
+                                {island}
+                              </option>
+                            ))}
+                          </select>
+                          <MapPin className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
+                          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                            <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
 
-                <div className="relative">
-                  <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                  <select
-                    value={selectedType}
-                    onChange={(e) => setSelectedType(e.target.value)}
-                    className="w-full pl-10 pr-4 py-3 bg-white/90 backdrop-blur-sm rounded-lg border border-white/30 text-gray-800 focus:ring-2 focus:ring-blue-500"
-                  >
-                    {propertyTypes.map((type) => (
-                      <option key={type.id} value={type.id}>{type.label}</option>
-                    ))}
-                  </select>
-                </div>
+                      <div>
+                        <label className="block text-sm font-medium text-white mb-2">
+                          Property Type
+                        </label>
+                        <div className="relative">
+                          <select
+                            value={selectedType}
+                            onChange={(e) => setSelectedType(e.target.value)}
+                            className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 text-white appearance-none"
+                            style={{
+                              backgroundImage: 'none',
+                              WebkitAppearance: 'none',
+                              MozAppearance: 'none'
+                            }}
+                          >
+                            {propertyTypes.map(type => (
+                              <option key={type.id} value={type.id} className="text-gray-900">
+                                {type.label}
+                              </option>
+                            ))}
+                          </select>
+                          <Building2 className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
+                          <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-white">
+                            <svg className="h-4 w-4 fill-current" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20">
+                              <path d="M5.293 7.293a1 1 0 011.414 0L10 10.586l3.293-3.293a1 1 0 111.414 1.414l-4 4a1 1 0 01-1.414 0l-4-4a1 1 0 010-1.414z" />
+                            </svg>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
 
-                <div className="grid grid-cols-2 gap-4">
-                  <div className="relative">
-                    <CalendarDays className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="date"
-                      value={checkIn}
-                      onChange={(e) => setCheckIn(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-white/90 backdrop-blur-sm rounded-lg border border-white/30 text-gray-800 focus:ring-2 focus:ring-blue-500"
-                      placeholder="Check-in"
-                    />
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                      <div>
+                        <label className="block text-sm font-medium text-white mb-2">
+                          Check In
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="date"
+                            value={checkIn}
+                            onChange={(e) => setCheckIn(e.target.value)}
+                            min={new Date().toISOString().split('T')[0]}
+                            className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 text-white appearance-none [color-scheme:dark]"
+                            style={{
+                              backgroundImage: 'none',
+                              WebkitAppearance: 'none',
+                              MozAppearance: 'none'
+                            }}
+                          />
+                          <CalendarDays className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
+                        </div>
+                      </div>
+
+                      <div>
+                        <label className="block text-sm font-medium text-white mb-2">
+                          Check Out
+                        </label>
+                        <div className="relative">
+                          <input
+                            type="date"
+                            value={checkOut}
+                            onChange={(e) => setCheckOut(e.target.value)}
+                            min={checkIn || new Date().toISOString().split('T')[0]}
+                            className="w-full pl-10 pr-4 py-3 bg-white/10 border border-white/20 rounded-lg focus:ring-2 focus:ring-blue-400 text-white appearance-none [color-scheme:dark]"
+                            style={{
+                              backgroundImage: 'none',
+                              WebkitAppearance: 'none',
+                              MozAppearance: 'none'
+                            }}
+                          />
+                          <CalendarDays className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-white/60" />
+                        </div>
+                      </div>
+                    </div>
                   </div>
-                  <div className="relative">
-                    <CalendarDays className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400" />
-                    <input
-                      type="date"
-                      value={checkOut}
-                      onChange={(e) => setCheckOut(e.target.value)}
-                      className="w-full pl-10 pr-4 py-3 bg-white/90 backdrop-blur-sm rounded-lg border border-white/30 text-gray-800 focus:ring-2 focus:ring-blue-500"
-                      placeholder="Check-out"
-                    />
+
+                  <button
+                    type="submit"
+                    className="w-full bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-4 rounded-lg transition duration-150 ease-in-out"
+                  >
+                    Search Hotels
+                  </button>
+                </form>
+              </div>
+            </div>
+
+            {/* Features */}
+            <div className="max-w-4xl mx-auto mt-8">
+              <div className="grid grid-cols-3 gap-4">
+                <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20 text-center">
+                  <div className="bg-blue-400/20 rounded-full p-2 w-10 h-10 mx-auto mb-2">
+                    <Building2 className="w-6 h-6 text-blue-400" />
                   </div>
+                  <h3 className="font-semibold text-sm text-white">Best Selection</h3>
+                  <p className="text-xs text-white/80">Handpicked hotels</p>
                 </div>
 
-                <button
-                  onClick={handleFiltersChange}
-                  className="w-full flex items-center justify-center gap-2 bg-blue-600 hover:bg-blue-700 text-white py-3 rounded-lg transition duration-200"
-                >
-                  <Search className="w-5 h-5" />
-                  Search Hotels
-                </button>
+                <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20 text-center">
+                  <div className="bg-blue-400/20 rounded-full p-2 w-10 h-10 mx-auto mb-2">
+                    <Sparkles className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h3 className="font-semibold text-sm text-white">Best Price</h3>
+                  <p className="text-xs text-white/80">Price match guarantee</p>
+                </div>
 
-                <div className="flex flex-wrap gap-2 mt-4">
-                  {amenities.slice(0, 5).map((amenity) => (
-                    <button
-                      key={amenity.id}
-                      onClick={() => toggleAmenity(amenity.id)}
-                      className={`flex items-center gap-1 px-3 py-1.5 rounded-full text-sm transition duration-200 ${
-                        selectedAmenities.includes(amenity.id)
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-white/20 text-white hover:bg-white/30'
-                      }`}
-                    >
-                      <amenity.icon className="w-4 h-4" />
-                      {amenity.label}
-                    </button>
-                  ))}
+                <div className="bg-white/10 backdrop-blur-sm p-3 rounded-xl border border-white/20 text-center">
+                  <div className="bg-blue-400/20 rounded-full p-2 w-10 h-10 mx-auto mb-2">
+                    <Users className="w-6 h-6 text-blue-400" />
+                  </div>
+                  <h3 className="font-semibold text-sm text-white">24/7 Support</h3>
+                  <p className="text-xs text-white/80">Always here to help</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
+      </section>
 
       {/* Hotel Listings */}
       <div className="bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
-          <div className="flex flex-col md:flex-row justify-between items-center mb-8">
-            <div>
-              <h2 className="text-3xl font-bold text-gray-900">Available Properties</h2>
-              <p className="mt-2 text-lg text-gray-600">
-                {hotels.length} {hotels.length === 1 ? 'property' : 'properties'} found
-              </p>
-            </div>
-            <div className="mt-4 md:mt-0 flex items-center gap-2">
-              <span className="text-gray-600">Sort by:</span>
-              <select className="pl-3 pr-10 py-2 text-base border-gray-300 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm rounded-md">
-                <option>Price: Low to High</option>
-                <option>Price: High to Low</option>
-                <option>Rating: High to Low</option>
-                <option>Most Popular</option>
-              </select>
+          <div className="bg-white rounded-xl shadow-sm p-6 mb-8">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+              <div className="flex-1">
+                <h2 className="text-2xl sm:text-3xl font-bold text-gray-900 mb-1">Available Properties</h2>
+                <div className="flex items-center gap-2">
+                  <span className="text-lg font-semibold text-blue-600">{hotels.length}</span>
+                  <span className="text-gray-600">{hotels.length === 1 ? 'property' : 'properties'} found</span>
+                  {selectedIsland !== 'All Islands' && (
+                    <span className="text-gray-600">in {selectedIsland}</span>
+                  )}
+                </div>
+              </div>
+              <div className="flex items-center gap-3">
+                <span className="text-gray-600 text-sm">Sort by:</span>
+                <select 
+                  className="min-w-[180px] pl-4 pr-10 py-2.5 text-sm bg-gray-50 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent hover:border-gray-300 transition-colors cursor-pointer"
+                  style={{
+                    backgroundImage: 'url("data:image/svg+xml,%3csvg xmlns=\'http://www.w3.org/2000/svg\' fill=\'none\' viewBox=\'0 0 20 20\'%3e%3cpath stroke=\'%236b7280\' stroke-linecap=\'round\' stroke-linejoin=\'round\' stroke-width=\'1.5\' d=\'M6 8l4 4 4-4\'/%3e%3c/svg%3e")',
+                    backgroundRepeat: 'no-repeat',
+                    backgroundPosition: 'right 0.5rem center',
+                    backgroundSize: '1.5em 1.5em',
+                    WebkitAppearance: 'none',
+                    MozAppearance: 'none'
+                  }}
+                >
+                  <option value="price_low">Price: Low to High</option>
+                  <option value="price_high">Price: High to Low</option>
+                  <option value="rating">Rating: High to Low</option>
+                  <option value="popular">Most Popular</option>
+                </select>
+              </div>
             </div>
           </div>
 
