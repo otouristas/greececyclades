@@ -87,7 +87,7 @@ export default function Home() {
               <Link to="/hotels" className="group">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6">
                   <img 
-                    src="/images/services/luxury-hotel.jpg" 
+                    src="/images/services/luxury-hotel.jpeg" 
                     alt="Luxury Hotels" 
                     className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
                   />

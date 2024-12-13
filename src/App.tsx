@@ -32,6 +32,7 @@ import IslandDetail from './pages/IslandDetail';
 import VehicleDetail from './pages/VehicleDetail';
 import FerryTickets from './pages/FerryTickets';
 import FerrySearchResults from './pages/FerrySearchResults';
+import FerryTracking from './pages/FerryTracking';
 import NotFound from './pages/NotFound';
 import BackToTop from './components/BackToTop';
 
@@ -67,6 +68,7 @@ export default function App() {
                 <Route path="/activities/:id" element={<ActivityDetail />} />
                 <Route path="/rent-a-car" element={<RentACar />} />
                 <Route path="/ferry-tickets" element={<FerryTickets />} />
+                <Route path="/ferry-tracking" element={<FerryTracking />} />
                 <Route path="/rent-a-car/:slug" element={<VehicleDetail />} />
                 <Route path="/hotels" element={<Hotels />} />
                 <Route path="/hotels/:slug" element={<HotelDetail />} />

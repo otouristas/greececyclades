@@ -10,12 +10,13 @@ export default function CarRentals() {
   const featuredVehicles = vehicles.slice(0, 3);
 
   return (
-    <section className="py-16">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section className="bg-gradient-to-b from-blue-50 to-white">
+      {/* Featured Vehicles */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         <div className="flex justify-between items-center mb-8">
           <div>
-            <h2 className="text-3xl font-bold text-gray-900">Car Rentals</h2>
-            <p className="mt-2 text-gray-600">Explore the islands with our trusted rental partners</p>
+            <h2 className="text-3xl font-bold text-gray-900">Featured Vehicles</h2>
+            <p className="mt-2 text-gray-600">Explore our most popular rental options</p>
           </div>
           <Link 
             to="/rent-a-car"

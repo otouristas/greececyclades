@@ -200,21 +200,6 @@
 /images/activities/fira-cable-car-2.jpg
 /images/activities/fira-cable-car-3.jpg
 
-# Beach Club Images
-## Jackie O' Beach Club
-/images/beach-clubs/jackie-o/main.jpg
-/images/beach-clubs/jackie-o/pool.jpg
-/images/beach-clubs/jackie-o/restaurant.jpg
-/images/beach-clubs/jackie-o/beach.jpg
-/images/beach-clubs/jackie-o/sunset.jpg
-
-## Soros Beach Club
-/images/beach-clubs/soros/main.jpg
-/images/beach-clubs/soros/beach.jpg
-/images/beach-clubs/soros/restaurant.jpg
-/images/beach-clubs/soros/sunbeds.jpg
-/images/beach-clubs/soros/dj-set.jpg
-
 # Attraction Images
 /images/attractions/red-beach.jpg
 /images/restaurants/metaxy-mas.jpg
@@ -222,8 +207,24 @@
 # Contact Page
 /images/contact-cyclades.jpg
 
-# Placeholders
-https://placehold.co/1920x1080/1a1a1a/ffffff?text=Hotel+Hero+Image
-https://placehold.co/800x600/1a1a1a/ffffff?text=Gallery+Image
-https://placehold.co/600x400/1a1a1a/ffffff?text=Room+Image
-https://placehold.co/400x300/1a1a1a/ffffff?text=Feature+Image
+# Dynamic Paths
+## Island Images
+- /images/islands/${islandSlug}/gallery-${index}.jpg (Dynamic gallery images)
+
+## Hotel Images
+- /images/hotels/${hotelSlug}/gallery-${index}.jpg (Dynamic gallery images)
+
+## Service Images
+- /images/services/luxury-hotel.jpg
+- /images/services/car-rental.jpg
+- /images/services/activities.jpg
+
+## Contact Page Images
+- /images/contact-hero.jpg
+- /images/contact-cyclades.jpg
+
+## Placeholder Images
+- https://placehold.co/1920x1080/1a1a1a/ffffff?text=Hotel+Hero+Image
+- https://placehold.co/800x600/1a1a1a/ffffff?text=Gallery+Image
+- https://placehold.co/600x400/1a1a1a/ffffff?text=Room+Image
+- https://placehold.co/400x300/1a1a1a/ffffff?text=Feature+Image
