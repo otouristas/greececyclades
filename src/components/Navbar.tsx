@@ -16,7 +16,9 @@ import {
   Cloud,
   Building2,
   Wallet,
-  ArrowRight
+  ArrowRight,
+  Globe,
+  HelpCircle
 } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 import { auth } from '../config/firebase';
@@ -169,264 +171,281 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
       ref={navRef}
       className="fixed top-0 left-0 right-0 w-full z-[9999] bg-white shadow-sm h-14 md:h-[72px]"
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full">
-        <div className="flex justify-between items-center h-full">
-          <div className="flex items-center">
-            <Link to="/" className="flex-shrink-0">
+      <div className="max-w-[2000px] mx-auto h-full pl-0">
+        <div className="flex items-center h-full">
+          {/* Logo and Main Navigation */}
+          <div className="flex items-center space-x-12">
+            <Link to="/" className="flex-shrink-0 pl-4">
               <Logo />
             </Link>
-          </div>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex md:items-center md:space-x-8">
-            {navigationItems.map((item) => (
-              <div key={item.path} className="relative">
-                {item.megaMenu ? (
-                  <button
-                    onClick={() => toggleMegaMenu(item.path)}
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium flex items-center space-x-1 group"
-                  >
-                    {item.icon}
-                    <span>{item.label}</span>
-                    <ChevronDown className="h-4 w-4 group-hover:text-blue-600" />
-                  </button>
-                ) : (
-                  <Link
-                    to={item.path}
-                    className="text-gray-700 hover:text-blue-600 px-3 py-2 text-sm font-medium flex items-center space-x-1 group"
-                  >
-                    {item.icon}
-                    <span>{item.label}</span>
-                  </Link>
-                )}
-                {/* Mega Menu */}
-                {activeMegaMenu === item.path && item.megaMenu && (
-                  <div className="fixed inset-0 top-16 w-screen h-screen bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800">
-                    <div className="w-full h-full">
-                      <div className="flex h-full">
-                        {/* Left Column - 30% */}
-                        <div className="w-[30%] h-full p-16 border-r border-white/10">
-                          {item.path === '/islands' ? (
-                            <>
-                              <h2 className="text-4xl font-bold text-white mb-6">
-                                Greek Islands
-                              </h2>
-                              <p className="text-xl text-white/90 leading-relaxed">
-                                Explore the enchanting Greek islands, where ancient history meets 
-                                crystal-clear waters and vibrant culture.
-                              </p>
-                              <div className="mt-8 space-y-6">
-                                <div className="bg-white/10 rounded-xl p-6">
-                                  <h3 className="text-xl font-semibold text-white mb-2">Featured Islands</h3>
-                                  <p className="text-white/90">Discover our handpicked selection of the most beautiful Greek islands</p>
+            {/* Main Navigation Links */}
+            <div className="hidden md:flex items-center space-x-8">
+              {navigationItems.map((item) => (
+                <div key={item.path} className="relative">
+                  {item.megaMenu ? (
+                    <button
+                      onClick={() => toggleMegaMenu(item.path)}
+                      className="text-gray-700 hover:text-blue-600 px-3 py-2 text-base font-medium flex items-center space-x-1.5 group"
+                    >
+                      <span>{item.label}</span>
+                      <ChevronDown className="h-4 w-4 group-hover:text-blue-600" />
+                    </button>
+                  ) : (
+                    <Link
+                      to={item.path}
+                      className="text-gray-700 hover:text-blue-600 px-3 py-2 text-base font-medium flex items-center space-x-1.5 group"
+                    >
+                      <span>{item.label}</span>
+                    </Link>
+                  )}
+                  {/* Mega Menu */}
+                  {activeMegaMenu === item.path && item.megaMenu && (
+                    <div className="fixed inset-0 top-16 w-screen h-screen bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800">
+                      <div className="w-full h-full">
+                        <div className="flex h-full">
+                          {/* Left Column - 30% */}
+                          <div className="w-[30%] h-full p-16 border-r border-white/10">
+                            {item.path === '/islands' ? (
+                              <>
+                                <h2 className="text-4xl font-bold text-white mb-6">
+                                  Greek Islands
+                                </h2>
+                                <p className="text-xl text-white/90 leading-relaxed">
+                                  Explore the enchanting Greek islands, where ancient history meets 
+                                  crystal-clear waters and vibrant culture.
+                                </p>
+                                <div className="mt-8 space-y-6">
+                                  <div className="bg-white/10 rounded-xl p-6">
+                                    <h3 className="text-xl font-semibold text-white mb-2">Featured Islands</h3>
+                                    <p className="text-white/90">Discover our handpicked selection of the most beautiful Greek islands</p>
+                                  </div>
                                 </div>
-                              </div>
-                            </>
-                          ) : (
-                            <>
-                              <h2 className="text-4xl font-bold text-white mb-6">
-                                Plan Your Journey
-                              </h2>
-                              <p className="text-xl text-white/90 leading-relaxed">
-                                Create your perfect Greek island adventure with our comprehensive 
-                                travel planning tools and guides.
-                              </p>
-                              <div className="mt-8 space-y-6">
-                                <div className="bg-white/10 rounded-xl p-6">
-                                  <h3 className="text-xl font-semibold text-white mb-2">Travel Tips</h3>
-                                  <p className="text-white/80 text-sm">Expert advice to help you make the most of your Greek island experience</p>
+                              </>
+                            ) : (
+                              <>
+                                <h2 className="text-4xl font-bold text-white mb-6">
+                                  Plan Your Journey
+                                </h2>
+                                <p className="text-xl text-white/90 leading-relaxed">
+                                  Create your perfect Greek island adventure with our comprehensive 
+                                  travel planning tools and guides.
+                                </p>
+                                <div className="mt-8 space-y-6">
+                                  <div className="bg-white/10 rounded-xl p-6">
+                                    <h3 className="text-xl font-semibold text-white mb-2">Travel Tips</h3>
+                                    <p className="text-white/80 text-sm">Expert advice to help you make the most of your Greek island experience</p>
+                                  </div>
                                 </div>
-                              </div>
-                            </>
-                          )}
-                        </div>
+                              </>
+                            )}
+                          </div>
 
-                        {/* Right Column - 70% */}
-                        <div className="w-[70%] h-full p-16 overflow-y-auto">
-                          {item.path === '/islands' ? (
-                            <div className="grid grid-cols-3 gap-12">
-                              {/* Travel Guides */}
-                              <div>
-                                <h3 className="text-2xl font-semibold text-white mb-8">Travel Guides</h3>
-                                <ul className="space-y-6 mb-8">
-                                  {item.children?.map((child) => (
-                                    <li key={child.path}>
-                                      <Link
-                                        to={child.path}
-                                        className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
-                                        onClick={() => setActiveMegaMenu(null)}
-                                      >
-                                        <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                                          {child.icon}
-                                        </span>
-                                        <span>{child.label} Guide</span>
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                                <Link
-                                  to="/blog"
-                                  className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-                                  onClick={() => setActiveMegaMenu(null)}
-                                >
-                                  All Travel Guides
-                                  <ArrowRight className="w-4 h-4" />
-                                </Link>
-                              </div>
-
-                              {/* Popular Islands */}
-                              <div>
-                                <h3 className="text-2xl font-semibold text-white mb-8">Popular Islands</h3>
-                                <ul className="space-y-6 mb-8">
-                                  {item.children?.map((child) => (
-                                    <li key={child.path}>
-                                      <Link
-                                        to={child.path}
-                                        className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
-                                        onClick={() => setActiveMegaMenu(null)}
-                                      >
-                                        <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                                          {child.icon}
-                                        </span>
-                                        <span>{child.label}</span>
-                                      </Link>
-                                    </li>
-                                  ))}
-                                </ul>
-                                <Link
-                                  to="/islands"
-                                  className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
-                                  onClick={() => setActiveMegaMenu(null)}
-                                >
-                                  All Cyclades Islands
-                                  <ArrowRight className="w-4 h-4" />
-                                </Link>
-                              </div>
-
-                              {/* Featured Content */}
-                              <div>
-                                <h3 className="text-2xl font-semibold text-white mb-8">Featured Content</h3>
-                                <div className="space-y-6">
+                          {/* Right Column - 70% */}
+                          <div className="w-[70%] h-full p-16 overflow-y-auto">
+                            {item.path === '/islands' ? (
+                              <div className="grid grid-cols-3 gap-12">
+                                {/* Travel Guides */}
+                                <div>
+                                  <h3 className="text-2xl font-semibold text-white mb-8">Travel Guides</h3>
+                                  <ul className="space-y-6 mb-8">
+                                    {item.children?.map((child) => (
+                                      <li key={child.path}>
+                                        <Link
+                                          to={child.path}
+                                          className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
+                                          onClick={() => setActiveMegaMenu(null)}
+                                        >
+                                          <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
+                                            {child.icon}
+                                          </span>
+                                          <span>{child.label} Guide</span>
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
                                   <Link
-                                    to="/blog/best-cyclades-islands"
-                                    className="block group bg-white/10 rounded-lg p-6 hover:bg-white/20 transition-colors"
+                                    to="/blog"
+                                    className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
                                     onClick={() => setActiveMegaMenu(null)}
                                   >
-                                    <h4 className="text-lg font-semibold text-white mb-2">Best Cyclades Islands</h4>
-                                    <p className="text-white/80 text-sm">Discover the top islands to visit in the Cyclades</p>
-                                  </Link>
-                                  <Link
-                                    to="/blog/island-hopping-guide"
-                                    className="block group bg-white/10 rounded-lg p-6 hover:bg-white/20 transition-colors"
-                                    onClick={() => setActiveMegaMenu(null)}
-                                  >
-                                    <h4 className="text-lg font-semibold text-white mb-2">Island Hopping Guide</h4>
-                                    <p className="text-white/80 text-sm">Plan your perfect island-hopping adventure</p>
+                                    All Travel Guides
+                                    <ArrowRight className="w-4 h-4" />
                                   </Link>
                                 </div>
+
+                                {/* Popular Islands */}
+                                <div>
+                                  <h3 className="text-2xl font-semibold text-white mb-8">Popular Islands</h3>
+                                  <ul className="space-y-6 mb-8">
+                                    {item.children?.map((child) => (
+                                      <li key={child.path}>
+                                        <Link
+                                          to={child.path}
+                                          className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
+                                          onClick={() => setActiveMegaMenu(null)}
+                                        >
+                                          <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
+                                            {child.icon}
+                                          </span>
+                                          <span>{child.label}</span>
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                  <Link
+                                    to="/islands"
+                                    className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
+                                    onClick={() => setActiveMegaMenu(null)}
+                                  >
+                                    All Cyclades Islands
+                                    <ArrowRight className="w-4 h-4" />
+                                  </Link>
+                                </div>
+
+                                {/* Featured Content */}
+                                <div>
+                                  <h3 className="text-2xl font-semibold text-white mb-8">Featured Content</h3>
+                                  <div className="space-y-6">
+                                    <Link
+                                      to="/blog/best-cyclades-islands"
+                                      className="block group bg-white/10 rounded-lg p-6 hover:bg-white/20 transition-colors"
+                                      onClick={() => setActiveMegaMenu(null)}
+                                    >
+                                      <h4 className="text-lg font-semibold text-white mb-2">Best Cyclades Islands</h4>
+                                      <p className="text-white/80 text-sm">Discover the top islands to visit in the Cyclades</p>
+                                    </Link>
+                                    <Link
+                                      to="/blog/island-hopping-guide"
+                                      className="block group bg-white/10 rounded-lg p-6 hover:bg-white/20 transition-colors"
+                                      onClick={() => setActiveMegaMenu(null)}
+                                    >
+                                      <h4 className="text-lg font-semibold text-white mb-2">Island Hopping Guide</h4>
+                                      <p className="text-white/80 text-sm">Plan your perfect island-hopping adventure</p>
+                                    </Link>
+                                  </div>
+                                </div>
                               </div>
-                            </div>
-                          ) : (
-                            <div className="grid grid-cols-3 gap-12">
-                              {/* Travel Essentials */}
-                              <div>
-                                <h3 className="text-2xl font-semibold text-white mb-8">Travel Essentials</h3>
-                                <ul className="space-y-6">
-                                  {item.children?.map((child) => (
-                                    <li key={child.path}>
-                                      <Link
-                                        to={child.path}
+                            ) : (
+                              <div className="grid grid-cols-3 gap-12">
+                                {/* Travel Essentials */}
+                                <div>
+                                  <h3 className="text-2xl font-semibold text-white mb-8">Travel Essentials</h3>
+                                  <ul className="space-y-6">
+                                    {item.children?.map((child) => (
+                                      <li key={child.path}>
+                                        <Link
+                                          to={child.path}
+                                          className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
+                                          onClick={() => setActiveMegaMenu(null)}
+                                        >
+                                          <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
+                                            {child.icon}
+                                          </span>
+                                          <span>{child.label}</span>
+                                        </Link>
+                                      </li>
+                                    ))}
+                                  </ul>
+                                </div>
+
+                                {/* Trip Planning */}
+                                <div>
+                                  <h3 className="text-2xl font-semibold text-white mb-8">Trip Planning</h3>
+                                  <ul className="space-y-6">
+                                    <li>
+                                      <Link 
+                                        to="/itineraries" 
                                         className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
                                         onClick={() => setActiveMegaMenu(null)}
                                       >
-                                        <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                                          {child.icon}
-                                        </span>
-                                        <span>{child.label}</span>
+                                        <MapPin className="w-6 h-6 mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all" />
+                                        <div>
+                                          <span className="block">Suggested Routes</span>
+                                          <span className="text-sm text-white/70">1-3 week itineraries</span>
+                                        </div>
                                       </Link>
                                     </li>
-                                  ))}
-                                </ul>
-                              </div>
+                                    <li>
+                                      <Link 
+                                        to="/island-hopping" 
+                                        className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
+                                        onClick={() => setActiveMegaMenu(null)}
+                                      >
+                                        <Ship className="w-6 h-6 mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all" />
+                                        <div>
+                                          <span className="block">Island Hopping</span>
+                                          <span className="text-sm text-white/70">Ferry routes & tips</span>
+                                        </div>
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
 
-                              {/* Trip Planning */}
-                              <div>
-                                <h3 className="text-2xl font-semibold text-white mb-8">Trip Planning</h3>
-                                <ul className="space-y-6">
-                                  <li>
-                                    <Link 
-                                      to="/itineraries" 
-                                      className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
-                                      onClick={() => setActiveMegaMenu(null)}
-                                    >
-                                      <MapPin className="w-6 h-6 mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all" />
-                                      <div>
-                                        <span className="block">Suggested Routes</span>
-                                        <span className="text-sm text-white/70">1-3 week itineraries</span>
-                                      </div>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link 
-                                      to="/island-hopping" 
-                                      className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
-                                      onClick={() => setActiveMegaMenu(null)}
-                                    >
-                                      <Ship className="w-6 h-6 mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all" />
-                                      <div>
-                                        <span className="block">Island Hopping</span>
-                                        <span className="text-sm text-white/70">Ferry routes & tips</span>
-                                      </div>
-                                    </Link>
-                                  </li>
-                                </ul>
+                                {/* Resources */}
+                                <div>
+                                  <h3 className="text-2xl font-semibold text-white mb-8">Resources</h3>
+                                  <ul className="space-y-6">
+                                    <li>
+                                      <Link 
+                                        to="/weather" 
+                                        className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
+                                        onClick={() => setActiveMegaMenu(null)}
+                                      >
+                                        <Cloud className="w-6 h-6 mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all" />
+                                        <div>
+                                          <span className="block">Weather Guide</span>
+                                          <span className="text-sm text-white/70">Best time to visit</span>
+                                        </div>
+                                      </Link>
+                                    </li>
+                                    <li>
+                                      <Link 
+                                        to="/budget" 
+                                        className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
+                                        onClick={() => setActiveMegaMenu(null)}
+                                      >
+                                        <Wallet className="w-6 h-6 mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all" />
+                                        <div>
+                                          <span className="block">Budget Tips</span>
+                                          <span className="text-sm text-white/70">Cost planning</span>
+                                        </div>
+                                      </Link>
+                                    </li>
+                                  </ul>
+                                </div>
                               </div>
-
-                              {/* Resources */}
-                              <div>
-                                <h3 className="text-2xl font-semibold text-white mb-8">Resources</h3>
-                                <ul className="space-y-6">
-                                  <li>
-                                    <Link 
-                                      to="/weather" 
-                                      className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
-                                      onClick={() => setActiveMegaMenu(null)}
-                                    >
-                                      <Cloud className="w-6 h-6 mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all" />
-                                      <div>
-                                        <span className="block">Weather Guide</span>
-                                        <span className="text-sm text-white/70">Best time to visit</span>
-                                      </div>
-                                    </Link>
-                                  </li>
-                                  <li>
-                                    <Link 
-                                      to="/budget" 
-                                      className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
-                                      onClick={() => setActiveMegaMenu(null)}
-                                    >
-                                      <Wallet className="w-6 h-6 mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all" />
-                                      <div>
-                                        <span className="block">Budget Tips</span>
-                                        <span className="text-sm text-white/70">Cost planning</span>
-                                      </div>
-                                    </Link>
-                                  </li>
-                                </ul>
-                              </div>
-                            </div>
-                          )}
+                            )}
+                          </div>
                         </div>
                       </div>
                     </div>
-                  </div>
-                )}
-              </div>
-            ))}
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          {/* Right Side Icons and Sign In */}
+          <div className="hidden md:flex items-center ml-auto">
+            <div className="flex items-center space-x-4">
+              <Globe className="h-5 w-5 text-gray-600" />
+              <HelpCircle className="h-5 w-5 text-gray-600" />
+              <span className="text-gray-300">|</span>
+            </div>
+            <div className="pl-4 pr-4">
+              <button
+                onClick={onAuthClick}
+                className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white shadow-sm hover:bg-blue-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-blue-600"
+              >
+                <User className="h-5 w-5 mr-2" />
+                Sign in
+              </button>
+            </div>
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center">
+          <div className="md:hidden ml-auto pr-4">
             <button
               onClick={toggleMobileMenu}
               className="text-gray-700 hover:text-gray-900 p-2"
@@ -437,7 +456,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
 
           {/* User Menu */}
           <div className="hidden md:flex md:items-center">
-            {isAuthenticated ? (
+            {isAuthenticated && (
               <div className="relative" ref={dropdownRef}>
                 <button
                   onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -470,16 +489,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                   </div>
                 )}
               </div>
-            ) : (
-              <div className="flex items-center">
-                <button
-                  onClick={onAuthClick}
-                  className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
-                >
-                  <User className="w-4 h-4" />
-                  Sign In
-                </button>
-              </div>
             )}
           </div>
         </div>
@@ -498,6 +507,19 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
               </button>
             </div>
             <div className="flex-1 overflow-y-auto py-8 px-6">
+              {/* Mobile Icons and Sign In */}
+              <div className="flex items-center justify-center space-x-6 mb-8 pt-2">
+                <Globe className="h-6 w-6 text-white/80" />
+                <HelpCircle className="h-6 w-6 text-white/80" />
+                <button
+                  onClick={onAuthClick}
+                  className="inline-flex items-center justify-center rounded-md bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20"
+                >
+                  <User className="h-5 w-5 mr-2" />
+                  Sign in
+                </button>
+              </div>
+
               {[...navigationItems, ...mobileOnlyItems].map((item) => (
                 <div key={item.path} className="mb-8">
                   {item.megaMenu ? (
@@ -583,17 +605,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                     Sign Out
                   </button>
                 </>
-              ) : (
-                <button
-                  onClick={() => {
-                    onAuthClick();
-                    toggleMobileMenu();
-                  }}
-                  className="w-full text-left px-4 py-2 text-white/90 hover:text-white"
-                >
-                  Sign In
-                </button>
-              )}
+              ) : null}
             </div>
           </div>
         </div>

@@ -5,6 +5,7 @@ import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
 import ProtectedRoute from './components/ProtectedRoute';
 import AuthStateHandler from './components/AuthStateHandler';
+import CookieConsent from './components/CookieConsent';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
 import IslandGuides from './pages/IslandGuides';
@@ -37,6 +38,7 @@ import FerryTracking from './pages/FerryTracking';
 import NotFound from './pages/NotFound';
 import BackToTop from './components/BackToTop';
 import About from './pages/About';
+import TestMap from './pages/TestMap';
 
 import { ToastProvider } from './contexts/ToastContext';
 
@@ -53,10 +55,12 @@ function AppContent() {
     <>
       <ScrollToTop />
       <AuthStateHandler />
-      <div className="flex flex-col min-h-screen">
+      <div className="min-h-screen bg-gray-50">
         <Navbar onAuthClick={handleAuthClick} />
+        <CookieConsent />
         <main className="flex-grow">
           <Routes>
+            <Route path="/test-map" element={<TestMap />} />
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
             <Route path="/contact" element={<Contact />} />
