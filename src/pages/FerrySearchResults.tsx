@@ -1,219 +1,347 @@
-import React from 'react';
 import { useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import { FaShip, FaUsers, FaWifi, FaCoffee, FaWind, FaRegClock } from 'react-icons/fa';
+import { motion } from 'framer-motion';
+import { FaUsers, FaWifi, FaCoffee, FaWind, FaRegClock, FaShip, FaBolt, FaMapMarkerAlt } from 'react-icons/fa';
+import { ChevronRight } from 'lucide-react';
 import type { FerryRoute } from '../types/ferry';
-import Breadcrumbs from '../components/Breadcrumbs';
+import { ferryCompanies } from '../data/ferryCompanies';
 import SEO from '../components/SEO';
 
 const FerrySearchResults = () => {
   const location = useLocation();
   const searchParams = new URLSearchParams(location.search);
-  const fromIsland = searchParams.get('from');
-  const toIsland = searchParams.get('to');
-  const date = searchParams.get('date');
-  const passengers = searchParams.get('passengers');
-  const hasCar = searchParams.get('hasCar') === 'true';
-  const carLength = searchParams.get('carLength');
-  const discountCode = searchParams.get('discountCode');
+  const fromIsland = searchParams.get('from') || '';
+  const toIsland = searchParams.get('to') || '';
+  const date = searchParams.get('date') || '';
+  const passengers = searchParams.get('passengers') || '1';
 
-  const carPrices = {
-    small: 45,
-    medium: 55,
-    large: 65,
-    suv: 75
-  };
-
-  const applyDiscount = (price: number) => {
-    if (discountCode === 'SUMMER2024') {
-      return price * 0.9; // 10% discount
-    }
-    return price;
-  };
-
-  // Calculate total price including car if selected
-  const calculateTotalPrice = (basePrice: number) => {
-    let total = basePrice * (passengers ? parseInt(passengers) : 1);
-    if (hasCar && carLength) {
-      total += carPrices[carLength as keyof typeof carPrices];
-    }
-    return applyDiscount(total);
-  };
-
-  // This would typically come from an API call based on the search parameters
+  // Mock data - replace with actual API call
   const searchResults: FerryRoute[] = [
     {
       id: '1',
-      operator: 'Blue Star Ferries',
-      logo: 'https://images.ferryhopper.com/companies/optimized/ATC-min.png',
-      from: fromIsland || '',
-      to: toIsland || '',
-      departureTime: '07:25',
-      arrivalTime: '14:45',
-      duration: '7h 20m',
-      price: 59.90,
-      type: 'Conventional Ferry',
-      amenities: ['Café', 'Restaurant', 'WiFi', 'Air conditioning'],
-      availableSeats: 145
+      company: 'Blue Star Ferries',
+      departureTime: '07:30',
+      arrivalTime: '13:45',
+      duration: '6h 15m',
+      price: 39.50,
+      amenities: ['wifi', 'cafe', 'air-conditioning'],
+      availableSeats: 45,
+      vessel: 'Blue Star Paros',
+      isIslandHopping: true,
+      intermediateStops: [
+        {
+          port: 'Serifos',
+          arrivalTime: '10:15',
+          departureTime: '10:25'
+        },
+        {
+          port: 'Sifnos',
+          arrivalTime: '11:10',
+          departureTime: '11:20'
+        }
+      ]
     },
     {
       id: '2',
-      operator: 'SeaJets',
-      logo: 'https://images.ferryhopper.com/companies/optimized/SJT-min.png',
-      from: fromIsland || '',
-      to: toIsland || '',
-      departureTime: '07:00',
-      arrivalTime: '11:50',
-      duration: '4h 50m',
-      price: 84.90,
-      type: 'High-speed Ferry',
-      amenities: ['Café', 'WiFi', 'Air conditioning'],
-      availableSeats: 82
+      company: 'SeaJets',
+      departureTime: '09:00',
+      arrivalTime: '11:30',
+      duration: '2h 30m',
+      price: 59.90,
+      amenities: ['wifi', 'cafe', 'air-conditioning', 'premium-seats'],
+      availableSeats: 32,
+      vessel: 'WorldChampion Jet'
     },
-    // Add more results as needed
+    {
+      id: '3',
+      company: 'Golden Star Ferries',
+      departureTime: '10:15',
+      arrivalTime: '14:00',
+      duration: '3h 45m',
+      price: 44.00,
+      amenities: ['wifi', 'cafe', 'air-conditioning'],
+      availableSeats: 28,
+      vessel: 'Superferry II'
+    },
+    {
+      id: '4',
+      company: 'Fast Ferries',
+      departureTime: '11:30',
+      arrivalTime: '15:15',
+      duration: '3h 45m',
+      price: 42.50,
+      amenities: ['wifi', 'cafe', 'air-conditioning'],
+      availableSeats: 35,
+      vessel: 'Fast Ferries Andros'
+    },
+    {
+      id: '5',
+      company: 'Hellenic Seaways',
+      departureTime: '13:00',
+      arrivalTime: '16:45',
+      duration: '3h 45m',
+      price: 45.00,
+      amenities: ['wifi', 'cafe', 'air-conditioning', 'premium-seats'],
+      availableSeats: 40,
+      vessel: 'Flyingcat 4'
+    },
+    {
+      id: '6',
+      company: 'ANEK Lines',
+      departureTime: '14:30',
+      arrivalTime: '18:45',
+      duration: '4h 15m',
+      price: 41.00,
+      amenities: ['wifi', 'cafe', 'air-conditioning', 'premium-seats'],
+      availableSeats: 50,
+      vessel: 'Prevelis'
+    },
+    {
+      id: '7',
+      company: 'Aegean Sea Lines',
+      departureTime: '16:00',
+      arrivalTime: '19:30',
+      duration: '3h 30m',
+      price: 43.50,
+      amenities: ['wifi', 'cafe', 'air-conditioning'],
+      availableSeats: 25,
+      vessel: 'Speed Runner'
+    },
+    {
+      id: '8',
+      company: 'Zante Ferries',
+      departureTime: '17:30',
+      arrivalTime: '21:15',
+      duration: '3h 45m',
+      price: 40.00,
+      amenities: ['wifi', 'cafe', 'air-conditioning'],
+      availableSeats: 38,
+      vessel: 'Dionisios Solomos'
+    }
   ];
 
+  // Helper function to convert duration string to minutes
+  const durationToMinutes = (duration: string): number => {
+    const [hours, minutes] = duration.split('h ');
+    return parseInt(hours) * 60 + parseInt(minutes.replace('m', ''));
+  };
+
+  // Find the fastest route
+  const fastestRoute = searchResults.reduce((fastest, current) => {
+    const fastestDuration = durationToMinutes(fastest.duration);
+    const currentDuration = durationToMinutes(current.duration);
+    return currentDuration < fastestDuration ? current : fastest;
+  }, searchResults[0]);
+
   const getAmenityIcon = (amenity: string) => {
-    switch (amenity.toLowerCase()) {
-      case 'wifi': return <FaWifi />;
-      case 'café': return <FaCoffee />;
-      case 'air conditioning': return <FaWind />;
-      default: return null;
+    switch (amenity) {
+      case 'wifi':
+        return <FaWifi className="text-gray-600" />;
+      case 'cafe':
+        return <FaCoffee className="text-gray-600" />;
+      case 'air-conditioning':
+        return <FaWind className="text-gray-600" />;
+      default:
+        return null;
     }
   };
 
   return (
-    <div className="min-h-screen bg-gray-50 py-12">
-      <SEO 
-        title={`Ferry Routes from ${searchParams.get('from')} to ${searchParams.get('to')} | Greece Cyclades`}
-        description={`Find the best ferry routes from ${searchParams.get('from')} to ${searchParams.get('to')}. Compare prices and book your tickets online.`}
+    <div className="min-h-screen bg-gray-50 pt-16">
+      <SEO
+        title={`Ferry Routes: ${fromIsland} to ${toIsland} | Greece Cyclades`}
+        description={`Find the best ferry routes from ${fromIsland} to ${toIsland}. Compare prices and book your tickets online.`}
       />
       
-      {/* Breadcrumbs */}
-      <div className="bg-gray-50 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Breadcrumbs
-            items={[
-              { label: 'Ferry Tickets', path: '/ferry-tickets' },
-              { label: 'Search Results', path: `/ferry-search-results${location.search}` }
-            ]}
-          />
+      {/* Hero Section */}
+      <div className="bg-blue-900 text-white py-12">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <h1 className="text-3xl font-bold mb-4">
+            Ferry Routes: {fromIsland} to {toIsland}
+          </h1>
+          <div className="flex items-center gap-4 text-blue-100">
+            <div className="flex items-center gap-2">
+              <FaRegClock />
+              <span>{new Date(date).toLocaleDateString('en-GB', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}</span>
+            </div>
+            <div className="flex items-center gap-2">
+              <FaUsers />
+              <span>{passengers} passenger{parseInt(passengers) > 1 ? 's' : ''}</span>
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="mb-8">
-          <h1 className="text-3xl font-bold text-gray-900">
-            Ferry Routes: {fromIsland} to {toIsland}
-          </h1>
-          <p className="mt-2 text-gray-600">
-            {searchResults.length} routes found • {date} • {passengers} passenger(s)
-          </p>
-        </div>
-
-        <div className="grid gap-6">
-          {searchResults.map((route) => (
+      {/* Results Section */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="space-y-6">
+          {searchResults.map((route) => {
+            const isFastest = route.id === fastestRoute.id;
+            
+            return (
             <motion.div
               key={route.id}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-xl transition-shadow duration-300"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              className={`bg-white rounded-lg overflow-hidden relative
+                ${isFastest 
+                  ? 'ring-2 ring-blue-500 shadow-lg shadow-blue-100' 
+                  : 'shadow-md hover:shadow-lg'
+                } 
+                transition-all duration-300`
+              }
             >
-              <div className="p-6">
-                <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between">
-                  <div className="flex-1">
-                    <div className="flex items-center mb-6">
-                      <div className="w-32 h-16 relative mr-4 flex-shrink-0 bg-white p-2 rounded-lg">
-                        <img
-                          src={route.logo}
-                          alt={`${route.operator} logo`}
-                          className="object-contain w-full h-full"
-                        />
-                      </div>
-                      <div>
-                        <h3 className="text-xl font-semibold text-gray-900">{route.operator}</h3>
-                        <span className="inline-block mt-1 px-3 py-1 text-sm font-medium text-blue-800 bg-blue-100 rounded-full">
-                          {route.type}
-                        </span>
-                      </div>
-                    </div>
+              {isFastest && (
+                <div className="absolute top-0 right-0 bg-gradient-to-r from-blue-500 to-blue-600 text-white px-4 py-1 rounded-bl-lg shadow-md flex items-center gap-2 z-10">
+                  <FaBolt className="text-yellow-300" />
+                  <span className="text-sm font-medium">Fastest Route</span>
+                </div>
+              )}
+              
+              <div className={`p-4 sm:p-6 ${isFastest ? 'bg-blue-50/50' : ''}`}>
+                {/* Island Hopping Badge */}
+                {route.isIslandHopping && (
+                  <div className="mb-4 inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-full text-sm font-medium">
+                    <FaMapMarkerAlt className="text-emerald-500" />
+                    Island Hopping Route
+                  </div>
+                )}
 
-                    <div className="grid grid-cols-3 gap-4">
-                      <div>
-                        <p className="text-sm text-gray-500">Departure</p>
-                        <p className="text-lg font-semibold">{route.departureTime}</p>
-                        <p className="text-sm text-gray-700">{route.from}</p>
-                      </div>
-                      <div className="flex items-center justify-center">
-                        <div className="flex items-center">
-                          <div className="h-px w-12 bg-gray-300"></div>
-                          <FaRegClock className="mx-2 text-gray-400" />
-                          <div className="h-px w-12 bg-gray-300"></div>
-                        </div>
-                        <span className="text-sm text-gray-500 absolute mt-6">
-                          {route.duration}
-                        </span>
-                      </div>
-                      <div>
-                        <p className="text-sm text-gray-500">Arrival</p>
-                        <p className="text-lg font-semibold">{route.arrivalTime}</p>
-                        <p className="text-sm text-gray-700">{route.to}</p>
+                {/* Company and Price Row */}
+                <div className="flex flex-col sm:flex-row justify-between items-start gap-4 mb-6">
+                  <div className="flex items-center gap-4 w-full sm:w-auto">
+                    <div className={`w-16 h-16 flex-shrink-0 rounded-lg p-2 flex items-center justify-center
+                      ${isFastest ? 'bg-white shadow-md' : 'bg-gray-50'}`}>
+                      <img 
+                        src={ferryCompanies[route.company]?.logo} 
+                        alt={route.company} 
+                        className="max-w-full max-h-full object-contain"
+                        loading="lazy"
+                      />
+                    </div>
+                    <div>
+                      <h3 className="text-xl font-semibold text-gray-900">{route.company}</h3>
+                      <div className="flex items-center gap-2 text-gray-500">
+                        <FaShip className="text-gray-400" />
+                        <p className="text-sm">{route.vessel}</p>
                       </div>
                     </div>
                   </div>
-
-                  <div className="mt-6 lg:mt-0 lg:ml-6 flex flex-col items-end">
-                    <div className="text-right">
-                      <p className="text-3xl font-bold text-blue-600">
-                        €{calculateTotalPrice(route.price).toFixed(2)}
-                      </p>
-                      <p className="text-sm text-gray-500">
-                        {passengers} passenger{parseInt(passengers || '1') > 1 ? 's' : ''}
-                        {hasCar && carLength && ` + ${carLength} car`}
-                        {discountCode && (
-                          <span className="ml-2 text-green-600">
-                            (10% OFF)
-                          </span>
-                        )}
+                  <div className="flex justify-between items-center w-full sm:w-auto sm:block text-right">
+                    <p className="text-2xl font-bold text-blue-600">€{route.price.toFixed(2)}</p>
+                    <div>
+                      <p className="text-sm text-gray-500">per person</p>
+                      <p className="text-sm text-green-600 mt-1">
+                        {route.availableSeats} seats left
                       </p>
                     </div>
-                    <div className="flex items-center mt-2 space-x-1 text-gray-500">
-                      {route.amenities.map((amenity, index) => {
-                        const icon = getAmenityIcon(amenity);
-                        return icon && (
-                          <div 
-                            key={index}
-                            className="p-1 hover:text-blue-500 cursor-help"
-                            title={amenity}
-                          >
-                            {icon}
-                          </div>
-                        );
-                      })}
-                    </div>
-                    <button className="mt-4 px-6 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors">
-                      Book Now
-                    </button>
                   </div>
                 </div>
 
-                <div className="mt-4 pt-4 border-t">
-                  <div className="flex items-center justify-between text-sm text-gray-500">
-                    <div className="flex items-center">
-                      <FaUsers className="mr-1" />
-                      <span>{route.availableSeats} seats available</span>
-                    </div>
-                    <div className="flex items-center space-x-4">
-                      {route.amenities.map((amenity, index) => (
-                        <span key={index}>{amenity}</span>
-                      ))}
+                {/* Time and Duration Row */}
+                <div className={`flex items-center justify-between mb-6 rounded-lg p-4
+                  ${isFastest ? 'bg-white shadow-sm' : 'bg-gray-50'}`}>
+                  <div className="flex-1">
+                    <div className="flex flex-col sm:flex-row items-start sm:items-center space-y-4 sm:space-y-0 sm:space-x-4">
+                      <div>
+                        <p className="text-xl sm:text-2xl font-semibold text-gray-900">{route.departureTime}</p>
+                        <p className="text-sm text-gray-500">{fromIsland}</p>
+                      </div>
+                      <div className="hidden sm:block flex-1 px-4">
+                        <div className="relative">
+                          <div className={`absolute w-full h-0.5 top-1/2 transform -translate-y-1/2
+                            ${isFastest ? 'bg-blue-200' : 'bg-gray-300'}`}></div>
+                          <div className={`absolute left-0 -ml-1 w-2 h-2 rounded-full
+                            ${isFastest ? 'bg-blue-500' : 'bg-blue-600'}`}></div>
+                          <div className={`absolute right-0 -mr-1 w-2 h-2 rounded-full
+                            ${isFastest ? 'bg-blue-500' : 'bg-blue-600'}`}></div>
+                          
+                          {/* Intermediate Stops */}
+                          {route.intermediateStops && route.intermediateStops.map((stop, index) => {
+                            const percentage = (index + 1) / (route.intermediateStops?.length + 1) * 100;
+                            return (
+                              <div 
+                                key={stop.port}
+                                className="absolute transform -translate-y-1/2"
+                                style={{ left: `${percentage}%`, top: '50%' }}
+                              >
+                                <div className={`w-2 h-2 rounded-full ${isFastest ? 'bg-emerald-500' : 'bg-emerald-600'}`} />
+                                <div className="absolute top-4 -translate-x-1/2 left-1/2 min-w-max">
+                                  <p className="text-xs font-medium text-gray-600">{stop.port}</p>
+                                  <p className="text-xs text-gray-500">
+                                    {stop.arrivalTime} - {stop.departureTime}
+                                  </p>
+                                </div>
+                              </div>
+                            );
+                          })}
+                          
+                          <p className={`text-sm font-medium text-center mt-14
+                            ${isFastest ? 'text-blue-500' : 'text-blue-600'}`}>
+                            {route.duration}
+                            {route.isIslandHopping && (
+                              <span className="block text-xs text-emerald-600 mt-0.5">
+                                Includes {route.intermediateStops?.length} stops
+                              </span>
+                            )}
+                          </p>
+                        </div>
+                      </div>
+                      <div className="sm:text-right">
+                        <p className="text-xl sm:text-2xl font-semibold text-gray-900">{route.arrivalTime}</p>
+                        <p className="text-sm text-gray-500">{toIsland}</p>
+                      </div>
+                      <div className="block sm:hidden w-full">
+                        <p className={`text-sm font-medium text-center mt-2
+                          ${isFastest ? 'text-blue-500' : 'text-blue-600'}`}>
+                          Duration: {route.duration}
+                          {route.isIslandHopping && (
+                            <>
+                              <br />
+                              <span className="text-xs text-emerald-600">
+                                Stops: {route.intermediateStops?.map(stop => stop.port).join(', ')}
+                              </span>
+                            </>
+                          )}
+                        </p>
+                      </div>
                     </div>
                   </div>
+                </div>
+
+                {/* Amenities and Action Row */}
+                <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+                  <div className="flex flex-wrap items-center gap-2 sm:gap-4">
+                    {route.amenities.map((amenity, index) => (
+                      <div 
+                        key={index} 
+                        className={`flex items-center gap-2 px-3 py-1 rounded-full
+                          ${isFastest ? 'bg-white shadow-sm' : 'bg-gray-50'}`}
+                      >
+                        {getAmenityIcon(amenity)}
+                        <span className="text-sm text-gray-600 capitalize">
+                          {amenity.replace('-', ' ')}
+                        </span>
+                      </div>
+                    ))}
+                  </div>
+                  <button 
+                    className={`w-full sm:w-auto text-white px-6 py-3 rounded-lg 
+                      transition-all duration-300 flex items-center justify-center gap-2
+                      ${isFastest 
+                        ? 'shadow-lg shadow-blue-100 hover:shadow-xl hover:shadow-blue-200' 
+                        : 'hover:opacity-90'
+                      }`}
+                    style={{ 
+                      backgroundColor: ferryCompanies[route.company]?.primaryColor 
+                    }}
+                  >
+                    Select
+                    <ChevronRight className="w-5 h-5" />
+                  </button>
                 </div>
               </div>
             </motion.div>
-          ))}
+          )})}
         </div>
       </div>
     </div>

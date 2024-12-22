@@ -1,14 +1,19 @@
-export interface FerryRoute {
+export type Stop = {
+  port: string;
+  arrivalTime: string;
+  departureTime: string;
+};
+
+export type FerryRoute = {
   id: string;
-  operator: string;
-  logo: string;
-  from: string;
-  to: string;
+  company: string;
+  vessel: string;
   departureTime: string;
   arrivalTime: string;
   duration: string;
   price: number;
-  type: string;
   amenities: string[];
   availableSeats: number;
-}
+  intermediateStops?: Stop[];
+  isIslandHopping?: boolean;
+};
