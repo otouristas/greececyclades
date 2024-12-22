@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, updateProfile } from 'firebase/auth';
+import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signInWithPopup, updateProfile, browserPopupRedirectResolver } from 'firebase/auth';
 import { auth, googleProvider } from '../config/firebase';
 import { useNavigate } from 'react-router-dom';
 import { ArrowRight, Mail, Lock, User } from 'lucide-react';
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from '../stores/authStore';
 import SEO from '../components/SEO';
 import { generateAuthSEO } from '../utils/seo';
 
@@ -54,15 +54,24 @@ export default function Auth() {
     setLoading(true);
 
     try {
-      const { user } = await signInWithPopup(auth, googleProvider);
-      login({
-        id: user.uid,
-        name: user.displayName || 'User',
-        email: user.email || '',
-        avatar: user.photoURL || undefined,
+      // Configure Google provider
+      googleProvider.setCustomParameters({
+        prompt: 'select_account'
       });
-      navigate('/profile');
+
+      const { user } = await signInWithPopup(auth, googleProvider, browserPopupRedirectResolver);
+      
+      if (user) {
+        login({
+          id: user.uid,
+          name: user.displayName || 'User',
+          email: user.email || '',
+          avatar: user.photoURL || undefined,
+        });
+        navigate('/profile');
+      }
     } catch (err: any) {
+      console.error('Google auth error:', err);
       setError(err.message || 'Google authentication failed');
     } finally {
       setLoading(false);

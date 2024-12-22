@@ -1,5 +1,706 @@
 // Blog post content
-export const santoriniContent = `
+export const blogContent = {
+  bestCycladesIslands: `
+# Best Cyclades Islands: Your Ultimate Guide to Paradise
+
+The Cyclades, a stunning archipelago in the heart of the Aegean Sea, represents the quintessential Greek island experience. With their whitewashed villages, blue-domed churches, and crystal-clear waters, these islands offer a perfect blend of history, culture, and natural beauty.
+
+## Best Time to Visit
+
+The best time to visit the Cyclades is from April to October, with the peak season being June to September. However, for fewer crowds and better prices, consider visiting during the shoulder seasons (April-May or September-October).
+
+## Where to Stay
+
+### Mykonos Town (Chora)
+The heart of the island's nightlife and shopping, with iconic windmills and Little Venice.
+
+#### Luxury Accommodations
+- Boutique hotels with personalized service
+- Private villas with pool access
+- Luxury apartments with caldera views
+- High-end resorts with spa facilities
+
+#### Location Benefits
+- Central location for nightlife and shopping
+- Proximity to famous windmills and Little Venice
+- Variety of accommodation prices
+- Easy access to public transportation
+
+#### Best For
+- Partygoers
+- Luxury travelers
+- Couples seeking romance
+- Families with older children
+
+### Ornos
+Family-friendly area with a beautiful beach and great restaurants.
+
+#### Accommodation Styles
+- Family-run hotels with pool access
+- Self-catering apartments with kitchen facilities
+- Luxury villas with private pools
+- Budget-friendly studios with shared facilities
+
+#### Location Benefits
+- Quiet and family-friendly atmosphere
+- Proximity to Ornos Beach
+- Variety of dining options
+- Easy access to public transportation
+
+#### Best For
+- Families with young children
+- Budget travelers
+- Those seeking a relaxed atmosphere
+- Beach lovers
+
+### Platis Gialos
+Perfect for beach lovers, with easy access to other south coast beaches.
+
+#### Accommodation Styles
+- Beachfront hotels with pool access
+- Luxury villas with private pools
+- Self-catering apartments with kitchen facilities
+- Budget-friendly studios with shared facilities
+
+#### Location Benefits
+- Direct access to Platis Gialos Beach
+- Proximity to other south coast beaches
+- Variety of dining options
+- Easy access to public transportation
+
+#### Best For
+- Beach lovers
+- Families with older children
+- Those seeking a relaxed atmosphere
+- Water sports enthusiasts
+
+## Things to Do
+
+### 1. Explore the Windmills and Little Venice
+The iconic windmills and picturesque Little Venice are a must-see:
+
+#### Historical Significance
+- 16th-century windmills used for grain production
+- Little Venice's unique architecture and canals
+- Traditional Mykonian houses and churches
+
+#### Visitor Information
+- Guided tours available in multiple languages
+- Self-guided exploration of the area
+- Photography permitted
+- Respect local residents and private properties
+
+### 2. Visit the Sacred Island of Delos
+A UNESCO World Heritage Site and the mythological birthplace of Apollo:
+
+#### Historical Significance
+- Ancient ruins and artifacts from the 5th century BC
+- Temple of Apollo and other archaeological sites
+- Museum of Delos with artifacts and exhibits
+
+#### Visitor Information
+- Guided tours available in multiple languages
+- Ferry services from Mykonos Town
+- Respect the archaeological site and local regulations
+
+### 3. Beach Hop Along the South Coast
+Discover the island's stunning beaches and coves:
+
+#### Popular Beaches
+- Platis Gialos Beach
+- Psarou Beach
+- Ornos Beach
+- Paradise Beach
+
+#### Beach Activities
+- Swimming and sunbathing
+- Water sports and activities
+- Beach bars and restaurants
+- Relaxation and leisure
+
+### 4. Experience the Famous Nightlife
+Mykonos is renowned for its vibrant nightlife:
+
+#### Nightlife Areas
+- Mykonos Town (Chora)
+- Paradise Beach
+- Super Paradise Beach
+- Cavo Paradiso
+
+#### Nightlife Options
+- Bars and clubs
+- Live music venues
+- Cocktail bars
+- Beach parties
+
+### 5. Shop in the Charming Streets of Chora
+Discover the island's unique shopping experience:
+
+#### Shopping Areas
+- Mykonos Town (Chora)
+- Little Venice
+- Matogianni Street
+- Paraga Beach
+
+#### Shopping Options
+- Local boutiques and designer stores
+- Art galleries and souvenir shops
+- Jewelry stores and watch shops
+- Traditional Mykonian products
+
+## Local Cuisine
+
+### Fresh Seafood at Seaside Tavernas
+The island's best seafood can be found in these picturesque tavernas:
+- Fresh catch of the day
+- Traditional sun-dried fish
+- Grilled octopus
+- Local fishing boats bringing daily catches
+
+### Traditional Greek Dishes
+Must-try local specialties:
+- Moussaka (layered eggplant and minced meat)
+- Souvlaki (grilled meat skewers)
+- Greek salad with feta cheese
+- Fresh seafood and fish dishes
+
+### Cooking Classes
+Learn to prepare local dishes:
+- Traditional recipe workshops
+- Market visits with chefs
+- Wine pairing education
+- Take-home recipe books
+
+## Travel Tips
+
+### Accommodation Booking
+- Book at least 6 months in advance for peak season
+- Consider luxury hotels for authentic experience
+- Check for pool access and caldera views
+- Look for hotels with easy access to public transportation
+
+### Transportation
+- Use local buses for affordable travel
+- Rent ATVs for flexible exploration
+- Book airport transfers in advance
+- Consider hiring a private driver
+
+### Budget Planning
+- Set aside funds for quality restaurants
+- Book activities in advance for better rates
+- Consider package deals for excursions
+- Budget for unique experiences
+
+### Cultural Considerations
+- Respect local customs and dress codes
+- Learn basic Greek phrases
+- Participate in local festivals
+- Support local businesses
+
+### Photography Tips
+- Best light for photos: early morning or golden hour
+- Popular Instagram spots get crowded
+- Bring wide-angle lens for beach and landscape shots
+- Consider drone regulations
+
+### Health and Safety
+- Stay hydrated in summer months
+- Use strong sun protection
+- Wear comfortable walking shoes
+- Keep emergency numbers handy
+
+## Transportation Guide
+Getting around Mykonos efficiently is key to maximizing your experience:
+
+#### Public Transportation
+- Local Bus Service
+  * Regular service between major beaches and towns
+  * Frequency: Every 30-60 minutes
+  * Cost: €1.80-2.30 per journey
+  * Main terminal in Mykonos Town (Fabrika)
+
+#### Private Options
+- Rental Cars
+  * Cost: €35-50 per day
+  * Parking can be challenging in town
+  * Advanced booking essential in peak season
+  * International license required
+- ATVs/Scooters
+  * Cost: €20-30 per day
+  * Popular for beach hopping
+  * License required for 50cc+
+- Water Taxis
+  * Available between major beaches
+  * Cost: €10-15 per journey
+  * Scenic way to travel
+
+## Cost Breakdown
+Plan your Mykonos budget:
+
+#### Accommodation (per night)
+- Budget: €70-120 (hostels, basic rooms)
+- Mid-range: €150-350 (nice hotels)
+- Luxury: €400+ (boutique hotels, villas)
+
+#### Daily Expenses
+- Meals
+  * Breakfast: €8-20
+  * Lunch: €15-30
+  * Dinner: €30-70
+  * Beach clubs: €100+
+- Activities
+  * Beach club entry: €20-50
+  * Water sports: €30-80
+  * Island tours: €50-100
+  * Archaeological sites: €8-12
+
+#### Money-Saving Tips
+- Book early for better rates
+- Visit in shoulder season
+- Use local buses
+- Eat at traditional tavernas
+- Share accommodation costs
+
+## Photography Locations
+Best spots for memorable photos:
+
+#### Sunrise Spots
+- Armenistis Lighthouse
+- Ftelia Beach
+- Ano Mera village
+
+#### Sunset Locations
+- Little Venice (classic spot)
+- 180° Sunset Bar
+- Armenistis Lighthouse
+- Agios Ioannis Beach
+
+#### Instagram-Worthy Spots
+- Windmills of Kato Mili
+- Paraportiani Church
+- Colorful Little Venice balconies
+- Matoyianni Street
+
+## Hidden Gems and Local Secrets
+Off-the-beaten-path experiences:
+
+#### Lesser-Known Beaches
+- Fokos Beach (no facilities, pristine)
+- Merchia Beach (local favorite)
+- Kapari Beach (sunset views)
+
+#### Authentic Villages
+- Ano Mera
+  * Traditional monastery
+  * Local tavernas
+  * Sunday market
+- Maou
+  * Hidden church
+  * Organic farms
+  * Traditional architecture
+
+#### Local Experiences
+- Morning fish market
+- Traditional cheese making
+- Local olive oil tasting
+- Raki distilleries
+
+## Family-Specific Tips
+Family-friendly Mykonos guide:
+
+#### Kid-Friendly Activities
+- Windmills exploration
+- Glass-bottom boat tours
+- Water parks
+- Horseback riding
+
+#### Family Beaches
+- Ornos (shallow waters)
+- Platis Gialos (facilities)
+- Agios Stefanos (protected)
+
+#### Practical Tips
+- Best family areas (Ornos, Platis Gialos)
+- Child-friendly restaurants
+- Medical facilities
+- Baby equipment rental
+
+## Detailed Itineraries
+
+#### 3-Day Highlights Tour
+Day 1:
+- Morning: Mykonos Town exploration
+- Afternoon: Little Venice
+- Evening: Sunset at windmills
+
+Day 2:
+- Morning: Beach hopping
+- Afternoon: Water sports
+- Evening: Traditional dinner
+
+Day 3:
+- Morning: Delos island tour
+- Afternoon: Shopping
+- Evening: Farewell dinner
+
+#### 5-Day Perfect Break
+[Detailed day-by-day itinerary...]
+
+#### 7-Day Ultimate Experience
+[Comprehensive weekly schedule...]
+
+`,
+  islandHoppingGuide: `
+# The Ultimate Cyclades Island Hopping Guide
+
+Island hopping in the Cyclades is one of the most rewarding ways to experience the Greek islands. Each island has its own unique character, from the volcanic cliffs of Santorini to the golden beaches of Naxos. This comprehensive guide will help you plan and execute the perfect island-hopping adventure.
+
+## Best Time to Visit
+
+The best time to visit the Cyclades is from April to October when the weather is warm and rainfall is minimal. However, for fewer crowds and better prices, consider visiting during the shoulder seasons (April-May or September-October).
+
+## Where to Stay
+
+### Mykonos Town (Chora)
+The heart of the island's nightlife and shopping, with iconic windmills and Little Venice.
+
+#### Luxury Accommodations
+- Boutique hotels with personalized service
+- Private villas with pool access
+- Luxury apartments with caldera views
+- High-end resorts with spa facilities
+
+#### Location Benefits
+- Central location for nightlife and shopping
+- Proximity to famous windmills and Little Venice
+- Variety of accommodation prices
+- Easy access to public transportation
+
+#### Best For
+- Partygoers
+- Luxury travelers
+- Couples seeking romance
+- Families with older children
+
+### Ornos
+Family-friendly area with a beautiful beach and great restaurants.
+
+#### Accommodation Styles
+- Family-run hotels with pool access
+- Self-catering apartments with kitchen facilities
+- Luxury villas with private pools
+- Budget-friendly studios with shared facilities
+
+#### Location Benefits
+- Quiet and family-friendly atmosphere
+- Proximity to Ornos Beach
+- Variety of dining options
+- Easy access to public transportation
+
+#### Best For
+- Families with young children
+- Budget travelers
+- Those seeking a relaxed atmosphere
+- Beach lovers
+
+### Platis Gialos
+Perfect for beach lovers, with easy access to other south coast beaches.
+
+#### Accommodation Styles
+- Beachfront hotels with pool access
+- Luxury villas with private pools
+- Self-catering apartments with kitchen facilities
+- Budget-friendly studios with shared facilities
+
+#### Location Benefits
+- Direct access to Platis Gialos Beach
+- Proximity to other south coast beaches
+- Variety of dining options
+- Easy access to public transportation
+
+#### Best For
+- Beach lovers
+- Families with older children
+- Those seeking a relaxed atmosphere
+- Water sports enthusiasts
+
+## Things to Do
+
+### 1. Explore the Windmills and Little Venice
+The iconic windmills and picturesque Little Venice are a must-see:
+
+#### Historical Significance
+- 16th-century windmills used for grain production
+- Little Venice's unique architecture and canals
+- Traditional Mykonian houses and churches
+
+#### Visitor Information
+- Guided tours available in multiple languages
+- Self-guided exploration of the area
+- Photography permitted
+- Respect local residents and private properties
+
+### 2. Visit the Sacred Island of Delos
+A UNESCO World Heritage Site and the mythological birthplace of Apollo:
+
+#### Historical Significance
+- Ancient ruins and artifacts from the 5th century BC
+- Temple of Apollo and other archaeological sites
+- Museum of Delos with artifacts and exhibits
+
+#### Visitor Information
+- Guided tours available in multiple languages
+- Ferry services from Mykonos Town
+- Respect the archaeological site and local regulations
+
+### 3. Beach Hop Along the South Coast
+Discover the island's stunning beaches and coves:
+
+#### Popular Beaches
+- Platis Gialos Beach
+- Psarou Beach
+- Ornos Beach
+- Paradise Beach
+
+#### Beach Activities
+- Swimming and sunbathing
+- Water sports and activities
+- Beach bars and restaurants
+- Relaxation and leisure
+
+### 4. Experience the Famous Nightlife
+Mykonos is renowned for its vibrant nightlife:
+
+#### Nightlife Areas
+- Mykonos Town (Chora)
+- Paradise Beach
+- Super Paradise Beach
+- Cavo Paradiso
+
+#### Nightlife Options
+- Bars and clubs
+- Live music venues
+- Cocktail bars
+- Beach parties
+
+### 5. Shop in the Charming Streets of Chora
+Discover the island's unique shopping experience:
+
+#### Shopping Areas
+- Mykonos Town (Chora)
+- Little Venice
+- Matogianni Street
+- Paraga Beach
+
+#### Shopping Options
+- Local boutiques and designer stores
+- Art galleries and souvenir shops
+- Jewelry stores and watch shops
+- Traditional Mykonian products
+
+## Local Cuisine
+
+### Fresh Seafood at Seaside Tavernas
+The island's best seafood can be found in these picturesque tavernas:
+- Fresh catch of the day
+- Traditional sun-dried fish
+- Grilled octopus
+- Local fishing boats bringing daily catches
+
+### Traditional Greek Dishes
+Must-try local specialties:
+- Moussaka (layered eggplant and minced meat)
+- Souvlaki (grilled meat skewers)
+- Greek salad with feta cheese
+- Fresh seafood and fish dishes
+
+### Cooking Classes
+Learn to prepare local dishes:
+- Traditional recipe workshops
+- Market visits with chefs
+- Wine pairing education
+- Take-home recipe books
+
+## Travel Tips
+
+### Accommodation Booking
+- Book at least 6 months in advance for peak season
+- Consider luxury hotels for authentic experience
+- Check for pool access and caldera views
+- Look for hotels with easy access to public transportation
+
+### Transportation
+- Use local buses for affordable travel
+- Rent ATVs for flexible exploration
+- Book airport transfers in advance
+- Consider hiring a private driver
+
+### Budget Planning
+- Set aside funds for quality restaurants
+- Book activities in advance for better rates
+- Consider package deals for excursions
+- Budget for unique experiences
+
+### Cultural Considerations
+- Respect local customs and dress codes
+- Learn basic Greek phrases
+- Participate in local festivals
+- Support local businesses
+
+### Photography Tips
+- Best light for photos: early morning or golden hour
+- Popular Instagram spots get crowded
+- Bring wide-angle lens for beach and landscape shots
+- Consider drone regulations
+
+### Health and Safety
+- Stay hydrated in summer months
+- Use strong sun protection
+- Wear comfortable walking shoes
+- Keep emergency numbers handy
+
+## Transportation Guide
+Getting around Mykonos efficiently is key to maximizing your experience:
+
+#### Public Transportation
+- Local Bus Service
+  * Regular service between major beaches and towns
+  * Frequency: Every 30-60 minutes
+  * Cost: €1.80-2.30 per journey
+  * Main terminal in Mykonos Town (Fabrika)
+
+#### Private Options
+- Rental Cars
+  * Cost: €35-50 per day
+  * Parking can be challenging in town
+  * Advanced booking essential in peak season
+  * International license required
+- ATVs/Scooters
+  * Cost: €20-30 per day
+  * Popular for beach hopping
+  * License required for 50cc+
+- Water Taxis
+  * Available between major beaches
+  * Cost: €10-15 per journey
+  * Scenic way to travel
+
+## Cost Breakdown
+Plan your Mykonos budget:
+
+#### Accommodation (per night)
+- Budget: €70-120 (hostels, basic rooms)
+- Mid-range: €150-350 (nice hotels)
+- Luxury: €400+ (boutique hotels, villas)
+
+#### Daily Expenses
+- Meals
+  * Breakfast: €8-20
+  * Lunch: €15-30
+  * Dinner: €30-70
+  * Beach clubs: €100+
+- Activities
+  * Beach club entry: €20-50
+  * Water sports: €30-80
+  * Island tours: €50-100
+  * Archaeological sites: €8-12
+
+#### Money-Saving Tips
+- Book early for better rates
+- Visit in shoulder season
+- Use local buses
+- Eat at traditional tavernas
+- Share accommodation costs
+
+## Photography Locations
+Best spots for memorable photos:
+
+#### Sunrise Spots
+- Armenistis Lighthouse
+- Ftelia Beach
+- Ano Mera village
+
+#### Sunset Locations
+- Little Venice (classic spot)
+- 180° Sunset Bar
+- Armenistis Lighthouse
+- Agios Ioannis Beach
+
+#### Instagram-Worthy Spots
+- Windmills of Kato Mili
+- Paraportiani Church
+- Colorful Little Venice balconies
+- Matoyianni Street
+
+## Hidden Gems and Local Secrets
+Off-the-beaten-path experiences:
+
+#### Lesser-Known Beaches
+- Fokos Beach (no facilities, pristine)
+- Merchia Beach (local favorite)
+- Kapari Beach (sunset views)
+
+#### Authentic Villages
+- Ano Mera
+  * Traditional monastery
+  * Local tavernas
+  * Sunday market
+- Maou
+  * Hidden church
+  * Organic farms
+  * Traditional architecture
+
+#### Local Experiences
+- Morning fish market
+- Traditional cheese making
+- Local olive oil tasting
+- Raki distilleries
+
+## Family-Specific Tips
+Family-friendly Mykonos guide:
+
+#### Kid-Friendly Activities
+- Windmills exploration
+- Glass-bottom boat tours
+- Water parks
+- Horseback riding
+
+#### Family Beaches
+- Ornos (shallow waters)
+- Platis Gialos (facilities)
+- Agios Stefanos (protected)
+
+#### Practical Tips
+- Best family areas (Ornos, Platis Gialos)
+- Child-friendly restaurants
+- Medical facilities
+- Baby equipment rental
+
+## Detailed Itineraries
+
+#### 3-Day Highlights Tour
+Day 1:
+- Morning: Mykonos Town exploration
+- Afternoon: Little Venice
+- Evening: Sunset at windmills
+
+Day 2:
+- Morning: Beach hopping
+- Afternoon: Water sports
+- Evening: Traditional dinner
+
+Day 3:
+- Morning: Delos island tour
+- Afternoon: Shopping
+- Evening: Farewell dinner
+
+#### 5-Day Perfect Break
+[Detailed day-by-day itinerary...]
+
+#### 7-Day Ultimate Experience
+[Comprehensive weekly schedule...]
+
+`,
+  santorini: `
 # Santorini 2025: Ultimate Guide to the Volcanic Paradise
 
 Welcome to our comprehensive guide to Santorini, the jewel of the Cyclades. From its iconic caldera views to world-renowned sunsets, this guide will help you plan the perfect Santorini vacation. The island's unique geological history, shaped by one of the largest volcanic eruptions in recorded history, has created a landscape that captivates visitors from around the world. The whitewashed villages perched on cliff edges, the deep blue waters of the Aegean, and the rich cultural heritage make Santorini a must-visit destination.
@@ -7,18 +708,6 @@ Welcome to our comprehensive guide to Santorini, the jewel of the Cyclades. From
 ## Best Time to Visit
 
 The best time to visit Santorini is from April to October when the weather is warm and rainfall is minimal. However, for fewer crowds and better prices, consider visiting during the shoulder seasons (April-May or September-October).
-
-### Spring (April-May)
-Spring brings mild temperatures ranging from 15-25°C (59-77°F), perfect for outdoor activities and sightseeing. The island bursts with wildflowers, and the hiking trails between Fira and Oia are particularly beautiful. Easter celebrations in April or May offer a unique glimpse into local traditions and festivities.
-
-### Summer (June-August)
-Peak season brings hot temperatures of 25-35°C (77-95°F) and larger crowds. While this means higher prices and busier attractions, it's also when the island is most alive with events, festivals, and perfect beach weather. The famous Santorini sunsets are at their most spectacular, and all tourist facilities are operating at full capacity.
-
-### Autumn (September-October)
-Perhaps the most ideal time to visit, autumn offers warm sea temperatures for swimming, fewer tourists, and pleasant weather around 20-28°C (68-82°F). The wine harvest season begins, making it perfect for wine enthusiasts to visit local vineyards and participate in traditional grape-crushing ceremonies.
-
-### Winter (November-March)
-While many tourist facilities close, winter offers a unique perspective of authentic island life. Temperatures range from 10-15°C (50-59°F), and while rainfall is more common, you'll find significantly lower prices and a more relaxed atmosphere.
 
 ## Where to Stay
 
@@ -95,19 +784,17 @@ Tips for the best experience:
 - Explore alternative viewing spots to avoid crowds
 
 ### 2. Visit the Ancient Ruins of Akrotiri
-Often called the "Pompeii of the Aegean," Akrotiri offers an incredible glimpse into Bronze Age life:
+A UNESCO World Heritage Site and the mythological birthplace of Apollo:
 
 #### Historical Significance
-- Preserved by volcanic ash from the Minoan eruption
-- Advanced urban settlement from 4th millennium BC
-- Well-preserved frescoes and pottery
-- Evidence of advanced architectural techniques
+- Ancient ruins and artifacts from the 5th century BC
+- Temple of Apollo and other archaeological sites
+- Museum of Delos with artifacts and exhibits
 
 #### Visitor Information
 - Guided tours available in multiple languages
-- Climate-controlled archaeological site
-- Interactive educational displays
-- Photography permitted without flash
+- Ferry services from Mykonos Town
+- Respect the archaeological site and local regulations
 
 ### 3. Wine Tasting in Volcanic Vineyards
 Santorini's unique volcanic soil produces exceptional wines, particularly Assyrtiko:
@@ -252,7 +939,7 @@ Getting around Santorini efficiently is key to maximizing your experience:
 Plan your budget effectively with our detailed cost guide:
 
 #### Accommodation (per night)
-- Budget: €50-100 (hostels, basic hotels)
+- Budget: €50-100 (hostels, basic rooms)
 - Mid-range: €150-300 (nice hotels with some views)
 - Luxury: €400+ (caldera view suites, private pools)
 
@@ -288,60 +975,59 @@ Capture the perfect shots at these prime locations:
 - Santo Wines Winery (sunset with wine tasting)
 - Megalochori: Heart of Santorini viewpoint
 
-#### Hidden Gems
-- Red Beach viewpoint
-- Emporio's medieval castle
-- Blue dome churches in Firostefani
-- Traditional windmills in Oia
+#### Instagram-Worthy Spots
+- Traditional Santorinian houses
+- Blue-domed churches
+- Ancient castle ruins
+- Panoramic views of the caldera
 
 ## Hidden Gems and Local Secrets
-Discover the lesser-known treasures of Santorini:
+Off-the-beaten-path experiences:
 
-#### Off-the-Beaten-Path Villages
+#### Lesser-Known Beaches
+- Red Beach (accessible by boat)
+- White Beach (accessible by boat)
+- Perissa Beach (black sand)
+
+#### Authentic Villages
 - Megalochori
   * Traditional architecture
-  * Underground cave houses
-  * Local wineries
-- Emporio
-  * Medieval fortress
+  * Local tavernas
+  * Sunday market
+- Pyrgos
   * Venetian castle
-  * Traditional kafeneia
-
-#### Secret Beaches
-- White Beach (accessible by boat)
-- Koloumbos Beach (local favorite)
-- Mesa Pigadia (hidden cove)
+  * Panoramic views
+  * Easter celebrations
 
 #### Local Experiences
-- Early morning fish market in Fira
-- Traditional basket weaving workshops
-- Local religious festivals
-- Family-run tavernas in Exo Gonia
+- Early morning fish market
+- Traditional cheese making
+- Local olive oil tasting
+- Raki distilleries
 
 ## Family-Specific Tips
-Making your family vacation memorable and stress-free:
+Family-friendly Santorini guide:
 
 #### Kid-Friendly Activities
-- Ancient Akrotiri archaeological site
-- Santorini Water Park
-- Perissa Black Sand Beach
-- Volcanic islands boat tour
+- Donkey rides
+- Beach time
+- Water parks
+- Castle exploration
 
-#### Family Accommodations
-- Hotels with pools
-- Apartments with kitchens
-- Ground floor rooms
-- Quiet locations away from nightlife
+#### Family Beaches
+- Perissa Beach (black sand)
+- Kamari Beach (facilities)
+- Monolithos Beach (protected)
 
 #### Practical Tips
-- Best times for family visits (May, September)
-- Stroller-friendly areas
-- Family-friendly restaurants
-- Emergency medical facilities
+- Best family areas (Fira, Kamari)
+- Medical facilities
+- Baby equipment rental
+- Child-friendly tavernas
 
 ## Detailed Itineraries
 
-#### 3-Day Express Tour
+#### 3-Day Highlights Tour
 Day 1:
 - Morning: Fira exploration
 - Afternoon: Wine tasting
@@ -363,9 +1049,8 @@ Day 3:
 #### 7-Day Complete Experience
 [Comprehensive weekly schedule...]
 
-`;
-
-export const mykonosContent = `
+`,
+  mykonos: `
 # Mykonos 2025: Complete Guide to the Island of the Winds
 
 Discover the perfect blend of glamour, tradition, and natural beauty in Mykonos. From pristine beaches to vibrant nightlife, this guide covers everything you need to know.
@@ -381,7 +1066,7 @@ Spring brings mild temperatures ranging from 15-25°C (59-77°F), perfect for ou
 Peak season brings hot temperatures of 25-35°C (77-95°F) and larger crowds. While this means higher prices and busier attractions, it's also when the island is most alive with events, festivals, and perfect beach weather.
 
 ### Autumn (September-October)
-Perhaps the most ideal time to visit, autumn offers warm sea temperatures for swimming, fewer tourists, and pleasant weather around 20-28°C (68-82°F). The island's famous windmills are particularly picturesque during this time.
+Perhaps the most ideal time to visit, autumn offers warm sea temperatures for swimming, fewer tourists, and pleasant weather around 20-28°C (68-82°F). The island's famous beaches are particularly picturesque during this time.
 
 ### Winter (November-March)
 While many tourist facilities close, winter offers a unique perspective of authentic island life. Temperatures range from 10-15°C (50-59°F), and while rainfall is more common, you'll find significantly lower prices and a more relaxed atmosphere.
@@ -726,9 +1411,8 @@ Day 3:
 #### 7-Day Ultimate Experience
 [Comprehensive weekly schedule...]
 
-`;
-
-export const parosContent = `
+`,
+  paros: `
 # Paros 2025: Your Guide to the Cyclades' Best-Kept Secret
 
 Explore the authentic charm of Paros, an island that perfectly balances traditional Greek life with modern amenities and activities.
@@ -740,7 +1424,7 @@ May to October is ideal, with September being ideal for warm seas and fewer tour
 ### Spring (May-June)
 Spring brings mild temperatures ranging from 15-25°C (59-77°F), perfect for outdoor activities and sightseeing. The island's vibrant flowers and lush green landscapes make it an ideal time for nature lovers.
 
-### Summer (July-August)
+### Summer (June-August)
 Peak season brings hot temperatures of 25-35°C (77-95°F) and larger crowds. While this means higher prices and busier attractions, it's also when the island is most alive with events, festivals, and perfect beach weather.
 
 ### Autumn (September-October)
@@ -1086,12 +1770,11 @@ Day 3:
 #### 7-Day Complete Experience
 [Comprehensive weekly schedule...]
 
-`;
+`,
+  naxos: `
+# Naxos Island Guide
 
-export const naxosContent = `
-# Naxos 2025: Experience Authentic Greek Island Life
-
-Discover the largest and most fertile Cycladic island, where ancient history meets beautiful beaches and mountain villages.
+Welcome to Naxos, the largest and most fertile island of the Cyclades. Known for its excellent beaches, ancient ruins, and traditional mountain villages.
 
 ## Best Time to Visit
 
@@ -1239,7 +1922,7 @@ Getting around Naxos efficiently:
   * Regular service to major villages and beaches
   * Frequency: Every 30-60 minutes in season
   * Cost: €2-2.50 per journey
-  * Main terminal in Naxos Town
+  * Routes cover Naxos Town, Agios Prokopios, and Plaka
 
 #### Private Options
 - Rental Cars
@@ -1271,8 +1954,8 @@ Budget planning for Naxos:
   * Dinner: €15-35
   * Traditional tavernas: €25-40
 - Activities
-  * Windsurfing: €30-70
-  * Mountain tours: €40-80
+  * Cave tour: €10-20
+  * Island tours: €40-80
   * Cooking classes: €45-85
   * Archaeological sites: €6-12
 
@@ -1292,15 +1975,15 @@ Capture Naxos' beauty:
 - Plaka Beach
 
 #### Sunset Locations
-- Portara (iconic view)
-- Alyko cedar forest
+- Naxos Town Beach
+- Agios Prokopios Beach
 - Apollonas village
 
 #### Instagram-Worthy Spots
-- Venetian castle
-- Traditional mountain villages
+- Traditional Naxian houses
+- Byzantine churches
 - Ancient marble quarries
-- Traditional windmills
+- Panoramic views of the island
 
 ### Hidden Gems and Local Secrets
 Discover authentic Naxos:
@@ -1370,4 +2053,706 @@ Day 3:
 #### 7-Day Complete Experience
 [Comprehensive weekly schedule...]
 
-`;
+`,
+  sifnos: `
+# Sifnos Island Guide
+
+Welcome to Sifnos, the gastronomic paradise of the Cyclades. Famous for its exceptional cuisine, pottery tradition, and picturesque villages.
+
+## Best Time to Visit
+
+April to October is ideal, with May and September offering perfect weather and fewer crowds.
+
+### Spring (April-May)
+Spring brings mild temperatures ranging from 15-25°C (59-77°F), perfect for outdoor activities and sightseeing. The island's vibrant flowers and lush green landscapes make it an ideal time for nature lovers.
+
+### Summer (June-August)
+Peak season brings hot temperatures of 25-35°C (77-95°F) and larger crowds. While this means higher prices and busier attractions, it's also when the island is most alive with events, festivals, and perfect beach weather.
+
+### Autumn (September-October)
+Perhaps the most ideal time to visit, autumn offers warm sea temperatures for swimming, fewer tourists, and pleasant weather around 20-28°C (68-82°F). The island's famous beaches are particularly picturesque during this time.
+
+### Winter (November-March)
+While many tourist facilities close, winter offers a unique perspective of authentic island life. Temperatures range from 10-15°C (50-59°F), and while rainfall is more common, you'll find significantly lower prices and a more relaxed atmosphere.
+
+## Where to Stay
+
+### Kamares
+The main port and capital, offering convenient access to everything.
+
+#### Accommodation Styles
+- Family-run hotels with pool access
+- Luxury villas with private pools
+- Self-catering apartments with kitchen facilities
+- Budget-friendly studios with shared facilities
+
+#### Location Benefits
+- Central location for public transportation
+- Proximity to Kamares Beach
+- Variety of dining options
+- Easy access to shopping and nightlife
+
+#### Best For
+- Families with young children
+- Budget travelers
+- Those seeking a relaxed atmosphere
+- Beach lovers
+
+### Apollonia
+A charming village in the heart of the island.
+
+#### Accommodation Styles
+- Traditional village houses with pool access
+- Luxury villas with private pools
+- Self-catering apartments with kitchen facilities
+- Budget-friendly studios with shared facilities
+
+#### Location Benefits
+- Central location for exploring the island
+- Proximity to historic sites and museums
+- Variety of dining options
+- Easy access to public transportation
+
+#### Best For
+- History buffs
+- Those seeking a relaxed atmosphere
+- Families with older children
+- Couples seeking romance
+
+### Platis Gialos
+Perfect for beach lovers, with easy access to other south coast beaches.
+
+#### Accommodation Styles
+- Beachfront hotels with pool access
+- Luxury villas with private pools
+- Self-catering apartments with kitchen facilities
+- Budget-friendly studios with shared facilities
+
+#### Location Benefits
+- Direct access to Platis Gialos Beach
+- Proximity to other south coast beaches
+- Variety of dining options
+- Easy access to public transportation
+
+#### Best For
+- Beach lovers
+- Families with older children
+- Those seeking a relaxed atmosphere
+- Water sports enthusiasts
+
+## Things to Do
+
+### 1. Explore the Castle of Sifnos
+Discover the island's rich history and architecture:
+
+#### Historical Significance
+- 17th-century castle ruins
+- Traditional Sifnian houses and architecture
+- Panoramic views of the island
+
+#### Visitor Information
+- Guided tours available in multiple languages
+- Self-guided exploration of the castle
+- Respect local regulations and private properties
+
+### 2. Visit the Church of the Seven Martyrs
+A stunning example of Byzantine architecture:
+
+#### Historical Significance
+- 17th-century church
+- Traditional Sifnian houses and architecture
+- Panoramic views of the island
+
+#### Visitor Information
+- Guided tours available in multiple languages
+- Self-guided exploration of the church
+- Respect local regulations and private properties
+
+### 3. Enjoy the Beaches of Sifnos
+Discover the island's stunning beaches and coves:
+
+#### Popular Beaches
+- Kamares Beach
+- Platis Gialos Beach
+- Vathi Beach
+- Faros Beach
+
+#### Beach Activities
+- Swimming and sunbathing
+- Water sports and activities
+- Beach bars and restaurants
+- Relaxation and leisure
+
+### 4. Hike to the Village of Kastro
+Explore the island's picturesque villages and landscapes:
+
+#### Village Life
+- Traditional Sifnian houses and architecture
+- Local shops and cafes
+- Panoramic views of the island
+
+#### Visitor Information
+- Guided tours available in multiple languages
+- Self-guided exploration of the village
+- Respect local residents and private properties
+
+### 5. Learn Traditional Crafts
+Discover the island's rich cultural heritage:
+
+#### Craft Options
+- Traditional craft workshops
+- Local craft shops
+- Relaxation and leisure
+
+## Local Cuisine
+
+### Fresh Seafood at the Port Tavernas
+The island's best seafood can be found in these picturesque tavernas:
+- Fresh catch of the day
+- Traditional sun-dried fish
+- Grilled octopus
+- Local fishing boats bringing daily catches
+
+### Traditional Greek Dishes
+Must-try local specialties:
+- Moussaka (layered eggplant and minced meat)
+- Souvlaki (grilled meat skewers)
+- Greek salad with feta cheese
+- Fresh seafood and fish dishes
+
+### Cooking Classes
+Learn to prepare local dishes:
+- Traditional recipe workshops
+- Market visits with chefs
+- Wine pairing education
+- Take-home recipe books
+
+## Travel Tips
+
+### Accommodation Booking
+- Book at least 6 months in advance for peak season
+- Consider luxury hotels for authentic experience
+- Check for pool access and caldera views
+- Look for hotels with easy access to public transportation
+
+### Transportation
+- Use local buses for affordable travel
+- Rent ATVs for flexible exploration
+- Book airport transfers in advance
+- Consider hiring a private driver
+
+### Budget Planning
+- Set aside funds for quality restaurants
+- Book activities in advance for better rates
+- Consider package deals for excursions
+- Budget for unique experiences
+
+### Cultural Considerations
+- Respect local customs and dress codes
+- Learn basic Greek phrases
+- Participate in local festivals
+- Support local businesses
+
+### Photography Tips
+- Best light for photos: early morning or golden hour
+- Popular Instagram spots get crowded
+- Bring wide-angle lens for beach and landscape shots
+- Consider drone regulations
+
+### Health and Safety
+- Stay hydrated in summer months
+- Use strong sun protection
+- Wear comfortable walking shoes
+- Keep emergency numbers handy
+
+## Transportation Guide
+Getting around Sifnos efficiently:
+
+#### Public Transportation
+- Local Bus Network
+  * Regular service between major villages and beaches
+  * Frequency: Every 30-60 minutes in season
+  * Cost: €2-2.50 per journey
+  * Main terminal in Kamares
+
+#### Private Options
+- Rental Cars
+  * Cost: €30-45 per day
+  * Good for mountain village exploration
+  * Easy parking in most areas
+  * International license required
+- ATVs/Scooters
+  * Cost: €20-30 per day
+  * Perfect for coastal roads
+  * License required for 50cc+
+- Taxi Service
+  * Available 24/7
+  * Fixed rates to popular destinations
+  * Airport transfers available
+
+### Cost Breakdown
+Budget planning for Sifnos:
+
+#### Accommodation (per night)
+- Budget: €35-70 (hostels, rooms)
+- Mid-range: €80-150 (hotels)
+- Luxury: €200+ (boutique hotels)
+
+#### Daily Expenses
+- Meals
+  * Breakfast: €5-10
+  * Lunch: €10-20
+  * Dinner: €15-35
+  * Traditional tavernas: €25-40
+- Activities
+  * Cave tour: €10-20
+  * Island tours: €40-80
+  * Cooking classes: €45-85
+  * Archaeological sites: €6-12
+
+#### Money-Saving Tips
+- Visit in shoulder season
+- Stay in Kamares
+- Use public buses
+- Shop at local markets
+- Book direct with hotels
+
+### Photography Locations
+Capture Sifnos' beauty:
+
+#### Sunrise Spots
+- Kastro village
+- Platis Gialos Beach
+- Vathi Beach
+
+#### Sunset Locations
+- Kamares Beach
+- Faros Beach
+- Apollonia village
+
+#### Instagram-Worthy Spots
+- Traditional Sifnian houses
+- Byzantine churches
+- Ancient castle ruins
+- Panoramic views of the island
+
+### Hidden Gems and Local Secrets
+Discover authentic Sifnos:
+
+#### Secret Spots
+- Theologos Beach
+- Faneromeni Beach
+- Ancient ruins of Kastro
+
+#### Traditional Villages
+- Artemonas
+  * Traditional Sifnian houses
+  * Local shops and cafes
+  * Panoramic views of the island
+- Exambela
+  * Traditional Sifnian houses
+  * Local shops and cafes
+  * Panoramic views of the island
+
+#### Local Experiences
+- Traditional craft workshops
+- Local cheese making
+- Olive oil production
+- Wine tasting
+
+### Family-Specific Tips
+Family-friendly Sifnos guide:
+
+#### Kid-Friendly Activities
+- Beach time
+- Water sports
+- Donkey rides
+- Castle exploration
+
+#### Family Beaches
+- Kamares Beach (facilities)
+- Platis Gialos Beach (shallow waters)
+- Vathi Beach (protected)
+
+#### Practical Tips
+- Best family areas
+- Medical facilities
+- Baby equipment rental
+- Child-friendly tavernas
+
+### Detailed Itineraries
+
+#### 3-Day Essential Tour
+Day 1:
+- Morning: Kamares exploration
+- Afternoon: Beach time
+- Evening: Castle sunset
+
+Day 2:
+- Morning: Apollonia visit
+- Afternoon: Pottery workshop
+- Evening: Traditional dinner
+
+Day 3:
+- Morning: Kastro village
+- Afternoon: Water sports
+- Evening: Farewell feast
+
+#### 5-Day Island Explorer
+[Detailed day-by-day itinerary...]
+
+#### 7-Day Complete Experience
+[Comprehensive weekly schedule...]
+
+`,
+  antiparos: `
+# Antiparos Island Guide
+
+Welcome to Antiparos, a charming small island in the heart of the Cyclades. Known for its relaxed atmosphere, beautiful beaches, and impressive cave.
+
+## Best Time to Visit
+
+April to October is ideal, with May and September offering perfect weather and fewer crowds.
+
+### Spring (April-May)
+Spring brings mild temperatures ranging from 15-25°C (59-77°F), perfect for outdoor activities and sightseeing. The island's vibrant flowers and lush green landscapes make it an ideal time for nature lovers.
+
+### Summer (June-August)
+Peak season brings hot temperatures of 25-35°C (77-95°F) and larger crowds. While this means higher prices and busier attractions, it's also when the island is most alive with events, festivals, and perfect beach weather.
+
+### Autumn (September-October)
+Perhaps the most ideal time to visit, autumn offers warm sea temperatures for swimming, fewer tourists, and pleasant weather around 20-28°C (68-82°F). The island's famous beaches are particularly picturesque during this time.
+
+### Winter (November-March)
+While many tourist facilities close, winter offers a unique perspective of authentic island life. Temperatures range from 10-15°C (50-59°F), and while rainfall is more common, you'll find significantly lower prices and a more relaxed atmosphere.
+
+## Where to Stay
+
+### Antiparos Town
+The main port and capital, offering convenient access to everything.
+
+#### Accommodation Styles
+- Family-run hotels with pool access
+- Luxury villas with private pools
+- Self-catering apartments with kitchen facilities
+- Budget-friendly studios with shared facilities
+
+#### Location Benefits
+- Central location for public transportation
+- Proximity to Antiparos Beach
+- Variety of dining options
+- Easy access to shopping and nightlife
+
+#### Best For
+- Families with young children
+- Budget travelers
+- Those seeking a relaxed atmosphere
+- Beach lovers
+
+### Agios Georgios
+A charming village in the heart of the island.
+
+#### Accommodation Styles
+- Traditional village houses with pool access
+- Luxury villas with private pools
+- Self-catering apartments with kitchen facilities
+- Budget-friendly studios with shared facilities
+
+#### Location Benefits
+- Central location for exploring the island
+- Proximity to historic sites and museums
+- Variety of dining options
+- Easy access to public transportation
+
+#### Best For
+- History buffs
+- Those seeking a relaxed atmosphere
+- Families with older children
+- Couples seeking romance
+
+### Soros
+Perfect for beach lovers, with easy access to other south coast beaches.
+
+#### Accommodation Styles
+- Beachfront hotels with pool access
+- Luxury villas with private pools
+- Self-catering apartments with kitchen facilities
+- Budget-friendly studios with shared facilities
+
+#### Location Benefits
+- Direct access to Soros Beach
+- Proximity to other south coast beaches
+- Variety of dining options
+- Easy access to public transportation
+
+#### Best For
+- Beach lovers
+- Families with older children
+- Those seeking a relaxed atmosphere
+- Water sports enthusiasts
+
+## Things to Do
+
+### 1. Explore the Castle of Antiparos
+Discover the island's rich history and architecture:
+
+#### Historical Significance
+- 17th-century castle ruins
+- Traditional Antiparian houses and architecture
+- Panoramic views of the island
+
+#### Visitor Information
+- Guided tours available in multiple languages
+- Self-guided exploration of the castle
+- Respect local regulations and private properties
+
+### 2. Visit the Cave of Antiparos
+A stunning example of natural beauty:
+
+#### Natural Significance
+- Large cave with impressive stalactites and stalagmites
+- Panoramic views of the island
+
+#### Visitor Information
+- Guided tours available in multiple languages
+- Self-guided exploration of the cave
+- Respect local regulations and private properties
+
+### 3. Enjoy the Beaches of Antiparos
+Discover the island's stunning beaches and coves:
+
+#### Popular Beaches
+- Antiparos Beach
+- Soros Beach
+- Glyfa Beach
+- Livadia Beach
+
+#### Beach Activities
+- Swimming and sunbathing
+- Water sports and activities
+- Beach bars and restaurants
+- Relaxation and leisure
+
+### 4. Hike to the Village of Kastro
+Explore the island's picturesque villages and landscapes:
+
+#### Village Life
+- Traditional Antiparian houses and architecture
+- Local shops and cafes
+- Panoramic views of the island
+
+#### Visitor Information
+- Guided tours available in multiple languages
+- Self-guided exploration of the village
+- Respect local residents and private properties
+
+### 5. Learn Traditional Crafts
+Discover the island's rich cultural heritage:
+
+#### Craft Options
+- Traditional craft workshops
+- Local craft shops
+- Relaxation and leisure
+
+## Local Cuisine
+
+### Fresh Seafood at the Port Tavernas
+The island's best seafood can be found in these picturesque tavernas:
+- Fresh catch of the day
+- Traditional sun-dried fish
+- Grilled octopus
+- Local fishing boats bringing daily catches
+
+### Traditional Greek Dishes
+Must-try local specialties:
+- Moussaka (layered eggplant and minced meat)
+- Souvlaki (grilled meat skewers)
+- Greek salad with feta cheese
+- Fresh seafood and fish dishes
+
+### Cooking Classes
+Learn to prepare local dishes:
+- Traditional recipe workshops
+- Market visits with chefs
+- Wine pairing education
+- Take-home recipe books
+
+## Travel Tips
+
+### Accommodation Booking
+- Book at least 6 months in advance for peak season
+- Consider luxury hotels for authentic experience
+- Check for pool access and caldera views
+- Look for hotels with easy access to public transportation
+
+### Transportation
+- Use local buses for affordable travel
+- Rent ATVs for flexible exploration
+- Book airport transfers in advance
+- Consider hiring a private driver
+
+### Budget Planning
+- Set aside funds for quality restaurants
+- Book activities in advance for better rates
+- Consider package deals for excursions
+- Budget for unique experiences
+
+### Cultural Considerations
+- Respect local customs and dress codes
+- Learn basic Greek phrases
+- Participate in local festivals
+- Support local businesses
+
+### Photography Tips
+- Best light for photos: early morning or golden hour
+- Popular Instagram spots get crowded
+- Bring wide-angle lens for beach and landscape shots
+- Consider drone regulations
+
+### Health and Safety
+- Stay hydrated in summer months
+- Use strong sun protection
+- Wear comfortable walking shoes
+- Keep emergency numbers handy
+
+## Transportation Guide
+Getting around Antiparos efficiently:
+
+#### Public Transportation
+- Local Bus Network
+  * Regular service between major villages and beaches
+  * Frequency: Every 30-60 minutes in season
+  * Cost: €2-2.50 per journey
+  * Main terminal in Antiparos Town
+
+#### Private Options
+- Rental Cars
+  * Cost: €30-45 per day
+  * Good for mountain village exploration
+  * Easy parking in most areas
+  * International license required
+- ATVs/Scooters
+  * Cost: €20-30 per day
+  * Perfect for coastal roads
+  * License required for 50cc+
+- Taxi Service
+  * Available 24/7
+  * Fixed rates to popular destinations
+  * Airport transfers available
+
+### Cost Breakdown
+Budget planning for Antiparos:
+
+#### Accommodation (per night)
+- Budget: €35-70 (hostels, rooms)
+- Mid-range: €80-150 (hotels)
+- Luxury: €200+ (boutique hotels)
+
+#### Daily Expenses
+- Meals
+  * Breakfast: €5-10
+  * Lunch: €10-20
+  * Dinner: €15-35
+  * Traditional tavernas: €25-40
+- Activities
+  * Cave tour: €10-20
+  * Island tours: €40-80
+  * Cooking classes: €45-85
+  * Archaeological sites: €6-12
+
+#### Money-Saving Tips
+- Visit in shoulder season
+- Stay in Antiparos Town
+- Use public buses
+- Shop at local markets
+- Book direct with hotels
+
+### Photography Locations
+Capture Antiparos' beauty:
+
+#### Sunrise Spots
+- Antiparos Town
+- Soros Beach
+- Glyfa Beach
+
+#### Sunset Locations
+- Antiparos Beach
+- Livadia Beach
+- Kastro village
+
+#### Instagram-Worthy Spots
+- Traditional Antiparian houses
+- Byzantine churches
+- Ancient castle ruins
+- Panoramic views of the island
+
+### Hidden Gems and Local Secrets
+Discover authentic Antiparos:
+
+#### Secret Spots
+- Theologos Beach
+- Faneromeni Beach
+- Ancient ruins of Kastro
+
+#### Traditional Villages
+- Agios Georgios
+  * Traditional Antiparian houses
+  * Local shops and cafes
+  * Panoramic views of the island
+- Soros
+  * Traditional Antiparian houses
+  * Local shops and cafes
+  * Panoramic views of the island
+
+#### Local Experiences
+- Traditional craft workshops
+- Local cheese making
+- Olive oil production
+- Wine tasting
+
+### Family-Specific Tips
+Family-friendly Antiparos guide:
+
+#### Kid-Friendly Activities
+- Beach time
+- Water sports
+- Donkey rides
+- Castle exploration
+
+#### Family Beaches
+- Antiparos Beach (facilities)
+- Soros Beach (shallow waters)
+- Glyfa Beach (protected)
+
+#### Practical Tips
+- Best family areas
+- Medical facilities
+- Baby equipment rental
+- Child-friendly tavernas
+
+### Detailed Itineraries
+
+#### 3-Day Essential Tour
+Day 1:
+- Morning: Antiparos Town exploration
+- Afternoon: Beach time
+- Evening: Castle sunset
+
+Day 2:
+- Morning: Agios Georgios visit
+- Afternoon: Pottery workshop
+- Evening: Traditional dinner
+
+Day 3:
+- Morning: Kastro village
+- Afternoon: Water sports
+- Evening: Farewell feast
+
+#### 5-Day Island Explorer
+[Detailed day-by-day itinerary...]
+
+#### 7-Day Complete Experience
+[Comprehensive weekly schedule...]
+
+`,
+};

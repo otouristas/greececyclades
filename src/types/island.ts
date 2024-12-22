@@ -70,7 +70,10 @@ export interface Island {
   slug: string;
   heroImage: string;
   highlights: string[];
+  ports: string[];
   weather: {
+    temp: number;
+    condition: string;
     summer: string;
     winter: string;
     spring: string;
@@ -80,6 +83,21 @@ export interface Island {
     months: AvailableMonth[];
     reason: string;
   };
+  idealFor: string[];
+}
+
+export interface IslandGuide {
+  id: string;
+  name: string;
+  description: string;
+  image: string;
+  weather: {
+    summer: string;
+    winter: string;
+    spring: string;
+    autumn: string;
+  };
+  bestTime: string;
   idealFor: string[];
 }
 

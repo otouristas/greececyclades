@@ -2,28 +2,52 @@ import { useEffect } from 'react';
 import { onAuthStateChanged } from 'firebase/auth';
 import { auth } from '../config/firebase';
 import { useAuthStore } from '../store/authStore';
+import { useLocation, useNavigate } from 'react-router-dom';
 
 export default function AuthStateHandler() {
   const { login, logout } = useAuthStore();
+  const navigate = useNavigate();
+  const location = useLocation();
 
   useEffect(() => {
+    // Clear any stale auth state on mount
+    const currentUser = auth.currentUser;
+    if (!currentUser) {
+      logout();
+    }
+
     const unsubscribe = onAuthStateChanged(auth, (user) => {
       if (user) {
-        // Ensure we're capturing all user data from Firebase
+        // User is signed in
         login({
           id: user.uid,
           name: user.displayName || 'User',
           email: user.email || '',
           avatar: user.photoURL || undefined,
         });
+
+        // If we were trying to access a protected route, redirect there
+        const state = location.state as { from?: Location };
+        if (state?.from) {
+          navigate(state.from.pathname);
+        }
       } else {
+        // User is signed out
         logout();
+        
+        // Only redirect if we're on a protected route
+        const protectedRoutes = ['/profile', '/trip-planner', '/my-trips'];
+        if (protectedRoutes.some(route => location.pathname.startsWith(route))) {
+          navigate('/signin', { 
+            state: { from: location },
+            replace: true 
+          });
+        }
       }
     });
 
-    // Clean up subscription
     return () => unsubscribe();
-  }, [login, logout]);
+  }, [login, logout, navigate, location]);
 
-  return null; // This component doesn't render anything
+  return null;
 }

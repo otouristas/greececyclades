@@ -5,6 +5,7 @@ export interface BlogPost {
   description: string;
   content: string;
   author: string;
+  authorRole?: string;
   publishedAt: string; 
   updatedAt?: string; 
   featuredImage: string;

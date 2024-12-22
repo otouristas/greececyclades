@@ -1,8 +1,12 @@
-import { AvailableMonth, IslandVibe } from './island';
+import { AvailableMonth, IslandVibe, IslandActivity } from './island';
 
 export interface Weather {
-  temp: string;
+  temp: number;
   condition: string;
+  summer: string;
+  winter: string;
+  spring: string;
+  autumn: string;
 }
 
 export interface Island {
@@ -13,19 +17,19 @@ export interface Island {
   quote: string;
   metaTitle: string;
   metaDescription: string;
-  activities: string[];
-  bestMonths: string[];
+  activities: IslandActivity[];
+  bestMonths: AvailableMonth[];
   averageStay: number;
   mustSee: string[];
   image: string;
-  vibes: string[];
+  vibes: IslandVibe[];
   size: keyof typeof STAY_DURATION;
   slug: string;
   heroImage: string;
   highlights: string[];
   weather: Weather;
   bestTime: {
-    months: string[];
+    months: AvailableMonth[];
     reason: string;
   };
   idealFor: string[];
@@ -34,8 +38,8 @@ export interface Island {
 export interface TripPlan {
   islands: Island[];
   duration: number;
-  month: string;
-  vibes: string[];
+  month: AvailableMonth;
+  vibes: IslandVibe[];
   pace: 'relaxed' | 'moderate' | 'active';
   aiSuggestions?: string;
   userId?: string;

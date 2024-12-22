@@ -86,9 +86,10 @@ const IslandDetail = () => {
   return (
     <>
       <SEO {...generateIslandDetailSEO(island.name, island.image)} />
-      <div className="min-h-screen bg-white">
+      <main className="min-h-screen bg-white">
         {/* Hero Section */}
-        <div className="relative h-[60vh] w-full mt-0">
+        <section className="relative w-full h-[calc(100vh-56px)] md:h-[calc(100vh-72px)] mt-14 md:mt-[72px]">
+          {/* Background Image */}
           <div className="absolute inset-0">
             <img
               src={island.image}
@@ -96,15 +97,47 @@ const IslandDetail = () => {
               className="h-full w-full object-cover"
               loading="eager"
             />
-            <div className="absolute inset-0 bg-black/40" />
+            <div className="absolute inset-0 bg-gradient-to-b from-black/50 via-black/30 to-black/50" />
           </div>
-          <div className="relative h-full flex items-center justify-center text-center text-white px-4">
-            <div>
-              <h1 className="text-5xl font-bold mb-4">{island.name}</h1>
-              <p className="text-xl max-w-2xl mx-auto">{island.shortDescription}</p>
+          
+          {/* Content */}
+          <div className="absolute inset-0 flex flex-col items-center justify-center px-4">
+            <div className="text-center mt-8 md:mt-0">
+              <div className="flex flex-col items-center gap-2 mb-4 md:mb-6">
+                <MapPin className="h-4 w-4 md:h-5 md:w-5 text-white" />
+                <span className="text-white/90 text-xs md:text-base">Cyclades, Greece</span>
+              </div>
+              <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold text-white mb-3 md:mb-4">
+                Welcome to {island.name}
+              </h1>
+              <p className="text-base md:text-xl text-white/90 max-w-2xl mx-auto px-4">
+                {island.shortDescription}
+              </p>
             </div>
           </div>
-        </div>
+
+          {/* Feature Cards */}
+          <div className="absolute bottom-4 md:bottom-8 left-0 right-0 px-4 md:px-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-2 md:gap-4 max-w-7xl mx-auto">
+              <div className="bg-black/30 backdrop-blur-sm rounded-lg p-3 md:p-4 text-white">
+                <h3 className="text-sm md:text-base font-medium mb-0.5 md:mb-1">Best Time</h3>
+                <p className="text-xs md:text-sm text-white/80">April, May, September, October</p>
+              </div>
+              <div className="bg-black/30 backdrop-blur-sm rounded-lg p-3 md:p-4 text-white">
+                <h3 className="text-sm md:text-base font-medium mb-0.5 md:mb-1">Weather</h3>
+                <p className="text-xs md:text-sm text-white/80">Hot and dry with temperatures around 28°C</p>
+              </div>
+              <div className="bg-black/30 backdrop-blur-sm rounded-lg p-3 md:p-4 text-white">
+                <h3 className="text-sm md:text-base font-medium mb-0.5 md:mb-1">Perfect For</h3>
+                <p className="text-xs md:text-sm text-white/80">Couples, Photographers</p>
+              </div>
+              <div className="bg-black/30 backdrop-blur-sm rounded-lg p-3 md:p-4 text-white">
+                <h3 className="text-sm md:text-base font-medium mb-0.5 md:mb-1">Getting Here</h3>
+                <p className="text-xs md:text-sm text-white/80">Ferry & Air Travel</p>
+              </div>
+            </div>
+          </div>
+        </section>
 
         {/* Content */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -218,7 +251,7 @@ const IslandDetail = () => {
             </div>
           )}
         </div>
-      </div>
+      </main>
     </>
   );
 };

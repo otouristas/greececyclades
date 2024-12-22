@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Ship, Calendar, Trash2, MapPin } from 'lucide-react';
 import { useTripStore } from '../store/tripStore';
@@ -22,7 +21,7 @@ export default function MyTrips() {
           <div className="flex justify-between items-center mb-8">
             <h1 className="text-3xl font-bold text-gray-900">My Trips</h1>
             <button
-              onClick={() => navigate('/cycladestripplanner')}
+              onClick={() => navigate('/trip-planner')}
               className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
             >
               Plan New Trip
@@ -37,7 +36,7 @@ export default function MyTrips() {
                 Start planning your perfect Cyclades island-hopping adventure!
               </p>
               <button
-                onClick={() => navigate('/cycladestripplanner')}
+                onClick={() => navigate('/trip-planner')}
                 className="px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
               >
                 Create Your First Trip

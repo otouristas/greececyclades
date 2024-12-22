@@ -2,15 +2,14 @@ import { Link } from 'react-router-dom';
 import { Navigation, Sun, Map, Compass, ArrowRight, Anchor } from 'lucide-react';
 import { useIslandStore } from '../store/islandStore';
 import SEO from '../components/SEO';
-import { slugify } from '../utils/slugify';
 import { SITE_TAGLINE } from '../constants/seo';
 
 export default function Islands() {
   const { islands } = useIslandStore();
   
   console.log('Islands page - Available islands:', islands);
-  console.log('Islands page - First island slug:', islands[0] ? slugify(islands[0].name) : 'no islands');
-  console.log('Islands page - All slugs:', islands.map(i => ({ name: i.name, slug: slugify(i.name) })));
+  console.log('Islands page - First island slug:', islands[0] ? islands[0].slug : 'no islands');
+  console.log('Islands page - All slugs:', islands.map(i => ({ name: i.name, slug: i.slug })));
 
   return (
     <>
@@ -22,7 +21,7 @@ export default function Islands() {
 
       <div className="bg-gray-50">
         {/* Hero Section */}
-        <div className="relative min-h-[85vh] flex items-center">
+        <div className="relative min-h-[80vh] flex items-center py-16 lg:py-20">
           {/* Background Image */}
           <div className="absolute inset-0">
             <div className="relative h-full w-full">
@@ -36,56 +35,68 @@ export default function Islands() {
           </div>
 
           {/* Content */}
-          <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
-            <div className="flex flex-col items-center text-center max-w-3xl mx-auto">
-              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
-                Discover Our <span className="text-blue-400">Islands</span>
-              </h1>
-              <p className="text-xl text-gray-200 mb-8">
-                Explore the unique character of each Cycladic island. From bustling Mykonos to serene Sifnos, 
-                find your perfect island getaway.
-              </p>
+          <div className="relative w-full pt-8 md:pt-12">
+            <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+              <div className="flex flex-col items-center text-center gap-6 md:gap-8">
+                <div className="max-w-2xl">
+                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
+                    Discover Our <span className="text-blue-400">Islands</span>
+                  </h1>
+                  <p className="mt-4 text-base md:text-lg text-white/90">
+                    Explore the unique character of each Cycladic island. From bustling Mykonos to serene Sifnos, 
+                    find your perfect island getaway.
+                  </p>
+                </div>
 
-              {/* Feature Cards */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 w-full">
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                  <Map className="h-6 w-6 text-blue-400 mb-2 mx-auto" />
-                  <div className="text-white font-medium">13 Islands</div>
-                  <div className="text-sm text-gray-300">To Explore</div>
+                {/* Feature Cards */}
+                <div className="grid grid-cols-2 md:grid-cols-4 gap-3 w-full max-w-3xl mt-2">
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-lg text-center">
+                    <div className="h-5 w-5 text-blue-400 mb-1.5 mx-auto">
+                      <Sun className="w-full h-full" />
+                    </div>
+                    <div className="text-sm font-medium text-white">20+ Islands</div>
+                    <div className="text-xs text-gray-300">To Explore</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-lg text-center">
+                    <div className="h-5 w-5 text-blue-400 mb-1.5 mx-auto">
+                      <Map className="w-full h-full" />
+                    </div>
+                    <div className="text-sm font-medium text-white">Local Tips</div>
+                    <div className="text-xs text-gray-300">From Experts</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-lg text-center">
+                    <div className="h-5 w-5 text-blue-400 mb-1.5 mx-auto">
+                      <Compass className="w-full h-full" />
+                    </div>
+                    <div className="text-sm font-medium text-white">Travel Guides</div>
+                    <div className="text-xs text-gray-300">For Each Island</div>
+                  </div>
+                  <div className="bg-white/10 backdrop-blur-sm p-3 rounded-lg text-center">
+                    <div className="h-5 w-5 text-blue-400 mb-1.5 mx-auto">
+                      <Anchor className="w-full h-full" />
+                    </div>
+                    <div className="text-sm font-medium text-white">Ferry Routes</div>
+                    <div className="text-xs text-gray-300">Between Islands</div>
+                  </div>
                 </div>
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                  <Anchor className="h-6 w-6 text-blue-400 mb-2 mx-auto" />
-                  <div className="text-white font-medium">Beaches</div>
-                  <div className="text-sm text-gray-300">& Activities</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                  <Compass className="h-6 w-6 text-blue-400 mb-2 mx-auto" />
-                  <div className="text-white font-medium">Local Tips</div>
-                  <div className="text-sm text-gray-300">& Insights</div>
-                </div>
-                <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
-                  <Sun className="h-6 w-6 text-blue-400 mb-2 mx-auto" />
-                  <div className="text-white font-medium">Weather</div>
-                  <div className="text-sm text-gray-300">Information</div>
-                </div>
-              </div>
 
-              {/* Action Buttons */}
-              <div className="flex flex-wrap justify-center gap-4">
-                <Link 
-                  to="/trip-planner"
-                  className="px-8 py-4 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all transform hover:scale-105 flex items-center gap-2"
-                >
-                  Start Planning Your Trip
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
-                <Link
-                  to="/guides"
-                  className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/20 transition-all transform hover:scale-105 flex items-center gap-2"
-                >
-                  View Detailed Guides
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
+                {/* Action Buttons */}
+                <div className="flex flex-wrap justify-center gap-3 mt-4">
+                  <Link 
+                    to="/trip-planner"
+                    className="px-8 py-4 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-600 transition-all transform hover:scale-105 flex items-center gap-2"
+                  >
+                    Start Planning Your Trip
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                  <Link
+                    to="/guides"
+                    className="px-8 py-4 bg-white/10 backdrop-blur-sm text-white rounded-lg font-medium hover:bg-white/20 transition-all transform hover:scale-105 flex items-center gap-2"
+                  >
+                    View Detailed Guides
+                    <ArrowRight className="h-5 w-5" />
+                  </Link>
+                </div>
               </div>
             </div>
           </div>
@@ -97,7 +108,7 @@ export default function Islands() {
             {islands.map((island) => (
               <Link 
                 key={island.id}
-                to={`/islands/${slugify(island.name)}`}
+                to={`/islands/${island.slug}`}
                 className="group bg-white rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow"
               >
                 <div className="aspect-w-16 aspect-h-9 relative">

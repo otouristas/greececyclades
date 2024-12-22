@@ -37,7 +37,7 @@ const IslandGuide: React.FC = () => {
 
   const travelTips = [
     'Book accommodations well in advance, especially for peak season',
-    `Best time to visit is ${island.bestTime}`,
+    `Best time to visit is ${island.bestTime.months.join(', ')} - ${island.bestTime.reason}`,
     'Rent a vehicle to explore the island fully',
     'Try local specialties and traditional dishes'
   ];
@@ -84,8 +84,8 @@ const IslandGuide: React.FC = () => {
             <div className="flex items-center space-x-4">
               <CalendarDays className="w-8 h-8 text-blue-500" />
               <div>
-                <h3 className="font-semibold">Best Time</h3>
-                <p>{island.bestTime}</p>
+                <h3 className="font-semibold">Best Time to Visit</h3>
+                <p>{island.bestTime.months.join(', ')} - {island.bestTime.reason}</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">

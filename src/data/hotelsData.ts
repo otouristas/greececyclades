@@ -2,7 +2,7 @@ import { Hotel, HotelCategory } from '../types/hotel';
 
 export const hotels: Hotel[] = [
   {
-    id: '1',
+    id: 'andronis-luxury-suites',
     slug: 'andronis-luxury-suites-santorini',
     name: 'Andronis Luxury Suites',
     description: 'Carved into the volcanic cliff of Santorini, Andronis Luxury Suites offers breathtaking views of the caldera, luxury accommodations, and world-class service in the picturesque village of Oia.',
@@ -275,71 +275,6 @@ export const hotels: Hotel[] = [
     ]
   },
   {
-    id: 'skinopi-lodge',
-    name: 'Skinopi Lodge',
-    slug: 'skinopi-lodge-milos',
-    location: {
-      island: 'Milos',
-      area: 'Skinopi',
-      coordinates: {
-        latitude: 36.7225,
-        longitude: 24.4145
-      }
-    },
-    category: HotelCategory.Boutique,
-    priceRange: {
-      min: 400,
-      max: 900,
-      currency: 'EUR'
-    },
-    features: [
-      'Private Villas',
-      'Sea View',
-      'Minimalist Design',
-      'Private Terraces',
-      'Beach Access',
-      'Eco-Friendly'
-    ],
-    description: 'Skinopi Lodge is a collection of three luxury villas perched above the Aegean Sea in Milos. Each villa is a masterpiece of minimalist architecture, designed to blend seamlessly with the natural landscape. The lodge offers ultimate privacy, spectacular views, and a unique connection to both the sea and the island\'s rugged beauty. Perfect for those seeking an exclusive, design-focused retreat.',
-    rating: 4.9,
-    reviews: 87,
-    images: [
-      '/images/hotels/skinopi/main.jpg',
-      '/images/hotels/skinopi-1.jpg',
-      '/images/hotels/skinopi-2.jpg',
-      '/images/hotels/skinopi-3.jpg'
-    ],
-    amenities: [
-      'Free WiFi',
-      'Private Parking',
-      'Sea Access',
-      'Daily Housekeeping',
-      'Concierge Service',
-      'Airport Transfer',
-      'Breakfast Delivery'
-    ],
-    rooms: [
-      {
-        id: 'sl-001',
-        type: 'Sea View Villa',
-        description: 'Minimalist villa with floor-to-ceiling windows, private terrace, and direct sea views. Features custom-designed furniture and local materials.',
-        price: 600,
-        image: '/images/rooms/skinopi/villa-1.jpg',
-        maxOccupancy: 3,
-        bedType: 'King',
-        size: 60,
-        amenities: [
-          'Sea View',
-          'Private Terrace',
-          'Kitchen',
-          'WiFi',
-          'Air Conditioning',
-          'Custom Furniture'
-        ]
-      }
-    ]
-  },
-  {
     id: 'paros-luxury-resort',
     name: 'Paros Luxury Resort',
     slug: 'paros-luxury-resort-paros',
@@ -402,73 +337,6 @@ export const hotels: Hotel[] = [
           'WiFi',
           'Room Service',
           'Mini Bar'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'mykonos-breeze',
-    name: 'Mykonos Breeze',
-    slug: 'mykonos-breeze-mykonos',
-    location: {
-      island: 'Mykonos',
-      area: 'Agios Ioannis',
-      coordinates: {
-        latitude: 37.4147,
-        longitude: 25.3284
-      }
-    },
-    category: HotelCategory.Luxury,
-    priceRange: {
-      min: 500,
-      max: 1300,
-      currency: 'EUR'
-    },
-    features: [
-      'Sunset Views',
-      'Infinity Pool',
-      'Beach Club',
-      'Gourmet Restaurant',
-      'Wellness Center',
-      'Designer Interiors'
-    ],
-    description: 'Mykonos Breeze is a haven of sophisticated luxury, offering breathtaking views of the Aegean Sea and the famous Mykonian sunset. The hotel combines contemporary design with traditional Cycladic architecture, featuring spacious suites, a stunning infinity pool, and a private beach club. The property\'s world-class restaurant serves innovative Mediterranean cuisine, while the wellness center provides a serene escape.',
-    rating: 4.9,
-    reviews: 276,
-    images: [
-      '/images/hotels/mykonos-breeze-main.jpg',
-      '/images/hotels/mykonos-breeze-1.jpg',
-      '/images/hotels/mykonos-breeze-2.jpg',
-      '/images/hotels/mykonos-breeze-3.jpg'
-    ],
-    amenities: [
-      'Free WiFi',
-      'Room Service',
-      'Restaurant',
-      'Beach Club',
-      'Infinity Pool',
-      'Spa',
-      'Fitness Center',
-      'Concierge',
-      'Helicopter Transfer'
-    ],
-    rooms: [
-      {
-        id: 'mb-001',
-        type: 'Premium Sea View Suite',
-        description: 'Elegantly appointed suite with panoramic sea views, private terrace, and designer furnishings. Features modern amenities and authentic Mykonian style.',
-        price: 800,
-        image: '/images/rooms/mykonos-breeze/premium-suite-1.jpg',
-        maxOccupancy: 3,
-        bedType: 'King',
-        size: 60,
-        amenities: [
-          'Sea View',
-          'Private Terrace',
-          'WiFi',
-          'Room Service',
-          'Mini Bar',
-          'Smart TV'
         ]
       }
     ]
@@ -553,126 +421,6 @@ export const hotels: Hotel[] = [
     ]
   },
   {
-    id: 'caldera-villas',
-    name: 'Caldera Villas',
-    slug: 'caldera-villas-santorini',
-    location: {
-      island: 'Santorini',
-      area: 'Imerovigli',
-      coordinates: {
-        latitude: 36.4343,
-        longitude: 25.4216
-      }
-    },
-    category: HotelCategory.Boutique,
-    priceRange: {
-      min: 300,
-      max: 800,
-      currency: 'EUR'
-    },
-    features: [
-      'Private Pool',
-      'Sea View',
-      'WiFi',
-      'Room Service',
-      'Cycladic Design',
-      'Beach Access'
-    ],
-    description: 'A charming boutique hotel that seamlessly blends into Milos\'s traditional architecture. Featuring cave-style rooms and suites that offer a unique and authentic Greek island experience.',
-    rating: 4.5,
-    reviews: 156,
-    images: [
-      '/images/hotels/caldera-villas-main.jpg',
-      '/images/hotels/caldera-villas-1.jpg',
-      '/images/hotels/caldera-villas-2.jpg',
-      '/images/hotels/caldera-villas-3.jpg'
-    ],
-    amenities: [
-      'Pool',
-      'WiFi',
-      'Room Service',
-      'Concierge'
-    ],
-    rooms: [
-      {
-        id: 'cv-001',
-        type: 'Superior Villa with Pool',
-        description: 'Spacious villa with private pool and panoramic caldera views.',
-        price: 450,
-        image: '/images/rooms/caldera/superior-villa-1.jpg',
-        maxOccupancy: 3,
-        bedType: 'King',
-        size: 60,
-        amenities: [
-          'Private Pool',
-          'Sea View',
-          'WiFi',
-          'Room Service'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'milos-hideaway',
-    name: 'Milos Hideaway',
-    slug: 'milos-hideaway-milos',
-    location: {
-      island: 'Milos',
-      area: 'Pollonia',
-      coordinates: {
-        latitude: 36.7512,
-        longitude: 24.5211
-      }
-    },
-    category: HotelCategory.Boutique,
-    priceRange: {
-      min: 250,
-      max: 600,
-      currency: 'EUR'
-    },
-    features: [
-      'Sea View',
-      'Pool',
-      'Restaurant',
-      'Beach Access',
-      'Garden View',
-      'Room Service'
-    ],
-    description: 'A family-run hotel offering authentic Greek hospitality in the heart of Sifnos. Traditional Cycladic architecture meets modern comfort, surrounded by beautiful gardens and local charm.',
-    rating: 4.5,
-    reviews: 156,
-    images: [
-      '/images/hotels/milos-hideaway-main.jpg',
-      '/images/hotels/milos-hideaway-1.jpg',
-      '/images/hotels/milos-hideaway-2.jpg',
-      '/images/hotels/milos-hideaway-3.jpg'
-    ],
-    amenities: [
-      'Pool',
-      'Restaurant',
-      'WiFi',
-      'Beach Access',
-      'Garden'
-    ],
-    rooms: [
-      {
-        id: 'mh-001',
-        type: 'Garden View Suite',
-        description: 'Peaceful suite overlooking the hotel\'s Mediterranean garden.',
-        price: 300,
-        image: '/images/rooms/milos-hideaway/garden-1.jpg',
-        maxOccupancy: 2,
-        bedType: 'Double',
-        size: 30,
-        amenities: [
-          'Garden View',
-          'WiFi',
-          'Room Service'
-        ]
-      }
-    ]
-  },
-  {
     id: 'niriedes-hotel',
     name: 'Niriedes Hotel',
     slug: 'niriedes-hotel-sifnos',
@@ -729,63 +477,6 @@ export const hotels: Hotel[] = [
     ]
   },
   {
-    id: 'absolute-bliss',
-    name: 'Absolute Bliss',
-    slug: 'absolute-bliss-santorini',
-    location: {
-      island: 'Santorini',
-      area: 'Imerovigli',
-      coordinates: {
-        latitude: 36.4351,
-        longitude: 25.4321
-      }
-    },
-    category: HotelCategory.Luxury,
-    priceRange: {
-      min: 450,
-      max: 1200,
-      currency: 'EUR'
-    },
-    description: `Perched on Santorini's caldera in Imerovigli, Absolute Bliss offers an unparalleled luxury experience with breathtaking sunset views. Each suite features a private terrace with heated plunge pool or jacuzzi, customized furnishings, and sophisticated Cycladic design. The hotel's exclusive restaurant serves gourmet Mediterranean cuisine, while the infinity pool seems to merge with the Aegean horizon.`,
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Private plunge pools',
-      'Caldera views',
-      'Gourmet restaurant',
-      'Spa treatments',
-      'Butler service',
-      'Wine cellar',
-      'Helicopter transfers'
-    ],
-    images: [
-      '/images/hotels/absolute-bliss/exterior.jpg',
-      '/images/hotels/absolute-bliss/suite.jpg',
-      '/images/hotels/absolute-bliss/pool.jpg',
-      '/images/hotels/absolute-bliss/restaurant.jpg'
-    ],
-    features: [],
-    rooms: [
-      {
-        id: 'ab-001',
-        type: 'Deluxe Suite',
-        description: 'Elegant suite with modern amenities and stunning caldera views.',
-        price: 600,
-        image: '/images/rooms/absolute-bliss/deluxe-suite-1.jpg',
-        maxOccupancy: 2,
-        bedType: 'King',
-        size: 45,
-        amenities: [
-          'Caldera View',
-          'Private Terrace',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
     id: 'naxos-resort',
     name: 'Naxos Resort',
     slug: 'naxos-resort-naxos',
@@ -835,63 +526,6 @@ export const hotels: Hotel[] = [
         amenities: [
           'Sea View',
           'Private Balcony',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'grace-santorini',
-    name: 'Grace Santorini',
-    slug: 'grace-santorini-santorini',
-    location: {
-      island: 'Santorini',
-      area: 'Imerovigli',
-      coordinates: {
-        latitude: 36.4283,
-        longitude: 25.4317
-      }
-    },
-    category: HotelCategory.UltraLuxury,
-    priceRange: {
-      min: 800,
-      max: 2500,
-      currency: 'EUR'
-    },
-    description: `Grace Santorini represents the pinnacle of luxury hospitality in the Cyclades. This architectural marvel is carved into Imerovigli's cliffs, offering uninterrupted caldera views from every suite. The infinity pool is an Instagram sensation, appearing to float over the Aegean. Each room features champagne bars, private terraces, and plunge pools, while the restaurant serves innovative Mediterranean cuisine with a modern twist.`,
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Infinity pool',
-      'Champagne lounge',
-      'Fine dining restaurant',
-      'Spa sanctuary',
-      'Private plunge pools',
-      'Yoga and Pilates studio',
-      'Helicopter transfers'
-    ],
-    images: [
-      '/images/hotels/grace-santorini/exterior.jpg',
-      '/images/hotels/grace-santorini/pool.jpg',
-      '/images/hotels/grace-santorini/suite.jpg',
-      '/images/hotels/grace-santorini/restaurant.jpg'
-    ],
-    features: [],
-    rooms: [
-      {
-        id: 'gr-001',
-        type: 'Deluxe Suite',
-        description: 'Elegant suite with modern amenities and stunning views',
-        price: 800,
-        image: '/images/hotels/grace-santorini/suite.jpg',
-        maxOccupancy: 2,
-        bedType: 'King',
-        size: 45,
-        amenities: [
-          'Sea View',
-          'Private Terrace',
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
@@ -958,64 +592,7 @@ export const hotels: Hotel[] = [
     ]
   },
   {
-    id: 'kavos-naxos',
-    name: 'Kavos Naxos',
-    slug: 'kavos-naxos-naxos',
-    location: {
-      island: 'Naxos',
-      area: 'Agios Prokopios',
-      coordinates: {
-        latitude: 37.0734,
-        longitude: 25.3546
-      }
-    },
-    category: HotelCategory.Boutique,
-    priceRange: {
-      min: 180,
-      max: 450,
-      currency: 'EUR'
-    },
-    description: `Kavos Naxos offers a perfect blend of traditional architecture and modern comfort, overlooking the crystal waters of Agios Prokopios beach. The hotel features stylish studios and apartments with private terraces, surrounded by beautiful Mediterranean gardens. The infinity pool provides stunning sunset views, while the beach bar serves creative cocktails and light meals.`,
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Infinity pool',
-      'Beach access',
-      'Pool bar',
-      'Garden terraces',
-      'Breakfast service',
-      'Water sports facilities',
-      'Car rental service'
-    ],
-    images: [
-      '/images/hotels/kavos-naxos/exterior.jpg',
-      '/images/hotels/kavos-naxos/pool.jpg',
-      '/images/hotels/kavos-naxos/studio.jpg',
-      '/images/hotels/kavos-naxos/garden.jpg'
-    ],
-    features: [],
-    rooms: [
-      {
-        id: 'kn-001',
-        type: 'Studio Room',
-        description: 'Cozy studio with private terrace and garden views.',
-        price: 200,
-        image: '/images/rooms/kavos-naxos/studio-1.jpg',
-        maxOccupancy: 2,
-        bedType: 'Double',
-        size: 25,
-        amenities: [
-          'Garden View',
-          'Private Terrace',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'parilio-hotel',
+    id: 'parilio-hotel-paros',
     name: 'Parilio Hotel',
     slug: 'parilio-hotel-paros',
     location: {
@@ -1064,63 +641,6 @@ export const hotels: Hotel[] = [
         amenities: [
           'Sea View',
           'Private Terrace',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'paros-agnanti',
-    name: 'Paros Agnanti',
-    slug: 'paros-agnanti-paros',
-    location: {
-      island: 'Paros',
-      area: 'Parikia',
-      coordinates: {
-        latitude: 37.0876,
-        longitude: 25.1543
-      }
-    },
-    category: HotelCategory.Resort,
-    priceRange: {
-      min: 250,
-      max: 600,
-      currency: 'EUR'
-    },
-    description: `Paros Agnanti offers a perfect blend of traditional Cycladic architecture and modern comfort, perched on a hill overlooking Parikia Bay. The hotel features multiple levels of infinity pools, creating a cascading effect towards the sea. Each room and suite provides stunning sunset views, while the restaurant serves authentic Greek cuisine using local ingredients.`,
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Multiple infinity pools',
-      'Sea view restaurant',
-      'Shuttle service',
-      'Tennis court',
-      'Spa services',
-      'Kids pool',
-      'Free parking'
-    ],
-    images: [
-      '/images/hotels/paros-agnanti/exterior.jpg',
-      '/images/hotels/paros-agnanti/pool.jpg',
-      '/images/hotels/paros-agnanti/room.jpg',
-      '/images/hotels/paros-agnanti/view.jpg'
-    ],
-    features: ['Infinity Pool', 'Sea View', 'Restaurant', 'WiFi', 'Room Service', 'Beach Access', 'Bar', 'Family Friendly'],
-    rooms: [
-      {
-        id: 'pa-001',
-        type: 'Deluxe Room',
-        description: 'Elegant room with modern amenities and stunning sea views.',
-        price: 300,
-        image: '/images/rooms/paros-agnanti/deluxe-room-1.jpg',
-        maxOccupancy: 2,
-        bedType: 'King',
-        size: 35,
-        amenities: [
-          'Sea View',
-          'Private Balcony',
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
@@ -1186,63 +706,6 @@ export const hotels: Hotel[] = [
     ]
   },
   {
-    id: 'belvedere-mykonos',
-    name: 'Belvedere Mykonos',
-    slug: 'belvedere-mykonos-mykonos',
-    location: {
-      island: 'Mykonos',
-      area: 'Mykonos Town',
-      coordinates: {
-        latitude: 37.4467,
-        longitude: 25.3289
-      }
-    },
-    category: HotelCategory.Luxury,
-    priceRange: {
-      min: 500,
-      max: 1500,
-      currency: 'EUR'
-    },
-    description: `Belvedere Mykonos is a luxury hotel complex in the heart of Mykonos Town, offering sophisticated elegance and world-class service. The property features a collection of rooms, suites, and private villas, each showcasing contemporary design with traditional elements. The Six Senses spa provides exceptional treatments, while the Matsuhisa restaurant offers acclaimed Japanese cuisine with Peruvian influences.`,
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Six Senses spa',
-      'Matsuhisa restaurant',
-      'Infinity pool',
-      'Pool club',
-      'Fitness center',
-      'Champagne bar',
-      'Concierge service'
-    ],
-    images: [
-      '/images/hotels/belvedere/exterior.jpg',
-      '/images/hotels/belvedere/pool.jpg',
-      '/images/hotels/belvedere/suite.jpg',
-      '/images/hotels/belvedere/restaurant.jpg'
-    ],
-    features: [],
-    rooms: [
-      {
-        id: 'bm-001',
-        type: 'Deluxe Room',
-        description: 'Elegant room with modern amenities and stunning views.',
-        price: 600,
-        image: '/images/rooms/belvedere/deluxe-room-1.jpg',
-        maxOccupancy: 2,
-        bedType: 'King',
-        size: 35,
-        amenities: [
-          'Sea View',
-          'Private Balcony',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
     id: 'kouros-village',
     name: 'Kouros Village',
     slug: 'kouros-village-mykonos',
@@ -1289,6 +752,179 @@ export const hotels: Hotel[] = [
         maxOccupancy: 2,
         bedType: 'King',
         size: 30,
+        amenities: [
+          'Sea View',
+          'Private Balcony',
+          'Mini Bar',
+          'WiFi',
+          'Air Conditioning'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'myconian-villa-collection',
+    name: 'Myconian Villa Collection',
+    slug: 'myconian-villa-collection-mykonos',
+    location: {
+      island: 'Mykonos',
+      area: 'Elia Beach',
+      coordinates: {
+        latitude: 37.4246,
+        longitude: 25.3912
+      }
+    },
+    category: HotelCategory.Luxury,
+    priceRange: {
+      min: 800,
+      max: 3000,
+      currency: 'EUR'
+    },
+    description: `Ultra-luxury villa resort overlooking Elia Beach. Features private pools, personalized service, and exclusive amenities. Each villa offers sophisticated design, stunning sea views, and ultimate privacy.`,
+    rating: 4.5,
+    reviews: 156,
+    amenities: [
+      'Private Pools',
+      'Butler Service',
+      'Gourmet Restaurant',
+      'Thalasso Spa',
+      'Private Beach Area',
+      'Helipad',
+      'Wine Cellar',
+      'Yacht Services'
+    ],
+    images: [
+      '/images/hotels/myconian-villa-collection/exterior.jpg',
+      '/images/hotels/myconian-villa-collection/pool.jpg',
+      '/images/hotels/myconian-villa-collection/villa.jpg',
+      '/images/hotels/myconian-villa-collection/restaurant.jpg'
+    ],
+    features: [],
+    rooms: [
+      {
+        id: 'mvc-001',
+        type: 'Deluxe Villa',
+        description: 'Luxurious villa with private pool and stunning sea views.',
+        price: 1200,
+        image: '/images/rooms/myconian-villa-collection/deluxe-villa-1.jpg',
+        maxOccupancy: 4,
+        bedType: 'King',
+        size: 80,
+        amenities: [
+          'Private Pool',
+          'Sea View',
+          'Private Terrace',
+          'Mini Bar',
+          'WiFi',
+          'Air Conditioning'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'grace-santorini',
+    name: 'Grace Santorini',
+    slug: 'grace-santorini-santorini',
+    location: {
+      island: 'Santorini',
+      area: 'Imerovigli',
+      coordinates: {
+        latitude: 36.4283,
+        longitude: 25.4317
+      }
+    },
+    category: HotelCategory.UltraLuxury,
+    priceRange: {
+      min: 800,
+      max: 2500,
+      currency: 'EUR'
+    },
+    description: `Grace Santorini represents the pinnacle of luxury hospitality in the Cyclades. This architectural marvel is carved into Imerovigli's cliffs, offering uninterrupted caldera views from every suite. The infinity pool is an Instagram sensation, appearing to float over the Aegean. Each room features champagne bars, private terraces, and plunge pools, while the restaurant serves innovative Mediterranean cuisine with a modern twist.`,
+    rating: 4.5,
+    reviews: 156,
+    amenities: [
+      'Infinity pool',
+      'Champagne lounge',
+      'Fine dining restaurant',
+      'Spa sanctuary',
+      'Private plunge pools',
+      'Yoga and Pilates studio',
+      'Helicopter transfers'
+    ],
+    images: [
+      '/images/hotels/grace-santorini/exterior.jpg',
+      '/images/hotels/grace-santorini/pool.jpg',
+      '/images/hotels/grace-santorini/suite.jpg',
+      '/images/hotels/grace-santorini/restaurant.jpg'
+    ],
+    features: [],
+    rooms: [
+      {
+        id: 'gr-001',
+        type: 'Deluxe Suite',
+        description: 'Elegant suite with modern amenities and stunning views',
+        price: 800,
+        image: '/images/hotels/grace-santorini/suite.jpg',
+        maxOccupancy: 2,
+        bedType: 'King',
+        size: 45,
+        amenities: [
+          'Sea View',
+          'Private Terrace',
+          'Mini Bar',
+          'WiFi',
+          'Air Conditioning'
+        ]
+      }
+    ]
+  },
+  {
+    id: 'belvedere-mykonos',
+    name: 'Belvedere Mykonos',
+    slug: 'belvedere-mykonos-mykonos',
+    location: {
+      island: 'Mykonos',
+      area: 'Mykonos Town',
+      coordinates: {
+        latitude: 37.4467,
+        longitude: 25.3289
+      }
+    },
+    category: HotelCategory.Luxury,
+    priceRange: {
+      min: 500,
+      max: 1500,
+      currency: 'EUR'
+    },
+    description: `Belvedere Mykonos is a luxury hotel complex in the heart of Mykonos Town, offering sophisticated elegance and world-class service. The property features a collection of rooms, suites, and private villas, each showcasing contemporary design with traditional elements. The Six Senses spa provides exceptional treatments, while the Matsuhisa restaurant offers acclaimed Japanese cuisine with Peruvian influences.`,
+    rating: 4.5,
+    reviews: 156,
+    amenities: [
+      'Six Senses spa',
+      'Matsuhisa restaurant',
+      'Infinity pool',
+      'Pool club',
+      'Fitness center',
+      'Champagne bar',
+      'Concierge service'
+    ],
+    images: [
+      '/images/hotels/belvedere/exterior.jpg',
+      '/images/hotels/belvedere/pool.jpg',
+      '/images/hotels/belvedere/suite.jpg',
+      '/images/hotels/belvedere/restaurant.jpg'
+    ],
+    features: [],
+    rooms: [
+      {
+        id: 'bm-001',
+        type: 'Deluxe Room',
+        description: 'Elegant room with modern amenities and stunning views.',
+        price: 600,
+        image: '/images/rooms/belvedere/deluxe-room-1.jpg',
+        maxOccupancy: 2,
+        bedType: 'King',
+        size: 35,
         amenities: [
           'Sea View',
           'Private Balcony',
@@ -1363,30 +999,28 @@ export const hotels: Hotel[] = [
     location: {
       island: 'Naxos',
       area: 'Agios Prokopios',
-      address: 'Agios Prokopios Beach',
       coordinates: {
         latitude: 37.0741,
         longitude: 25.3428
       }
     },
-    description: `Boutique hotel overlooking Agios Prokopios beach, offering Cycladic-style accommodation with modern amenities. Features stunning sea views, a swimming pool, and traditional architecture blended with contemporary comfort.`,
     category: HotelCategory.Boutique,
     priceRange: {
       min: 180,
       max: 450,
       currency: 'EUR'
     },
+    description: `Kavos Naxos offers a perfect blend of traditional architecture and modern comfort, overlooking the crystal waters of Agios Prokopios beach. The hotel features stylish studios and apartments with private terraces, surrounded by beautiful Mediterranean gardens. The infinity pool provides stunning sunset views, while the beach bar serves creative cocktails and light meals.`,
     rating: 4.5,
     reviews: 156,
     amenities: [
-      'Swimming Pool',
-      'Sea View Rooms',
-      'Beach Access',
-      'Restaurant',
-      'Bar',
-      'WiFi',
-      'Garden',
-      'Terrace'
+      'Infinity pool',
+      'Beach access',
+      'Pool bar',
+      'Garden terraces',
+      'Breakfast service',
+      'Water sports facilities',
+      'Car rental service'
     ],
     images: [
       '/images/hotels/kavos-naxos/exterior.jpg',
@@ -1416,84 +1050,24 @@ export const hotels: Hotel[] = [
     ]
   },
   {
-    id: 'parilio-hotel',
-    name: 'Parilio Hotel',
-    slug: 'parilio-hotel-paros',
-    location: {
-      island: 'Paros',
-      area: 'Naoussa',
-      address: 'Kolympithres',
-      coordinates: {
-        latitude: 37.1456,
-        longitude: 25.2345
-      }
-    },
-    description: `Luxury design hotel combining minimalist aesthetics with high-end comfort. Features cross-shaped pool, spa facilities, and sophisticated dining options. Each room showcases contemporary Greek design with custom-made furniture.`,
-    category: HotelCategory.Luxury,
-    priceRange: {
-      min: 400,
-      max: 1200,
-      currency: 'EUR'
-    },
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Designer Pool',
-      'Spa Center',
-      'Fine Dining Restaurant',
-      'Cocktail Bar',
-      'Fitness Center',
-      'Luxury Suites',
-      'Concierge Service',
-      'Art Collection'
-    ],
-    images: [
-      '/images/hotels/parilio/exterior.jpg',
-      '/images/hotels/parilio/pool.jpg',
-      '/images/hotels/parilio/suite.jpg',
-      '/images/hotels/parilio/restaurant.jpg'
-    ],
-    features: [],
-    rooms: [
-      {
-        id: 'ph-001',
-        type: 'Deluxe Suite',
-        description: 'Elegant suite with modern amenities and stunning views.',
-        price: 500,
-        image: '/images/rooms/parilio/deluxe-suite-1.jpg',
-        maxOccupancy: 2,
-        bedType: 'King',
-        size: 40,
-        amenities: [
-          'Sea View',
-          'Private Terrace',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
     id: 'verina-astra',
     name: 'Verina Astra',
     slug: 'verina-astra-sifnos',
     location: {
       island: 'Sifnos',
       area: 'Poulati',
-      address: 'Poulati Cliff',
       coordinates: {
         latitude: 36.9723,
         longitude: 24.7445
       }
     },
-    description: `Boutique hotel perched on Poulati cliff, offering stunning Aegean views. Features infinity pool, luxurious suites with private terraces, and gourmet dining. Known for its romantic atmosphere and spectacular sunsets.`,
     category: HotelCategory.Boutique,
     priceRange: {
       min: 350,
       max: 900,
       currency: 'EUR'
     },
+    description: `Boutique hotel perched on Poulati cliff, offering stunning Aegean views. Features infinity pool, luxurious suites with private terraces, and gourmet dining. Known for its romantic atmosphere and spectacular sunsets.`,
     rating: 4.5,
     reviews: 156,
     amenities: [
@@ -1540,19 +1114,18 @@ export const hotels: Hotel[] = [
     location: {
       island: 'Sifnos',
       area: 'Kamares',
-      address: 'Kamares Bay',
       coordinates: {
         latitude: 36.9945,
         longitude: 24.6734
       }
     },
-    description: `Contemporary hotel set in beautiful gardens with views of Kamares Bay. Features stylish suites, pool with sun terrace, and modern amenities while maintaining traditional Cycladic charm.`,
     category: HotelCategory.Boutique,
     priceRange: {
       min: 200,
       max: 600,
       currency: 'EUR'
     },
+    description: `Contemporary hotel set in beautiful gardens with views of Kamares Bay. Features stylish suites, pool with sun terrace, and modern amenities while maintaining traditional Cycladic charm.`,
     rating: 4.5,
     reviews: 156,
     amenities: [
@@ -1593,85 +1166,24 @@ export const hotels: Hotel[] = [
     ]
   },
   {
-    id: 'myconian-villa-collection',
-    name: 'Myconian Villa Collection',
-    slug: 'myconian-villa-collection-mykonos',
-    location: {
-      island: 'Mykonos',
-      area: 'Elia Beach',
-      address: 'Elia Beach',
-      coordinates: {
-        latitude: 37.4246,
-        longitude: 25.3912
-      }
-    },
-    description: `Ultra-luxury villa resort overlooking Elia Beach. Features private pools, personalized service, and exclusive amenities. Each villa offers sophisticated design, stunning sea views, and ultimate privacy.`,
-    category: HotelCategory.Luxury,
-    priceRange: {
-      min: 800,
-      max: 3000,
-      currency: 'EUR'
-    },
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Private Pools',
-      'Butler Service',
-      'Gourmet Restaurant',
-      'Thalasso Spa',
-      'Private Beach Area',
-      'Helipad',
-      'Wine Cellar',
-      'Yacht Services'
-    ],
-    images: [
-      '/images/hotels/myconian-villa-collection/exterior.jpg',
-      '/images/hotels/myconian-villa-collection/pool.jpg',
-      '/images/hotels/myconian-villa-collection/villa.jpg',
-      '/images/hotels/myconian-villa-collection/restaurant.jpg'
-    ],
-    features: [],
-    rooms: [
-      {
-        id: 'mvc-001',
-        type: 'Deluxe Villa',
-        description: 'Luxurious villa with private pool and stunning sea views.',
-        price: 1200,
-        image: '/images/rooms/myconian-villa-collection/deluxe-villa-1.jpg',
-        maxOccupancy: 4,
-        bedType: 'King',
-        size: 80,
-        amenities: [
-          'Private Pool',
-          'Sea View',
-          'Private Terrace',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
     id: 'beach-house',
     name: 'Beach House Antiparos',
     slug: 'beach-house-antiparos',
     location: {
       island: 'Antiparos',
       area: 'Soros Beach',
-      address: 'Soros Beach',
       coordinates: {
         latitude: 37.0297,
         longitude: 25.0584
       }
     },
-    description: `Boutique beachfront hotel offering laid-back luxury and direct access to Soros Beach. Features boho-chic design, beachfront restaurant, and intimate atmosphere. Perfect for those seeking a sophisticated yet relaxed island experience.`,
     category: HotelCategory.Boutique,
     priceRange: {
       min: 300,
       max: 800,
       currency: 'EUR'
     },
+    description: `Boutique beachfront hotel offering laid-back luxury and direct access to Soros Beach. Features boho-chic design, beachfront restaurant, and intimate atmosphere. Perfect for those seeking a sophisticated yet relaxed island experience.`,
     rating: 4.5,
     reviews: 156,
     amenities: [
@@ -1709,267 +1221,6 @@ export const hotels: Hotel[] = [
           'Air Conditioning'
         ]
       }
-    ]
-  },
-  {
-    id: 'grace-santorini',
-    name: 'Grace Santorini',
-    slug: 'grace-santorini-santorini',
-    location: {
-      island: 'Santorini',
-      area: 'Imerovigli',
-      address: 'Imerovigli Caldera',
-      coordinates: {
-        latitude: 36.4618,
-        longitude: 25.4262
-      }
-    },
-    description: `Iconic luxury hotel perched on Santorini's caldera cliff, offering breathtaking views and world-class amenities. Features award-winning restaurant, infinity pool, and champagne lounge. Each room provides stunning sunset views over the Aegean Sea.`,
-    category: HotelCategory.Luxury,
-    priceRange: {
-      min: 1000,
-      max: 3500,
-      currency: 'EUR'
-    },
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Infinity Pool',
-      'Fine Dining Restaurant',
-      'Champagne Lounge',
-      'Spa Treatments',
-      'Fitness Center',
-      'Private Terraces',
-      'Butler Service',
-      'Wine Tasting'
-    ],
-    images: [
-      '/images/hotels/grace-santorini/exterior.jpg',
-      '/images/hotels/grace-santorini/pool.jpg',
-      '/images/hotels/grace-santorini/suite.jpg',
-      '/images/hotels/grace-santorini/restaurant.jpg'
-    ],
-    features: [],
-    rooms: [
-      {
-        id: 'gr-001',
-        type: 'Deluxe Suite',
-        description: 'Elegant suite with modern amenities and stunning views',
-        price: 800,
-        image: '/images/hotels/grace-santorini/suite.jpg',
-        maxOccupancy: 2,
-        bedType: 'King',
-        size: 45,
-        amenities: [
-          'Sea View',
-          'Private Terrace',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'naxian-collection',
-    name: 'Naxian Collection',
-    slug: 'naxian-collection-naxos',
-    location: {
-      island: 'Naxos',
-      area: 'Stelida',
-      address: 'Stelida Hill',
-      coordinates: {
-        latitude: 37.0823,
-        longitude: 25.3428
-      }
-    },
-    description: `Luxury boutique hotel featuring private villas with pools and stunning sea views. Combines minimalist Cycladic architecture with modern luxury. Features organic restaurant using produce from own farm.`,
-    category: HotelCategory.Luxury,
-    priceRange: {
-      min: 450,
-      max: 1500,
-      currency: 'EUR'
-    },
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Private Pools',
-      'Organic Restaurant',
-      'Farm-to-Table',
-      'Spa Services',
-      'Wine Cellar',
-      'Private Beach Area',
-      'Yoga Classes',
-      'Cooking Classes'
-    ],
-    images: [
-      '/images/hotels/naxian-collection/exterior.jpg',
-      '/images/hotels/naxian-collection/pool.jpg',
-      '/images/hotels/naxian-collection/villa.jpg',
-      '/images/hotels/naxian-collection/restaurant.jpg'
-    ],
-    features: [],
-    rooms: [
-      {
-        id: 'nc-001',
-        type: 'Deluxe Villa',
-        description: 'Luxurious villa with private pool and stunning sea views.',
-        price: 500,
-        image: '/images/rooms/naxian-collection/deluxe-villa-1.jpg',
-        maxOccupancy: 3,
-        bedType: 'King',
-        size: 60,
-        amenities: [
-          'Private Pool',
-          'Sea View',
-          'Private Terrace',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'absolute-bliss',
-    name: 'Absolute Bliss',
-    slug: 'absolute-bliss-santorini',
-    location: {
-      island: 'Santorini',
-      area: 'Imerovigli',
-      address: 'Imerovigli Caldera',
-      coordinates: {
-        latitude: 36.4618,
-        longitude: 25.4262
-      }
-    },
-    description: `Romantic boutique hotel perched on Santorini's caldera cliff. Features cave suites with private jacuzzis, panoramic volcano views, and personalized service. Perfect for honeymoons and special occasions.`,
-    category: HotelCategory.Boutique,
-    priceRange: {
-      min: 500,
-      max: 1500,
-      currency: 'EUR'
-    },
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Private Jacuzzis',
-      'Caldera Views',
-      'Gourmet Restaurant',
-      'Wine Tasting',
-      'Spa Services',
-      'Infinity Pool',
-      'Butler Service',
-      'Sunset Terrace'
-    ],
-    images: [
-      '/images/hotels/absolute-bliss/exterior.jpg',
-      '/images/hotels/absolute-bliss/suite.jpg',
-      '/images/hotels/absolute-bliss/pool.jpg',
-      '/images/hotels/absolute-bliss/restaurant.jpg'
-    ],
-    features: [],
-    rooms: [
-      {
-        id: 'ab-001',
-        type: 'Deluxe Suite',
-        description: 'Elegant suite with modern amenities and stunning caldera views.',
-        price: 600,
-        image: '/images/rooms/absolute-bliss/deluxe-suite-1.jpg',
-        maxOccupancy: 2,
-        bedType: 'King',
-        size: 45,
-        amenities: [
-          'Caldera View',
-          'Private Terrace',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'naxos-resort',
-    name: 'Naxos Resort',
-    slug: 'naxos-resort-naxos',
-    location: {
-      island: 'Naxos',
-      area: 'St. George Beach',
-      address: 'St. George Beach',
-      coordinates: {
-        latitude: 37.0741,
-        longitude: 25.3428
-      }
-    },
-    description: 'A beachfront resort offering comfortable accommodations and excellent amenities in the heart of St. George Beach, Naxos.',
-    category: HotelCategory.Resort,
-    rating: 4.5,
-    reviews: 156,
-    priceRange: {
-      min: 150,
-      max: 400,
-      currency: 'EUR'
-    },
-    features: [
-      'WiFi',
-      'Pool',
-      'Restaurant',
-      'Beach Access',
-      'Room Service'
-    ],
-    rooms: [
-      {
-        id: 'standard-double',
-        type: 'Standard Double Room',
-        description: 'Comfortable room with modern amenities and garden view',
-        price: 150,
-        image: '/images/hotels/naxos-resort/rooms/standard-double-1.jpg',
-        maxOccupancy: 2,
-        bedType: 'Double',
-        size: 20,
-        amenities: [
-          'Air Conditioning',
-          'WiFi',
-          'TV',
-          'Mini Fridge',
-          'Private Bathroom'
-        ]
-      },
-      {
-        id: 'sea-view-suite',
-        type: 'Sea View Suite',
-        description: 'Luxurious suite with panoramic sea views.',
-        price: 300,
-        image: '/images/hotels/naxos-resort/rooms/sea-view-suite-1.jpg',
-        maxOccupancy: 4,
-        bedType: 'King',
-        size: 50,
-        amenities: [
-          'Air Conditioning',
-          'WiFi',
-          'TV',
-          'Mini Bar',
-          'Private Balcony',
-          'Separate Living Area'
-        ]
-      }
-    ],
-    images: [
-      '/images/hotels/naxos-resort/main.jpg',
-      '/images/hotels/naxos-resort/pool.jpg',
-      '/images/hotels/naxos-resort/beach.jpg',
-      '/images/hotels/naxos-resort/restaurant.jpg',
-      '/images/hotels/naxos-resort/lobby.jpg'
-    ],
-    amenities: [
-      'WiFi',
-      'Swimming Pool',
-      'Restaurant',
-      'Beach Access',
-      'Room Service',
-      'Parking',
-      'Air Conditioning'
     ]
   }
 ];

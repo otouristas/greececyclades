@@ -1,18 +1,14 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Sun } from 'lucide-react';
 import { Island } from '../../types';
-import { getIslandSlug } from '../../utils/slugify';
 
 interface IslandCardProps {
   island: Island;
 }
 
 export default function IslandCard({ island }: IslandCardProps) {
-  const slug = getIslandSlug(island.name);
-  
   return (
-    <Link to={`/islands/${slug}`} className="block group">
+    <Link to={`/islands/${island.slug}`} className="block group">
       <div className="bg-white rounded-lg shadow-sm overflow-hidden hover:shadow-md transition-all duration-300">
         <div className="relative aspect-[16/9]">
           <img

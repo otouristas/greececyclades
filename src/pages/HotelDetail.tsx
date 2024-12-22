@@ -1,14 +1,12 @@
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
 import { useHotelStore } from '../store/hotelStore';
-import { generateHotelSEO } from '../utils/seo';
 import SEO from '../components/SEO';
 import Calendar from 'react-calendar';
 import 'react-calendar/dist/Calendar.css';
 import { format } from 'date-fns';
 import { HotelRoom } from '../types/hotel';
 import { MapPin, Star, Users, Wifi, Waves, UtensilsCrossed, Coffee, Car } from 'lucide-react';
-import Breadcrumbs from '../components/Breadcrumbs';
 
 type DateRange = [Date | null, Date | null];
 
@@ -82,19 +80,6 @@ export default function HotelDetail() {
         description={`Book your stay at ${selectedHotel.name} in ${selectedHotel.location.area}. ${selectedHotel.description.slice(0, 100)}...`}
       />
       
-      {/* Breadcrumbs */}
-      <div className="bg-gray-50 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Breadcrumbs
-            items={[
-              { label: 'Hotels', path: '/hotels' },
-              { label: selectedHotel.location.area, path: `/hotels?location=${selectedHotel.location.area}` },
-              { label: selectedHotel.name, path: `/hotels/${slug}` }
-            ]}
-          />
-        </div>
-      </div>
-
       {/* Image Gallery */}
       <div className="relative h-[70vh] bg-gray-900">
         <div className="absolute inset-0">

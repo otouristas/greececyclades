@@ -23,7 +23,9 @@ const mockIslands: Island[] = [
       summer: 'Hot and sunny with temperatures around 30°C',
       winter: 'Mild with occasional rain, around 15°C',
       spring: 'Pleasant and mild, perfect for outdoor activities',
-      autumn: 'Warm and sunny with occasional showers'
+      autumn: 'Warm and sunny with occasional showers',
+      temp: 0,
+      condition: ''
     },
     activities: [
       'swimming',
@@ -50,7 +52,8 @@ const mockIslands: Island[] = [
       months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
       reason: 'May to October - Perfect weather for beaches and sightseeing with fewer crowds in shoulder seasons'
     },
-    idealFor: ['Families', 'History Buffs', 'Beach Lovers', 'Hikers']
+    idealFor: ['Families', 'History Buffs', 'Beach Lovers', 'Hikers'],
+    ports: []
   },
   {
     id: '2',
@@ -67,7 +70,9 @@ const mockIslands: Island[] = [
       summer: 'Hot and dry with temperatures around 28°C',
       winter: 'Mild Mediterranean climate around 15°C',
       spring: 'Pleasant temperatures perfect for sightseeing',
-      autumn: 'Warm with occasional winds'
+      autumn: 'Warm with occasional winds',
+      temp: 0,
+      condition: ''
     },
     activities: [
       'sunset-watching',
@@ -93,7 +98,8 @@ const mockIslands: Island[] = [
       months: [AvailableMonth.APRIL, AvailableMonth.MAY, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
       reason: 'April to October - Ideal weather with fewer crowds in spring and fall'
     },
-    idealFor: ['Couples', 'Photographers', 'Wine Lovers', 'Luxury Travelers']
+    idealFor: ['Couples', 'Photographers', 'Wine Lovers', 'Luxury Travelers'],
+    ports: []
   },
   {
     id: '3',

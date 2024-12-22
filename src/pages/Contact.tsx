@@ -26,7 +26,7 @@ export default function Contact() {
     setSubmitStatus('idle');
 
     try {
-      const response = await fetch('https://formsubmit.co/ajax/help@greececyclades.com', {
+      const response = await fetch('https://formsubmit.co/ajax/greececycladesgr@gmail.com', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -97,14 +97,9 @@ export default function Contact() {
               </div>
 
               <div className="space-y-6">
-                <div className="flex items-center gap-4">
-                  <div className="w-12 h-12 bg-blue-100 rounded-full flex items-center justify-center">
-                    <Mail className="h-6 w-6 text-blue-600" />
-                  </div>
-                  <div>
-                    <h3 className="font-medium text-gray-900">Email</h3>
-                    <p className="text-gray-600">help@greececyclades.com</p>
-                  </div>
+                <div className="flex items-center space-x-4 text-gray-600">
+                  <Mail className="h-6 w-6" />
+                  <span>greececycladesgr@gmail.com</span>
                 </div>
 
                 <div className="flex items-center gap-4">

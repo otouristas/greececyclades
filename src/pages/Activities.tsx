@@ -7,6 +7,8 @@ import { generateActivitiesSEO } from '../utils/seo';
 import { SITE_TAGLINE } from '../constants/seo';
 import ActivityCard from '../components/activities/ActivityCard';
 import Breadcrumbs from '../components/Breadcrumbs';
+import { Waves } from 'lucide-react';
+import { MapPin } from 'lucide-react';
 
 interface CategoryOption {
   id: ActivityCategory | 'all';
@@ -38,8 +40,8 @@ export default function Activities() {
     <div className="min-h-screen bg-gray-50">
       <SEO 
         title={`Best Activities in Cyclades ${SITE_TAGLINE}`}
-        description="Explore exciting activities and experiences across the Cyclades islands. From water sports to cultural tours, find the perfect activities for your Greek vacation."
-        ogImage="/images/activities-hero.jpg"
+        description="Discover amazing activities and experiences in the Cyclades islands. From water sports to cultural tours, find your perfect island adventure."
+        keywords="cyclades activities, greek island activities, water sports, cultural tours, island adventures"
       />
       
       {/* Breadcrumbs */}
@@ -54,24 +56,83 @@ export default function Activities() {
       </div>
 
       {/* Hero Section */}
-      <div className="relative bg-blue-600 h-[40vh] flex items-center justify-center">
-        <div className="absolute inset-0 overflow-hidden">
+      <section className="relative bg-gradient-to-b from-blue-950 via-blue-900 to-blue-800">
+        {/* Background Image */}
+        <div className="absolute inset-0">
           <img
-            src="/images/activities/activities-hero.jpg"
-            alt="Cyclades Activities"
-            className="w-full h-full object-cover"
+            src="/images/activities/hero.jpg"
+            alt="Activities in Cyclades"
+            className="w-full h-full object-cover brightness-50"
           />
-          <div className="absolute inset-0 bg-black opacity-40"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-blue-950/90 via-blue-900/80 to-blue-800/70" />
         </div>
-        <div className="relative z-10 text-center px-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-            Discover Cyclades Activities
-          </h1>
-          <p className="text-xl text-white max-w-2xl mx-auto">
-            Experience the best of Greek island life with our curated selection of activities
-          </p>
+
+        {/* Content Container */}
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="pt-24 lg:pt-32 pb-24 lg:pb-32">
+            <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
+              {/* Left Column - Text (30%) */}
+              <div className="w-full lg:w-[30%] text-center lg:text-left space-y-4 md:space-y-6">
+                <h1 className="text-3xl md:text-4xl lg:text-5xl xl:text-6xl font-bold text-white">
+                  Island Activities
+                </h1>
+                <p className="text-base md:text-lg text-blue-100/90 leading-relaxed">
+                  Discover unforgettable experiences in the Cyclades. From thrilling water sports to cultural tours, find your perfect island adventure.
+                </p>
+                <div className="flex flex-col sm:flex-row gap-4 items-center justify-center lg:justify-start text-sm">
+                  <div className="flex items-center gap-2 text-blue-100/80">
+                    <Waves className="w-5 h-5 text-blue-400" />
+                    <span>Water Sports</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-blue-100/80">
+                    <MapPin className="w-5 h-5 text-blue-400" />
+                    <span>Guided Tours</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Right Column - Search Form (70%) */}
+              <div className="w-full lg:w-[70%] mt-8 lg:mt-0">
+                <div className="bg-white/[0.08] backdrop-blur-lg rounded-2xl p-8 border border-white/10">
+                  <div className="space-y-6">
+                    {/* Search Bar */}
+                    <div className="relative">
+                      <input
+                        type="text"
+                        placeholder="Search activities..."
+                        value={searchQuery}
+                        onChange={(e) => setSearchQuery(e.target.value)}
+                        className="w-full px-6 py-5 pl-14 bg-white/[0.06] rounded-2xl border border-white/10 text-white placeholder-blue-200/50 focus:outline-none focus:ring-2 focus:ring-blue-400/30 transition-shadow text-lg"
+                      />
+                      <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 text-blue-200/50 w-6 h-6" />
+                    </div>
+
+                    {/* Category Pills */}
+                    <div>
+                      <h3 className="text-blue-200/70 text-sm font-medium mb-4 uppercase tracking-wider">Filter by Category</h3>
+                      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
+                        {categories.map((category) => (
+                          <button
+                            key={category.id}
+                            onClick={() => setSelectedCategory(category.id as ActivityCategory | 'all')}
+                            className={`px-5 py-4 rounded-xl text-sm font-medium transition-all duration-300 ${
+                              selectedCategory === category.id
+                                ? 'bg-blue-500/20 text-blue-200 border border-blue-400/30'
+                                : 'bg-white/[0.06] text-blue-100/70 border border-white/10 hover:bg-white/[0.1]'
+                            }`}
+                          >
+                            {category.name}
+                          </button>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
 
       {/* Filters and Search */}
       <div className="max-w-7xl mx-auto px-4 py-8">

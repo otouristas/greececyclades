@@ -1,13 +1,13 @@
+/** @jsxImportSource react */
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 import { 
-  Sparkles, 
+  Ship, 
   Calendar, 
+  MapPin, 
   Sun, 
-  Waves, 
-  Compass,
-  MapPin
+  Compass
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import StepIndicator from '../components/StepIndicator';
@@ -16,7 +16,9 @@ import IslandCard from '../components/IslandCard';
 import { generateTripSuggestions } from '../utils/ai';
 import { useTripStore } from '../store/tripStore';
 import { useAuthStore } from '../store/authStore';
-import { TripPreferences, AvailableMonth, Island, IslandVibe } from '../types/island';
+import { TripPreferences } from '../types/islands';
+import { AvailableMonth, IslandVibe } from '../types/island';
+import { Island } from '../types/island';
 import { islands, months, allVibes, paces } from '../data/islandsData';
 import clsx from 'clsx';
 
@@ -44,34 +46,41 @@ export default function CycladesTripPlanner() {
       
       // Filter by month
       recommendedIslands = recommendedIslands.filter(
-        island => island.bestMonths.includes(preferences.month)
+        island => island.bestTime?.months.includes(preferences.month)
       );
 
-      // Filter by vibes
+      // Filter by vibes if specified
       if (preferences.vibes.length > 0) {
-        recommendedIslands = recommendedIslands.filter(
-          island => preferences.vibes.some(vibe => island.vibes.includes(vibe))
-        );
+        recommendedIslands = recommendedIslands.filter(island => {
+          // Check if island has all selected vibes
+          return preferences.vibes.every(vibe => 
+            island.idealFor?.includes(vibe)
+          );
+        });
+
+        // Sort islands by how many matching vibes they have
+        recommendedIslands.sort((a, b) => {
+          const aMatches = preferences.vibes.filter(vibe => 
+            a.idealFor?.includes(vibe)
+          ).length;
+          const bMatches = preferences.vibes.filter(vibe => 
+            b.idealFor?.includes(vibe)
+          ).length;
+          return bMatches - aMatches;
+        });
       }
 
-      // Sort islands by best match
-      recommendedIslands.sort((a, b) => {
-        const aVibesMatch = preferences.vibes.filter(vibe => a.vibes.includes(vibe)).length;
-        const bVibesMatch = preferences.vibes.filter(vibe => b.vibes.includes(vibe)).length;
-        return bVibesMatch - aVibesMatch;
-      });
-
-      // Adjust number of islands based on duration and pace
-      let totalIslands = Math.floor(preferences.duration / 3);
-      if (preferences.pace === 'relaxed') totalIslands = Math.max(2, totalIslands - 1);
-      if (preferences.pace === 'active') totalIslands = Math.min(islands.length, totalIslands + 1);
-
-      const selectedIslands = recommendedIslands.slice(0, totalIslands);
-      setGeneratedPlan(selectedIslands);
+      setGeneratedPlan(recommendedIslands.slice(0, 3));
 
       // Generate AI suggestions
       const suggestions = await generateTripSuggestions({
-        islands: selectedIslands,
+        islands: recommendedIslands.slice(0, 3).map(island => ({
+          name: island.name,
+          activities: island.activities?.map(activity => activity) || [],
+          description: island.description || '',
+          mustSee: island.highlights || [],
+          vibes: island.idealFor || []
+        })),
         duration: preferences.duration,
         month: preferences.month,
         vibes: preferences.vibes,
@@ -88,16 +97,24 @@ export default function CycladesTripPlanner() {
   };
 
   const handleSaveTrip = () => {
-    addTrip({
+    if (!user?.uid) {
+      // Handle the case where user is not logged in
+      // You might want to show a login prompt or error message
+      return;
+    }
+
+    const tripPlan = {
       islands: generatedPlan,
       duration: preferences.duration,
       month: preferences.month,
       vibes: preferences.vibes,
       pace: preferences.pace,
       aiSuggestions,
-      userId: user?.uid,
+      userId: user.uid,
       createdAt: new Date()
-    });
+    };
+    
+    addTrip(tripPlan);
     navigate('/my-trips');
   };
 
@@ -138,7 +155,7 @@ export default function CycladesTripPlanner() {
         jsonLD={jsonLD}
       />
       
-      <div className="w-full px-4 py-8">
+      <div className="w-full px-4 pt-24 lg:pt-32 pb-8">
         <div className="max-w-7xl mx-auto">
           <motion.div 
             initial={{ opacity: 0 }} 
@@ -146,7 +163,7 @@ export default function CycladesTripPlanner() {
             className="text-center mb-8"
           >
             <h1 className="text-4xl font-bold text-gray-900 mb-2 flex items-center justify-center gap-2">
-              <Sparkles className="w-8 h-8 text-blue-500" />
+              <Ship className="w-8 h-8 text-blue-500" />
               Magic Trip Planner
             </h1>
             <p className="text-gray-600">Let's create your perfect Cyclades island-hopping adventure</p>
@@ -155,7 +172,7 @@ export default function CycladesTripPlanner() {
           <StepIndicator currentStep={step} steps={[
             { icon: Calendar, label: 'Duration' },
             { icon: Sun, label: 'Month' },
-            { icon: Waves, label: 'Vibes' },
+            { icon: Ship, label: 'Vibes' },
             { icon: Compass, label: 'Plan' }
           ]} />
 
@@ -227,7 +244,7 @@ export default function CycladesTripPlanner() {
               <StepCard
                 title="Choose Your Vibes"
                 description="What kind of experience are you looking for?"
-                icon={Sparkles}
+                icon={Ship}
                 step={3}
                 currentStep={step}
                 onClick={() => setStep(3)}
@@ -355,13 +372,13 @@ export default function CycladesTripPlanner() {
                       <StepCard
                         title="Touristas AI Suggestions"
                         description="Your personal Greek islands travel expert"
-                        icon={Sparkles}
+                        icon={Ship}
                         step={4}
                         currentStep={step}
                       >
                         <div className="flex items-start gap-4 p-4 bg-blue-50 rounded-lg border border-blue-200">
                           <div className="w-10 h-10 rounded-full bg-blue-500 flex items-center justify-center flex-shrink-0">
-                            <Sparkles className="w-6 h-6 text-white" />
+                            <Ship className="w-6 h-6 text-white" />
                           </div>
                           <div className="space-y-2">
                             <h3 className="font-medium text-blue-900">Touristas AI</h3>

@@ -1,20 +1,24 @@
 import { useEffect } from 'react';
-import { SEOProps } from '../types/seo';
+import { Helmet } from 'react-helmet-async';
+import type { SEOProps } from '../types/seo';
 
-export default function SEO({ 
-  title, 
-  description, 
+const SITE_URL = 'https://greececyclades.com';
+
+export default function SEO({
+  title,
+  description,
   keywords,
   ogImage,
   ogType = 'website',
   canonicalUrl,
   article,
-  structuredData
+  structuredData,
+  jsonLD
 }: SEOProps) {
   useEffect(() => {
     // Update title and meta tags
     document.title = title;
-    
+
     // Update meta description
     let metaDescription = document.querySelector('meta[name="description"]');
     if (!metaDescription) {
@@ -72,6 +76,15 @@ export default function SEO({
     }
     ogTypeTag.setAttribute('content', ogType);
 
+    // Update OG URL
+    let ogUrlTag = document.querySelector('meta[property="og:url"]');
+    if (!ogUrlTag) {
+      ogUrlTag = document.createElement('meta');
+      ogUrlTag.setAttribute('property', 'og:url');
+      document.head.appendChild(ogUrlTag);
+    }
+    ogUrlTag.setAttribute('content', canonicalUrl || `${SITE_URL}${window.location.pathname}`);
+
     // Update canonical URL if provided
     if (canonicalUrl) {
       let canonicalLink = document.querySelector('link[rel="canonical"]');
@@ -80,7 +93,15 @@ export default function SEO({
         canonicalLink.setAttribute('rel', 'canonical');
         document.head.appendChild(canonicalLink);
       }
-      canonicalLink.setAttribute('href', canonicalUrl);
+      canonicalLink.setAttribute('href', canonicalUrl || `${SITE_URL}${window.location.pathname}`);
+    } else {
+      let canonicalLink = document.querySelector('link[rel="canonical"]');
+      if (!canonicalLink) {
+        canonicalLink = document.createElement('link');
+        canonicalLink.setAttribute('rel', 'canonical');
+        document.head.appendChild(canonicalLink);
+      }
+      canonicalLink.setAttribute('href', `${SITE_URL}${window.location.pathname}`);
     }
 
     // Update article meta tags if provided
@@ -128,13 +149,23 @@ export default function SEO({
       jsonLdScript.remove();
     }
 
+    // Update jsonLD if provided
+    if (jsonLD) {
+      if (!jsonLdScript) {
+        jsonLdScript = document.createElement('script');
+        jsonLdScript.setAttribute('type', 'application/ld+json');
+        document.head.appendChild(jsonLdScript);
+      }
+      jsonLdScript.textContent = JSON.stringify(jsonLD);
+    }
+
     // Cleanup function
     return () => {
       if (jsonLdScript) {
         jsonLdScript.remove();
       }
     };
-  }, [title, description, keywords, ogImage, ogType, canonicalUrl, article, structuredData]);
+  }, [title, description, keywords, ogImage, ogType, canonicalUrl, article, structuredData, jsonLD]);
 
   return null;
 }

@@ -1,9 +1,9 @@
 import { useLocation } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { FaUsers, FaWifi, FaCoffee, FaWind, FaRegClock, FaShip, FaBolt, FaMapMarkerAlt } from 'react-icons/fa';
+import { FaUsers, FaWifi, FaCoffee, FaWind, FaRegClock, FaShip, FaBolt } from 'react-icons/fa';
 import { ChevronRight } from 'lucide-react';
 import type { FerryRoute } from '../types/ferry';
-import { ferryCompanies } from '../data/ferryCompanies';
+import { ferryCompanies } from '../data/ferryCompanies.ts';
 import SEO from '../components/SEO';
 
 const FerrySearchResults = () => {
@@ -199,10 +199,11 @@ const FerrySearchResults = () => {
               
               <div className={`p-4 sm:p-6 ${isFastest ? 'bg-blue-50/50' : ''}`}>
                 {/* Island Hopping Badge */}
-                {route.isIslandHopping && (
-                  <div className="mb-4 inline-flex items-center gap-2 bg-emerald-100 text-emerald-700 px-3 py-1.5 rounded-full text-sm font-medium">
-                    <FaMapMarkerAlt className="text-emerald-500" />
-                    Island Hopping Route
+                {route.isIslandHopping && Array.isArray(route.intermediateStops) && route.intermediateStops.length > 0 && (
+                  <div className="absolute top-3 right-3">
+                    <span className="px-2 py-1 text-xs font-medium text-white bg-gradient-to-r from-blue-500 to-emerald-500 rounded-full">
+                      Island Hopping
+                    </span>
                   </div>
                 )}
 
@@ -256,20 +257,18 @@ const FerrySearchResults = () => {
                             ${isFastest ? 'bg-blue-500' : 'bg-blue-600'}`}></div>
                           
                           {/* Intermediate Stops */}
-                          {route.intermediateStops && route.intermediateStops.map((stop, index) => {
-                            const percentage = (index + 1) / (route.intermediateStops?.length + 1) * 100;
+                          {route.intermediateStops && Array.isArray(route.intermediateStops) && route.intermediateStops.map((stop, index) => {
+                            const stopsLength = route.intermediateStops?.length || 0;
+                            const percentage = (index + 1) / (stopsLength + 1) * 100;
                             return (
                               <div 
                                 key={stop.port}
-                                className="absolute transform -translate-y-1/2"
-                                style={{ left: `${percentage}%`, top: '50%' }}
+                                className="absolute w-2 h-2 bg-blue-600 rounded-full transform -translate-x-1"
+                                style={{ left: `${percentage}%`, top: '50%', transform: 'translate(-50%, -50%)' }}
                               >
-                                <div className={`w-2 h-2 rounded-full ${isFastest ? 'bg-emerald-500' : 'bg-emerald-600'}`} />
-                                <div className="absolute top-4 -translate-x-1/2 left-1/2 min-w-max">
-                                  <p className="text-xs font-medium text-gray-600">{stop.port}</p>
-                                  <p className="text-xs text-gray-500">
-                                    {stop.arrivalTime} - {stop.departureTime}
-                                  </p>
+                                <div className="absolute left-1/2 top-full mt-2 transform -translate-x-1/2">
+                                  <p className="text-xs text-blue-600 whitespace-nowrap">{stop.port}</p>
+                                  <p className="text-[10px] text-blue-500/80">{stop.arrivalTime}</p>
                                 </div>
                               </div>
                             );
@@ -278,9 +277,9 @@ const FerrySearchResults = () => {
                           <p className={`text-sm font-medium text-center mt-14
                             ${isFastest ? 'text-blue-500' : 'text-blue-600'}`}>
                             {route.duration}
-                            {route.isIslandHopping && (
+                            {route.isIslandHopping && Array.isArray(route.intermediateStops) && route.intermediateStops.length > 0 && (
                               <span className="block text-xs text-emerald-600 mt-0.5">
-                                Includes {route.intermediateStops?.length} stops
+                                Includes {route.intermediateStops.length} stops
                               </span>
                             )}
                           </p>
@@ -294,13 +293,10 @@ const FerrySearchResults = () => {
                         <p className={`text-sm font-medium text-center mt-2
                           ${isFastest ? 'text-blue-500' : 'text-blue-600'}`}>
                           Duration: {route.duration}
-                          {route.isIslandHopping && (
-                            <>
-                              <br />
-                              <span className="text-xs text-emerald-600">
-                                Stops: {route.intermediateStops?.map(stop => stop.port).join(', ')}
-                              </span>
-                            </>
+                          {route.isIslandHopping && Array.isArray(route.intermediateStops) && route.intermediateStops.length > 0 && (
+                            <span className="text-xs text-emerald-600">
+                              Stops: {route.intermediateStops.map(stop => stop.port).join(', ')}
+                            </span>
                           )}
                         </p>
                       </div>
@@ -341,7 +337,7 @@ const FerrySearchResults = () => {
                 </div>
               </div>
             </motion.div>
-          )})}
+          )})} 
         </div>
       </div>
     </div>

@@ -5,7 +5,6 @@ import { useIslandStore } from '../store/islandStore';
 import { useHotelStore } from '../store/hotelStore';
 import { useVehicleStore } from '../store/vehicleStore';
 import SEO from '../components/SEO';
-import Breadcrumbs from '../components/Breadcrumbs';
 import HotelCard from '../components/cards/HotelCard';
 import VehicleCard from '../components/vehicles/VehicleCard';
 import { slugify } from '../utils/slugify';
@@ -21,7 +20,7 @@ export default function IslandDetail() {
   useEffect(() => {
     if (slug && islands.length > 0) {
       const island = islands.find(
-        island => slugify(island.name) === slug
+        island => island.slug === slug
       );
       if (island) {
         setSelectedIsland(island);
@@ -67,7 +66,7 @@ export default function IslandDetail() {
         
         {/* Content overlay */}
         <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-full flex flex-col justify-between py-8 md:py-12">
+          <div className="h-full flex flex-col justify-between pt-24 md:pt-8 pb-8 md:pb-12">
             <div className="flex items-center gap-2 text-white/90">
               <MapPin className="h-4 w-4 md:h-5 md:w-5" />
               <span className="text-sm md:text-base">Cyclades, Greece</span>
@@ -104,18 +103,6 @@ export default function IslandDetail() {
               </div>
             </div>
           </div>
-        </div>
-      </div>
-
-      {/* Breadcrumbs */}
-      <div className="bg-gray-50 border-b">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
-          <Breadcrumbs
-            items={[
-              { label: 'Islands', path: '/islands' },
-              { label: selectedIsland.name, path: `/islands/${slug}` }
-            ]}
-          />
         </div>
       </div>
 
@@ -243,7 +230,7 @@ export default function IslandDetail() {
                 </p>
               </div>
               <Link 
-                to={`/travel-guide/${slugify(selectedIsland.name)}`}
+                to={`/travel-guide/${selectedIsland.slug}`}
                 className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 <BookOpen className="h-5 w-5" />
