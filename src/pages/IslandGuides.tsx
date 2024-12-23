@@ -33,7 +33,7 @@ export default function IslandGuides() {
           <div className="absolute inset-0">
             <div className="relative h-full w-full">
               <img
-                src="/images/santorini-hero.jpg"
+                src="/images/guides-hero.jpg"
                 alt="Cyclades Islands"
                 className="w-full h-full object-cover"
               />
@@ -56,7 +56,7 @@ export default function IslandGuides() {
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-8 w-full">
                 <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">
                   <Map className="h-6 w-6 text-blue-400 mb-2 mx-auto" />
-                  <div className="text-white font-medium">13 Islands</div>
+                  <div className="text-white font-medium">23 Islands</div>
                   <div className="text-sm text-gray-300">To Explore</div>
                 </div>
                 <div className="bg-white/10 backdrop-blur-sm p-4 rounded-lg">

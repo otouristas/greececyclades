@@ -1,7 +1,6 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { MapPin, Sun, Plane, Ship, Calendar, Users, ArrowRight, BookOpen } from 'lucide-react';
-import { useIslandStore } from '../store/islandStore';
 import { useHotelStore } from '../store/hotelStore';
 import { useVehicleStore } from '../store/vehicleStore';
 import SEO from '../components/SEO';
@@ -9,40 +8,50 @@ import HotelCard from '../components/cards/HotelCard';
 import VehicleCard from '../components/vehicles/VehicleCard';
 import { slugify } from '../utils/slugify';
 import { SITE_TAGLINE } from '../constants/seo';
+import { cyclades } from '../data/islandsData';
+import type { Island } from '../types/island';
 
 export default function IslandDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
-  const { islands, selectedIsland, setSelectedIsland } = useIslandStore();
+  const [selectedIsland, setSelectedIsland] = useState<Partial<Island> | null>(null);
   const { hotels, fetchHotelsByIsland } = useHotelStore();
   const { vehicles } = useVehicleStore();
 
   useEffect(() => {
-    if (slug && islands.length > 0) {
-      const island = islands.find(
-        island => island.slug === slug
-      );
+    console.log('IslandDetail - Current slug:', slug);
+    console.log('IslandDetail - Available islands:', cyclades);
+    
+    if (slug) {
+      const island = cyclades.find(island => island.slug === slug);
+      console.log('IslandDetail - Found island:', island);
+      
       if (island) {
         setSelectedIsland(island);
-        // Fetch hotels for this specific island
-        fetchHotelsByIsland(island.name);
+        fetchHotelsByIsland(island.name || '');
       } else {
+        console.log('IslandDetail - Island not found, navigating to /islands');
         navigate('/islands');
       }
     }
-  }, [slug, islands, navigate, setSelectedIsland, fetchHotelsByIsland]);
+  }, [slug, navigate, fetchHotelsByIsland]);
 
-  if (!selectedIsland) return null;
+  if (!selectedIsland) {
+    console.log('IslandDetail - No selected island, returning null');
+    return null;
+  }
 
   // Filter vehicles for this specific island
   const islandVehicles = vehicles.filter(vehicle => 
     vehicle.location === 'All Locations' || 
-    vehicle.location.toLowerCase().includes(selectedIsland.name.toLowerCase())
+    (selectedIsland.name && vehicle.location.toLowerCase().includes(selectedIsland.name.toLowerCase()))
   );
 
   // Get only the first 3 hotels and vehicles for preview
   const previewHotels = hotels.slice(0, 3);
   const previewVehicles = islandVehicles.slice(0, 3);
+
+  console.log('IslandDetail - Rendering with selectedIsland:', selectedIsland);
 
   return (
     <>
@@ -57,7 +66,7 @@ export default function IslandDetail() {
         <div 
           className="absolute inset-0 bg-cover bg-center transform scale-110 transition-transform duration-1000"
           style={{
-            backgroundImage: `url("${selectedIsland.heroImage}")`,
+            backgroundImage: `url("${selectedIsland.heroImage || selectedIsland.image}")`,
             transform: 'translateZ(0)',
           }}
         >
@@ -83,17 +92,17 @@ export default function IslandDetail() {
                 <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 md:p-4 text-white">
                   <Calendar className="h-4 w-4 md:h-5 md:w-5 mb-1.5 md:mb-2" />
                   <p className="text-xs md:text-sm font-medium">Best Time</p>
-                  <p className="text-[10px] md:text-xs opacity-80">{selectedIsland.bestTime.months.join(', ')}</p>
+                  <p className="text-[10px] md:text-xs opacity-80">{selectedIsland.bestTime?.months.join(', ')}</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 md:p-4 text-white">
                   <Sun className="h-4 w-4 md:h-5 md:w-5 mb-1.5 md:mb-2" />
                   <p className="text-xs md:text-sm font-medium">Weather</p>
-                  <p className="text-[10px] md:text-xs opacity-80">{selectedIsland.weather.summer}</p>
+                  <p className="text-[10px] md:text-xs opacity-80">{selectedIsland.weather?.summer}</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 md:p-4 text-white">
                   <Users className="h-4 w-4 md:h-5 md:w-5 mb-1.5 md:mb-2" />
                   <p className="text-xs md:text-sm font-medium">Perfect For</p>
-                  <p className="text-[10px] md:text-xs opacity-80">{selectedIsland.idealFor.slice(0, 2).join(', ')}</p>
+                  <p className="text-[10px] md:text-xs opacity-80">{selectedIsland.idealFor?.slice(0, 2).join(', ')}</p>
                 </div>
                 <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 md:p-4 text-white">
                   <Ship className="h-4 w-4 md:h-5 md:w-5 mb-1.5 md:mb-2" />
@@ -114,13 +123,15 @@ export default function IslandDetail() {
           <p className="text-gray-600 leading-relaxed">
             {selectedIsland.description}
           </p>
-          <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-            {selectedIsland.highlights.map((highlight, index) => (
-              <div key={index} className="bg-gray-50 rounded-lg p-6">
-                <p className="font-medium text-gray-900">{highlight}</p>
-              </div>
-            ))}
-          </div>
+          {selectedIsland.highlights && selectedIsland.highlights.length > 0 && (
+            <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
+              {selectedIsland.highlights.map((highlight, index) => (
+                <div key={index} className="bg-gray-50 rounded-lg p-6">
+                  <p className="font-medium text-gray-900">{highlight}</p>
+                </div>
+              ))}
+            </div>
+          )}
         </div>
 
         {/* Where to Stay */}
@@ -230,11 +241,11 @@ export default function IslandDetail() {
                 </p>
               </div>
               <Link 
-                to={`/travel-guide/${selectedIsland.slug}`}
+                to={`/guides/${selectedIsland.slug}`}
                 className="inline-flex items-center gap-2 bg-white text-blue-600 px-6 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
               >
                 <BookOpen className="h-5 w-5" />
-                Read Travel Guide
+                Read Guide
               </Link>
             </div>
           </div>
@@ -244,7 +255,7 @@ export default function IslandDetail() {
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">Island Highlights</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {selectedIsland.mustSee.map((highlight, index) => (
+            {selectedIsland.mustSee && selectedIsland.mustSee.length > 0 && selectedIsland.mustSee.map((highlight, index) => (
               <div 
                 key={index}
                 className="relative overflow-hidden rounded-xl aspect-[4/3] group cursor-pointer"

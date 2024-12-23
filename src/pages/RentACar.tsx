@@ -6,7 +6,7 @@ import { useVehicleStore } from '../store/vehicleStore';
 import { Car, Calendar, MapPin, Search, Settings } from 'lucide-react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
-import { islands } from '../data/islandsData';
+import { cyclades } from '../data/islandsData';
 
 export default function RentACar() {
   const { vehicles } = useVehicleStore();
@@ -90,7 +90,7 @@ export default function RentACar() {
                             className="w-full px-6 py-4 pl-12 bg-white/[0.06] rounded-xl border border-white/10 text-white placeholder-blue-200/50 focus:outline-none focus:ring-2 focus:ring-blue-400/30 transition-shadow appearance-none"
                           >
                             <option value="" className="text-gray-900">Select Island</option>
-                            {islands.map((island) => (
+                            {cyclades.map((island) => (
                               <option key={island.id} value={island.name} className="text-gray-900">
                                 {island.name}
                               </option>

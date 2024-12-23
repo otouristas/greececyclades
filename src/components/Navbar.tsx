@@ -265,7 +265,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                                     ))}
                                   </ul>
                                   <Link
-                                    to="/blog"
+                                    to="/guides"
                                     className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
                                     onClick={() => setActiveMegaMenu(null)}
                                   >

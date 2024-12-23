@@ -38,7 +38,7 @@ export default function Home() {
           title="Experience the Magic of"
           titleAccent="Greece"
           description="Discover the enchanting Cyclades islands. From pristine beaches to ancient ruins, plan your perfect Greek island adventure with us."
-          backgroundImage="/images/islands/santorini/hero.jpg"
+          backgroundImage="/public/images/home-hero.jpg"
           featureCards={[
             {
               icon: <Map className="w-full h-full" />,
@@ -215,7 +215,7 @@ export default function Home() {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {[
+              {[/* eslint-disable @typescript-eslint/no-unused-vars */
                 { name: 'Santorini', route: '/guides/santorini' },
                 { name: 'Mykonos', route: '/guides/mykonos' },
                 { name: 'Paros', route: '/guides/paros' }

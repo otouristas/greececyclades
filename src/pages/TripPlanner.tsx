@@ -16,10 +16,9 @@ import IslandCard from '../components/IslandCard';
 import { generateTripSuggestions } from '../utils/ai';
 import { useTripStore } from '../store/tripStore';
 import { useAuthStore } from '../store/authStore';
-import { TripPreferences } from '../types/islands';
+import { TripPreferences, Island as TripIsland } from '../types/islands';
 import { AvailableMonth, IslandVibe } from '../types/island';
-import { Island } from '../types/island';
-import { islands, months, allVibes, paces } from '../data/islandsData';
+import { cyclades } from '../data/islandsData';
 import clsx from 'clsx';
 
 export default function CycladesTripPlanner() {
@@ -29,35 +28,43 @@ export default function CycladesTripPlanner() {
   const [step, setStep] = useState(1);
   const [preferences, setPreferences] = useState<TripPreferences>({
     duration: 7,
-    month: AvailableMonth.MAY,
-    vibes: [] as IslandVibe[],
+    month: AvailableMonth.JUNE,
+    vibes: [],
     pace: 'moderate'
   });
-  const [generatedPlan, setGeneratedPlan] = useState<Island[]>([]);
+  const [generatedPlan, setGeneratedPlan] = useState<TripIsland[]>([]);
   const [aiSuggestions, setAiSuggestions] = useState<string>('');
-  const [isGenerating, setIsGenerating] = useState(false);
 
   const generateTrip = async () => {
-    setIsGenerating(true);
-    
     try {
-      // Filter islands based on preferences
-      let recommendedIslands = [...islands];
+      // Filter islands based on preferences and required fields
+      let recommendedIslands = [...cyclades].filter(island => 
+        island.name && 
+        island.description && 
+        island.shortDescription && 
+        island.activities && 
+        island.highlights && 
+        island.idealFor
+      ) as TripIsland[];
       
       // Filter by month
       recommendedIslands = recommendedIslands.filter(
-        island => island.bestTime?.months.includes(preferences.month)
+        island => island.bestMonths?.includes(preferences.month)
       );
 
-      // Filter by vibes if specified
-      if (preferences.vibes.length > 0) {
-        recommendedIslands = recommendedIslands.filter(island => {
-          // Check if island has all selected vibes
-          return preferences.vibes.every(vibe => 
-            island.idealFor?.includes(vibe)
-          );
-        });
+      // Filter by pace
+      if (preferences.pace === 'relaxed') {
+        recommendedIslands = recommendedIslands.filter(
+          island => island.vibes?.includes(IslandVibe.PEACEFUL)
+        );
+      } else if (preferences.pace === 'active') {
+        recommendedIslands = recommendedIslands.filter(
+          island => island.vibes?.includes(IslandVibe.ADVENTUROUS)
+        );
+      }
 
+      // If vibes are selected
+      if (preferences.vibes.length > 0) {
         // Sort islands by how many matching vibes they have
         recommendedIslands.sort((a, b) => {
           const aMatches = preferences.vibes.filter(vibe => 
@@ -70,15 +77,16 @@ export default function CycladesTripPlanner() {
         });
       }
 
-      setGeneratedPlan(recommendedIslands.slice(0, 3));
+      const topIslands = recommendedIslands.slice(0, 3);
+      setGeneratedPlan(topIslands);
 
       // Generate AI suggestions
       const suggestions = await generateTripSuggestions({
-        islands: recommendedIslands.slice(0, 3).map(island => ({
+        islands: topIslands.map(island => ({
           name: island.name,
-          activities: island.activities?.map(activity => activity) || [],
-          description: island.description || '',
-          mustSee: island.highlights || [],
+          activities: island.activities,
+          description: island.description,
+          mustSee: island.highlights,
           vibes: island.idealFor || []
         })),
         duration: preferences.duration,
@@ -89,10 +97,9 @@ export default function CycladesTripPlanner() {
 
       setAiSuggestions(suggestions);
       setStep(4);
+
     } catch (error) {
       console.error('Error generating trip:', error);
-    } finally {
-      setIsGenerating(false);
     }
   };
 
@@ -215,14 +222,19 @@ export default function CycladesTripPlanner() {
             {step === 2 && (
               <StepCard title="When are you planning to visit?" icon={Sun}>
                 <div className="grid grid-cols-2 md:grid-cols-3 gap-3">
-                  {months.map((month, index) => (
+                  {[
+                    AvailableMonth.JUNE,
+                    AvailableMonth.JULY,
+                    AvailableMonth.AUGUST,
+                    AvailableMonth.SEPTEMBER
+                  ].map((month, index) => (
                     <motion.button
                       key={month}
                       initial={{ opacity: 0, y: 20 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: index * 0.1 }}
                       onClick={() => {
-                        setPreferences({ ...preferences, month: month as AvailableMonth });
+                        setPreferences({ ...preferences, month: month });
                         setStep(3);
                       }}
                       className={clsx(
@@ -254,7 +266,12 @@ export default function CycladesTripPlanner() {
                   <div className="flex-1 space-y-4">
                     <h3 className="text-lg font-medium">Island Vibes:</h3>
                     <div className="grid grid-cols-2 gap-4">
-                      {allVibes.map((vibe, index) => (
+                      {[
+                        IslandVibe.PEACEFUL,
+                        IslandVibe.ADVENTUROUS,
+                        IslandVibe.PARTY,
+                        IslandVibe.FAMILY_FRIENDLY
+                      ].map((vibe, index) => (
                         <motion.button
                           key={vibe}
                           initial={{ opacity: 0, y: 20 }}
@@ -283,14 +300,18 @@ export default function CycladesTripPlanner() {
                   <div className="flex-1 space-y-4">
                     <h3 className="text-lg font-medium">Travel Pace:</h3>
                     <div className="grid grid-cols-1 gap-4">
-                      {paces.map((pace) => (
+                      {[
+                        { value: 'relaxed', label: 'Relaxed', description: 'Take your time and enjoy the views', icon: '' },
+                        { value: 'moderate', label: 'Moderate', description: 'A balance between relaxation and exploration', icon: '' },
+                        { value: 'active', label: 'Active', description: 'Pack your days with adventure and activities', icon: '' }
+                      ].map((pace) => (
                         <motion.button
                           key={pace.value}
                           initial={{ opacity: 0, y: 20 }}
                           animate={{ opacity: 1, y: 0 }}
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          onClick={() => setPreferences({ ...preferences, pace: pace.value as any })}
+                          onClick={() => setPreferences({ ...preferences, pace: pace.value })}
                           className={clsx(
                             'p-4 rounded-lg border-2 transition-all hover:border-blue-300',
                             preferences.pace === pace.value
@@ -318,14 +339,7 @@ export default function CycladesTripPlanner() {
                   disabled={preferences.vibes.length === 0}
                   className="w-full py-3 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors disabled:opacity-50 disabled:cursor-not-allowed mt-8"
                 >
-                  {isGenerating ? (
-                    <div className="flex items-center justify-center gap-2">
-                      <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin" />
-                      Generating...
-                    </div>
-                  ) : (
-                    'Generate My Trip'
-                  )}
+                  Generate My Trip
                 </motion.button>
               </StepCard>
             )}

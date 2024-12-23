@@ -340,3 +340,436 @@ export const naxosContent: GuideContent = {
   beaches: [], // To be filled
   dining: [] // To be filled
 };
+
+export const koufonisiaContent: GuideContent = {
+  introduction: {
+    text1: "Welcome to Koufonisia, a hidden paradise in the Small Cyclades where pristine beaches meet crystal-clear waters.",
+    text2: "This small island complex offers an authentic Greek island experience with its untouched natural beauty, traditional villages, and relaxed atmosphere."
+  },
+  quickLinks: [
+    {
+      iconType: FaUmbrellaBeach,
+      title: "Beaches",
+      description: "Discover the stunning beaches of Koufonisia",
+      link: "#beaches"
+    },
+    {
+      iconType: FaMapMarkedAlt,
+      title: "Villages",
+      description: "Explore the charming Chora and settlements",
+      link: "#villages"
+    },
+    {
+      iconType: FaRoute,
+      title: "Activities",
+      description: "Find the best things to do",
+      link: "#activities"
+    },
+    {
+      iconType: FaUtensils,
+      title: "Dining",
+      description: "Best local tavernas and restaurants",
+      link: "#dining"
+    }
+  ],
+  whenToVisit: [
+    {
+      iconType: FaSun,
+      title: "Peak Season",
+      period: "July - August",
+      bullets: [
+        "Warmest weather with temperatures 25-28°C",
+        "Busiest period with most facilities open",
+        "Perfect for swimming and beach activities",
+        "Higher prices and more crowded"
+      ]
+    },
+    {
+      iconType: FaCameraRetro,
+      title: "Shoulder Season",
+      period: "May - June, September",
+      bullets: [
+        "Pleasant temperatures 20-25°C",
+        "Quieter atmosphere with fewer tourists",
+        "Great for hiking and exploring",
+        "More affordable accommodation"
+      ]
+    }
+  ],
+  villages: [
+    {
+      name: "Chora",
+      description: "The main settlement of Koufonisia, a picturesque village with traditional Cycladic architecture, narrow streets, and charming squares.",
+      imageQuery: "koufonisia-chora",
+      highlights: [
+        "Traditional whitewashed houses",
+        "Local tavernas and cafes",
+        "Panagia Church",
+        "Windmill",
+        "Port area"
+      ]
+    }
+  ],
+  beaches: [
+    {
+      name: "Pori Beach",
+      description: "The most famous beach on the island, known for its golden sand and crystal-clear turquoise waters.",
+      imageQuery: "koufonisia-pori-beach",
+      highlights: [
+        "Fine golden sand",
+        "Natural shade from trees",
+        "Perfect for swimming",
+        "Beach cantina in summer"
+      ]
+    },
+    {
+      name: "Fanos Beach",
+      description: "A beautiful sandy beach on the north side of the island, popular with both locals and visitors.",
+      imageQuery: "koufonisia-fanos-beach",
+      highlights: [
+        "Sandy beach with clear waters",
+        "Good for snorkeling",
+        "Beach bar facilities",
+        "Sunset views"
+      ]
+    },
+    {
+      name: "Italida Beach",
+      description: "A small, secluded beach known for its pristine waters and peaceful atmosphere.",
+      imageQuery: "koufonisia-italida-beach",
+      highlights: [
+        "Secluded location",
+        "Crystal clear waters",
+        "Natural rock formations",
+        "Great for swimming"
+      ]
+    }
+  ],
+  activities: [
+    {
+      title: "Water Activities",
+      items: [
+        "Swimming in crystal-clear waters",
+        "Snorkeling around rocky coastlines",
+        "Beach hopping by boat",
+        "Kayaking along the coast",
+        "Stand-up paddleboarding"
+      ]
+    },
+    {
+      title: "Land Activities",
+      items: [
+        "Hiking coastal paths",
+        "Exploring traditional villages",
+        "Photography walks",
+        "Cycling around the island",
+        "Watching stunning sunsets"
+      ]
+    }
+  ],
+  dining: [
+    {
+      name: "Local Tavernas",
+      description: "Experience authentic Greek cuisine in family-run tavernas serving fresh seafood and local specialties.",
+      recommendations: [
+        "Captain Nikolas - Famous for fresh fish",
+        "Finikas - Traditional Greek dishes",
+        "Kalofeggo - Great sunset views",
+        "To Steki - Local favorite"
+      ]
+    }
+  ]
+};
+
+export const irakliaContent: GuideContent = {
+  introduction: {
+    text1: "Welcome to Iraklia, the smallest of the Small Cyclades and a pristine paradise for nature lovers and peace seekers.",
+    text2: "This tranquil island offers an authentic escape with its untouched landscapes, hiking trails, and crystal-clear waters."
+  },
+  quickLinks: [
+    {
+      iconType: FaUmbrellaBeach,
+      title: "Beaches",
+      description: "Discover secluded beaches and coves",
+      link: "#beaches"
+    },
+    {
+      iconType: FaRoute,
+      title: "Hiking",
+      description: "Explore scenic hiking trails",
+      link: "#activities"
+    },
+    {
+      iconType: FaMapMarkedAlt,
+      title: "Villages",
+      description: "Visit traditional settlements",
+      link: "#villages"
+    },
+    {
+      iconType: FaUtensils,
+      title: "Dining",
+      description: "Local tavernas and cuisine",
+      link: "#dining"
+    }
+  ],
+  whenToVisit: [
+    {
+      iconType: FaSun,
+      title: "Best Season",
+      period: "May - September",
+      bullets: [
+        "Perfect weather for hiking and swimming",
+        "All facilities and tavernas open",
+        "Regular boat connections",
+        "Warm temperatures 25-28°C"
+      ]
+    },
+    {
+      iconType: FaCameraRetro,
+      title: "Quiet Season",
+      period: "April - May, September - October",
+      bullets: [
+        "Ideal for hiking and nature exploration",
+        "Fewer tourists",
+        "Mild temperatures 20-25°C",
+        "More authentic experience"
+      ]
+    }
+  ],
+  villages: [
+    {
+      name: "Agios Georgios",
+      description: "The main village and port of Iraklia, a peaceful settlement with traditional architecture and friendly locals.",
+      imageQuery: "iraklia-agios-georgios",
+      highlights: [
+        "Traditional tavernas",
+        "Mini markets",
+        "Port facilities",
+        "Local life",
+        "Beautiful sunset views"
+      ]
+    },
+    {
+      name: "Panagia",
+      description: "A small inland settlement with authentic Cycladic charm and important religious sites.",
+      imageQuery: "iraklia-panagia",
+      highlights: [
+        "Traditional architecture",
+        "Panagia Church",
+        "Local festivities",
+        "Mountain views"
+      ]
+    }
+  ],
+  beaches: [
+    {
+      name: "Livadi Beach",
+      description: "The main beach of Iraklia, a long stretch of sand with crystal-clear waters and natural shade.",
+      imageQuery: "iraklia-livadi-beach",
+      highlights: [
+        "Sandy beach",
+        "Shallow waters",
+        "Family-friendly",
+        "Easy access",
+        "Natural shade"
+      ]
+    },
+    {
+      name: "Tourkopigado",
+      description: "A unique beach with a freshwater spring, creating an interesting mix of waters.",
+      imageQuery: "iraklia-tourkopigado",
+      highlights: [
+        "Natural spring",
+        "Unique swimming experience",
+        "Scenic location",
+        "Peaceful atmosphere"
+      ]
+    }
+  ],
+  activities: [
+    {
+      title: "Hiking Adventures",
+      items: [
+        "Trail to Cave of Saint John",
+        "Path to Panagia settlement",
+        "Coastal walks to beaches",
+        "Mountain hiking to Papas peak",
+        "Nature photography tours"
+      ]
+    },
+    {
+      title: "Water Activities",
+      items: [
+        "Swimming in crystal waters",
+        "Snorkeling in caves",
+        "Beach exploration",
+        "Boat trips to nearby islands",
+        "Fishing excursions"
+      ]
+    }
+  ],
+  dining: [
+    {
+      name: "Traditional Tavernas",
+      description: "Experience authentic Greek island cuisine in family-run establishments serving fresh local products.",
+      recommendations: [
+        "Akathi - Fresh seafood and local specialties",
+        "Maistrali - Traditional Greek dishes",
+        "To Steki tou Spyrou - Home-cooked meals",
+        "Sunset Taverna - Great views and food"
+      ]
+    }
+  ]
+};
+
+export const schinoussaContent: GuideContent = {
+  introduction: {
+    text1: "Welcome to Schinoussa, a tiny paradise in the Small Cyclades known for its golden beaches and authentic island atmosphere.",
+    text2: "This peaceful island offers visitors a genuine Greek island experience with its pristine beaches, traditional villages, and warm hospitality."
+  },
+  quickLinks: [
+    {
+      iconType: FaUmbrellaBeach,
+      title: "Beaches",
+      description: "Explore pristine beaches and coves",
+      link: "#beaches"
+    },
+    {
+      iconType: FaMapMarkedAlt,
+      title: "Villages",
+      description: "Discover charming settlements",
+      link: "#villages"
+    },
+    {
+      iconType: FaRoute,
+      title: "Activities",
+      description: "Find things to do",
+      link: "#activities"
+    },
+    {
+      iconType: FaUtensils,
+      title: "Dining",
+      description: "Local cuisine and tavernas",
+      link: "#dining"
+    }
+  ],
+  whenToVisit: [
+    {
+      iconType: FaSun,
+      title: "Summer Season",
+      period: "June - September",
+      bullets: [
+        "Perfect beach weather",
+        "All facilities open",
+        "Regular boat connections",
+        "Warm temperatures 25-28°C"
+      ]
+    },
+    {
+      iconType: FaCameraRetro,
+      title: "Spring & Fall",
+      period: "April - May, September - October",
+      bullets: [
+        "Mild temperatures",
+        "Great for hiking",
+        "Fewer tourists",
+        "More authentic experience"
+      ]
+    }
+  ],
+  villages: [
+    {
+      name: "Chora",
+      description: "The main village of Schinoussa, perched on a hill with panoramic views of the Aegean Sea.",
+      imageQuery: "schinoussa-chora",
+      highlights: [
+        "Traditional architecture",
+        "Local cafes and tavernas",
+        "Church of Panagia",
+        "Stunning viewpoints",
+        "Sunset views"
+      ]
+    },
+    {
+      name: "Mersini",
+      description: "The island's port settlement, a picturesque harbor with traditional charm.",
+      imageQuery: "schinoussa-mersini",
+      highlights: [
+        "Natural harbor",
+        "Fishing boats",
+        "Waterfront tavernas",
+        "Beautiful sunsets"
+      ]
+    }
+  ],
+  beaches: [
+    {
+      name: "Tsigouri Beach",
+      description: "The main beach of Schinoussa, featuring golden sand and crystal-clear waters.",
+      imageQuery: "schinoussa-tsigouri-beach",
+      highlights: [
+        "Sandy beach",
+        "Shallow waters",
+        "Beach facilities",
+        "Easy access",
+        "Family-friendly"
+      ]
+    },
+    {
+      name: "Lioliou Beach",
+      description: "A beautiful, secluded beach perfect for those seeking tranquility.",
+      imageQuery: "schinoussa-lioliou-beach",
+      highlights: [
+        "Pristine waters",
+        "Natural shade",
+        "Peaceful atmosphere",
+        "Great for snorkeling"
+      ]
+    },
+    {
+      name: "Psili Ammos Beach",
+      description: "A stunning beach with fine sand and turquoise waters.",
+      imageQuery: "schinoussa-psili-ammos-beach",
+      highlights: [
+        "Fine sand",
+        "Crystal clear waters",
+        "Natural beauty",
+        "Perfect for swimming"
+      ]
+    }
+  ],
+  activities: [
+    {
+      title: "Water Activities",
+      items: [
+        "Swimming in pristine waters",
+        "Snorkeling in clear seas",
+        "Beach hopping",
+        "Boat trips to nearby islands",
+        "Fishing excursions"
+      ]
+    },
+    {
+      title: "Land Activities",
+      items: [
+        "Hiking natural trails",
+        "Village exploration",
+        "Photography walks",
+        "Church visits",
+        "Sunset watching"
+      ]
+    }
+  ],
+  dining: [
+    {
+      name: "Local Tavernas",
+      description: "Experience authentic Greek cuisine and fresh seafood in family-run establishments.",
+      recommendations: [
+        "Deli Restaurant - Creative Greek cuisine",
+        "Nikolas - Fresh fish taverna",
+        "Mersini Restaurant - Waterfront dining",
+        "To Steki - Traditional dishes"
+      ]
+    }
+  ]
+};
