@@ -10,6 +10,7 @@ mapboxgl.accessToken = MAPBOX_TOKEN;
 interface MapIsland extends Omit<Island, 'id'> {
   id: number;
   location: [number, number];
+  bestMonths: AvailableMonth[];
   ferries: {
     destination: string;
     duration: string;
@@ -29,12 +30,10 @@ const islands: MapIsland[] = [
     metaTitle: 'Santorini - Cyclades Island Guide',
     metaDescription: 'Discover the magic of Santorini',
     activities: [],
-    bestMonths: [
-      AvailableMonth.JUNE,
-      AvailableMonth.JULY,
-      AvailableMonth.AUGUST,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [AvailableMonth.JUNE, AvailableMonth.SEPTEMBER],
+      reason: 'Perfect weather and fewer crowds'
+    },
     weather: {
       temp: 25,
       condition: 'Sunny',
@@ -43,6 +42,12 @@ const islands: MapIsland[] = [
       spring: 'Pleasant',
       autumn: 'Warm'
     },
+    bestMonths: [
+      AvailableMonth.JUNE,
+      AvailableMonth.JULY,
+      AvailableMonth.AUGUST,
+      AvailableMonth.SEPTEMBER
+    ],
     ferries: [
       {
         destination: 'Mykonos',
@@ -59,10 +64,6 @@ const islands: MapIsland[] = [
     slug: 'santorini',
     heroImage: '/images/santorini-hero.jpg',
     highlights: ['Stunning sunsets', 'Volcanic beaches', 'White architecture'],
-    bestTime: {
-      months: [AvailableMonth.JUNE, AvailableMonth.SEPTEMBER],
-      reason: 'Perfect weather and fewer crowds'
-    },
     idealFor: ['Couples', 'Photographers', 'Luxury travelers']
   },
   {
@@ -75,12 +76,10 @@ const islands: MapIsland[] = [
     metaTitle: 'Mykonos - Cyclades Island Guide',
     metaDescription: 'Experience the vibrant life of Mykonos',
     activities: [],
-    bestMonths: [
-      AvailableMonth.JUNE,
-      AvailableMonth.JULY,
-      AvailableMonth.AUGUST,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [AvailableMonth.JUNE, AvailableMonth.SEPTEMBER],
+      reason: 'Perfect weather and great party atmosphere'
+    },
     weather: {
       temp: 24,
       condition: 'Clear',
@@ -89,6 +88,12 @@ const islands: MapIsland[] = [
       spring: 'Pleasant',
       autumn: 'Warm'
     },
+    bestMonths: [
+      AvailableMonth.JUNE,
+      AvailableMonth.JULY,
+      AvailableMonth.AUGUST,
+      AvailableMonth.SEPTEMBER
+    ],
     ferries: [
       {
         destination: 'Santorini',
@@ -105,10 +110,6 @@ const islands: MapIsland[] = [
     slug: 'mykonos',
     heroImage: '/images/mykonos-hero.jpg',
     highlights: ['Famous windmills', 'Vibrant nightlife', 'Pristine beaches'],
-    bestTime: {
-      months: [AvailableMonth.JUNE, AvailableMonth.SEPTEMBER],
-      reason: 'Perfect weather and great party atmosphere'
-    },
     idealFor: ['Party lovers', 'Beach enthusiasts', 'Luxury travelers']
   }
 ];
@@ -119,7 +120,7 @@ export default function TestMap() {
   const [fromLocation, setFromLocation] = useState<MapIsland | null>(null);
   const [toLocation, setToLocation] = useState<MapIsland | null>(null);
   const [showRoutes, setShowRoutes] = useState(true);
-  const markersRef = useRef<{ [key: number]: mapboxgl.Marker }>({});
+  const markersRef = useRef<{ [key: number]: mapboxgl.Marker }>( {});
 
   useEffect(() => {
     if (!mapContainer.current) return;

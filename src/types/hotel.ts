@@ -4,6 +4,16 @@ export interface HotelAmenity {
   icon: string;
 }
 
+export interface RoomFeature {
+  name: string;
+  description?: string;
+}
+
+export interface RoomAmenity {
+  name: string;
+  included: boolean;
+}
+
 export interface HotelRoom {
   id: string;
   type: string;
@@ -14,6 +24,7 @@ export interface HotelRoom {
   bedType: string;
   size: number;
   amenities: string[];
+  features: RoomFeature[];
 }
 
 export enum HotelCategory {
@@ -80,10 +91,29 @@ export interface HotelImages {
   gallery: string[];
 }
 
+export interface Review {
+  id: string;
+  userName: string;
+  rating: number;
+  date: string;
+  comment: string;
+  helpful: number;
+}
+
+export interface RatingBreakdown {
+  5: number;
+  4: number;
+  3: number;
+  2: number;
+  1: number;
+}
+
 export interface HotelReview {
   rating: number;
   count: number;
   highlights: string[];
+  breakdown: RatingBreakdown;
+  reviews: Review[];
 }
 
 export interface SeoMetadata {
@@ -110,7 +140,7 @@ export interface Hotel {
   amenities: string[];
   rooms: HotelRoom[];
   rating: number;
-  reviews: number;
+  reviews: HotelReview;
   category: HotelCategory;
   features: HotelFeature[];
   priceRange: {
@@ -118,6 +148,7 @@ export interface Hotel {
     max: number;
     currency: string;
   };
+  logo?: string;  // URL to the hotel's logo image
   seoMeta?: {
     title: string;
     description: string;

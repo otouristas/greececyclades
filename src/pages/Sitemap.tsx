@@ -6,87 +6,159 @@ import { getHotelSlug, getIslandSlug } from '../utils/slugs';
 import { generateSitemapSEO } from '../utils/seo';
 import SEO from '../components/SEO';
 
+interface SitemapSection {
+  title: string;
+  links: Array<{
+    title: string;
+    path: string;
+  }>;
+}
+
+const sitemapData: SitemapSection[] = [
+  {
+    title: "Main Pages",
+    links: [
+      { title: "Home", path: "/" },
+      { title: "About Us", path: "/about" },
+      { title: "Contact", path: "/contact" },
+      { title: "Help Center", path: "/help" },
+    ]
+  },
+  {
+    title: "Travel Guides",
+    links: [
+      { title: "Santorini Guide", path: "/guides/santorini" },
+      { title: "Mykonos Guide", path: "/guides/mykonos" },
+      { title: "Naxos Guide", path: "/guides/naxos" },
+      { title: "Paros Guide", path: "/guides/paros" },
+      { title: "Sifnos Guide", path: "/guides/sifnos" },
+      { title: "Ios Guide", path: "/guides/ios" },
+    ]
+  },
+  {
+    title: "Popular Islands",
+    links: [
+      { title: "Santorini", path: "/islands/santorini" },
+      { title: "Mykonos", path: "/islands/mykonos" },
+      { title: "Naxos", path: "/islands/naxos" },
+      { title: "Paros", path: "/islands/paros" },
+      { title: "Sifnos", path: "/islands/sifnos" },
+      { title: "Ios", path: "/islands/ios" },
+    ]
+  },
+  {
+    title: "Plan Your Trip",
+    links: [
+      { title: "Activities", path: "/activities" },
+      { title: "Hotels", path: "/hotels" },
+      { title: "Ferry Tickets", path: "/ferry-tickets" },
+      { title: "Flight Tickets", path: "/flights" },
+      { title: "Car Rentals", path: "/rent-a-car" },
+      { title: "Taxi Transfers", path: "/transfers" },
+    ]
+  },
+  {
+    title: "Travel Tips & Resources",
+    links: [
+      { title: "Travel Blog", path: "/blog" },
+      { title: "Culinary Experiences", path: "/culinary" },
+      { title: "Trip Planner", path: "/trip-planner" },
+    ]
+  },
+  {
+    title: "User Account",
+    links: [
+      { title: "Sign In", path: "/signin" },
+      { title: "Sign Up", path: "/signup" },
+      { title: "My Profile", path: "/profile" },
+      { title: "My Trips", path: "/my-trips" },
+    ]
+  },
+  {
+    title: "Legal",
+    links: [
+      { title: "Privacy Policy", path: "/privacy" },
+      { title: "Terms of Service", path: "/terms" },
+      { title: "Sitemap", path: "/sitemap" },
+    ]
+  }
+];
+
 const Sitemap: React.FC = () => {
   const { hotels } = useHotelStore();
   const { islands } = useIslandStore();
 
   return (
-    <div className="container mx-auto px-4 py-8">
+    <div className="min-h-screen bg-gray-50 pt-24 pb-16">
       <SEO {...generateSitemapSEO()} />
-      <h1 className="text-3xl font-bold mb-8">Sitemap</h1>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        {/* Header */}
+        <div className="text-center mb-12">
+          <h1 className="text-4xl font-bold text-gray-900 mb-4">Sitemap</h1>
+          <p className="text-lg text-gray-600">
+            Find your way around Greece Cyclades
+          </p>
+        </div>
 
-      <div className="space-y-8">
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Main Navigation</h2>
-          <ul className="list-disc pl-5 space-y-2">
-            <li><Link to="/" className="text-blue-600 hover:underline">Home</Link></li>
-            <li><Link to="/islands" className="text-blue-600 hover:underline">Cyclades Islands</Link></li>
-            <li><Link to="/guides" className="text-blue-600 hover:underline">Travel Guides</Link></li>
-            <li>
-              <Link to="/activities" className="text-blue-600 hover:underline">Activities</Link>
-              <ul className="list-circle pl-5 mt-2 space-y-2">
-                <li><Link to="/activities" className="text-blue-600 hover:underline">All Activities</Link></li>
-                <li><Link to="/culinary" className="text-blue-600 hover:underline">Culinary</Link></li>
+        {/* Sitemap Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          {sitemapData.map((section) => (
+            <div key={section.title} className="bg-white rounded-lg shadow-sm p-6">
+              <h2 className="text-xl font-semibold text-gray-900 mb-4">
+                {section.title}
+              </h2>
+              <ul className="space-y-2">
+                {section.links.map((link) => (
+                  <li key={link.path}>
+                    <Link
+                      to={link.path}
+                      className="text-gray-600 hover:text-blue-600 transition-colors"
+                    >
+                      {link.title}
+                    </Link>
+                  </li>
+                ))}
               </ul>
-            </li>
-            <li><Link to="/hotels" className="text-blue-600 hover:underline">Hotels</Link></li>
-            <li><Link to="/rent-a-car" className="text-blue-600 hover:underline">Rent a Car</Link></li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Additional Pages</h2>
-          <ul className="list-disc pl-5 space-y-2">
-            <li><Link to="/blog" className="text-blue-600 hover:underline">Blog</Link></li>
-            <li><Link to="/contact" className="text-blue-600 hover:underline">Contact</Link></li>
-            <li><Link to="/about" className="text-blue-600 hover:underline">About Us</Link></li>
-            <li><Link to="/list-property" className="text-blue-600 hover:underline">List Your Property</Link></li>
-            <li><Link to="/trip-planner" className="text-blue-600 hover:underline">Trip Planner</Link></li>
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Islands</h2>
-          <ul className="list-disc pl-5 space-y-2">
-            {islands.map(island => (
-              <li key={island.id}>
-                <Link 
-                  to={`/islands/${getIslandSlug(island.name)}`} 
-                  className="text-blue-600 hover:underline"
-                >
-                  {island.name}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Hotels</h2>
-          <ul className="list-disc pl-5 space-y-2">
-            {hotels.map(hotel => (
-              <li key={hotel.id}>
-                <Link 
-                  to={`/hotels/${getHotelSlug(hotel.name, hotel.location.island)}`} 
-                  className="text-blue-600 hover:underline"
-                >
-                  {hotel.name} - {hotel.location.island}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </section>
-
-        <section>
-          <h2 className="text-2xl font-semibold mb-4">Legal</h2>
-          <ul className="list-disc pl-5 space-y-2">
-            <li><Link to="/privacy" className="text-blue-600 hover:underline">Privacy Policy</Link></li>
-            <li><Link to="/terms" className="text-blue-600 hover:underline">Terms of Service</Link></li>
-          </ul>
-        </section>
+            </div>
+          ))}
+          <div key="All Islands" className="bg-white rounded-lg shadow-sm p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              All Islands
+            </h2>
+            <ul className="space-y-2">
+              {islands.map(island => (
+                <li key={island.id}>
+                  <Link 
+                    to={`/islands/${getIslandSlug(island.name)}`} 
+                    className="text-gray-600 hover:text-blue-600 transition-colors"
+                  >
+                    {island.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div key="All Hotels" className="bg-white rounded-lg shadow-sm p-6">
+            <h2 className="text-xl font-semibold text-gray-900 mb-4">
+              All Hotels
+            </h2>
+            <ul className="space-y-2">
+              {hotels.map(hotel => (
+                <li key={hotel.id}>
+                  <Link 
+                    to={`/hotels/${getHotelSlug(hotel.name, hotel.location.island)}`} 
+                    className="text-gray-600 hover:text-blue-600 transition-colors"
+                  >
+                    {hotel.name} - {hotel.location.island}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
-};
+}
 
 export default Sitemap;

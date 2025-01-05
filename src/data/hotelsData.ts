@@ -1,10 +1,11 @@
-import { Hotel, HotelCategory } from '../types/hotel';
+import { Hotel, HotelCategory, HotelFeature } from '../types/hotel';
 
 export const hotels: Hotel[] = [
   {
     id: 'andronis-luxury-suites',
     slug: 'andronis-luxury-suites-santorini',
     name: 'Andronis Luxury Suites',
+    logo: '/images/hotels/andronis/andronis-hotel-logo.png',
     description: 'Carved into the volcanic cliff of Santorini, Andronis Luxury Suites offers breathtaking views of the caldera, luxury accommodations, and world-class service in the picturesque village of Oia.',
     location: {
       island: 'Santorini',
@@ -20,28 +21,72 @@ export const hotels: Hotel[] = [
       max: 750,
       currency: 'EUR'
     },
-    rating: 4.9,
-    reviews: 458,
-    features: [
-      'Infinity Pool',
+    amenities: [
+      'Pool',
       'Spa',
+      'Yoga',
       'Restaurant',
-      'Room Service',
+      'Bar',
       'WiFi',
-      'Airport Transfer'
+      'Airport Transfer',
+      'Beach Access',
+      'Sea View'
     ],
+    rating: 4.9,
+    reviews: {
+      rating: 4.9,
+      count: 458,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 380,
+        4: 60,
+        3: 12,
+        2: 4,
+        1: 2
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
+    features: [
+      'Pool',
+      'Restaurant',
+      'WiFi',
+      'Room Service',
+      'Bar',
+      'Spa'
+    ] as HotelFeature[],
     images: [
       '/images/hotels/andronis/main.jpg',
       '/images/hotels/andronis/room1.jpg',
       '/images/hotels/andronis/room2.jpg'
-    ],
-    amenities: [
-      'Infinity Pool',
-      'Spa',
-      'Restaurant',
-      'Room Service',
-      'WiFi',
-      'Airport Transfer'
     ],
     rooms: [
       {
@@ -57,6 +102,11 @@ export const hotels: Hotel[] = [
           'Balcony',
           'Air Conditioning',
           'Mini Bar'
+        ],
+        features: [
+          { name: 'Caldera View' },
+          { name: 'Private Balcony' },
+          { name: 'Rainfall Shower' }
         ]
       },
       {
@@ -73,6 +123,12 @@ export const hotels: Hotel[] = [
           'Terrace',
           'Living Area',
           'Premium Amenities'
+        ],
+        features: [
+          { name: 'Private Pool' },
+          { name: 'Panoramic View' },
+          { name: 'Separate Living Area' },
+          { name: 'Luxury Bath Amenities' }
         ]
       }
     ]
@@ -102,10 +158,51 @@ export const hotels: Hotel[] = [
       'Wellness Center',
       'Adults Only',
       'Cycladic Design'
-    ],
+    ] as HotelFeature[],
     description: 'A sanctuary of luxury and tranquility carved into Santorini\'s caldera cliffs. Mystique Hotel combines elegant Cycladic architecture with contemporary comfort, offering breathtaking views of the Aegean Sea.',
     rating: 4.9,
-    reviews: 458,
+    reviews: {
+      rating: 4.9,
+      count: 458,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 380,
+        4: 60,
+        3: 12,
+        2: 4,
+        1: 2
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     images: [
       '/images/hotels/mystique/main.jpg',
       '/images/hotels/mystique/exterior.jpg',
@@ -139,6 +236,11 @@ export const hotels: Hotel[] = [
           'Room Service',
           'Bar',
           'Spa'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Terrace' },
+          { name: 'Rainfall Shower' }
         ]
       },
       {
@@ -157,6 +259,12 @@ export const hotels: Hotel[] = [
           'Room Service',
           'Bar',
           'Spa'
+        ],
+        features: [
+          { name: 'Private Pool' },
+          { name: 'Caldera View' },
+          { name: 'Separate Living Area' },
+          { name: 'Luxury Bath Amenities' }
         ]
       }
     ]
@@ -195,10 +303,51 @@ export const hotels: Hotel[] = [
       'Gourmet Restaurant',
       'Private Terraces',
       'Water Sports'
-    ],
+    ] as HotelFeature[],
     description: 'Summer Senses Luxury Resort offers a serene escape on the stunning island of Paros. This elegant resort combines modern luxury with traditional Cycladic design, featuring spacious rooms, world-class dining, and exceptional wellness facilities.',
     rating: 4.7,
-    reviews: 312,
+    reviews: {
+      rating: 4.7,
+      count: 312,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 250,
+        4: 50,
+        3: 10,
+        2: 2,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     images: [
       '/images/hotels/summer-senses/main.jpg',
       '/images/hotels/summer-senses/gallery-1.jpg',
@@ -238,6 +387,11 @@ export const hotels: Hotel[] = [
           'Air Conditioning',
           'Mini Bar',
           'WiFi'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Balcony' },
+          { name: 'Rainfall Shower' }
         ]
       },
       {
@@ -254,6 +408,12 @@ export const hotels: Hotel[] = [
           'Private Terrace',
           'Living Room',
           'Premium Amenities'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Terrace' },
+          { name: 'Separate Living Area' },
+          { name: 'Luxury Bath Amenities' }
         ]
       },
       {
@@ -270,6 +430,12 @@ export const hotels: Hotel[] = [
           'Sea View',
           'Living Room',
           'Butler Service'
+        ],
+        features: [
+          { name: 'Private Pool' },
+          { name: 'Panoramic View' },
+          { name: 'Separate Living Area' },
+          { name: 'Luxury Bath Amenities' }
         ]
       }
     ]
@@ -299,10 +465,51 @@ export const hotels: Hotel[] = [
       'Gourmet Restaurant',
       'Water Sports',
       'Private Beach'
-    ],
+    ] as HotelFeature[],
     description: 'Paros Luxury Resort offers an unparalleled experience of Greek island hospitality. Located in the vibrant town of Naoussa, the resort features elegant suites and villas, world-class dining, and exceptional wellness facilities.',
     rating: 4.8,
-    reviews: 312,
+    reviews: {
+      rating: 4.8,
+      count: 312,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 260,
+        4: 40,
+        3: 10,
+        2: 2,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     images: [
       '/images/hotels/paros-luxury-main.jpg',
       '/images/hotels/paros-luxury-1.jpg',
@@ -337,6 +544,12 @@ export const hotels: Hotel[] = [
           'WiFi',
           'Room Service',
           'Mini Bar'
+        ],
+        features: [
+          { name: 'Private Pool' },
+          { name: 'Sea View' },
+          { name: 'Private Terrace' },
+          { name: 'Luxury Bath Amenities' }
         ]
       }
     ]
@@ -366,10 +579,51 @@ export const hotels: Hotel[] = [
       'Sea View',
       'Family Friendly',
       'Room Service'
-    ],
+    ] as HotelFeature[],
     description: 'Located right on Agios Georgios Beach, combining elegance with comfort.',
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     images: [
       '/images/hotels/nissaki/main.jpg',
       '/images/hotels/nissaki/gallery-1.jpg',
@@ -399,6 +653,11 @@ export const hotels: Hotel[] = [
           'WiFi',
           'Room Service',
           'Bar'
+        ],
+        features: [
+          { name: 'City View' },
+          { name: 'Private Balcony' },
+          { name: 'Rainfall Shower' }
         ]
       },
       {
@@ -416,6 +675,12 @@ export const hotels: Hotel[] = [
           'Room Service',
           'Bar',
           'Spa'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Balcony' },
+          { name: 'Separate Living Area' },
+          { name: 'Luxury Bath Amenities' }
         ]
       }
     ]
@@ -440,7 +705,48 @@ export const hotels: Hotel[] = [
     },
     description: `Niriedes Hotel combines traditional Cycladic architecture with modern comfort, offering a serene retreat in Platys Gialos. Each room features a private balcony with sea or garden views, decorated in soothing earth tones that reflect the island's natural beauty. The hotel's infinity pool overlooks the Aegean Sea, while the restaurant serves authentic Sifnian cuisine using local ingredients.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Infinity pool',
       'Sea-view restaurant',
@@ -456,7 +762,16 @@ export const hotels: Hotel[] = [
       '/images/hotels/niriedes/room.jpg',
       '/images/hotels/niriedes/restaurant.jpg'
     ],
-    features: ['WiFi', 'Infinity Pool', 'Restaurant', 'Spa', 'Sea View', 'Room Service', 'Beachfront', 'Gourmet Restaurant'],
+    features: [
+      'WiFi',
+      'Infinity Pool',
+      'Restaurant',
+      'Spa',
+      'Sea View',
+      'Room Service',
+      'Beachfront',
+      'Gourmet Restaurant'
+    ] as HotelFeature[],
     rooms: [
       {
         id: 'nh-001',
@@ -472,6 +787,11 @@ export const hotels: Hotel[] = [
           'Private Balcony',
           'WiFi',
           'Room Service'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Balcony' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]
@@ -496,7 +816,48 @@ export const hotels: Hotel[] = [
     },
     description: `Naxos Resort combines beachfront luxury with authentic Cycladic hospitality. Located on the golden sands of St. George Beach, the resort offers spacious rooms and suites with modern amenities and traditional design elements. The property features multiple swimming pools, a spa center, and restaurants serving both international and Greek cuisine. Perfect for families and couples seeking a blend of relaxation and activities.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Private beach area',
       'Multiple pools',
@@ -512,7 +873,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/naxos-resort/pool.jpg',
       '/images/hotels/naxos-resort/restaurant.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'nr-001',
@@ -529,6 +890,11 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Balcony' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]
@@ -553,7 +919,48 @@ export const hotels: Hotel[] = [
     },
     description: `The Naxian Collection offers an exclusive retreat combining luxury with authentic Cycladic charm. Each villa and suite features private pools and stunning views of the Aegean Sea. The property's organic farm supplies fresh ingredients to the gourmet restaurant, while the wine cellar houses rare local vintages. The architecture seamlessly blends modern luxury with traditional island aesthetics.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Private pools',
       'Organic farm',
@@ -569,7 +976,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/naxian-collection/villa.jpg',
       '/images/hotels/naxian-collection/restaurant.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'nc-001',
@@ -587,6 +994,12 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Private Pool' },
+          { name: 'Sea View' },
+          { name: 'Private Terrace' },
+          { name: 'Luxury Bath Amenities' }
         ]
       }
     ]
@@ -611,7 +1024,48 @@ export const hotels: Hotel[] = [
     },
     description: `Parilio Hotel is a luxurious sanctuary that celebrates the timeless beauty of Cycladic architecture. Located near Naoussa, this boutique property features minimalist suites with private terraces and stunning views. The cross-shaped pool is a architectural masterpiece, while the spa offers treatments using local ingredients. The restaurant serves contemporary Greek cuisine with a focus on local ingredients.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Signature pool',
       'Luxury spa',
@@ -627,7 +1081,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/parilio/suite.jpg',
       '/images/hotels/parilio/restaurant.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'ph-001',
@@ -644,6 +1098,11 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Terrace' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]
@@ -668,7 +1127,48 @@ export const hotels: Hotel[] = [
     },
     description: `Yria Boutique Hotel offers an intimate luxury experience in a village-style setting. The property features Cycladic architecture with contemporary touches, surrounded by beautiful gardens. Each room and suite is uniquely decorated, featuring private terraces or gardens. The hotel's gourmet restaurant serves creative Greek cuisine, while the spa offers treatments using local ingredients.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Large swimming pool',
       'Gourmet restaurant',
@@ -684,7 +1184,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/yria-boutique/suite.jpg',
       '/images/hotels/yria-boutique/garden.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'yb-001',
@@ -701,6 +1201,11 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Garden View' },
+          { name: 'Private Terrace' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]
@@ -725,7 +1230,48 @@ export const hotels: Hotel[] = [
     },
     description: `Kouros Village offers a perfect blend of traditional Cycladic architecture and modern comfort, overlooking the Aegean Sea and Mykonos Town. Each room features a private balcony with stunning views, while the infinity pool provides a perfect sunset watching spot. The hotel's restaurant serves creative Mediterranean cuisine using local ingredients.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Infinity pool',
       'Sea view restaurant',
@@ -741,7 +1287,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/kouros-village/room.jpg',
       '/images/hotels/kouros-village/restaurant.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'kv-001',
@@ -758,6 +1304,11 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Balcony' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]
@@ -782,7 +1333,48 @@ export const hotels: Hotel[] = [
     },
     description: `Ultra-luxury villa resort overlooking Elia Beach. Features private pools, personalized service, and exclusive amenities. Each villa offers sophisticated design, stunning sea views, and ultimate privacy.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Private Pools',
       'Butler Service',
@@ -799,7 +1391,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/myconian-villa-collection/villa.jpg',
       '/images/hotels/myconian-villa-collection/restaurant.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'mvc-001',
@@ -817,6 +1409,12 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Private Pool' },
+          { name: 'Sea View' },
+          { name: 'Private Terrace' },
+          { name: 'Luxury Bath Amenities' }
         ]
       }
     ]
@@ -841,7 +1439,48 @@ export const hotels: Hotel[] = [
     },
     description: `Grace Santorini represents the pinnacle of luxury hospitality in the Cyclades. This architectural marvel is carved into Imerovigli's cliffs, offering uninterrupted caldera views from every suite. The infinity pool is an Instagram sensation, appearing to float over the Aegean. Each room features champagne bars, private terraces, and plunge pools, while the restaurant serves innovative Mediterranean cuisine with a modern twist.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Infinity pool',
       'Champagne lounge',
@@ -857,7 +1496,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/grace-santorini/suite.jpg',
       '/images/hotels/grace-santorini/restaurant.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'gr-001',
@@ -874,6 +1513,11 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Terrace' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]
@@ -898,7 +1542,48 @@ export const hotels: Hotel[] = [
     },
     description: `Belvedere Mykonos is a luxury hotel complex in the heart of Mykonos Town, offering sophisticated elegance and world-class service. The property features a collection of rooms, suites, and private villas, each showcasing contemporary design with traditional elements. The Six Senses spa provides exceptional treatments, while the Matsuhisa restaurant offers acclaimed Japanese cuisine with Peruvian influences.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Six Senses spa',
       'Matsuhisa restaurant',
@@ -914,7 +1599,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/belvedere/suite.jpg',
       '/images/hotels/belvedere/restaurant.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'bm-001',
@@ -931,6 +1616,11 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Balcony' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]
@@ -955,7 +1645,48 @@ export const hotels: Hotel[] = [
     },
     description: `Cavo Tagoo is an architectural marvel combining luxury with minimalist aesthetics. This world-renowned hotel features cave pools, an infinity pool with floating sunbeds, and rooms with private plunge pools. The Buddha-Bar Beach offers sophisticated dining and cocktails, while the spa provides exclusive treatments. Each suite is a masterpiece of contemporary design with stunning sunset views.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Infinity pool',
       'Buddha-Bar Beach',
@@ -971,7 +1702,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/cavo-tagoo/suite.jpg',
       '/images/hotels/cavo-tagoo/restaurant.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'ct-001',
@@ -988,6 +1719,11 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Plunge Pool' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]
@@ -1012,7 +1748,48 @@ export const hotels: Hotel[] = [
     },
     description: `Kavos Naxos offers a perfect blend of traditional architecture and modern comfort, overlooking the crystal waters of Agios Prokopios beach. The hotel features stylish studios and apartments with private terraces, surrounded by beautiful Mediterranean gardens. The infinity pool provides stunning sunset views, while the beach bar serves creative cocktails and light meals.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Infinity pool',
       'Beach access',
@@ -1028,7 +1805,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/kavos-naxos/studio.jpg',
       '/images/hotels/kavos-naxos/garden.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'kn-001',
@@ -1045,6 +1822,11 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Garden View' },
+          { name: 'Private Terrace' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]
@@ -1069,7 +1851,48 @@ export const hotels: Hotel[] = [
     },
     description: `Boutique hotel perched on Poulati cliff, offering stunning Aegean views. Features infinity pool, luxurious suites with private terraces, and gourmet dining. Known for its romantic atmosphere and spectacular sunsets.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Infinity Pool',
       'Gourmet Restaurant',
@@ -1086,7 +1909,7 @@ export const hotels: Hotel[] = [
       '/images/hotels/verina-astra/suite.jpg',
       '/images/hotels/verina-astra/restaurant.jpg'
     ],
-    features: [],
+    features: [] as HotelFeature[],
     rooms: [
       {
         id: 'va-001',
@@ -1103,6 +1926,11 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
+        ],
+        features: [
+          { name: 'Sea View' },
+          { name: 'Private Terrace' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]
@@ -1127,7 +1955,48 @@ export const hotels: Hotel[] = [
     },
     description: `Contemporary hotel set in beautiful gardens with views of Kamares Bay. Features stylish suites, pool with sun terrace, and modern amenities while maintaining traditional Cycladic charm.`,
     rating: 4.5,
-    reviews: 156,
+    reviews: {
+      rating: 4.5,
+      count: 156,
+      highlights: [
+        'Exceptional views',
+        'Outstanding service',
+        'Luxurious rooms'
+      ],
+      breakdown: {
+        5: 120,
+        4: 30,
+        3: 5,
+        2: 1,
+        1: 0
+      },
+      reviews: [
+        {
+          id: 'rev-001',
+          userName: 'Sarah M.',
+          rating: 5,
+          date: '2024-12-15',
+          comment: 'Absolutely stunning views and impeccable service. The infinity pool was breathtaking!',
+          helpful: 45
+        },
+        {
+          id: 'rev-002',
+          userName: 'James K.',
+          rating: 5,
+          date: '2024-12-10',
+          comment: 'Worth every penny. The suite was amazing and the staff went above and beyond.',
+          helpful: 32
+        },
+        {
+          id: 'rev-003',
+          userName: 'Maria L.',
+          rating: 4,
+          date: '2024-12-05',
+          comment: 'Beautiful property with amazing caldera views. Breakfast was exceptional.',
+          helpful: 28
+        }
+      ]
+    },
     amenities: [
       'Swimming Pool',
       'Garden Views',
@@ -1144,7 +2013,13 @@ export const hotels: Hotel[] = [
       '/images/hotels/kamaroti-suites/suite.jpg',
       '/images/hotels/kamaroti-suites/garden.jpg'
     ],
-    features: [],
+    features: [
+      'Pool',
+      'Garden',
+      'Restaurant',
+      'WiFi',
+      'Room Service'
+    ] as HotelFeature[],
     rooms: [
       {
         id: 'ks-001',
@@ -1161,64 +2036,11 @@ export const hotels: Hotel[] = [
           'Mini Bar',
           'WiFi',
           'Air Conditioning'
-        ]
-      }
-    ]
-  },
-  {
-    id: 'beach-house',
-    name: 'Beach House Antiparos',
-    slug: 'beach-house-antiparos',
-    location: {
-      island: 'Antiparos',
-      area: 'Soros Beach',
-      coordinates: {
-        latitude: 37.0297,
-        longitude: 25.0584
-      }
-    },
-    category: HotelCategory.Boutique,
-    priceRange: {
-      min: 300,
-      max: 800,
-      currency: 'EUR'
-    },
-    description: `Boutique beachfront hotel offering laid-back luxury and direct access to Soros Beach. Features boho-chic design, beachfront restaurant, and intimate atmosphere. Perfect for those seeking a sophisticated yet relaxed island experience.`,
-    rating: 4.5,
-    reviews: 156,
-    amenities: [
-      'Beachfront Location',
-      'Restaurant & Bar',
-      'Beach Service',
-      'WiFi',
-      'Garden',
-      'Yoga Classes',
-      'Water Sports',
-      'Sunset Views'
-    ],
-    images: [
-      '/images/hotels/beach-house/exterior.jpg',
-      '/images/hotels/beach-house/pool.jpg',
-      '/images/hotels/beach-house/suite.jpg',
-      '/images/hotels/beach-house/restaurant.jpg'
-    ],
-    features: [],
-    rooms: [
-      {
-        id: 'bh-001',
-        type: 'Deluxe Suite',
-        description: 'Elegant suite with modern amenities and stunning sea views.',
-        price: 400,
-        image: '/images/rooms/beach-house/deluxe-suite-1.jpg',
-        maxOccupancy: 2,
-        bedType: 'King',
-        size: 40,
-        amenities: [
-          'Sea View',
-          'Private Terrace',
-          'Mini Bar',
-          'WiFi',
-          'Air Conditioning'
+        ],
+        features: [
+          { name: 'Garden View' },
+          { name: 'Private Terrace' },
+          { name: 'Rainfall Shower' }
         ]
       }
     ]

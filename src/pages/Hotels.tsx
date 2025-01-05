@@ -70,7 +70,7 @@ export default function Hotels() {
           return b.rating - a.rating;
         case 'popular':
         default:
-          return b.reviews - a.reviews;
+          return (b.reviews?.count || 0) - (a.reviews?.count || 0);
       }
     });
 

@@ -7,19 +7,19 @@
     <priority>1.0</priority>
   </url>
   <url>
+    <loc>https://greececyclades.com/about</loc>
+    <lastmod>2024-12-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/contact</loc>
+    <lastmod>2024-12-23</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://greececyclades.com/islands</loc>
-    <lastmod>2024-12-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/trip-planner</loc>
-    <lastmod>2024-12-23</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/guides</loc>
     <lastmod>2024-12-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
@@ -34,7 +34,7 @@
     <loc>https://greececyclades.com/hotels</loc>
     <lastmod>2024-12-23</lastmod>
     <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/ferry-tickets</loc>
@@ -43,45 +43,15 @@
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://greececyclades.com/ferry-tickets-search</loc>
+    <loc>https://greececyclades.com/ferry-tickets/tracking</loc>
     <lastmod>2024-12-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/ferry-tickets/piraeus-santorini</loc>
-    <lastmod>2024-12-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/ferry-tickets/piraeus-mykonos</loc>
-    <lastmod>2024-12-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/ferry-tickets/piraeus-naxos</loc>
-    <lastmod>2024-12-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/ferry-tickets/piraeus-paros</loc>
-    <lastmod>2024-12-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/ferry-tickets/piraeus-milos</loc>
-    <lastmod>2024-12-23</lastmod>
-    <changefreq>daily</changefreq>
-    <priority>0.8</priority>
+    <changefreq>always</changefreq>
+    <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/rent-a-car</loc>
     <lastmod>2024-12-23</lastmod>
-    <changefreq>weekly</changefreq>
+    <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
@@ -93,32 +63,50 @@
   <url>
     <loc>https://greececyclades.com/blog</loc>
     <lastmod>2024-12-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/guides</loc>
+    <lastmod>2024-12-23</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.7</priority>
+    <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://greececyclades.com/about</loc>
+    <loc>https://greececyclades.com/guides/santorini</loc>
     <lastmod>2024-12-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://greececyclades.com/contact</loc>
-    <lastmod>2024-12-23</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.6</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/privacy-policy</loc>
+    <loc>https://greececyclades.com/privacy</loc>
     <lastmod>2024-12-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://greececyclades.com/terms-of-service</loc>
+    <loc>https://greececyclades.com/terms</loc>
     <lastmod>2024-12-23</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/sitemap</loc>
+    <lastmod>2024-12-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.5</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/help</loc>
+    <lastmod>2024-12-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/transfers</loc>
+    <lastmod>2024-12-23</lastmod>
+    <changefreq>daily</changefreq>
+    <priority>0.8</priority>
   </url>
   <!-- Island Pages -->
   <url>

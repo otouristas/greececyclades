@@ -40,10 +40,12 @@ import BackToTop from './components/BackToTop';
 import About from './pages/About';
 import TestMap from './pages/TestMap';
 import Transfers from './pages/Transfers';
+import HelpDesk from './pages/HelpDesk';
 
 import { ToastProvider } from './contexts/ToastContext';
 
 import './styles/fonts.css';
+import './i18n';
 
 function AppContent() {
   const navigate = useNavigate();
@@ -89,6 +91,7 @@ function AppContent() {
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/sitemap" element={<Sitemap />} />
+            <Route path="/help" element={<HelpDesk />} />
             
             {/* Protected Routes */}
             <Route path="/profile" element={

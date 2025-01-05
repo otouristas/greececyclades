@@ -1,5 +1,3 @@
-import React from 'react';
-
 const WelcomePickupsLogo = () => (
   <svg width="201" height="34" viewBox="0 0 201 34" xmlns="http://www.w3.org/2000/svg" className="fill-gray-800">
     <defs>

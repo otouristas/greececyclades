@@ -61,59 +61,86 @@ export enum IslandVibe {
 }
 
 // Available activities
-export const ISLAND_ACTIVITIES = [
-  'swimming',
-  'snorkeling',
-  'hiking',
-  'wine-tasting',
-  'archaeological-sites',
-  'boat-tours',
-  'water-sports',
-  'sunset-watching',
-  'beach-hopping',
-  'local-cuisine',
-  'shopping',
-  'photography',
-  'village-exploring',
-  'nightlife',
-  'spa-wellness'
-] as const;
-export type IslandActivity = typeof ISLAND_ACTIVITIES[number];
+export type IslandActivity = 
+  | 'swimming'
+  | 'snorkeling'
+  | 'hiking'
+  | 'wine-tasting'
+  | 'archaeological-sites'
+  | 'boat-tours'
+  | 'water-sports'
+  | 'sunset-watching'
+  | 'beach-hopping'
+  | 'local-cuisine'
+  | 'shopping'
+  | 'photography'
+  | 'village-exploring'
+  | 'nightlife'
+  | 'spa-wellness'
+  | 'rock-climbing'
+  | 'monastery-visits'
+  | 'traditional-villages';
 
-interface Weather {
-  temp?: number;
-  condition?: string;
-  summer: string;
-  winter: string;
-  spring: string;
-  autumn: string;
+export interface IslandContacts {
+  portAuthority?: string;
+  medicalCenter?: string;
+  municipality?: string;
+  policeStation?: string;
+  localBus?: string;
+  citizenService?: string;
+}
+
+export interface IslandTransportation {
+  localBus?: {
+    available: boolean;
+    frequency: string;
+    routes: string[];
+  };
+  facilities?: {
+    atm?: string;
+    medicalCenter?: string;
+    miniMarket?: string;
+    postOffice?: string;
+  };
 }
 
 export interface Island {
   id: string;
   name: string;
+  slug: string;
   description: string;
   shortDescription?: string;
   quote?: string;
-  metaTitle?: string;
-  metaDescription?: string;
-  activities?: IslandActivity[];
-  bestMonths?: AvailableMonth[];
-  averageStay?: number;
-  mustSee?: string[];
   image: string;
-  vibes?: IslandVibe[];
-  size?: keyof typeof STAY_DURATION;
-  slug: string;
   heroImage?: string;
-  highlights?: string[];
-  ports?: string[];
-  weather?: Weather;
+  size?: IslandSize;
+  averageStay?: number;
+  weather?: {
+    temp?: number;
+    condition?: string;
+    summer: string;
+    winter: string;
+    spring: string;
+    autumn: string;
+  };
   bestTime?: {
-    months: AvailableMonth[];
-    reason: string;
+    months: string[];
+    description?: string;
   };
   idealFor?: string[];
+  activities?: IslandActivity[];
+  highlights?: string[];
+  ports?: string[];
+  transportation?: IslandTransportation;
+  contacts?: IslandContacts;
+  vibes?: IslandVibe[];
+  mustSee?: string[];
+  connectedIslands?: {
+    direct: string[];
+    nearby: string[];
+    other?: string[];
+  };
+  metaDescription?: string;
 }
 
 export interface IslandGuide {
@@ -121,6 +148,7 @@ export interface IslandGuide {
   name: string;
   description: string;
   image: string;
+  heroImage?: string;
   weather: {
     temp?: number;
     condition?: string;

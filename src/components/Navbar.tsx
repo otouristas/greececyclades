@@ -39,6 +39,7 @@ interface NavItem {
     path: string;
     label: string;
     icon: React.ReactElement;
+    type?: 'guide' | 'island' | 'tool';
   }>;
 }
 
@@ -49,12 +50,20 @@ const navigationItems: NavItem[] = [
     icon: <Sun className="h-4 w-4" />,
     megaMenu: true,
     children: [
-      { path: '/islands/santorini', label: 'Santorini', icon: <Sun className="w-4 h-4" /> },
-      { path: '/islands/mykonos', label: 'Mykonos', icon: <Sailboat className="w-4 h-4" /> },
-      { path: '/islands/naxos', label: 'Naxos', icon: <UtensilsCrossed className="w-4 h-4" /> },
-      { path: '/islands/paros', label: 'Paros', icon: <Compass className="w-4 h-4" /> },
-      { path: '/islands/sifnos', label: 'Sifnos', icon: <UtensilsCrossed className="w-4 h-4" /> },
-      { path: '/islands/ios', label: 'Ios', icon: <Sun className="w-4 h-4" /> }
+      // Travel Guides Section
+      { path: '/guides/santorini', label: 'Santorini Guide', type: 'guide', icon: <Sun className="w-4 h-4" /> },
+      { path: '/guides/mykonos', label: 'Mykonos Guide', type: 'guide', icon: <Sailboat className="w-4 h-4" /> },
+      { path: '/guides/naxos', label: 'Naxos Guide', type: 'guide', icon: <UtensilsCrossed className="w-4 h-4" /> },
+      { path: '/guides/paros', label: 'Paros Guide', type: 'guide', icon: <Compass className="w-4 h-4" /> },
+      { path: '/guides/sifnos', label: 'Sifnos Guide', type: 'guide', icon: <UtensilsCrossed className="w-4 h-4" /> },
+      { path: '/guides/ios', label: 'Ios Guide', type: 'guide', icon: <Sun className="w-4 h-4" /> },
+      // Popular Islands Section
+      { path: '/islands/santorini', label: 'Santorini', type: 'island', icon: <Sun className="w-4 h-4" /> },
+      { path: '/islands/mykonos', label: 'Mykonos', type: 'island', icon: <Sailboat className="w-4 h-4" /> },
+      { path: '/islands/naxos', label: 'Naxos', type: 'island', icon: <UtensilsCrossed className="w-4 h-4" /> },
+      { path: '/islands/paros', label: 'Paros', type: 'island', icon: <Compass className="w-4 h-4" /> },
+      { path: '/islands/sifnos', label: 'Sifnos', type: 'island', icon: <UtensilsCrossed className="w-4 h-4" /> },
+      { path: '/islands/ios', label: 'Ios', type: 'island', icon: <Sun className="w-4 h-4" /> }
     ]
   },
   {
@@ -63,12 +72,12 @@ const navigationItems: NavItem[] = [
     icon: <MapPin className="h-4 w-4" />,
     megaMenu: true,
     children: [
-      { path: '/activities', label: 'Activities', icon: <Compass className="w-4 h-4" /> },
-      { path: '/hotels', label: 'Hotels', icon: <Hotel className="w-4 h-4" /> },
-      { path: '/ferry-tickets', label: 'Ferry Tickets', icon: <Sailboat className="w-4 h-4" /> },
-      { path: '/flights', label: 'Flight Tickets', icon: <Plane className="w-4 h-4" /> },
-      { path: '/rent-a-car', label: 'Rent a Car', icon: <Car className="w-4 h-4" /> },
-      { path: '/transfers', label: 'Taxi Transfers', icon: <Car className="w-4 h-4" /> }
+      { path: '/activities', label: 'Activities', type: 'tool', icon: <Compass className="w-4 h-4" /> },
+      { path: '/hotels', label: 'Hotels', type: 'tool', icon: <Hotel className="w-4 h-4" /> },
+      { path: '/ferry-tickets', label: 'Ferry Tickets', type: 'tool', icon: <Sailboat className="w-4 h-4" /> },
+      { path: '/flights', label: 'Flight Tickets', type: 'tool', icon: <Plane className="w-4 h-4" /> },
+      { path: '/rent-a-car', label: 'Rent a Car', type: 'tool', icon: <Car className="w-4 h-4" /> },
+      { path: '/transfers', label: 'Taxi Transfers', type: 'tool', icon: <Car className="w-4 h-4" /> }
     ]
   },
   {
@@ -86,8 +95,8 @@ const mobileOnlyItems: NavItem[] = [
     icon: <User className="h-4 w-4" />,
     megaMenu: false,
     children: [
-      { path: '/about/team', label: 'Our Team', icon: <User className="w-4 h-4" /> },
-      { path: '/about/mission', label: 'Our Mission', icon: <Compass className="w-4 h-4" /> }
+      { path: '/about/team', label: 'Our Team', type: 'tool', icon: <User className="w-4 h-4" /> },
+      { path: '/about/mission', label: 'Our Mission', type: 'tool', icon: <Compass className="w-4 h-4" /> }
     ]
   },
   {
@@ -96,8 +105,8 @@ const mobileOnlyItems: NavItem[] = [
     icon: <MapPin className="h-4 w-4" />,
     megaMenu: false,
     children: [
-      { path: '/contact/support', label: 'Support', icon: <User className="w-4 h-4" /> },
-      { path: '/contact/partnerships', label: 'Partnerships', icon: <Building2 className="w-4 h-4" /> }
+      { path: '/contact/support', label: 'Support', type: 'tool', icon: <User className="w-4 h-4" /> },
+      { path: '/contact/partnerships', label: 'Partnerships', type: 'tool', icon: <Building2 className="w-4 h-4" /> }
     ]
   }
 ];
@@ -212,53 +221,58 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
           {/* Right Side Icons */}
           <div className="flex items-center space-x-4 ml-auto pr-4">
             <Globe className="h-5 w-5 text-gray-600 hidden md:block" />
-            <HelpCircle className="h-5 w-5 text-gray-600 hidden md:block" />
+            <Link to="/help" className="hidden md:block">
+              <HelpCircle className="h-5 w-5 text-gray-600 hover:text-blue-600 transition-colors" />
+            </Link>
             
-            {isAuthenticated ? (
-              <div className="relative" ref={dropdownRef}>
-                <button
-                  onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                  className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
-                >
-                  <User className="h-5 w-5" />
-                  <span className="text-sm font-medium">{user?.displayName || user?.name || user?.email?.split('@')[0] || 'User'}</span>
-                  <ChevronDown className="h-4 w-4" />
-                </button>
+            {/* User Profile & Sign In - Desktop */}
+            <div className="hidden md:block">
+              {isAuthenticated ? (
+                <div className="relative" ref={dropdownRef}>
+                  <button
+                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+                    className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
+                  >
+                    <User className="h-5 w-5" />
+                    <span className="text-sm font-medium">{user?.displayName || user?.name || user?.email?.split('@')[0] || 'User'}</span>
+                    <ChevronDown className="h-4 w-4" />
+                  </button>
 
-                {isDropdownOpen && (
-                  <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
-                    <Link
-                      to="/profile"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      Profile
-                    </Link>
-                    <Link
-                      to="/my-trips"
-                      className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                      onClick={() => setIsDropdownOpen(false)}
-                    >
-                      My Trips
-                    </Link>
-                    <button
-                      onClick={handleLogout}
-                      className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                    >
-                      Sign Out
-                    </button>
-                  </div>
-                )}
-              </div>
-            ) : (
-              <button
-                onClick={onAuthClick}
-                className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
-              >
-                <User className="h-5 w-5 mr-2" />
-                Sign in
-              </button>
-            )}
+                  {isDropdownOpen && (
+                    <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
+                      <Link
+                        to="/profile"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsDropdownOpen(false)}
+                      >
+                        Profile
+                      </Link>
+                      <Link
+                        to="/my-trips"
+                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => setIsDropdownOpen(false)}
+                      >
+                        My Trips
+                      </Link>
+                      <button
+                        onClick={handleLogout}
+                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                      >
+                        Sign Out
+                      </button>
+                    </div>
+                  )}
+                </div>
+              ) : (
+                <button
+                  onClick={onAuthClick}
+                  className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                >
+                  <User className="h-5 w-5 mr-2" />
+                  Sign In
+                </button>
+              )}
+            </div>
 
             {/* Mobile Menu Button */}
             <button
@@ -285,32 +299,30 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                 {activeMegaMenu === '/islands' ? (
                   <>
                     <h2 className="text-4xl font-bold text-white mb-6">
-                      Greek Islands
+                      Destinations
                     </h2>
                     <p className="text-xl text-white/90 leading-relaxed">
-                      Explore the enchanting Greek islands, where ancient history meets 
-                      crystal-clear waters and vibrant culture.
+                      Explore the beautiful islands of Greece.
                     </p>
                     <div className="mt-8 space-y-6">
                       <div className="bg-white/10 rounded-xl p-6">
                         <h3 className="text-xl font-semibold text-white mb-2">Featured Islands</h3>
-                        <p className="text-white/90">Discover our handpicked selection of the most beautiful Greek islands</p>
+                        <p className="text-white/90">Discover the most popular islands in Greece.</p>
                       </div>
                     </div>
                   </>
                 ) : (
                   <>
                     <h2 className="text-4xl font-bold text-white mb-6">
-                      Plan Your Journey
+                      Plan Your Trip
                     </h2>
                     <p className="text-xl text-white/90 leading-relaxed">
-                      Create your perfect Greek island adventure with our comprehensive 
-                      travel planning tools and guides.
+                      Get ready for your next adventure.
                     </p>
                     <div className="mt-8 space-y-6">
                       <div className="bg-white/10 rounded-xl p-6">
                         <h3 className="text-xl font-semibold text-white mb-2">Travel Tips</h3>
-                        <p className="text-white/80 text-sm">Expert advice to help you make the most of your Greek island experience</p>
+                        <p className="text-white/80 text-sm">Get the most out of your trip with our expert tips.</p>
                       </div>
                     </div>
                   </>
@@ -327,7 +339,8 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                       <ul className="space-y-6 mb-8">
                         {navigationItems
                           .find(item => item.path === activeMegaMenu)
-                          ?.children?.map((child) => (
+                          ?.children?.filter(child => child.type === 'guide')
+                          .map((child) => (
                             <li key={child.path}>
                               <Link
                                 to={child.path}
@@ -337,7 +350,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                                 <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
                                   {child.icon}
                                 </span>
-                                <span>{child.label} Guide</span>
+                                <span>{child.label}</span>
                               </Link>
                             </li>
                           ))}
@@ -347,7 +360,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                         className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
                         onClick={() => setActiveMegaMenu(null)}
                       >
-                        All Travel Guides
+                        All Guides
                         <ArrowRight className="w-4 h-4" />
                       </Link>
                     </div>
@@ -358,7 +371,8 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                       <ul className="space-y-6 mb-8">
                         {navigationItems
                           .find(item => item.path === activeMegaMenu)
-                          ?.children?.map((child) => (
+                          ?.children?.filter(child => child.type === 'island')
+                          .map((child) => (
                             <li key={child.path}>
                               <Link
                                 to={child.path}
@@ -378,7 +392,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                         className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
                         onClick={() => setActiveMegaMenu(null)}
                       >
-                        All Cyclades Islands
+                        All Islands
                         <ArrowRight className="w-4 h-4" />
                       </Link>
                     </div>
@@ -393,7 +407,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                           onClick={() => setActiveMegaMenu(null)}
                         >
                           <h4 className="text-lg font-semibold text-white mb-2">Best Cyclades Islands</h4>
-                          <p className="text-white/80 text-sm">Discover the top islands to visit in the Cyclades</p>
+                          <p className="text-white/80 text-sm">Discover the best islands in the Cyclades.</p>
                         </Link>
                       </div>
                     </div>
@@ -492,7 +506,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                           onClick={() => setActiveMegaMenu(null)}
                         >
                           <h4 className="text-lg font-semibold text-white mb-2">Island Hopping Guide</h4>
-                          <p className="text-white/80 text-sm">Learn how to plan the perfect island-hopping adventure</p>
+                          <p className="text-white/80 text-sm">Discover the best islands to visit in Greece.</p>
                         </Link>
                         <Link
                           to="/guides/best-time-to-visit"
@@ -500,7 +514,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                           onClick={() => setActiveMegaMenu(null)}
                         >
                           <h4 className="text-lg font-semibold text-white mb-2">Best Time to Visit</h4>
-                          <p className="text-white/80 text-sm">Find the perfect season for your Greek island vacation</p>
+                          <p className="text-white/80 text-sm">Find out the best time to visit Greece.</p>
                         </Link>
                       </div>
                     </div>
@@ -525,18 +539,27 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
               </button>
             </div>
             <div className="flex-1 overflow-y-auto py-8 px-6">
-              {/* Mobile Icons and Sign In */}
-              <div className="flex items-center justify-center space-x-6 mb-8 pt-2">
-                <Globe className="h-6 w-6 text-white/80" />
-                <HelpCircle className="h-6 w-6 text-white/80" />
+              {/* Mobile Icons and Sign In - Only visible when menu is open */}
+              <div className="flex items-center justify-between space-x-6 mb-8 pt-2 md:hidden">
+                <div className="flex items-center space-x-6">
+                  <Globe className="h-6 w-6 text-white/80" />
+                  <Link to="/help" onClick={toggleMobileMenu}>
+                    <HelpCircle className="h-6 w-6 text-white/80 hover:text-white transition-colors" />
+                  </Link>
+                </div>
                 
-                {!isAuthenticated && (
+                {isAuthenticated ? (
+                  <div className="flex items-center space-x-2 text-white">
+                    <User className="h-5 w-5" />
+                    <span className="text-sm font-medium">{user?.displayName || user?.name || user?.email?.split('@')[0] || 'User'}</span>
+                  </div>
+                ) : (
                   <button
                     onClick={onAuthClick}
                     className="inline-flex items-center justify-center rounded-md bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20"
                   >
                     <User className="h-5 w-5 mr-2" />
-                    Sign in
+                    Sign In
                   </button>
                 )}
               </div>
@@ -590,7 +613,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                           </span>
                           <div>
                             <span className="block">{child.label}</span>
-                            <span className="text-sm text-white/70">Explore more</span>
+                            <span className="text-sm text-white/70">Explore More</span>
                           </div>
                         </Link>
                       ))}
