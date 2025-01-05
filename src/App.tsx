@@ -39,6 +39,7 @@ import NotFound from './pages/NotFound';
 import BackToTop from './components/BackToTop';
 import About from './pages/About';
 import TestMap from './pages/TestMap';
+import Transfers from './pages/Transfers';
 
 import { ToastProvider } from './contexts/ToastContext';
 
@@ -106,6 +107,10 @@ function AppContent() {
               </ProtectedRoute>
             } />
             
+            <Route path="/ferry-tracking" element={<FerryTracking />} />
+            <Route path="/about" element={<About />} />
+            <Route path="/test-map" element={<TestMap />} />
+            <Route path="/transfers" element={<Transfers />} />
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
