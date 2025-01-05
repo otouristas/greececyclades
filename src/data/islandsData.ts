@@ -11,10 +11,9 @@ export const cyclades: Partial<Island>[] = [
   {
     id: '1',
     name: 'Santorini',
-    description: 'Famous for its dramatic caldera views, stunning sunsets, and volcanic beaches',
+    description: 'Santorini, the crown jewel of the Cyclades, is a masterpiece of natural beauty and human architecture. Rising dramatically from the Aegean Sea, its iconic caldera was formed by one of the largest volcanic eruptions in history. The island\'s whitewashed, cubic buildings perch dramatically on multicolored cliffs, creating a stunning contrast against the deep blue sea. Beyond its famous sunsets and caldera views, Santorini offers unique experiences like swimming in volcanic hot springs, exploring ancient Akrotiri (a prehistoric city preserved in volcanic ash), and tasting distinctive wines from grapes grown in volcanic soil. The island\'s unique architecture, with cave houses carved into the cliffs, reflects centuries of adaptation to the volcanic landscape. From the bustling capital of Fira to the romantic village of Oia, each settlement offers its own charm while maintaining the island\'s distinctive Cycladic character.',
     shortDescription: 'Iconic sunsets and caldera views',
     quote: 'Where romance meets volcanic beauty',
-    metaTitle: 'Santorini Travel Guide - Best Things to Do & See',
     metaDescription: 'Plan your perfect Santorini vacation with our comprehensive guide to the best sunset spots, beaches, and activities.',
     image: '/images/islands/santorini.jpg',
     heroImage: '/images/islands/santorini.jpg',
@@ -41,12 +40,15 @@ export const cyclades: Partial<Island>[] = [
       'hiking',
       'boat-tours'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER,
-      AvailableMonth.OCTOBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER,
+        AvailableMonth.OCTOBER
+      ],
+      description: 'Perfect weather with fewer crowds'
+    },
     averageStay: STAY_DURATION.MAJOR,
     mustSee: [
       'Oia Sunset',
@@ -63,29 +65,60 @@ export const cyclades: Partial<Island>[] = [
     size: 'MAJOR',
     slug: 'santorini',
     ports: ['Athinios Port', 'Old Port'],
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER,
-        AvailableMonth.OCTOBER
-      ],
-      reason: 'Perfect weather with fewer crowds'
-    },
     idealFor: [
       'Couples',
       'Photographers',
       'Wine lovers',
       'Luxury travelers'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Every 30 minutes in peak season',
+        routes: [
+          'Fira - Oia',
+          'Fira - Perissa',
+          'Fira - Akrotiri',
+          'Airport - Fira'
+        ]
+      },
+      facilities: {
+        atm: 'Available in all major towns',
+        medicalCenter: 'Santorini General Hospital in Fira',
+        miniMarket: 'Available in all villages',
+        postOffice: 'Main office in Fira, branches in Oia and Emporio'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22860 22239',
+      medicalCenter: '+30 22860 35300',
+      municipality: '+30 22863 60100',
+      policeStation: '+30 22860 22649',
+      localBus: '+30 22860 25404',
+      citizenService: '+30 22860 23823'
+    },
+    connectedIslands: {
+      direct: [
+        'Mykonos',
+        'Naxos',
+        'Paros',
+        'Ios',
+        'Milos',
+        'Thirasia'
+      ],
+      nearby: [
+        'Anafi',
+        'Folegandros',
+        'Sikinos'
+      ]
+    }
   } as Island,
   { 
     id: '2',
     name: 'Mykonos',
-    description: 'The most cosmopolitan island in Greece, known for its vibrant nightlife, beautiful beaches, and iconic windmills',
+    description: 'Mykonos, the glamorous star of the Aegean, seamlessly blends traditional Cycladic charm with cosmopolitan luxury. The island\'s landscape is a captivating mix of windswept hills, iconic windmills, and pristine beaches. Its main town, Chora, is a picturesque maze of narrow marble streets, whitewashed houses with colorful doors, and purple bougainvillea cascading from balconies. The island\'s legendary nightlife and beach clubs attract celebrities and party-lovers, while its quieter corners still preserve authentic Greek island life. Little Venice, with its medieval houses built right on the sea\'s edge, offers some of the most romantic sunset views in the Cyclades. The island\'s beaches range from popular party spots to secluded coves, while its restaurants serve everything from traditional Greek cuisine to world-class fine dining. Despite its reputation for luxury and nightlife, Mykonos maintains its traditional soul through its historic churches, local crafts, and warm island hospitality.',
     shortDescription: 'Cosmopolitan paradise with vibrant nightlife',
     quote: 'The island that never sleeps',
-    metaTitle: 'Mykonos Travel Guide - Beaches, Nightlife & Culture',
     metaDescription: 'Experience the magic of Mykonos. From pristine beaches and vibrant nightlife to traditional charm.',
     image: '/images/islands/mykonos.jpg',
     heroImage: '/images/islands/mykonos.jpg',
@@ -112,12 +145,15 @@ export const cyclades: Partial<Island>[] = [
       'shopping',
       'sightseeing'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.JUNE,
-      AvailableMonth.JULY,
-      AvailableMonth.AUGUST,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.JUNE,
+        AvailableMonth.JULY,
+        AvailableMonth.AUGUST,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Peak season for beach clubs and nightlife'
+    },
     averageStay: STAY_DURATION.MAJOR,
     mustSee: [
       'Little Venice',
@@ -134,29 +170,60 @@ export const cyclades: Partial<Island>[] = [
     size: 'MAJOR',
     slug: 'mykonos',
     ports: ['New Port', 'Old Port'],
-    bestTime: {
-      months: [
-        AvailableMonth.JUNE,
-        AvailableMonth.JULY,
-        AvailableMonth.AUGUST,
-        AvailableMonth.SEPTEMBER
-      ],
-      reason: 'Peak season for beach clubs and nightlife'
-    },
     idealFor: [
       'Party lovers',
       'Luxury travelers',
       'Beach club enthusiasts',
       'Shopping fans'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Every 30 minutes in peak season',
+        routes: [
+          'Mykonos Town - Paradise Beach',
+          'Mykonos Town - Super Paradise',
+          'Mykonos Town - Platis Gialos',
+          'Mykonos Town - Ornos',
+          'Airport - Mykonos Town'
+        ]
+      },
+      facilities: {
+        atm: 'Available throughout Mykonos Town and major beaches',
+        medicalCenter: 'Mykonos Health Center in Mykonos Town',
+        miniMarket: 'Available in all tourist areas',
+        postOffice: 'Main office in Mykonos Town'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22890 22218',
+      medicalCenter: '+30 22890 23998',
+      municipality: '+30 22890 23261',
+      policeStation: '+30 22890 22716',
+      localBus: '+30 22890 23360',
+      citizenService: '+30 22890 28933'
+    },
+    connectedIslands: {
+      direct: [
+        'Santorini',
+        'Naxos',
+        'Paros',
+        'Syros',
+        'Tinos'
+      ],
+      nearby: [
+        'Delos',
+        'Rhenia',
+        'Andros'
+      ]
+    }
   } as Island,
   { 
     id: '3',
     name: 'Naxos',
-    description: 'The largest and most fertile of the Cyclades islands, known for its excellent beaches, ancient ruins, and traditional mountain villages',
+    description: 'Naxos, the largest and most fertile of the Cyclades, is a diverse island that perfectly balances traditional Greek life with modern tourism. The island\'s rich mythology claims it as the childhood home of Zeus and the place where Theseus abandoned Ariadne. Its most iconic landmark, the Portara (Apollo\'s Gate), stands as a massive marble doorway to nowhere, greeting visitors as they enter the harbor. The island\'s interior is a tapestry of olive groves, vineyards, and traditional mountain villages, each preserving its unique customs and architecture. The western coast boasts some of the finest beaches in the Cyclades, with golden sand and crystal-clear waters perfect for windsurfing. Naxos\'s culinary scene is renowned for its local products, including its famous potatoes, kitron liqueur, and various cheeses. The island\'s medieval Kastro area in Naxos Town offers a fascinating glimpse into the island\'s Venetian past, while the ancient kouros statues lying unfinished in ancient quarries tell tales of the island\'s ancient marble-working heritage.',
     shortDescription: 'Largest Cycladic island with diverse attractions',
     quote: 'Where mountains meet beaches',
-    metaTitle: 'Naxos Travel Guide - Best Beaches & Villages',
     metaDescription: 'Discover the largest Cycladic island. From pristine beaches to mountain villages, experience the authentic Greek island life.',
     image: '/images/islands/naxos.jpg',
     heroImage: '/images/islands/naxos.jpg',
@@ -182,12 +249,15 @@ export const cyclades: Partial<Island>[] = [
       'village-exploring',
       'local-cuisine'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER,
-      AvailableMonth.OCTOBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER,
+        AvailableMonth.OCTOBER
+      ],
+      description: 'Perfect weather for both beaches and hiking'
+    },
     averageStay: STAY_DURATION.MAJOR,
     mustSee: [
       'Portara',
@@ -204,29 +274,61 @@ export const cyclades: Partial<Island>[] = [
     size: 'MAJOR',
     slug: 'naxos',
     ports: ['Naxos Port'],
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER,
-        AvailableMonth.OCTOBER
-      ],
-      reason: 'Perfect weather for both beaches and hiking'
-    },
     idealFor: [
       'Families',
       'Active travelers',
       'Food lovers',
       'Beach enthusiasts'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Regular service during peak season',
+        routes: [
+          'Naxos Town - Plaka Beach',
+          'Naxos Town - Agia Anna',
+          'Naxos Town - Apollonas',
+          'Naxos Town - Halki',
+          'Airport - Naxos Town'
+        ]
+      },
+      facilities: {
+        atm: 'Available in Naxos Town and major villages',
+        medicalCenter: 'Naxos General Hospital',
+        miniMarket: 'Available in most villages',
+        postOffice: 'Main office in Naxos Town, branches in larger villages'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22850 22300',
+      medicalCenter: '+30 22853 60500',
+      municipality: '+30 22853 60100',
+      policeStation: '+30 22850 22100',
+      localBus: '+30 22850 24910',
+      citizenService: '+30 22850 29165'
+    },
+    connectedIslands: {
+      direct: [
+        'Santorini',
+        'Mykonos',
+        'Paros',
+        'Ios',
+        'Small Cyclades'
+      ],
+      nearby: [
+        'Koufonisia',
+        'Iraklia',
+        'Schinoussa',
+        'Donousa'
+      ]
+    }
   } as Island,
   { 
     id: '4',
     name: 'Paros',
-    description: 'A perfect blend of traditional Cycladic charm and modern amenities, known for its beautiful beaches, water sports, and vibrant nightlife',
+    description: 'Paros, sitting at the heart of the Cyclades, is an island that masterfully balances cosmopolitan flair with traditional Greek island life. Famous since antiquity for its fine white marble, used in masterpieces like the Venus de Milo and Napoleon\'s tomb, the island continues to charm visitors with its elegant architecture and golden beaches. The main town of Parikia, built around an impressive Venetian castle, welcomes visitors with its vibrant waterfront and maze-like old town. In the island\'s interior, the mountain village of Lefkes offers a glimpse into traditional Cycladic life with its white-washed houses and marble-paved paths. The fishing village of Naoussa, with its picturesque old port and Venetian fortress, has evolved into one of the most sophisticated destinations in the Cyclades, offering high-end dining and shopping while maintaining its authentic character. The island is a watersports paradise, particularly for windsurfing and kitesurfing at Golden Beach and New Golden Beach. The island\'s network of walking trails, including old miners\' paths, leads to hidden chapels, abandoned mines, and breathtaking viewpoints. Despite growing tourism, Paros maintains its authentic character, with traditional tavernas serving local specialties like wine from the Moraitis winery and traditional dishes such as gouna (sun-dried mackerel). The island\'s commitment to sustainable tourism and preservation of its natural beauty makes it a perfect destination for those seeking an authentic Cycladic experience.',
     shortDescription: 'Perfect blend of tradition and modernity',
     quote: 'The heart of the Cyclades',
-    metaTitle: 'Paros Travel Guide - Best Things to Do & See',
     metaDescription: 'Explore Paros island, offering the perfect mix of traditional charm and modern amenities.',
     image: '/images/islands/paros.jpg',
     heroImage: '/images/islands/paros.jpg',
@@ -252,12 +354,15 @@ export const cyclades: Partial<Island>[] = [
       'hiking',
       'nightlife'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER,
-      AvailableMonth.OCTOBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER,
+        AvailableMonth.OCTOBER
+      ],
+      description: 'Perfect conditions for water sports and sightseeing'
+    },
     averageStay: STAY_DURATION.MAJOR,
     mustSee: [
       'Naoussa',
@@ -274,29 +379,60 @@ export const cyclades: Partial<Island>[] = [
     size: 'MAJOR',
     slug: 'paros',
     ports: ['Parikia Port'],
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER,
-        AvailableMonth.OCTOBER
-      ],
-      reason: 'Perfect conditions for water sports and sightseeing'
-    },
     idealFor: [
       'Water sports enthusiasts',
       'Young couples',
       'Families',
       'Active travelers'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Regular service every hour in peak season',
+        routes: [
+          'Parikia - Naoussa',
+          'Parikia - Golden Beach',
+          'Parikia - Lefkes',
+          'Parikia - Aliki',
+          'Airport - Parikia'
+        ]
+      },
+      facilities: {
+        atm: 'Available in Parikia, Naoussa, and major tourist areas',
+        medicalCenter: 'Paros Health Center in Parikia',
+        miniMarket: 'Available in all villages',
+        postOffice: 'Main office in Parikia, branch in Naoussa'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22840 21240',
+      medicalCenter: '+30 22840 22000',
+      municipality: '+30 22843 60100',
+      policeStation: '+30 22840 23333',
+      localBus: '+30 22840 21530',
+      citizenService: '+30 22840 21751'
+    },
+    connectedIslands: {
+      direct: [
+        'Santorini',
+        'Mykonos',
+        'Naxos',
+        'Ios',
+        'Antiparos'
+      ],
+      nearby: [
+        'Syros',
+        'Sifnos',
+        'Small Cyclades'
+      ]
+    }
   } as Island,
   { 
     id: '5',
     name: 'Milos',
-    description: 'Known for its stunning lunar landscapes, colorful fishing villages, and over 70 unique beaches',
+    description: 'Milos, the island of colors, is a volcanic wonderland that captivates visitors with its otherworldly landscapes and rich history. Famous as the discovery site of the Venus de Milo statue, the island boasts over 70 unique beaches, each with its own character and geological formation. The island\'s lunar-like Sarakiniko beach, with its smooth white volcanic rocks, stands as one of the most photographed locations in the Cyclades. The island\'s volcanic past has blessed it with a spectacular coastline of colorful cliffs, hot springs, and unique formations like the Kleftiko caves, once a pirates\' hideout. Traditional fishing villages like Klima, with their "syrmata" (boat garages with living quarters above), paint a picturesque scene with their multicolored doors reflecting in the sea. The island\'s mining history is evident in the abandoned mines and loading bridges at Megalo Livadi, telling stories of its industrial past. Milos\'s 72 beaches, many accessible only by boat or foot, range from the organized Livadi Beach to secluded coves like Ganema and Kalo Ambeli. The island\'s network of walking trails, including old miners\' paths, leads to hidden chapels, abandoned mines, and breathtaking viewpoints. Despite growing tourism, Milos maintains its authentic character, with traditional tavernas serving local specialties like "pitarakia" (cheese pies) and fresh seafood, making it a paradise for both adventure seekers and food lovers.',
     shortDescription: 'Volcanic island with colorful beaches',
     quote: 'Where colors meet the sea',
-    metaTitle: 'Milos Travel Guide - Best Things to Do & See',
     metaDescription: 'Explore the volcanic island of Milos. Discover its colorful beaches, ancient catacombs, and traditional fishing villages.',
     activities: [
       'swimming',
@@ -306,12 +442,15 @@ export const cyclades: Partial<Island>[] = [
       'geological-tours',
       'local-cuisine'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER,
-      AvailableMonth.OCTOBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER,
+        AvailableMonth.OCTOBER
+      ],
+      description: 'Perfect for beach exploration and boat tours'
+    },
     averageStay: STAY_DURATION.MAJOR,
     mustSee: [
       'Sarakiniko Beach',
@@ -345,77 +484,84 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and warm, 18-22°C',
       autumn: 'Warm and clear, 20-25°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER,
-        AvailableMonth.OCTOBER
-      ],
-      reason: 'Perfect for beach exploration and boat tours'
-    },
     idealFor: [
       'Couples',
       'Photographers',
       'Beach lovers',
       'Adventure seekers'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Regular service during summer season',
+        routes: [
+          'Adamas - Plaka',
+          'Adamas - Pollonia',
+          'Adamas - Paliochori',
+          'Adamas - Provatas',
+          'Airport - Adamas'
+        ]
+      },
+      facilities: {
+        atm: 'Available in Adamas and Plaka',
+        medicalCenter: 'Milos Health Center in Plaka',
+        miniMarket: 'Available in main villages',
+        postOffice: 'Main office in Adamas'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22870 23360',
+      medicalCenter: '+30 22870 22700',
+      municipality: '+30 22873 60100',
+      policeStation: '+30 22870 21378',
+      localBus: '+30 22870 21427',
+      citizenService: '+30 22870 28210'
+    },
+    connectedIslands: {
+      direct: [
+        'Santorini',
+        'Piraeus',
+        'Kimolos',
+        'Sifnos'
+      ],
+      nearby: [
+        'Folegandros',
+        'Serifos',
+        'Kimolos'
+      ]
+    }
   } as Island,
   { 
     id: '6',
     name: 'Ios',
-    description: 'Famous for its vibrant nightlife and beautiful beaches, Ios offers a perfect balance of party atmosphere and natural beauty',
-    shortDescription: 'Party paradise with stunning beaches',
-    quote: 'Where the young at heart come to play',
-    metaTitle: 'Ios Travel Guide - Best Things to Do & See',
-    metaDescription: 'Experience the best of Ios. From vibrant nightlife to pristine beaches, discover what makes this island a favorite among young travelers.',
-    activities: [
-      'swimming',
-      'nightlife',
-      'beach-clubs',
-      'water-sports',
-      'hiking',
-      'local-cuisine'
-    ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.JUNE,
-      AvailableMonth.JULY,
-      AvailableMonth.AUGUST,
-      AvailableMonth.SEPTEMBER
-    ],
-    averageStay: STAY_DURATION.MEDIUM,
-    mustSee: [
-      'Mylopotas Beach',
-      'Chora',
-      'Homer\'s Tomb',
-      'Manganari Beach',
-      'Paleokastro'
-    ],
+    description: 'Ios, a vibrant island in the Cyclades, is known for its stunning beaches, vibrant nightlife, and picturesque whitewashed houses. The island\'s main village, Chora, is a maze of narrow streets and alleys, filled with shops, restaurants, and bars. The island\'s beaches, such as Mylopotas and Maganari, are popular spots for swimming and water sports. Ios is also home to the famous Homer\'s Tomb, a historic site that attracts visitors from all over the world.',
+    shortDescription: 'Vibrant island with stunning beaches and nightlife',
+    quote: 'Where the party never stops',
+    metaDescription: 'Experience the vibrant island of Ios. From stunning beaches to vibrant nightlife, discover the best of the Cyclades.',
     image: '/images/islands/ios.jpg',
     heroImage: '/images/islands/ios.jpg',
-    vibes: [
-      IslandVibe.PARTY,
-      IslandVibe.SCENIC,
-      IslandVibe.ADVENTUROUS,
-      IslandVibe.YOUTHFUL
-    ],
-    size: 'MEDIUM',
-    slug: 'ios',
-    ports: ['Ios Port'],
     highlights: [
-      'Vibrant nightlife',
-      'Beautiful beaches',
-      'Traditional Chora',
-      'Water sports'
+      'Mylopotas Beach',
+      'Maganari Beach',
+      'Homer\'s Tomb',
+      'Chora Village',
+      'Nightlife'
     ],
     weather: {
       temp: 27,
-      condition: 'Sunny and warm',
+      condition: 'sunny',
       summer: 'Hot and dry with temperatures around 27-32°C',
-      winter: 'Mild with some rain, 12-16°C',
-      spring: 'Pleasant and warm, 18-22°C',
-      autumn: 'Warm and clear, 20-25°C'
+      winter: 'Mild with occasional rain, 12-15°C',
+      spring: 'Pleasant and mild, 18-22°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
     },
+    activities: [
+      'swimming',
+      'water-sports',
+      'nightlife',
+      'sightseeing',
+      'beach-hopping'
+    ] as IslandActivity[],
     bestTime: {
       months: [
         AvailableMonth.JUNE,
@@ -423,22 +569,77 @@ export const cyclades: Partial<Island>[] = [
         AvailableMonth.AUGUST,
         AvailableMonth.SEPTEMBER
       ],
-      reason: 'Peak season for nightlife and beach activities'
+      description: 'Peak season for beach activities and nightlife'
     },
+    averageStay: STAY_DURATION.MAJOR,
+    mustSee: [
+      'Mylopotas Beach',
+      'Maganari Beach',
+      'Homer\'s Tomb',
+      'Chora Village',
+      'Skarkos Hill'
+    ],
+    vibes: [
+      IslandVibe.PARTY,
+      IslandVibe.VIBRANT,
+      IslandVibe.YOUTHFUL,
+      IslandVibe.LIVELY
+    ],
+    size: 'MAJOR',
+    slug: 'ios',
+    ports: ['Ios Port'],
     idealFor: [
       'Young travelers',
       'Party lovers',
       'Beach enthusiasts',
-      'Adventure seekers'
-    ]
+      'History buffs'
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Regular service during summer season',
+        routes: [
+          'Ios Port - Chora',
+          'Chora - Mylopotas Beach',
+          'Chora - Manganari Beach',
+          'Port - Far Out Beach Club'
+        ]
+      },
+      facilities: {
+        atm: 'Available in Chora and Port area',
+        medicalCenter: 'Regional Medical Center in Chora',
+        miniMarket: 'Available in Chora and beach areas',
+        postOffice: 'Main office in Chora'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22860 91264',
+      medicalCenter: '+30 22860 91227',
+      municipality: '+30 22863 60400',
+      policeStation: '+30 22860 91222',
+      localBus: '+30 22860 91223',
+      citizenService: '+30 22860 91239'
+    },
+    connectedIslands: {
+      direct: [
+        'Santorini',
+        'Naxos',
+        'Paros',
+        'Milos'
+      ],
+      nearby: [
+        'Sikinos',
+        'Folegandros',
+        'Small Cyclades'
+      ]
+    }
   } as Island,
   { 
     id: '7',
     name: 'Sifnos',
-    description: 'Known as the culinary capital of the Cyclades, Sifnos combines excellent gastronomy with traditional architecture and beautiful hiking trails',
+    description: 'Sifnos, the gastronomic capital of the Cyclades, is an island where culinary tradition meets architectural elegance. The island\'s rich clay deposits have fostered a long tradition of pottery making, evident in its distinctive chimney pots and the earthenware casseroles used in its famous slow-cooked recipes. The medieval village of Kastro, built on top of an ancient acropolis, stands as a remarkable example of continuous habitation from ancient times, with its walls incorporating ancient marble columns and architectural elements. The island\'s 227 churches, many with blue domes and whitewashed walls, dot the landscape and come alive during traditional festivals. Apollonia, the island\'s capital, comes alive at night with its string of bars and restaurants along the "Steno" (narrow street). The island\'s network of ancient stone paths, recently restored, connects traditional settlements through a landscape of olive groves, almond trees, and wild herbs. Sifnos\'s beaches range from organized sandy stretches to secluded coves, while its pottery workshops and cooking classes offer visitors a chance to engage with local traditions. The island\'s culinary heritage, featuring dishes like revithada (chickpea soup) and mastelo (lamb or goat baked in red wine), has influenced Greek cuisine far beyond its shores.',
     shortDescription: 'Culinary paradise with traditional charm',
     quote: 'Where flavors meet tradition',
-    metaTitle: 'Sifnos Travel Guide - Best Things to Do & See',
     metaDescription: 'Discover the culinary capital of the Cyclades. From traditional pottery to exquisite local cuisine, experience the authentic Greek island life.',
     activities: [
       'cooking-classes',
@@ -448,12 +649,15 @@ export const cyclades: Partial<Island>[] = [
       'cultural-tours',
       'local-cuisine'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER,
-      AvailableMonth.OCTOBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER,
+        AvailableMonth.OCTOBER
+      ],
+      description: 'Perfect for culinary experiences and hiking'
+    },
     averageStay: STAY_DURATION.MEDIUM,
     mustSee: [
       'Kastro',
@@ -487,21 +691,52 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and green, 18-22°C',
       autumn: 'Warm and clear, 20-25°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER,
-        AvailableMonth.OCTOBER
-      ],
-      reason: 'Perfect for culinary experiences and hiking'
-    },
     idealFor: [
       'Food lovers',
       'Culture enthusiasts',
       'Hikers',
       'Couples'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Regular service connecting main villages',
+        routes: [
+          'Kamares - Apollonia',
+          'Apollonia - Platis Gialos',
+          'Apollonia - Vathi',
+          'Apollonia - Kastro',
+          'Apollonia - Cherronisos'
+        ]
+      },
+      facilities: {
+        atm: 'Available in Apollonia and Kamares',
+        medicalCenter: 'Regional Medical Center in Apollonia',
+        miniMarket: 'Available in main villages',
+        postOffice: 'Main office in Apollonia'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22840 31617',
+      medicalCenter: '+30 22840 31315',
+      municipality: '+30 22843 60325',
+      policeStation: '+30 22840 31210',
+      localBus: '+30 22840 31364',
+      citizenService: '+30 22840 31213'
+    },
+    connectedIslands: {
+      direct: [
+        'Milos',
+        'Piraeus',
+        'Serifos',
+        'Kimolos'
+      ],
+      nearby: [
+        'Paros',
+        'Folegandros',
+        'Antiparos'
+      ]
+    }
   } as Island,
   { 
     id: '8',
@@ -509,7 +744,6 @@ export const cyclades: Partial<Island>[] = [
     description: 'A dramatic island of steep cliffs and traditional villages, offering a perfect blend of natural beauty and authentic Greek charm',
     shortDescription: 'Dramatic cliffs and traditional charm',
     quote: 'Where cliffs meet clouds',
-    metaTitle: 'Amorgos Travel Guide - Best Things to Do & See',
     metaDescription: 'Experience the dramatic beauty of Amorgos. From clifftop villages to pristine beaches, discover this hidden Cycladic gem.',
     activities: [
       'hiking',
@@ -519,12 +753,15 @@ export const cyclades: Partial<Island>[] = [
       'photography',
       'cliff-walking'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER,
-      AvailableMonth.OCTOBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER,
+        AvailableMonth.OCTOBER
+      ],
+      description: 'Perfect for hiking and beach activities'
+    },
     averageStay: STAY_DURATION.MEDIUM,
     mustSee: [
       'Chora',
@@ -558,15 +795,6 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and warm, 18-22°C',
       autumn: 'Warm and clear, 20-25°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER,
-        AvailableMonth.OCTOBER
-      ],
-      reason: 'Perfect for hiking and beach activities'
-    },
     idealFor: [
       'Couples',
       'Nature lovers',
@@ -577,10 +805,9 @@ export const cyclades: Partial<Island>[] = [
   { 
     id: '9',
     name: 'Syros',
-    description: 'The administrative capital of the Cyclades, combining neoclassical grandeur with traditional Cycladic charm',
+    description: 'Syros, the administrative capital of the Cyclades, stands unique among its siblings with its remarkable blend of Cycladic and neoclassical architecture. The island\'s capital, Ermoupolis, was once the main commercial port of Greece and remains one of the most elegant towns in the Mediterranean. Its central square, Miaouli Square, is dominated by the grand Town Hall, while the nearby Apollo Theater, a miniature version of La Scala, reflects the island\'s rich cultural heritage. The island\'s industrial heritage is preserved in the Neorion Shipyards and the Industrial Museum, while its cultural present thrives in art galleries, theaters, and the famous Syros International Film Festival. Unlike its more tourism-dependent neighbors, Syros maintains a vibrant year-round life, with its university, judiciary, and administrative functions creating a cosmopolitan atmosphere. The island\'s culinary scene is famous for local specialties like loukoumi (Turkish delight), halva pie, and San Michali cheese, while its beaches offer a perfect mix of organized facilities and secluded coves.',
     shortDescription: 'Neoclassical elegance meets island charm',
     quote: 'Where elegance meets tradition',
-    metaTitle: 'Syros Travel Guide - Best Things to Do & See',
     metaDescription: 'Experience the unique blend of neoclassical and Cycladic architecture in Syros. Discover its rich culture, beautiful beaches, and vibrant arts scene.',
     activities: [
       'cultural-tours',
@@ -590,12 +817,15 @@ export const cyclades: Partial<Island>[] = [
       'architecture-tours',
       'shopping'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER,
-      AvailableMonth.OCTOBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER,
+        AvailableMonth.OCTOBER
+      ],
+      description: 'Perfect for cultural activities and sightseeing'
+    },
     averageStay: STAY_DURATION.MEDIUM,
     mustSee: [
       'Ermoupolis',
@@ -629,21 +859,52 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and warm, 18-22°C',
       autumn: 'Warm and clear, 20-25°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER,
-        AvailableMonth.OCTOBER
-      ],
-      reason: 'Perfect for cultural activities and sightseeing'
-    },
     idealFor: [
       'Culture enthusiasts',
       'Architecture lovers',
       'Theater fans',
       'History buffs'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Regular service throughout the day',
+        routes: [
+          'Ermoupolis - Ano Syros',
+          'Ermoupolis - Galissas',
+          'Ermoupolis - Kini',
+          'Ermoupolis - Poseidonia',
+          'Airport - Ermoupolis'
+        ]
+      },
+      facilities: {
+        atm: 'Available throughout Ermoupolis and major villages',
+        medicalCenter: 'Syros General Hospital',
+        miniMarket: 'Available in all major areas',
+        postOffice: 'Main office in Ermoupolis, branches in larger villages'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22810 88888',
+      medicalCenter: '+30 22813 60500',
+      municipality: '+30 22813 61000',
+      policeStation: '+30 22810 96100',
+      localBus: '+30 22810 82575',
+      citizenService: '+30 22810 85250'
+    },
+    connectedIslands: {
+      direct: [
+        'Mykonos',
+        'Tinos',
+        'Paros',
+        'Piraeus'
+      ],
+      nearby: [
+        'Andros',
+        'Kea',
+        'Kythnos'
+      ]
+    }
   } as Island,
   { 
     id: '10',
@@ -651,7 +912,6 @@ export const cyclades: Partial<Island>[] = [
     description: 'A spiritual island known for its religious significance, traditional marble craftsmanship, and picturesque villages.',
     shortDescription: 'Religious heritage and marble artistry',
     quote: 'Where faith meets artistry',
-    metaTitle: 'Tinos Island Guide - Pilgrimage, Art & Tradition',
     metaDescription: 'Explore the spiritual heart of the Cyclades. Discover religious sites, marble villages, and authentic Greek culture on Tinos.',
     activities: [
       'pilgrimage',
@@ -660,11 +920,14 @@ export const cyclades: Partial<Island>[] = [
       'local-cuisine',
       'hiking'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Perfect weather for exploring with fewer pilgrims'
+    },
     averageStay: STAY_DURATION.MAJOR,
     mustSee: [
       'Church of Panagia Evangelistria',
@@ -697,14 +960,6 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and mild, 18-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER
-      ],
-      reason: 'Perfect weather for exploring with fewer pilgrims'
-    },
     idealFor: [
       'Religious travelers',
       'Art lovers',
@@ -715,10 +970,9 @@ export const cyclades: Partial<Island>[] = [
   { 
     id: '11',
     name: 'Serifos',
-    description: 'A rugged island with wild beauty, pristine beaches, and traditional Cycladic architecture, perfect for those seeking authenticity',
+    description: 'Serifos, an island of wild beauty and mythological significance, rises dramatically from the Aegean Sea with its rugged landscapes and pristine beaches. According to mythology, it was here that Perseus turned King Polydektes and his courtiers to stone, a legend that seems fitting given the island\'s dramatic rocky terrain. The island\'s main town, Chora, is one of the most impressive in the Cyclades, amphitheatrically built on a rocky hill crowned by a Venetian castle. The island\'s mining heritage is evident in the abandoned mines and loading bridges at Megalo Livadi, telling stories of its industrial past. Serifos\'s 72 beaches, many accessible only by boat or foot, range from the organized Livadi Beach to secluded coves like Ganema and Kalo Ambeli. The island\'s network of walking trails, including old miners\' paths, leads to hidden chapels, abandoned mines, and breathtaking viewpoints. Despite growing tourism, Serifos maintains its authentic character, with traditional tavernas serving local specialties like marathotiganites (fennel fritters) and revithada. The island\'s commitment to sustainable tourism and preservation of its natural beauty makes it a perfect destination for those seeking an authentic Cycladic experience.',
     shortDescription: 'Rugged beauty and authentic charm',
     quote: 'Where wild meets tradition',
-    metaTitle: 'Serifos Travel Guide - Best Things to Do & See',
     metaDescription: 'Discover the authentic charm of Serifos. From pristine beaches to traditional villages, experience the untouched beauty of this Cycladic gem.',
     activities: [
       'hiking',
@@ -728,12 +982,15 @@ export const cyclades: Partial<Island>[] = [
       'beach-hopping',
       'photography'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER,
-      AvailableMonth.OCTOBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER,
+        AvailableMonth.OCTOBER
+      ],
+      description: 'Perfect for hiking and beach activities'
+    },
     averageStay: STAY_DURATION.MEDIUM,
     mustSee: [
       'Chora',
@@ -767,21 +1024,51 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and green, 18-22°C',
       autumn: 'Warm and clear, 20-25°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER,
-        AvailableMonth.OCTOBER
-      ],
-      reason: 'Perfect for hiking and beach activities'
-    },
     idealFor: [
       'Nature lovers',
       'Hikers',
       'Peace seekers',
       'Photography enthusiasts'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Regular service during summer season',
+        routes: [
+          'Livadi - Chora',
+          'Livadi - Livadakia',
+          'Livadi - Psili Ammos',
+          'Livadi - Megalo Livadi'
+        ]
+      },
+      facilities: {
+        atm: 'Available in Livadi and Chora',
+        medicalCenter: 'Regional Medical Center in Livadi',
+        miniMarket: 'Available in main villages',
+        postOffice: 'Main office in Livadi'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22810 51470',
+      medicalCenter: '+30 22810 51202',
+      municipality: '+30 22810 51210',
+      policeStation: '+30 22810 51444',
+      localBus: '+30 22810 51581',
+      citizenService: '+30 22810 51290'
+    },
+    connectedIslands: {
+      direct: [
+        'Sifnos',
+        'Milos',
+        'Piraeus',
+        'Kythnos'
+      ],
+      nearby: [
+        'Kimolos',
+        'Folegandros',
+        'Syros'
+      ]
+    }
   } as Island,
   { 
     id: '12',
@@ -789,7 +1076,6 @@ export const cyclades: Partial<Island>[] = [
     description: 'The greenest of the Cyclades, known for its neoclassical mansions, pristine beaches, and extensive network of hiking trails,',
     shortDescription: 'Green paradise with hiking trails',
     quote: 'Where nature meets nobility',
-    metaTitle: 'Andros Travel Guide - Best Things to Do & See',
     metaDescription: 'Discover the green island of Andros. From hiking trails to neoclassical architecture, experience the unique charm of this Cycladic gem.',
     activities: [
       'hiking',
@@ -799,12 +1085,15 @@ export const cyclades: Partial<Island>[] = [
       'water-sports',
       'local-cuisine'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER,
-      AvailableMonth.OCTOBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER,
+        AvailableMonth.OCTOBER
+      ],
+      description: 'Perfect for hiking and cultural activities'
+    },
     averageStay: STAY_DURATION.MAJOR,
     mustSee: [
       'Chora',
@@ -838,15 +1127,6 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and green, 18-22°C',
       autumn: 'Warm and clear, 20-25°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER,
-        AvailableMonth.OCTOBER
-      ],
-      reason: 'Perfect for hiking and cultural activities'
-    },
     idealFor: [
       'Hikers',
       'Art lovers',
@@ -857,10 +1137,9 @@ export const cyclades: Partial<Island>[] = [
   { 
     id: '13',
     name: 'Kea',
-    description: 'The closest Cycladic island to Athens, Kea offers a perfect blend of hiking trails, pristine beaches, and authentic Greek charm.',
+    description: 'Kea, also known as Tzia, is the closest Cycladic island to Athens yet remains refreshingly authentic and undiscovered. The island\'s landscape differs from the typical Cycladic scenery, with its terracotta-colored houses blending into rolling hills covered in ancient oak forests and almond groves. The main town, Ioulida, is a maze of stepped alleys and traditional architecture, watched over by the island\'s mascot - an ancient stone lion carved from the native rock. Kea\'s rich maritime history is evident in its numerous shipwrecks, including the famous HMHS Britannic, making it a paradise for diving enthusiasts. The island\'s extensive network of ancient paths, recently restored and well-marked, connects four ancient city-states through landscapes of dramatic variety. The coastline alternates between sandy beaches like Koundouros and rocky coves perfect for snorkeling. Kea\'s culinary tradition is renowned for its local products, including thyme honey, acorn cookies, and the famous "loza" (cured pork). The island\'s proximity to Athens has made it a favorite weekend retreat for Athenians, who appreciate its laid-back atmosphere and excellent tavernas, yet it remains uncrowded even in peak season.',
     shortDescription: 'Hiking paradise close to Athens',
     quote: 'Where ancient paths lead to secret beaches',
-    metaTitle: 'Kea Island Guide - Hiking, Beaches & Local Life',
     metaDescription: 'Discover Kea, the hikers paradise of the Cyclades. Find the best trails, beaches, and local experiences on this authentic Greek island.',
     activities: [
       'hiking',
@@ -869,11 +1148,14 @@ export const cyclades: Partial<Island>[] = [
       'local-cuisine',
       'beach-hopping'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Perfect weather for hiking and exploring'
+    },
     averageStay: STAY_DURATION.MEDIUM,
     mustSee: [
       'Ancient Karthaia',
@@ -890,6 +1172,7 @@ export const cyclades: Partial<Island>[] = [
     ],
     size: 'MEDIUM',
     slug: 'kea',
+    ports: ['Korissia Port'],
     highlights: [
       'Ancient ruins',
       'Hiking trails',
@@ -897,7 +1180,6 @@ export const cyclades: Partial<Island>[] = [
       'Pristine beaches',
       'Local gastronomy'
     ],
-    ports: ['Korissia Port'],
     weather: {
       temp: 24,
       condition: 'Sunny with mild winds',
@@ -906,20 +1188,50 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and green, 18-22°C',
       autumn: 'Warm and clear, 20-24°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER
-      ],
-      reason: 'Perfect weather for hiking and exploring'
-    },
     idealFor: [
       'Hikers',
       'History buffs',
       'Nature lovers',
       'Peace seekers'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Limited service connecting main villages',
+        routes: [
+          'Korissia - Ioulida',
+          'Ioulida - Otzias',
+          'Ioulida - Vourkari',
+          'Korissia - Koundouros'
+        ]
+      },
+      facilities: {
+        atm: 'Available in Ioulida and Korissia',
+        medicalCenter: 'Regional Medical Center in Ioulida',
+        miniMarket: 'Available in main villages',
+        postOffice: 'Main office in Ioulida'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22880 21344',
+      medicalCenter: '+30 22880 22200',
+      municipality: '+30 22880 22345',
+      policeStation: '+30 22880 21100',
+      localBus: '+30 22880 21240',
+      citizenService: '+30 22880 22388'
+    },
+    connectedIslands: {
+      direct: [
+        'Lavrio',
+        'Kythnos',
+        'Syros'
+      ],
+      nearby: [
+        'Andros',
+        'Tinos',
+        'Gyaros'
+      ]
+    }
   } as Island,
   { 
     id: '14',
@@ -927,7 +1239,6 @@ export const cyclades: Partial<Island>[] = [
     description: 'A hidden gem in the Cyclades, Sikinos offers unspoiled beauty, traditional architecture, and a peaceful escape from modern life.',
     shortDescription: 'Untouched traditional island life',
     quote: 'Where time stands still',
-    metaTitle: 'Sikinos Island Guide - Authentic Greek Island Life',
     metaDescription: 'Discover the untouched beauty of Sikinos. Experience authentic Greek island life away from mass tourism.',
     activities: [
       'hiking',
@@ -936,11 +1247,14 @@ export const cyclades: Partial<Island>[] = [
       'local-cuisine',
       'cultural-visits'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Perfect weather for exploring with fewer tourists'
+    },
     averageStay: STAY_DURATION.MINOR,
     mustSee: [
       'Episkopi Monastery',
@@ -973,14 +1287,6 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and mild, 18-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER
-      ],
-      reason: 'Perfect weather for exploring with fewer tourists'
-    },
     idealFor: [
       'Peace seekers',
       'Culture enthusiasts',
@@ -991,10 +1297,9 @@ export const cyclades: Partial<Island>[] = [
   { 
     id: '15',
     name: 'Kimolos',
-    description: 'A volcanic island known for its stunning white cliffs, crystal-clear waters, and peaceful atmosphere.',
+    description: 'Kimolos, a small volcanic island next to Milos, is a hidden treasure of the Western Cyclades that captivates visitors with its unspoiled beauty and genuine island character. Named after the chalk (kimolia) that was once extracted here, the island\'s geological heritage is evident in its stunning white cliffs and thermal springs. The main village, Chorio, is a perfect example of Cycladic architecture, with its narrow alleys, white-washed houses, and the medieval castle quarter known as Kastro. The island\'s coastline is a geological wonderland, featuring the spectacular Skiadi rock formation, a natural mushroom-shaped monument formed by wind erosion. Kimolos\'s beaches, like the stunning Prassa with its white sand and turquoise waters, remain wonderfully undeveloped. The island is a paradise for nature lovers, offering excellent hiking opportunities and rare flora species. Local gastronomy focuses on simple, authentic dishes like ladenia (a local pizza-like specialty) and traditional sweets made with local almonds. The absence of mass tourism has preserved the island\'s traditional way of life, making it an ideal destination for those seeking to experience authentic Greek island culture.',
     shortDescription: 'Volcanic beauty with pristine beaches',
     quote: 'Where white cliffs meet turquoise waters',
-    metaTitle: 'Kimolos Island Guide - Beaches, Nature & Serenity',
     metaDescription: 'Experience the untouched beauty of Kimolos. Discover volcanic landscapes, secluded beaches, and authentic Greek island life.',
     activities: [
       'swimming',
@@ -1003,11 +1308,14 @@ export const cyclades: Partial<Island>[] = [
       'beach-hopping',
       'local-cuisine'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Perfect beach weather with fewer tourists'
+    },
     averageStay: STAY_DURATION.MINOR,
     mustSee: [
       'Skiadi Rock',
@@ -1040,20 +1348,51 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and mild, 18-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER
-      ],
-      reason: 'Perfect beach weather with fewer tourists'
-    },
     idealFor: [
       'Peace seekers',
       'Nature lovers',
       'Beach enthusiasts',
       'Couples'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Limited service during summer season',
+        routes: [
+          'Psathi - Chorio',
+          'Chorio - Prassa Beach',
+          'Chorio - Kalamitsi',
+          'Psathi - Aliki'
+        ]
+      },
+      facilities: {
+        atm: 'Available in Chorio',
+        medicalCenter: 'Regional Medical Center in Chorio',
+        miniMarket: 'Available in main village',
+        postOffice: 'Main office in Chorio'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22870 51207',
+      medicalCenter: '+30 22870 51222',
+      municipality: '+30 22870 51338',
+      policeStation: '+30 22870 51205',
+      localBus: '+30 22870 51237',
+      citizenService: '+30 22870 51338'
+    },
+    connectedIslands: {
+      direct: [
+        'Milos',
+        'Piraeus',
+        'Sifnos',
+        'Folegandros'
+      ],
+      nearby: [
+        'Serifos',
+        'Polyaigos',
+        'Sikinos'
+      ]
+    }
   } as Island,
   { 
     id: '16',
@@ -1061,7 +1400,6 @@ export const cyclades: Partial<Island>[] = [
     description: 'Known for its thermal springs, beautiful beaches, and traditional villages, Kythnos offers an authentic Greek island experience.',
     shortDescription: 'Thermal springs and traditional charm',
     quote: 'Where healing waters meet golden beaches',
-    metaTitle: 'Kythnos Island Guide - Hot Springs & Traditional Life',
     metaDescription: 'Experience the healing thermal springs and authentic charm of Kythnos. Discover traditional villages, pristine beaches, and local culture.',
     activities: [
       'swimming',
@@ -1070,11 +1408,14 @@ export const cyclades: Partial<Island>[] = [
       'local-cuisine',
       'beach-hopping'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Perfect weather for thermal springs and beaches'
+    },
     averageStay: STAY_DURATION.MEDIUM,
     mustSee: [
       'Loutra Hot Springs',
@@ -1107,14 +1448,6 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and mild, 18-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER
-      ],
-      reason: 'Perfect weather for thermal springs and beaches'
-    },
     idealFor: [
       'Wellness seekers',
       'Beach lovers',
@@ -1125,10 +1458,9 @@ export const cyclades: Partial<Island>[] = [
   { 
     id: '17',
     name: 'Folegandros',
-    description: 'A dramatic island of steep cliffs and traditional villages, offering a perfect blend of natural beauty and authentic Greek charm',
+    description: 'Folegandros, a small but dramatic island between Milos and Santorini, captures the essence of Cycladic beauty with its stunning cliff-top Chora and unspoiled landscapes. The island\'s main town, perched on the edge of a 200-meter cliff, is one of the oldest traditional settlements in the Cyclades, featuring three connected squares with distinct character - a rare architectural feature in the islands. The medieval Kastro district, still inhabited, preserves the island\'s Venetian heritage with its defensive architecture and ancient walls. The path to the church of Panagia, zigzagging up a steep cliff, offers breathtaking views and leads to one of the most significant ecclesiastical museums in the Cyclades. The island\'s wild beauty is evident in its rugged coastline, where beaches like Katergo are accessible only by boat or foot, preserving their natural charm. Despite its small size, Folegandros offers excellent hiking opportunities along ancient paths connecting traditional settlements and remote beaches. The island\'s cuisine is distinctly local, featuring specialties like matsata (handmade pasta) and souroto cheese. The absence of an airport and limited ferry connections have helped Folegandros maintain its authentic character while attracting discerning visitors who appreciate its wild beauty and peaceful atmosphere.',
     shortDescription: 'Dramatic cliffs and traditional charm',
     quote: 'Where cliffs meet clouds',
-    metaTitle: 'Folegandros Travel Guide - Best Things to Do & See',
     metaDescription: 'Experience the dramatic beauty of Folegandros. From clifftop villages to pristine beaches, discover this hidden Cycladic gem.',
     activities: [
       'hiking',
@@ -1138,12 +1470,15 @@ export const cyclades: Partial<Island>[] = [
       'photography',
       'cliff-walking'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER,
-      AvailableMonth.OCTOBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER,
+        AvailableMonth.OCTOBER
+      ],
+      description: 'Perfect for hiking and beach activities'
+    },
     averageStay: STAY_DURATION.MEDIUM,
     mustSee: [
       'Chora',
@@ -1177,69 +1512,61 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and warm, 18-22°C',
       autumn: 'Warm and clear, 20-25°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER,
-        AvailableMonth.OCTOBER
-      ],
-      reason: 'Perfect for hiking and beach activities'
-    },
     idealFor: [
       'Couples',
       'Nature lovers',
       'Photographers',
       'Peace seekers'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Regular service during summer season',
+        routes: [
+          'Karavostasis - Chora',
+          'Chora - Ano Meria',
+          'Karavostasis - Agali Beach',
+          'Chora - Agali Beach'
+        ]
+      },
+      facilities: {
+        atm: 'Available in Chora',
+        medicalCenter: 'Regional Medical Center in Chora',
+        miniMarket: 'Available in main villages',
+        postOffice: 'Main office in Chora'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22860 41244',
+      medicalCenter: '+30 22860 41222',
+      municipality: '+30 22860 41285',
+      policeStation: '+30 22860 41249',
+      localBus: '+30 22860 41252',
+      citizenService: '+30 22860 41283'
+    },
+    connectedIslands: {
+      direct: [
+        'Milos',
+        'Santorini',
+        'Ios',
+        'Sikinos'
+      ],
+      nearby: [
+        'Sifnos',
+        'Kimolos',
+        'Paros'
+      ]
+    }
   } as Island,
   { 
     id: '18',
     name: 'Anafi',
-    description: 'A remote paradise with golden beaches, dramatic landscapes, and a peaceful atmosphere that feels worlds away from modern life.',
-    shortDescription: 'Remote paradise with golden beaches',
-    quote: 'Where solitude meets natural beauty',
-    metaTitle: 'Anafi Island Guide - Remote Beauty & Tranquility',
-    metaDescription: 'Discover the untouched beauty of Anafi. Experience pristine beaches, dramatic landscapes, and authentic Greek island life.',
-    activities: [
-      'hiking',
-      'swimming',
-      'beach-hopping',
-      'local-cuisine',
-      'monastery-visits'
-    ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER
-    ],
-    averageStay: STAY_DURATION.MINOR,
-    mustSee: [
-      'Kalamiotissa Monastery',
-      'Roukounas Beach',
-      'Chora Village',
-      'Mount Kalamos'
-    ],
+    slug: 'anafi',
+    description: 'Anafi, a hidden gem in the southeastern Cyclades, is a testament to untouched Greek island beauty. This small paradise rises dramatically from the Aegean Sea, crowned by Mount Kalamos, one of the largest monoliths in the Mediterranean. The island\'s history stretches back to ancient mythology, where Apollo made it emerge from the waves to shelter the Argonauts. Today, Anafi offers a perfect escape for those seeking authentic Greek island life away from mass tourism. The island\'s main settlement, Chora, is a pristine example of Cycladic architecture, with its white-washed houses, narrow winding paths, and blue-domed churches cascading down the hillside. The island\'s beaches, particularly the golden sands of Roukounas, are among the most serene in the Cyclades, while the ancient temple of Apollo Aegletes stands as a reminder of the island\'s classical heritage. Hiking enthusiasts will find paradise in the network of ancient paths that crisscross the island, leading to hidden chapels, abandoned monasteries, and breathtaking viewpoints. Despite its small size, Anafi offers diverse experiences from exploring Byzantine chapels and Venetian ruins to enjoying fresh local cuisine in traditional tavernas. The island\'s relative isolation has preserved not only its natural beauty but also its authentic way of life, making it a perfect destination for those seeking to experience the true essence of the Cyclades.',
+    quote: 'Where wild landscapes meet tranquil beaches, and ancient history meets vibrant island life',
     image: '/images/islands/anafi.jpg',
     heroImage: '/images/islands/anafi.jpg',
-    vibes: [
-      IslandVibe.PEACEFUL,
-      IslandVibe.SCENIC,
-      IslandVibe.AUTHENTIC
-    ],
-    size: 'MINOR',
-    slug: 'anafi',
-    ports: ['Anafi Port'],
-    highlights: [
-      'Remote beaches',
-      'Ancient monastery',
-      'Dramatic cliffs',
-      'Traditional village',
-      'Hiking trails'
-    ],
     weather: {
-      temp: 26,
-      condition: 'sunny',
       summer: 'Warm and sunny with temperatures around 25-28°C',
       winter: 'Mild with occasional rain, 12-15°C',
       spring: 'Pleasant and mild, 18-22°C',
@@ -1247,26 +1574,130 @@ export const cyclades: Partial<Island>[] = [
     },
     bestTime: {
       months: [
-        AvailableMonth.MAY,
         AvailableMonth.JUNE,
+        AvailableMonth.JULY,
+        AvailableMonth.AUGUST,
         AvailableMonth.SEPTEMBER
       ],
-      reason: 'Perfect weather for hiking and beaches'
+      description: 'Perfect weather for swimming, hiking, and enjoying outdoor activities'
     },
     idealFor: [
       'Peace seekers',
+      'Adventure enthusiasts',
+      'History buffs',
       'Hikers',
-      'Nature lovers',
-      'Adventure travelers'
-    ]
-  } as Island,
+      'Beach lovers'
+    ],
+    highlights: [
+      'Monolith of Kalamos - Second highest in Europe',
+      'Venetian Castle Ruins',
+      'Monastery of Zoodochos Pigi',
+      'Chora - Traditional Cycladic Village',
+      'Pristine Beaches with Turquoise Waters',
+      'Scenic Hiking Trails'
+    ],
+    mustSee: [
+      'Kalamos Monolith',
+      'Monastery of Panagia Kalamiotissa',
+      'Kasteli Ancient City',
+      'Chora Traditional Village',
+      'Roukounas Beach',
+      'Monastery of Zoodochos Pigi'
+    ],
+    ports: [
+      'Santorini',
+      'Thirasia',
+      'Mykonos',
+      'Naxos',
+      'Paros',
+      'Folegandros',
+      'Sikinos',
+      'Ios',
+      'Milos',
+      'Kythnos',
+      'Syros',
+      'Kea',
+      'Chalki',
+      'Kasos',
+      'Rhodes',
+      'Karpathos',
+      'Heraklion',
+      'Sitia'
+    ],
+    connectedIslands: {
+      direct: [
+        'santorini',
+        'thirasia',
+        'mykonos',
+        'naxos',
+        'paros',
+        'folegandros',
+        'sikinos',
+        'ios',
+        'milos',
+        'kythnos',
+        'syros',
+        'kea'
+      ],
+      nearby: [
+        'amorgos',
+        'andros'
+      ],
+      other: [
+        'chalki',
+        'kasos',
+        'rhodes',
+        'karpathos'
+      ]
+    },
+    vibes: [
+      IslandVibe.PEACEFUL,
+      IslandVibe.ADVENTUROUS,
+      IslandVibe.AUTHENTIC,
+      IslandVibe.HISTORIC,
+      IslandVibe.NATURAL,
+      IslandVibe.OFF_THE_BEATEN_PATH
+    ],
+    size: 'MINOR',
+    metaDescription: 'Discover Anafi, a hidden gem in the Cyclades with spectacular views, hiking trails, pristine beaches, and rich history. Plan your perfect Greek island getaway.',
+    activities: [
+      'swimming',
+      'beach-hopping',
+      'hiking',
+      'rock-climbing',
+      'monastery-visits',
+      'traditional-villages',
+      'nightlife',
+      'local-cuisine'
+    ] as IslandActivity[],
+    contacts: {
+      portAuthority: '+302286061220',
+      medicalCenter: '+302286061215',
+      municipality: '+302286061266',
+      policeStation: '+302286061216',
+      localBus: '+302286061266',
+      citizenService: '+302286061390'
+    },
+    transportation: {
+      localBus: {
+        available: true,
+        frequency: 'Infrequent during summer',
+        routes: ['Chora - Port', 'Main Villages']
+      },
+      facilities: {
+        atm: 'Available at the port',
+        medicalCenter: 'Located in Chora',
+        miniMarket: 'Available in Chora',
+        postOffice: 'Located in Chora'
+      }
+    }
+  },
   { 
     id: '19',
     name: 'Thirasia',
-    description: 'The quiet sister island of Santorini, offering authentic village life and stunning caldera views without the crowds.',
+    description: 'Thirasia, once part of ancient Thera before the devastating volcanic eruption that shaped Santorini, offers visitors a glimpse of how the Cyclades were before mass tourism. This small island, facing the famous caldera of Santorini, preserves an authentic way of life that has largely disappeared from its more famous neighbor. The island\'s main settlement, Manolas, perched on the caldera\'s edge, offers equally spectacular views as Santorini but in peaceful solitude. The island\'s architecture features traditional cave houses carved into the volcanic rock, while abandoned settlements like Agrilia tell stories of past prosperity. Despite its small size, Thirasia boasts several important Byzantine churches and monasteries, including the monastery of the Assumption of the Virgin Mary. The island\'s few beaches, accessible by boat or donkey paths, remain wonderfully undeveloped, while local tavernas serve authentic Cycladic dishes using ingredients from the island\'s terraced gardens. The absence of hotels (most accommodation is in traditional guest houses) and limited tourist facilities has preserved Thirasia\'s traditional character, making it a perfect escape for those seeking to experience the authentic Cyclades.',
     shortDescription: 'Authentic caldera views without crowds',
     quote: 'Santorini\'s hidden sister',
-    metaTitle: 'Thirasia Island Guide - Authentic Caldera Experience',
     metaDescription: 'Experience the authentic side of the Santorini caldera on Thirasia. Discover traditional villages, quiet beaches, and stunning views.',
     activities: [
       'hiking',
@@ -1275,11 +1706,14 @@ export const cyclades: Partial<Island>[] = [
       'local-cuisine',
       'village-exploring'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Perfect weather with fewer tourists'
+    },
     averageStay: STAY_DURATION.MINOR,
     mustSee: [
       'Manolas Village',
@@ -1312,20 +1746,44 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and mild, 18-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER
-      ],
-      reason: 'Perfect weather with fewer tourists'
-    },
     idealFor: [
       'Peace seekers',
       'Photographers',
       'Culture enthusiasts',
       'Off-the-beaten-path travelers'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: false,
+        frequency: 'No public bus service',
+        routes: []
+      },
+      facilities: {
+        atm: 'Not available on the island',
+        medicalCenter: 'Small medical station in Manolas',
+        miniMarket: 'Few small shops in Manolas',
+        postOffice: 'Small post office in Manolas'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22860 22239',
+      medicalCenter: '+30 22860 29340',
+      municipality: '+30 22860 29341',
+      policeStation: '+30 22860 22649',
+      localBus: 'N/A',
+      citizenService: '+30 22860 29342'
+    },
+    connectedIslands: {
+      direct: [
+        'Santorini',
+        'Ios'
+      ],
+      nearby: [
+        'Folegandros',
+        'Sikinos',
+        'Anafi'
+      ]
+    }
   } as Island,
   { 
     id: '20',
@@ -1333,7 +1791,6 @@ export const cyclades: Partial<Island>[] = [
     description: 'A charming island known for its beautiful beaches, impressive cave, and laid-back atmosphere, perfect for a relaxing Greek island experience.',
     shortDescription: 'Laid-back charm and natural wonders',
     quote: 'Where simplicity meets natural beauty',
-    metaTitle: 'Antiparos Island Guide - Beaches, Caves & Relaxation',
     metaDescription: 'Discover the laid-back charm of Antiparos. Experience stunning beaches, explore the famous cave, and enjoy authentic island life.',
     activities: [
       'swimming',
@@ -1342,11 +1799,14 @@ export const cyclades: Partial<Island>[] = [
       'local-cuisine',
       'water-sports'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Perfect beach weather with fewer tourists'
+    },
     averageStay: STAY_DURATION.MINOR,
     mustSee: [
       'Antiparos Cave',
@@ -1379,14 +1839,6 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and mild, 18-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
-    bestTime: {
-      months: [
-        AvailableMonth.MAY,
-        AvailableMonth.JUNE,
-        AvailableMonth.SEPTEMBER
-      ],
-      reason: 'Perfect beach weather with fewer tourists'
-    },
     idealFor: [
       'Beach lovers',
       'Families',
@@ -1397,11 +1849,10 @@ export const cyclades: Partial<Island>[] = [
   { 
     id: '21',
     name: 'Donousa',
-    description: 'A tranquil paradise in the Small Cyclades, known for its pristine beaches and crystal-clear waters.',
+    description: 'Donousa, the northernmost of the Small Cyclades, is a tiny paradise that embodies the essence of island solitude and natural beauty. This remote gem, mentioned in Greek mythology as the place where Dionysus hid Ariadne from Theseus, maintains an unspoiled charm that increasingly rare in the Aegean. The island\'s main village, Stavros, is a picturesque settlement of white-washed houses and narrow paths that lead to windswept hills and pristine beaches. The island\'s coastline features some of the clearest waters in the Cyclades, with beaches like Kedros and Livadi offering different shades of blue against golden or white sand. Despite its small size, Donousa offers excellent hiking opportunities along ancient paths that connect its scattered settlements and lead to hidden coves and archaeological sites. The island\'s isolation has preserved not only its natural beauty but also its traditions, evident in local festivals and cuisine featuring dishes like patatato (goat with potatoes) and hand-made pasta. The lack of mass tourism has attracted a loyal following of visitors who appreciate its peaceful atmosphere and crystal-clear waters, making it a perfect destination for those seeking to disconnect from the modern world.',
     shortDescription: 'Pristine beaches and tranquility',
-    quote: 'Where time stands still',
-    metaTitle: 'Donousa Travel Guide - Authentic Island Experience',
-    metaDescription: 'Discover the untouched beauty of Donousa, a hidden gem in the Small Cyclades.',
+    quote: 'Where time stands still and nature reigns supreme',
+    metaDescription: 'Discover the untouched beauty of this Small Cyclades gem.',
     image: '/images/islands/donousa.jpg',
     heroImage: '/images/islands/donousa.jpg',
     highlights: [
@@ -1426,12 +1877,15 @@ export const cyclades: Partial<Island>[] = [
       'beach-hopping',
       'local-culture'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.JUNE,
-      AvailableMonth.JULY,
-      AvailableMonth.AUGUST,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.JUNE,
+        AvailableMonth.JULY,
+        AvailableMonth.AUGUST,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Perfect beach weather with fewer tourists'
+    },
     averageStay: STAY_DURATION.MINOR,
     mustSee: [
       'Kedros Beach',
@@ -1444,15 +1898,47 @@ export const cyclades: Partial<Island>[] = [
       IslandVibe.TRADITIONAL
     ],
     size: 'MINOR',
-    slug: 'donousa'
-  },
+    slug: 'donousa',
+    transportation: {
+      localBus: {
+        available: false,
+        frequency: 'No public bus service',
+        routes: []
+      },
+      facilities: {
+        atm: 'Not available on the island',
+        medicalCenter: 'Small medical station in Stavros',
+        miniMarket: 'Few small shops in Stavros',
+        postOffice: 'Small post office in Stavros'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22850 51228',
+      medicalCenter: '+30 22850 51516',
+      municipality: '+30 22850 51600',
+      policeStation: 'Serviced by Naxos',
+      localBus: 'N/A',
+      citizenService: '+30 22850 51338'
+    },
+    connectedIslands: {
+      direct: [
+        'Naxos',
+        'Amorgos',
+        'Koufonisia'
+      ],
+      nearby: [
+        'Schinoussa',
+        'Iraklia',
+        'Paros'
+      ]
+    }
+  } as Island,
   { 
     id: '22',
     name: 'Iraklia',
     description: 'The smallest of the Small Cyclades, Iraklia is a tranquil haven perfect for those seeking an authentic, off-the-beaten-path Greek island experience.',
     shortDescription: 'Peaceful island with untouched nature',
     quote: 'A hidden treasure of serenity',
-    metaTitle: 'Iraklia Travel Guide - Experience Authentic Greek Island Life',
     metaDescription: 'Discover the untouched beauty of Iraklia. Experience pristine beaches, hiking trails, and authentic Greek hospitality in this peaceful Cycladic gem.',
     activities: [
       'hiking',
@@ -1462,11 +1948,14 @@ export const cyclades: Partial<Island>[] = [
       'village-exploring',
       'beach-hopping'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Perfect weather for hiking and swimming with very few tourists'
+    },
     averageStay: STAY_DURATION.MINOR,
     mustSee: [
       'Cave of Saint John',
@@ -1502,24 +1991,52 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and mild, 17-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
-    bestTime: {
-      months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER],
-      reason: 'Perfect weather for hiking and swimming with very few tourists'
-    },
     idealFor: [
       'Nature lovers',
       'Hikers',
       'Peace seekers',
       'Adventure travelers'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: false,
+        frequency: 'No public bus service',
+        routes: []
+      },
+      facilities: {
+        atm: 'Not available on the island',
+        medicalCenter: 'Small medical station in Agios Georgios',
+        miniMarket: 'Few small shops in Agios Georgios',
+        postOffice: 'Small post office in Agios Georgios'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22850 71394',
+      medicalCenter: '+30 22850 71388',
+      municipality: '+30 22850 71170',
+      policeStation: 'Serviced by Naxos',
+      localBus: 'N/A',
+      citizenService: '+30 22850 71338'
+    },
+    connectedIslands: {
+      direct: [
+        'Naxos',
+        'Amorgos',
+        'Koufonisia'
+      ],
+      nearby: [
+        'Schinoussa',
+        'Donousa',
+        'Paros'
+      ]
+    }
   } as Island,
   { 
     id: '23',
     name: 'Schinoussa',
-    description: 'A tiny paradise in the Small Cyclades, Schinoussa charms visitors with its golden beaches, crystal-clear waters, and authentic island atmosphere.',
+    description: 'Schinoussa, one of the smallest inhabited islands in the Cyclades, is a hidden paradise that proves that great things come in small packages. This tiny island, part of the Small Cyclades, offers an authentic escape where time seems to slow down and simple pleasures take center stage. The island\'s main village, Chora, sits on a hill offering panoramic views of the surrounding islands and the Aegean Sea. Despite its small size, Schinoussa boasts 18 beaches of exceptional beauty, many accessible only by foot or boat, ensuring privacy even in peak season. The island\'s walking trails connect traditional settlements through a landscape of cedar trees, wild herbs, and dramatic coastlines. Local life centers around the island\'s few tavernas, where visitors can taste authentic Cycladic cuisine featuring fresh fish, local cheeses, and vegetables from nearby gardens. The absence of mass tourism has preserved traditional customs and ways of life, evident in the warm hospitality of locals and the continued practice of traditional farming and fishing. Schinoussa\'s small size and limited facilities make it perfect for those seeking to experience island life at its most authentic, where the biggest decision of the day might be which secluded beach to explore.',
     shortDescription: 'Small island with beautiful beaches',
     quote: 'Where time slows down to island pace',
-    metaTitle: 'Schinoussa Island Guide - Discover a Hidden Cycladic Gem',
     metaDescription: 'Experience the authentic charm of Schinoussa. Find pristine beaches, traditional villages, and peaceful corners in this small but beautiful Cycladic island.',
     activities: [
       'swimming',
@@ -1529,11 +2046,14 @@ export const cyclades: Partial<Island>[] = [
       'village-exploring',
       'boat-tours'
     ] as IslandActivity[],
-    bestMonths: [
-      AvailableMonth.MAY,
-      AvailableMonth.JUNE,
-      AvailableMonth.SEPTEMBER
-    ],
+    bestTime: {
+      months: [
+        AvailableMonth.MAY,
+        AvailableMonth.JUNE,
+        AvailableMonth.SEPTEMBER
+      ],
+      description: 'Perfect beach weather with fewer tourists'
+    },
     averageStay: STAY_DURATION.MINOR,
     mustSee: [
       'Tsigouri Beach',
@@ -1569,16 +2089,45 @@ export const cyclades: Partial<Island>[] = [
       spring: 'Pleasant and mild, 18-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
-    bestTime: {
-      months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER],
-      reason: 'Perfect beach weather with fewer tourists'
-    },
     idealFor: [
       'Beach lovers',
       'Peace seekers',
       'Couples',
       'Nature enthusiasts'
-    ]
+    ],
+    transportation: {
+      localBus: {
+        available: false,
+        frequency: 'No public bus service',
+        routes: []
+      },
+      facilities: {
+        atm: 'Not available on the island',
+        medicalCenter: 'Small medical station in Chora',
+        miniMarket: 'Few small shops in Chora',
+        postOffice: 'Small post office in Chora'
+      }
+    },
+    contacts: {
+      portAuthority: '+30 22850 71394',
+      medicalCenter: '+30 22850 71388',
+      municipality: '+30 22850 71170',
+      policeStation: 'Serviced by Naxos',
+      localBus: 'N/A',
+      citizenService: '+30 22850 71338'
+    },
+    connectedIslands: {
+      direct: [
+        'Naxos',
+        'Amorgos',
+        'Koufonisia'
+      ],
+      nearby: [
+        'Iraklia',
+        'Donousa',
+        'Paros'
+      ]
+    }
   } as Island
 ];
 
@@ -1619,7 +2168,7 @@ export const islandGuides: IslandGuide[] = [
     weather: {
       summer: 'Hot and dry with temperatures around 25-30°C',
       winter: 'Mild with occasional rain, 10-15°C',
-      spring: 'Pleasant and mild, 15-20°C',
+      spring: 'Pleasant and warm, 15-20°C',
       autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'May to October',
@@ -1830,8 +2379,9 @@ export const islandGuides: IslandGuide[] = [
   {
     id: 'anafi',
     name: 'Anafi',
-    description: 'Experience the untouched beauty of Anafi, a remote paradise in the Cyclades.',
     image: '/images/islands/anafi.jpg',
+    heroImage: '/images/islands/anafi.jpg',
+    description: 'Experience the untouched beauty of Anafi, a remote paradise in the Cyclades.',
     weather: {
       summer: 'Warm and sunny with temperatures around 25-28°C',
       winter: 'Mild with occasional rain, 12-15°C',

@@ -1,4 +1,4 @@
-import { Car, Users, Clock, HeadphonesIcon, CalendarDays, Luggage, ChevronDown, MapPin } from 'lucide-react';
+import { Car, Users, Clock, HeadphonesIcon, CalendarDays, ChevronDown, MapPin } from 'lucide-react';
 import SEO from '../components/SEO';
 import WelcomePickupsLogo from '../components/WelcomePickupsLogo';
 import { Disclosure } from '@headlessui/react';

@@ -48,17 +48,17 @@ export default function CycladesTripPlanner() {
       ) as TripIsland[];
       
       // Filter by month
-      recommendedIslands = recommendedIslands.filter(
-        island => island.bestMonths?.includes(preferences.month)
+      const filteredByMonth = recommendedIslands.filter(
+        island => island.bestTime?.months.includes(preferences.month)
       );
 
       // Filter by pace
       if (preferences.pace === 'relaxed') {
-        recommendedIslands = recommendedIslands.filter(
+        recommendedIslands = filteredByMonth.filter(
           island => island.vibes?.includes(IslandVibe.PEACEFUL)
         );
       } else if (preferences.pace === 'active') {
-        recommendedIslands = recommendedIslands.filter(
+        recommendedIslands = filteredByMonth.filter(
           island => island.vibes?.includes(IslandVibe.ADVENTUROUS)
         );
       }

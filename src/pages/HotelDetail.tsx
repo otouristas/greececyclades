@@ -1,14 +1,47 @@
 import { useParams, useNavigate } from 'react-router-dom';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { useHotelStore } from '../store/hotelStore';
+import { 
+  Phone, 
+  Mail, 
+  MapPin, 
+  Waves, 
+  Heart, 
+  UtensilsCrossed, 
+  Wine, 
+  Wifi, 
+  Car, 
+  Clock4, 
+  Dumbbell, 
+  Mountain, 
+  Coffee, 
+  Palmtree, 
+  HeartPulse, 
+  Flower2, 
+  ParkingCircle,
+  ShieldCheck,
+  Bell
+} from 'lucide-react';
 import SEO from '../components/SEO';
-import Calendar from 'react-calendar';
-import 'react-calendar/dist/Calendar.css';
-import { format } from 'date-fns';
+import ImageGallery from '../components/hotels/ImageGallery';
+import QuickInfo from '../components/hotels/QuickInfo';
+import StickyNav from '../components/hotels/StickyNav';
+import PriceAlert from '../components/hotels/PriceAlert';
+import LocationMap from '../components/hotels/LocationMap';
+import Reviews from '../components/hotels/Reviews';
+import RoomDetails from '../components/hotels/RoomDetails';
+import BookingWidget from '../components/hotels/BookingWidget';
 import { HotelRoom } from '../types/hotel';
-import { MapPin, Star, Users, Wifi, Waves, UtensilsCrossed, Coffee, Car } from 'lucide-react';
 
 type DateRange = [Date | null, Date | null];
+
+const sections = [
+  { id: 'overview', label: 'Overview' },
+  { id: 'rooms', label: 'Rooms' },
+  { id: 'amenities', label: 'Amenities' },
+  { id: 'location', label: 'Location' },
+  { id: 'reviews', label: 'Reviews' }
+];
 
 export default function HotelDetail() {
   const { slug } = useParams<{ slug: string }>();
@@ -16,14 +49,66 @@ export default function HotelDetail() {
   const { selectedHotel, fetchHotelBySlug, loading, error } = useHotelStore();
   const [selectedDates, setSelectedDates] = useState<DateRange>([null, null]);
   const [selectedRoom, setSelectedRoom] = useState<HotelRoom | null>(null);
-  const [activeImageIndex, setActiveImageIndex] = useState(0);
+  const [activeSection, setActiveSection] = useState('overview');
+
+  // Refs for scroll handling
+  const overviewRef = useRef<HTMLDivElement>(null);
+  const roomsRef = useRef<HTMLDivElement>(null);
+  const amenitiesRef = useRef<HTMLDivElement>(null);
+  const locationRef = useRef<HTMLDivElement>(null);
+  const reviewsRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (slug) {
       console.log('Component: Fetching hotel with slug:', slug);
       fetchHotelBySlug(slug);
     }
-  }, [slug]);
+  }, [slug, fetchHotelBySlug]);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 100; // Offset for the sticky header
+
+      const refs = {
+        overview: overviewRef,
+        rooms: roomsRef,
+        amenities: amenitiesRef,
+        location: locationRef,
+        reviews: reviewsRef
+      };
+
+      for (const [section, ref] of Object.entries(refs)) {
+        if (ref.current) {
+          const element = ref.current;
+          const position = element.offsetTop;
+          const height = element.offsetHeight;
+
+          if (scrollPosition >= position && scrollPosition < position + height) {
+            setActiveSection(section);
+            break;
+          }
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const scrollToSection = (sectionId: string) => {
+    const refs = {
+      overview: overviewRef,
+      rooms: roomsRef,
+      amenities: amenitiesRef,
+      location: locationRef,
+      reviews: reviewsRef
+    };
+
+    const ref = refs[sectionId as keyof typeof refs];
+    if (ref.current) {
+      ref.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
 
   if (error) {
     return (
@@ -48,29 +133,38 @@ export default function HotelDetail() {
     );
   }
 
-  const handleDateChange = (value: any) => {
-    if (Array.isArray(value) && value.length === 2 && value[0] && value[1]) {
-      setSelectedDates([value[0], value[1]]);
+  const { reviews, rating } = selectedHotel;
+
+  const handleShare = async () => {
+    try {
+      if (navigator.share) {
+        await navigator.share({
+          title: selectedHotel.name,
+          text: `Check out ${selectedHotel.name} in ${selectedHotel.location.area}, ${selectedHotel.location.island}`,
+          url: window.location.href
+        });
+      } else {
+        // Fallback to copying to clipboard
+        await navigator.clipboard.writeText(window.location.href);
+        alert('Link copied to clipboard!');
+      }
+    } catch (error) {
+      console.error('Error sharing:', error);
     }
   };
 
-  const formatDate = (date: Date | null) => {
-    return date ? format(date, 'MMM dd, yyyy') : '';
+  const handleSave = () => {
+    // Implement save to favorites functionality
+    console.log('Save to favorites:', selectedHotel.id);
   };
 
-  const amenityIcons: { [key: string]: any } = {
-    'Wi-Fi': <Wifi className="w-6 h-6" />,
-    'Swimming Pool': <Waves className="w-6 h-6" />,
-    'Restaurant': <UtensilsCrossed className="w-6 h-6" />,
-    'Breakfast': <Coffee className="w-6 h-6" />,
-    'Parking': <Car className="w-6 h-6" />
+  const handleViewMap = () => {
+    scrollToSection('location');
   };
 
-  const calculateNights = () => {
-    if (selectedDates[0] && selectedDates[1]) {
-      return Math.ceil((selectedDates[1].getTime() - selectedDates[0].getTime()) / (1000 * 60 * 60 * 24));
-    }
-    return 0;
+  const handlePriceAlert = () => {
+    // Implement price alert functionality
+    console.log('Set price alert for:', selectedHotel.id);
   };
 
   return (
@@ -80,212 +174,190 @@ export default function HotelDetail() {
         description={`Book your stay at ${selectedHotel.name} in ${selectedHotel.location.area}. ${selectedHotel.description.slice(0, 100)}...`}
       />
       
-      {/* Image Gallery */}
-      <div className="relative h-[70vh] bg-gray-900">
-        <div className="absolute inset-0">
-          {selectedHotel.images.map((image, index) => (
-            <img
-              key={index}
-              src={image}
-              alt={selectedHotel.name}
-              className={`w-full h-full object-cover opacity-90 ${activeImageIndex === index ? 'block' : 'hidden'}`}
-            />
-          ))}
-          <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        </div>
-        
-        {/* Image Navigation */}
-        <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 flex space-x-2">
-          {selectedHotel.images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setActiveImageIndex(index)}
-              className={`w-3 h-3 rounded-full transition-all ${
-                index === activeImageIndex ? 'bg-white scale-110' : 'bg-white/50'
-              }`}
-            />
-          ))}
-        </div>
-
-        {/* Hotel Info Overlay */}
-        <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-          <div className="max-w-7xl mx-auto">
-            <div className="flex items-start justify-between">
-              <div>
-                <h1 className="text-5xl font-bold mb-2">{selectedHotel.name}</h1>
-                <div className="flex items-center space-x-4 text-lg">
-                  <div className="flex items-center">
-                    <MapPin className="w-5 h-5 mr-1" />
-                    {selectedHotel.location.area}, {selectedHotel.location.island}
-                  </div>
-                  <div className="flex items-center">
-                    <Star className="w-5 h-5 mr-1 text-yellow-400" />
-                    {selectedHotel.category} Star Hotel
-                  </div>
-                </div>
-              </div>
-              <div className="text-right">
-                <div className="text-2xl font-bold">From €{selectedHotel.priceRange.min}</div>
-                <div className="text-sm">per night</div>
-              </div>
-            </div>
-          </div>
-        </div>
+      {/* Hero Section */}
+      <div className="relative">
+        <ImageGallery 
+          images={selectedHotel.images} 
+          hotelName={selectedHotel.name}
+        />
+        <QuickInfo
+          name={selectedHotel.name}
+          location={selectedHotel.location}
+          category={selectedHotel.category}
+          rating={rating}
+          reviewCount={reviews.count}
+          onShare={handleShare}
+          onSave={handleSave}
+          onViewMap={handleViewMap}
+        />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 py-12">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-12">
-          {/* Main Content */}
+      {/* Navigation */}
+      <StickyNav
+        sections={sections}
+        activeSection={activeSection}
+        onSectionChange={scrollToSection}
+      />
+
+      {/* Price Alert */}
+      <div className="max-w-7xl mx-auto px-4 mt-4">
+        <PriceAlert onSubscribe={handlePriceAlert} />
+      </div>
+
+      {/* Main Content */}
+      <div className="max-w-7xl mx-auto px-4 py-8">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          {/* Left Column - Main Content */}
           <div className="lg:col-span-2 space-y-12">
-            {/* Description */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6">About the Hotel</h2>
-              <p className="text-gray-600 leading-relaxed">{selectedHotel.description}</p>
-            </section>
-
-            {/* Amenities */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6">Amenities</h2>
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
-                {selectedHotel.amenities.map((amenity, index) => (
-                  <div key={index} className="flex items-center p-4 bg-white rounded-lg shadow-sm">
-                    {amenityIcons[amenity] || null}
-                    <span className="ml-3 text-gray-700">{amenity}</span>
+            {/* Overview Section */}
+            <section ref={overviewRef} className="scroll-mt-24">
+              <h2 className="text-2xl font-bold mb-6">About {selectedHotel.name}</h2>
+              <div className="prose max-w-none">
+                <p className="text-gray-600 leading-relaxed whitespace-pre-line">
+                  {selectedHotel.description}
+                </p>
+              </div>
+              <div className="mt-8 grid grid-cols-2 md:grid-cols-3 gap-4">
+                {selectedHotel.features.map((feature, index) => (
+                  <div key={index} className="flex items-center space-x-2 text-gray-600">
+                    <span className="w-2 h-2 bg-green-500 rounded-full" />
+                    <span>{feature}</span>
                   </div>
                 ))}
               </div>
             </section>
 
-            {/* Rooms */}
-            <section>
-              <h2 className="text-3xl font-bold mb-6">Available Rooms</h2>
+            {/* Rooms Section */}
+            <section ref={roomsRef} className="scroll-mt-24">
+              <h2 className="text-2xl font-bold mb-6">Available Rooms</h2>
               <div className="space-y-6">
-                {selectedHotel.rooms.map((room) => (
-                  <div
-                    key={room.id}
-                    className={`bg-white rounded-xl shadow-sm overflow-hidden transition-all ${
-                      selectedRoom?.id === room.id ? 'ring-2 ring-blue-500' : ''
-                    }`}
-                  >
-                    <div className="grid grid-cols-1 md:grid-cols-3">
-                      <div className="relative h-48 md:h-full">
-                        <img
-                          src={room.image}
-                          alt={room.type}
-                          className="w-full h-full object-cover"
-                        />
-                      </div>
-                      <div className="p-6 md:col-span-2">
-                        <div className="flex justify-between items-start mb-4">
-                          <div>
-                            <h3 className="text-xl font-bold text-gray-900">{room.type}</h3>
-                            <p className="text-gray-600 mt-2">{room.description}</p>
-                          </div>
-                          <div className="text-right">
-                            <div className="text-2xl font-bold text-gray-900">€{room.price}</div>
-                            <div className="text-sm text-gray-500">per night</div>
-                          </div>
-                        </div>
-                        
-                        <div className="flex items-center text-gray-600 mb-4">
-                          <Users className="w-5 h-5 mr-2" />
-                          <span>Up to {room.maxOccupancy} guests</span>
-                        </div>
-
-                        <div className="grid grid-cols-2 gap-4 mb-6">
-                          <div>
-                            <div className="text-sm font-medium text-gray-500">Bed Type</div>
-                            <div className="text-gray-900">{room.bedType}</div>
-                          </div>
-                          <div>
-                            <div className="text-sm font-medium text-gray-500">Room Size</div>
-                            <div className="text-gray-900">{room.size} m²</div>
-                          </div>
-                        </div>
-
-                        <div className="flex flex-wrap gap-2 mb-6">
-                          {room.amenities.map((amenity, index) => (
-                            <span
-                              key={index}
-                              className="px-3 py-1 text-sm bg-gray-100 text-gray-600 rounded-full"
-                            >
-                              {amenity}
-                            </span>
-                          ))}
-                        </div>
-
-                        <button
-                          onClick={() => setSelectedRoom(room)}
-                          className={`w-full py-2 px-4 rounded ${
-                            selectedRoom?.id === room.id
-                              ? 'bg-blue-600 text-white'
-                              : 'bg-gray-100 text-gray-900 hover:bg-gray-200'
-                          } transition-colors`}
-                        >
-                          {selectedRoom?.id === room.id ? 'Selected' : 'Select Room'}
-                        </button>
-                      </div>
-                    </div>
-                  </div>
-                ))}
+                {selectedHotel.rooms.map((room) => {
+                  const roomWithAmenities = {
+                    ...room,
+                    amenities: room.amenities.map(name => ({ name, included: true }))
+                  };
+                  return (
+                    <RoomDetails
+                      key={room.id}
+                      room={roomWithAmenities}
+                      onSelect={(r) => {
+                        const hotelRoom: HotelRoom = {
+                          ...r,
+                          amenities: r.amenities.map(a => a.name)
+                        };
+                        setSelectedRoom(hotelRoom);
+                      }}
+                      isSelected={selectedRoom?.id === room.id}
+                    />
+                  );
+                })}
               </div>
+            </section>
+
+            {/* Amenities Section */}
+            <section ref={amenitiesRef} className="scroll-mt-24">
+              <h2 className="text-2xl font-bold mb-6">Amenities</h2>
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                {selectedHotel.amenities.map((amenity) => {
+                  const getAmenityIcon = (name: string) => {
+                    const icons: Record<string, typeof Waves> = {
+                      'Pool': Waves,
+                      'Swimming Pool': Waves,
+                      'Spa': Heart,
+                      'Restaurant': UtensilsCrossed,
+                      'Bar': Wine,
+                      'WiFi': Wifi,
+                      'Airport Transfer': Car,
+                      '24/7 Reception': Clock4,
+                      'Fitness Center': Dumbbell,
+                      'Beach Access': Waves,
+                      'Sea View': Mountain,
+                      'Breakfast Service': Coffee,
+                      'Private Beach': Palmtree,
+                      'Wellness Center': HeartPulse,
+                      'Yoga': Flower2,
+                      'Valet Parking': ParkingCircle,
+                      'Security': ShieldCheck,
+                      'Concierge': Bell,
+                    };
+                    const Icon = icons[name] || UtensilsCrossed;
+                    return <Icon className="w-5 h-5 text-blue-600" />;
+                  };
+
+                  return (
+                    <div key={amenity} className="flex items-center gap-3 p-4 bg-gray-50 rounded-lg">
+                      {getAmenityIcon(amenity)}
+                      <span className="text-gray-600">{amenity}</span>
+                    </div>
+                  );
+                })}
+              </div>
+            </section>
+
+            {/* Location Section */}
+            <section ref={locationRef} className="scroll-mt-24">
+              <h2 className="text-2xl font-bold mb-6">Location</h2>
+              <LocationMap hotel={selectedHotel} />
+            </section>
+
+            {/* Reviews Section */}
+            <section ref={reviewsRef} className="scroll-mt-24">
+              <h2 className="text-2xl font-bold mb-6">Guest Reviews</h2>
+              <Reviews
+                reviews={reviews.reviews}
+                averageRating={rating}
+                totalReviews={reviews.count}
+                ratingBreakdown={reviews.breakdown}
+              />
             </section>
           </div>
 
-          {/* Booking Sidebar */}
-          <div className="lg:col-span-1">
-            <div className="sticky top-8">
-              <div className="bg-white rounded-xl shadow-lg p-6">
-                <h3 className="text-2xl font-bold mb-6">Book Your Stay</h3>
-                
-                {/* Calendar */}
-                <div className="mb-6">
-                  <Calendar
-                    selectRange
-                    onChange={handleDateChange}
-                    value={selectedDates}
-                    minDate={new Date()}
-                    className="w-full rounded-lg border"
+          {/* Right Column - Booking Widget */}
+          <div className="space-y-6">
+            {/* Contact Information */}
+            {selectedHotel.logo && (
+              <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-4">
+                <div className="flex justify-center mb-6">
+                  <img 
+                    src={selectedHotel.logo} 
+                    alt={`${selectedHotel.name} logo`}
+                    className="h-16 w-auto object-contain"
                   />
                 </div>
-
-                {/* Booking Summary */}
-                <div className="space-y-4">
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="text-gray-600">Check-in</span>
-                    <span className="font-semibold">{formatDate(selectedDates[0])}</span>
+                <div className="space-y-3">
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <Phone className="w-5 h-5 text-blue-600" />
+                    <span>+30 2286 072041</span>
                   </div>
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="text-gray-600">Check-out</span>
-                    <span className="font-semibold">{formatDate(selectedDates[1])}</span>
+                  <div className="flex items-center gap-3 text-gray-600">
+                    <Mail className="w-5 h-5 text-blue-600" />
+                    <a href="mailto:info@andronissuites.com" className="hover:text-blue-600">
+                      info@andronissuites.com
+                    </a>
                   </div>
-                  <div className="flex justify-between items-center py-2 border-b">
-                    <span className="text-gray-600">Room Type</span>
-                    <span className="font-semibold">{selectedRoom?.type || 'Not selected'}</span>
+                  <div className="flex items-start gap-3 text-gray-600">
+                    <MapPin className="w-5 h-5 flex-shrink-0 text-blue-600" />
+                    <span>Oia 847 02, Santorini, Greece</span>
                   </div>
-                  {selectedRoom && selectedDates[0] && selectedDates[1] && (
-                    <>
-                      <div className="flex justify-between items-center py-2 border-b">
-                        <span className="text-gray-600">Number of nights</span>
-                        <span className="font-semibold">{calculateNights()} nights</span>
-                      </div>
-                      <div className="flex justify-between items-center py-2 border-b">
-                        <span className="text-gray-600">Price per night</span>
-                        <span className="font-semibold">€{selectedRoom.price}</span>
-                      </div>
-                      <div className="flex justify-between items-center py-4">
-                        <span className="text-lg font-bold">Total Price</span>
-                        <span className="text-2xl font-bold text-blue-600">
-                          €{selectedRoom.price * calculateNights()}
-                        </span>
-                      </div>
-                      <button className="w-full bg-blue-600 text-white py-4 rounded-lg font-bold hover:bg-blue-700 transition-colors">
-                        Book Now
-                      </button>
-                    </>
-                  )}
                 </div>
               </div>
+            )}
+            
+            <BookingWidget
+              hotel={selectedHotel}
+              selectedDates={selectedDates}
+              onDateChange={setSelectedDates}
+            />
+            
+            {/* Need Help Section */}
+            <div className="bg-gray-50 rounded-xl p-6">
+              <h3 className="text-lg font-semibold mb-2">Need Help?</h3>
+              <p className="text-gray-600 mb-4">
+                Our travel experts are here to help you plan your perfect stay
+              </p>
+              <button className="w-full bg-white text-blue-500 border border-blue-500 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+                Contact Us
+              </button>
             </div>
           </div>
         </div>

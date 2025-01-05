@@ -31,7 +31,7 @@ export default function HotelCard({ hotel }: HotelCardProps) {
           <div className="absolute bottom-4 left-4 flex items-center gap-1.5 text-white">
             <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
             <span className="font-medium">{hotel.rating.toFixed(1)}</span>
-            <span className="text-sm text-white/90">({hotel.reviews})</span>
+            <span className="text-sm text-white/90">({hotel.reviews.count})</span>
           </div>
         </div>
 
