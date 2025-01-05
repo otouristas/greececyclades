@@ -41,6 +41,7 @@ import About from './pages/About';
 import TestMap from './pages/TestMap';
 import Transfers from './pages/Transfers';
 import HelpDesk from './pages/HelpDesk';
+import NearBy from './pages/NearBy';
 
 import { ToastProvider } from './contexts/ToastContext';
 
@@ -102,6 +103,11 @@ function AppContent() {
             <Route path="/trip-planner" element={
               <ProtectedRoute>
                 <TripPlanner />
+              </ProtectedRoute>
+            } />
+            <Route path="/nearby" element={
+              <ProtectedRoute>
+                <NearBy />
               </ProtectedRoute>
             } />
             <Route path="/my-trips" element={

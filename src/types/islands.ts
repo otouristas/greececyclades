@@ -1,49 +1,57 @@
-import { AvailableMonth, IslandVibe, IslandActivity } from './island';
+import { AvailableMonth, IslandVibe } from './island';
+
+export * from './island';
 
 export interface Weather {
-  temp: number;
   condition: string;
-  summer: string;
-  winter: string;
-  spring: string;
-  autumn: string;
+  temperature: number;
+  windSpeed: number;
+  humidity: number;
 }
+
+export type IslandActivity = 
+  | 'swimming'
+  | 'hiking'
+  | 'sightseeing'
+  | 'beach'
+  | 'museum'
+  | 'cultural'
+  | 'indoor'
+  | 'watersports'
+  | 'dining'
+  | 'shopping';
 
 export interface Island {
   id: string;
   name: string;
   description: string;
-  shortDescription: string;
-  quote: string;
-  metaTitle: string;
-  metaDescription: string;
   activities: IslandActivity[];
-  bestMonths: AvailableMonth[];
-  averageStay: number;
-  mustSee: string[];
-  image: string;
-  vibes: IslandVibe[];
-  size: keyof typeof STAY_DURATION;
-  slug: string;
-  heroImage: string;
   highlights: string[];
-  weather: Weather;
-  bestTime: {
+  vibes: IslandVibe[];
+  weather?: Weather;
+  bestTime?: {
     months: AvailableMonth[];
-    reason: string;
   };
-  idealFor: string[];
+  size?: number;
+  coordinates?: {
+    lat: number;
+    lng: number;
+  };
 }
 
+export type TripPace = 'relaxed' | 'moderate' | 'active';
+
 export interface TripPlan {
+  id: string;
+  name: string;
   islands: Island[];
   duration: number;
   month: AvailableMonth;
-  vibes: IslandVibe[];
-  pace: 'relaxed' | 'moderate' | 'active';
-  aiSuggestions?: string;
-  userId?: string;
-  createdAt?: Date;
+  vibes: string[];
+  pace: TripPace;
+  aiSuggestions: string;
+  userId: string;
+  createdAt: Date;
 }
 
 export interface TripPreferences {

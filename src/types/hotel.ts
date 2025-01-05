@@ -16,6 +16,7 @@ export interface RoomAmenity {
 
 export interface HotelRoom {
   id: string;
+  name: string;
   type: string;
   description: string;
   price: number;

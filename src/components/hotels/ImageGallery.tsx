@@ -47,7 +47,7 @@ export default function ImageGallery({ images, hotelName }: ImageGalleryProps) {
         </div>
         <button
           onClick={() => setViewMode('slider')}
-          className="absolute top-4 right-4 bg-white/90 p-2 rounded-lg shadow-lg hover:bg-white transition-colors"
+          className="absolute top-20 right-4 bg-white/90 p-2 rounded-lg shadow-lg hover:bg-white transition-colors z-20"
         >
           <Maximize2 className="w-5 h-5" />
         </button>
@@ -80,7 +80,7 @@ export default function ImageGallery({ images, hotelName }: ImageGalleryProps) {
         </button>
 
         {/* View Controls */}
-        <div className="absolute top-4 right-4 flex space-x-2">
+        <div className="absolute top-20 right-4 flex space-x-2">
           <button
             onClick={() => setViewMode('grid')}
             className="bg-white/90 p-2 rounded-lg shadow-lg hover:bg-white transition-colors"

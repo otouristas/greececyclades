@@ -23,41 +23,14 @@ export enum AvailableMonth {
 // Island characteristics
 export enum IslandVibe {
   ROMANTIC = 'romantic',
-  PEACEFUL = 'peaceful',
-  LIVELY = 'lively',
-  ADVENTUROUS = 'adventurous',
-  TRADITIONAL = 'traditional',
-  LUXURIOUS = 'luxurious',
-  CULTURAL = 'cultural',
-  SCENIC = 'scenic',
-  AUTHENTIC = 'authentic',
-  ELEGANT = 'elegant',
-  COSMOPOLITAN = 'cosmopolitan',
-  ACTIVE = 'active',
-  OFF_THE_BEATEN_PATH = 'off-the-beaten-path',
-  FAMILY_FRIENDLY = 'family-friendly',
-  GASTRONOMIC = 'gastronomic',
-  ARTISTIC = 'artistic',
-  HISTORIC = 'historic',
-  NATURAL = 'natural',
+  LUXURY = 'luxury',
+  ADVENTURE = 'adventure',
   PARTY = 'party',
-  TRENDY = 'trendy',
-  YOUTHFUL = 'youthful',
-  CULINARY = 'culinary',
-  VIBRANT = 'vibrant',
+  NATURAL = 'natural',
   LAID_BACK = 'laid-back',
-  UPSCALE = 'upscale',
-  RUSTIC = 'rustic',
-  SECLUDED = 'secluded',
-  MODERN = 'modern',
-  CHARMING = 'charming',
-  SPIRITUAL = 'spiritual',
-  PHOTOGENIC = 'photogenic',
-  QUAINT = 'quaint',
-  WILD = 'wild',
-  UNTOUCHED = 'untouched',
-  CHIC = 'chic',
-  RELAXED = 'relaxed'
+  TRADITIONAL = 'traditional',
+  SCENIC = 'scenic',
+  AUTHENTIC = 'authentic'
 }
 
 // Available activities
@@ -104,37 +77,44 @@ export interface IslandTransportation {
   };
 }
 
+export interface Weather {
+  condition: string;
+  temperature: number;
+  windSpeed: number;
+  humidity: number;
+  summer: string;
+  winter: string;
+  spring: string;
+  autumn: string;
+}
+
 export interface Island {
   id: string;
   name: string;
   slug: string;
   description: string;
-  shortDescription?: string;
-  quote?: string;
+  shortDescription: string;
   image: string;
   heroImage?: string;
-  size?: IslandSize;
-  averageStay?: number;
-  weather?: {
-    temp?: number;
-    condition?: string;
-    summer: string;
-    winter: string;
-    spring: string;
-    autumn: string;
+  coordinates?: {
+    lat: number;
+    lng: number;
   };
+  size: IslandSize;
+  averageStay?: number;
+  beaches?: string[];
+  weather?: Weather;
   bestTime?: {
     months: string[];
     description?: string;
   };
   idealFor?: string[];
-  activities?: IslandActivity[];
-  highlights?: string[];
+  activities: IslandActivity[];
+  highlights: string[];
   ports?: string[];
   transportation?: IslandTransportation;
   contacts?: IslandContacts;
-  vibes?: IslandVibe[];
-  mustSee?: string[];
+  vibes: IslandVibe[];
   connectedIslands?: {
     direct: string[];
     nearby: string[];
@@ -168,13 +148,20 @@ export interface TripPreferences {
   pace: 'relaxed' | 'moderate' | 'active';
 }
 
-export interface TripPlan {
+export interface TripPlanBase {
   islands: Island[];
   duration: number;
   month: AvailableMonth;
   vibes: IslandVibe[];
   pace: 'relaxed' | 'moderate' | 'active';
-  aiSuggestions?: string;
-  userId?: string;
-  createdAt?: Date;
+  name: string;
+  aiSuggestions: string;
 }
+
+export interface TripPlan extends TripPlanBase {
+  id: string;
+  userId: string;
+  createdAt: Date;
+}
+
+export type NewTripPlan = Omit<TripPlan, 'id'>;
