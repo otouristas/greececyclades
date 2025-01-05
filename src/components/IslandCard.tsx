@@ -1,120 +1,160 @@
-import { motion } from 'framer-motion';
-import { Ship, Moon, MapPin, Heart, Camera, Utensils } from 'lucide-react';
-import { Island } from '../types/islands';
-import clsx from 'clsx';
+import { useState, useEffect } from 'react';
+import { X, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
+import { Island } from '../types/island';
+import WeatherCard from './WeatherCard';
+import PointsOfInterest from './PointsOfInterest';
+import { PlaceDetails, getPlacesNearby } from '../services/openTripMapService';
 
 interface IslandCardProps {
   island: Island;
-  id: number;
+  onRemove?: (island: Island) => void;
+  showRemoveButton?: boolean;
   showDuration?: boolean;
   duration?: number;
 }
 
-const activityIcons: Record<string, typeof Ship> = {
-  'Photography': Camera,
-  'Food Tours': Utensils,
-  'Wine Tasting': Utensils,
-  'Local Cuisine': Utensils,
-  'Beach Time': Ship,
-  'Swimming': Ship,
-  'Water Sports': Ship,
-  'Hiking': MapPin,
-  'Village Walks': MapPin,
-  'Cultural Events': Heart,
-};
+export default function IslandCard({ island, onRemove, showRemoveButton, showDuration = false, duration }: IslandCardProps) {
+  const navigate = useNavigate();
+  const [showDetails, setShowDetails] = useState(false);
+  const [places, setPlaces] = useState<PlaceDetails[]>([]);
+  const [loading, setLoading] = useState(false);
 
-export default function IslandCard({ island, id, showDuration = false, duration }: IslandCardProps) {
+  useEffect(() => {
+    const fetchPlaces = async () => {
+      if (!showDetails || !island.coordinates) return;
+
+      setLoading(true);
+      try {
+        const nearbyPlaces = await getPlacesNearby({
+          lat: island.coordinates.lat,
+          lon: island.coordinates.lng,
+          radius: 5000,
+          kinds: ['cultural', 'historic', 'architecture', 'beaches', 'natural'],
+          limit: 10
+        });
+
+        // Convert Place[] to PlaceDetails[]
+        setPlaces(nearbyPlaces.map(place => ({
+          ...place,
+          point: {
+            lat: place.point.lat,
+            lon: place.point.lon
+          }
+        })));
+      } catch (error) {
+        console.error('Error fetching places:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchPlaces();
+  }, [showDetails, island.coordinates]);
+
+  const handleViewNearby = () => {
+    if (island.coordinates) {
+      navigate('/nearby', {
+        state: {
+          lat: island.coordinates.lat,
+          lon: island.coordinates.lng,
+          name: island.name
+        }
+      });
+    }
+  };
+
   return (
-    <motion.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ delay: id * 0.1 }}
-      className="bg-white rounded-xl shadow-lg overflow-hidden transform transition-transform hover:scale-[1.02]"
-    >
-      <div className="md:flex">
-        <div className="md:w-2/5 relative group">
-          <img
-            src={island.heroImage}
-            alt={island.name}
-            className="h-48 w-full object-cover md:h-full transition-transform duration-500 group-hover:scale-110"
-          />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity">
-            <div className="absolute bottom-4 left-4 right-4 text-white">
-              <div className="font-medium italic">{island.quote}</div>
+    <div className="relative group">
+      <div className="relative overflow-hidden rounded-lg">
+        <img
+          src={island.image}
+          alt={island.name}
+          className="w-full h-48 object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent">
+          <div className="absolute bottom-0 w-full p-4">
+            <div className="flex justify-between items-end">
+              <div>
+                <h3 className="text-xl font-bold text-white mb-1">{island.name}</h3>
+                <p className="text-sm text-gray-300">{island.shortDescription}</p>
+                {showDuration && (
+                  <p className="text-sm text-blue-300 mt-1">
+                    Suggested stay: {duration} days
+                  </p>
+                )}
+              </div>
+              {showRemoveButton && (
+                <button
+                  onClick={() => onRemove?.(island)}
+                  className="text-white opacity-0 group-hover:opacity-100 transition-opacity"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              )}
             </div>
-          </div>
-        </div>
-        <div className="p-6 md:w-3/5">
-          <div className="flex items-center gap-2 mb-2">
-            <Ship className="w-5 h-5 text-blue-500" />
-            <span className="text-sm font-medium text-blue-500">Stop {id + 1}</span>
-            {showDuration && duration && (
-              <div className="text-sm text-blue-600 font-medium ml-2">
-                {duration} days
+            
+            {/* Weather information */}
+            <div className="mt-3">
+              {island.weather && (
+                <div className="absolute top-4 right-4">
+                  <WeatherCard
+                    weather={island.weather}
+                    activities={island.activities || []}
+                    compact
+                  />
+                </div>
+              )}
+            </div>
+
+            <div className="flex items-center space-x-4 mt-4">
+              {/* View Nearby button */}
+              {island.coordinates && (
+                <button
+                  onClick={handleViewNearby}
+                  className="inline-flex items-center text-blue-400 hover:text-blue-300 text-sm font-medium"
+                >
+                  <MapPin className="h-4 w-4 mr-1" />
+                  View Nearby
+                </button>
+              )}
+
+              {/* Details button */}
+              <button
+                onClick={() => setShowDetails(!showDetails)}
+                className="text-blue-400 hover:text-blue-300 text-sm font-medium"
+              >
+                {showDetails ? 'Hide details' : 'Show details'}
+              </button>
+            </div>
+
+            {showDetails && island.coordinates && (
+              <div className="mt-4">
+                <div className="mt-4">
+                  <h4 className="text-sm font-medium text-gray-900 mb-2">Must-See Highlights</h4>
+                  <ul className="space-y-2">
+                    {island.highlights.slice(0, 3).map((highlight, idx) => (
+                      <li key={idx} className="flex items-center text-sm text-gray-600">
+                        <span className="w-1.5 h-1.5 bg-blue-500 rounded-full mr-2" />
+                        {highlight}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+                {loading ? (
+                  <div className="text-center text-gray-400 py-4">
+                    Loading places...
+                  </div>
+                ) : (
+                  <PointsOfInterest
+                    places={places}
+                  />
+                )}
               </div>
             )}
           </div>
-          <h3 className="text-xl font-semibold mb-2">{island.name}</h3>
-          <p className="text-gray-600 mb-4">{island.shortDescription}</p>
-          
-          <div className="space-y-4">
-            <div>
-              <h4 className="font-medium mb-2 flex items-center gap-2">
-                <MapPin className="w-4 h-4 text-blue-500" />
-                Must-See Spots
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {island.mustSee.slice(0, 4).map((spot) => (
-                  <span
-                    key={spot}
-                    className="px-3 py-1 bg-blue-50 text-blue-600 rounded-full text-sm"
-                  >
-                    {spot}
-                  </span>
-                ))}
-              </div>
-            </div>
-            
-            <div>
-              <h4 className="font-medium mb-2 flex items-center gap-2">
-                <Heart className="w-4 h-4 text-rose-500" />
-                Activities
-              </h4>
-              <div className="flex flex-wrap gap-2">
-                {island.activities.slice(0, 4).map((activity) => {
-                  const Icon = activityIcons[activity] || Ship;
-                  return (
-                    <span
-                      key={activity}
-                      className="px-3 py-1 bg-rose-50 text-rose-600 rounded-full text-sm flex items-center gap-1"
-                    >
-                      <Icon className="w-3 h-3" />
-                      {activity}
-                    </span>
-                  );
-                })}
-              </div>
-            </div>
-            
-            <div className="flex flex-wrap items-center gap-4 text-gray-500 text-sm">
-              <div className="flex items-center gap-2">
-                <Moon className="w-4 h-4" />
-                <span>Stay: {island.averageStay} days</span>
-              </div>
-              <div className={clsx(
-                'px-2 py-1 rounded-full text-xs font-medium',
-                {
-                  'bg-blue-100 text-blue-700': island.size === 'MAJOR',
-                  'bg-green-100 text-green-700': island.size === 'MEDIUM',
-                  'bg-yellow-100 text-yellow-700': island.size === 'MINOR'
-                }
-              )}>
-                {island.size.toLowerCase()} island
-              </div>
-            </div>
-          </div>
         </div>
       </div>
-    </motion.div>
+    </div>
   );
 }

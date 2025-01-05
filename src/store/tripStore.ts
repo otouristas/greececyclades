@@ -1,50 +1,46 @@
 import { create } from 'zustand';
-import { persist } from 'zustand/middleware';
-import { Island } from '../types';
-
-interface TripPlan {
-  id: string;
-  islands: Island[];
-  duration: number;
-  month: string;
-  vibes: string[];
-  pace: 'relaxed' | 'moderate' | 'active';
-  aiSuggestions: string;
-  createdAt: Date;
-  userId: string;
-}
+import type { TripPlan, NewTripPlan } from '../types/island';
 
 interface TripStore {
   trips: TripPlan[];
-  addTrip: (trip: Omit<TripPlan, 'id'>) => void;
-  deleteTrip: (tripId: string) => void;
+  addTrip: (trip: NewTripPlan) => Promise<TripPlan>;
+  removeTrip: (tripId: string) => void;
+  updateTrip: (tripId: string, updatedTrip: Partial<TripPlan>) => void;
   getTripsByUserId: (userId: string) => TripPlan[];
+  getTrip: (tripId: string) => TripPlan | undefined;
+  deleteTrip: (tripId: string) => void;
 }
 
-export const useTripStore = create<TripStore>()(
-  persist(
-    (set, get) => ({
-      trips: [],
-      addTrip: (trip) => {
-        const newTrip: TripPlan = {
-          ...trip,
-          id: Date.now().toString(),
-        };
-        set((state) => ({
-          trips: [newTrip, ...state.trips],
-        }));
-      },
-      deleteTrip: (tripId) => {
-        set((state) => ({
-          trips: state.trips.filter((trip) => trip.id !== tripId),
-        }));
-      },
-      getTripsByUserId: (userId) => {
-        return get().trips.filter((trip) => trip.userId === userId);
-      },
-    }),
-    {
-      name: 'trip-storage',
-    }
-  )
-);
+export const useTripStore = create<TripStore>((set, get) => ({
+  trips: [],
+  addTrip: async (trip) => {
+    const newTrip = { ...trip, id: crypto.randomUUID() };
+    set((state) => ({
+      trips: [...state.trips, newTrip],
+    }));
+    return newTrip;
+  },
+  removeTrip: (tripId) => {
+    set((state) => ({
+      trips: state.trips.filter((trip) => trip.id !== tripId),
+    }));
+  },
+  updateTrip: (tripId, updatedTrip) => {
+    set((state) => ({
+      trips: state.trips.map((trip) =>
+        trip.id === tripId ? { ...trip, ...updatedTrip } : trip
+      ),
+    }));
+  },
+  getTripsByUserId: (userId) => {
+    return get().trips.filter((trip) => trip.userId === userId);
+  },
+  getTrip: (tripId) => {
+    return get().trips.find((trip) => trip.id === tripId);
+  },
+  deleteTrip: (tripId) => {
+    set((state) => ({
+      trips: state.trips.filter((trip) => trip.id !== tripId),
+    }));
+  },
+}));

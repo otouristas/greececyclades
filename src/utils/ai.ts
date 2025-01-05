@@ -5,7 +5,7 @@ interface TripDetails {
     name: string; 
     activities: string[];
     description: string;
-    mustSee: string[];
+    highlights: string[];
     vibes: string[];
   }[];
   duration: number;
@@ -14,7 +14,12 @@ interface TripDetails {
   pace: 'relaxed' | 'moderate' | 'active';
 }
 
-export async function generateTripSuggestions(tripDetails: TripDetails) {
+interface TripSuggestion {
+  selectedIslands: string[];
+  explanation: string;
+}
+
+export async function generateTripSuggestions(tripDetails: TripDetails): Promise<TripSuggestion> {
   const API_KEY = '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';
   
   try {
@@ -40,7 +45,16 @@ export async function generateTripSuggestions(tripDetails: TripDetails) {
       }
     );
 
-    return response.data.content[0].text;
+    // Parse the AI response
+    const aiResponse = response.data.content[0].text;
+    const selectedIslands = tripDetails.islands
+      .slice(0, Math.min(3, Math.ceil(tripDetails.duration / 3)))
+      .map(island => island.name);
+
+    return {
+      selectedIslands,
+      explanation: aiResponse
+    };
   } catch (error) {
     console.error('Error generating AI suggestions:', error);
     return generateFallbackSuggestions(tripDetails);
@@ -72,89 +86,50 @@ Important considerations:
 Format the response in a clear, engaging way using emojis and sections. Make it personal and conversational.`;
 }
 
-function generateFallbackSuggestions(tripDetails: TripDetails) {
-  const islandCount = tripDetails.islands.length;
-  const daysPerIsland = Math.floor(tripDetails.duration / islandCount);
-  
-  const monthCharacteristics = {
-    May: "perfect spring weather with mild temperatures and blooming wildflowers",
-    June: "early summer warmth with long daylight hours and fewer crowds",
-    July: "peak summer season with vibrant atmosphere and warm seas",
-    August: "bustling high season with festive events and warmest waters",
-    September: "pleasant late summer weather with warm seas and wine harvests",
-    October: "mild autumn temperatures with golden light and peaceful ambiance"
-  };
+function generateFallbackSuggestions(tripDetails: TripDetails): TripSuggestion {
+  // Sort islands by number of matching vibes and activities
+  const sortedIslands = tripDetails.islands.sort((a, b) => {
+    const aVibeMatches = a.vibes.filter(v => tripDetails.vibes.includes(v)).length;
+    const bVibeMatches = b.vibes.filter(v => tripDetails.vibes.includes(v)).length;
 
-  const paceCharacteristics = {
-    relaxed: "taking time to soak in each location",
-    moderate: "balancing activities with relaxation",
-    active: "maximizing experiences each day"
-  };
-
-  const monthDesc = monthCharacteristics[tripDetails.month as keyof typeof monthCharacteristics] || "great weather";
-  const paceDesc = paceCharacteristics[tripDetails.pace];
-
-  let suggestion = `🌞 Your ${tripDetails.duration}-Day Cyclades Adventure (${tripDetails.month})\n\n`;
-  suggestion += `I've crafted an exciting itinerary that makes the most of ${monthDesc}, while ${paceDesc}!\n\n`;
-  
-  tripDetails.islands.forEach((island, index) => {
-    const days = index === 0 ? daysPerIsland + (tripDetails.duration % islandCount) : daysPerIsland;
-    suggestion += `🏝️ ${island.name} (${days} days):\n`;
-    suggestion += `Experience the magic of ${island.name} during ${monthDesc}. Perfect for: ${island.vibes.join(', ')}.\n\n`;
-    
-    suggestion += "Must-See Highlights:\n";
-    suggestion += island.mustSee.map(spot => `• ${spot}\n`).join('');
-    suggestion += "\nRecommended Activities:\n";
-    suggestion += island.activities.map(activity => `• ${activity}\n`).join('');
-    
-    // Add specific recommendations based on the island
-    if (island.name === 'Santorini') {
-      suggestion += "\n💎 Insider Tips:\n";
-      suggestion += "• Book a sunset wine tasting at Venetsanos Winery for a less crowded alternative to Oia\n";
-      suggestion += "• Visit Akrotiri archaeological site first thing in the morning to avoid crowds\n";
-      suggestion += "• Take the hidden path from Oia to Ammoudi Bay for swimming\n";
-    } else if (island.name === 'Mykonos') {
-      suggestion += "\n💎 Insider Tips:\n";
-      suggestion += "• Watch the sunset from 180° Sunset Bar - less crowded than Little Venice\n";
-      suggestion += "• Visit Fokos Beach for a secluded experience away from crowds\n";
-      suggestion += "• Try the local specialty 'kopanisti' at Joanna's Nikos Place Taverna\n";
-    } else if (island.name === 'Naxos') {
-      suggestion += "\n💎 Insider Tips:\n";
-      suggestion += "• Hike to the hidden Routsouna waterfall - locals' secret spot\n";
-      suggestion += "• Visit Halki village early morning before day-trippers arrive\n";
-      suggestion += "• Try kitesurfing at Mikri Vigla - one of the best spots in Europe\n";
-    } else if (island.name === 'Milos') {
-      suggestion += "\n💎 Insider Tips:\n";
-      suggestion += "• Visit Sarakiniko beach at sunrise for the best photos\n";
-      suggestion += "• Book a small boat tour to Kleftiko with Captain Antonis\n";
-      suggestion += "• Try traditional 'pitarakia' at O! Hamos! taverna\n";
+    // If vibe matches are equal, sort by number of activities
+    if (aVibeMatches === bVibeMatches) {
+      return b.activities.length - a.activities.length;
     }
-    
-    suggestion += '\n';
+
+    return bVibeMatches - aVibeMatches;
   });
 
-  suggestion += `\n🎯 Pro Tips for ${tripDetails.month}:\n`;
-  suggestion += `• Book your ferry tickets in advance - ${tripDetails.month} can be quite busy\n`;
-  suggestion += `• Consider the Blue Star ferries for more stable sailing\n`;
-  suggestion += `• Pack light layers - evenings can be cooler on the islands\n`;
-  suggestion += `• Make dinner reservations for popular restaurants, especially in ${tripDetails.islands[0].name}\n`;
-  
-  suggestion += `\n🌊 Water Conditions in ${tripDetails.month}:\n`;
-  if (['July', 'August'].includes(tripDetails.month)) {
-    suggestion += "• Perfect for swimming with warm waters (24-25°C)\n";
-    suggestion += "• Great visibility for snorkeling\n";
-    suggestion += "• Some strong meltemi winds - check weather for boat trips\n";
-  } else if (['June', 'September'].includes(tripDetails.month)) {
-    suggestion += "• Very pleasant water temperatures (22-24°C)\n";
-    suggestion += "• Generally calmer seas than peak summer\n";
-    suggestion += "• Ideal for water activities\n";
-  } else {
-    suggestion += "• Cooler waters but still swimmable (20-22°C)\n";
-    suggestion += "• Calmer seas - perfect for boat tours\n";
-    suggestion += "• Less crowded beaches\n";
-  }
+  // Take the top islands based on duration
+  const selectedIslands = sortedIslands.slice(0, Math.min(tripDetails.duration / 2, sortedIslands.length));
 
-  suggestion += `\nEnjoy your Greek island adventure! 🇬🇷✨`;
+  // Generate explanation
+  let explanation = `Based on your preferences, I recommend visiting these islands:\n\n`;
 
-  return suggestion;
+  selectedIslands.forEach((island, index) => {
+    const days = index === 0 ? Math.ceil(tripDetails.duration / 2) : Math.floor(tripDetails.duration / 2);
+    explanation += `🏝️ ${island.name} (${days} days)\n`;
+    explanation += `${island.description}\n\n`;
+    
+    if (island.highlights && island.highlights.length > 0) {
+      explanation += "✨ Highlights:\n";
+      island.highlights.forEach(spot => {
+        explanation += `• ${spot}\n`;
+      });
+      explanation += '\n';
+    }
+
+    if (island.activities && island.activities.length > 0) {
+      explanation += "🎯 Activities:\n";
+      island.activities.forEach(activity => {
+        explanation += `• ${activity}\n`;
+      });
+      explanation += '\n';
+    }
+  });
+
+  return {
+    selectedIslands: selectedIslands.map(i => i.name),
+    explanation
+  };
 }

@@ -2,9 +2,6 @@ import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState, useRef } from 'react';
 import { useHotelStore } from '../store/hotelStore';
 import { 
-  Phone, 
-  Mail, 
-  MapPin, 
   Waves, 
   Heart, 
   UtensilsCrossed, 
@@ -20,7 +17,10 @@ import {
   Flower2, 
   ParkingCircle,
   ShieldCheck,
-  Bell
+  Bell,
+  Users,
+  BedDouble,
+  SquareStack
 } from 'lucide-react';
 import SEO from '../components/SEO';
 import ImageGallery from '../components/hotels/ImageGallery';
@@ -196,7 +196,18 @@ export default function HotelDetail() {
       <StickyNav
         sections={sections}
         activeSection={activeSection}
-        onSectionChange={scrollToSection}
+        onSectionChange={(sectionId) => {
+          const element = document.getElementById(sectionId);
+          if (element) {
+            const yOffset = -100; // Adjust this value to account for the navbar height
+            const y = element.getBoundingClientRect().top + window.pageYOffset + yOffset;
+            window.scrollTo({ top: y, behavior: 'smooth' });
+          }
+          setActiveSection(sectionId);
+        }}
+        hotelName={selectedHotel.name}
+        location={selectedHotel.location}
+        category={selectedHotel.category}
       />
 
       {/* Price Alert */}
@@ -205,12 +216,12 @@ export default function HotelDetail() {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <div className="grid lg:grid-cols-12 gap-8">
           {/* Left Column - Main Content */}
-          <div className="lg:col-span-2 space-y-12">
+          <div className="lg:col-span-8">
             {/* Overview Section */}
-            <section ref={overviewRef} className="scroll-mt-24">
+            <section ref={overviewRef} id="overview" className="mb-12">
               <h2 className="text-2xl font-bold mb-6">About {selectedHotel.name}</h2>
               <div className="prose max-w-none">
                 <p className="text-gray-600 leading-relaxed whitespace-pre-line">
@@ -227,35 +238,69 @@ export default function HotelDetail() {
               </div>
             </section>
 
-            {/* Rooms Section */}
-            <section ref={roomsRef} className="scroll-mt-24">
+            <section ref={roomsRef} id="rooms" className="mb-12">
               <h2 className="text-2xl font-bold mb-6">Available Rooms</h2>
               <div className="space-y-6">
-                {selectedHotel.rooms.map((room) => {
-                  const roomWithAmenities = {
-                    ...room,
-                    amenities: room.amenities.map(name => ({ name, included: true }))
-                  };
-                  return (
-                    <RoomDetails
-                      key={room.id}
-                      room={roomWithAmenities}
-                      onSelect={(r) => {
-                        const hotelRoom: HotelRoom = {
-                          ...r,
-                          amenities: r.amenities.map(a => a.name)
-                        };
-                        setSelectedRoom(hotelRoom);
-                      }}
-                      isSelected={selectedRoom?.id === room.id}
-                    />
-                  );
-                })}
+                {selectedHotel.rooms.map((room) => (
+                  <div key={room.id} className="mb-8">
+                    <div className="flex items-start gap-6">
+                      <div className="w-1/3">
+                        <img
+                          src={room.image}
+                          alt={room.type}
+                          className="w-full h-48 object-cover rounded-lg"
+                        />
+                      </div>
+                      <div className="flex-1">
+                        <div className="flex justify-between items-start">
+                          <div>
+                            <h3 className="text-xl font-semibold mb-2">{room.type}</h3>
+                            <p className="text-gray-600 mb-4">{room.description}</p>
+                          </div>
+                          <div className="text-right">
+                            <p className="text-2xl font-bold">€{room.price}</p>
+                            <p className="text-gray-500">per night</p>
+                          </div>
+                        </div>
+
+                        <div className="grid grid-cols-2 gap-4 mb-4">
+                          <div className="flex items-center gap-2">
+                            <Users className="w-5 h-5 text-gray-400" />
+                            <span>Up to {room.maxOccupancy} guests</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <BedDouble className="w-5 h-5 text-gray-400" />
+                            <span>{room.bedType}</span>
+                          </div>
+                          <div className="flex items-center gap-2">
+                            <SquareStack className="w-5 h-5 text-gray-400" />
+                            <span>{room.size} m²</span>
+                          </div>
+                        </div>
+
+                        <button
+                          onClick={() => setSelectedRoom({
+                            ...room,
+                            name: room.type // Use type as name for now
+                          })}
+                          className={`
+                            px-6 py-2 rounded-lg font-semibold transition-colors
+                            ${selectedRoom?.id === room.id
+                              ? 'bg-blue-600 text-white'
+                              : 'bg-white border-2 border-blue-600 text-blue-600 hover:bg-blue-50'
+                            }
+                          `}
+                        >
+                          {selectedRoom?.id === room.id ? 'Selected' : 'Select Room'}
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                ))}
               </div>
             </section>
 
-            {/* Amenities Section */}
-            <section ref={amenitiesRef} className="scroll-mt-24">
+            <section ref={amenitiesRef} id="amenities" className="mb-12">
               <h2 className="text-2xl font-bold mb-6">Amenities</h2>
               <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
                 {selectedHotel.amenities.map((amenity) => {
@@ -294,14 +339,12 @@ export default function HotelDetail() {
               </div>
             </section>
 
-            {/* Location Section */}
-            <section ref={locationRef} className="scroll-mt-24">
+            <section ref={locationRef} id="location" className="mb-12">
               <h2 className="text-2xl font-bold mb-6">Location</h2>
               <LocationMap hotel={selectedHotel} />
             </section>
 
-            {/* Reviews Section */}
-            <section ref={reviewsRef} className="scroll-mt-24">
+            <section ref={reviewsRef} id="reviews" className="mb-12">
               <h2 className="text-2xl font-bold mb-6">Guest Reviews</h2>
               <Reviews
                 reviews={reviews.reviews}
@@ -313,52 +356,18 @@ export default function HotelDetail() {
           </div>
 
           {/* Right Column - Booking Widget */}
-          <div className="space-y-6">
-            {/* Contact Information */}
-            {selectedHotel.logo && (
-              <div className="bg-white rounded-xl border border-gray-200 p-6 space-y-4">
-                <div className="flex justify-center mb-6">
-                  <img 
-                    src={selectedHotel.logo} 
-                    alt={`${selectedHotel.name} logo`}
-                    className="h-16 w-auto object-contain"
-                  />
-                </div>
-                <div className="space-y-3">
-                  <div className="flex items-center gap-3 text-gray-600">
-                    <Phone className="w-5 h-5 text-blue-600" />
-                    <span>+30 2286 072041</span>
-                  </div>
-                  <div className="flex items-center gap-3 text-gray-600">
-                    <Mail className="w-5 h-5 text-blue-600" />
-                    <a href="mailto:info@andronissuites.com" className="hover:text-blue-600">
-                      info@andronissuites.com
-                    </a>
-                  </div>
-                  <div className="flex items-start gap-3 text-gray-600">
-                    <MapPin className="w-5 h-5 flex-shrink-0 text-blue-600" />
-                    <span>Oia 847 02, Santorini, Greece</span>
-                  </div>
-                </div>
-              </div>
-            )}
-            
-            <BookingWidget
-              hotel={selectedHotel}
+          <div className="lg:col-span-4">
+            <BookingWidget 
+              hotel={{
+                priceRange: selectedHotel.priceRange,
+                name: selectedHotel.name,
+                location: selectedHotel.location,
+                logo: selectedHotel.logo || undefined
+              }}
               selectedDates={selectedDates}
+              selectedRoom={selectedRoom}
               onDateChange={setSelectedDates}
             />
-            
-            {/* Need Help Section */}
-            <div className="bg-gray-50 rounded-xl p-6">
-              <h3 className="text-lg font-semibold mb-2">Need Help?</h3>
-              <p className="text-gray-600 mb-4">
-                Our travel experts are here to help you plan your perfect stay
-              </p>
-              <button className="w-full bg-white text-blue-500 border border-blue-500 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
-                Contact Us
-              </button>
-            </div>
           </div>
         </div>
       </div>
