@@ -21,7 +21,8 @@ export default function AuthStateHandler() {
         // User is signed in
         login({
           id: user.uid,
-          name: user.displayName || 'User',
+          name: user.displayName || user.email?.split('@')[0] || 'User',
+          displayName: user.displayName || user.email?.split('@')[0] || 'User',
           email: user.email || '',
           avatar: user.photoURL || undefined,
         });

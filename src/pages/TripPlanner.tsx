@@ -311,7 +311,7 @@ export default function CycladesTripPlanner() {
                           animate={{ opacity: 1, y: 0 }}
                           whileHover={{ scale: 1.02 }}
                           whileTap={{ scale: 0.98 }}
-                          onClick={() => setPreferences({ ...preferences, pace: pace.value })}
+                          onClick={() => setPreferences({ ...preferences, pace: pace.value as 'relaxed' | 'moderate' | 'active' })}
                           className={clsx(
                             'p-4 rounded-lg border-2 transition-all hover:border-blue-300',
                             preferences.pace === pace.value
