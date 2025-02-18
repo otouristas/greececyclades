@@ -94,6 +94,9 @@ export interface Island {
   slug: string;
   description: string;
   shortDescription: string;
+  quote?: string;
+  metaTitle?: string;
+  metaDescription?: string;
   image: string;
   heroImage?: string;
   coordinates?: {
@@ -103,12 +106,19 @@ export interface Island {
   size: IslandSize;
   averageStay?: number;
   beaches?: string[];
-  weather?: Weather;
-  bestTime?: {
-    months: string[];
-    description?: string;
+  weather: {
+    temp: number;
+    condition: string;
+    summer: string;
+    winter: string;
+    spring: string;
+    autumn: string;
   };
-  idealFor?: string[];
+  bestTime: {
+    months: string[];
+    reason: string;
+  };
+  idealFor: string[];
   activities: IslandActivity[];
   highlights: string[];
   ports?: string[];
@@ -120,7 +130,8 @@ export interface Island {
     nearby: string[];
     other?: string[];
   };
-  metaDescription?: string;
+  mustSee?: string[];
+  bestMonths?: AvailableMonth[];
 }
 
 export interface IslandGuide {

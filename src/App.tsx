@@ -1,10 +1,8 @@
-import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ScrollToTop from './components/ScrollToTop';
-import ProtectedRoute from './components/ProtectedRoute';
-import AuthStateHandler from './components/AuthStateHandler';
 import CookieConsent from './components/CookieConsent';
 import Home from './pages/Home';
 import Contact from './pages/Contact';
@@ -16,13 +14,8 @@ import ActivityDetail from './pages/ActivityDetail';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import RentACar from './pages/RentACar';
-import Profile from './pages/Profile';
 import TripPlanner from './pages/TripPlanner';
 import MyTrips from './pages/MyTrips';
-import Auth from './pages/Auth';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
-import ForgotPassword from './pages/ForgotPassword';
 import Hotels from './pages/Hotels';
 import HotelDetail from './pages/HotelDetail';
 import Privacy from './pages/Privacy';
@@ -42,28 +35,28 @@ import TestMap from './pages/TestMap';
 import Transfers from './pages/Transfers';
 import HelpDesk from './pages/HelpDesk';
 import NearBy from './pages/NearBy';
+import UserSignUp from './pages/auth/UserSignUp';
+import UserSignIn from './pages/auth/UserSignIn';
+import BusinessSignUp from './pages/auth/BusinessSignUp';
+import BusinessSignIn from './pages/auth/BusinessSignIn';
+import ForgotPassword from './pages/auth/ForgotPassword';
 
 import { ToastProvider } from './contexts/ToastContext';
+import { businessRoutes } from './routes/business.routes';
 
 import './styles/fonts.css';
 import './i18n';
 
 function AppContent() {
-  const navigate = useNavigate();
-  
-  const handleAuthClick = () => {
-    navigate('/signin');
-  };
-
   return (
     <>
       <ScrollToTop />
-      <AuthStateHandler />
       <div className="min-h-screen bg-gray-50">
-        <Navbar onAuthClick={handleAuthClick} />
+        <Navbar />
         <CookieConsent />
         <main className="flex-grow">
           <Routes>
+            {/* Public routes */}
             <Route path="/test-map" element={<TestMap />} />
             <Route path="/" element={<Home />} />
             <Route path="/about" element={<About />} />
@@ -85,41 +78,31 @@ function AppContent() {
             <Route path="/guides" element={<IslandGuides />} />
             <Route path="/guides/santorini" element={<SantoriniGuide />} />
             <Route path="/guides/:slug" element={<IslandGuidePage />} />
-            <Route path="/signin" element={<SignIn />} />
-            <Route path="/signup" element={<SignUp />} />
-            <Route path="/forgot-password" element={<ForgotPassword />} />
-            <Route path="/auth" element={<Auth />} />
             <Route path="/privacy" element={<Privacy />} />
             <Route path="/terms" element={<Terms />} />
             <Route path="/sitemap" element={<Sitemap />} />
             <Route path="/help" element={<HelpDesk />} />
-            
-            {/* Protected Routes */}
-            <Route path="/profile" element={
-              <ProtectedRoute>
-                <Profile />
-              </ProtectedRoute>
-            } />
-            <Route path="/trip-planner" element={
-              <ProtectedRoute>
-                <TripPlanner />
-              </ProtectedRoute>
-            } />
-            <Route path="/nearby" element={
-              <ProtectedRoute>
-                <NearBy />
-              </ProtectedRoute>
-            } />
-            <Route path="/my-trips" element={
-              <ProtectedRoute>
-                <MyTrips />
-              </ProtectedRoute>
-            } />
-            
-            <Route path="/ferry-tracking" element={<FerryTracking />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/test-map" element={<TestMap />} />
+            <Route path="/trip-planner" element={<TripPlanner />} />
+            <Route path="/my-trips" element={<MyTrips />} />
             <Route path="/transfers" element={<Transfers />} />
+            <Route path="/nearby" element={<NearBy />} />
+            
+            {/* Auth Routes */}
+            <Route path="/signup" element={<UserSignUp />} />
+            <Route path="/signin" element={<UserSignIn />} />
+            <Route path="/business/signup" element={<BusinessSignUp />} />
+            <Route path="/business/signin" element={<BusinessSignIn />} />
+            <Route path="/forgot-password" element={<ForgotPassword />} />
+            
+            {/* Business routes */}
+            {businessRoutes.map((route) => (
+              <Route
+                key={route.path}
+                path={route.path}
+                element={route.element}
+              />
+            ))}
+            
             <Route path="*" element={<NotFound />} />
           </Routes>
         </main>
@@ -130,14 +113,16 @@ function AppContent() {
   );
 }
 
-export default function App() {
+function App() {
   return (
-    <ToastProvider>
-      <HelmetProvider>
+    <HelmetProvider>
+      <ToastProvider>
         <Router>
           <AppContent />
         </Router>
-      </HelmetProvider>
-    </ToastProvider>
+      </ToastProvider>
+    </HelmetProvider>
   );
 }
+
+export default App;

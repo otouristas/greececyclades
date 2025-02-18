@@ -1,19 +1,10 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { X } from 'lucide-react';
 
 export default function CookieConsent() {
-  const [isVisible, setIsVisible] = useState(false);
-
-  useEffect(() => {
-    // Check if user has already accepted cookies
-    const hasAccepted = localStorage.getItem('cookieConsent');
-    if (!hasAccepted) {
-      setIsVisible(true);
-    }
-  }, []);
+  const [isVisible, setIsVisible] = useState(true);
 
   const handleAccept = () => {
-    localStorage.setItem('cookieConsent', 'true');
     setIsVisible(false);
   };
 
@@ -53,33 +44,19 @@ export default function CookieConsent() {
           apply.
         </div>
 
-        <div className="flex flex-col sm:flex-row gap-3">
+        <div className="flex justify-end space-x-4">
           <button
-            onClick={handleAccept}
-            className="flex-1 bg-blue-600 text-white px-4 py-2 rounded-md text-sm font-medium hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
+            onClick={handleClose}
+            className="px-4 py-2 text-sm font-medium text-gray-700 hover:text-gray-900"
           >
-            Accept All Cookies
+            Decline
           </button>
           <button
             onClick={handleAccept}
-            className="flex-1 bg-gray-100 text-gray-700 px-4 py-2 rounded-md text-sm font-medium hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-500"
+            className="px-4 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700"
           >
-            Accept Necessary Only
+            Accept
           </button>
-        </div>
-
-        <div className="text-xs text-gray-500">
-          <a href="/privacy-policy" className="text-blue-600 hover:underline">
-            Privacy Policy
-          </a>
-          {' • '}
-          <a href="/cookie-policy" className="text-blue-600 hover:underline">
-            Cookie Policy
-          </a>
-          {' • '}
-          <a href="/gdpr" className="text-blue-600 hover:underline">
-            GDPR
-          </a>
         </div>
       </div>
     </div>

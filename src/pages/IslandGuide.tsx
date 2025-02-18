@@ -1,5 +1,5 @@
 import { useParams } from 'react-router-dom';
-import { Sun, MapPin, CalendarDays, Users, Clock, Euro, Star, Navigation } from 'lucide-react';
+import { Sun, CalendarDays, Users, Star, Navigation } from 'lucide-react';
 import SEO from '../components/SEO';
 import { generateGuideSEO } from '../utils/seoMetadata';
 import { useIslandStore } from '../store/islandStore';

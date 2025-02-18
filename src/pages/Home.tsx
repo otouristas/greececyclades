@@ -38,7 +38,7 @@ export default function Home() {
           title="Experience the Magic of"
           titleAccent="Greece"
           description="Discover the enchanting Cyclades islands. From pristine beaches to ancient ruins, plan your perfect Greek island adventure with us."
-          backgroundImage="/public/images/home-hero.jpg"
+          backgroundImage="/images/home-hero.jpg"
           featureCards={[
             {
               icon: <Map className="w-full h-full" />,

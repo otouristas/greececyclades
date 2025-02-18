@@ -1,7 +1,6 @@
 import { useNavigate } from 'react-router-dom';
 import { Ship, Calendar, Trash2, MapPin, Eye, Printer } from 'lucide-react';
 import { useTripStore } from '../store/tripStore';
-import { useAuthStore } from '../store/authStore';
 import SEO from '../components/SEO';
 import { generateMyTripsSEO } from '../utils/seo';
 import { useCallback } from 'react';
@@ -9,10 +8,7 @@ import type { TripPlan } from '../types/island';
 
 export default function MyTrips() {
   const navigate = useNavigate();
-  const { user } = useAuthStore();
-  const { getTripsByUserId, deleteTrip } = useTripStore();
-
-  const trips: TripPlan[] = getTripsByUserId(user?.id || '');
+  const { trips, deleteTrip } = useTripStore();
 
   const handlePrint = useCallback((trip: TripPlan) => {
     // Create a new window for printing

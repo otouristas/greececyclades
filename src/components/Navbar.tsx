@@ -1,5 +1,5 @@
 import { useState, useEffect, useRef } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   User, 
   ChevronDown, 
@@ -22,12 +22,10 @@ import {
   Plane,
   Car
 } from 'lucide-react';
-import { useAuthStore } from '../store/authStore';
-import { auth } from '../config/firebase';
 import Logo from './Logo';
 
 interface NavbarProps {
-  onAuthClick: () => void;
+  // Add any future props here
 }
 
 interface NavItem {
@@ -111,37 +109,26 @@ const mobileOnlyItems: NavItem[] = [
   }
 ];
 
-export default function Navbar({ onAuthClick }: NavbarProps) {
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+export default function Navbar({  }: NavbarProps) {
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [showAuthDropdown, setShowAuthDropdown] = useState(false);
   
-  const dropdownRef = useRef<HTMLDivElement>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
+  const authDropdownRef = useRef<HTMLDivElement>(null);
   
-  const { isAuthenticated, user } = useAuthStore();
-  const navigate = useNavigate();
   const location = useLocation();
-
-  const handleLogout = async () => {
-    try {
-      await auth.signOut();
-      navigate('/');
-    } catch (error) {
-      console.error('Error signing out:', error);
-    }
-  };
+  const navigate = useNavigate();
 
   useEffect(() => {
     const handleClickOutside = (event: MouseEvent) => {
-      if (dropdownRef.current && !dropdownRef.current.contains(event.target as Node)) {
-        setIsDropdownOpen(false);
-      }
-      
       if (megaMenuRef.current && !megaMenuRef.current.contains(event.target as Node)) {
         setActiveMegaMenu(null);
+      }
+      if (authDropdownRef.current && !authDropdownRef.current.contains(event.target as Node)) {
+        setShowAuthDropdown(false);
       }
     };
 
@@ -149,13 +136,11 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
     return () => document.removeEventListener('mousedown', handleClickOutside);
   }, []);
 
-  // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
     setActiveSection(null);
   }, [location]);
 
-  // Handle body scroll lock
   useEffect(() => {
     if (isMobileMenuOpen) {
       document.body.style.overflow = 'hidden';
@@ -224,56 +209,72 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
             <Link to="/help" className="hidden md:block">
               <HelpCircle className="h-5 w-5 text-gray-600 hover:text-blue-600 transition-colors" />
             </Link>
-            
-            {/* User Profile & Sign In - Desktop */}
-            <div className="hidden md:block">
-              {isAuthenticated ? (
-                <div className="relative" ref={dropdownRef}>
-                  <button
-                    onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
-                  >
-                    <User className="h-5 w-5" />
-                    <span className="text-sm font-medium">{user?.displayName || user?.name || user?.email?.split('@')[0] || 'User'}</span>
-                    <ChevronDown className="h-4 w-4" />
-                  </button>
 
-                  {isDropdownOpen && (
-                    <div className="absolute right-0 mt-2 w-48 rounded-md shadow-lg py-1 bg-white ring-1 ring-black ring-opacity-5">
-                      <Link
-                        to="/profile"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setIsDropdownOpen(false)}
-                      >
-                        Profile
-                      </Link>
-                      <Link
-                        to="/my-trips"
-                        className="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
-                        onClick={() => setIsDropdownOpen(false)}
-                      >
-                        My Trips
-                      </Link>
+            <div className="relative" ref={authDropdownRef}>
+              <button
+                onClick={() => setShowAuthDropdown(!showAuthDropdown)}
+                className="group inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-blue-600 border border-blue-600 rounded-full hover:bg-blue-700 hover:border-blue-700 transition-all"
+              >
+                <User className="h-5 w-5" />
+                <span>Sign In</span>
+                <ChevronDown className={`h-4 w-4 transition-transform duration-200 ${showAuthDropdown ? 'rotate-180' : ''}`} />
+              </button>
+
+              {showAuthDropdown && (
+                <div className="absolute right-0 mt-2 w-64 origin-top-right overflow-hidden rounded-lg bg-white shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                  <div className="border-b border-gray-100 bg-gray-50 px-4 py-2">
+                    <p className="text-sm font-medium text-gray-700">Choose account type</p>
+                  </div>
+                  <div className="py-2">
+                    <button
+                      onClick={() => {
+                        navigate('/signin');
+                        setShowAuthDropdown(false);
+                      }}
+                      className="flex w-full items-center px-4 py-3 text-left transition-colors hover:bg-gray-50"
+                    >
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-50">
+                        <User className="h-5 w-5 text-blue-600" />
+                      </div>
+                      <div className="ml-4 flex flex-col">
+                        <span className="text-sm font-medium text-gray-900">User Account</span>
+                        <span className="text-xs text-gray-500">For travelers and tourists</span>
+                      </div>
+                    </button>
+                    <button
+                      onClick={() => {
+                        navigate('/business/signin');
+                        setShowAuthDropdown(false);
+                      }}
+                      className="flex w-full items-center px-4 py-3 text-left transition-colors hover:bg-gray-50"
+                    >
+                      <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-blue-50">
+                        <Building2 className="h-5 w-5 text-blue-600" />
+                      </div>
+                      <div className="ml-4 flex flex-col">
+                        <span className="text-sm font-medium text-gray-900">Business Account</span>
+                        <span className="text-xs text-gray-500">For hotels and service providers</span>
+                      </div>
+                    </button>
+                  </div>
+                  <div className="border-t border-gray-100 bg-gray-50 p-4">
+                    <div className="flex items-center justify-between">
+                      <span className="text-sm text-gray-500">New to Discover Cyclades?</span>
                       <button
-                        onClick={handleLogout}
-                        className="w-full text-left px-4 py-2 text-sm text-gray-700 hover:bg-gray-100"
+                        onClick={() => {
+                          navigate('/signup');
+                          setShowAuthDropdown(false);
+                        }}
+                        className="text-sm font-medium text-blue-600 hover:text-blue-700"
                       >
-                        Sign Out
+                        Create account
                       </button>
                     </div>
-                  )}
+                  </div>
                 </div>
-              ) : (
-                <button
-                  onClick={onAuthClick}
-                  className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
-                >
-                  <User className="h-5 w-5 mr-2" />
-                  Sign In
-                </button>
               )}
             </div>
-
+            
             {/* Mobile Menu Button */}
             <button
               onClick={toggleMobileMenu}
@@ -547,21 +548,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                     <HelpCircle className="h-6 w-6 text-white/80 hover:text-white transition-colors" />
                   </Link>
                 </div>
-                
-                {isAuthenticated ? (
-                  <div className="flex items-center space-x-2 text-white">
-                    <User className="h-5 w-5" />
-                    <span className="text-sm font-medium">{user?.displayName || user?.name || user?.email?.split('@')[0] || 'User'}</span>
-                  </div>
-                ) : (
-                  <button
-                    onClick={onAuthClick}
-                    className="inline-flex items-center justify-center rounded-md bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20"
-                  >
-                    <User className="h-5 w-5 mr-2" />
-                    Sign In
-                  </button>
-                )}
               </div>
 
               {[...navigationItems, ...mobileOnlyItems].map((item) => (
@@ -621,35 +607,14 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                   )}
                 </div>
               ))}
+              <div className="px-4 py-2 text-xs text-white/70">
+                Don't have an account?{' '}
+                <Link to="/signup" onClick={toggleMobileMenu} className="font-medium text-white hover:text-blue-600">
+                  Sign up
+                </Link>
+              </div>
             </div>
             <div className="border-t border-white/10 p-4">
-              {isAuthenticated && (
-                <>
-                  <Link
-                    to="/profile"
-                    className="block px-4 py-2 text-white/90 hover:text-white"
-                    onClick={toggleMobileMenu}
-                  >
-                    Profile
-                  </Link>
-                  <Link
-                    to="/my-trips"
-                    className="block px-4 py-2 text-white/90 hover:text-white"
-                    onClick={toggleMobileMenu}
-                  >
-                    My Trips
-                  </Link>
-                  <button
-                    onClick={() => {
-                      handleLogout();
-                      toggleMobileMenu();
-                    }}
-                    className="w-full text-left px-4 py-2 text-white/90 hover:text-white"
-                  >
-                    Sign Out
-                  </button>
-                </>
-              )}
             </div>
           </div>
         </div>

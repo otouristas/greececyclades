@@ -6,8 +6,13 @@ i18n
   .use(LanguageDetector)
   .use(initReactI18next)
   .init({
-    debug: true,
+    debug: false,
     fallbackLng: 'en',
+    detection: {
+      order: ['querystring', 'navigator'],
+      lookupQuerystring: 'lng',
+      caches: []
+    },
     interpolation: {
       escapeValue: false,
     },

@@ -3,15 +3,6 @@ export * from './hotel';
 export * from './island';
 export * from './blog';
 
-export interface User {
-  id: string;
-  uid?: string;
-  name: string;
-  displayName?: string;
-  email: string;
-  avatar?: string;
-}
-
 export interface Activity {
   id: number;
   title: string;

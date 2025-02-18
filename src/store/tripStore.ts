@@ -14,7 +14,7 @@ interface TripStore {
 export const useTripStore = create<TripStore>((set, get) => ({
   trips: [],
   addTrip: async (trip) => {
-    const newTrip = { ...trip, id: crypto.randomUUID() };
+    const newTrip = { ...trip, id: Math.random().toString(36).substr(2, 9) };
     set((state) => ({
       trips: [...state.trips, newTrip],
     }));
