@@ -16,8 +16,6 @@ import BlogPost from './pages/BlogPost';
 import RentACar from './pages/RentACar';
 import TripPlanner from './pages/TripPlanner';
 import MyTrips from './pages/MyTrips';
-import Hotels from './pages/Hotels';
-import HotelDetail from './pages/HotelDetail';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Sitemap from './pages/Sitemap';
@@ -65,8 +63,6 @@ function AppContent() {
             <Route path="/islands/:slug" element={<IslandDetail />} />
             <Route path="/activities" element={<Activities />} />
             <Route path="/activities/:id" element={<ActivityDetail />} />
-            <Route path="/hotels" element={<Hotels />} />
-            <Route path="/hotels/:slug" element={<HotelDetail />} />
             <Route path="/ferry-tickets" element={<FerryTickets />} />
             <Route path="/ferry-tickets-search" element={<FerrySearchResults />} />
             <Route path="/ferry-tickets/tracking" element={<FerryTracking />} />

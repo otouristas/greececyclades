@@ -1,7 +1,6 @@
-import { Hotel } from '../types/hotel';
 import { Activity } from '../types/activity';
 import { SEOProps, ArticleSEO } from '../types/seo';
-import { getHotelSlug, getIslandSlug } from './slugs';
+import { getIslandSlug } from './slugs';
 
 export const DEFAULT_KEYWORDS = [
   'Greece',
@@ -12,66 +11,6 @@ export const DEFAULT_KEYWORDS = [
   'Activities',
   'Experiences'
 ].join(', ');
-
-export function generateHotelSEO(hotel: Hotel): SEOProps {
-  const keywords = [
-    ...DEFAULT_KEYWORDS.split(', '),
-    hotel.location.area,
-    hotel.location.island,
-    hotel.name,
-    ...hotel.amenities,
-    ...hotel.rooms.map(room => room.type)
-  ].join(', ');
-
-  return {
-    title: `${hotel.name} in ${hotel.location.island} | Greececyclades.com`,
-    description: hotel.description.substring(0, 160),
-    keywords,
-    ogImage: hotel.images[0],
-    ogType: 'website',
-    canonicalUrl: `/hotels/${getHotelSlug(hotel.name, hotel.location.island)}`
-  };
-}
-
-export function generateHotelsSEO(): SEOProps {
-  return {
-    title: 'Luxury Hotels in the Cyclades | Greececyclades.com',
-    description: 'Discover the finest luxury hotels across the Cyclades islands. From Santorini to Mykonos, find your perfect stay in the Greek islands.',
-    keywords: DEFAULT_KEYWORDS,
-    ogType: 'website',
-    canonicalUrl: '/hotels'
-  };
-}
-
-export function generateHomeSEO(): SEOProps {
-  return {
-    title: 'Discover the Cyclades Islands | Greececyclades.com',
-    description: 'Plan your perfect Greek island vacation with our comprehensive guide to the Cyclades. Discover hotels, activities, restaurants, and local experiences.',
-    keywords: DEFAULT_KEYWORDS,
-    ogType: 'website',
-    canonicalUrl: '/'
-  };
-}
-
-export function generateIslandSEO(island: string): SEOProps {
-  const formattedIsland = island.charAt(0).toUpperCase() + island.slice(1).toLowerCase();
-  const slug = getIslandSlug(island);
-  
-  const keywords = [
-    ...DEFAULT_KEYWORDS.split(', '),
-    formattedIsland,
-    'island guide',
-    'travel guide'
-  ].join(', ');
-
-  return {
-    title: `${formattedIsland} Travel Guide | Greece Cyclades`,
-    description: `Discover the best of ${formattedIsland}. Find hotels, activities, restaurants, and local experiences on this beautiful Cycladic island.`,
-    keywords,
-    ogType: 'website',
-    canonicalUrl: `/islands/${slug}`
-  };
-}
 
 export function generateActivitySEO(activity: Activity): SEOProps {
   const keywords = [
@@ -105,6 +44,36 @@ export function generateActivitiesSEO(): SEOProps {
     keywords: DEFAULT_KEYWORDS,
     ogType: 'website',
     canonicalUrl: '/activities'
+  };
+}
+
+export function generateHomeSEO(): SEOProps {
+  return {
+    title: 'Discover the Cyclades Islands | Greececyclades.com',
+    description: 'Plan your perfect Greek island vacation with our comprehensive guide to the Cyclades. Discover hotels, activities, restaurants, and local experiences.',
+    keywords: DEFAULT_KEYWORDS,
+    ogType: 'website',
+    canonicalUrl: '/'
+  };
+}
+
+export function generateIslandSEO(island: string): SEOProps {
+  const formattedIsland = island.charAt(0).toUpperCase() + island.slice(1).toLowerCase();
+  const slug = getIslandSlug(island);
+  
+  const keywords = [
+    ...DEFAULT_KEYWORDS.split(', '),
+    formattedIsland,
+    'island guide',
+    'travel guide'
+  ].join(', ');
+
+  return {
+    title: `${formattedIsland} Travel Guide | Greece Cyclades`,
+    description: `Discover the best of ${formattedIsland}. Find hotels, activities, restaurants, and local experiences on this beautiful Cycladic island.`,
+    keywords,
+    ogType: 'website',
+    canonicalUrl: `/islands/${slug}`
   };
 }
 
@@ -385,7 +354,7 @@ export function generateVehicleDetailSEO(vehicle: { make: string; model: string;
       `${vehicle.category.toLowerCase()} rental cyclades`,
       'car hire greek islands'
     ].join(', '),
-    canonicalUrl: `/rent-a-car/${getHotelSlug(vehicle.make, vehicle.model)}`,
+    canonicalUrl: `/rent-a-car/${getIslandSlug(vehicle.make, vehicle.model)}`,
     ogImage: vehicle.image
   };
 }
@@ -399,116 +368,6 @@ export function generateIslandGuideSEO(islandName: string, image: string): SEOPr
     ogType: 'article',
     canonicalUrl: `/guides/${getIslandSlug(islandName)}`
   };
-}
-
-export function generateHotelJsonLD(hotel: {
-  name: string;
-  description: string;
-  images: string[];
-  rating?: number;
-  totalReviews?: number;
-  priceRange?: string;
-  address: {
-    street: string;
-    city: string;
-    state?: string;
-    postalCode?: string;
-    country: string;
-  };
-  amenities: string[];
-  rooms: {
-    type: string;
-    description: string;
-    price: {
-      amount: number;
-      currency: string;
-    };
-    occupancy: {
-      min: number;
-      max: number;
-    };
-  }[];
-}): string {
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'Hotel',
-    name: hotel.name,
-    description: hotel.description,
-    image: hotel.images,
-    address: {
-      '@type': 'PostalAddress',
-      streetAddress: hotel.address.street,
-      addressLocality: hotel.address.city,
-      addressRegion: hotel.address.state,
-      postalCode: hotel.address.postalCode,
-      addressCountry: hotel.address.country
-    },
-    amenityFeature: hotel.amenities.map(amenity => ({
-      '@type': 'LocationFeatureSpecification',
-      name: amenity
-    })),
-    ...(hotel.rating && {
-      aggregateRating: {
-        '@type': 'AggregateRating',
-        ratingValue: hotel.rating,
-        reviewCount: hotel.totalReviews || 0
-      }
-    }),
-    ...(hotel.priceRange && { priceRange: hotel.priceRange }),
-    containsPlace: hotel.rooms.map(room => ({
-      '@type': 'HotelRoom',
-      name: room.type,
-      description: room.description,
-      occupancy: {
-        '@type': 'QuantitativeValue',
-        minValue: room.occupancy.min,
-        maxValue: room.occupancy.max
-      },
-      offers: {
-        '@type': 'Offer',
-        price: room.price.amount,
-        priceCurrency: room.price.currency
-      }
-    }))
-  };
-
-  return JSON.stringify(structuredData);
-}
-
-export function generateHotelsListingJsonLD(hotels: {
-  id: string | number;
-  name: string;
-  description: string;
-  category: string;
-  island: string;
-  image?: string;
-  bookingUrl?: string;
-}[]): string {
-  const structuredData = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    itemListElement: hotels.map((hotel, index) => ({
-      '@type': 'ListItem',
-      position: index + 1,
-      item: {
-        '@type': 'Hotel',
-        name: hotel.name,
-        description: hotel.description,
-        image: hotel.image,
-        url: `https://greececyclades.com/hotels/${hotel.id}`,
-        address: {
-          '@type': 'PostalAddress',
-          addressLocality: hotel.island,
-          addressRegion: 'Cyclades',
-          addressCountry: 'Greece'
-        }
-      }
-    })),
-    numberOfItems: hotels.length,
-    itemListOrder: 'https://schema.org/ItemListUnordered'
-  };
-
-  return JSON.stringify(structuredData);
 }
 
 export function generateTripPlannerJsonLD(): string {

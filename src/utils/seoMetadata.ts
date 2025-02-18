@@ -29,7 +29,7 @@ export const DEFAULT_KEYWORDS = [
 
 export const HOME_SEO: SEOMetadata = {
   title: 'Greece Cyclades Islands | Ultimate Travel Guide 2025 | Plan Your Dream Vacation',
-  description: 'Plan your perfect Cyclades vacation with our comprehensive 2025 guide. Discover luxury hotels, authentic experiences, and hidden gems across Santorini, Mykonos, and more. Expert tips for the perfect Greek island getaway.',
+  description: 'Plan your perfect Cyclades vacation with our comprehensive 2025 guide. Discover authentic experiences and hidden gems across Santorini, Mykonos, and more. Expert tips for the perfect Greek island getaway.',
   keywords: [...DEFAULT_KEYWORDS, 'Greek Holiday', 'Island Life', 'Mediterranean Vacation', 'Greece Tourism', 'Best Greek Islands'],
   ogTitle: 'Discover the Magic of the Cyclades Islands | Greece Travel Guide 2025',
   ogDescription: 'Your ultimate guide to exploring the stunning Cyclades islands. Find the perfect mix of beaches, culture, and adventure for your Greek island vacation.',
@@ -43,15 +43,6 @@ export const ISLANDS_SEO: SEOMetadata = {
   ogTitle: 'Explore the Best Cyclades Islands | Greece Island Guide 2025',
   ogDescription: 'Discover which Cyclades island is perfect for you. Compare beaches, activities, and vibes of each unique Greek island.',
   ogImage: '/images/islands-comparison.jpg'
-};
-
-export const HOTELS_SEO: SEOMetadata = {
-  title: 'Best Hotels in Cyclades Islands 2025 | Luxury Stays & Boutique Resorts | Top Rated',
-  description: 'Find your perfect Cyclades accommodation - from clifftop luxury in Santorini to beachfront resorts in Mykonos. Compare prices, amenities, and authentic reviews for hotels across the Greek islands.',
-  keywords: [...DEFAULT_KEYWORDS, 'Luxury Hotels', 'Boutique Hotels', 'Beach Resorts', 'Villa Rentals', 'Hotel Booking', 'Best Places to Stay'],
-  ogTitle: 'Luxury Hotels & Resorts in the Cyclades | Where to Stay 2025',
-  ogDescription: 'Discover the most stunning hotels and resorts across the Cyclades islands. From luxury villas to boutique hotels.',
-  ogImage: '/images/luxury-hotels.jpg'
 };
 
 export const ACTIVITIES_SEO: SEOMetadata = {
@@ -101,7 +92,7 @@ export const TERMS_SEO: SEOMetadata = {
 
 export const GUIDES_SEO: SEOMetadata = {
   title: 'Cyclades Island Guides 2025 | Expert Travel Tips & Local Insights',
-  description: 'Comprehensive guides to the Cyclades islands. From Santorini to Mykonos, Paros to Naxos - discover insider tips, best beaches, hotels, and activities for your perfect Greek vacation.',
+  description: 'Comprehensive guides to the Cyclades islands. From Santorini to Mykonos, Paros to Naxos - discover insider tips, best beaches, and activities for your perfect Greek vacation.',
   keywords: [...DEFAULT_KEYWORDS, 'Island Guides', 'Travel Tips', 'Local Insights', 'Best Places', 'Island Hopping Guide'],
   ogTitle: 'Cyclades Island Travel Guides 2025 | Expert Local Tips',
   ogDescription: 'Plan your perfect Greek island vacation with our detailed Cyclades guides. Local insights, hidden gems, and expert travel tips for each unique island.',
@@ -112,7 +103,7 @@ export function generateGuideSEO(islandName: string): SEOMetadata {
   const currentYear = 2025;
   return {
     title: `${islandName} Travel Guide ${currentYear} | Complete Island Guide & Tips`,
-    description: `Plan your perfect ${islandName} vacation with our comprehensive ${currentYear} guide. Discover the best hotels, beaches, restaurants, and activities. Local insights and expert travel tips.`,
+    description: `Plan your perfect ${islandName} vacation with our comprehensive ${currentYear} guide. Discover the best beaches, restaurants, and activities. Local insights and expert travel tips.`,
     keywords: [...DEFAULT_KEYWORDS, islandName, `${islandName} Guide`, `${islandName} Travel`, `${islandName} Vacation`, `${islandName} Tips`],
     ogTitle: `${islandName} Island Guide ${currentYear} | Expert Travel Tips & Local Insights`,
     ogDescription: `Everything you need to know about visiting ${islandName}. From best beaches to hidden gems, restaurants to activities - plan your perfect ${islandName} vacation.`,
@@ -130,18 +121,6 @@ export function generateIslandSEO(islandName: string): SEOMetadata {
     ogTitle: `Discover ${formattedName} Island | Your ${currentYear} Travel Guide`,
     ogDescription: `Experience the magic of ${formattedName} - from stunning beaches to charming villages. Find the best places to stay, eat, and explore.`,
     ogImage: `/images/islands/${islandName.toLowerCase()}-overview.jpg`
-  };
-}
-
-export function generateHotelSEO(hotelName: string, location: string): SEOMetadata {
-  const currentYear = 2025;
-  return {
-    title: `${hotelName} | Luxury Hotel in ${location} | Reviews & Best Rates ${currentYear}`,
-    description: `Book your stay at ${hotelName} in ${location}. View photos, read reviews, and find the best rates for this stunning Cyclades accommodation. Experience Greek island luxury at its finest.`,
-    keywords: [...DEFAULT_KEYWORDS, hotelName, `${location} Hotels`, 'Luxury Accommodation', 'Hotel Booking', `${location} Luxury Hotels`],
-    ogTitle: `${hotelName} | Luxury Stay in ${location}`,
-    ogDescription: `Experience luxury at ${hotelName} in ${location}. Find the best rates and book your perfect Cyclades getaway.`,
-    ogImage: `/images/hotels/${hotelName.toLowerCase().replace(/\s+/g, '-')}.jpg`
   };
 }
 
@@ -166,54 +145,10 @@ export function generateSlug(name: string, island?: string): string {
   return `${nameSlug}-${islandSlug}`;
 }
 
-export function generateHotelsSEO(): SEOMetadata {
-  return {
-    title: 'Best Hotels in Cyclades Islands 2025 | Luxury Stays & Boutique Resorts',
-    description: 'Discover the finest hotels across the Cyclades islands. From luxury resorts to boutique stays, find your perfect accommodation in Santorini, Mykonos, Paros, and more.',
-    keywords: [...DEFAULT_KEYWORDS, 'Luxury Hotels', 'Boutique Hotels', 'Beach Resorts', 'Cyclades Hotels', 'Greek Island Hotels'],
-    ogTitle: 'Luxury Hotels & Resorts in Cyclades Islands | Greece',
-    ogDescription: 'Find your perfect stay in the Cyclades. Browse our curated selection of luxury hotels, boutique resorts, and beachfront villas.',
-    ogImage: '/images/hotels/luxury-hotel-cyclades.jpg'
-  };
-}
-
-export function generateHotelsListingJsonLD(hotels: Array<{
-  id: string;
-  name: string;
-  description: string;
-  category: string;
-  island: string;
-  image: string;
-}>): string {
-  const jsonLD = {
-    '@context': 'https://schema.org',
-    '@type': 'ItemList',
-    'itemListElement': hotels.map((hotel, index) => ({
-      '@type': 'ListItem',
-      'position': index + 1,
-      'item': {
-        '@type': 'Hotel',
-        '@id': `https://greececyclades.com/hotels/${hotel.id}`,
-        'name': hotel.name,
-        'description': hotel.description,
-        'image': hotel.image,
-        'category': hotel.category,
-        'address': {
-          '@type': 'PostalAddress',
-          'addressRegion': hotel.island,
-          'addressCountry': 'Greece'
-        }
-      }
-    }))
-  };
-
-  return JSON.stringify(jsonLD);
-}
-
 export function generateSitemapSEO(): SEOMetadata {
   return {
     title: 'Sitemap | Greece Cyclades',
-    description: 'Complete sitemap of Greece Cyclades website. Find all our pages about islands, hotels, activities, and travel guides.',
+    description: 'Complete sitemap of Greece Cyclades website. Find all our pages about islands, activities, and travel guides.',
     keywords: [...DEFAULT_KEYWORDS, 'sitemap', 'website map', 'all pages', 'navigation'],
     ogType: 'website',
     ogImage: '/images/cyclades-overview.jpg',

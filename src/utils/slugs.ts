@@ -25,11 +25,6 @@ export function parseVehicleSlug(slug: string): { make: string; model: string } 
   return { make, model };
 }
 
-// Specific slug generator for hotels
-export function getHotelSlug(name: string, island: string): string {
-  return generateSlug(name, island);
-}
-
 // Specific slug generator for activities
 export function getActivitySlug(name: string, location: string): string {
   return generateSlug(name, location);
@@ -37,5 +32,5 @@ export function getActivitySlug(name: string, location: string): string {
 
 // Specific slug generator for islands
 export function getIslandSlug(name: string): string {
-  return generateSlug(name);
+  return name.toLowerCase().replace(/\s+/g, '-');
 }
