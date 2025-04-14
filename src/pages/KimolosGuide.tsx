@@ -1,229 +1,277 @@
-import React, { useEffect, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
-import { FaShip, FaHotel, FaMapMarkedAlt, FaUmbrellaBeach, FaRoute, FaUtensils } from 'react-icons/fa';
-import { useIslandStore } from '../store/islandStore';
+import React from 'react';
+import { 
+  FaUmbrellaBeach, 
+  FaWineGlass, 
+  FaMapMarkedAlt, 
+  FaShip, 
+  FaUtensils, 
+  FaHistory
+} from 'react-icons/fa';
 import SEO from '../components/SEO';
-import { generateGuideSEO } from '../utils/seoMetadata';
+import IslandGuideHero from '../components/guides/IslandGuideHero';
+import { islandGuides } from '../data/islandsData';
 
 const KimolosGuide: React.FC = () => {
-  const navigate = useNavigate();
-  const { islands } = useIslandStore();
-  const kimolos = islands.find(island => island.name === 'Kimolos');
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"]
-  });
+  const kimolos = islandGuides.find(island => island.id === 'kimolos');
 
-  const y = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  if (!kimolos) {
+    return <div>Island not found</div>;
+  }
 
-  if (!kimolos) return null;
+  const seoData = {
+    title: "Kimolos Travel Guide 2025 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Kimolos vacation with our comprehensive 2025 travel guide. Discover volcanic landscapes, pristine beaches, and authentic Greek island life on this hidden gem of the Western Cyclades.",
+    keywords: [
+      'Kimolos travel guide',
+      'Kimolos beaches',
+      'Western Cyclades',
+      'Greek islands',
+      'Chorio village',
+      'Skiadi rock',
+      'Prassa beach',
+      'volcanic landscapes',
+      'Kimolos restaurants',
+      'best time to visit Kimolos'
+    ],
+    ogImage: kimolos.image,
+    ogType: 'article'
+  };
+
+  // Photo gallery images
+  const galleryImages = [
+    {
+      src: "/images/islands/kimolos/gallery/kimolos-beach.jpg",
+      alt: "Crystal clear turquoise waters at Prassa Beach"
+    },
+    {
+      src: "/images/islands/kimolos/gallery/kimolos-village.jpg",
+      alt: "The charming main village of Chorio"
+    },
+    {
+      src: "/images/islands/kimolos/gallery/kimolos-skiadi.jpg",
+      alt: "The impressive Skiadi rock formation"
+    },
+    {
+      src: "/images/islands/kimolos/gallery/kimolos-cliffs.jpg",
+      alt: "White cliffs and turquoise waters"
+    },
+    {
+      src: "/images/islands/kimolos/gallery/kimolos-food.jpg",
+      alt: "Traditional ladenia, a local specialty"
+    },
+    {
+      src: "/images/islands/kimolos/gallery/kimolos-boat.jpg",
+      alt: "Traditional fishing boats in Psathi port"
+    },
+    {
+      src: "/images/islands/kimolos/gallery/kimolos-sunset.jpg",
+      alt: "Breathtaking sunset over Kimolos"
+    }
+  ];
 
   const categories = [
     {
-      icon: <FaShip className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
+      icon: <FaShip className="text-blue-500" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
-      link: '/transport'
+      link: '#transport',
+      id: 'transport'
     },
     {
-      icon: <FaHotel className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
-      title: 'Best Hotels',
-      description: 'Accommodations for every budget',
-      link: '/hotels'
-    },
-    {
-      icon: <FaMapMarkedAlt className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
-      title: 'What to Do?',
-      description: 'Activities and attractions',
-      link: '/activities'
-    },
-    {
-      icon: <FaUmbrellaBeach className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
+      icon: <FaUmbrellaBeach className="text-blue-500" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
-      link: '/beaches'
+      link: '#beaches',
+      id: 'beaches'
     },
     {
-      icon: <FaRoute className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
-      title: 'Tours & Activities',
-      description: 'Guided experiences',
-      link: '/tours'
+      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      title: 'What to Do?',
+      description: 'Activities and attractions',
+      link: '#activities',
+      id: 'activities'
     },
     {
-      icon: <FaUtensils className="w-8 h-8 text-blue-500 group-hover:text-white transition-colors" />,
+      icon: <FaUtensils className="text-blue-500" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
-      link: '/dining'
+      link: '#cuisine',
+      id: 'cuisine'
+    },
+    {
+      icon: <FaWineGlass className="text-blue-500" />,
+      title: 'Local Products',
+      description: 'Specialties and delicacies',
+      link: '#products',
+      id: 'products'
+    },
+    {
+      icon: <FaHistory className="text-blue-500" />,
+      title: 'History & Culture',
+      description: 'Island heritage',
+      link: '#history',
+      id: 'history'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-white" ref={containerRef}>
-      <SEO {...generateGuideSEO('Kimolos')} />
+    <div className="min-h-screen bg-white">
+      <SEO {...seoData} />
       
       {/* Parallax Hero Section */}
-      <div className="relative h-screen overflow-hidden">
-        <motion.div 
-          style={{ y, opacity }}
-          className="absolute inset-0"
-        >
-          <div 
-            className="absolute inset-0 bg-cover bg-center bg-fixed"
-            style={{ 
-              backgroundImage: `url(${kimolos.image})`,
-              transform: 'scale(1.1)'
-            }}
-          />
-          <div className="absolute inset-0 bg-black bg-opacity-30 backdrop-blur-sm" />
-        </motion.div>
-        
-        <div className="relative h-full flex flex-col justify-center items-center text-white px-4">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.2 }}
-            className="text-center max-w-4xl"
-          >
-            <h1 className="text-6xl font-bold mb-6 tracking-tight">
-              Welcome to Kimolos
-            </h1>
-            <p className="text-2xl font-light mb-8 leading-relaxed">
-              {kimolos.quote}
-            </p>
-            <div className="flex gap-4 justify-center">
-              {kimolos.idealFor.map((ideal, index) => (
-                <span 
-                  key={index}
-                  className="px-4 py-2 bg-white bg-opacity-20 backdrop-blur-md rounded-full text-sm"
-                >
-                  {ideal}
-                </span>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </div>
+      <IslandGuideHero 
+        name="Kimolos"
+        description={kimolos.description}
+        image={kimolos.image}
+        bestTime={kimolos.bestTime}
+        idealFor={kimolos.idealFor}
+      />
 
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 py-16">
-        {/* SEO Description */}
+        {/* Introduction Section */}
         <section className="mb-16">
-          <div className="prose max-w-none">
-            <p className="text-lg text-gray-700 leading-relaxed">
-              Explore Kimolos, a hidden gem of the Cyclades that offers an authentic Greek island 
-              experience away from the tourist crowds. Known for its stunning volcanic landscapes, 
-              pristine beaches, and traditional villages, Kimolos provides a peaceful escape where 
-              you can discover untouched natural beauty and genuine island hospitality. From the 
-              picturesque Chorio to the unique white rock formations at Skiadi, from thermal springs 
-              to crystal-clear waters, this guide will help you uncover the secrets of one of the 
-              most unspoiled islands in the Cyclades.
-            </p>
-          </div>
-        </section>
-
-        {/* Best Time to Visit */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Best Time to Visit</h2>
-          <p className="text-lg text-gray-700 leading-relaxed mb-4">
-            {kimolos.bestTime}
-          </p>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="font-semibold mb-2">Weather</h3>
-              <p>{kimolos.weather.temp}, {kimolos.weather.condition}</p>
-            </div>
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="font-semibold mb-2">Peak Season</h3>
-              <p>June to September</p>
-            </div>
-            <div className="bg-blue-50 p-6 rounded-lg">
-              <h3 className="font-semibold mb-2">Shoulder Season</h3>
-              <p>April-May, October</p>
-            </div>
-          </div>
-        </section>
-
-        {/* Must Visit Locations */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Must Visit Locations</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {kimolos.highlights.map((highlight, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                <div className="p-6">
-                  <h3 className="font-semibold text-xl mb-2">{highlight}</h3>
-                  <p className="text-gray-600">Explore this amazing location</p>
-                </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+            <div>
+              <h2 className="text-3xl font-bold mb-6">Discover Kimolos</h2>
+              <div className="prose max-w-none">
+                <p className="text-lg text-gray-700 leading-relaxed mb-4">
+                  Kimolos is a hidden gem of the Western Cyclades, located just a stone's throw away from the more famous Milos. 
+                  This small volcanic island captivates visitors with its unspoiled beauty, pristine beaches with crystal-clear waters, 
+                  and authentic Greek island atmosphere.
+                </p>
+                <p className="text-lg text-gray-700 leading-relaxed">
+                  With its traditional whitewashed houses, picturesque villages, unique geological formations, and warm hospitality, 
+                  Kimolos offers an authentic Greek island experience away from the crowds. Here, you can explore untouched beaches, 
+                  hike scenic trails, discover ancient ruins, and enjoy the simple pleasures of Greek island life.
+                </p>
               </div>
-            ))}
-          </div>
-        </section>
-
-        {/* Getting Around */}
-        <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Getting Around</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Transportation Options</h3>
-              <ul className="space-y-3">
-                <li>Local buses connecting major towns</li>
-                <li>Rental cars and ATVs</li>
-                <li>Taxi services</li>
-                <li>Organized tours</li>
-              </ul>
             </div>
-            <div>
-              <h3 className="text-xl font-semibold mb-4">Tips</h3>
-              <ul className="space-y-3">
-                <li>Book transportation in advance during peak season</li>
-                <li>Consider renting a vehicle for flexibility</li>
-                <li>Use the bus system for budget-friendly travel</li>
-                <li>Walking is possible between some nearby attractions</li>
-              </ul>
+            <div className="grid grid-cols-2 gap-4">
+              <img 
+                src="/images/islands/kimolos/kimolos-village.jpg" 
+                alt="Traditional village in Kimolos" 
+                className="rounded-lg shadow-md h-64 w-full object-cover"
+              />
+              <img 
+                src="/images/islands/kimolos/kimolos-beach.jpg" 
+                alt="Beautiful beach in Kimolos" 
+                className="rounded-lg shadow-md h-64 w-full object-cover"
+              />
+              <img 
+                src="/images/islands/kimolos/kimolos-landscape.jpg" 
+                alt="Scenic landscape of Kimolos" 
+                className="rounded-lg shadow-md h-64 w-full object-cover"
+              />
+              <img 
+                src="/images/islands/kimolos/kimolos-church.jpg" 
+                alt="Traditional church in Kimolos" 
+                className="rounded-lg shadow-md h-64 w-full object-cover"
+              />
             </div>
           </div>
         </section>
 
-        {/* Categories Grid */}
+        {/* Quick Navigation */}
         <section className="mb-16">
           <h2 className="text-3xl font-bold mb-8">Explore Kimolos</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.map((category, index) => (
-              <div
+              <a 
                 key={index}
-                onClick={() => navigate(category.link)}
-                className="group cursor-pointer bg-white rounded-lg shadow-md p-6 hover:bg-blue-500 transition-colors duration-300"
+                href={category.link}
+                className="group bg-white rounded-lg shadow-md p-6 hover:bg-blue-500 transition-colors duration-300"
               >
                 <div className="flex items-center space-x-4">
-                  {category.icon}
+                  <div className="group-hover:text-white transition-colors">
+                    {category.icon}
+                  </div>
                   <div>
-                    <h3 className="font-semibold text-gray-900 group-hover:text-white">
+                    <h3 className="font-semibold text-lg group-hover:text-white transition-colors">
                       {category.title}
                     </h3>
-                    <p className="text-gray-600 group-hover:text-white">
+                    <p className="text-gray-600 group-hover:text-white/90 transition-colors">
                       {category.description}
                     </p>
                   </div>
                 </div>
+              </a>
+            ))}
+          </div>
+        </section>
+
+        {/* When to Visit Section */}
+        <section id="when-to-visit" className="mb-16">
+          <h2 className="text-3xl font-bold mb-6">When to Visit Kimolos</h2>
+          <div className="bg-white rounded-lg shadow-md p-6">
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+              The best time to visit Kimolos is from May to September when the weather is warm and sunny. 
+              The peak tourist season is in July and August, but even then, Kimolos remains relatively uncrowded 
+              compared to other Cycladic islands.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed mb-4">
+              June and September are ideal months to visit, offering warm temperatures, fewer tourists, 
+              and more affordable accommodation. The sea is warm enough for swimming from late May until early October.
+            </p>
+            <p className="text-lg text-gray-700 leading-relaxed">
+              If you prefer to experience the authentic local life, consider visiting in May or October. 
+              While some restaurants and accommodations might be closed, you'll get to see the island at its most peaceful.
+            </p>
+          </div>
+        </section>
+
+        {/* Photo Gallery Section */}
+        <section id="gallery" className="mb-16">
+          <h2 className="text-3xl font-bold mb-6">Photo Gallery</h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {galleryImages.map((image, index) => (
+              <div key={index} className="overflow-hidden rounded-lg shadow-md">
+                <img 
+                  src={image.src} 
+                  alt={image.alt} 
+                  className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
+                />
               </div>
             ))}
           </div>
         </section>
 
-        {/* Call to Action */}
-        <section className="text-center">
-          <h2 className="text-3xl font-bold mb-4">Ready to Plan Your Trip?</h2>
-          <p className="text-lg text-gray-700 mb-8">
-            Start planning your perfect Kimolos getaway today
-          </p>
-          <button
-            onClick={() => navigate('/trip-planner')}
-            className="bg-blue-500 text-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors"
-          >
-            Plan My Trip
-          </button>
+        {/* Ready to Experience Section */}
+        <section className="rounded-lg overflow-hidden mb-16">
+          <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
+            <div className="max-w-7xl mx-auto px-4 py-12">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <div>
+                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Kimolos?</h2>
+                  <p className="text-lg mb-6">
+                    Plan your perfect getaway to this hidden gem of the Cyclades. Find the best accommodations
+                    and discover how to reach this beautiful island.
+                  </p>
+                  <div className="flex flex-col sm:flex-row gap-4">
+                    <a 
+                      href="/hotels/" 
+                      className="bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium inline-block text-center transition-colors duration-300"
+                    >
+                      Find Accommodations
+                    </a>
+                    <a 
+                      href="/ferry-tickets/" 
+                      className="bg-transparent hover:bg-blue-700 border-2 border-white text-white px-6 py-3 rounded-lg font-medium inline-block text-center transition-colors duration-300"
+                    >
+                      How to get there
+                    </a>
+                  </div>
+                </div>
+                <div className="hidden md:block">
+                  <img 
+                    src="/images/islands/kimolos/kimolos-cta.jpg" 
+                    alt="Kimolos island view" 
+                    className="rounded-lg shadow-lg"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
         </section>
       </div>
     </div>

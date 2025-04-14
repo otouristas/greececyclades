@@ -35,6 +35,9 @@ function mapHotelToViewType(hotel: any): Hotel {
   return {
     id: hotel.id || '',
     name: hotel.name || '',
+    description: hotel.description || '',
+    slug: hotel.slug || '',
+    island_id: hotel.island_id || '',
     location: {
       island: hotel.location?.island || '',
       area: hotel.location?.area || '',
@@ -43,21 +46,27 @@ function mapHotelToViewType(hotel: any): Hotel {
         longitude: hotel.location?.coordinates?.longitude || 0
       }
     },
-    category: 'Resort',
-    priceRange: {
-      min: hotel.priceRange?.min || 0,
-      max: hotel.priceRange?.max || 0,
-      currency: hotel.priceRange?.currency || 'EUR'
+    category: hotel.category || 'Resort',
+    star_rating: hotel.star_rating || 4,
+    price_range: {
+      min: hotel.price_range?.min || hotel.priceRange?.min || 0,
+      max: hotel.price_range?.max || hotel.priceRange?.max || 0,
+      currency: hotel.price_range?.currency || hotel.priceRange?.currency || 'EUR'
     },
-    starRating: hotel.starRating || 4,
-    keyFeatures: hotel.keyFeatures || [],
-    shortDescription: hotel.shortDescription || hotel.description || '',
-    description: hotel.description || '',
-    rooms: hotel.rooms || [],
+    address: hotel.address || '',
     amenities: hotel.amenities || [],
+    room_types: hotel.room_types || [],
+    rating: hotel.rating || 4.5,
+    reviews_count: hotel.reviews_count || 0,
     images: {
-      main: '',
-      gallery: []
+      main: hotel.images?.main || '',
+      gallery: hotel.images?.gallery || []
+    },
+    // Legacy compatibility
+    priceRange: {
+      min: hotel.price_range?.min || hotel.priceRange?.min || 0,
+      max: hotel.price_range?.max || hotel.priceRange?.max || 0,
+      currency: hotel.price_range?.currency || hotel.priceRange?.currency || 'EUR'
     }
   };
 }
@@ -85,20 +94,30 @@ export default function HotelLanding() {
   const hotelStructuredData = {
     name: mappedHotel.name,
     description: mappedHotel.description,
-    image: mappedHotel.images.gallery,
-    priceRange: getPriceRangeFromPrice(mappedHotel.priceRange.min),
+    images: mappedHotel.images.gallery,
+    rating: mappedHotel.rating,
+    totalReviews: mappedHotel.reviews_count,
+    priceRange: getPriceRangeFromPrice(mappedHotel.price_range.min),
     address: {
-      streetAddress: mappedHotel.location.area,
-      addressLocality: mappedHotel.location.island,
-      addressRegion: 'Cyclades',
-      addressCountry: 'Greece'
+      street: mappedHotel.address || mappedHotel.location.area,
+      city: mappedHotel.location.island,
+      state: 'Cyclades',
+      postalCode: '',
+      country: 'Greece'
     },
-    geo: {
-      latitude: mappedHotel.location.coordinates?.latitude || 0,
-      longitude: mappedHotel.location.coordinates?.longitude || 0
-    },
-    starRating: mappedHotel.starRating,
-    amenities: mappedHotel.amenities
+    amenities: mappedHotel.amenities,
+    rooms: mappedHotel.room_types.map(room => ({
+      type: room.name,
+      description: room.description,
+      price: {
+        amount: room.price,
+        currency: mappedHotel.price_range.currency
+      },
+      occupancy: {
+        min: 1,
+        max: room.capacity || 2
+      }
+    }))
   };
 
   return (

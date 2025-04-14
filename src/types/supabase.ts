@@ -9,6 +9,53 @@ export type Json =
 export interface Database {
   public: {
     Tables: {
+      agencies: {
+        Row: {
+          id: string
+          created_at: string
+          name: string
+          description: string
+          logo: string
+          website: string
+          phone: string
+          email: string
+          address: string
+          islands: string[]
+          services: string[]
+          rating: number
+          reviews_count: number
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          name: string
+          description: string
+          logo: string
+          website: string
+          phone: string
+          email: string
+          address: string
+          islands: string[]
+          services: string[]
+          rating?: number
+          reviews_count?: number
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          name?: string
+          description?: string
+          logo?: string
+          website?: string
+          phone?: string
+          email?: string
+          address?: string
+          islands?: string[]
+          services?: string[]
+          rating?: number
+          reviews_count?: number
+        }
+      }
       activities: {
         Row: {
           id: string
@@ -72,6 +119,62 @@ export interface Database {
           provider?: string
           rating?: number
           reviews_count?: number
+        }
+      }
+      cars: {
+        Row: {
+          id: string
+          created_at: string
+          name: string
+          description: string
+          price_per_day: number
+          image: string
+          category: string
+          transmission: string
+          fuel_type: string
+          seats: number
+          luggage_capacity: number
+          features: string[]
+          rating: number
+          reviews_count: number
+          provider: string
+          location: string
+        }
+        Insert: {
+          id?: string
+          created_at?: string
+          name: string
+          description: string
+          price_per_day: number
+          image?: string
+          category: string
+          transmission: string
+          fuel_type: string
+          seats: number
+          luggage_capacity: number
+          features?: string[]
+          rating?: number
+          reviews_count?: number
+          provider: string
+          location: string
+        }
+        Update: {
+          id?: string
+          created_at?: string
+          name?: string
+          description?: string
+          price_per_day?: number
+          image?: string
+          category?: string
+          transmission?: string
+          fuel_type?: string
+          seats?: number
+          luggage_capacity?: number
+          features?: string[]
+          rating?: number
+          reviews_count?: number
+          provider?: string
+          location?: string
         }
       }
       hotels: {

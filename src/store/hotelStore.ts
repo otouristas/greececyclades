@@ -1,7 +1,6 @@
 import { create } from 'zustand';
 import { Hotel } from '../types/hotel';
-import { hotelService } from '../services/localHotelService';
-import { generateSlug } from '../utils/seoMetadata';
+import { supabaseHotelService } from '../services/supabaseHotelService';
 
 interface HotelState {
   hotels: Hotel[];
@@ -9,6 +8,7 @@ interface HotelState {
   loading: boolean;
   error: string | null;
   setSelectedHotel: (hotel: Hotel | null) => void;
+  fetchHotels: () => Promise<void>;
   fetchHotelBySlug: (slug: string) => Promise<Hotel | null>;
   fetchHotelsByIsland: (island: string) => Promise<void>;
   fetchFeaturedHotels: () => Promise<void>;
@@ -31,10 +31,20 @@ const useHotelStore = create<HotelState>((set) => ({
 
   setSelectedHotel: (hotel) => set({ selectedHotel: hotel }),
 
+  fetchHotels: async () => {
+    set({ loading: true, error: null });
+    try {
+      const hotels = await supabaseHotelService.getAllHotels();
+      set({ hotels, loading: false });
+    } catch (error) {
+      set({ error: 'Failed to fetch hotels', loading: false });
+    }
+  },
+
   fetchHotelBySlug: async (slug: string) => {
     set({ loading: true, error: null });
     try {
-      const hotel = await hotelService.getHotelBySlug(slug);
+      const hotel = await supabaseHotelService.getHotelBySlug(slug);
       set({ selectedHotel: hotel, loading: false });
       return hotel;
     } catch (error) {
@@ -46,7 +56,7 @@ const useHotelStore = create<HotelState>((set) => ({
   fetchHotelsByIsland: async (island: string) => {
     set({ loading: true, error: null });
     try {
-      const hotels = await hotelService.getHotelsByIsland(island);
+      const hotels = await supabaseHotelService.getHotelsByIsland(island);
       set({ hotels, loading: false });
     } catch (error) {
       set({ error: 'Failed to fetch hotels', loading: false });
@@ -56,7 +66,7 @@ const useHotelStore = create<HotelState>((set) => ({
   fetchFeaturedHotels: async () => {
     set({ loading: true, error: null });
     try {
-      const hotels = await hotelService.getFeaturedHotels();
+      const hotels = await supabaseHotelService.getFeaturedHotels();
       set({ hotels, loading: false });
     } catch (error) {
       set({ error: 'Failed to fetch featured hotels', loading: false });
@@ -66,7 +76,13 @@ const useHotelStore = create<HotelState>((set) => ({
   searchHotels: async (criteria) => {
     set({ loading: true, error: null });
     try {
-      const hotels = await hotelService.searchHotels(criteria);
+      const hotels = await supabaseHotelService.searchHotels({
+        islandId: criteria.island,
+        category: criteria.category,
+        minPrice: criteria.minPrice,
+        maxPrice: criteria.maxPrice,
+        amenities: criteria.amenities
+      });
       set({ hotels, loading: false });
     } catch (error) {
       set({ error: 'Failed to search hotels', loading: false });

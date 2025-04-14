@@ -1,0 +1,25 @@
+The following image paths are referenced in the SantoriniGuide.tsx file and need to be created:
+
+1. /images/islands/santorini/caldera-view.jpg
+2. /images/islands/santorini/oia-detail.jpg
+3. /images/islands/santorini/oia-sunset.jpg
+4. /images/islands/santorini/red-beach.jpg
+5. /images/islands/santorini/blue-domes.jpg
+6. /images/islands/santorini/fira-view.jpg
+7. /images/islands/santorini/vineyard.jpg
+8. /images/islands/santorini/akrotiri.jpg
+9. /images/islands/santorini/oia.jpg
+10. /images/islands/santorini/fira.jpg
+11. /images/islands/santorini/pyrgos.jpg
+12. /images/islands/santorini/imerovigli.jpg
+13. /images/islands/santorini/megalochori.jpg
+14. /images/islands/santorini/perissa-beach.jpg
+15. /images/islands/santorini/kamari-beach.jpg
+16. /images/islands/santorini/white-beach.jpg
+17. /images/islands/santorini/vlychada-beach.jpg
+18. /images/islands/santorini/monolithos-beach.jpg
+19. /images/islands/santorini/winery.jpg
+20. /images/islands/santorini/taverna.jpg
+21. /images/islands/santorini/fine-dining.jpg
+
+These images would need to be sourced and added to the project to fully implement the enhanced Santorini guide page.

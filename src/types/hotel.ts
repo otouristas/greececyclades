@@ -15,17 +15,11 @@ export interface RoomAmenity {
 }
 
 export interface HotelRoom {
-  id: string;
   name: string;
-  type: string;
   description: string;
   price: number;
-  image: string;
-  maxOccupancy: number;
-  bedType: string;
-  size: number;
+  capacity: number;
   amenities: string[];
-  features: RoomFeature[];
 }
 
 export enum HotelCategory {
@@ -125,34 +119,51 @@ export interface SeoMetadata {
 
 export interface Hotel {
   id: string;
-  slug: string;
+  created_at?: string;
   name: string;
   description: string;
+  slug: string;
+  island_id: string;
   location: {
     island: string;
     area: string;
-    address?: string;
     coordinates?: {
       latitude: number;
       longitude: number;
     };
   };
-  images: string[];
-  amenities: string[];
-  rooms: HotelRoom[];
-  rating: number;
-  reviews: HotelReview;
-  category: HotelCategory;
-  features: HotelFeature[];
-  priceRange: {
+  category: string;
+  star_rating: number;
+  price_range: {
     min: number;
     max: number;
     currency: string;
   };
-  logo?: string;  // URL to the hotel's logo image
-  seoMeta?: {
-    title: string;
-    description: string;
-    keywords: string[];
+  featured?: boolean;
+  images: {
+    main: string;
+    gallery: string[];
+  };
+  address: string;
+  amenities: string[];
+  room_types: HotelRoom[];
+  rating: number;
+  reviews_count: number;
+  latitude?: number;
+  longitude?: number;
+  
+  // Legacy fields for compatibility with existing components
+  priceRange?: {
+    min: number;
+    max: number;
+    currency: string;
+  };
+  features?: HotelFeature[];
+  reviews?: {
+    count: number;
+    rating: number;
+    highlights?: string[];
+    breakdown?: RatingBreakdown;
+    reviews?: Review[];
   };
 }

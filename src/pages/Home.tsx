@@ -249,6 +249,37 @@ export default function Home() {
           </div>
         </section>
 
+        {/* SEO Text Section */}
+        <section className="bg-gray-50 py-16">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="max-w-4xl mx-auto">
+              <div className="prose prose-lg prose-blue mx-auto">
+                <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Discover the Enchanting Cyclades Islands</h2>
+                
+                <p>
+                  Welcome to <strong>GreeceCyclades.com</strong>, your ultimate guide to exploring the breathtaking Cyclades archipelago in the heart of the Aegean Sea. The Cyclades, with their iconic white-washed buildings, blue-domed churches, and crystal-clear turquoise waters, represent the quintessential Greek island experience that travelers from around the world dream of.
+                </p>
+                
+                <p>
+                  Our comprehensive travel resource is designed to help you plan the perfect Greek island vacation, whether you're drawn to world-famous destinations like <strong>Santorini</strong> with its dramatic caldera views and spectacular sunsets, cosmopolitan <strong>Mykonos</strong> with its vibrant nightlife and picturesque windmills, or the authentic charm of <strong>Paros</strong>, <strong>Naxos</strong>, and <strong>Milos</strong> with their pristine beaches and traditional villages.
+                </p>
+                
+                <p>
+                  The Cyclades islands offer an incredible diversity of experiences for every type of traveler. History enthusiasts can explore ancient ruins and archaeological sites dating back thousands of years. Beach lovers can discover some of the Mediterranean's most stunning coastlines, from organized beaches with water sports to secluded coves accessible only by boat. Food connoisseurs can indulge in authentic Greek cuisine featuring fresh seafood, locally-produced cheeses, and traditional recipes passed down through generations.
+                </p>
+                
+                <p>
+                  Island hopping in the Cyclades is one of the most rewarding ways to experience this magical region. With our detailed ferry guides, accommodation recommendations, and local insights, you can easily navigate between islands to create your own perfect itinerary. Whether you have a week or a month to explore, our expert guides will help you make the most of your time in the Greek islands.
+                </p>
+                
+                <p>
+                  From practical travel tips and weather information to immersive cultural experiences and off-the-beaten-path adventures, GreeceCyclades.com provides everything you need to transform your Cyclades dreams into unforgettable memories. Start planning your journey today and discover why the Cyclades islands continue to captivate travelers year after year.
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* Newsletter Section */}
         <section className="bg-blue-50">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">

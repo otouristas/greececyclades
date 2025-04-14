@@ -30,7 +30,23 @@ export enum IslandVibe {
   LAID_BACK = 'laid-back',
   TRADITIONAL = 'traditional',
   SCENIC = 'scenic',
-  AUTHENTIC = 'authentic'
+  AUTHENTIC = 'authentic',
+  LUXURIOUS = 'luxurious',
+  COSMOPOLITAN = 'cosmopolitan',
+  ACTIVE = 'active',
+  FAMILY_FRIENDLY = 'family-friendly',
+  VIBRANT = 'vibrant',
+  YOUTHFUL = 'youthful',
+  LIVELY = 'lively',
+  CULTURAL = 'cultural',
+  CULINARY = 'culinary',
+  PEACEFUL = 'peaceful',
+  ELEGANT = 'elegant',
+  SPIRITUAL = 'spiritual',
+  ADVENTUROUS = 'adventurous',
+  HISTORIC = 'historic',
+  OFF_THE_BEATEN_PATH = 'off-the-beaten-path',
+  RELAXED = 'relaxed'
 }
 
 // Available activities
@@ -78,10 +94,11 @@ export interface IslandTransportation {
 }
 
 export interface Weather {
-  condition: string;
-  temperature: number;
-  windSpeed: number;
-  humidity: number;
+  condition?: string;
+  temperature?: number;
+  temp?: number;
+  windSpeed?: number;
+  humidity?: number;
   summer: string;
   winter: string;
   spring: string;
@@ -91,21 +108,23 @@ export interface Weather {
 export interface Island {
   id: string;
   name: string;
-  slug: string;
+  slug?: string;
   description: string;
   shortDescription: string;
+  quote?: string;
+  metaDescription?: string;
   image: string;
   heroImage?: string;
   coordinates?: {
     lat: number;
     lng: number;
   };
-  size: IslandSize;
+  size?: IslandSize;
   averageStay?: number;
   beaches?: string[];
   weather?: Weather;
   bestTime?: {
-    months: string[];
+    months: AvailableMonth[] | string[];
     description?: string;
   };
   idealFor?: string[];
@@ -114,13 +133,13 @@ export interface Island {
   ports?: string[];
   transportation?: IslandTransportation;
   contacts?: IslandContacts;
-  vibes: IslandVibe[];
+  vibes?: IslandVibe[];
   connectedIslands?: {
-    direct: string[];
-    nearby: string[];
+    direct?: string[];
+    nearby?: string[];
     other?: string[];
   };
-  metaDescription?: string;
+  mustSee?: string[];
 }
 
 export interface IslandGuide {

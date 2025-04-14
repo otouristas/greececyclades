@@ -1297,7 +1297,7 @@ export const cyclades: Partial<Island>[] = [
   { 
     id: '15',
     name: 'Kimolos',
-    description: 'Kimolos, a small volcanic island next to Milos, is a hidden treasure of the Western Cyclades that captivates visitors with its unspoiled beauty and genuine island character. Named after the chalk (kimolia) that was once extracted here, the island\'s geological heritage is evident in its stunning white cliffs and thermal springs. The main village, Chorio, is a perfect example of Cycladic architecture, with its narrow alleys, white-washed houses, and the medieval castle quarter known as Kastro. The island\'s coastline is a geological wonderland, featuring the spectacular Skiadi rock formation, a natural mushroom-shaped monument formed by wind erosion. Kimolos\'s beaches, like the stunning Prassa with its white sand and turquoise waters, remain wonderfully undeveloped. The island is a paradise for nature lovers, offering excellent hiking opportunities and rare flora species. Local gastronomy focuses on simple, authentic dishes like ladenia (a local pizza-like specialty) and traditional sweets made with local almonds. The absence of mass tourism has preserved the island\'s traditional way of life, making it an ideal destination for those seeking to experience authentic Greek island culture.',
+    description: 'Kimolos, a small volcanic island next to Milos, is a hidden treasure of the Western Cyclades that captivates visitors with its unspoiled beauty and genuine island character. Named after the chalk (kimolia) that was once extracted here, the island\'s geological heritage is evident in its stunning white cliffs and thermal springs. The main village, Chorio, is a perfect example of Cycladic architecture, with its narrow alleys, white-washed houses, and the medieval castle quarter known as Kastro. The island\'s coastline is a geological wonderland, featuring the spectacular Skiadi rock formation, a natural mushroom-shaped monument formed by wind erosion. Kimolos\'s beaches, like the stunning Prassa with its white sand and turquoise waters, remain wonderfully undeveloped. The island is a paradise for nature lovers, offering excellent hiking opportunities along ancient paths that connect its scattered settlements and lead to hidden coves and archaeological sites. The island\'s isolation has preserved not only its natural beauty but also its traditions, evident in local festivals and cuisine featuring dishes like ladenia (a local pizza-like specialty) and traditional sweets made with local almonds. The absence of mass tourism has attracted a loyal following of visitors who appreciate its peaceful atmosphere and crystal-clear waters, making it an ideal destination for those seeking to experience authentic Greek island culture.',
     shortDescription: 'Volcanic beauty with pristine beaches',
     quote: 'Where white cliffs meet turquoise waters',
     metaDescription: 'Experience the untouched beauty of Kimolos. Discover volcanic landscapes, secluded beaches, and authentic Greek island life.',
@@ -1458,7 +1458,7 @@ export const cyclades: Partial<Island>[] = [
   { 
     id: '17',
     name: 'Folegandros',
-    description: 'Folegandros, a small but dramatic island between Milos and Santorini, captures the essence of Cycladic beauty with its stunning cliff-top Chora and unspoiled landscapes. The island\'s main town, perched on the edge of a 200-meter cliff, is one of the oldest traditional settlements in the Cyclades, featuring three connected squares with distinct character - a rare architectural feature in the islands. The medieval Kastro district, still inhabited, preserves the island\'s Venetian heritage with its defensive architecture and ancient walls. The path to the church of Panagia, zigzagging up a steep cliff, offers breathtaking views and leads to one of the most significant ecclesiastical museums in the Cyclades. The island\'s wild beauty is evident in its rugged coastline, where beaches like Katergo are accessible only by boat or foot, preserving their natural charm. Despite its small size, Folegandros offers excellent hiking opportunities along ancient paths connecting traditional settlements and remote beaches. The island\'s cuisine is distinctly local, featuring specialties like matsata (handmade pasta) and souroto cheese. The absence of an airport and limited ferry connections have helped Folegandros maintain its authentic character while attracting discerning visitors who appreciate its wild beauty and peaceful atmosphere.',
+    description: 'Folegandros, a small but dramatic island between Milos and Santorini, captures the essence of Cycladic beauty with its stunning cliff-top Chora and unspoiled landscapes. The island\'s main town, perched on the edge of a 200-meter cliff, is one of the oldest traditional settlements in the Cyclades, featuring three connected squares with distinct character - a rare architectural feature in the islands. The medieval Kastro district, still inhabited, preserves the island\'s Venetian heritage with its defensive architecture and ancient walls. The path to the church of Panagia, zigzagging up a steep cliff, offers breathtaking views and leads to one of the most significant ecclesiastical museums in the Cyclades. The island\'s wild beauty is evident in its rugged coastline, where beaches like Katergo are accessible only by boat or foot, preserving their natural charm. Despite its small size, Folegandros offers excellent hiking opportunities along ancient paths that connect its scattered settlements and lead to hidden coves and archaeological sites. The island\'s cuisine is distinctly local, featuring specialties like matsata (handmade pasta) and souroto cheese. The absence of an airport and limited ferry connections have helped Folegandros maintain its authentic character while attracting discerning visitors who appreciate its wild beauty and peaceful atmosphere.',
     shortDescription: 'Dramatic cliffs and traditional charm',
     quote: 'Where cliffs meet clouds',
     metaDescription: 'Experience the dramatic beauty of Folegandros. From clifftop villages to pristine beaches, discover this hidden Cycladic gem.',
@@ -1987,7 +1987,7 @@ export const cyclades: Partial<Island>[] = [
       temp: 25,
       condition: 'clear',
       summer: 'Warm and dry with temperatures around 25-28°C',
-      winter: 'Mild with occasional rain, 12-15°C',
+      winter: 'Mild with some rain, 12-15°C',
       spring: 'Pleasant and mild, 17-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
@@ -2200,21 +2200,53 @@ export const islandGuides: IslandGuide[] = [
       autumn: 'Warm with occasional rain, 20-25°C'
     },
     bestTime: 'May to September',
-    idealFor: ['Adventure', 'Photography', 'Beach Lovers']
+    idealFor: ['Photographers', 'Beach Explorers', 'Nature Lovers']
   },
   {
     id: 'ios',
     name: 'Ios',
-    description: 'Experience the perfect blend of vibrant nightlife and stunning beaches.',
+    description: 'Your complete guide to Ios - beaches, nightlife, and hidden gems.',
     image: '/images/islands/ios.jpg',
     weather: {
-      summer: 'Hot and sunny with temperatures around 28-32°C',
+      summer: 'Hot and sunny with temperatures around 25-30°C',
+      winter: 'Mild with occasional rain, 10-15°C',
+      spring: 'Pleasant and warm, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
+    },
+    bestTime: 'June to September',
+    idealFor: ['Young Travelers', 'Party Lovers', 'Beach Goers']
+  },
+  {
+    id: 'sifnos',
+    name: 'Sifnos',
+    description: 'Your guide to the culinary capital of the Cyclades.',
+    image: '/images/islands/sifnos.jpg',
+    weather: {
+      temp: 27,
+      condition: 'sunny',
+      summer: 'Warm and sunny with temperatures around 25-30°C',
+      winter: 'Mild with occasional rain, 10-15°C',
+      spring: 'Pleasant and warm, 15-20°C',
+      autumn: 'Warm with occasional rain, 20-25°C'
+    },
+    bestTime: 'May to September',
+    idealFor: ['Food Lovers', 'Culture', 'Relaxation']
+  },
+  {
+    id: 'antiparos',
+    name: 'Antiparos',
+    description: 'A charming island known for its beautiful beaches, impressive cave, and laid-back atmosphere.',
+    image: '/images/islands/antiparos.jpg',
+    weather: {
+      temp: 26,
+      condition: 'sunny',
+      summer: 'Warm and sunny with temperatures around 25-28°C',
       winter: 'Mild with occasional rain, 12-15°C',
       spring: 'Pleasant and mild, 18-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
-    bestTime: 'June to September',
-    idealFor: ['Young Travelers', 'Beach Lovers', 'Party Enthusiasts']
+    bestTime: 'May to September',
+    idealFor: ['Beach Lovers', 'Families', 'Nature Enthusiasts']
   },
   {
     id: 'folegandros',
@@ -2259,20 +2291,6 @@ export const islandGuides: IslandGuide[] = [
     idealFor: ['Hikers', 'Nature Lovers', 'Peace Seekers']
   },
   {
-    id: 'sifnos',
-    name: 'Sifnos',
-    description: 'Your guide to the culinary capital of the Cyclades.',
-    image: '/images/islands/sifnos.jpg',
-    weather: {
-      summer: 'Hot and dry with temperatures around 25-30°C',
-      winter: 'Mild with occasional rain, 10-15°C',
-      spring: 'Pleasant and warm, 15-20°C',
-      autumn: 'Warm with occasional rain, 20-25°C'
-    },
-    bestTime: 'May to September',
-    idealFor: ['Food Lovers', 'Culture', 'Relaxation']
-  },
-  {
     id: 'koufonisia',
     name: 'Koufonisia',
     description: 'Experience the turquoise waters and laid-back charm of Koufonisia. Your guide to this hidden Cycladic paradise.',
@@ -2297,28 +2315,12 @@ export const islandGuides: IslandGuide[] = [
       temp: 25,
       condition: 'clear',
       summer: 'Warm and dry with temperatures around 25-28°C',
-      winter: 'Mild with occasional rain, 12-15°C',
+      winter: 'Mild with some rain, 12-15°C',
       spring: 'Pleasant and mild, 17-22°C',
       autumn: 'Warm with occasional rain, 20-24°C'
     },
     bestTime: 'May to September',
     idealFor: ['Hikers', 'Nature Lovers', 'Peace Seekers']
-  },
-  {
-    id: 'schinoussa',
-    name: 'Schinoussa',
-    description: 'Your complete guide to Schinoussa, a tiny paradise with golden beaches and authentic island charm.',
-    image: '/images/islands/schinoussa.jpg',
-    weather: {
-      temp: 26,
-      condition: 'sunny',
-      summer: 'Warm and sunny with temperatures around 25-28°C',
-      winter: 'Mild with occasional rain, 12-15°C',
-      spring: 'Pleasant and mild, 18-22°C',
-      autumn: 'Warm with occasional rain, 20-24°C'
-    },
-    bestTime: 'May to September',
-    idealFor: ['Beach Lovers', 'Peace Seekers', 'Nature Enthusiasts']
   },
   {
     id: 'kea',
@@ -2392,20 +2394,6 @@ export const islandGuides: IslandGuide[] = [
     idealFor: ['Peace Seekers', 'Hikers', 'Nature Lovers']
   },
   {
-    id: 'antiparos',
-    name: 'Antiparos',
-    description: 'Experience the laid-back charm and natural wonders of Antiparos.',
-    image: '/images/islands/antiparos.jpg',
-    weather: {
-      summer: 'Warm and sunny with temperatures around 25-28°C',
-      winter: 'Mild with occasional rain, 12-15°C',
-      spring: 'Pleasant and mild, 18-22°C',
-      autumn: 'Warm with occasional rain, 20-24°C'
-    },
-    bestTime: 'May to September',
-    idealFor: ['Beach Lovers', 'Families', 'Nature Enthusiasts']
-  },
-  {
     id: 'serifos',
     name: 'Serifos',
     description: 'Discover the rugged beauty and pristine beaches of Serifos.',
@@ -2436,8 +2424,9 @@ export const islandGuides: IslandGuide[] = [
   {
     id: 'andros',
     name: 'Andros',
-    description: 'Discover the greenest island of the Cyclades.',
+    description: 'The greenest island of the Cyclades, where lush valleys, flowing streams, and pristine beaches create a paradise for nature lovers.',
     image: '/images/islands/andros.jpg',
+    heroImage: '/images/islands/andros.jpg',
     weather: {
       summer: 'Warm and pleasant with temperatures around 25-28°C',
       winter: 'Mild with occasional rain, 12-15°C',
@@ -2474,6 +2463,22 @@ export const islandGuides: IslandGuide[] = [
     },
     bestTime: 'May to September',
     idealFor: ['Peace Seekers', 'Photographers', 'Culture Enthusiasts']
+  },
+  {
+    id: 'schinoussa',
+    name: 'Schinoussa',
+    description: 'Your complete guide to Schinoussa, a tiny paradise with golden beaches and authentic island charm.',
+    image: '/images/islands/schinoussa.jpg',
+    weather: {
+      temp: 26,
+      condition: 'sunny',
+      summer: 'Warm and sunny with temperatures around 25-28°C',
+      winter: 'Mild with occasional rain, 12-15°C',
+      spring: 'Pleasant and mild, 18-22°C',
+      autumn: 'Warm with occasional rain, 20-24°C'
+    },
+    bestTime: 'May to September',
+    idealFor: ['Beach Lovers', 'Peace Seekers', 'Nature Enthusiasts']
   }
 ];
 

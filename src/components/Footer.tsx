@@ -62,12 +62,10 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
             <ul className="space-y-2 text-gray-400">
-              <li><Link to="/ferries" className="hover:text-white transition-colors">Ferry Bookings</Link></li>
-              <li><Link to="/hotels" className="hover:text-white transition-colors">Hotel Reservations</Link></li>
+              <li><Link to="/ferry-tickets" className="hover:text-white transition-colors">Ferry Tickets</Link></li>
               <li><Link to="/activities" className="hover:text-white transition-colors">Island Activities</Link></li>
-              <li><Link to="/car-rentals" className="hover:text-white transition-colors">Car Rentals</Link></li>
-              <li><Link to="/travel-insurance" className="hover:text-white transition-colors">Travel Insurance</Link></li>
-              <li><Link to="/transfers" className="hover:text-white transition-colors">Airport Transfers</Link></li>
+              <li><Link to="/rent-a-car" className="hover:text-white transition-colors">Car Rentals</Link></li>
+              <li><Link to="/flights" className="hover:text-white transition-colors">Flights</Link></li>
             </ul>
           </div>
         </div>

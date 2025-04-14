@@ -1,4 +1,3 @@
-import { FC, useEffect, useState } from 'react';
 import { Calendar, Users, Camera, Clock, ArrowRight } from 'lucide-react';
 import { Link } from 'react-router-dom';
 

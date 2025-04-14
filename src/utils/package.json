@@ -1,0 +1,7 @@
+{
+  "name": "greececyclades-utils",
+  "version": "1.0.0",
+  "description": "Utility scripts for Greece Cyclades website",
+  "type": "module",
+  "private": true
+}

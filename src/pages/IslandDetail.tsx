@@ -16,13 +16,11 @@ import {
   Music,
   Utensils,
   Footprints,
-  MapPinned
+  MapPinned,
+  Car,
+  Building
 } from 'lucide-react';
-import { useHotelStore } from '../store/hotelStore';
-import { useVehicleStore } from '../store/vehicleStore';
 import SEO from '../components/SEO';
-import HotelCard from '../components/cards/HotelCard';
-import VehicleCard from '../components/vehicles/VehicleCard';
 import { SITE_TAGLINE } from '../constants/seo';
 import { cyclades } from '../data/islandsData';
 import type { Island } from '../types/island';
@@ -31,8 +29,6 @@ export default function IslandDetail() {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [selectedIsland, setSelectedIsland] = useState<Partial<Island> | null>(null);
-  const { hotels, fetchHotelsByIsland } = useHotelStore();
-  const { vehicles } = useVehicleStore();
 
   useEffect(() => {
     console.log('IslandDetail - Current slug:', slug);
@@ -44,28 +40,17 @@ export default function IslandDetail() {
       
       if (island) {
         setSelectedIsland(island);
-        fetchHotelsByIsland(island.name || '');
       } else {
         console.log('IslandDetail - Island not found, navigating to /islands');
         navigate('/islands');
       }
     }
-  }, [slug, navigate, fetchHotelsByIsland]);
+  }, [slug, navigate]);
 
   if (!selectedIsland) {
     console.log('IslandDetail - No selected island, returning null');
     return null;
   }
-
-  // Filter vehicles for this specific island
-  const islandVehicles = vehicles.filter(vehicle => 
-    vehicle.location === 'All Locations' || 
-    (selectedIsland.name && vehicle.location.toLowerCase().includes(selectedIsland.name.toLowerCase()))
-  );
-
-  // Get only the first 3 hotels and vehicles for preview
-  const previewHotels = hotels.slice(0, 3);
-  const previewVehicles = islandVehicles.slice(0, 3);
 
   console.log('IslandDetail - Rendering with selectedIsland:', selectedIsland);
 
@@ -428,47 +413,69 @@ export default function IslandDetail() {
           </div>
         )}
 
-        {/* Hotels Preview */}
-        {previewHotels.length > 0 && (
-          <div className="mb-16">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold">Where to Stay</h2>
-              <Link 
-                to={`/hotels?island=${selectedIsland.name}`}
-                className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
-              >
-                View all hotels
-                <ArrowRight className="h-4 w-4" />
-              </Link>
+        {/* Services CTA Section - 2 columns */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold mb-8">Plan Your {selectedIsland.name} Trip</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Car Rental CTA */}
+            <div className="relative overflow-hidden rounded-xl group">
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 opacity-90 group-hover:opacity-95 transition-opacity duration-300"></div>
+              <img 
+                src="/images/car-rental-cta.jpg" 
+                alt="Rent a car in Cyclades" 
+                className="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="relative p-8 md:p-10 h-full flex flex-col justify-between min-h-[320px]">
+                <div>
+                  <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-6">
+                    <Car className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Explore {selectedIsland.name} at Your Own Pace</h3>
+                  <p className="text-white/90 mb-6">
+                    Discover hidden gems and scenic routes with the freedom of your own vehicle. 
+                    Choose from a wide range of cars perfect for island exploration.
+                  </p>
+                </div>
+                <Link 
+                  to="/rent-a-car"
+                  className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors duration-300 w-fit"
+                >
+                  Find Your Perfect Car
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
             </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {previewHotels.map((hotel) => (
-                <HotelCard key={hotel.id} hotel={hotel} />
-              ))}
-            </div>
-          </div>
-        )}
 
-        {/* Vehicles Preview */}
-        {previewVehicles.length > 0 && (
-          <div className="mb-16">
-            <div className="flex items-center justify-between mb-8">
-              <h2 className="text-3xl font-bold">Getting Around</h2>
-              <Link 
-                to="/vehicles"
-                className="text-blue-600 hover:text-blue-800 flex items-center gap-1"
-              >
-                View all vehicles
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {previewVehicles.map((vehicle) => (
-                <VehicleCard key={vehicle.id} vehicle={vehicle} />
-              ))}
+            {/* Hotels CTA */}
+            <div className="relative overflow-hidden rounded-xl group">
+              <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-700 opacity-90 group-hover:opacity-95 transition-opacity duration-300"></div>
+              <img 
+                src="/images/hotel-cta.jpg" 
+                alt="Book hotels in Cyclades" 
+                className="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-105 transition-transform duration-500"
+              />
+              <div className="relative p-8 md:p-10 h-full flex flex-col justify-between min-h-[320px]">
+                <div>
+                  <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-6">
+                    <Building className="h-6 w-6 text-white" />
+                  </div>
+                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Stay in the Heart of {selectedIsland.name}</h3>
+                  <p className="text-white/90 mb-6">
+                    From luxury resorts to charming boutique hotels, find the perfect accommodation 
+                    for your dream island getaway.
+                  </p>
+                </div>
+                <Link 
+                  to="/hotels"
+                  className="inline-flex items-center gap-2 bg-white text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg font-medium transition-colors duration-300 w-fit"
+                >
+                  Browse Accommodations
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
             </div>
           </div>
-        )}
+        </div>
 
         {/* Travel Guide CTA */}
         <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600">

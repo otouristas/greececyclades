@@ -1,0 +1,22 @@
+The following image paths are referenced in the MykonosGuide.tsx file and need to be created:
+
+1. /images/islands/mykonos/aerial-view.jpg
+2. /images/islands/mykonos/little-venice-detail.jpg
+3. /images/islands/mykonos/little-venice.jpg
+4. /images/islands/mykonos/windmills.jpg
+5. /images/islands/mykonos/paradise-beach.jpg
+6. /images/islands/mykonos/chora-streets.jpg
+7. /images/islands/mykonos/beach-club.jpg
+8. /images/islands/mykonos/panagia-paraportiani.jpg
+9. /images/islands/mykonos/delos.jpg
+10. /images/islands/mykonos/ano-mera.jpg
+11. /images/islands/mykonos/super-paradise.jpg
+12. /images/islands/mykonos/psarou-beach.jpg
+13. /images/islands/mykonos/ornos-beach.jpg
+14. /images/islands/mykonos/elia-beach.jpg
+15. /images/islands/mykonos/agios-stefanos.jpg
+16. /images/islands/mykonos/seafood.jpg
+17. /images/islands/mykonos/taverna.jpg
+18. /images/islands/mykonos/fine-dining.jpg
+
+These images would need to be sourced and added to the project to fully implement the enhanced Mykonos guide page.

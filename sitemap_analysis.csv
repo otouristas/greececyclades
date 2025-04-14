@@ -1,0 +1,62 @@
+URL,Category,Status,Priority,Recommendation
+https://greececyclades.com/,Home,Active,1.0,Keep
+https://greececyclades.com/about,Info,Active,0.8,Keep
+https://greececyclades.com/contact,Info,Active,0.8,Keep
+https://greececyclades.com/islands,Main Section,Active,0.9,Keep
+https://greececyclades.com/activities,Service,Active,0.8,Keep
+https://greececyclades.com/hotels,Service,Not Implemented,0.9,Redirect to Home
+https://greececyclades.com/ferry-tickets,Service,Active,0.9,Keep
+https://greececyclades.com/ferry-tickets/tracking,Service,Not Implemented,0.7,Remove
+https://greececyclades.com/rent-a-car,Service,Active,0.8,Keep
+https://greececyclades.com/culinary,Content,Not Implemented,0.7,Remove
+https://greececyclades.com/blog,Content,Not Implemented,0.8,Redirect to Home
+https://greececyclades.com/guides,Content,Not Implemented,0.9,Redirect to Islands
+https://greececyclades.com/privacy,Legal,Active,0.5,Keep
+https://greececyclades.com/terms,Legal,Active,0.5,Keep
+https://greececyclades.com/sitemap,Utility,Active,0.5,Keep
+https://greececyclades.com/help,Support,Not Implemented,0.8,Remove
+https://greececyclades.com/transfers,Service,Not Implemented,0.8,Remove
+https://greececyclades.com/flights,Service,Active,0.8,Keep
+https://greececyclades.com/islands/santorini,Island,Active,0.8,Keep
+https://greececyclades.com/islands/mykonos,Island,Active,0.8,Keep
+https://greececyclades.com/islands/naxos,Island,Active,0.8,Keep
+https://greececyclades.com/islands/paros,Island,Active,0.8,Keep
+https://greececyclades.com/islands/milos,Island,Active,0.8,Keep
+https://greececyclades.com/islands/ios,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/sifnos,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/amorgos,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/syros,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/tinos,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/serifos,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/andros,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/kea,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/sikinos,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/kimolos,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/kythnos,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/folegandros,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/anafi,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/koufonisia,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/antiparos,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/donousa,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/iraklia,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/schinoussa,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/islands/thirasia,Island,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/santorini,Guide,Not Implemented,0.8,Redirect to Islands/santorini
+https://greececyclades.com/guides/mykonos,Guide,Not Implemented,0.8,Redirect to Islands/mykonos
+https://greececyclades.com/guides/naxos,Guide,Not Implemented,0.8,Redirect to Islands/naxos
+https://greececyclades.com/guides/paros,Guide,Not Implemented,0.8,Redirect to Islands/paros
+https://greececyclades.com/guides/milos,Guide,Not Implemented,0.8,Redirect to Islands/milos
+https://greececyclades.com/guides/ios,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/sifnos,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/amorgos,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/syros,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/tinos,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/serifos,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/andros,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/kea,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/sikinos,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/kimolos,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/kythnos,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/folegandros,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/anafi,Guide,Not Implemented,0.8,Redirect to Islands
+https://greececyclades.com/guides/koufonisia,Guide,Not Implemented,0.8,Redirect to Islands

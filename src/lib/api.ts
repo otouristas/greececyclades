@@ -1,9 +1,11 @@
 import { supabase } from './supabase';
 import type { Database } from '../types/supabase';
 
-type Activity = Database['public']['Tables']['activities']['Row'];
-type Hotel = Database['public']['Tables']['hotels']['Row'];
-type RentalCar = Database['public']['Tables']['rental_cars']['Row'];
+// Define types from Supabase database schema
+export type Activity = Database['public']['Tables']['activities']['Row'];
+export type Hotel = Database['public']['Tables']['hotels']['Row'];
+export type RentalCar = Database['public']['Tables']['rental_cars']['Row'];
+export type Agency = Database['public']['Tables']['agencies']['Row'];
 
 // Activities
 export async function getActivities(islandId?: string) {
@@ -78,6 +80,29 @@ export async function getRentalCars(islandId?: string) {
 export async function getRentalCar(id: string) {
   const { data, error } = await supabase
     .from('rental_cars')
+    .select('*')
+    .eq('id', id)
+    .single();
+
+  if (error) throw error;
+  return data;
+}
+
+// Agencies
+export async function getAgencies() {
+  const query = supabase
+    .from('agencies')
+    .select('*')
+    .order('name', { ascending: true });
+
+  const { data, error } = await query;
+  if (error) throw error;
+  return data;
+}
+
+export async function getAgency(id: string) {
+  const { data, error } = await supabase
+    .from('agencies')
     .select('*')
     .eq('id', id)
     .single();

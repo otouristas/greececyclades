@@ -11,6 +11,29 @@ import Contact from './pages/Contact';
 import IslandGuides from './pages/IslandGuides';
 import IslandGuidePage from './pages/IslandGuidePage';
 import SantoriniGuide from './pages/SantoriniGuide';
+import MykonosGuide from './pages/MykonosGuide';
+import NaxosGuide from './pages/NaxosGuide';
+import ParosGuide from './pages/ParosGuide';
+import AndrosGuide from './pages/AndrosGuide';
+import SifnosGuide from './pages/SifnosGuide';
+import IosGuide from './pages/IosGuide';
+import MilosGuide from './pages/MilosGuide';
+import SerifosGuide from './pages/SerifosGuide';
+import FolegandrosGuide from './pages/FolegandrosGuide';
+import SyrosGuide from './pages/SyrosGuide';
+import KoufonisiaGuide from './pages/KoufonisiaGuide';
+import AmorgosGuide from './pages/AmorgosGuide';
+import IrakliaGuide from './pages/IrakliaGuide';
+import AntiparosGuide from './pages/AntiparosGuide';
+import SchinoussaGuide from './pages/SchinoussaGuide';
+import KeaGuide from './pages/KeaGuide';
+import KimolosGuide from './pages/KimolosGuide';
+import KythnosGuide from './pages/KythnosGuide';
+import SikinosGuide from './pages/SikinosGuide';
+import AnafiGuide from './pages/AnafiGuide';
+import TinosGuide from './pages/TinosGuide';
+import DonousaGuide from './pages/DonousaGuide';
+import ThirasiaGuide from './pages/ThirasiaGuide';
 import Activities from './pages/Activities';
 import ActivityDetail from './pages/ActivityDetail';
 import Blog from './pages/Blog';
@@ -25,6 +48,7 @@ import SignUp from './pages/SignUp';
 import ForgotPassword from './pages/ForgotPassword';
 import Hotels from './pages/Hotels';
 import HotelDetail from './pages/HotelDetail';
+import HotelsTest from './pages/HotelsTest';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Sitemap from './pages/Sitemap';
@@ -42,6 +66,12 @@ import TestMap from './pages/TestMap';
 import Transfers from './pages/Transfers';
 import HelpDesk from './pages/HelpDesk';
 import NearBy from './pages/NearBy';
+import Flights from './pages/Flights';
+import Weather from './pages/Weather';
+import BudgetCalculator from './pages/BudgetCalculator';
+import FerryGuide from './pages/FerryGuide';
+import Resources from './pages/Resources';
+import ListProperty from './pages/ListProperty';
 
 import { ToastProvider } from './contexts/ToastContext';
 
@@ -74,9 +104,12 @@ function AppContent() {
             <Route path="/activities/:id" element={<ActivityDetail />} />
             <Route path="/hotels" element={<Hotels />} />
             <Route path="/hotels/:slug" element={<HotelDetail />} />
+            <Route path="/hotels-test" element={<HotelsTest />} />
             <Route path="/ferry-tickets" element={<FerryTickets />} />
             <Route path="/ferry-tickets-search" element={<FerrySearchResults />} />
             <Route path="/ferry-tickets/tracking" element={<FerryTracking />} />
+            <Route path="/ferry-guide" element={<FerryGuide />} />
+            <Route path="/flights" element={<Flights />} />
             <Route path="/rent-a-car" element={<RentACar />} />
             <Route path="/rent-a-car/:id" element={<VehicleDetail />} />
             <Route path="/culinary" element={<Culinary />} />
@@ -84,9 +117,36 @@ function AppContent() {
             <Route path="/blog/:slug" element={<BlogPost />} />
             <Route path="/guides" element={<IslandGuides />} />
             <Route path="/guides/santorini" element={<SantoriniGuide />} />
+            <Route path="/guides/mykonos" element={<MykonosGuide />} />
+            <Route path="/guides/naxos" element={<NaxosGuide />} />
+            <Route path="/guides/paros" element={<ParosGuide />} />
+            <Route path="/guides/andros" element={<AndrosGuide />} />
+            <Route path="/guides/sifnos" element={<SifnosGuide />} />
+            <Route path="/guides/ios" element={<IosGuide />} />
+            <Route path="/guides/milos" element={<MilosGuide />} />
+            <Route path="/guides/serifos" element={<SerifosGuide />} />
+            <Route path="/guides/folegandros" element={<FolegandrosGuide />} />
+            <Route path="/guides/syros" element={<SyrosGuide />} />
+            <Route path="/guides/koufonisia" element={<KoufonisiaGuide />} />
+            <Route path="/guides/amorgos" element={<AmorgosGuide />} />
+            <Route path="/guides/iraklia" element={<IrakliaGuide />} />
+            <Route path="/guides/antiparos" element={<AntiparosGuide />} />
+            <Route path="/guides/schinoussa" element={<SchinoussaGuide />} />
+            <Route path="/guides/kea" element={<KeaGuide />} />
+            <Route path="/guides/kimolos" element={<KimolosGuide />} />
+            <Route path="/guides/kythnos" element={<KythnosGuide />} />
+            <Route path="/guides/sikinos" element={<SikinosGuide />} />
+            <Route path="/guides/anafi" element={<AnafiGuide />} />
+            <Route path="/guides/tinos" element={<TinosGuide />} />
+            <Route path="/guides/donousa" element={<DonousaGuide />} />
+            <Route path="/guides/thirasia" element={<ThirasiaGuide />} />
             <Route path="/guides/:slug" element={<IslandGuidePage />} />
+            <Route path="/weather" element={<Weather />} />
+            <Route path="/budget-calculator" element={<BudgetCalculator />} />
+            <Route path="/resources" element={<Resources />} />
             <Route path="/signin" element={<SignIn />} />
             <Route path="/signup" element={<SignUp />} />
+            <Route path="/list-property" element={<ListProperty />} />
             <Route path="/forgot-password" element={<ForgotPassword />} />
             <Route path="/auth" element={<Auth />} />
             <Route path="/privacy" element={<Privacy />} />

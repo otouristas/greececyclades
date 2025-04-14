@@ -20,7 +20,8 @@ import {
   Cloud,
   Wallet,
   Plane,
-  Car
+  Car,
+  Calculator
 } from 'lucide-react';
 import { useAuthStore } from '../store/authStore';
 import { auth } from '../config/firebase';
@@ -75,8 +76,12 @@ const navigationItems: NavItem[] = [
       { path: '/activities', label: 'Activities', type: 'tool', icon: <Compass className="w-4 h-4" /> },
       { path: '/hotels', label: 'Hotels', type: 'tool', icon: <Hotel className="w-4 h-4" /> },
       { path: '/ferry-tickets', label: 'Ferry Tickets', type: 'tool', icon: <Sailboat className="w-4 h-4" /> },
+      { path: '/ferry-guide', label: 'Ferry Guide', type: 'tool', icon: <Ship className="w-4 h-4" /> },
       { path: '/flights', label: 'Flight Tickets', type: 'tool', icon: <Plane className="w-4 h-4" /> },
       { path: '/rent-a-car', label: 'Rent a Car', type: 'tool', icon: <Car className="w-4 h-4" /> },
+      { path: '/weather', label: 'Weather Guide', type: 'tool', icon: <Cloud className="w-4 h-4" /> },
+      { path: '/budget-calculator', label: 'Budget Calculator', type: 'tool', icon: <Calculator className="w-4 h-4" /> },
+      { path: '/resources', label: 'Travel Resources', type: 'tool', icon: <Globe className="w-4 h-4" /> },
       { path: '/transfers', label: 'Taxi Transfers', type: 'tool', icon: <Car className="w-4 h-4" /> }
     ]
   },
@@ -269,7 +274,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                   className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
                 >
                   <User className="h-5 w-5 mr-2" />
-                  Sign In
+                  Coming Soon
                 </button>
               )}
             </div>
@@ -528,129 +533,206 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 z-50">
-          <div className="flex flex-col h-full">
-            <div className="flex justify-end items-center p-4 border-b border-white/10">
-              <button
-                onClick={toggleMobileMenu}
-                className="text-white/90 hover:text-white p-2"
-              >
-                <X className="h-6 w-6" />
-              </button>
-            </div>
-            <div className="flex-1 overflow-y-auto py-8 px-6">
-              {/* Mobile Icons and Sign In - Only visible when menu is open */}
-              <div className="flex items-center justify-between space-x-6 mb-8 pt-2 md:hidden">
-                <div className="flex items-center space-x-6">
-                  <Globe className="h-6 w-6 text-white/80" />
-                  <Link to="/help" onClick={toggleMobileMenu}>
-                    <HelpCircle className="h-6 w-6 text-white/80 hover:text-white transition-colors" />
-                  </Link>
-                </div>
-                
-                {isAuthenticated ? (
-                  <div className="flex items-center space-x-2 text-white">
-                    <User className="h-5 w-5" />
-                    <span className="text-sm font-medium">{user?.displayName || user?.name || user?.email?.split('@')[0] || 'User'}</span>
-                  </div>
-                ) : (
-                  <button
-                    onClick={onAuthClick}
-                    className="inline-flex items-center justify-center rounded-md bg-white/10 px-4 py-2 text-sm font-medium text-white hover:bg-white/20"
-                  >
-                    <User className="h-5 w-5 mr-2" />
-                    Sign In
-                  </button>
-                )}
-              </div>
+        <div className="fixed inset-0 bg-white z-50 flex flex-col h-full">
+          {/* Header with Logo and Close Button */}
+          <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-white sticky top-0">
+            <Link to="/" onClick={toggleMobileMenu} className="flex-shrink-0">
+              <Logo />
+            </Link>
+            <button
+              onClick={toggleMobileMenu}
+              className="text-gray-600 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100 transition-colors"
+              aria-label="Close menu"
+            >
+              <X className="h-6 w-6" />
+            </button>
+          </div>
 
-              {[...navigationItems, ...mobileOnlyItems].map((item) => (
-                <div key={item.path} className="mb-8">
-                  {item.megaMenu ? (
-                    <button
-                      onClick={() => toggleSection(item.path)}
-                      className="flex items-center justify-between w-full py-3 text-white/90 hover:text-white"
-                    >
-                      <div className="flex items-center space-x-3">
-                        <span className="text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                          {item.icon}
-                        </span>
-                        <span className="text-xl font-medium">{item.label}</span>
-                      </div>
-                      <ChevronRight className={`h-5 w-5 transform transition-transform ${activeSection === item.path ? 'rotate-90' : ''}`} />
-                    </button>
-                  ) : (
-                    <Link
-                      to={item.path}
-                      className="flex items-center justify-between w-full py-3 text-white/90 hover:text-white"
-                      onClick={() => toggleSection(item.path)}
-                    >
-                      <div className="flex items-center space-x-3">
-                        <span className="text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                          {item.icon}
-                        </span>
-                        <span className="text-xl font-medium">{item.label}</span>
-                      </div>
-                      {item.children && (
-                        <ChevronRight className={`h-5 w-5 transform transition-transform ${activeSection === item.path ? 'rotate-90' : ''}`} />
-                      )}
-                    </Link>
-                  )}
-                  {activeSection === item.path && item.children && (
-                    <div className="mt-2 ml-6 space-y-2">
-                      {item.children.map((child) => (
+          {/* Main Navigation Area */}
+          <div className="flex-1 overflow-y-auto">
+            {/* Quick Actions */}
+            <div className="grid grid-cols-4 gap-2 p-4 border-b border-gray-100">
+              <Link 
+                to="/ferry-tickets" 
+                onClick={toggleMobileMenu}
+                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-blue-50 transition-colors text-center"
+              >
+                <Sailboat className="h-6 w-6 text-blue-600 mb-2" />
+                <span className="text-xs font-medium text-gray-700">Ferries</span>
+              </Link>
+              <Link 
+                to="/activities" 
+                onClick={toggleMobileMenu}
+                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-blue-50 transition-colors text-center"
+              >
+                <Compass className="h-6 w-6 text-blue-600 mb-2" />
+                <span className="text-xs font-medium text-gray-700">Activities</span>
+              </Link>
+              <Link 
+                to="/flights" 
+                onClick={toggleMobileMenu}
+                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-blue-50 transition-colors text-center"
+              >
+                <Plane className="h-6 w-6 text-blue-600 mb-2" />
+                <span className="text-xs font-medium text-gray-700">Flights</span>
+              </Link>
+              <Link 
+                to="/rent-a-car" 
+                onClick={toggleMobileMenu}
+                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-blue-50 transition-colors text-center"
+              >
+                <Car className="h-6 w-6 text-blue-600 mb-2" />
+                <span className="text-xs font-medium text-gray-700">Cars</span>
+              </Link>
+            </div>
+
+            {/* Main Navigation Items */}
+            <div className="p-4">
+              {/* Destinations Section */}
+              <div className="mb-6">
+                <button
+                  onClick={() => toggleSection('/islands')}
+                  className="flex items-center justify-between w-full py-3 text-gray-800 hover:text-blue-600 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <Sun className="h-5 w-5 text-blue-600 mr-3" />
+                    <span className="text-base font-medium">Destinations</span>
+                  </div>
+                  <ChevronDown className={`h-5 w-5 text-gray-400 transform transition-transform duration-200 ${activeSection === '/islands' ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {activeSection === '/islands' && (
+                  <div className="mt-2 ml-8 space-y-1 animate-fadeIn">
+                    <div className="flex items-center justify-between mb-2 mt-4">
+                      <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Popular Islands</h4>
+                      <Link 
+                        to="/islands" 
+                        onClick={toggleMobileMenu}
+                        className="text-xs font-medium text-blue-600 flex items-center hover:text-blue-700"
+                      >
+                        View All
+                        <ChevronRight className="h-3 w-3 ml-1" />
+                      </Link>
+                    </div>
+                    {navigationItems
+                      .find(item => item.path === '/islands')
+                      ?.children?.filter(child => child.type === 'island')
+                      .slice(0, 4) // Limit to 4 islands
+                      .map((child) => (
                         <Link
                           key={child.path}
                           to={child.path}
-                          className="group flex items-center text-lg text-white/90 hover:text-white transition-colors py-2"
-                          onClick={() => {
-                            toggleMobileMenu();
-                            setActiveMegaMenu(null);
-                          }}
+                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                          onClick={toggleMobileMenu}
                         >
-                          <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                            {child.icon}
-                          </span>
-                          <div>
-                            <span className="block">{child.label}</span>
-                            <span className="text-sm text-white/70">Explore More</span>
-                          </div>
+                          <span className="mr-3 text-blue-500">{child.icon}</span>
+                          <span>{child.label}</span>
                         </Link>
                       ))}
+                      
+                    <div className="flex items-center justify-between mb-2 mt-4">
+                      <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Travel Guides</h4>
+                      <Link 
+                        to="/guides" 
+                        onClick={toggleMobileMenu}
+                        className="text-xs font-medium text-blue-600 flex items-center hover:text-blue-700"
+                      >
+                        View All
+                        <ChevronRight className="h-3 w-3 ml-1" />
+                      </Link>
                     </div>
-                  )}
-                </div>
-              ))}
+                    {navigationItems
+                      .find(item => item.path === '/islands')
+                      ?.children?.filter(child => child.type === 'guide')
+                      .slice(0, 4) // Limit to 4 guides
+                      .map((child) => (
+                        <Link
+                          key={child.path}
+                          to={child.path}
+                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                          onClick={toggleMobileMenu}
+                        >
+                          <span className="mr-3 text-blue-500">{child.icon}</span>
+                          <span>{child.label}</span>
+                        </Link>
+                      ))}
+                  </div>
+                )}
+              </div>
+              
+              {/* Plan Your Trip Section */}
+              <div className="mb-6">
+                <button
+                  onClick={() => toggleSection('/plan')}
+                  className="flex items-center justify-between w-full py-3 text-gray-800 hover:text-blue-600 transition-colors"
+                >
+                  <div className="flex items-center">
+                    <MapPin className="h-5 w-5 text-blue-600 mr-3" />
+                    <span className="text-base font-medium">Plan Your Trip</span>
+                  </div>
+                  <ChevronDown className={`h-5 w-5 text-gray-400 transform transition-transform duration-200 ${activeSection === '/plan' ? 'rotate-180' : ''}`} />
+                </button>
+                
+                {activeSection === '/plan' && (
+                  <div className="mt-2 ml-8 space-y-1 animate-fadeIn">
+                    {navigationItems
+                      .find(item => item.path === '/plan')
+                      ?.children?.map((child) => (
+                        <Link
+                          key={child.path}
+                          to={child.path}
+                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                          onClick={toggleMobileMenu}
+                        >
+                          <span className="mr-3 text-blue-500">{child.icon}</span>
+                          <span>{child.label}</span>
+                        </Link>
+                      ))}
+                  </div>
+                )}
+              </div>
+              
+              {/* Travel Tips */}
+              <Link
+                to="/blog"
+                className="flex items-center py-3 text-gray-800 hover:text-blue-600 transition-colors"
+                onClick={toggleMobileMenu}
+              >
+                <Compass className="h-5 w-5 text-blue-600 mr-3" />
+                <span className="text-base font-medium">Travel Tips</span>
+              </Link>
+              
+              {/* Other Links */}
+              <div className="mt-6 pt-6 border-t border-gray-100">
+                <Link
+                  to="/about"
+                  className="flex items-center py-3 text-gray-800 hover:text-blue-600 transition-colors"
+                  onClick={toggleMobileMenu}
+                >
+                  <User className="h-5 w-5 text-blue-600 mr-3" />
+                  <span className="text-base font-medium">About</span>
+                </Link>
+                <Link
+                  to="/contact"
+                  className="flex items-center py-3 text-gray-800 hover:text-blue-600 transition-colors"
+                  onClick={toggleMobileMenu}
+                >
+                  <MapPin className="h-5 w-5 text-blue-600 mr-3" />
+                  <span className="text-base font-medium">Contact</span>
+                </Link>
+              </div>
             </div>
-            <div className="border-t border-white/10 p-4">
-              {isAuthenticated && (
-                <>
-                  <Link
-                    to="/profile"
-                    className="block px-4 py-2 text-white/90 hover:text-white"
-                    onClick={toggleMobileMenu}
-                  >
-                    Profile
-                  </Link>
-                  <Link
-                    to="/my-trips"
-                    className="block px-4 py-2 text-white/90 hover:text-white"
-                    onClick={toggleMobileMenu}
-                  >
-                    My Trips
-                  </Link>
-                  <button
-                    onClick={() => {
-                      handleLogout();
-                      toggleMobileMenu();
-                    }}
-                    className="w-full text-left px-4 py-2 text-white/90 hover:text-white"
-                  >
-                    Sign Out
-                  </button>
-                </>
-              )}
-            </div>
+          </div>
+          
+          {/* Footer with Coming Soon Button */}
+          <div className="p-4 border-t border-gray-100 bg-white">
+            <button
+              onClick={onAuthClick}
+              className="w-full flex items-center justify-center rounded-lg bg-blue-600 px-4 py-3 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+            >
+              <User className="h-5 w-5 mr-2" />
+              Coming Soon
+            </button>
           </div>
         </div>
       )}
