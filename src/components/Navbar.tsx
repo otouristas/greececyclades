@@ -81,7 +81,8 @@ const navigationItems: NavItem[] = [
       { path: '/rent-a-car', label: 'Rent a Car', type: 'tool', icon: <Car className="w-4 h-4" /> },
       { path: '/weather', label: 'Weather Guide', type: 'tool', icon: <Cloud className="w-4 h-4" /> },
       { path: '/budget-calculator', label: 'Budget Calculator', type: 'tool', icon: <Calculator className="w-4 h-4" /> },
-      { path: '/resources', label: 'Travel Resources', type: 'tool', icon: <Globe className="w-4 h-4" /> },
+      { path: '/greek-phrases', label: 'Greek Phrases', type: 'tool', icon: <Globe className="w-4 h-4" /> },
+      { path: '/resources', label: 'Travel Resources', type: 'tool', icon: <HelpCircle className="w-4 h-4" /> },
       { path: '/transfers', label: 'Taxi Transfers', type: 'tool', icon: <Car className="w-4 h-4" /> }
     ]
   },

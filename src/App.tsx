@@ -49,6 +49,7 @@ import ForgotPassword from './pages/ForgotPassword';
 import Hotels from './pages/Hotels';
 import HotelDetail from './pages/HotelDetail';
 import HotelsTest from './pages/HotelsTest';
+import GreekPhrases from './pages/GreekPhrases';
 import Privacy from './pages/Privacy';
 import Terms from './pages/Terms';
 import Sitemap from './pages/Sitemap';
@@ -105,6 +106,7 @@ function AppContent() {
             <Route path="/hotels" element={<Hotels />} />
             <Route path="/hotels/:slug" element={<HotelDetail />} />
             <Route path="/hotels-test" element={<HotelsTest />} />
+            <Route path="/greek-phrases" element={<GreekPhrases />} />
             <Route path="/ferry-tickets" element={<FerryTickets />} />
             <Route path="/ferry-tickets-search" element={<FerrySearchResults />} />
             <Route path="/ferry-tickets/tracking" element={<FerryTracking />} />
