@@ -115,6 +115,7 @@ export default function Hotels() {
       <Helmet>
         <title>Hotels in Cyclades | Find Your Perfect Stay</title>
         <meta name="description" content="Book your perfect stay in the Cyclades islands. Browse our curated selection of hotels, from luxury resorts to boutique accommodations." />
+        <link rel="canonical" href="https://greececyclades.com/hotels" />
       </Helmet>
       
       {/* Hero Section with Search Widget */}
