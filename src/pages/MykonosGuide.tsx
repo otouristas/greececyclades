@@ -79,7 +79,80 @@ const MykonosGuide: React.FC = () => {
 
   return (
     <>
-      <SEO {...seoData} />
+      <SEO {...seoData} 
+        jsonLD={{
+          "@context": "https://schema.org",
+          "@type": "TouristDestination",
+          "name": "Mykonos Island, Greece",
+          "description": "Welcome to Mykonos, Greece's most glamorous island destination. Known for its vibrant nightlife, pristine beaches and cosmopolitan atmosphere, Mykonos perfectly blends traditional Cycladic charm with modern luxury and excitement.",
+          "url": "https://greececyclades.com/islands/mykonos",
+          "touristType": {
+            "@type": "Audience",
+            "audienceType": [
+              "Beach tourism",
+              "Nightlife tourism",
+              "Luxury tourism",
+              "Cultural tourism"
+            ]
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 37.4467,
+            "longitude": 25.3289
+          },
+          "includesAttraction": [
+            {
+              "@type": "TouristAttraction",
+              "name": "Little Venice",
+              "description": "The picturesque Little Venice quarter at sunset with colorful buildings right at the water's edge.",
+              "image": "https://greececyclades.com/images/islands/mykonos/little-venice.jpg"
+            },
+            {
+              "@type": "TouristAttraction",
+              "name": "Mykonos Windmills",
+              "description": "The iconic windmills overlooking Mykonos Town, a symbol of the island's rich history.",
+              "image": "https://greececyclades.com/images/islands/mykonos/windmills.jpg"
+            },
+            {
+              "@type": "TouristAttraction",
+              "name": "Paradise Beach",
+              "description": "The famous Paradise Beach with its crystal-clear waters and vibrant beach clubs.",
+              "image": "https://greececyclades.com/images/islands/mykonos/paradise-beach.jpg"
+            },
+            {
+              "@type": "TouristAttraction",
+              "name": "Panagia Paraportiani Church",
+              "description": "The iconic whitewashed church complex, one of the most photographed churches in the world.",
+              "image": "https://greececyclades.com/images/islands/mykonos/panagia-paraportiani.jpg"
+            }
+          ],
+          "event": [
+            {
+              "@type": "Event",
+              "name": "XLSIOR Festival",
+              "description": "International music festival that kicks off the party season in May.",
+              "startDate": "2025-05-01",
+              "endDate": "2025-05-10",
+              "location": "Mykonos Island, Greece"
+            },
+            {
+              "@type": "Event",
+              "name": "Mykonos Summer Festival",
+              "description": "Cultural events throughout the summer season featuring music, dance, and art.",
+              "startDate": "2025-06-01",
+              "endDate": "2025-08-31",
+              "location": "Various venues across Mykonos"
+            }
+          ],
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "name": "Best Time to Visit",
+            "description": "The best time to visit Mykonos is during the shoulder seasons (May-June, September) when the weather is pleasant and there are fewer crowds.",
+            "validFrom": "2025-05-01",
+            "validThrough": "2025-09-30"
+          }
+        }}
+      />
       <div className="min-h-screen bg-gray-50">
         <IslandGuideHero {...mykonos} />
 

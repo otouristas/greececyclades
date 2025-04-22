@@ -78,7 +78,80 @@ const SantoriniGuide: React.FC = () => {
 
   return (
     <>
-      <SEO {...seoData} />
+      <SEO {...seoData} 
+        jsonLD={{
+          "@context": "https://schema.org",
+          "@type": "TouristDestination",
+          "name": "Santorini Island, Greece",
+          "description": "Rising dramatically from the Aegean Sea, Santorini is a masterpiece of natural beauty and human architecture. This crescent-shaped island, born from one of history's largest volcanic eruptions, offers a spectacular blend of pristine white-washed buildings, multicolored cliffs, and the world's most breathtaking sunsets.",
+          "url": "https://greececyclades.com/islands/santorini",
+          "touristType": {
+            "@type": "Audience",
+            "audienceType": [
+              "Romantic tourism",
+              "Cultural tourism",
+              "Luxury tourism",
+              "Photography tourism"
+            ]
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 36.3932,
+            "longitude": 25.4615
+          },
+          "includesAttraction": [
+            {
+              "@type": "TouristAttraction",
+              "name": "Oia Village",
+              "description": "Famous for its stunning sunsets, blue-domed churches, and winding marble streets. The most photographed location in Santorini.",
+              "image": "https://greececyclades.com/images/islands/santorini/oia-sunset.jpg"
+            },
+            {
+              "@type": "TouristAttraction",
+              "name": "Akrotiri Archaeological Site",
+              "description": "Ancient ruins of Akrotiri, the 'Minoan Pompeii', preserved under layers of volcanic ash from the eruption around 1600 BC.",
+              "image": "https://greececyclades.com/images/islands/santorini/akrotiri.jpg"
+            },
+            {
+              "@type": "TouristAttraction",
+              "name": "Red Beach",
+              "description": "The dramatic Red Beach with its volcanic cliffs and distinctive red sand, surrounded by steep red cliffs.",
+              "image": "https://greececyclades.com/images/islands/santorini/red-beach.jpg"
+            },
+            {
+              "@type": "TouristAttraction",
+              "name": "Santorini Wineries",
+              "description": "Unique vineyards with basket-trained vines growing in volcanic soil, producing distinctive wines like Assyrtiko.",
+              "image": "https://greececyclades.com/images/islands/santorini/vineyard.jpg"
+            }
+          ],
+          "event": [
+            {
+              "@type": "Event",
+              "name": "Santorini International Music Festival",
+              "description": "Classical performances in unique venues around the island during the summer months.",
+              "startDate": "2025-06-15",
+              "endDate": "2025-08-15",
+              "location": "Various venues across Santorini"
+            },
+            {
+              "@type": "Event",
+              "name": "Ifestia Festival",
+              "description": "Annual festival in September featuring fireworks that recreate the volcanic eruption that shaped the island.",
+              "startDate": "2025-09-15",
+              "endDate": "2025-09-15",
+              "location": "Santorini Caldera"
+            }
+          ],
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "name": "Best Time to Visit",
+            "description": "The best time to visit Santorini is during the shoulder seasons (April-May, September-October) when the weather is mild and there are fewer crowds.",
+            "validFrom": "2025-04-01",
+            "validThrough": "2025-10-31"
+          }
+        }}
+      />
       <div className="min-h-screen bg-gray-50">
         <IslandGuideHero {...santorini} />
         
