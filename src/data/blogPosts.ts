@@ -100,11 +100,11 @@ export const blogPosts: BlogPost[] = [
     title: 'Sifnos Travel Guide 2025: Discover the Authentic Charm of the Cyclades',
     slug: 'sifnos-guide',
     description: 'Plan your unforgettable 2025 escape to Sifnos, Greece. Discover top attractions, stunning beaches, charming villages, exquisite dining, and essential travel tips in our comprehensive guide.',
-    content: blogContent.sifnos,
+    content: blogContent.sifnos.content,
     author: 'Maria Kontou',
     authorRole: 'Sifnos Pottery Expert',
     publishedAt: '2024-12-17',
-    featuredImage: '/images/blog/sifnos/Panagia-Chrysopigi-C.webp',
+    featuredImage: '/images/blog/sifnos/sifnos-blog-hero.webp',
     category: 'Island Guides',
     tags: ['Sifnos', 'Greek Islands', 'Pottery', 'Gastronomy', 'Traditions'],
     readTime: 12

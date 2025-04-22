@@ -16,9 +16,7 @@ export const sifnosContent: BlogContent = {
   metaTitle: 'Sifnos Travel Guide 2025: Explore Beaches, Villages & Culinary Delights',
   metaDescription: 'Plan your unforgettable 2025 escape to Sifnos, Greece. Discover top attractions, stunning beaches, charming villages, exquisite dining, and essential travel tips in our comprehensive guide.',
   content: `
-# Sifnos Travel Guide 2025: Discover the Authentic Charm of the Cyclades
-
-![Stunning Chrissopigi Monastery on a rocky islet, Sifnos](/images/blog/sifnos/Panagia-Chrysopigi-C.webp)
+![Sifnos Island, Cyclades, Greece](/images/blog/sifnos/sifnos-blog-hero.webp)
 
 ## Your Ultimate Guide to Sifnos, Greece
 
@@ -148,7 +146,7 @@ Enjoy your unforgettable journey to the soulful island of Sifnos!
       "@type": "Article",
       "headline": "Sifnos Travel Guide 2025: Discover the Authentic Charm of the Cyclades",
       "description": "Plan your unforgettable 2025 escape to Sifnos, Greece. Discover top attractions, stunning beaches, charming villages, exquisite dining, and essential travel tips in our comprehensive guide.",
-      "image": "https://greececyclades.com/images/blog/sifnos/Panagia-Chrysopigi-C.webp",
+      "image": "https://greececyclades.com/images/blog/sifnos/sifnos-blog-hero.webp",
       "author": {
         "@type": "Person",
         "name": "Maria Kontou",
