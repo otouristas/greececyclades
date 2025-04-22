@@ -46,19 +46,51 @@ export default function BlogPost() {
 
   const currentUrl = window.location.origin + location.pathname;
 
+  // Get schemas if available (for newer blog content objects)
+  const contentObj = typeof post.content === 'object' ? post.content as any : null;
+  const schemas = contentObj && contentObj.schemas ? contentObj.schemas : {};
+  const blogContent = contentObj ? contentObj.content : post.content;
+
+  // Extract headings from blog content for table of contents
+  const extractHeadings = (content: string) => {
+    const headingRegex = /^## (.+)$/gm;
+    const headings: string[] = [];
+    let match;
+    
+    while ((match = headingRegex.exec(content)) !== null) {
+      headings.push(match[1]);
+    }
+    
+    return headings;
+  };
+
+  const headings = extractHeadings(blogContent);
+
   const TableOfContents = () => (
     <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
       <h3 className="text-lg font-bold text-gray-900 mb-4">Table of Contents</h3>
       <nav className="space-y-2">
-        {['Overview', 'Getting There', 'Where to Stay', 'What to Do', 'Tips & Recommendations'].map((section) => (
-          <a 
-            key={section}
-            href={`#${section.toLowerCase().replace(/\s+/g, '-')}`}
-            className="block text-gray-600 hover:text-blue-600 transition-colors"
-          >
-            {section}
-          </a>
-        ))}
+        {headings.length > 0 ? (
+          headings.map((heading) => (
+            <a 
+              key={heading}
+              href={`#${heading.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')}`}
+              className="block text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              {heading}
+            </a>
+          ))
+        ) : (
+          ['Overview', 'Getting There', 'Where to Stay', 'What to Do', 'Tips & Recommendations'].map((section) => (
+            <a 
+              key={section}
+              href={`#${section.toLowerCase().replace(/\s+/g, '-')}`}
+              className="block text-gray-600 hover:text-blue-600 transition-colors"
+            >
+              {section}
+            </a>
+          ))
+        )}
       </nav>
     </div>
   );
@@ -154,12 +186,36 @@ export default function BlogPost() {
         title={`${post.title} ${SITE_TAGLINE}`}
         description={post.description}
         ogImage={post.featuredImage}
+        ogType="article"
+        canonicalUrl={currentUrl}
         article={{
           publishedTime: post.publishedAt,
           modifiedTime: post.updatedAt || post.publishedAt,
           author: post.author,
           tags: post.tags
         }}
+        jsonLD={schemas.article || {
+          "@context": "https://schema.org",
+          "@type": "Article",
+          "headline": post.title,
+          "description": post.description,
+          "image": post.featuredImage,
+          "author": {
+            "@type": "Person",
+            "name": post.author,
+            "jobTitle": post.authorRole
+          },
+          "publisher": {
+            "@type": "Organization",
+            "name": "Greece Cyclades",
+            "logo": {
+              "@type": "ImageObject",
+              "url": "https://greececyclades.com/logo.png"
+            }
+          },
+          "datePublished": post.publishedAt
+        }}
+        structuredData={schemas.faq}
       />
       <div className="min-h-screen bg-gray-50">
         {/* Hero Image */}
@@ -207,7 +263,7 @@ export default function BlogPost() {
                       <div>Published on {new Date(post.publishedAt).toLocaleDateString()}</div>
                     </div>
                   </div>
-                  <BlogContent content={post.content} />
+                  <BlogContent content={blogContent} />
                 </div>
               </article>
 
