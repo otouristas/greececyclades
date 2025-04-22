@@ -85,7 +85,80 @@ const NaxosGuide: React.FC = () => {
 
   return (
     <>
-      <SEO {...seoData} />
+      <SEO {...seoData} 
+        jsonLD={{
+          "@context": "https://schema.org",
+          "@type": "TouristDestination",
+          "name": "Naxos Island, Greece",
+          "description": "Naxos, the largest and most fertile island of the Cyclades, offers a perfect blend of ancient history, traditional mountain villages, and stunning beaches. With its rich mythology as the childhood home of Zeus and the place where Theseus abandoned Ariadne, Naxos captivates visitors with its diverse landscapes and authentic charm.",
+          "url": "https://greececyclades.com/islands/naxos",
+          "touristType": {
+            "@type": "Audience",
+            "audienceType": [
+              "Beach tourism",
+              "Cultural tourism",
+              "Food tourism",
+              "Adventure tourism"
+            ]
+          },
+          "geo": {
+            "@type": "GeoCoordinates",
+            "latitude": 37.1036,
+            "longitude": 25.3777
+          },
+          "includesAttraction": [
+            {
+              "@type": "TouristAttraction",
+              "name": "Portara (Apollo's Gate)",
+              "description": "The iconic marble doorway standing as the entrance to an unfinished temple of Apollo from 530 BC.",
+              "image": "https://greececyclades.com/images/islands/naxos/gallery/naxos-portara.jpg"
+            },
+            {
+              "@type": "TouristAttraction",
+              "name": "Chora (Naxos Town)",
+              "description": "The capital of Naxos with its medieval Kastro district, Venetian mansions, and waterfront promenade.",
+              "image": "https://greececyclades.com/images/islands/naxos/chora.jpg"
+            },
+            {
+              "@type": "TouristAttraction",
+              "name": "Plaka Beach",
+              "description": "One of Naxos' most beautiful beaches with crystal clear waters and golden sand.",
+              "image": "https://greececyclades.com/images/islands/naxos/gallery/naxos-beach.jpg"
+            },
+            {
+              "@type": "TouristAttraction",
+              "name": "Mount Zas (Zeus)",
+              "description": "The highest peak in the Cyclades with mythological significance as the childhood home of Zeus.",
+              "image": "https://greececyclades.com/images/islands/naxos/gallery/naxos-mountain.jpg"
+            }
+          ],
+          "event": [
+            {
+              "@type": "Event",
+              "name": "Naxos Festival",
+              "description": "Cultural performances at the Bazeos Tower and other venues.",
+              "startDate": "2025-06-01",
+              "endDate": "2025-08-31",
+              "location": "Naxos Island, Greece"
+            },
+            {
+              "@type": "Event",
+              "name": "Village Festivals (Panigiria)",
+              "description": "Traditional celebrations with music, dance, and feasting in villages throughout the island.",
+              "startDate": "2025-06-01",
+              "endDate": "2025-08-31",
+              "location": "Various villages across Naxos"
+            }
+          ],
+          "openingHoursSpecification": {
+            "@type": "OpeningHoursSpecification",
+            "name": "Best Time to Visit",
+            "description": "The best time to visit Naxos is during the shoulder seasons (April-May, September-October) when the weather is mild and there are fewer crowds.",
+            "validFrom": "2025-04-01",
+            "validThrough": "2025-10-31"
+          }
+        }}
+      />
       <div className="min-h-screen bg-gray-50">
         <IslandGuideHero {...naxos} />
         
