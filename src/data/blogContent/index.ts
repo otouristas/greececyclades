@@ -2,11 +2,13 @@
 import { bestCycladesIslandsContent } from './bestCycladesIslands';
 import { islandHoppingGuideContent } from './islandHoppingGuide';
 import { santoriniContent } from './santorini';
+import { sifnosContent } from './sifnos';
 
 export const blogContent = {
   bestCycladesIslands: bestCycladesIslandsContent,
   islandHoppingGuide: islandHoppingGuideContent,
   santorini: santoriniContent,
+  sifnos: sifnosContent,
   mykonos: `
 # Mykonos 2025: Complete Guide to the Island of the Winds
 
