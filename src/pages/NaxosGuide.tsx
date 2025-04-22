@@ -29,8 +29,8 @@ const NaxosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Naxos Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Naxos vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. From the iconic Portara to the mountain villages and golden beaches.",
+    title: "Naxos Travel Guide: Top Attractions, Beaches & Local Tips [2025 Update]",
+    description: "Discover the best of Naxos in 2025—top beaches, villages, hotels, and must-see sights like the Portara. Your perfect Greek island escape starts here.",
     keywords: [
       'Naxos travel guide',
       'Naxos beaches',
