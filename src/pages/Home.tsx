@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sun, Map, Compass, Plane, Building2, Car, Camera, UtensilsCrossed, Sparkles, Waves } from 'lucide-react';
+import { ArrowRight, Sun, Map, Compass, Plane, Building2, Car, Camera, UtensilsCrossed, Sparkles, Waves, MessageSquare } from 'lucide-react';
 import HeroSection from '../components/shared/HeroSection';
 import SEO from '../components/SEO';
 import { SITE_TAGLINE } from '../constants/seo';
@@ -131,6 +131,88 @@ export default function Home() {
                   </div>
                 </div>
               </Link>
+            </div>
+          </div>
+        </section>
+
+        {/* Touristas AI Planner Promotional Banner */}
+        <section className="py-16 relative overflow-hidden">
+          {/* Background with gradient overlay */}
+          <div className="absolute inset-0 z-0">
+            <img 
+              src="/images/santorini-view.jpg" 
+              alt="Greek Islands" 
+              className="w-full h-full object-cover"
+            />
+            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/90 to-indigo-900/80" />
+          </div>
+          
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="grid md:grid-cols-5 gap-8 items-center">
+              <div className="md:col-span-3 text-white">
+                <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-400/30 backdrop-blur-sm text-blue-100 text-sm font-medium mb-4">
+                  <Sparkles className="h-4 w-4 mr-2" />
+                  <span>New Feature</span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-4 text-white">
+                  Meet <span className="bg-gradient-to-r from-blue-400 to-indigo-300 bg-clip-text text-transparent">Touristas AI Planner</span>
+                </h2>
+                <p className="text-xl text-blue-100 mb-8 max-w-2xl">
+                  Your personal AI travel assistant that creates custom Greek island itineraries tailored to your preferences, travel style, and interests.
+                </p>
+                <div className="flex flex-wrap gap-4">
+                  <Link 
+                    to="/trip-planner" 
+                    className="inline-flex items-center px-6 py-3 rounded-lg bg-gradient-to-r from-blue-500 to-indigo-600 text-white font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
+                  >
+                    Try Touristas AI Planner
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                  <a 
+                    href="http://localhost:5173/trip-planner" 
+                    className="inline-flex items-center px-6 py-3 rounded-lg bg-white/10 backdrop-blur-sm text-white font-medium hover:bg-white/20 transition-all duration-300"
+                  >
+                    Open Planner
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </a>
+                </div>
+              </div>
+              <div className="md:col-span-2">
+                <div className="bg-white/10 backdrop-blur-md rounded-2xl p-6 shadow-2xl relative">
+                  <div className="absolute -top-3 -right-3 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-xs font-bold px-3 py-1 rounded-full">
+                    Beta v2.34.32
+                  </div>
+                  <div className="space-y-4">
+                    <div className="flex items-start gap-3">
+                      <div className="h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center flex-shrink-0">
+                        <Compass className="h-4 w-4 text-blue-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-white">Personalized Itineraries</h4>
+                        <p className="text-sm text-blue-100">Custom plans based on your travel style</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="h-8 w-8 rounded-full bg-indigo-100 flex items-center justify-center flex-shrink-0">
+                        <UtensilsCrossed className="h-4 w-4 text-indigo-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-white">Local Recommendations</h4>
+                        <p className="text-sm text-blue-100">Hidden gems and authentic experiences</p>
+                      </div>
+                    </div>
+                    <div className="flex items-start gap-3">
+                      <div className="h-8 w-8 rounded-full bg-purple-100 flex items-center justify-center flex-shrink-0">
+                        <MessageSquare className="h-4 w-4 text-purple-600" />
+                      </div>
+                      <div>
+                        <h4 className="font-medium text-white">Interactive Chat</h4>
+                        <p className="text-sm text-blue-100">Ask questions and refine your plans</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>
