@@ -1,11 +1,13 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, Sparkles, User, X, ThumbsUp, ThumbsDown, Share2, Download, Save } from 'lucide-react';
+import { Send, Sparkles, User, X, ThumbsUp, ThumbsDown, Share2, Download, Save, MapPin, Calendar, Compass, Umbrella, Utensils, Camera, Ship, Hotel, Plane, MapIcon, ExternalLink } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { useAuthStore } from '../store/authStore';
 import { useTripStore } from '../store/tripStore';
 import { generateConversationalTrip } from '../utils/ai';
-import { Island } from '../types/island';
+import { Island, IslandActivity } from '../types/island';
 import { toast } from './ui/toast';
+import { cyclades } from '../data/islandsData';
 
 type Message = {
   id: string;
@@ -161,6 +163,12 @@ export default function ConversationalTripPlanner() {
       // If response contains a trip plan
       if ('tripPlan' in response && response.tripPlan) {
         setGeneratedTrip(response.tripPlan);
+      } else {
+        // Try to extract trip plan from the text response
+        const tripPlan = extractTripPlanFromText(response.message);
+        if (tripPlan) {
+          setGeneratedTrip(tripPlan);
+        }
       }
       
       // Add assistant message
@@ -200,6 +208,123 @@ Please try again with more specific details about your trip preferences.`,
       setTimeout(() => {
         messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
       }, 100);
+    }
+  };
+
+  // Function to extract trip plan from text response
+  const extractTripPlanFromText = (text: string): any => {
+    // Check if the text has a day-by-day itinerary format
+    const dayMatches = text.match(/Day \d+[-:]?.*?(?=Day \d+|$)/gs);
+    if (!dayMatches || dayMatches.length < 2) return null;
+    
+    // Extract islands mentioned
+    const islandNames = ['Mykonos', 'Santorini', 'Naxos', 'Paros', 'Milos', 'Folegandros', 'Sifnos', 'Amorgos', 'Ios', 'Syros', 'Tinos', 'Andros', 'Kea'];
+    const mentionedIslands: {name: string, description: string, image: string}[] = [];
+    
+    islandNames.forEach(island => {
+      if (text.includes(island)) {
+        mentionedIslands.push({
+          name: island,
+          description: `Visit the beautiful island of ${island}`,
+          image: `/images/islands/${island.toLowerCase()}.jpg`
+        });
+      }
+    });
+    
+    if (mentionedIslands.length === 0) return null;
+    
+    // Create itinerary
+    const itinerary = dayMatches.map((dayText, index) => {
+      const dayNumber = index + 1;
+      const dayLines = dayText.split('\n').filter(line => line.trim());
+      
+      // Extract title and description
+      const titleMatch = dayText.match(/Day \d+[-:]?\s*(.*?)(?:\n|$)/);
+      const title = titleMatch ? titleMatch[1].trim() : `Day ${dayNumber}`;
+      
+      // Get description (next line after title if available)
+      let description = '';
+      if (dayLines.length > 1) {
+        description = dayLines[1].trim();
+      }
+      
+      // Create activities
+      const activities = [];
+      
+      // Try to extract activities from bullet points or recommended activities
+      const bulletPoints = dayText.match(/[-•]\s*(.*?)(?=[-•]|\n|$)/g) || [];
+      const recommendedActivities = dayText.includes('Recommended activities:') ? 
+        dayText.split('Recommended activities:')[1].split('\n').filter(line => line.trim().startsWith('-')) : [];
+      
+      const allActivities = [...bulletPoints, ...recommendedActivities];
+      
+      if (allActivities.length > 0) {
+        // Create activities from bullet points
+        allActivities.forEach((activity, actIndex) => {
+          const cleanActivity = activity.replace(/^[-•]\s*/, '').trim();
+          if (cleanActivity) {
+            activities.push({
+              time: `${9 + actIndex}:00 AM`, // Generate sequential times
+              title: cleanActivity,
+              description: 'Enjoy this activity on your Greek island adventure',
+              type: getActivityType(cleanActivity)
+            });
+          }
+        });
+      } else {
+        // If no bullet points, try to extract activities from the text
+        const activityMatches = dayText.match(/(?:visit|explore|enjoy|relax at|tour|discover|experience)\s+[^,.;]+/gi) || [];
+        activityMatches.forEach((activity, actIndex) => {
+          activities.push({
+            time: `${9 + actIndex}:00 AM`,
+            title: activity.trim(),
+            description: 'Enjoy this activity on your Greek island adventure',
+            type: getActivityType(activity)
+          });
+        });
+      }
+      
+      // Ensure we have at least one activity
+      if (activities.length === 0) {
+        activities.push({
+          time: '9:00 AM',
+          title: 'Explore the island',
+          description: 'Enjoy the beauty of the Greek islands',
+          type: 'activity' as 'sightseeing' | 'dining' | 'beach' | 'activity' | 'transport'
+        });
+      }
+      
+      return {
+        day: dayNumber,
+        title,
+        description,
+        activities
+      };
+    });
+    
+    return {
+      islands: mentionedIslands,
+      itinerary
+    };
+  };
+  
+  // Helper function to determine activity type
+  const getActivityType = (activity: string): 'sightseeing' | 'dining' | 'beach' | 'activity' | 'transport' => {
+    const lowerActivity = activity.toLowerCase();
+    
+    if (lowerActivity.includes('beach') || lowerActivity.includes('swim') || lowerActivity.includes('relax')) {
+      return 'beach';
+    } else if (lowerActivity.includes('eat') || lowerActivity.includes('dine') || lowerActivity.includes('food') || 
+               lowerActivity.includes('restaurant') || lowerActivity.includes('cuisine') || lowerActivity.includes('taverna')) {
+      return 'dining';
+    } else if (lowerActivity.includes('visit') || lowerActivity.includes('museum') || lowerActivity.includes('church') || 
+               lowerActivity.includes('site') || lowerActivity.includes('monument')) {
+      return 'sightseeing';
+    } else if (lowerActivity.includes('ferry') || lowerActivity.includes('boat') || lowerActivity.includes('transfer') || 
+               lowerActivity.includes('travel') || lowerActivity.includes('arrive')) {
+      return 'transport';
+    } else {
+      return 'activity';
     }
   };
 
@@ -260,6 +385,338 @@ Please try again with more specific details about your trip preferences.`,
     // Auto-resize textarea
     e.target.style.height = 'auto';
     e.target.style.height = `${Math.min(e.target.scrollHeight, 200)}px`;
+  };
+
+  // Enhanced trip plan visualization component
+  const EnhancedTripVisualization = ({ tripPlan }: { tripPlan: any }) => {
+    const [activeDay, setActiveDay] = useState(1);
+    const [activeIsland, setActiveIsland] = useState(0);
+    const [showFullItinerary, setShowFullItinerary] = useState(false);
+    
+    // Find full island data from our database
+    const enhancedIslands = tripPlan.islands.map((island: any) => {
+      // Try to find the island in our database for additional information
+      const fullIslandData = cyclades.find(i => 
+        i.name?.toLowerCase() === island.name.toLowerCase()
+      );
+      
+      return {
+        ...island,
+        // Merge with our database data if available
+        fullData: fullIslandData || null
+      };
+    });
+    
+    // Get activities icons
+    const getActivityIcon = (type: string) => {
+      switch (type) {
+        case 'sightseeing': return <Camera className="h-4 w-4" />;
+        case 'dining': return <Utensils className="h-4 w-4" />;
+        case 'beach': return <Umbrella className="h-4 w-4" />;
+        case 'transport': return <Compass className="h-4 w-4" />;
+        default: return <MapPin className="h-4 w-4" />;
+      }
+    };
+    
+    // Get day's island
+    const getDayIsland = (day: number) => {
+      // Simple algorithm to determine which island is visited on which day
+      // This can be improved with more sophisticated logic if needed
+      const totalDays = tripPlan.itinerary.length;
+      const totalIslands = enhancedIslands.length;
+      
+      if (totalIslands === 1) return enhancedIslands[0];
+      
+      // Distribute days among islands
+      const daysPerIsland = Math.floor(totalDays / totalIslands);
+      const islandIndex = Math.min(Math.floor((day - 1) / daysPerIsland), totalIslands - 1);
+      
+      return enhancedIslands[islandIndex];
+    };
+    
+    // Get current day data
+    const currentDay = tripPlan.itinerary.find((day: any) => day.day === activeDay) || tripPlan.itinerary[0];
+    const currentIsland = getDayIsland(activeDay);
+    
+    // Generate ferry connections between islands
+    const getFerryConnections = () => {
+      if (enhancedIslands.length <= 1) return null;
+      
+      return (
+        <div className="mt-4 p-4 bg-blue-50 rounded-lg">
+          <h4 className="font-medium text-sm text-gray-900 mb-2">Ferry Connections</h4>
+          <div className="space-y-2">
+            {enhancedIslands.slice(0, -1).map((island: { name: string }, index: number) => {
+              const nextIsland = enhancedIslands[index + 1];
+              return (
+                <div key={index} className="flex items-center text-sm">
+                  <span className="font-medium">{island.name}</span>
+                  <Ship className="h-3 w-3 mx-2 text-blue-600" />
+                  <span className="font-medium">{nextIsland.name}</span>
+                  <span className="ml-auto text-xs text-gray-500">Check schedules</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      );
+    };
+    
+    return (
+      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+        {/* Island selector */}
+        <div className="flex overflow-x-auto p-2 bg-blue-50 gap-2">
+          {enhancedIslands.map((island: any, index: number) => (
+            <button
+              key={index}
+              onClick={() => setActiveIsland(index)}
+              className={`flex-shrink-0 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                activeIsland === index 
+                  ? 'bg-blue-600 text-white' 
+                  : 'bg-white text-blue-700 hover:bg-blue-100'
+              }`}
+            >
+              {island.name}
+            </button>
+          ))}
+        </div>
+        
+        {/* Selected island details */}
+        <div className="p-4 border-b">
+          <div className="flex items-start gap-4">
+            <div 
+              className="w-20 h-20 rounded-lg bg-cover bg-center flex-shrink-0" 
+              style={{ 
+                backgroundImage: `url(${enhancedIslands[activeIsland].fullData?.image || '/images/islands/default.jpg'})` 
+              }}
+            />
+            <div className="flex-1">
+              <h3 className="font-bold text-lg text-gray-900">{enhancedIslands[activeIsland].name}</h3>
+              <p className="text-sm text-gray-600 line-clamp-2">
+                {enhancedIslands[activeIsland].fullData?.shortDescription || enhancedIslands[activeIsland].description}
+              </p>
+              
+              {/* Island highlights */}
+              {enhancedIslands[activeIsland].fullData?.highlights && (
+                <div className="mt-2 flex flex-wrap gap-1">
+                  {enhancedIslands[activeIsland].fullData.highlights.slice(0, 3).map((highlight: string, idx: number) => (
+                    <span key={idx} className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-blue-100 text-blue-800">
+                      {highlight}
+                    </span>
+                  ))}
+                  {enhancedIslands[activeIsland].fullData?.highlights.length > 3 && (
+                    <span className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-800">
+                      +{enhancedIslands[activeIsland].fullData.highlights.length - 3} more
+                    </span>
+                  )}
+                </div>
+              )}
+            </div>
+          </div>
+        </div>
+        
+        {/* Day selector */}
+        <div className="flex overflow-x-auto p-2 bg-gray-50 gap-2">
+          {tripPlan.itinerary.map((day: any) => (
+            <button
+              key={day.day}
+              onClick={() => setActiveDay(day.day)}
+              className={`flex-shrink-0 px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${
+                activeDay === day.day 
+                  ? 'bg-indigo-600 text-white' 
+                  : 'bg-white text-indigo-700 hover:bg-indigo-100'
+              }`}
+            >
+              Day {day.day}
+            </button>
+          ))}
+        </div>
+        
+        {/* Day details */}
+        <div className="p-4">
+          <div className="flex items-center justify-between mb-3">
+            <h3 className="font-bold text-gray-900">Day {currentDay.day}: {currentDay.title}</h3>
+            <div className="flex items-center text-sm text-gray-500">
+              <Calendar className="h-4 w-4 mr-1" />
+              <span>{getDayIsland(activeDay).name}</span>
+            </div>
+          </div>
+          
+          <p className="text-sm text-gray-600 mb-4">{currentDay.description}</p>
+          
+          {/* Activities timeline */}
+          <div className="space-y-3">
+            {currentDay.activities.map((activity: any, idx: number) => (
+              <div key={idx} className="flex items-start">
+                <div className="flex-shrink-0 h-10 w-10 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                  {getActivityIcon(activity.type)}
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="flex items-center">
+                    <span className="text-xs font-medium text-blue-600">{activity.time}</span>
+                    <div className="h-px flex-1 bg-gray-200 mx-2"></div>
+                  </div>
+                  <h4 className="text-sm font-medium text-gray-900">{activity.title}</h4>
+                  <p className="text-xs text-gray-500">{activity.description}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        
+        {/* Recommendations based on our data */}
+        {currentIsland.fullData && (
+          <div className="p-4 bg-gray-50 border-t">
+            <h4 className="font-medium text-sm text-gray-900 mb-2">Our Recommendations</h4>
+            
+            {/* Activities */}
+            {currentIsland.fullData.activities && (
+              <div className="mb-3">
+                <h5 className="text-xs font-medium text-gray-700 mb-1">Popular Activities</h5>
+                <div className="flex flex-wrap gap-1">
+                  {currentIsland.fullData.activities.slice(0, 4).map((activity: IslandActivity, idx: number) => (
+                    <span key={idx} className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-indigo-100 text-indigo-800">
+                      {activity.replace(/-/g, ' ')}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+            
+            {/* Beaches if available */}
+            {currentIsland.fullData.beaches && currentIsland.fullData.beaches.length > 0 && (
+              <div>
+                <h5 className="text-xs font-medium text-gray-700 mb-1">Best Beaches</h5>
+                <div className="flex flex-wrap gap-1">
+                  {currentIsland.fullData.beaches.slice(0, 3).map((beach: string, idx: number) => (
+                    <span key={idx} className="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-cyan-100 text-cyan-800">
+                      {beach}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
+        )}
+        
+        {/* Full Itinerary Toggle */}
+        <div className="px-4 py-3 bg-gray-100 border-t border-gray-200">
+          <button 
+            onClick={() => setShowFullItinerary(!showFullItinerary)}
+            className="w-full flex items-center justify-center py-2 px-4 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-md transition-colors"
+          >
+            {showFullItinerary ? 'Hide Full Itinerary' : 'Show Full Itinerary'}
+          </button>
+        </div>
+        
+        {/* Full Itinerary Section */}
+        {showFullItinerary && (
+          <div className="p-4 bg-white border-t border-gray-200">
+            <h3 className="font-bold text-lg text-gray-900 mb-4">Complete Trip Itinerary</h3>
+            
+            <div className="space-y-6">
+              {tripPlan.itinerary.map((day: any) => {
+                const dayIsland = getDayIsland(day.day);
+                return (
+                  <div key={day.day} className="pb-4 border-b border-gray-200 last:border-b-0">
+                    <div className="flex items-center justify-between mb-2">
+                      <h4 className="font-semibold text-gray-900">Day {day.day}: {day.title}</h4>
+                      <span className="text-sm text-blue-600">{dayIsland.name}</span>
+                    </div>
+                    
+                    <p className="text-sm text-gray-600 mb-3">{day.description}</p>
+                    
+                    <div className="space-y-3">
+                      {day.activities.map((activity: any, idx: number) => (
+                        <div key={idx} className="flex items-start bg-gray-50 p-3 rounded-md">
+                          <div className="flex-shrink-0 h-8 w-8 rounded-full bg-blue-100 flex items-center justify-center mr-3">
+                            {getActivityIcon(activity.type)}
+                          </div>
+                          <div className="flex-1 min-w-0">
+                            <div className="flex items-center">
+                              <span className="text-xs font-medium text-blue-600">{activity.time}</span>
+                            </div>
+                            <h5 className="text-sm font-medium text-gray-900">{activity.title}</h5>
+                            <p className="text-xs text-gray-500">{activity.description}</p>
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            
+            {/* Ferry connections section */}
+            {getFerryConnections()}
+          </div>
+        )}
+        
+        {/* Quick Access Buttons */}
+        <div className="p-4 bg-gray-50 border-t border-gray-200">
+          <h4 className="font-medium text-sm text-gray-900 mb-3">Plan Your Trip</h4>
+          
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+            <Link 
+              to="/ferry-tickets" 
+              className="flex flex-col items-center justify-center p-3 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-md transition-colors"
+            >
+              <Ship className="h-5 w-5 mb-1" />
+              <span className="text-xs font-medium">Ferries</span>
+            </Link>
+            
+            <Link 
+              to="/flights" 
+              className="flex flex-col items-center justify-center p-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-md transition-colors"
+            >
+              <Plane className="h-5 w-5 mb-1" />
+              <span className="text-xs font-medium">Flights</span>
+            </Link>
+            
+            <Link 
+              to="/activities" 
+              className="flex flex-col items-center justify-center p-3 bg-green-50 hover:bg-green-100 text-green-700 rounded-md transition-colors"
+            >
+              <MapIcon className="h-5 w-5 mb-1" />
+              <span className="text-xs font-medium">Activities</span>
+            </Link>
+            
+            <Link 
+              to="/hotels" 
+              className="flex flex-col items-center justify-center p-3 bg-amber-50 hover:bg-amber-100 text-amber-700 rounded-md transition-colors"
+            >
+              <Hotel className="h-5 w-5 mb-1" />
+              <span className="text-xs font-medium">Hotels</span>
+            </Link>
+          </div>
+          
+          {/* Island specific links */}
+          {currentIsland.fullData && (
+            <div className="mt-3 pt-3 border-t border-gray-200">
+              <h5 className="text-xs font-medium text-gray-700 mb-2">Explore {currentIsland.name}</h5>
+              
+              <div className="flex flex-wrap gap-2">
+                <Link 
+                  to={`/islands/${currentIsland.fullData.slug || currentIsland.name.toLowerCase()}`}
+                  className="inline-flex items-center px-3 py-1 rounded text-xs font-medium bg-white border border-gray-200 text-gray-700 hover:bg-gray-50"
+                >
+                  Island Guide
+                  <ExternalLink className="h-3 w-3 ml-1" />
+                </Link>
+                
+                <Link 
+                  to={`/guides/${currentIsland.fullData.slug || currentIsland.name.toLowerCase()}`}
+                  className="inline-flex items-center px-3 py-1 rounded text-xs font-medium bg-white border border-gray-200 text-gray-700 hover:bg-gray-50"
+                >
+                  Travel Tips
+                  <ExternalLink className="h-3 w-3 ml-1" />
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      </div>
+    );
   };
 
   return (
@@ -379,27 +836,45 @@ Please try again with more specific details about your trip preferences.`,
             </div>
           </div>
           
-          <div className="bg-white rounded-lg p-3 shadow-sm max-h-60 overflow-y-auto">
-            <div className="text-sm text-gray-600 mb-2">
-              Islands: {generatedTrip.islands.map(i => i.name).join(', ')}
-            </div>
+          {/* Enhanced trip visualization */}
+          <EnhancedTripVisualization tripPlan={generatedTrip} />
+          
+          {/* Quick Access Buttons (Standalone) */}
+          <div className="mt-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
+            <h4 className="font-medium text-sm text-gray-900 mb-3">Plan Your Trip</h4>
             
-            <div className="space-y-2">
-              {generatedTrip.itinerary.slice(0, 2).map((day) => (
-                <div key={day.day} className="border-l-2 border-blue-400 pl-3">
-                  <div className="font-medium">Day {day.day}: {day.title}</div>
-                  <div className="text-sm text-gray-600">{day.description}</div>
-                  <div className="text-xs text-blue-600 mt-1 cursor-pointer hover:underline">
-                    View all {day.activities.length} activities
-                  </div>
-                </div>
-              ))}
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              <Link 
+                to="/ferry-tickets" 
+                className="flex flex-col items-center justify-center p-3 bg-blue-50 hover:bg-blue-100 text-blue-700 rounded-md transition-colors"
+              >
+                <Ship className="h-5 w-5 mb-1" />
+                <span className="text-xs font-medium">Ferries</span>
+              </Link>
               
-              {generatedTrip.itinerary.length > 2 && (
-                <div className="text-center text-sm text-blue-600 cursor-pointer hover:underline">
-                  View full {generatedTrip.itinerary.length}-day itinerary
-                </div>
-              )}
+              <Link 
+                to="/flights" 
+                className="flex flex-col items-center justify-center p-3 bg-indigo-50 hover:bg-indigo-100 text-indigo-700 rounded-md transition-colors"
+              >
+                <Plane className="h-5 w-5 mb-1" />
+                <span className="text-xs font-medium">Flights</span>
+              </Link>
+              
+              <Link 
+                to="/activities" 
+                className="flex flex-col items-center justify-center p-3 bg-green-50 hover:bg-green-100 text-green-700 rounded-md transition-colors"
+              >
+                <MapIcon className="h-5 w-5 mb-1" />
+                <span className="text-xs font-medium">Activities</span>
+              </Link>
+              
+              <Link 
+                to="/hotels" 
+                className="flex flex-col items-center justify-center p-3 bg-amber-50 hover:bg-amber-100 text-amber-700 rounded-md transition-colors"
+              >
+                <Hotel className="h-5 w-5 mb-1" />
+                <span className="text-xs font-medium">Hotels</span>
+              </Link>
             </div>
           </div>
         </div>

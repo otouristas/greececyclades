@@ -65,10 +65,10 @@ I'll then create a personalized itinerary for your Greek island adventure!`;
   };
 };
 
-// Mock response system for quick and reliable responses
+// Use OpenRouter API for conversational trip planning
 export async function generateConversationalTrip(
   userInput: string,
-  _conversationHistory: string // Prefix with underscore to indicate it's not used
+  conversationHistory: string
 ): Promise<{
   message: string;
   tripPlan?: {
@@ -90,153 +90,249 @@ export async function generateConversationalTrip(
   try {
     console.log('Starting generateConversationalTrip with input:', userInput);
     
-    // For now, use a mock response system that's guaranteed to work
-    // This avoids the API timeout issues while still providing useful responses
+    // Create conversation history in the format expected by OpenRouter
+    const messages = [
+      {
+        role: "system",
+        content: `You are a knowledgeable Greek travel assistant specializing in the Cyclades islands. 
+        Provide helpful, accurate information about Greek islands, travel tips, and personalized itineraries.
+        When creating trip plans, be specific about islands, activities, and logistics.
+        Focus on providing authentic experiences that match the user's preferences.
+        If the user is asking for a detailed trip plan, try to extract information about:
+        - Trip duration
+        - Travel dates/season
+        - Islands of interest
+        - Activities they enjoy
+        - Travel style (luxury, budget, etc.)
+        
+        When appropriate, provide a structured trip plan with a day-by-day itinerary.
+        Include specific recommendations for beaches, restaurants, activities, and sights.
+        
+        Format trip plans in a clear, organized way with days, times, and descriptions.
+        If you don't know something, admit it rather than making up information.`
+      }
+    ];
     
-    // Check if this is a detailed trip planning request
-    const isTripPlanningRequest = 
-      userInput.toLowerCase().includes('day') || 
-      userInput.toLowerCase().includes('trip') ||
-      userInput.toLowerCase().includes('plan') ||
-      userInput.toLowerCase().includes('visit') ||
-      userInput.toLowerCase().includes('travel');
-    
-    // If it's a detailed trip planning request with specific islands and duration
-    if (isTripPlanningRequest && 
-        (userInput.toLowerCase().includes('santorini') || 
-         userInput.toLowerCase().includes('mykonos') || 
-         userInput.toLowerCase().includes('naxos'))) {
-      
-      // Extract duration if mentioned
-      let duration = 7; // Default
-      const durationMatch = userInput.match(/(\d+)[ -]day/);
-      if (durationMatch && durationMatch[1]) {
-        duration = parseInt(durationMatch[1]);
-      }
-      
-      // Create a sample trip plan
-      const islands = [];
-      const itinerary = [];
-      
-      // Add islands based on what was mentioned
-      if (userInput.toLowerCase().includes('santorini')) {
-        islands.push({
-          name: 'Santorini',
-          description: 'Famous for its stunning caldera views, white-washed buildings, and sunsets',
-          image: 'https://greececyclades.com/images/islands/santorini.jpg'
-        });
-      }
-      
-      if (userInput.toLowerCase().includes('mykonos')) {
-        islands.push({
-          name: 'Mykonos',
-          description: 'Known for beautiful beaches, vibrant nightlife, and iconic windmills',
-          image: 'https://greececyclades.com/images/islands/mykonos.jpg'
-        });
-      }
-      
-      if (userInput.toLowerCase().includes('naxos')) {
-        islands.push({
-          name: 'Naxos',
-          description: 'The largest Cycladic island with beautiful beaches and mountain villages',
-          image: 'https://greececyclades.com/images/islands/naxos.jpg'
-        });
-      }
-      
-      // If no specific islands were mentioned, add some popular ones
-      if (islands.length === 0) {
-        islands.push({
-          name: 'Santorini',
-          description: 'Famous for its stunning caldera views, white-washed buildings, and sunsets',
-          image: 'https://greececyclades.com/images/islands/santorini.jpg'
-        });
-        
-        islands.push({
-          name: 'Mykonos',
-          description: 'Known for beautiful beaches, vibrant nightlife, and iconic windmills',
-          image: 'https://greececyclades.com/images/islands/mykonos.jpg'
-        });
-      }
-      
-      // Create a simple itinerary
-      for (let day = 1; day <= Math.min(duration, 10); day++) {
-        const islandIndex = (day - 1) % islands.length;
-        const island = islands[islandIndex];
-        
-        const dayActivities = [];
-        
-        // Morning activity
-        dayActivities.push({
-          time: '9:00 AM',
-          title: day === 1 ? `Arrive in ${island.name}` : `Explore ${island.name}`,
-          description: day === 1 ? `Check into your hotel and get settled` : `Start your day with a walking tour of the main attractions`,
-          location: island.name,
-          type: 'sightseeing' as 'sightseeing' | 'dining' | 'beach' | 'activity' | 'transport'
-        });
-        
-        // Lunch
-        dayActivities.push({
-          time: '1:00 PM',
-          title: 'Enjoy a traditional Greek lunch',
-          description: 'Try local specialties at a taverna with a view',
-          location: island.name,
-          type: 'dining' as 'sightseeing' | 'dining' | 'beach' | 'activity' | 'transport'
-        });
-        
-        // Afternoon activity
-        dayActivities.push({
-          time: '3:00 PM',
-          title: island.name === 'Santorini' ? 'Visit a local winery' : 'Relax at the beach',
-          description: island.name === 'Santorini' ? 'Santorini is famous for its unique wines' : 'Enjoy the crystal clear waters',
-          location: island.name,
-          type: (island.name === 'Santorini' ? 'activity' : 'beach') as 'sightseeing' | 'dining' | 'beach' | 'activity' | 'transport'
-        });
-        
-        // Dinner
-        dayActivities.push({
-          time: '7:00 PM',
-          title: 'Dinner with a view',
-          description: 'Enjoy fresh seafood and local cuisine',
-          location: island.name,
-          type: 'dining' as 'sightseeing' | 'dining' | 'beach' | 'activity' | 'transport'
-        });
-        
-        // Add the day to the itinerary
-        itinerary.push({
-          day: day,
-          title: day === 1 ? `Arrival in ${island.name}` : `Day ${day} in ${island.name}`,
-          description: `Explore the beauty of ${island.name}`,
-          activities: dayActivities
-        });
-      }
-      
-      // Create a personalized response
-      const response = `Based on your request, I've created a ${duration}-day itinerary for your trip to the Greek islands! Here's a personalized plan for visiting ${islands.map(i => i.name).join(' and ')}.
-
-I've included a mix of sightseeing, beach time, dining experiences, and local activities to give you a well-rounded experience. The itinerary is flexible, so you can adjust it based on your preferences.
-
-Some highlights of this trip:
-${islands.map(island => `- Explore the beauty of ${island.name} and experience ${island.description.toLowerCase()}`).join('\n')}
-
-I've also included a detailed day-by-day itinerary with specific activities for each day. You can view the full plan below.`;
-
-      return {
-        message: response,
-        tripPlan: {
-          islands,
-          itinerary
+    // Add conversation history if available
+    if (conversationHistory) {
+      const historyLines = conversationHistory.split('\n');
+      for (const line of historyLines) {
+        if (line.startsWith('User:')) {
+          messages.push({
+            role: "user",
+            content: line.substring(5).trim()
+          });
+        } else if (line.startsWith('Assistant:')) {
+          messages.push({
+            role: "assistant",
+            content: line.substring(10).trim()
+          });
         }
-      };
+      }
     }
     
-    // For all other requests, return a customized response
-    return getSimpleFallbackResponse(userInput);
+    // Add the current user input
+    messages.push({
+      role: "user",
+      content: userInput
+    });
     
+    // Set up timeout promise
+    const timeoutPromise = new Promise<never>((_, reject) => {
+      setTimeout(() => {
+        reject(new Error('Request timed out after 30 seconds'));
+      }, 30000); // 30 second timeout
+    });
+    
+    // Call OpenRouter API with timeout
+    const fetchPromise = fetch('https://openrouter.ai/api/v1/chat/completions', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${OPENROUTER_API_KEY}`,
+        'HTTP-Referer': 'https://greececyclades.com',
+        'X-Title': 'Greece Cyclades Trip Planner'
+      },
+      body: JSON.stringify({
+        model: 'anthropic/claude-3-haiku:beta', // Using a faster model to reduce timeouts
+        messages: messages,
+        temperature: 0.7,
+        max_tokens: 2000
+      })
+    });
+    
+    // Race between fetch and timeout
+    const response = await Promise.race([fetchPromise, timeoutPromise]);
+    
+    if (!response.ok) {
+      const errorData = await response.text();
+      console.error('OpenRouter API error:', errorData);
+      throw new Error(`OpenRouter API error: ${response.status} ${response.statusText}`);
+    }
+    
+    const data = await response.json();
+    
+    // Check if the response has the expected structure
+    if (!data.choices || !data.choices[0] || !data.choices[0].message || !data.choices[0].message.content) {
+      console.error('Unexpected API response structure:', data);
+      throw new Error('Received an invalid response from the AI service');
+    }
+    
+    const aiMessage = data.choices[0].message.content;
+    
+    // Check if the response contains a trip plan
+    let tripPlan = undefined;
+    
+    // Look for patterns that suggest a trip plan is included
+    const hasDayByDayItinerary = 
+      (aiMessage.includes('Day 1') && aiMessage.includes('Day 2')) || 
+      (aiMessage.includes('Day 1:') && aiMessage.includes('Day 2:'));
+    
+    const mentionsMultipleIslands = 
+      (aiMessage.toLowerCase().includes('santorini') && aiMessage.toLowerCase().includes('mykonos')) ||
+      (aiMessage.toLowerCase().includes('santorini') && aiMessage.toLowerCase().includes('naxos')) ||
+      (aiMessage.toLowerCase().includes('mykonos') && aiMessage.toLowerCase().includes('naxos'));
+    
+    // If it seems like a trip plan, create a structured tripPlan object
+    if (hasDayByDayItinerary && mentionsMultipleIslands) {
+      // Extract mentioned islands
+      const islands = [];
+      const islandNames = ['Santorini', 'Mykonos', 'Naxos', 'Paros', 'Milos', 'Folegandros', 'Sifnos', 'Amorgos'];
+      
+      for (const island of islandNames) {
+        if (aiMessage.includes(island)) {
+          islands.push({
+            name: island,
+            description: `Visit the beautiful island of ${island}`,
+            image: `https://greececyclades.com/images/islands/${island.toLowerCase()}.jpg`
+          });
+        }
+      }
+      
+      // Create a simple itinerary based on the response
+      const itinerary = [];
+      const dayMatches = aiMessage.match(/Day \d+:?[^\n]*/g) || [];
+      
+      for (let i = 0; i < dayMatches.length && i < 10; i++) {
+        const dayMatch = dayMatches[i];
+        const dayNumber = parseInt(dayMatch.match(/\d+/)[0]);
+        
+        // Find the content for this day
+        const startIndex = aiMessage.indexOf(dayMatch);
+        const nextDayMatch = dayMatches[i + 1];
+        const endIndex = nextDayMatch ? aiMessage.indexOf(nextDayMatch) : aiMessage.length;
+        const dayContent = aiMessage.substring(startIndex, endIndex);
+        
+        // Extract title and description
+        const title = dayMatch.replace(/Day \d+:?\s*/, '').trim();
+        const description = dayContent.split('\n')[1]?.trim() || 'Explore and enjoy the island';
+        
+        // Create activities
+        const activities = [];
+        const timeMatches = dayContent.match(/\d{1,2}:\d{2} [AP]M[^\n]*/g) || [];
+        
+        for (const timeMatch of timeMatches) {
+          // Check if the match has the expected format
+          const timeRegex = /\d{1,2}:\d{2} [AP]M/;
+          if (!timeRegex.test(timeMatch)) {
+            continue;
+          }
+          
+          const time = timeMatch.match(timeRegex)[0];
+          const activityTitle = timeMatch.replace(/\d{1,2}:\d{2} [AP]M\s*-?\s*/, '').trim();
+          
+          // Determine activity type
+          let type: 'sightseeing' | 'dining' | 'beach' | 'activity' | 'transport' = 'activity';
+          if (activityTitle.toLowerCase().includes('breakfast') || 
+              activityTitle.toLowerCase().includes('lunch') || 
+              activityTitle.toLowerCase().includes('dinner')) {
+            type = 'dining';
+          } else if (activityTitle.toLowerCase().includes('beach')) {
+            type = 'beach';
+          } else if (activityTitle.toLowerCase().includes('tour') || 
+                    activityTitle.toLowerCase().includes('visit')) {
+            type = 'sightseeing';
+          } else if (activityTitle.toLowerCase().includes('ferry') || 
+                    activityTitle.toLowerCase().includes('travel')) {
+            type = 'transport';
+          }
+          
+          activities.push({
+            time,
+            title: activityTitle,
+            description: 'Enjoy this activity on your Greek island adventure',
+            type
+          });
+        }
+        
+        // If no activities were found, add a placeholder
+        if (activities.length === 0) {
+          activities.push({
+            time: '9:00 AM',
+            title: 'Start your day exploring',
+            description: 'Enjoy the beauty of the Greek islands',
+            type: 'activity' as 'sightseeing' | 'dining' | 'beach' | 'activity' | 'transport'
+          });
+        }
+        
+        itinerary.push({
+          day: dayNumber,
+          title: title as string,
+          description: description as string,
+          activities
+        });
+      }
+      
+      // If we have islands and itinerary items, create a trip plan
+      if (islands.length > 0 && itinerary.length > 0) {
+        tripPlan = {
+          islands,
+          itinerary
+        };
+      }
+    }
+    
+    return {
+      message: aiMessage,
+      tripPlan
+    };
   } catch (error) {
     console.error('Error in generateConversationalTrip:', error);
     
-    // Return a fallback response instead of throwing an error
-    return getSimpleFallbackResponse(userInput);
+    // Log detailed error information
+    if (error instanceof Error) {
+      console.error('Error name:', error.name);
+      console.error('Error message:', error.message);
+      console.error('Error stack:', error.stack);
+    } else {
+      console.error('Unknown error type:', error);
+    }
+    
+    // Create a more helpful error message based on the error
+    let errorMessage = "I apologize, but I encountered an error while generating your trip plan.";
+    
+    if (error instanceof Error) {
+      if (error.message.includes('timed out')) {
+        errorMessage = "I apologize, but my response took too long to generate. This might be due to high traffic or complex planning needs.";
+      } else if (error.message.includes('network') || error.message.includes('fetch')) {
+        errorMessage = "I apologize, but I'm having trouble connecting to my knowledge database right now.";
+      }
+    }
+    
+    errorMessage += " Here are some general recommendations for Greek island travel:\n\n" +
+      "1. **Popular islands** like Santorini and Mykonos offer stunning views, luxury accommodations, and vibrant nightlife.\n" +
+      "2. **More relaxed islands** like Naxos, Paros, and Milos have beautiful beaches and are more budget-friendly.\n" +
+      "3. **Off-the-beaten-path islands** like Folegandros, Sifnos, and Amorgos offer authentic experiences.\n\n" +
+      "Please try again with more specific details about your trip preferences, such as:\n" +
+      "- When you plan to travel\n" +
+      "- How long your trip will be\n" +
+      "- What kind of experiences you're looking for (beaches, history, food, etc.)\n" +
+      "- Your travel style (luxury, budget, adventure, relaxation)";
+    
+    // Return a fallback response if the API call fails
+    return {
+      message: errorMessage
+    };
   }
 }
 
