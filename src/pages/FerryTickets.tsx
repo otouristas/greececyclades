@@ -21,6 +21,12 @@ interface FAQ {
   answer: string;
 }
 
+// Port code mapping
+interface PortCode {
+  name: string;
+  code: string;
+}
+
 export default function FerryTickets() {
   const [from, setFrom] = useState('Piraeus');
   const [to, setTo] = useState('Santorini');
@@ -28,6 +34,59 @@ export default function FerryTickets() {
   const [returnDate, setReturnDate] = useState('');
   const [passengers, setPassengers] = useState(2);
   const [vehicles, setVehicles] = useState(0);
+  const [isRoundTrip, setIsRoundTrip] = useState(false);
+
+  // Port codes mapping
+  const portCodes: PortCode[] = [
+    { name: 'Aegiali, Amorgos', code: 'AIG' },
+    { name: 'Katapola, Amorgos', code: 'AMO' },
+    { name: 'Amorgos (All Ports)', code: 'AMR' },
+    { name: 'Anafi', code: 'ANA' },
+    { name: 'Andros', code: 'AND' },
+    { name: 'Antiparos', code: 'ANP' },
+    { name: 'Donousa', code: 'DON' },
+    { name: 'Folegandros', code: 'FOL' },
+    { name: 'Ios', code: 'IOS' },
+    { name: 'Irakleia', code: 'IRK' },
+    { name: 'Mykonos', code: 'JMK' },
+    { name: 'Naxos', code: 'JNX' },
+    { name: 'Syros', code: 'JSY' },
+    { name: 'Santorini (Thera)', code: 'JTR' },
+    { name: 'Kea (Tzia)', code: 'KEA' },
+    { name: 'Kimolos', code: 'KMS' },
+    { name: 'Koufonisi', code: 'KOU' },
+    { name: 'Kythnos', code: 'KYT' },
+    { name: 'Milos', code: 'MLO' },
+    { name: 'Oia, Santorini', code: 'OIA' },
+    { name: 'Paros', code: 'PAS' },
+    { name: 'Serifos', code: 'SER' },
+    { name: 'Sifnos', code: 'SIF' },
+    { name: 'Sikinos', code: 'SIK' },
+    { name: 'Schinoussa', code: 'SXI' },
+    { name: 'Tinos', code: 'TIN' },
+    { name: 'Thirasia', code: 'TRS' },
+    { name: 'Piraeus', code: 'PIR' },
+    { name: 'Rafina', code: 'RAF' },
+    { name: 'Lavrio', code: 'LAV' },
+    { name: 'Athens(all ports)', code: 'ATH' }
+  ];
+
+  // Helper function to get port code
+  const getPortCode = (portName: string): string => {
+    // Try to find exact match
+    const exactMatch = portCodes.find(port => port.name === portName);
+    if (exactMatch) return exactMatch.code;
+    
+    // Try to find partial match (e.g., "Santorini" should match "Santorini (Thera)")
+    const partialMatch = portCodes.find(port => 
+      port.name.toLowerCase().includes(portName.toLowerCase()) || 
+      portName.toLowerCase().includes(port.name.toLowerCase())
+    );
+    if (partialMatch) return partialMatch.code;
+    
+    // Default to PIR if no match found
+    return 'PIR';
+  };
 
   // Set default dates (depart: tomorrow, return: 7 days from tomorrow)
   useEffect(() => {
@@ -52,7 +111,55 @@ export default function FerryTickets() {
   // Handle form submission
   const handleSearch = (e: React.FormEvent): void => {
     e.preventDefault();
-    window.open('https://fas.st/t/RJapqw5V', '_blank');
+    
+    // Get port codes
+    const fromCode = getPortCode(from);
+    const toCode = getPortCode(to);
+    
+    // Base URL
+    const baseUrl = 'https://www.ferryscanner.com/en/ferry/results';
+    const affiliateParams = 'ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN';
+    
+    // Build search parameters
+    let searchParams = '';
+    
+    if (isRoundTrip && returnDate) {
+      // Round trip
+      searchParams = `#search/dep/${fromCode},${toCode}/arr/${toCode},${fromCode}/date/${departDate},${returnDate}`;
+    } else {
+      // One way trip
+      searchParams = `#search/dep/${fromCode}/arr/${toCode}/date/${departDate}`;
+    }
+    
+    // Construct final URL
+    const finalUrl = `${baseUrl}?${affiliateParams}${searchParams}`;
+    
+    // Open in new tab
+    window.open(finalUrl, '_blank');
+  };
+
+  // Update popular routes links to use FerrryScanner
+  const handlePopularRouteClick = (fromPort: string, toPort: string): void => {
+    const fromCode = getPortCode(fromPort);
+    const toCode = getPortCode(toPort);
+    
+    // Set tomorrow as the default date
+    const tomorrow = new Date();
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    const tomorrowFormatted = formatDate(tomorrow);
+    
+    // Base URL
+    const baseUrl = 'https://www.ferryscanner.com/en/ferry/results';
+    const affiliateParams = 'ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN';
+    
+    // Build search parameters
+    const searchParams = `#search/dep/${fromCode}/arr/${toCode}/date/${tomorrowFormatted}`;
+    
+    // Construct final URL
+    const finalUrl = `${baseUrl}?${affiliateParams}${searchParams}`;
+    
+    // Open in new tab
+    window.open(finalUrl, '_blank');
   };
 
   // Popular routes
@@ -178,16 +285,11 @@ export default function FerryTickets() {
                       onChange={(e) => setFrom(e.target.value)}
                       className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
-                      <option value="Piraeus">Piraeus (Athens)</option>
-                      <option value="Rafina">Rafina</option>
-                      <option value="Lavrio">Lavrio</option>
-                      <option value="Mykonos">Mykonos</option>
-                      <option value="Santorini">Santorini</option>
-                      <option value="Paros">Paros</option>
-                      <option value="Naxos">Naxos</option>
-                      <option value="Milos">Milos</option>
-                      <option value="Ios">Ios</option>
-                      <option value="Syros">Syros</option>
+                      {portCodes.map((port) => (
+                        <option key={port.code} value={port.name}>
+                          {port.name}
+                        </option>
+                      ))}
                     </select>
                     <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                   </div>
@@ -205,18 +307,11 @@ export default function FerryTickets() {
                       onChange={(e) => setTo(e.target.value)}
                       className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     >
-                      <option value="Santorini">Santorini</option>
-                      <option value="Mykonos">Mykonos</option>
-                      <option value="Paros">Paros</option>
-                      <option value="Naxos">Naxos</option>
-                      <option value="Milos">Milos</option>
-                      <option value="Ios">Ios</option>
-                      <option value="Amorgos">Amorgos</option>
-                      <option value="Folegandros">Folegandros</option>
-                      <option value="Syros">Syros</option>
-                      <option value="Tinos">Tinos</option>
-                      <option value="Piraeus">Piraeus (Athens)</option>
-                      <option value="Rafina">Rafina</option>
+                      {portCodes.map((port) => (
+                        <option key={port.code} value={port.name}>
+                          {port.name}
+                        </option>
+                      ))}
                     </select>
                     <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
                   </div>
@@ -242,8 +337,20 @@ export default function FerryTickets() {
                 
                 {/* Return Date */}
                 <div>
-                  <label htmlFor="return-date" className="block text-sm font-medium text-gray-700 mb-1">
-                    Return Date (Optional)
+                  <label htmlFor="return-date" className="block text-sm font-medium text-gray-700 mb-1 flex justify-between">
+                    <span>Return Date {isRoundTrip ? '' : '(Optional)'}</span>
+                    <div className="flex items-center">
+                      <input
+                        type="checkbox"
+                        id="round-trip"
+                        checked={isRoundTrip}
+                        onChange={() => setIsRoundTrip(!isRoundTrip)}
+                        className="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded"
+                      />
+                      <label htmlFor="round-trip" className="ml-2 text-xs text-gray-600">
+                        Round Trip
+                      </label>
+                    </div>
                   </label>
                   <div className="relative">
                     <input
@@ -252,6 +359,7 @@ export default function FerryTickets() {
                       value={returnDate}
                       onChange={(e) => setReturnDate(e.target.value)}
                       min={departDate}
+                      required={isRoundTrip}
                       className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
                     />
                     <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
@@ -311,6 +419,23 @@ export default function FerryTickets() {
                 </div>
               </div>
             </form>
+            
+            {/* Powered by FerrryScanner */}
+            <div className="mt-6 flex flex-col items-center justify-center">
+              <p className="text-sm text-gray-500 mb-2">Proudly powered by</p>
+              <a 
+                href="https://www.ferryscanner.com/en?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="block"
+              >
+                <img 
+                  src="https://www.ferryscanner.com/_next/static/media/logo.f9964f3a.svg" 
+                  alt="FerrryScanner Logo" 
+                  className="h-8"
+                />
+              </a>
+            </div>
           </div>
         </div>
       </div>
@@ -329,9 +454,11 @@ export default function FerryTickets() {
             {popularRoutes.map((route, index) => (
               <a 
                 key={index}
-                href="https://fas.st/t/RJapqw5V"
-                target="_blank"
-                rel="noopener noreferrer"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  handlePopularRouteClick(route.from, route.to);
+                }}
                 className="group block overflow-hidden rounded-xl shadow-lg hover:shadow-xl transition-shadow"
               >
                 <div className="relative h-48 overflow-hidden">
@@ -372,9 +499,12 @@ export default function FerryTickets() {
           
           <div className="text-center mt-10">
             <a 
-              href="https://fas.st/t/RJapqw5V"
-              target="_blank"
-              rel="noopener noreferrer"
+              href="#"
+              onClick={(e) => {
+                e.preventDefault();
+                // Use Athens to Santorini as a default popular route
+                handlePopularRouteClick('Athens(all ports)', 'Santorini (Thera)');
+              }}
               className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
             >
               View All Routes
@@ -398,10 +528,13 @@ export default function FerryTickets() {
             {ferryCompanies.map((company, index) => (
               <a 
                 key={index}
-                href="https://fas.st/t/RJapqw5V"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow"
+                href="#"
+                onClick={(e) => {
+                  e.preventDefault();
+                  // Use Athens to Santorini as a default popular route
+                  handlePopularRouteClick('Athens(all ports)', 'Santorini (Thera)');
+                }}
+                className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <img 
                   src={company.logo} 
@@ -409,6 +542,32 @@ export default function FerryTickets() {
                   className="max-h-12 max-w-full"
                 />
               </a>
+            ))}
+          </div>
+        </div>
+      </div>
+      
+      {/* FAQs Section */}
+      <div className="py-16 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Everything you need to know about booking ferry tickets in Greece
+            </p>
+          </div>
+          
+          <div className="max-w-3xl mx-auto divide-y divide-gray-200">
+            {faqs.map((faq, index) => (
+              <div key={index} className="py-6">
+                <h3 className="text-xl font-medium text-gray-900 flex items-start">
+                  <Info className="h-6 w-6 text-blue-500 flex-shrink-0 mr-2" />
+                  {faq.question}
+                </h3>
+                <div className="mt-3 text-gray-600 ml-8">
+                  <p>{faq.answer}</p>
+                </div>
+              </div>
             ))}
           </div>
         </div>
@@ -474,48 +633,20 @@ export default function FerryTickets() {
         </div>
       </div>
       
-      {/* FAQs Section */}
-      <div className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Everything you need to know about ferry travel in the Greek islands
-            </p>
-          </div>
-          
-          <div className="max-w-3xl mx-auto divide-y divide-gray-200">
-            {faqs.map((faq, index) => (
-              <div key={index} className="py-6">
-                <h3 className="text-xl font-medium text-gray-900 flex items-start">
-                  <Info className="h-6 w-6 text-blue-500 flex-shrink-0 mr-2" />
-                  <span>{faq.question}</span>
-                </h3>
-                <div className="mt-3 text-gray-600 ml-8">
-                  <p>{faq.answer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      
       {/* CTA Section */}
       <div className="py-16 bg-blue-700">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-6">Ready to Start Your Island Adventure?</h2>
-          <p className="text-xl text-blue-100 max-w-3xl mx-auto mb-8">
-            Book your ferry tickets now and experience the magic of the Greek islands
+          <h2 className="text-3xl font-bold text-white mb-6">Ready to Start Your Greek Island Adventure?</h2>
+          <p className="text-xl text-blue-100 mb-8 max-w-3xl mx-auto">
+            Book your ferry tickets today and explore the stunning Cyclades islands
           </p>
-          <a 
-            href="https://fas.st/t/RJapqw5V"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center px-8 py-4 border border-transparent text-lg font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white"
+          <button 
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-blue-700 bg-white hover:bg-blue-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500"
           >
-            Book Ferry Tickets
-            <Ship className="ml-2 h-5 w-5" />
-          </a>
+            Search Ferry Tickets
+            <ChevronRight className="ml-2 h-5 w-5" />
+          </button>
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ArrowRight, Sun, Map, Compass, Plane, Building2, Car, Camera, UtensilsCrossed, Sparkles, Waves, MessageSquare } from 'lucide-react';
+import { ArrowRight, Sun, Map, Compass, Plane, Building2, Car, Camera, UtensilsCrossed, Sparkles, Waves, MessageSquare, Ship } from 'lucide-react';
 import HeroSection from '../components/shared/HeroSection';
 import SEO from '../components/SEO';
 import { SITE_TAGLINE } from '../constants/seo';
@@ -100,18 +100,25 @@ export default function Home() {
                 </div>
               </Link>
 
-              <Link to="/rent-a-car" className="group">
+              <Link to="/ferry-tickets" className="group">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6">
                   <img 
-                    src="/images/services/car-rental.jpg" 
-                    alt="Car Rentals" 
+                    src="/images/services/ferry-tickets.webp" 
+                    alt="Ferry Tickets" 
                     className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
                   <div className="absolute bottom-6 left-6 text-white">
-                    <Car className="h-8 w-8 mb-3" />
-                    <h3 className="text-2xl font-semibold mb-1">Car Rentals</h3>
-                    <p className="text-white/90">Explore at your own pace</p>
+                    <Ship className="h-8 w-8 mb-3" />
+                    <h3 className="text-2xl font-semibold mb-1">Ferry Tickets</h3>
+                    <p className="text-white/90">Island hopping made easy</p>
+                  </div>
+                  <div className="absolute top-4 right-4 bg-white/90 rounded-lg px-2 py-1">
+                    <img 
+                      src="https://www.ferryscanner.com/_next/static/media/logo.f9964f3a.svg" 
+                      alt="FerrryScanner Logo" 
+                      className="h-5"
+                    />
                   </div>
                 </div>
               </Link>
@@ -131,6 +138,40 @@ export default function Home() {
                   </div>
                 </div>
               </Link>
+            </div>
+            
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
+              <Link to="/rent-a-car" className="group">
+                <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6">
+                  <img 
+                    src="/images/services/car-rental.jpg" 
+                    alt="Car Rentals" 
+                    className="w-full h-full object-cover transition duration-300 group-hover:scale-105"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                  <div className="absolute bottom-6 left-6 text-white">
+                    <Car className="h-8 w-8 mb-3" />
+                    <h3 className="text-2xl font-semibold mb-1">Car Rentals</h3>
+                    <p className="text-white/90">Explore at your own pace</p>
+                  </div>
+                </div>
+              </Link>
+              
+              <div className="col-span-2">
+                <div className="h-full flex flex-col justify-center px-8">
+                  <h3 className="text-2xl font-bold text-gray-900 mb-4">Complete Travel Services</h3>
+                  <p className="text-lg text-gray-600 mb-6">
+                    From ferry tickets and accommodations to car rentals and activities, we provide everything you need for a seamless Greek island experience.
+                  </p>
+                  <Link 
+                    to="/trip-planner" 
+                    className="inline-flex items-center text-blue-600 font-medium hover:text-blue-800 transition-colors"
+                  >
+                    Start planning your trip
+                    <ArrowRight className="ml-2 h-5 w-5" />
+                  </Link>
+                </div>
+              </div>
             </div>
           </div>
         </section>
