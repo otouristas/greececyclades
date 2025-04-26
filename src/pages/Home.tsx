@@ -42,7 +42,7 @@ export default function Home() {
           featureCards={[
             {
               icon: <Map className="w-full h-full" />,
-              title: "13 Islands",
+              title: "24 Islands",
               subtitle: "To Explore"
             },
             {
