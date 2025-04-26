@@ -41,6 +41,7 @@ import BlogPost from './pages/BlogPost';
 import RentACar from './pages/RentACar';
 import Profile from './pages/Profile';
 import TripPlanner from './pages/TripPlanner';
+import EnhancedTripPlanner from './pages/EnhancedTripPlanner';
 import MyTrips from './pages/MyTrips';
 import Auth from './pages/Auth';
 import SignIn from './pages/SignIn';
@@ -156,15 +157,22 @@ function AppContent() {
             <Route path="/sitemap" element={<Sitemap />} />
             <Route path="/help" element={<HelpDesk />} />
             
+            {/* Trip Planner */}
+            <Route 
+              path="/trip-planner" 
+              element={<EnhancedTripPlanner />} 
+            />
+
+            {/* Legacy Trip Planner - keeping for backward compatibility */}
+            <Route 
+              path="/trip-planner-legacy" 
+              element={<TripPlanner />} 
+            />
+            
             {/* Protected Routes */}
             <Route path="/profile" element={
               <ProtectedRoute>
                 <Profile />
-              </ProtectedRoute>
-            } />
-            <Route path="/trip-planner" element={
-              <ProtectedRoute>
-                <TripPlanner />
               </ProtectedRoute>
             } />
             <Route path="/nearby" element={

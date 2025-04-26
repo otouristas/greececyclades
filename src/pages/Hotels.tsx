@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Star, MapPin, Building2, Bed, Wifi, Coffee, Utensils, Calendar, Search, Users } from 'lucide-react';
 import { Link } from 'react-router-dom';
@@ -24,7 +24,7 @@ export default function Hotels() {
   }, []);
 
   // Format date as YYYY-MM-DD
-  const formatDate = (date) => {
+  const formatDate = (date: Date): string => {
     const year = date.getFullYear();
     const month = String(date.getMonth() + 1).padStart(2, '0');
     const day = String(date.getDate()).padStart(2, '0');
@@ -32,7 +32,7 @@ export default function Hotels() {
   };
 
   // Handle form submission
-  const handleSubmit = (e) => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>): void => {
     e.preventDefault();
     // Redirect to the provided URL
     window.open('https://trip.tp.st/F29Ncvt6', '_blank');

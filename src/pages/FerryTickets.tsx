@@ -1,7 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Calendar, Users, Ship, ChevronRight, Star, MapPin, Clock, Euro, Info, Search } from 'lucide-react';
+import { Calendar, Users, Ship, ChevronRight, MapPin, Clock, Euro, Info, Search } from 'lucide-react';
 import { Helmet } from 'react-helmet-async';
-import { Link } from 'react-router-dom';
 
 // Define interfaces for our data types
 interface PopularRoute {

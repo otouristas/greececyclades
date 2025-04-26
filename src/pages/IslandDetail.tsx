@@ -305,7 +305,7 @@ export default function IslandDetail() {
                   <h3 className="text-xl font-semibold">Direct Ferry Routes</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
-                  {selectedIsland.connectedIslands.direct.map((islandSlug) => {
+                  {selectedIsland.connectedIslands?.direct?.map((islandSlug) => {
                     const island = cyclades.find(i => i.slug === islandSlug);
                     return island ? (
                       <Link
@@ -334,7 +334,7 @@ export default function IslandDetail() {
                   <h3 className="text-xl font-semibold">Nearby Islands</h3>
                 </div>
                 <div className="grid grid-cols-2 gap-2">
-                  {selectedIsland.connectedIslands.nearby.map((islandSlug) => {
+                  {selectedIsland.connectedIslands?.nearby?.map((islandSlug) => {
                     const island = cyclades.find(i => i.slug === islandSlug);
                     return island ? (
                       <Link
@@ -357,7 +357,7 @@ export default function IslandDetail() {
               </div>
 
               {/* Other Connections */}
-              {selectedIsland.connectedIslands.other && (
+              {selectedIsland.connectedIslands?.other && (
                 <div className="bg-white rounded-xl shadow-sm border p-6">
                   <div className="flex items-center gap-2 mb-4">
                     <Plane className="h-6 w-6 text-indigo-600" />

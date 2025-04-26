@@ -37,7 +37,7 @@ export default function AuthStateHandler() {
         logout();
         
         // Only redirect if we're on a protected route
-        const protectedRoutes = ['/profile', '/trip-planner', '/my-trips'];
+        const protectedRoutes = ['/profile', '/my-trips'];
         if (protectedRoutes.some(route => location.pathname.startsWith(route))) {
           navigate('/signin', { 
             state: { from: location },

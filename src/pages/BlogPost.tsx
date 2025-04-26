@@ -5,15 +5,11 @@ import SocialShare from '../components/blog/SocialShare';
 import SEO from '../components/SEO';
 import { SITE_TAGLINE } from '../constants/seo';
 import { 
-  Clock, 
-  Calendar,
   MapPin,
   Ship,
   Hotel,
   Car,
   Tag,
-  Share2,
-  ArrowRight,
   Bookmark,
   Heart
 } from 'lucide-react';
@@ -176,7 +172,7 @@ export default function BlogPost() {
           Like
         </button>
       </div>
-      <SocialShare url={currentUrl} title={post.title} />
+      <SocialShare url={currentUrl} title={post.title} description={post.description} />
     </div>
   );
 

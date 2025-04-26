@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Calculator, Euro, Bed, Utensils, Ship, Bus, Ticket, Car } from 'lucide-react';
+import { Calculator, Euro, Bed, Utensils, Ship, Bus, Ticket } from 'lucide-react';
 import SEO from '../components/SEO';
 import { cyclades } from '../data/islandsData';
 

@@ -94,7 +94,8 @@ const navigationItems: NavItem[] = [
   }
 ];
 
-const mobileOnlyItems: NavItem[] = [
+// Commented out as it's currently unused
+/* const mobileOnlyItems: NavItem[] = [
   {
     path: '/about',
     label: 'About',
@@ -115,7 +116,7 @@ const mobileOnlyItems: NavItem[] = [
       { path: '/contact/partnerships', label: 'Partnerships', type: 'tool', icon: <Building2 className="w-4 h-4" /> }
     ]
   }
-];
+]; */
 
 export default function Navbar({ onAuthClick }: NavbarProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
