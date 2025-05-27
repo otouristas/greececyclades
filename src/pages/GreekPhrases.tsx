@@ -29,7 +29,7 @@ export default function GreekPhrases() {
         {/* Background Image with Overlay */}
         <div 
           className="absolute inset-0 bg-cover bg-center z-0 opacity-30"
-          style={{ backgroundImage: "url('/images/greek-phrases-hero.jpg')" }}
+          style={{ backgroundImage: "url('/images/greek-phrases/greek-phrases-hero.jpg')" }}
         ></div>
         
         <div className="container mx-auto px-4 py-20 md:py-32 lg:py-40 relative z-10">

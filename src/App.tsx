@@ -79,6 +79,7 @@ import { ToastProvider } from './contexts/ToastContext';
 
 import './styles/fonts.css';
 import './i18n';
+import RedirectHandler from './components/RedirectHandler';
 
 function AppContent() {
   const navigate = useNavigate();
@@ -89,6 +90,7 @@ function AppContent() {
 
   return (
     <>
+      <RedirectHandler />
       <ScrollToTop />
       <AuthStateHandler />
       <div className="min-h-screen bg-gray-50">

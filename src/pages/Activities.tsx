@@ -65,7 +65,7 @@ export default function Activities() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/activities/activities-hero.jpg" 
+            src="/images/activites.webp" 
             alt="Activities in the Cyclades Islands" 
             className="w-full h-full object-cover"
           />

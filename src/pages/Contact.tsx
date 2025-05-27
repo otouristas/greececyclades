@@ -63,7 +63,7 @@ export default function Contact() {
       <SEO 
         title={`Contact Us ${SITE_TAGLINE}`}
         description="Get in touch with our team for any questions about traveling in the Cyclades islands. We're here to help plan your perfect Greek vacation."
-        ogImage="/images/contact-hero.jpg"
+        ogImage="/images/contact/contact-hero.jpg"
       />
       
       <div className="min-h-screen bg-gray-50">

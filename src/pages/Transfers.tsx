@@ -104,7 +104,7 @@ export default function Transfers() {
         {/* Background Image */}
         <div className="absolute inset-0">
           <img
-            src="/images/transfers-hero.jpg"
+            src="/images/transfers/transfers-hero.jpg"
             alt="Greece Transfers"
             className="w-full h-[600px] object-cover"
           />

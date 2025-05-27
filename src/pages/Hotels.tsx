@@ -123,7 +123,7 @@ export default function Hotels() {
         {/* Background Image with Overlay */}
         <div 
           className="absolute inset-0 bg-cover bg-center z-0 opacity-30"
-          style={{ backgroundImage: "url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80')" }}
+          style={{ backgroundImage: "url('/images/hotels/hotels-hero.jpg')" }}
         ></div>
         
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
@@ -402,7 +402,7 @@ export default function Hotels() {
                 <Link to="/flights" className="inline-block bg-transparent text-white border-2 border-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition duration-300">Check Flights</Link>
               </div>
             </div>
-            <div className="md:w-1/2 bg-cover bg-center" style={{ backgroundImage: "url('https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80')" }}></div>
+            <div className="md:w-1/2 bg-cover bg-center" style={{ backgroundImage: "url('/images/hotels/hotels-hero.jpg')" }}></div>
           </div>
         </div>
       </div>

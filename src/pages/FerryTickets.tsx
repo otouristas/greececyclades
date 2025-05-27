@@ -251,7 +251,7 @@ export default function FerryTickets() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/ferry/hero.jpg" 
+            src="/images/ferry/ferry-hero.jpg" 
             alt="Ferry sailing in the Aegean Sea" 
             className="w-full h-full object-cover"
           />
