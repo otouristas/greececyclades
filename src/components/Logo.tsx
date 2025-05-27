@@ -9,11 +9,11 @@ export default function Logo({ variant = 'default' }: LogoProps) {
   
   return (
     <div className="flex items-center gap-2">
-      <Compass className={`h-8 w-8 ${isWhite ? 'text-white' : 'text-blue-600'}`} />
+      <img src="/favicon.svg" alt="Logo" className={`h-8 w-8 ${isWhite ? 'text-white' : 'text-blue-600'}`} />
       <span className={`text-2xl font-bold ${
         isWhite 
           ? 'text-white' 
-          : 'bg-gradient-to-r from-blue-600 to-blue-400 bg-clip-text text-transparent'
+          : 'bg-gradient-to-r from-[#1E2E48] to-[#E3D7C3] bg-clip-text text-transparent'
       }`}>
         Discover Cyclades
       </span>
