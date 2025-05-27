@@ -391,14 +391,13 @@ export default function Home() {
                       alt={experience.title}
                       className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/80 via-[#1E2E48]/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity">
-                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
-                        <img 
-                          src="https://www.vhv.rs/dpng/d/611-6116095_getyourguide-logo-logo-get-your-guide-hd-png.png" 
-                          alt="GetYourGuide" 
-                          className="h-6 w-auto"
-                        />
-                      </div>
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/90 via-[#1E2E48]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
+                    <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
+                      <img 
+                        src="https://www.vhv.rs/dpng/d/611-6116095_getyourguide-logo-logo-get-your-guide-hd-png.png" 
+                        alt="GetYourGuide" 
+                        className="h-6 w-auto"
+                      />
                     </div>
                     <div className="absolute inset-0 p-6 flex flex-col justify-end">
                       <div className="flex items-center gap-2 mb-2">
@@ -668,26 +667,26 @@ export default function Home() {
         </section>
 
         {/* Experience Section */}
-        <section className="bg-gradient-to-b from-[#E3D7C3]/20 to-white py-24">
+        <section className="bg-gradient-to-b from-[#E3D7C3]/20 to-white py-12 md:py-24">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid md:grid-cols-2 gap-16 items-center">
-              <div>
+            <div className="grid md:grid-cols-2 gap-8 md:gap-16 items-center">
+              <div className="order-2 md:order-1">
                 <div className="inline-flex items-center px-4 py-2 rounded-full bg-[#E3D7C3]/20 text-[#1E2E48] text-sm font-medium mb-6">
                   <Sparkles className="h-4 w-4 mr-2" />
                   <span>Unforgettable Experiences</span>
                 </div>
-                <h2 className="text-4xl font-bold text-[#1E2E48] mb-6">Experience the Best of Cyclades</h2>
-                <p className="text-lg text-[#1E2E48]/80 mb-8 leading-relaxed">
+                <h2 className="text-3xl md:text-4xl font-bold text-[#1E2E48] mb-6">Experience the Best of Cyclades</h2>
+                <p className="text-base md:text-lg text-[#1E2E48]/80 mb-8 leading-relaxed">
                   From pristine beaches and crystal-clear waters to charming villages and ancient ruins, 
                   the Cyclades offers a perfect blend of relaxation, culture, and adventure.
                 </p>
-                <div className="grid grid-cols-2 gap-6 mb-12">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12">
                   <div className="group">
                     <div className="flex items-start gap-4 p-4 rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300">
                       <div className="p-3 bg-[#E3D7C3]/20 rounded-xl group-hover:scale-110 transition-transform">
                         <Waves className="h-6 w-6 text-[#1E2E48]" />
-                    </div>
-                    <div>
+                      </div>
+                      <div>
                         <h3 className="font-semibold text-[#1E2E48] mb-1">Beach Life</h3>
                         <p className="text-sm text-[#1E2E48]/80">World-famous beaches & crystal waters</p>
                       </div>
@@ -697,8 +696,8 @@ export default function Home() {
                     <div className="flex items-start gap-4 p-4 rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300">
                       <div className="p-3 bg-[#E3D7C3]/20 rounded-xl group-hover:scale-110 transition-transform">
                         <UtensilsCrossed className="h-6 w-6 text-[#1E2E48]" />
-                    </div>
-                    <div>
+                      </div>
+                      <div>
                         <h3 className="font-semibold text-[#1E2E48] mb-1">Local Cuisine</h3>
                         <p className="text-sm text-[#1E2E48]/80">Authentic Greek gastronomy</p>
                       </div>
@@ -708,8 +707,8 @@ export default function Home() {
                     <div className="flex items-start gap-4 p-4 rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300">
                       <div className="p-3 bg-[#E3D7C3]/20 rounded-xl group-hover:scale-110 transition-transform">
                         <Sparkles className="h-6 w-6 text-[#1E2E48]" />
-                    </div>
-                    <div>
+                      </div>
+                      <div>
                         <h3 className="font-semibold text-[#1E2E48] mb-1">Rich Culture</h3>
                         <p className="text-sm text-[#1E2E48]/80">Ancient history & traditions</p>
                       </div>
@@ -719,64 +718,64 @@ export default function Home() {
                     <div className="flex items-start gap-4 p-4 rounded-2xl bg-white shadow-sm hover:shadow-md transition-all duration-300">
                       <div className="p-3 bg-[#E3D7C3]/20 rounded-xl group-hover:scale-110 transition-transform">
                         <Sun className="h-6 w-6 text-[#1E2E48]" />
-                    </div>
-                    <div>
+                      </div>
+                      <div>
                         <h3 className="font-semibold text-[#1E2E48] mb-1">Perfect Weather</h3>
                         <p className="text-sm text-[#1E2E48]/80">300+ days of sunshine</p>
                       </div>
                     </div>
                   </div>
                 </div>
-                <div className="grid grid-cols-3 gap-4">
-                  <div className="text-center p-4 rounded-2xl bg-white shadow-sm">
-                    <div className="text-3xl font-bold text-[#1E2E48] mb-1">24</div>
-                    <div className="text-sm text-[#1E2E48]/80">Islands to Explore</div>
+                <div className="grid grid-cols-3 gap-3 md:gap-4">
+                  <div className="text-center p-3 md:p-4 rounded-2xl bg-white shadow-sm">
+                    <div className="text-2xl md:text-3xl font-bold text-[#1E2E48] mb-1">24</div>
+                    <div className="text-xs md:text-sm text-[#1E2E48]/80">Islands to Explore</div>
                   </div>
-                  <div className="text-center p-4 rounded-2xl bg-white shadow-sm">
-                    <div className="text-3xl font-bold text-[#1E2E48] mb-1">300+</div>
-                    <div className="text-sm text-[#1E2E48]/80">Days of Sunshine</div>
+                  <div className="text-center p-3 md:p-4 rounded-2xl bg-white shadow-sm">
+                    <div className="text-2xl md:text-3xl font-bold text-[#1E2E48] mb-1">300+</div>
+                    <div className="text-xs md:text-sm text-[#1E2E48]/80">Days of Sunshine</div>
                   </div>
-                  <div className="text-center p-4 rounded-2xl bg-white shadow-sm">
-                    <div className="text-3xl font-bold text-[#1E2E48] mb-1">5000+</div>
-                    <div className="text-sm text-[#1E2E48]/80">Years of History</div>
+                  <div className="text-center p-3 md:p-4 rounded-2xl bg-white shadow-sm">
+                    <div className="text-2xl md:text-3xl font-bold text-[#1E2E48] mb-1">5000+</div>
+                    <div className="text-xs md:text-sm text-[#1E2E48]/80">Years of History</div>
                   </div>
                 </div>
               </div>
-              <div className="relative">
+              <div className="relative order-1 md:order-2 mb-12 md:mb-0">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                   <img 
                     src="/images/experience/santorini-view.jpg" 
                     alt="Santorini View" 
                     className="w-full h-full object-cover"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/40 to-transparent" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/90 via-[#1E2E48]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
                   <div className="absolute bottom-6 left-6 text-white">
                     <h3 className="text-2xl font-semibold mb-1">Santorini</h3>
                     <p className="text-white/90">Iconic sunset views</p>
                   </div>
                 </div>
-                <div className="absolute -bottom-8 -left-8 w-2/3 transform hover:-translate-y-2 transition-transform duration-300">
+                <div className="absolute -bottom-6 -left-6 w-2/3 transform hover:-translate-y-2 transition-transform duration-300 hidden md:block">
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                     <img 
                       src="/images/experience/beach-life.jpg" 
                       alt="Beach Life" 
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/90 via-[#1E2E48]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
                     <div className="absolute bottom-6 left-6 text-white">
                       <h3 className="text-2xl font-semibold mb-1">Beach Life</h3>
                       <p className="text-white/90">Crystal clear waters</p>
                     </div>
                   </div>
                 </div>
-                <div className="absolute -top-8 -right-8 w-1/2 transform hover:-translate-y-2 transition-transform duration-300">
+                <div className="absolute -top-6 -right-6 w-1/2 transform hover:-translate-y-2 transition-transform duration-300 hidden md:block">
                   <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
                     <img 
                       src="/images/experience/local-cuisine.jpg" 
                       alt="Local Cuisine" 
                       className="w-full h-full object-cover"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/40 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/90 via-[#1E2E48]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
                     <div className="absolute bottom-6 left-6 text-white">
                       <h3 className="text-2xl font-semibold mb-1">Local Food</h3>
                       <p className="text-white/90">Authentic flavors</p>
