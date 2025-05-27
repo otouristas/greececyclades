@@ -211,8 +211,12 @@ export default function Home() {
                     <h3 className="text-2xl font-semibold mb-1">Luxury Stays</h3>
                     <p className="text-white/90">Handpicked hotels & villas</p>
                   </div>
-                  <div className="absolute top-4 right-4 bg-[#E3D7C3]/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-sm font-medium text-[#1E2E48]">
-                    From €150/night
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
+                    <img 
+                      src="https://www.logoshape.com/wp-content/uploads/2024/09/agoda-logo-vector_logoshape.png" 
+                      alt="Agoda" 
+                      className="h-6 w-auto"
+                    />
                   </div>
                 </div>
               </Link>
@@ -230,8 +234,12 @@ export default function Home() {
                     <h3 className="text-2xl font-semibold mb-1">Ferry Tickets</h3>
                     <p className="text-white/90">Island hopping made easy</p>
                   </div>
-                  <div className="absolute top-4 right-4 bg-[#E3D7C3]/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-sm font-medium text-[#1E2E48]">
-                    From €20
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
+                    <img 
+                      src="https://www.ferryscanner.com/_next/static/media/logo.f9964f3a.svg" 
+                      alt="FerryScanner" 
+                      className="h-6 w-auto"
+                    />
                   </div>
                 </div>
               </Link>
@@ -249,8 +257,12 @@ export default function Home() {
                     <h3 className="text-2xl font-semibold mb-1">Activities</h3>
                     <p className="text-white/90">Unforgettable experiences</p>
                   </div>
-                  <div className="absolute top-4 right-4 bg-[#E3D7C3]/90 backdrop-blur-sm rounded-lg px-3 py-1.5 text-sm font-medium text-[#1E2E48]">
-                    100+ Tours
+                  <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
+                    <img 
+                      src="https://www.vhv.rs/dpng/d/611-6116095_getyourguide-logo-logo-get-your-guide-hd-png.png" 
+                      alt="GetYourGuide" 
+                      className="h-6 w-auto"
+                    />
                   </div>
                 </div>
               </Link>
@@ -379,7 +391,15 @@ export default function Home() {
                       alt={experience.title}
                       className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                     />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/90 via-[#1E2E48]/50 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/80 via-[#1E2E48]/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity">
+                      <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
+                        <img 
+                          src="https://www.vhv.rs/dpng/d/611-6116095_getyourguide-logo-logo-get-your-guide-hd-png.png" 
+                          alt="GetYourGuide" 
+                          className="h-6 w-auto"
+                        />
+                      </div>
+                    </div>
                     <div className="absolute inset-0 p-6 flex flex-col justify-end">
                       <div className="flex items-center gap-2 mb-2">
                         <span className="px-3 py-1 bg-[#E3D7C3]/90 text-[#1E2E48] text-sm font-medium rounded-full">
@@ -831,11 +851,11 @@ export default function Home() {
                     <div className="flex items-center gap-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Sparkles key={i} className="w-4 h-4 text-[#E3D7C3]" />
-                      ))}
-                    </div>
+              ))}
+            </div>
                     <span className="text-[#1E2E48]/60 text-sm">{testimonial.date}</span>
-                  </div>
-                </div>
+            </div>
+          </div>
               ))}
             </div>
           </div>
