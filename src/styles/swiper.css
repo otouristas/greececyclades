@@ -1,0 +1,83 @@
+.island-guides-swiper {
+  padding: 50px 0;
+  overflow: visible;
+  position: relative;
+}
+
+.island-guides-swiper .swiper-slide {
+  opacity: 0.4;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+}
+
+.island-guides-swiper .swiper-slide-active {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.island-guides-swiper .swiper-slide-prev,
+.island-guides-swiper .swiper-slide-next {
+  opacity: 0.7;
+  transform: scale(0.9);
+}
+
+/* Add a subtle shadow to the active slide */
+.island-guides-swiper .swiper-slide-active .relative {
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+/* Custom navigation buttons */
+.island-guides-swiper .swiper-button-next,
+.island-guides-swiper .swiper-button-prev {
+  color: #3b82f6;
+  background: white;
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+}
+
+.island-guides-swiper .swiper-button-next:after,
+.island-guides-swiper .swiper-button-prev:after {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.island-guides-swiper .swiper-button-next:hover,
+.island-guides-swiper .swiper-button-prev:hover {
+  background: #3b82f6;
+  color: white;
+  transform: scale(1.1);
+}
+
+/* Position navigation buttons */
+.island-guides-swiper .swiper-button-prev {
+  left: -24px;
+}
+
+.island-guides-swiper .swiper-button-next {
+  right: -24px;
+}
+
+/* Add a gradient fade on the sides */
+.island-guides-swiper::before,
+.island-guides-swiper::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  width: 100px;
+  z-index: 1;
+  pointer-events: none;
+}
+
+.island-guides-swiper::before {
+  left: 0;
+  background: linear-gradient(to right, white, transparent);
+}
+
+.island-guides-swiper::after {
+  right: 0;
+  background: linear-gradient(to left, white, transparent);
+} 
