@@ -8,7 +8,7 @@
   }
   
   body {
-    @apply antialiased text-gray-900 bg-white;
+    @apply antialiased text-primary-900 bg-white;
   }
 }
 
@@ -18,11 +18,11 @@
   }
   
   .btn-primary {
-    @apply bg-blue-600 text-white hover:bg-blue-700;
+    @apply bg-primary-500 text-white hover:bg-primary-600;
   }
   
   .btn-secondary {
-    @apply bg-gray-100 text-gray-900 hover:bg-gray-200;
+    @apply bg-secondary-100 text-primary-900 hover:bg-secondary-200;
   }
 }
 

@@ -3,7 +3,7 @@
   <!-- Core Pages -->
   <url>
     <loc>https://greececyclades.com/</loc>
-    <lastmod>2025-04-25</lastmod>
+    <lastmod>2024-03-20</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -129,57 +129,21 @@
   <!-- Blog Pages -->
   <url>
     <loc>https://greececyclades.com/blog</loc>
-    <lastmod>2025-04-14</lastmod>
+    <lastmod>2024-03-20</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.9</priority>
+    <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/blog/best-cyclades-islands</loc>
-    <lastmod>2025-04-14</lastmod>
+    <lastmod>2024-03-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://greececyclades.com/blog/island-hopping-guide</loc>
-    <lastmod>2025-04-14</lastmod>
+    <loc>https://greececyclades.com/blog/sifnos</loc>
+    <lastmod>2024-03-20</lastmod>
     <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/blog/santorini-guide</loc>
-    <lastmod>2025-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/blog/mykonos-guide</loc>
-    <lastmod>2025-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/blog/paros-guide</loc>
-    <lastmod>2025-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/blog/naxos-guide</loc>
-    <lastmod>2025-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/blog/sifnos-guide</loc>
-    <lastmod>2025-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
-  </url>
-  <url>
-    <loc>https://greececyclades.com/blog/antiparos-guide</loc>
-    <lastmod>2025-04-14</lastmod>
-    <changefreq>monthly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.7</priority>
   </url>
   
   <!-- Legal Pages -->
