@@ -98,10 +98,10 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.2 }}
-          className="fixed inset-0 bg-gradient-to-br from-blue-950 via-blue-900 to-blue-800 z-[9999] overflow-hidden"
+          className="fixed inset-0 bg-gradient-to-br from-primary-700 via-primary-800 to-primary-900 z-[9999] overflow-hidden"
         >
           {/* Gradient Overlays */}
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-blue-400/10 via-transparent to-transparent" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_right,_var(--tw-gradient-stops))] from-primary-400/10 via-transparent to-transparent" />
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_left,_var(--tw-gradient-stops))] from-white/5 via-transparent to-transparent" />
 
           <div className="relative z-10">
@@ -118,9 +118,9 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
               {/* Header */}
               <div className="text-center mb-8">
                 <h2 className="text-4xl font-light text-white mb-2">
-                  Search <span className="text-blue-300">Cyclades</span>
+                  Search <span className="text-primary-300">Cyclades</span>
                 </h2>
-                <p className="text-lg text-blue-100/80">
+                <p className="text-lg text-primary-100/80">
                   Discover islands, hotels, activities, and more
                 </p>
               </div>
@@ -134,7 +134,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                   value={searchQuery}
                   onChange={(e) => handleSearch(e.target.value)}
                   placeholder="Type to search..."
-                  className="w-full bg-white/10 text-white placeholder-white/50 py-4 pl-12 pr-4 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-blue-400 focus:border-transparent focus:bg-white/20 transition-all"
+                  className="w-full bg-white/10 text-white placeholder-white/50 py-4 pl-12 pr-4 rounded-xl border border-white/20 focus:outline-none focus:ring-2 focus:ring-primary-400 focus:border-transparent focus:bg-white/20 transition-all"
                 />
               </div>
 
@@ -163,11 +163,11 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                           </div>
                         )}
                         <div>
-                          <h3 className="text-lg font-medium text-white group-hover:text-blue-300 transition-colors">
+                          <h3 className="text-lg font-medium text-white group-hover:text-primary-300 transition-colors">
                             {result.title}
                           </h3>
-                          <p className="text-sm text-blue-100/70">{result.description}</p>
-                          <span className="inline-block mt-2 text-xs text-blue-200/50 uppercase tracking-wider">
+                          <p className="text-sm text-primary-100/70">{result.description}</p>
+                          <span className="inline-block mt-2 text-xs text-primary-200/50 uppercase tracking-wider">
                             {result.type}
                           </span>
                         </div>
@@ -175,7 +175,7 @@ export default function SearchOverlay({ isOpen, onClose }: SearchOverlayProps) {
                     ))}
                   </div>
                 ) : searchQuery.length > 0 && (
-                  <p className="text-center text-blue-100/70">No results found</p>
+                  <p className="text-center text-primary-100/70">No results found</p>
                 )}
               </div>
             </div>

@@ -25,7 +25,7 @@ export default function Hero() {
           <div className="mt-8 flex flex-wrap gap-4">
             <Link 
               to="/islands"
-              className="px-8 py-3 bg-blue-600 text-white rounded-full font-medium hover:bg-blue-700 transition-colors"
+              className="px-8 py-3 bg-primary-500 text-white rounded-full font-medium hover:bg-primary-600 transition-colors"
             >
               Start Exploring
             </Link>

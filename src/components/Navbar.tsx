@@ -207,15 +207,15 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                   {item.megaMenu ? (
                     <button
                       onClick={() => toggleMegaMenu(item.path)}
-                      className="text-gray-700 hover:text-blue-600 px-3 py-2 text-base font-medium flex items-center space-x-1.5 group"
+                      className="text-gray-700 hover:text-primary-500 px-3 py-2 text-base font-medium flex items-center space-x-1.5 group"
                     >
                       <span>{item.label}</span>
-                      <ChevronDown className="h-4 w-4 group-hover:text-blue-600" />
+                      <ChevronDown className="h-4 w-4 group-hover:text-primary-500" />
                     </button>
                   ) : (
                     <Link
                       to={item.path}
-                      className="text-gray-700 hover:text-blue-600 px-3 py-2 text-base font-medium flex items-center space-x-1.5 group"
+                      className="text-gray-700 hover:text-primary-500 px-3 py-2 text-base font-medium flex items-center space-x-1.5 group"
                     >
                       <span>{item.label}</span>
                     </Link>
@@ -229,7 +229,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
           <div className="flex items-center space-x-4 ml-auto pr-4">
             <Globe className="h-5 w-5 text-gray-600 hidden md:block" />
             <Link to="/help" className="hidden md:block">
-              <HelpCircle className="h-5 w-5 text-gray-600 hover:text-blue-600 transition-colors" />
+              <HelpCircle className="h-5 w-5 text-gray-600 hover:text-primary-500 transition-colors" />
             </Link>
             
             {/* User Profile & Sign In - Desktop */}
@@ -238,7 +238,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                 <div className="relative" ref={dropdownRef}>
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-                    className="flex items-center space-x-2 text-gray-700 hover:text-blue-600"
+                    className="flex items-center space-x-2 text-gray-700 hover:text-primary-500"
                   >
                     <User className="h-5 w-5" />
                     <span className="text-sm font-medium">{user?.displayName || user?.name || user?.email?.split('@')[0] || 'User'}</span>
@@ -273,7 +273,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
               ) : (
                 <button
                   onClick={onAuthClick}
-                  className="inline-flex items-center justify-center rounded-md bg-blue-600 px-4 py-2 text-sm font-medium text-white hover:bg-blue-700"
+                  className="inline-flex items-center justify-center rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
                 >
                   <User className="h-5 w-5 mr-2" />
                   Coming Soon
@@ -298,7 +298,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
 
       {/* Mega Menu */}
       {activeMegaMenu && (
-        <div className="fixed inset-0 top-16 w-screen h-screen bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800">
+        <div className="fixed inset-0 top-16 w-screen h-screen bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700">
           <div className="w-full h-full">
             <div className="flex h-full">
               {/* Left Column - 30% */}
@@ -557,33 +557,33 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
               <Link 
                 to="/ferry-tickets" 
                 onClick={toggleMobileMenu}
-                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-blue-50 transition-colors text-center"
+                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-primary-50 transition-colors text-center"
               >
-                <Sailboat className="h-6 w-6 text-blue-600 mb-2" />
+                <Sailboat className="h-6 w-6 text-primary-600 mb-2" />
                 <span className="text-xs font-medium text-gray-700">Ferries</span>
               </Link>
               <Link 
                 to="/activities" 
                 onClick={toggleMobileMenu}
-                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-blue-50 transition-colors text-center"
+                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-primary-50 transition-colors text-center"
               >
-                <Compass className="h-6 w-6 text-blue-600 mb-2" />
+                <Compass className="h-6 w-6 text-primary-600 mb-2" />
                 <span className="text-xs font-medium text-gray-700">Activities</span>
               </Link>
               <Link 
                 to="/flights" 
                 onClick={toggleMobileMenu}
-                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-blue-50 transition-colors text-center"
+                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-primary-50 transition-colors text-center"
               >
-                <Plane className="h-6 w-6 text-blue-600 mb-2" />
+                <Plane className="h-6 w-6 text-primary-600 mb-2" />
                 <span className="text-xs font-medium text-gray-700">Flights</span>
               </Link>
               <Link 
                 to="/rent-a-car" 
                 onClick={toggleMobileMenu}
-                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-blue-50 transition-colors text-center"
+                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-primary-50 transition-colors text-center"
               >
-                <Car className="h-6 w-6 text-blue-600 mb-2" />
+                <Car className="h-6 w-6 text-primary-600 mb-2" />
                 <span className="text-xs font-medium text-gray-700">Cars</span>
               </Link>
             </div>
@@ -594,10 +594,10 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
               <div className="mb-6">
                 <button
                   onClick={() => toggleSection('/islands')}
-                  className="flex items-center justify-between w-full py-3 text-gray-800 hover:text-blue-600 transition-colors"
+                  className="flex items-center justify-between w-full py-3 text-gray-800 hover:text-primary-600 transition-colors"
                 >
                   <div className="flex items-center">
-                    <Sun className="h-5 w-5 text-blue-600 mr-3" />
+                    <Sun className="h-5 w-5 text-primary-600 mr-3" />
                     <span className="text-base font-medium">Destinations</span>
                   </div>
                   <ChevronDown className={`h-5 w-5 text-gray-400 transform transition-transform duration-200 ${activeSection === '/islands' ? 'rotate-180' : ''}`} />
@@ -610,7 +610,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                       <Link 
                         to="/islands" 
                         onClick={toggleMobileMenu}
-                        className="text-xs font-medium text-blue-600 flex items-center hover:text-blue-700"
+                        className="text-xs font-medium text-primary-600 flex items-center hover:text-primary-700"
                       >
                         View All
                         <ChevronRight className="h-3 w-3 ml-1" />
@@ -624,10 +624,10 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                         <Link
                           key={child.path}
                           to={child.path}
-                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                           onClick={toggleMobileMenu}
                         >
-                          <span className="mr-3 text-blue-500">{child.icon}</span>
+                          <span className="mr-3 text-primary-500">{child.icon}</span>
                           <span>{child.label}</span>
                         </Link>
                       ))}
@@ -637,7 +637,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                       <Link 
                         to="/guides" 
                         onClick={toggleMobileMenu}
-                        className="text-xs font-medium text-blue-600 flex items-center hover:text-blue-700"
+                        className="text-xs font-medium text-primary-600 flex items-center hover:text-primary-700"
                       >
                         View All
                         <ChevronRight className="h-3 w-3 ml-1" />
@@ -651,10 +651,10 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                         <Link
                           key={child.path}
                           to={child.path}
-                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                           onClick={toggleMobileMenu}
                         >
-                          <span className="mr-3 text-blue-500">{child.icon}</span>
+                          <span className="mr-3 text-primary-500">{child.icon}</span>
                           <span>{child.label}</span>
                         </Link>
                       ))}
@@ -666,10 +666,10 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
               <div className="mb-6">
                 <button
                   onClick={() => toggleSection('/plan')}
-                  className="flex items-center justify-between w-full py-3 text-gray-800 hover:text-blue-600 transition-colors"
+                  className="flex items-center justify-between w-full py-3 text-gray-800 hover:text-primary-600 transition-colors"
                 >
                   <div className="flex items-center">
-                    <MapPin className="h-5 w-5 text-blue-600 mr-3" />
+                    <MapPin className="h-5 w-5 text-primary-600 mr-3" />
                     <span className="text-base font-medium">Plan Your Trip</span>
                   </div>
                   <ChevronDown className={`h-5 w-5 text-gray-400 transform transition-transform duration-200 ${activeSection === '/plan' ? 'rotate-180' : ''}`} />
@@ -683,10 +683,10 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                         <Link
                           key={child.path}
                           to={child.path}
-                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-blue-50 hover:text-blue-600 transition-colors"
+                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                           onClick={toggleMobileMenu}
                         >
-                          <span className="mr-3 text-blue-500">{child.icon}</span>
+                          <span className="mr-3 text-primary-500">{child.icon}</span>
                           <span>{child.label}</span>
                         </Link>
                       ))}
@@ -697,10 +697,10 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
               {/* Travel Tips */}
               <Link
                 to="/blog"
-                className="flex items-center py-3 text-gray-800 hover:text-blue-600 transition-colors"
+                className="flex items-center py-3 text-gray-800 hover:text-primary-600 transition-colors"
                 onClick={toggleMobileMenu}
               >
-                <Compass className="h-5 w-5 text-blue-600 mr-3" />
+                <Compass className="h-5 w-5 text-primary-600 mr-3" />
                 <span className="text-base font-medium">Travel Tips</span>
               </Link>
               
@@ -708,18 +708,18 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
               <div className="mt-6 pt-6 border-t border-gray-100">
                 <Link
                   to="/about"
-                  className="flex items-center py-3 text-gray-800 hover:text-blue-600 transition-colors"
+                  className="flex items-center py-3 text-gray-800 hover:text-primary-600 transition-colors"
                   onClick={toggleMobileMenu}
                 >
-                  <User className="h-5 w-5 text-blue-600 mr-3" />
+                  <User className="h-5 w-5 text-primary-600 mr-3" />
                   <span className="text-base font-medium">About</span>
                 </Link>
                 <Link
                   to="/contact"
-                  className="flex items-center py-3 text-gray-800 hover:text-blue-600 transition-colors"
+                  className="flex items-center py-3 text-gray-800 hover:text-primary-600 transition-colors"
                   onClick={toggleMobileMenu}
                 >
-                  <MapPin className="h-5 w-5 text-blue-600 mr-3" />
+                  <MapPin className="h-5 w-5 text-primary-600 mr-3" />
                   <span className="text-base font-medium">Contact</span>
                 </Link>
               </div>
@@ -730,7 +730,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
           <div className="p-4 border-t border-gray-100 bg-white">
             <button
               onClick={onAuthClick}
-              className="w-full flex items-center justify-center rounded-lg bg-blue-600 px-4 py-3 text-sm font-medium text-white hover:bg-blue-700 transition-colors"
+              className="w-full flex items-center justify-center rounded-lg bg-primary-600 px-4 py-3 text-sm font-medium text-white hover:bg-primary-700 transition-colors"
             >
               <User className="h-5 w-5 mr-2" />
               Coming Soon
