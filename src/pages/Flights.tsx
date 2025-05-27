@@ -156,8 +156,12 @@ const Flights = () => {
 
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="absolute inset-0 bg-cover bg-center z-0 opacity-30"
-          style={{ backgroundImage: "url('/images/flights/flights-hero.jpg')" }}>
+        <div className="absolute inset-0 z-0 opacity-30">
+          <img 
+            src="/images/flights_hero.webp" 
+            alt="Aerial view of Greek islands" 
+            className="w-full h-full object-cover"
+          />
         </div>
         
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">

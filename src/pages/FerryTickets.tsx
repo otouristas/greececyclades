@@ -169,42 +169,42 @@ export default function FerryTickets() {
       to: 'Santorini',
       duration: '5h - 8h',
       price: 'From €40',
-      image: '/images/islands/santorini-island.webp'
+      image: '/images/islands/santorini.webp'
     },
     {
       from: 'Piraeus',
       to: 'Mykonos',
       duration: '3h - 5h',
       price: 'From €35',
-      image: '/images/islands/mykonos-island.jpg'
+      image: '/images/islands/mykonos.webp'
     },
     {
       from: 'Rafina',
       to: 'Mykonos',
       duration: '2h - 5h',
       price: 'From €30',
-      image: '/images/islands/mykonos-island.jpg'
+      image: '/images/islands/mykonos.webp'
     },
     {
       from: 'Piraeus',
       to: 'Naxos',
       duration: '4h - 6h',
       price: 'From €38',
-      image: '/images/islands/naxos-island.jpg'
+      image: '/images/islands/naxos.webp'
     },
     {
       from: 'Piraeus',
       to: 'Paros',
       duration: '3h - 5h',
       price: 'From €32',
-      image: '/images/islands/paros-island.jpg'
+      image: '/images/islands/paros.webp'
     },
     {
       from: 'Mykonos',
       to: 'Santorini',
       duration: '2h - 3h',
       price: 'From €25',
-      image: '/images/islands/santorini-island.webp'
+      image: '/images/islands/santorini.webp'
     }
   ];
 
@@ -251,7 +251,7 @@ export default function FerryTickets() {
         {/* Background Image with Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/ferry/ferry-hero.jpg" 
+            src="/images/ferry-tickets.webp" 
             alt="Ferry sailing in the Aegean Sea" 
             className="w-full h-full object-cover"
           />

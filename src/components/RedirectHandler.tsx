@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
-import { redirects } from '../utils/redirects';
+import redirects from '../utils/redirects';
 
 export default function RedirectHandler() {
   const location = useLocation();
