@@ -250,9 +250,9 @@ export default function BlogPost() {
                   </p>
                   <div className="flex items-center text-sm text-gray-500 mb-8">
                     <img
-                      src="/images/team/avatar.jpg"
+                      src="/touristas-ai-logo.svg"
                       alt={post.author}
-                      className="w-12 h-12 rounded-full mr-4"
+                      className="w-12 h-12 mr-4"
                     />
                     <div>
                       <div className="font-medium text-gray-900">{post.author}</div>

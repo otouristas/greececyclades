@@ -3,6 +3,23 @@ import { blogContent } from './blogContent/index';
 
 export const blogPosts: BlogPost[] = [
   {
+    id: 'santorini-ultimate-guide',
+    title: 'Santorini: Your Ultimate Guide to the Jewel of the Cyclades',
+    slug: 'santorini-ultimate-guide',
+    description: 'Discover everything you need to know for your trip to Santorini, from getting there and around, to iconic villages, unique beaches, activities, accommodation, and budgeting tips. Your complete guide to the most beautiful island in the Cyclades.',
+    content: blogContent.santoriniUltimateGuide,
+    author: 'Greece Cyclades Travel Expert',
+    authorRole: 'Santorini Specialist',
+    publishedAt: '2025-01-24',
+    updatedAt: '2025-01-24',
+    featuredImage: '/images/islands/santorini/hero.jpg',
+    category: 'Island Guides',
+    tags: ['Santorini', 'Cyclades', 'Greek Islands', 'Oia', 'Fira', 'Imerovigli', 'Caldera', 'Sunset', 'Blue Domes', 'Volcanic Beaches', 'Wine Tasting', 'Travel Planning', 'Island Hopping', 'Luxury Travel', 'Budget Travel', 'Greece Travel'],
+    readTime: 18,
+    relatedIslands: ['Santorini', 'Mykonos', 'Naxos', 'Paros'],
+    relatedPosts: ['best-cyclades-islands']
+  },
+  {
     id: 'best-cyclades-islands',
     title: 'Best Cyclades Islands: Your Ultimate Guide to Paradise',
     slug: 'best-cyclades-islands',
@@ -17,7 +34,7 @@ export const blogPosts: BlogPost[] = [
     tags: ['Cyclades', 'Greek Islands', 'Santorini', 'Mykonos', 'Naxos', 'Paros', 'Milos', 'Island Hopping', 'Beach Vacation', 'Travel Planning', 'Greece Travel'],
     readTime: 25,
     relatedIslands: ['Santorini', 'Mykonos', 'Naxos', 'Paros', 'Milos'],
-    relatedPosts: []
+    relatedPosts: ['santorini-ultimate-guide']
   },
   {
     id: 'sifnos',
@@ -31,6 +48,7 @@ export const blogPosts: BlogPost[] = [
     featuredImage: '/images/blog/sifnos/sifnos-blog-hero.webp',
     category: 'Island Guides',
     tags: ['Sifnos', 'Greek Islands', 'Pottery', 'Gastronomy', 'Traditions'],
-    readTime: 12
+    readTime: 12,
+    relatedPosts: ['santorini-ultimate-guide', 'best-cyclades-islands']
   }
 ];

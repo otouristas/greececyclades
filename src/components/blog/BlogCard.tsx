@@ -11,7 +11,7 @@ export default function BlogCard({ post }: BlogCardProps) {
   return (
     <div className="group bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow overflow-hidden">
       <Link to={`/blog/${post.slug}`} className="block relative">
-        <div className="aspect-w-16 aspect-h-9 w-full">
+        <div className="aspect-w-16 aspect-h-9 w-full h-48">
           <img 
             src={post.featuredImage} 
             alt={post.title}
@@ -25,7 +25,7 @@ export default function BlogCard({ post }: BlogCardProps) {
         <div className="flex items-center text-sm text-gray-500 mb-3 gap-4">
           <div className="flex items-center gap-1">
             <Calendar className="w-4 h-4" />
-            <span>{new Date(post.date).toLocaleDateString()}</span>
+            <span>{new Date(post.publishedAt).toLocaleDateString()}</span>
           </div>
           <div className="flex items-center gap-1">
             <Clock className="w-4 h-4" />
