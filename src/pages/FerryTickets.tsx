@@ -1160,32 +1160,6 @@ export default function FerryTickets() {
         </div>
       </div>
 
-      {/* FAQs Section */}
-      <div className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Everything you need to know about booking ferry tickets in Greece
-            </p>
-          </div>
-          
-          <div className="max-w-3xl mx-auto divide-y divide-gray-200">
-            {faqs.map((faq, index) => (
-              <div key={index} className="py-6">
-                <h3 className="text-xl font-medium text-gray-900 flex items-start">
-                  <Info className="h-6 w-6 text-[#1E2E48] flex-shrink-0 mr-2" />
-                  {faq.question}
-                </h3>
-                <div className="mt-3 text-gray-600 ml-8">
-                  <p>{faq.answer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      
       {/* CTA Section */}
       <div className="py-16 bg-[#1E2E48]">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
