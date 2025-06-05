@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { Star, MapPin, Building2, Bed, Wifi, Coffee, Utensils, Calendar, Search, Users } from 'lucide-react';
+import { Star, MapPin, Building2, Bed, Wifi, Coffee, Utensils, Calendar, Search, Users, Shield, CheckCircle, Clock, Euro, Award, Heart, Phone, Plane } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 export default function Hotels() {
@@ -38,107 +38,206 @@ export default function Hotels() {
     window.open('https://trip.tp.st/F29Ncvt6', '_blank');
   };
 
-  // Popular destinations
+  // Popular destinations with location images only
   const popularDestinations = [
-    { name: 'Santorini', hotels: 245, image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80' },
-    { name: 'Mykonos', hotels: 187, image: 'https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80' },
-    { name: 'Paros', hotels: 132, image: 'https://images.unsplash.com/photo-1602513685828-0d1f0c9a7ecd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80' },
-    { name: 'Naxos', hotels: 98, image: 'https://images.unsplash.com/photo-1586645068267-81365bd3fac3?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80' },
-    { name: 'Milos', hotels: 76, image: 'https://images.unsplash.com/photo-1504512485720-7d83a16ee930?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80' },
-    { name: 'Ios', hotels: 64, image: 'https://images.unsplash.com/photo-1504512485720-7d83a16ee930?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80' },
+    { 
+      name: 'Santorini', 
+      hotels: 245, 
+      image: '/images/islands/santorini.jpg',
+      description: 'Iconic caldera views and luxury cave hotels',
+      link: '/santorini-guide'
+    },
+    { 
+      name: 'Mykonos', 
+      hotels: 187, 
+      image: '/images/islands/mykonos.jpg',
+      description: 'Vibrant nightlife and beachfront resorts',
+      link: '/mykonos-guide'
+    },
+    { 
+      name: 'Paros', 
+      hotels: 132, 
+      image: '/images/islands/paros.jpg',
+      description: 'Family-friendly resorts and traditional villages',
+      link: '/paros-guide'
+    },
+    { 
+      name: 'Naxos', 
+      hotels: 98, 
+      image: '/images/islands/naxos.jpg',
+      description: 'Authentic Greek culture and beach hotels',
+      link: '/naxos-guide'
+    },
+    { 
+      name: 'Milos', 
+      hotels: 76, 
+      image: '/images/islands/milos.jpg',
+      description: 'Volcanic landscapes and boutique properties',
+      link: '/milos-guide'
+    },
+    { 
+      name: 'Ios', 
+      hotels: 64, 
+      image: '/images/islands/ios.jpg',
+      description: 'Beach clubs and modern accommodations',
+      link: '/ios-guide'
+    },
   ];
 
-  // Featured hotels
-  const featuredHotels = [
+  // Hotel types with icons instead of images
+  const hotelTypes = [
     {
-      name: 'Canaves Oia Suites',
-      location: 'Santorini',
-      rating: 5,
-      price: '€450',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+      title: 'Luxury Resorts',
+      description: 'Five-star properties with world-class amenities, private pools, and premium locations.',
+      price: 'From €300/night',
+      icon: Award,
+      gradient: 'from-primary-100 to-primary-200',
+      features: ['Private pools', 'Spa services', 'Concierge']
     },
     {
-      name: 'Cavo Tagoo',
-      location: 'Mykonos',
-      rating: 5,
-      price: '€520',
-      image: 'https://images.unsplash.com/photo-1582719508461-905c673771fd?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+      title: 'Boutique Hotels',
+      description: 'Charming properties with unique character, personalized service, and local charm.',
+      price: 'From €150/night',
+      icon: Heart,
+      gradient: 'from-secondary-100 to-secondary-200',
+      features: ['Unique design', 'Personal service', 'Local character']
     },
     {
-      name: 'Paros Agnanti Hotel',
-      location: 'Paros',
-      rating: 4,
-      price: '€280',
-      image: 'https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+      title: 'Cave Hotels',
+      description: 'Traditional Cycladic architecture carved into cliffsides with stunning views.',
+      price: 'From €200/night',
+      icon: Building2,
+      gradient: 'from-primary-100 to-primary-200',
+      features: ['Caldera views', 'Traditional style', 'Unique rooms']
     },
     {
-      name: 'Naxian Collection',
-      location: 'Naxos',
-      rating: 4,
-      price: '€320',
-      image: 'https://images.unsplash.com/photo-1566073771259-6a8506099945?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=2340&q=80'
+      title: 'Beach Resorts',
+      description: 'Waterfront properties with direct beach access and water sports facilities.',
+      price: 'From €180/night',
+      icon: Utensils,
+      gradient: 'from-secondary-100 to-secondary-200',
+      features: ['Beach access', 'Water sports', 'Sea views']
+    },
+    {
+      title: 'Family Hotels',
+      description: 'Child-friendly accommodations with family rooms and kid-oriented amenities.',
+      price: 'From €120/night',
+      icon: Users,
+      gradient: 'from-primary-100 to-primary-200',
+      features: ['Family rooms', 'Kids club', 'Play areas']
+    },
+    {
+      title: 'Budget Hotels',
+      description: 'Comfortable and affordable accommodations without compromising on cleanliness.',
+      price: 'From €60/night',
+      icon: Bed,
+      gradient: 'from-secondary-100 to-secondary-200',
+      features: ['Great value', 'Clean rooms', 'Good location']
+    },
+  ];
+
+  // Hotel amenities with enhanced descriptions
+  const amenities = [
+    { name: 'Free WiFi', icon: <Wifi className="h-5 w-5" />, description: 'High-speed internet throughout property' },
+    { name: 'Breakfast Included', icon: <Coffee className="h-5 w-5" />, description: 'Complimentary breakfast buffet' },
+    { name: 'Restaurant', icon: <Utensils className="h-5 w-5" />, description: 'On-site dining with local cuisine' },
+    { name: 'Pool Access', icon: <MapPin className="h-5 w-5" />, description: 'Swimming pool and sunbathing area' },
+    { name: 'Spa Services', icon: <Star className="h-5 w-5" />, description: 'Wellness treatments and massages' },
+    { name: 'Beach Access', icon: <Users className="h-5 w-5" />, description: 'Direct access to private beach' },
+  ];
+
+  // Enhanced FAQs with more comprehensive content
+  const faqs = [
+    {
+      question: 'What is the best time to book hotels in the Cyclades islands?',
+      answer: 'For peak season (July-August), book 4-6 months in advance, especially for Santorini and Mykonos. For shoulder seasons (May-June, September-October), 2-3 months ahead is sufficient. The best deals are often available during early booking periods or last-minute offers in off-season.'
+    },
+    {
+      question: 'What types of accommodation are available in the Cyclades?',
+      answer: 'The Cyclades offer diverse accommodations: luxury cave hotels in Santorini, beach resorts in Mykonos, traditional guesthouses in Naxos and Paros, boutique properties in Milos, and budget-friendly options across all islands. Each island has its unique accommodation style reflecting local architecture and culture.'
+    },
+    {
+      question: 'Are Cyclades hotels family-friendly?',
+      answer: 'Many hotels cater to families, especially in Naxos, Paros, and Crete. Look for properties with family rooms, kids clubs, shallow pools, and child-friendly dining options. Santorini and Mykonos tend to be more adult-oriented, but family options are available.'
+    },
+    {
+      question: 'What amenities should I expect in Cyclades hotels?',
+      answer: 'Most hotels include free WiFi, air conditioning, and breakfast. Higher-end properties offer pools, spa services, restaurants, and beach access. Traditional cave hotels may have unique features like private terraces with caldera views. Always check specific amenities when booking.'
+    },
+    {
+      question: 'How do I get from the airport/port to my hotel?',
+      answer: 'Most hotels offer transfer services (sometimes included). You can also book private transfers, use local buses, or rent a car. In Santorini, many hotels provide complimentary transfers due to the challenging terrain. Check with your hotel about transfer options when booking.'
     }
   ];
 
-  // Hotel amenities
-  const amenities = [
-    { name: 'Free WiFi', icon: <Wifi className="h-5 w-5" /> },
-    { name: 'Breakfast Included', icon: <Coffee className="h-5 w-5" /> },
-    { name: 'Restaurant', icon: <Utensils className="h-5 w-5" /> },
-    { name: 'Pool Access', icon: <Wifi className="h-5 w-5" /> },
-    { name: 'Spa Services', icon: <Wifi className="h-5 w-5" /> },
-    { name: 'Beach Access', icon: <Wifi className="h-5 w-5" /> },
-  ];
-
-  // FAQs
-  const faqs = [
+  // Customer testimonials for CRO
+  const testimonials = [
     {
-      question: 'When is the best time to visit the Cyclades islands?',
-      answer: 'The best time to visit the Cyclades is from May to October when the weather is warm and sunny. July and August are the busiest months with higher prices. For fewer crowds but still pleasant weather, consider May, June, September, or early October.'
+      name: 'Sarah & Mike Thompson',
+      location: 'UK',
+      rating: 5,
+      comment: 'Found the perfect cave hotel in Santorini through this service. The caldera views were breathtaking and the booking process was seamless.',
+      hotel: 'Santorini Cave Hotel'
     },
     {
-      question: 'How far in advance should I book my hotel in the Cyclades?',
-      answer: 'For peak season (July-August), book at least 3-6 months in advance, especially for popular islands like Santorini and Mykonos. For shoulder seasons (May-June, September-October), 1-3 months ahead is usually sufficient. Last-minute bookings are possible in the off-season but selection will be limited during peak times.'
+      name: 'Maria Rodriguez',
+      location: 'Spain',
+      rating: 5,
+      comment: 'Excellent family resort in Naxos. Kids loved the pool and beach access. Great value for money and very helpful staff.',
+      hotel: 'Naxos Family Resort'
     },
     {
-      question: 'Are hotels in the Cyclades family-friendly?',
-      answer: 'Many hotels in the Cyclades are family-friendly, but it varies by property and island. Naxos and Paros are particularly good for families with children, offering many family-oriented accommodations. Always check if a hotel has family rooms, child-friendly amenities, and activities before booking.'
-    },
-    {
-      question: "What's the difference between hotels in different Cyclades islands?",
-      answer: 'Each island offers a unique hotel experience. Santorini is known for luxury cave hotels with caldera views. Mykonos features upscale beach resorts and boutique properties. Paros and Naxos offer more family-friendly and affordable options. Smaller islands like Folegandros and Milos have charming, traditional accommodations with local character.'
+      name: 'James Chen',
+      location: 'Australia',
+      rating: 5,
+      comment: 'Boutique hotel in Mykonos exceeded expectations. Perfect location near the nightlife but quiet enough for rest. Highly recommended!',
+      hotel: 'Mykonos Boutique Hotel'
     }
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-secondary-50">
       <Helmet>
-        <title>Hotels in Cyclades | Find Your Perfect Stay</title>
-        <meta name="description" content="Book your perfect stay in the Cyclades islands. Browse our curated selection of hotels, from luxury resorts to boutique accommodations." />
+        <title>Hotels in Cyclades Islands Greece | Best Accommodation Deals Santorini, Mykonos | Greece Cyclades</title>
+        <meta name="description" content="Book the best hotels in Greek Islands. Luxury resorts, boutique hotels, cave accommodations in Santorini, Mykonos, Naxos, Paros. Best prices, free cancellation. Find your perfect Cyclades accommodation today!" />
+        <meta name="keywords" content="hotels greece, cyclades accommodation, greek island hotels, santorini hotels, mykonos hotels, naxos hotels, paros hotels, greece accommodation booking" />
         <link rel="canonical" href="https://greececyclades.com/hotels" />
+        <meta property="og:title" content="Hotels in Cyclades Islands Greece | Best Accommodation Deals" />
+        <meta property="og:description" content="Find perfect hotels in Greek Islands. Luxury resorts to budget accommodations. Best prices guaranteed." />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://greececyclades.com/hotels" />
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "LodgingBusiness",
+            "name": "Greece Cyclades Hotels",
+            "description": "Premium hotel booking service for Cyclades islands including Santorini, Mykonos, Naxos, and Paros",
+            "url": "https://greececyclades.com/hotels",
+            "areaServed": ["Santorini", "Mykonos", "Naxos", "Paros", "Milos", "Ios", "Cyclades Islands"],
+            "priceRange": "€60-€500"
+          })}
+        </script>
       </Helmet>
       
       {/* Hero Section with Search Widget */}
-      <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        {/* Background Image with Overlay */}
-        <div 
-          className="absolute inset-0 bg-cover bg-center z-0 opacity-30"
-          style={{ backgroundImage: "url('/images/hotels/hotels-hero.jpg')" }}
-        ></div>
+      <div className="relative bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 text-white">
+        <div className="absolute inset-0 bg-primary-800/20"></div>
         
         <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
           <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Find Your Perfect Hotel in the Cyclades</h1>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto">Discover luxury resorts, boutique hotels, and cozy accommodations across Santorini, Mykonos, and other beautiful Greek islands</p>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4">Hotels in Cyclades Islands Greece</h1>
+            <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
+              Discover luxury resorts, boutique hotels, and authentic accommodations across <Link to="/santorini-guide" className="underline hover:text-secondary-200">Santorini</Link>, <Link to="/mykonos-guide" className="underline hover:text-secondary-200">Mykonos</Link>, <Link to="/naxos-guide" className="underline hover:text-secondary-200">Naxos</Link>, and all Greek islands
+            </p>
           </div>
           
           {/* Search Widget */}
-          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden p-6">
+          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden p-6" id="hotel-search-container">
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 {/* Destination */}
                 <div className="col-span-1 md:col-span-2">
-                  <label htmlFor="destination" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="destination" className="block text-sm font-medium text-primary-600 mb-1">
                     Destination
                   </label>
                   <div className="relative">
@@ -146,7 +245,7 @@ export default function Hotels() {
                       id="destination"
                       value={destination}
                       onChange={(e) => setDestination(e.target.value)}
-                      className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 pl-10 bg-white border border-secondary-300 rounded-lg text-primary-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     >
                       <option value="Santorini">Santorini</option>
                       <option value="Mykonos">Mykonos</option>
@@ -159,13 +258,13 @@ export default function Hotels() {
                       <option value="Amorgos">Amorgos</option>
                       <option value="Syros">Syros</option>
                     </select>
-                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-primary-400" />
                   </div>
                 </div>
                 
                 {/* Check-in Date */}
                 <div>
-                  <label htmlFor="check-in" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="check-in" className="block text-sm font-medium text-primary-600 mb-1">
                     Check-in Date
                   </label>
                   <div className="relative">
@@ -175,15 +274,15 @@ export default function Hotels() {
                       value={checkIn}
                       onChange={(e) => setCheckIn(e.target.value)}
                       min={formatDate(new Date())}
-                      className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 pl-10 bg-white border border-secondary-300 rounded-lg text-primary-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     />
-                    <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-primary-400" />
                   </div>
                 </div>
                 
                 {/* Check-out Date */}
                 <div>
-                  <label htmlFor="check-out" className="block text-sm font-medium text-gray-700 mb-1">
+                  <label htmlFor="check-out" className="block text-sm font-medium text-primary-600 mb-1">
                     Check-out Date
                   </label>
                   <div className="relative">
@@ -193,9 +292,9 @@ export default function Hotels() {
                       value={checkOut}
                       onChange={(e) => setCheckOut(e.target.value)}
                       min={checkIn}
-                      className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                      className="w-full px-4 py-3 pl-10 bg-white border border-secondary-300 rounded-lg text-primary-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                     />
-                    <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                    <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-primary-400" />
                   </div>
                 </div>
                 
@@ -203,7 +302,7 @@ export default function Hotels() {
                 <div className="grid grid-cols-2 gap-4">
                   {/* Guests */}
                   <div>
-                    <label htmlFor="guests" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="guests" className="block text-sm font-medium text-primary-600 mb-1">
                       Guests
                     </label>
                     <div className="relative">
@@ -211,19 +310,19 @@ export default function Hotels() {
                         id="guests"
                         value={guests}
                         onChange={(e) => setGuests(parseInt(e.target.value))}
-                        className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-3 pl-10 bg-white border border-secondary-300 rounded-lg text-primary-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       >
                         {[1, 2, 3, 4, 5, 6, 7, 8].map(num => (
                           <option key={num} value={num}>{num} {num === 1 ? 'Guest' : 'Guests'}</option>
                         ))}
                       </select>
-                      <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                      <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-primary-400" />
                     </div>
                   </div>
                   
                   {/* Rooms */}
                   <div>
-                    <label htmlFor="rooms" className="block text-sm font-medium text-gray-700 mb-1">
+                    <label htmlFor="rooms" className="block text-sm font-medium text-primary-600 mb-1">
                       Rooms
                     </label>
                     <div className="relative">
@@ -231,13 +330,13 @@ export default function Hotels() {
                         id="rooms"
                         value={rooms}
                         onChange={(e) => setRooms(parseInt(e.target.value))}
-                        className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        className="w-full px-4 py-3 pl-10 bg-white border border-secondary-300 rounded-lg text-primary-700 focus:ring-2 focus:ring-primary-500 focus:border-transparent"
                       >
                         {[1, 2, 3, 4, 5].map(num => (
                           <option key={num} value={num}>{num} {num === 1 ? 'Room' : 'Rooms'}</option>
                         ))}
                       </select>
-                      <Bed className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
+                      <Bed className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-primary-400" />
                     </div>
                   </div>
                 </div>
@@ -246,10 +345,10 @@ export default function Hotels() {
                 <div className="col-span-1 md:col-span-2">
                   <button
                     type="submit"
-                    className="w-full py-4 bg-blue-600 hover:bg-blue-700 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
+                    className="w-full py-4 bg-primary-600 hover:bg-primary-700 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
                   >
                     <Search className="h-5 w-5" />
-                    Search Hotels
+                    Search Hotels Now
                   </button>
                 </div>
               </div>
@@ -260,114 +359,222 @@ export default function Hotels() {
       
       {/* Main Content */}
       <div className="container mx-auto px-4 py-12">
-        {/* Why Book With Us */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-10">Why Book With Us</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
-                <Building2 className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Curated Selection</h3>
-              <p className="text-gray-600">We handpick the best hotels across the Cyclades islands to ensure quality accommodations for every budget.</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
-                <Star className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Best Price Guarantee</h3>
-              <p className="text-gray-600">Find a lower price elsewhere? We'll match it and give you an additional 10% discount on your booking.</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
-                <Bed className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Free Cancellation</h3>
-              <p className="text-gray-600">Plans change? No problem. Most of our hotel bookings offer free cancellation up to 24-48 hours before check-in.</p>
+        
+        {/* SEO Introduction Section */}
+        <div className="mb-16 max-w-4xl mx-auto">
+          <div className="bg-white rounded-lg shadow-md p-8 border border-secondary-200">
+            <h2 className="text-3xl font-bold text-primary-600 mb-6 text-center">Why Choose Cyclades Islands for Your Perfect Stay?</h2>
+            <div className="prose prose-lg max-w-none text-primary-400 leading-relaxed">
+              <p className="mb-4">
+                The <strong>Cyclades islands</strong> offer some of the world's most unique and memorable accommodations. From luxury <Link to="/santorini-guide" className="text-primary-600 hover:text-primary-700 font-medium">cave hotels in Santorini</Link> with breathtaking caldera views to charming boutique properties in <Link to="/naxos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Naxos</Link> and <Link to="/paros-guide" className="text-primary-600 hover:text-primary-700 font-medium">Paros</Link>, each island provides distinct accommodation experiences that reflect authentic Greek hospitality.
+              </p>
+              <p className="mb-4">
+                Our <strong>hotel booking service</strong> specializes in the Cyclades, ensuring you find the perfect accommodation for your Greek island adventure. Whether you're seeking a romantic honeymoon suite in <Link to="/mykonos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Mykonos</Link>, a family-friendly resort in Naxos, or a secluded retreat in <Link to="/milos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Milos</Link>, we provide expert recommendations and unbeatable prices.
+              </p>
+              <p>
+                Combine your perfect accommodation with our <Link to="/ferry-tickets" className="text-primary-600 hover:text-primary-700 font-medium">ferry booking service</Link> for seamless island hopping, and don't forget to arrange your <Link to="/rent-a-car" className="text-primary-600 hover:text-primary-700 font-medium">car rental</Link> for exploring each island at your own pace.
+              </p>
             </div>
           </div>
         </div>
-        
+
+        {/* Why Book With Us */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-primary-600 text-center mb-4">Why Choose Our Hotel Booking Service</h2>
+          <p className="text-primary-400 text-center mb-10 max-w-3xl mx-auto">
+            We provide the most comprehensive and reliable hotel booking experience for the Cyclades islands, with expert local knowledge and unmatched customer service.
+          </p>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-white rounded-lg shadow-md p-6 text-center border-t-4 border-primary-500">
+              <div className="inline-block p-3 bg-primary-100 rounded-full mb-4">
+                <Building2 className="text-primary-600 w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-semibold text-primary-600 mb-2">Curated Selection of Properties</h3>
+              <p className="text-primary-400">We handpick the finest hotels across the Cyclades islands, ensuring quality accommodations that meet our high standards for every budget and travel style.</p>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6 text-center border-t-4 border-secondary-400">
+              <div className="inline-block p-3 bg-secondary-100 rounded-full mb-4">
+                <Star className="text-secondary-600 w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-semibold text-primary-600 mb-2">Best Price Guarantee</h3>
+              <p className="text-primary-400">Find a lower price elsewhere? We'll match it and provide an additional 10% discount. Transparent pricing with no hidden booking fees or surprises.</p>
+            </div>
+            <div className="bg-white rounded-lg shadow-md p-6 text-center border-t-4 border-primary-500">
+              <div className="inline-block p-3 bg-primary-100 rounded-full mb-4">
+                <Shield className="text-primary-600 w-8 h-8" />
+              </div>
+              <h3 className="text-xl font-semibold text-primary-600 mb-2">Free Cancellation & Support</h3>
+              <p className="text-primary-400">Most bookings offer free cancellation up to 48 hours before arrival. 24/7 customer support for any questions or changes to your reservation.</p>
+            </div>
+          </div>
+        </div>
+
         {/* Popular Destinations */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">Popular Destinations</h2>
-          <p className="text-gray-600 text-center mb-10 max-w-3xl mx-auto">Explore the most sought-after islands in the Cyclades for your perfect getaway</p>
+          <h2 className="text-3xl font-bold text-primary-600 text-center mb-4">Popular Cyclades Islands for Your Perfect Stay</h2>
+          <p className="text-primary-400 text-center mb-10 max-w-3xl mx-auto">
+            Each Cyclades island offers unique accommodation experiences, from luxury resorts to traditional guesthouses. Explore our detailed island guides to find your perfect destination.
+          </p>
           
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {popularDestinations.map((destination, index) => (
-              <div key={index} className="group relative h-64 overflow-hidden rounded-lg shadow-md">
+              <Link 
+                key={index}
+                to={destination.link}
+                className="group relative h-64 overflow-hidden rounded-lg shadow-md border border-secondary-200 hover:shadow-xl transition-all"
+              >
                 <img 
                   src={destination.image} 
-                  alt={`${destination.name}, Cyclades`} 
+                  alt={`${destination.name}, Cyclades hotels and accommodations`} 
                   className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent"></div>
-                <div className="absolute bottom-0 left-0 p-6">
-                  <h3 className="text-xl font-bold text-white mb-1">{destination.name}</h3>
-                  <p className="text-white/80 text-sm">{destination.hotels} hotels</p>
+                <div className="absolute inset-0 bg-gradient-to-t from-primary-800/80 to-transparent"></div>
+                <div className="absolute bottom-0 left-0 p-6 text-white">
+                  <h3 className="text-xl font-bold mb-1">{destination.name}</h3>
+                  <p className="text-white/90 text-sm mb-2">{destination.hotels} hotels available</p>
+                  <p className="text-white/80 text-xs">{destination.description}</p>
                 </div>
-                <a href="#hotel-search-container" className="absolute inset-0 z-10">
-                  <span className="sr-only">View hotels in {destination.name}</span>
-                </a>
-              </div>
+                <div className="absolute top-4 right-4 bg-white/20 backdrop-blur-sm rounded-full p-2">
+                  <MapPin className="w-4 h-4 text-white" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
         
-        {/* Featured Hotels */}
+        {/* Hotel Types */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">Featured Hotels</h2>
-          <p className="text-gray-600 text-center mb-10 max-w-3xl mx-auto">Handpicked luxury and boutique accommodations across the Cyclades islands</p>
+          <h2 className="text-3xl font-bold text-primary-600 text-center mb-6">Types of Accommodation in the Cyclades</h2>
+          <p className="text-primary-400 text-center mb-10 max-w-3xl mx-auto">
+            From luxury resorts to budget-friendly guesthouses, the Cyclades offer diverse accommodation options to suit every traveler's needs and preferences.
+          </p>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {featuredHotels.map((hotel, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden group">
-                <div className="relative h-48 overflow-hidden">
-                  <img 
-                    src={hotel.image} 
-                    alt={hotel.name} 
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                </div>
-                <div className="p-4">
-                  <div className="flex items-center justify-between mb-2">
-                    <h3 className="text-lg font-semibold text-gray-800">{hotel.name}</h3>
-                    <div className="flex items-center">
-                      <Star className="h-4 w-4 text-yellow-500 mr-1" />
-                      <span className="text-sm font-medium">{hotel.rating}</span>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {hotelTypes.map((hotelType, index) => {
+              const IconComponent = hotelType.icon;
+              return (
+                <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden border border-secondary-200 hover:shadow-lg transition-shadow">
+                  <div className={`h-32 bg-gradient-to-br ${hotelType.gradient} flex items-center justify-center`}>
+                    <IconComponent className="w-16 h-16 text-primary-600" />
+                  </div>
+                  <div className="p-6">
+                    <h3 className="text-xl font-semibold text-primary-600 mb-2">{hotelType.title}</h3>
+                    <p className="text-primary-400 mb-4">{hotelType.description}</p>
+                    <div className="flex items-center text-sm text-primary-500 mb-3">
+                      <Euro className="mr-2 w-4 h-4" /> 
+                      <span className="font-medium">{hotelType.price}</span>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                      {hotelType.features.map((feature, idx) => (
+                        <span key={idx} className="text-xs bg-primary-50 text-primary-600 px-2 py-1 rounded-full">
+                          {feature}
+                        </span>
+                      ))}
                     </div>
                   </div>
-                  <div className="flex items-center text-gray-500 text-sm mb-3">
-                    <MapPin className="h-4 w-4 mr-1" />
-                    <span>{hotel.location}</span>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+
+        {/* SEO Content Section - Comprehensive Guide */}
+        <div className="mb-16">
+          <div className="bg-white rounded-lg shadow-md p-8 border border-secondary-200">
+            <h2 className="text-3xl font-bold text-primary-600 mb-6">Complete Guide to Booking Hotels in Greek Islands</h2>
+            
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+              <div>
+                <h3 className="text-xl font-semibold text-primary-600 mb-4">Planning Your Cyclades Accommodation</h3>
+                <p className="text-primary-400 mb-4">
+                  When booking <strong>hotels in the Cyclades</strong>, consider your travel style and island preferences. <Link to="/santorini-guide" className="text-primary-600 hover:text-primary-700 font-medium">Santorini</Link> offers luxury cave hotels with iconic views, while <Link to="/naxos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Naxos</Link> and <Link to="/paros-guide" className="text-primary-600 hover:text-primary-700 font-medium">Paros</Link> provide excellent family-friendly options.
+                </p>
+                <p className="text-primary-400 mb-4">
+                  Combine your hotel booking with our <Link to="/ferry-tickets" className="text-primary-600 hover:text-primary-700 font-medium">ferry ticket service</Link> for seamless island hopping. Many hotels offer transfer services from ports and airports - always inquire when booking.
+                </p>
+              </div>
+              
+              <div>
+                <h3 className="text-xl font-semibold text-primary-600 mb-4">Best Times to Book Cyclades Hotels</h3>
+                <ul className="text-primary-400 space-y-2">
+                  <li className="flex items-start"><CheckCircle className="w-5 h-5 text-secondary-600 mr-2 mt-0.5 flex-shrink-0" />Peak season (July-August): Book 4-6 months in advance</li>
+                  <li className="flex items-start"><CheckCircle className="w-5 h-5 text-secondary-600 mr-2 mt-0.5 flex-shrink-0" />Shoulder season (May-June, September): Book 2-3 months ahead</li>
+                  <li className="flex items-start"><CheckCircle className="w-5 h-5 text-secondary-600 mr-2 mt-0.5 flex-shrink-0" />Off-season (October-April): Book 3-4 weeks in advance</li>
+                  <li className="flex items-start"><CheckCircle className="w-5 h-5 text-secondary-600 mr-2 mt-0.5 flex-shrink-0" />Last-minute deals: Available during off-peak periods</li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="mt-8 pt-8 border-t border-secondary-200">
+              <h3 className="text-xl font-semibold text-primary-600 mb-4">Essential Hotel Booking Information</h3>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="text-center">
+                  <div className="inline-block p-3 bg-primary-100 rounded-full mb-3">
+                    <Clock className="w-6 h-6 text-primary-600" />
                   </div>
-                  <div className="flex items-center justify-between">
-                    <span className="text-blue-600 font-semibold">From {hotel.price}/night</span>
-                    <a 
-                      href="#hotel-search-container" 
-                      className="text-sm font-medium text-blue-600 hover:text-blue-800 transition-colors"
-                    >
-                      View Details
-                    </a>
+                  <h4 className="font-semibold text-primary-600 mb-2">Check-in/Check-out</h4>
+                  <p className="text-sm text-primary-400">Standard times: Check-in 3 PM, Check-out 11 AM. Many hotels offer luggage storage</p>
+                </div>
+                <div className="text-center">
+                  <div className="inline-block p-3 bg-secondary-100 rounded-full mb-3">
+                    <Shield className="w-6 h-6 text-secondary-600" />
                   </div>
+                  <h4 className="font-semibold text-primary-600 mb-2">Cancellation Policy</h4>
+                  <p className="text-sm text-primary-400">Most hotels offer free cancellation 24-48 hours before arrival during non-peak periods</p>
+                </div>
+                <div className="text-center">
+                  <div className="inline-block p-3 bg-primary-100 rounded-full mb-3">
+                    <Euro className="w-6 h-6 text-primary-600" />
+                  </div>
+                  <h4 className="font-semibold text-primary-600 mb-2">Payment Options</h4>
+                  <p className="text-sm text-primary-400">Credit cards accepted, some properties require deposit, city tax may apply</p>
                 </div>
               </div>
-            ))}
+            </div>
           </div>
         </div>
         
         {/* Hotel Amenities */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">Common Hotel Amenities</h2>
-          <p className="text-gray-600 text-center mb-10 max-w-3xl mx-auto">Most hotels in the Cyclades offer these popular amenities to enhance your stay</p>
+          <h2 className="text-3xl font-bold text-primary-600 text-center mb-4">Standard Hotel Amenities in the Cyclades</h2>
+          <p className="text-primary-400 text-center mb-10 max-w-3xl mx-auto">
+            Most hotels in the Cyclades offer these popular amenities to enhance your Greek island experience and ensure a comfortable stay.
+          </p>
           
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {amenities.map((amenity, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-sm p-4 text-center">
-                <div className="inline-block p-2 bg-blue-50 rounded-full mb-3 text-blue-600">
+              <div key={index} className="bg-white rounded-lg shadow-md p-6 text-center border border-secondary-200 hover:shadow-lg transition-shadow">
+                <div className="inline-block p-3 bg-primary-100 rounded-full mb-4 text-primary-600">
                   {amenity.icon}
                 </div>
-                <h3 className="text-sm font-medium text-gray-800">{amenity.name}</h3>
+                <h3 className="text-lg font-semibold text-primary-600 mb-2">{amenity.name}</h3>
+                <p className="text-sm text-primary-400">{amenity.description}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Customer Testimonials Section */}
+        <div className="mb-16">
+          <h2 className="text-3xl font-bold text-primary-600 text-center mb-10">What Our Guests Say About Cyclades Hotels</h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            {testimonials.map((testimonial, index) => (
+              <div key={index} className="bg-white rounded-lg shadow-md p-6 border border-secondary-200">
+                <div className="flex items-center mb-4">
+                  <div className="flex text-yellow-400">
+                    {[...Array(testimonial.rating)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
+                  <span className="ml-2 text-sm text-primary-400">{testimonial.rating}.0 rating</span>
+                </div>
+                <p className="text-primary-400 mb-4 italic">
+                  "{testimonial.comment}"
+                </p>
+                <div className="border-t border-secondary-200 pt-4">
+                  <p className="text-sm text-primary-600 font-medium">{testimonial.name}</p>
+                  <p className="text-xs text-primary-400">{testimonial.location} • {testimonial.hotel}</p>
+                </div>
               </div>
             ))}
           </div>
@@ -375,15 +582,18 @@ export default function Hotels() {
         
         {/* FAQs */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-10">Frequently Asked Questions</h2>
+          <h2 className="text-3xl font-bold text-primary-600 text-center mb-10">Frequently Asked Questions About Cyclades Hotels</h2>
           
           <div className="max-w-3xl mx-auto">
             <div className="space-y-6">
               {faqs.map((faq, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                  <div className="p-6">
-                    <h3 className="text-lg font-semibold text-gray-800 mb-2">{faq.question}</h3>
-                    <p className="text-gray-600">{faq.answer}</p>
+                <div key={index} className="bg-white rounded-lg shadow-md p-6 border border-secondary-200">
+                  <h3 className="text-lg font-semibold text-primary-600 mb-3 flex items-start">
+                    <Building2 className="h-6 w-6 text-primary-600 flex-shrink-0 mr-2 mt-0.5" />
+                    {faq.question}
+                  </h3>
+                  <div className="ml-8">
+                    <p className="text-primary-400">{faq.answer}</p>
                   </div>
                 </div>
               ))}
@@ -392,17 +602,61 @@ export default function Hotels() {
         </div>
         
         {/* CTA Section */}
-        <div className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-md overflow-hidden">
+        <div className="bg-gradient-to-br from-primary-600 to-primary-800 rounded-lg shadow-md overflow-hidden border border-primary-500">
           <div className="flex flex-col md:flex-row">
             <div className="md:w-1/2 p-8 md:p-12">
-              <h2 className="text-3xl font-bold text-white mb-4">Ready to Book Your Dream Hotel?</h2>
-              <p className="text-white text-lg mb-6">Find the perfect accommodation for your Cyclades island getaway today.</p>
+              <h2 className="text-3xl font-bold text-white mb-4">Ready to Book Your Dream Hotel in the Cyclades?</h2>
+              <p className="text-white/90 text-lg mb-6">
+                Find the perfect accommodation for your Greek island getaway today. 
+                Combine with our <Link to="/ferry-tickets" className="underline hover:text-secondary-200">ferry booking service</Link> and 
+                <Link to="/rent-a-car" className="underline hover:text-secondary-200"> car rental options</Link> for the complete travel solution.
+              </p>
               <div className="flex flex-col sm:flex-row space-y-3 sm:space-y-0 sm:space-x-4">
-                <a href="#hotel-search-container" className="inline-block bg-white text-blue-700 font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-gray-100 transition duration-300">Search Hotels</a>
-                <Link to="/flights" className="inline-block bg-transparent text-white border-2 border-white font-semibold px-6 py-3 rounded-lg hover:bg-white hover:bg-opacity-10 transition duration-300">Check Flights</Link>
+                <a href="#hotel-search-container" className="inline-block bg-white text-primary-700 font-semibold px-6 py-3 rounded-lg shadow-md hover:bg-secondary-50 transition duration-300">
+                  Search Hotels Now
+                </a>
+                <Link to="/flights" className="inline-block bg-transparent text-white border-2 border-white font-semibold px-6 py-3 rounded-lg hover:bg-white/10 transition duration-300">
+                  Check Flights
+                </Link>
               </div>
             </div>
-            <div className="md:w-1/2 bg-cover bg-center" style={{ backgroundImage: "url('/images/hotels/hotels-hero.jpg')" }}></div>
+            <div className="md:w-1/2 bg-gradient-to-br from-secondary-200 to-secondary-300 flex items-center justify-center p-12">
+              <div className="text-center">
+                <Building2 className="w-24 h-24 text-primary-600 mx-auto mb-4" />
+                <p className="text-primary-600 font-medium text-lg">Find Your Perfect Stay</p>
+                <p className="text-primary-500 text-sm mt-2">Best prices • Free cancellation • 24/7 support</p>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Related Services Section */}
+        <div className="mt-16 bg-secondary-50 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-primary-600 text-center mb-6">Complete Your Greek Island Experience</h2>
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-6">
+            <Link to="/ferry-tickets" className="text-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-secondary-200">
+              <Building2 className="w-8 h-8 text-primary-600 mx-auto mb-2" />
+              <h3 className="font-semibold text-primary-600 mb-1">Ferry Tickets</h3>
+              <p className="text-sm text-primary-400">Island hopping made easy</p>
+            </Link>
+            
+            <Link to="/rent-a-car" className="text-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-secondary-200">
+              <MapPin className="w-8 h-8 text-primary-600 mx-auto mb-2" />
+              <h3 className="font-semibold text-primary-600 mb-1">Car Rental</h3>
+              <p className="text-sm text-primary-400">Explore at your own pace</p>
+            </Link>
+            
+            <Link to="/activities" className="text-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-secondary-200">
+              <Star className="w-8 h-8 text-primary-600 mx-auto mb-2" />
+              <h3 className="font-semibold text-primary-600 mb-1">Activities</h3>
+              <p className="text-sm text-primary-400">Tours and experiences</p>
+            </Link>
+            
+            <Link to="/flights" className="text-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow border border-secondary-200">
+              <Plane className="w-8 h-8 text-primary-600 mx-auto mb-2" />
+              <h3 className="font-semibold text-primary-600 mb-1">Flights</h3>
+              <p className="text-sm text-primary-400">Best flight deals to Greece</p>
+            </Link>
           </div>
         </div>
       </div>
