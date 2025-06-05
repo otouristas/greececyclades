@@ -800,7 +800,7 @@ export default function FerryTickets() {
       </div>
       
       {/* FAQs Section */}
-      <div className="py-16 bg-white">
+      <div className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center mb-12">
             <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
@@ -825,112 +825,308 @@ export default function FerryTickets() {
         </div>
       </div>
       
-      {/* SEO Content Section */}
-      <div className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Guide to Cyclades Ferry Travel</h2>
+      {/* FerryScanner App Section */}
+      <div className="py-20 bg-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-purple-50/30"></div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
             
-            <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-gray-700 mb-6">
-                The <a href="/islands" className="text-[#1E2E48] hover:underline font-medium">Cyclades islands</a>, with their iconic white-washed buildings and blue-domed churches, are one of Greece's most beloved destinations. Island hopping by ferry is the perfect way to experience multiple islands during your vacation, allowing you to discover each island's unique character and charm.
+            {/* Left Column - Image */}
+            <div className="relative">
+              <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl opacity-20 blur-lg"></div>
+              <div className="relative bg-white rounded-2xl p-8 shadow-2xl">
+                <img 
+                  src="https://hotelssifnos.com/uploads/ferries/iPhones.webp?v=1749114597509-383" 
+                  alt="FerryScanner App on mobile devices"
+                  className="w-full h-auto max-w-md mx-auto rounded-xl"
+                />
+                
+                {/* QR Code Section */}
+                <div className="mt-8 text-center">
+                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-4">
+                    <span className="text-white font-bold text-lg">QR</span>
+                  </div>
+                  <p className="text-sm text-gray-600 font-medium">Scan QR</p>
+                  <p className="text-xs text-gray-500 mt-1">MOBILE APP</p>
+                </div>
+              </div>
+            </div>
+            
+            {/* Right Column - Content */}
+            <div className="lg:pl-8">
+              <div className="mb-8">
+                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                  Download The <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">FerryScanner</span> App
+                </h2>
+                <p className="text-xl text-gray-600 leading-relaxed">
+                  Book and manage your ferry trips on the go with our feature-rich mobile application
+                </p>
+              </div>
+              
+              {/* App Store Buttons */}
+              <div className="flex flex-col sm:flex-row gap-4 mb-12">
+                <a
+                  href="https://apps.apple.com/us/app/ferryscanner-book-your-ferry/id6736605125"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors group"
+                >
+                  <svg className="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
+                  </svg>
+                  <div className="text-left">
+                    <div className="text-xs">Download on the</div>
+                    <div className="text-lg font-semibold">App Store</div>
+                  </div>
+                </a>
+                
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.ferryscanner.mobile&hl=en"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center justify-center px-6 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors group"
+                >
+                  <svg className="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
+                  </svg>
+                  <div className="text-left">
+                    <div className="text-xs">Get it on</div>
+                    <div className="text-lg font-semibold">Google Play</div>
+                  </div>
+                </a>
+              </div>
+              
+              {/* Ferry booking tagline */}
+              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-6 mb-8">
+                <h3 className="text-2xl font-bold mb-2">Ferry booking</h3>
+                <p className="text-blue-100 text-lg">at your fingertips!</p>
+              </div>
+              
+              {/* Features List */}
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
+                    <MapPin className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Explore and Book with Ease</h4>
+                    <p className="text-gray-600">Use our interactive map to find and book ferry trips effortlessly.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
+                    <Search className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Quick Search</h4>
+                    <p className="text-gray-600">Prefer a more classic approach? Input your details and find trips in seconds.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                    <Users className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Personalize Your Experience</h4>
+                    <p className="text-gray-600">Sign up to save preferences, passengers, and payment details.</p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start space-x-4">
+                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
+                    <CheckCircle className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Travel Paper-Free</h4>
+                    <p className="text-gray-600">Book your ferry and store your ticket right on your phone for a smooth journey.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* SEO Content Section - Redesigned */}
+      <div className="relative py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden">
+        {/* Background Pattern */}
+        <div className="absolute inset-0 opacity-5">
+          <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-blue-300"></div>
+          <div className="absolute bottom-20 right-20 w-24 h-24 rounded-full bg-blue-200"></div>
+          <div className="absolute top-1/2 left-1/4 w-16 h-16 rounded-full bg-[#E3D7C3]"></div>
+        </div>
+        
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+          {/* Header Section */}
+          <div className="text-center mb-16">
+            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mb-6">
+              <Ship className="h-8 w-8 text-white" />
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#1E2E48] to-blue-600 bg-clip-text text-transparent mb-6">
+              Ferries to Cyclades islands powered by Touristas AI
+            </h2>
+            <div className="max-w-4xl mx-auto">
+              <p className="text-xl text-gray-700 mb-6 leading-relaxed">
+                The <a href="/islands" className="text-blue-600 hover:text-blue-700 font-semibold hover:underline transition-colors">Cyclades islands</a>, with their iconic white-washed buildings and blue-domed churches, are one of Greece's most beloved destinations. Island hopping by ferry is the perfect way to experience multiple islands during your vacation, allowing you to discover each island's unique character and charm.
               </p>
               
-              <p className="text-gray-700 mb-6">
-                The Greek ferry system is extensive and well-developed, connecting all major islands with regular services. During the summer months (June to September), ferries operate at their highest frequency, with multiple daily connections between popular islands like <a href="/islands/santorini" className="text-[#1E2E48] hover:underline">Santorini</a>, <a href="/islands/mykonos" className="text-[#1E2E48] hover:underline">Mykonos</a>, <a href="/islands/paros" className="text-[#1E2E48] hover:underline">Paros</a>, and <a href="/islands/naxos" className="text-[#1E2E48] hover:underline">Naxos</a>.
+              <p className="text-lg text-gray-600 leading-relaxed">
+                The Greek ferry system is extensive and well-developed, connecting all major islands with regular services. During the summer months (June to September), ferries operate at their highest frequency, with multiple daily connections between popular islands like <a href="/islands/santorini" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Santorini</a>, <a href="/islands/mykonos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Mykonos</a>, <a href="/islands/paros" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Paros</a>, and <a href="/islands/naxos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Naxos</a>.
               </p>
-              
-              <h3 className="text-2xl font-semibold text-[#1E2E48] mt-8 mb-4">Types of Ferry Services</h3>
-              
-              <p className="text-gray-700 mb-4">
+            </div>
+          </div>
+          
+          {/* Ferry Types Section */}
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold text-[#1E2E48] text-center mb-4">Types of Ferry Services</h3>
+            <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
                 When traveling between the Cyclades islands, you'll encounter two main types of ferries:
               </p>
               
-              <div className="bg-white rounded-lg p-6 mb-6 border border-gray-200">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">🚢 Conventional Ferries</h4>
-                <p className="text-gray-700 mb-4">
+            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+              {/* Conventional Ferries */}
+              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div className="flex items-center mb-6">
+                  <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl mr-4">
+                    <Ship className="h-7 w-7 text-white" />
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900">Conventional Ferries</h4>
+                </div>
+                <p className="text-gray-700 mb-6 leading-relaxed">
                   These larger vessels are more stable in rough seas and can accommodate vehicles. They're typically slower but more affordable and less likely to be canceled due to weather conditions. Perfect for travelers with cars or those seeking a more comfortable journey.
                 </p>
-                <ul className="list-disc list-inside text-gray-700 space-y-1">
-                  <li>Duration: 5-8 hours from Athens to Santorini</li>
-                  <li>Vehicle capacity available</li>
-                  <li>More stable in rough weather</li>
-                  <li>Budget-friendly option</li>
-                </ul>
+                <div className="space-y-3">
+                  <div className="flex items-center text-gray-700">
+                    <Clock className="h-4 w-4 text-blue-500 mr-3 flex-shrink-0" />
+                    <span className="text-sm">Duration: 5-8 hours from Athens to Santorini</span>
+                  </div>
+                  <div className="flex items-center text-gray-700">
+                    <CheckCircle className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
+                    <span className="text-sm">Vehicle capacity available</span>
+                  </div>
+                  <div className="flex items-center text-gray-700">
+                    <Shield className="h-4 w-4 text-blue-500 mr-3 flex-shrink-0" />
+                    <span className="text-sm">More stable in rough weather</span>
+                  </div>
+                  <div className="flex items-center text-gray-700">
+                    <Euro className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
+                    <span className="text-sm">Budget-friendly option</span>
+                  </div>
+                </div>
               </div>
               
-              <div className="bg-white rounded-lg p-6 mb-6 border border-gray-200">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">⚡ High-Speed Ferries</h4>
-                <p className="text-gray-700 mb-4">
+              {/* High-Speed Ferries */}
+              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
+                <div className="flex items-center mb-6">
+                  <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl mr-4">
+                    <Zap className="h-7 w-7 text-white" />
+                  </div>
+                  <h4 className="text-xl font-bold text-gray-900">High-Speed Ferries</h4>
+                </div>
+                <p className="text-gray-700 mb-6 leading-relaxed">
                   These modern catamarans and hydrofoils offer significantly faster travel times but at a higher price. They're ideal for travelers looking to maximize their time on the islands.
                 </p>
-                <ul className="list-disc list-inside text-gray-700 space-y-1">
-                  <li>Duration: 3-5 hours from Athens to Santorini</li>
-                  <li>Limited or no vehicle capacity</li>
-                  <li>Weather-dependent service</li>
-                  <li>Premium pricing</li>
-                </ul>
-              </div>
-              
-              <h3 className="text-2xl font-semibold text-[#1E2E48] mt-8 mb-4">Best Time to Book Ferry Tickets</h3>
-              
-              <p className="text-gray-700 mb-6">
-                Timing your ferry booking is crucial for securing the best prices and availability:
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-[#E3D7C3]/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">🌞 Peak Season (July-August)</h4>
-                  <p className="text-gray-600">Book 2-3 months in advance. Prices are highest but availability is crucial.</p>
-                </div>
-                
-                <div className="bg-[#E3D7C3]/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">🌸 Shoulder Season (May-June, September)</h4>
-                  <p className="text-gray-600">Book 3-4 weeks ahead. Great weather with better prices and fewer crowds.</p>
-                </div>
-                
-                <div className="bg-[#E3D7C3]/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">❄️ Low Season (October-April)</h4>
-                  <p className="text-gray-600">Book 1-2 weeks ahead. Limited schedules but lowest prices.</p>
-                </div>
-                
-                <div className="bg-[#E3D7C3]/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">🎯 Last-Minute Deals</h4>
-                  <p className="text-gray-600">Sometimes available 24-48 hours before departure during off-peak times.</p>
+                <div className="space-y-3">
+                  <div className="flex items-center text-gray-700">
+                    <Clock className="h-4 w-4 text-orange-500 mr-3 flex-shrink-0" />
+                    <span className="text-sm">Duration: 3-5 hours from Athens to Santorini</span>
+                  </div>
+                  <div className="flex items-center text-gray-700">
+                    <Info className="h-4 w-4 text-orange-500 mr-3 flex-shrink-0" />
+                    <span className="text-sm">Limited or no vehicle capacity</span>
+                  </div>
+                  <div className="flex items-center text-gray-700">
+                    <Star className="h-4 w-4 text-orange-500 mr-3 flex-shrink-0" />
+                    <span className="text-sm">Weather-dependent service</span>
+                  </div>
+                  <div className="flex items-center text-gray-700">
+                    <Euro className="h-4 w-4 text-red-500 mr-3 flex-shrink-0" />
+                    <span className="text-sm">Premium pricing</span>
+                  </div>
                 </div>
               </div>
+            </div>
+              </div>
               
-              <h3 className="text-2xl font-semibold text-[#1E2E48] mt-8 mb-4">Popular Island Hopping Routes</h3>
-              
-              <p className="text-gray-700 mb-4">
-                When planning your Cyclades island hopping adventure, consider these popular routes:
-              </p>
-              
-              <div className="space-y-4 mb-8">
-                <div className="border-l-4 border-[#1E2E48] pl-4 py-2">
-                  <h4 className="font-semibold text-gray-900">🏛️ Classic Route (7-10 days)</h4>
-                  <p className="text-gray-700">Athens (Piraeus) → <a href="/islands/mykonos" className="text-[#1E2E48] hover:underline">Mykonos</a> → <a href="/islands/paros" className="text-[#1E2E48] hover:underline">Paros</a> → <a href="/islands/naxos" className="text-[#1E2E48] hover:underline">Naxos</a> → <a href="/islands/santorini" className="text-[#1E2E48] hover:underline">Santorini</a></p>
+          {/* Booking Timing Section */}
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold text-[#1E2E48] text-center mb-4">Best Time to Book Ferry Tickets</h3>
+            <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
+              Timing your ferry booking is crucial for securing the best prices and availability
+            </p>
+            
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
+              <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-200 hover:shadow-lg transition-all duration-300">
+                <div className="text-4xl mb-4">🌞</div>
+                <h4 className="font-bold text-gray-900 mb-3">Peak Season</h4>
+                <p className="text-sm text-gray-600 mb-2 font-medium">July-August</p>
+                <p className="text-sm text-gray-700">Book 2-3 months in advance. Prices are highest but availability is crucial.</p>
                 </div>
                 
-                <div className="border-l-4 border-[#1E2E48] pl-4 py-2">
-                  <h4 className="font-semibold text-gray-900">🌋 Western Cyclades (5-7 days)</h4>
-                  <p className="text-gray-700">Athens (Piraeus) → Kythnos → <a href="/islands/serifos" className="text-[#1E2E48] hover:underline">Serifos</a> → <a href="/islands/sifnos" className="text-[#1E2E48] hover:underline">Sifnos</a> → <a href="/islands/milos" className="text-[#1E2E48] hover:underline">Milos</a></p>
+              <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6 border border-pink-200 hover:shadow-lg transition-all duration-300">
+                <div className="text-4xl mb-4">🌸</div>
+                <h4 className="font-bold text-gray-900 mb-3">Shoulder Season</h4>
+                <p className="text-sm text-gray-600 mb-2 font-medium">May-June, September</p>
+                <p className="text-sm text-gray-700">Book 3-4 weeks ahead. Great weather with better prices and fewer crowds.</p>
                 </div>
                 
-                <div className="border-l-4 border-[#1E2E48] pl-4 py-2">
-                  <h4 className="font-semibold text-gray-900">🎨 Cultural Route (4-6 days)</h4>
-                  <p className="text-gray-700">Athens (Piraeus) → <a href="/islands/syros" className="text-[#1E2E48] hover:underline">Syros</a> → <a href="/islands/tinos" className="text-[#1E2E48] hover:underline">Tinos</a> → <a href="/islands/andros" className="text-[#1E2E48] hover:underline">Andros</a> → Rafina (Athens)</p>
+              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300">
+                <div className="text-4xl mb-4">❄️</div>
+                <h4 className="font-bold text-gray-900 mb-3">Low Season</h4>
+                <p className="text-sm text-gray-600 mb-2 font-medium">October-April</p>
+                <p className="text-sm text-gray-700">Book 1-2 weeks ahead. Limited schedules but lowest prices.</p>
+                </div>
+                
+              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200 hover:shadow-lg transition-all duration-300">
+                <div className="text-4xl mb-4">🎯</div>
+                <h4 className="font-bold text-gray-900 mb-3">Last-Minute Deals</h4>
+                <p className="text-sm text-gray-600 mb-2 font-medium">24-48 hours before</p>
+                <p className="text-sm text-gray-700">Sometimes available during off-peak times.</p>
+              </div>
                 </div>
               </div>
               
-              <p className="text-gray-700 mb-6">
-                We recommend spending at least 2-3 nights on each island to fully appreciate what each has to offer. During peak season (July-August), it's essential to book your ferry tickets and <a href="/hotels" className="text-[#1E2E48] hover:underline">accommodation</a> well in advance, as both can sell out quickly.
-              </p>
+          {/* Island Hopping Routes */}
+          <div className="mb-16">
+            <h3 className="text-3xl font-bold text-[#1E2E48] text-center mb-4">Popular Island Hopping Routes</h3>
+            <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
+              When planning your Cyclades island hopping adventure, consider these popular routes
+            </p>
+            
+            <div className="space-y-6 max-w-4xl mx-auto">
+              <div className="bg-white rounded-2xl p-8 shadow-lg border-l-6 border-[#1E2E48] hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start">
+                  <div className="text-3xl mr-4 mt-1">🏛️</div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Classic Route (7-10 days)</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      Athens (Piraeus) → <a href="/islands/mykonos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Mykonos</a> → <a href="/islands/paros" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Paros</a> → <a href="/islands/naxos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Naxos</a> → <a href="/islands/santorini" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Santorini</a>
+                    </p>
+                </div>
+                </div>
+                </div>
+                
+              <div className="bg-white rounded-2xl p-8 shadow-lg border-l-6 border-orange-500 hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start">
+                  <div className="text-3xl mr-4 mt-1">🌋</div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Western Cyclades (5-7 days)</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      Athens (Piraeus) → Kythnos → <a href="/islands/serifos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Serifos</a> → <a href="/islands/sifnos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Sifnos</a> → <a href="/islands/milos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Milos</a>
+                    </p>
+                  </div>
+                </div>
+              </div>
               
-              <div className="bg-[#1E2E48] text-white rounded-lg p-6 mt-8">
-                <h4 className="text-lg font-semibold mb-3">💡 Pro Tip for Island Hopping</h4>
-                <p className="text-[#E3D7C3]">
-                  Book your outbound and return ferries first, then fill in the inter-island connections. This ensures you have your main travel dates secured before planning the detailed itinerary. Also, consider our <a href="/activities" className="text-[#E3D7C3] hover:underline font-medium">activities and tours</a> to make the most of each island visit.
+              <div className="bg-white rounded-2xl p-8 shadow-lg border-l-6 border-purple-500 hover:shadow-xl transition-all duration-300">
+                <div className="flex items-start">
+                  <div className="text-3xl mr-4 mt-1">🎨</div>
+                  <div>
+                    <h4 className="text-xl font-bold text-gray-900 mb-2">Cultural Route (4-6 days)</h4>
+                    <p className="text-gray-700 leading-relaxed">
+                      Athens (Piraeus) → <a href="/islands/syros" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Syros</a> → <a href="/islands/tinos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Tinos</a> → <a href="/islands/andros" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Andros</a> → Rafina (Athens)
                 </p>
               </div>
             </div>
@@ -938,115 +1134,54 @@ export default function FerryTickets() {
         </div>
       </div>
       
-      {/* Original SEO Content Section */}
+          {/* Recommendation Text */}
+          <div className="text-center mb-12 max-w-4xl mx-auto">
+            <p className="text-lg text-gray-700 leading-relaxed">
+              We recommend spending at least 2-3 nights on each island to fully appreciate what each has to offer. During peak season (July-August), it's essential to book your ferry tickets and <a href="/hotels" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">accommodation</a> well in advance, as both can sell out quickly.
+            </p>
+          </div>
+          
+          {/* Pro Tip Section */}
+          <div className="bg-gradient-to-r from-[#1E2E48] to-blue-800 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -translate-y-16 translate-x-16"></div>
+            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full translate-y-12 -translate-x-12"></div>
+            <div className="relative">
+              <div className="flex items-center mb-6">
+                <div className="flex items-center justify-center w-12 h-12 bg-yellow-400 rounded-full mr-4">
+                  <span className="text-2xl">💡</span>
+                </div>
+                <h4 className="text-2xl font-bold">Pro Tip for Island Hopping</h4>
+              </div>
+              <p className="text-lg text-blue-100 leading-relaxed">
+                Book your outbound and return ferries first, then fill in the inter-island connections. This ensures you have your main travel dates secured before planning the detailed itinerary. Also, consider our <a href="/activities" className="text-yellow-300 hover:text-yellow-200 font-medium hover:underline transition-colors">activities and tours</a> to make the most of each island visit.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* FAQs Section */}
       <div className="py-16 bg-gray-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto">
-            <h2 className="text-3xl font-bold text-gray-900 mb-6">Complete Guide to Cyclades Ferry Travel</h2>
-            
-            <div className="prose prose-lg max-w-none">
-              <p className="text-lg text-gray-700 mb-6">
-                The <a href="/islands" className="text-[#1E2E48] hover:underline font-medium">Cyclades islands</a>, with their iconic white-washed buildings and blue-domed churches, are one of Greece's most beloved destinations. Island hopping by ferry is the perfect way to experience multiple islands during your vacation, allowing you to discover each island's unique character and charm.
-              </p>
-              
-              <p className="text-gray-700 mb-6">
-                The Greek ferry system is extensive and well-developed, connecting all major islands with regular services. During the summer months (June to September), ferries operate at their highest frequency, with multiple daily connections between popular islands like <a href="/islands/santorini" className="text-[#1E2E48] hover:underline">Santorini</a>, <a href="/islands/mykonos" className="text-[#1E2E48] hover:underline">Mykonos</a>, <a href="/islands/paros" className="text-[#1E2E48] hover:underline">Paros</a>, and <a href="/islands/naxos" className="text-[#1E2E48] hover:underline">Naxos</a>.
-              </p>
-              
-              <h3 className="text-2xl font-semibold text-[#1E2E48] mt-8 mb-4">Types of Ferry Services</h3>
-              
-              <p className="text-gray-700 mb-4">
-                When traveling between the Cyclades islands, you'll encounter two main types of ferries:
-              </p>
-              
-              <div className="bg-white rounded-lg p-6 mb-6 border border-gray-200">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">🚢 Conventional Ferries</h4>
-                <p className="text-gray-700 mb-4">
-                  These larger vessels are more stable in rough seas and can accommodate vehicles. They're typically slower but more affordable and less likely to be canceled due to weather conditions. Perfect for travelers with cars or those seeking a more comfortable journey.
-                </p>
-                <ul className="list-disc list-inside text-gray-700 space-y-1">
-                  <li>Duration: 5-8 hours from Athens to Santorini</li>
-                  <li>Vehicle capacity available</li>
-                  <li>More stable in rough weather</li>
-                  <li>Budget-friendly option</li>
-                </ul>
-              </div>
-              
-              <div className="bg-white rounded-lg p-6 mb-6 border border-gray-200">
-                <h4 className="text-lg font-semibold text-gray-900 mb-3">⚡ High-Speed Ferries</h4>
-                <p className="text-gray-700 mb-4">
-                  These modern catamarans and hydrofoils offer significantly faster travel times but at a higher price. They're ideal for travelers looking to maximize their time on the islands.
-                </p>
-                <ul className="list-disc list-inside text-gray-700 space-y-1">
-                  <li>Duration: 3-5 hours from Athens to Santorini</li>
-                  <li>Limited or no vehicle capacity</li>
-                  <li>Weather-dependent service</li>
-                  <li>Premium pricing</li>
-                </ul>
-              </div>
-              
-              <h3 className="text-2xl font-semibold text-[#1E2E48] mt-8 mb-4">Best Time to Book Ferry Tickets</h3>
-              
-              <p className="text-gray-700 mb-6">
-                Timing your ferry booking is crucial for securing the best prices and availability:
-              </p>
-              
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-[#E3D7C3]/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">🌞 Peak Season (July-August)</h4>
-                  <p className="text-gray-600">Book 2-3 months in advance. Prices are highest but availability is crucial.</p>
-                </div>
-                
-                <div className="bg-[#E3D7C3]/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">🌸 Shoulder Season (May-June, September)</h4>
-                  <p className="text-gray-600">Book 3-4 weeks ahead. Great weather with better prices and fewer crowds.</p>
-                </div>
-                
-                <div className="bg-[#E3D7C3]/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">❄️ Low Season (October-April)</h4>
-                  <p className="text-gray-600">Book 1-2 weeks ahead. Limited schedules but lowest prices.</p>
-                </div>
-                
-                <div className="bg-[#E3D7C3]/10 rounded-lg p-4">
-                  <h4 className="font-semibold text-gray-900 mb-2">🎯 Last-Minute Deals</h4>
-                  <p className="text-gray-600">Sometimes available 24-48 hours before departure during off-peak times.</p>
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
+            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
+              Everything you need to know about booking ferry tickets in Greece
+            </p>
+          </div>
+          
+          <div className="max-w-3xl mx-auto divide-y divide-gray-200">
+            {faqs.map((faq, index) => (
+              <div key={index} className="py-6">
+                <h3 className="text-xl font-medium text-gray-900 flex items-start">
+                  <Info className="h-6 w-6 text-[#1E2E48] flex-shrink-0 mr-2" />
+                  {faq.question}
+                </h3>
+                <div className="mt-3 text-gray-600 ml-8">
+                  <p>{faq.answer}</p>
                 </div>
               </div>
-              
-              <h3 className="text-2xl font-semibold text-[#1E2E48] mt-8 mb-4">Popular Island Hopping Routes</h3>
-              
-              <p className="text-gray-700 mb-4">
-                When planning your Cyclades island hopping adventure, consider these popular routes:
-              </p>
-              
-              <div className="space-y-4 mb-8">
-                <div className="border-l-4 border-[#1E2E48] pl-4 py-2">
-                  <h4 className="font-semibold text-gray-900">🏛️ Classic Route (7-10 days)</h4>
-                  <p className="text-gray-700">Athens (Piraeus) → <a href="/islands/mykonos" className="text-[#1E2E48] hover:underline">Mykonos</a> → <a href="/islands/paros" className="text-[#1E2E48] hover:underline">Paros</a> → <a href="/islands/naxos" className="text-[#1E2E48] hover:underline">Naxos</a> → <a href="/islands/santorini" className="text-[#1E2E48] hover:underline">Santorini</a></p>
-                </div>
-                
-                <div className="border-l-4 border-[#1E2E48] pl-4 py-2">
-                  <h4 className="font-semibold text-gray-900">🌋 Western Cyclades (5-7 days)</h4>
-                  <p className="text-gray-700">Athens (Piraeus) → Kythnos → <a href="/islands/serifos" className="text-[#1E2E48] hover:underline">Serifos</a> → <a href="/islands/sifnos" className="text-[#1E2E48] hover:underline">Sifnos</a> → <a href="/islands/milos" className="text-[#1E2E48] hover:underline">Milos</a></p>
-                </div>
-                
-                <div className="border-l-4 border-[#1E2E48] pl-4 py-2">
-                  <h4 className="font-semibold text-gray-900">🎨 Cultural Route (4-6 days)</h4>
-                  <p className="text-gray-700">Athens (Piraeus) → <a href="/islands/syros" className="text-[#1E2E48] hover:underline">Syros</a> → <a href="/islands/tinos" className="text-[#1E2E48] hover:underline">Tinos</a> → <a href="/islands/andros" className="text-[#1E2E48] hover:underline">Andros</a> → Rafina (Athens)</p>
-                </div>
-              </div>
-              
-              <p className="text-gray-700 mb-6">
-                We recommend spending at least 2-3 nights on each island to fully appreciate what each has to offer. During peak season (July-August), it's essential to book your ferry tickets and <a href="/hotels" className="text-[#1E2E48] hover:underline">accommodation</a> well in advance, as both can sell out quickly.
-              </p>
-              
-              <div className="bg-[#1E2E48] text-white rounded-lg p-6 mt-8">
-                <h4 className="text-lg font-semibold mb-3">💡 Pro Tip for Island Hopping</h4>
-                <p className="text-[#E3D7C3]">
-                  Book your outbound and return ferries first, then fill in the inter-island connections. This ensures you have your main travel dates secured before planning the detailed itinerary. Also, consider our <a href="/activities" className="text-[#E3D7C3] hover:underline font-medium">activities and tours</a> to make the most of each island visit.
-                </p>
-              </div>
-            </div>
+            ))}
           </div>
         </div>
       </div>

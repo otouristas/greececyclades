@@ -74,6 +74,7 @@ import BudgetCalculator from './pages/BudgetCalculator';
 import FerryGuide from './pages/FerryGuide';
 import Resources from './pages/Resources';
 import ListProperty from './pages/ListProperty';
+import TouristasAI from './pages/TouristasAI';
 
 import { ToastProvider } from './contexts/ToastContext';
 
@@ -167,6 +168,12 @@ function AppContent() {
             <Route 
               path="/trip-planner-legacy" 
               element={<TripPlanner />} 
+            />
+
+            {/* Touristas AI - Revolutionary AI Trip Planner */}
+            <Route 
+              path="/touristas-ai" 
+              element={<TouristasAI />} 
             />
             
             {/* Protected Routes */}

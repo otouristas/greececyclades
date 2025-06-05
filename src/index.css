@@ -46,3 +46,40 @@
     height: -webkit-fill-available;
   }
 }
+
+/* Leaflet Map Custom Styles */
+.leaflet-container {
+  font-family: inherit;
+}
+
+.custom-div-icon {
+  background: transparent !important;
+  border: none !important;
+}
+
+.custom-popup .leaflet-popup-content-wrapper {
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.custom-popup .leaflet-popup-content {
+  margin: 0;
+  padding: 0;
+}
+
+.custom-popup .leaflet-popup-tip {
+  background: white;
+}
+
+/* Fix Leaflet attribution positioning */
+.leaflet-control-attribution {
+  background: rgba(255, 255, 255, 0.9) !important;
+  border-radius: 6px;
+  font-size: 10px;
+}
+
+/* Make sure map containers have proper height */
+.leaflet-container {
+  height: 100%;
+  width: 100%;
+}
