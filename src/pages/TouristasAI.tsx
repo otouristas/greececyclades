@@ -90,8 +90,17 @@ function LandingPage({ onStartChat }: { onStartChat: () => void }) {
     >
       {/* Hero Section */}
       <section className="relative py-20 lg:py-32 overflow-hidden">
+        {/* Hero Background Image */}
+        <div className="absolute inset-0">
+          <img 
+            src="/images/cyclades-hero.jpg" 
+            alt="Greek Cyclades Islands" 
+            className="w-full h-full object-cover opacity-10"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-gray-50/95 to-[#E3D7C3]/30"></div>
+        </div>
+        
         {/* Background Pattern */}
-        <div className="absolute inset-0 bg-gradient-to-br from-gray-50 to-[#E3D7C3]/20"></div>
         <div className="absolute inset-0 opacity-5">
           <div className="absolute top-20 left-20 w-72 h-72 bg-[#1E2E48] rounded-full blur-3xl"></div>
           <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#E3D7C3] rounded-full blur-3xl"></div>
@@ -202,22 +211,30 @@ function LandingPage({ onStartChat }: { onStartChat: () => void }) {
               {
                 icon: <Brain className="h-8 w-8" />,
                 title: "AI Island Expert",
-                description: "Trained on 25+ Cyclades islands with comprehensive local knowledge and authentic recommendations"
+                description: "Trained on 25+ Cyclades islands with comprehensive local knowledge and authentic recommendations",
+                preview: "/images/islands/santorini.jpg",
+                color: "from-blue-500 to-purple-600"
               },
               {
                 icon: <Route className="h-8 w-8" />,
                 title: "Smart Route Planning",
-                description: "Optimizes ferry connections, transportation, and timing for the perfect island-hopping experience"
+                description: "Optimizes ferry connections, transportation, and timing for the perfect island-hopping experience",
+                preview: "/images/islands/mykonos.jpg",
+                color: "from-green-500 to-teal-600"
               },
               {
                 icon: <Globe className="h-8 w-8" />,
                 title: "Real-Time Bookings",
-                description: "Live ferry schedules, hotel availability, and restaurant reservations all in one conversation"
+                description: "Live ferry schedules, hotel availability, and restaurant reservations all in one conversation",
+                preview: "/images/islands/naxos.jpg",
+                color: "from-orange-500 to-red-600"
               },
               {
                 icon: <Award className="h-8 w-8" />,
                 title: "Insider Access",
-                description: "Exclusive experiences, hidden gems, and local secrets that guidebooks miss"
+                description: "Exclusive experiences, hidden gems, and local secrets that guidebooks miss",
+                preview: "/images/islands/paros.jpg",
+                color: "from-purple-500 to-pink-600"
               }
             ].map((feature, index) => (
               <motion.div
@@ -225,13 +242,24 @@ function LandingPage({ onStartChat }: { onStartChat: () => void }) {
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.2 * index, duration: 0.6 }}
-                className="bg-white p-8 rounded-xl shadow-sm hover:shadow-md transition-shadow duration-300"
+                className="bg-white p-8 rounded-xl shadow-sm hover:shadow-lg transition-all duration-300 group cursor-pointer overflow-hidden relative"
               >
-                <div className="w-16 h-16 bg-[#E3D7C3]/30 rounded-lg flex items-center justify-center mb-6 text-[#1E2E48]">
-                  {feature.icon}
+                {/* Background Preview Image on Hover */}
+                <div className="absolute inset-0 opacity-0 group-hover:opacity-10 transition-opacity duration-500">
+                  <img 
+                    src={feature.preview} 
+                    alt={feature.title}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-                <h3 className="text-xl font-semibold text-[#1E2E48] mb-4">{feature.title}</h3>
-                <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                
+                <div className="relative z-10">
+                  <div className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-lg flex items-center justify-center mb-6 text-white group-hover:scale-110 transition-transform duration-300`}>
+                    {feature.icon}
+                  </div>
+                  <h3 className="text-xl font-semibold text-[#1E2E48] mb-4 group-hover:text-blue-600 transition-colors duration-300">{feature.title}</h3>
+                  <p className="text-gray-600 leading-relaxed">{feature.description}</p>
+                </div>
               </motion.div>
             ))}
           </div>
@@ -341,7 +369,7 @@ function ChatExperience({
       position: { x: 60, y: 80 },
       coordinates: { lat: 36.3932, lng: 25.4615 },
       color: '#FF6B6B',
-      image: 'https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=300&h=200&fit=crop',
+      image: '/images/islands/santorini.jpg',
       highlights: ['Oia Sunset', 'Red Beach', 'Wine Tasting'],
       avgCost: 150,
       description: 'Iconic sunsets and volcanic landscapes'
@@ -352,7 +380,7 @@ function ChatExperience({
       position: { x: 45, y: 60 },
       coordinates: { lat: 37.4467, lng: 25.3289 },
       color: '#4ECDC4',
-      image: 'https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=300&h=200&fit=crop',
+      image: '/images/islands/mykonos.jpg',
       highlights: ['Paradise Beach', 'Windmills', 'Nightlife'],
       avgCost: 130,
       description: 'Vibrant nightlife and pristine beaches'
@@ -363,7 +391,7 @@ function ChatExperience({
       position: { x: 40, y: 70 },
       coordinates: { lat: 37.1036, lng: 25.3766 },
       color: '#45B7D1',
-      image: 'https://images.unsplash.com/photo-1571406252871-360b4f5fbbcc?w=300&h=200&fit=crop',
+      image: '/images/islands/naxos.jpg',
       highlights: ['Portara', 'Plaka Beach', 'Mount Zas'],
       avgCost: 90,
       description: 'Authentic culture and stunning nature'
@@ -374,7 +402,7 @@ function ChatExperience({
       position: { x: 35, y: 65 },
       coordinates: { lat: 37.0853, lng: 25.1477 },
       color: '#96CEB4',
-      image: 'https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=300&h=200&fit=crop',
+      image: '/images/islands/paros.jpg',
       highlights: ['Parikia', 'Naoussa', 'Golden Beach'],
       avgCost: 85,
       description: 'Charming fishing villages and golden beaches'
@@ -385,7 +413,7 @@ function ChatExperience({
       position: { x: 25, y: 85 },
       coordinates: { lat: 36.7215, lng: 24.4258 },
       color: '#FFEAA7',
-      image: 'https://images.unsplash.com/photo-1599846223972-c7d4ab7ed7c6?w=300&h=200&fit=crop',
+      image: '/images/islands/milos.jpg',
       highlights: ['Sarakiniko', 'Kleftiko', 'Hot Springs'],
       avgCost: 80,
       description: 'Unique geological formations and secluded beaches'
@@ -396,10 +424,43 @@ function ChatExperience({
       position: { x: 30, y: 75 },
       coordinates: { lat: 36.9750, lng: 24.6833 },
       color: '#DDA0DD',
-      image: 'https://images.unsplash.com/photo-1580837119756-563d608dd119?w=300&h=200&fit=crop',
+      image: '/images/islands/sifnos.jpg',
       highlights: ['Apollonia', 'Kastro', 'Pottery Workshops'],
       avgCost: 75,
       description: 'Culinary traditions and peaceful atmosphere'
+    },
+    {
+      id: 'ios',
+      name: 'Ios',
+      position: { x: 50, y: 75 },
+      coordinates: { lat: 36.7215, lng: 25.2958 },
+      color: '#FFB6C1',
+      image: '/images/islands/ios.jpg',
+      highlights: ['Mylopotas Beach', 'Chora Nightlife', 'Homer Tomb'],
+      avgCost: 95,
+      description: 'Beach clubs and vibrant youth culture'
+    },
+    {
+      id: 'folegandros',
+      name: 'Folegandros',
+      position: { x: 55, y: 85 },
+      coordinates: { lat: 36.6167, lng: 24.9167 },
+      color: '#98FB98',
+      image: '/images/islands/folegandros.jpg',
+      highlights: ['Chora Village', 'Katergo Beach', 'Panagia Church'],
+      avgCost: 110,
+      description: 'Dramatic cliffs and authentic charm'
+    },
+    {
+      id: 'serifos',
+      name: 'Serifos',
+      position: { x: 35, y: 80 },
+      coordinates: { lat: 37.1500, lng: 24.5000 },
+      color: '#87CEEB',
+      image: '/images/islands/serifos.jpg',
+      highlights: ['Livadi Beach', 'Chora Cycladic Architecture', 'Monastery Taxiarches'],
+      avgCost: 85,
+      description: 'Untouched beauty and mining heritage'
     }
   ];
 
@@ -469,7 +530,7 @@ function ChatExperience({
         activities: ['Check into hotel in Oia', 'Sunset dinner at Ambrosia', 'Evening stroll in Oia'],
         accommodation: 'Andronis Luxury Suites',
         cost: 250,
-        images: ['https://images.unsplash.com/photo-1570077188670-e3a8d69ac5ff?w=400&h=300&fit=crop'],
+        images: ['/images/islands/santorini.jpg'],
         ferryInfo: { time: '14:30', duration: '2h 15min', price: 45 }
       },
       {
@@ -479,7 +540,7 @@ function ChatExperience({
         activities: ['Wine tasting tour', 'Visit Red Beach', 'Fira town exploration'],
         accommodation: 'Andronis Luxury Suites',
         cost: 180,
-        images: ['https://images.unsplash.com/photo-1613395877344-13d4a8e0d49e?w=400&h=300&fit=crop']
+        images: ['/images/islands/santorini.jpg']
       },
       {
         day: 3,
@@ -488,8 +549,28 @@ function ChatExperience({
         activities: ['Morning ferry to Mykonos', 'Little Venice exploration', 'Beach time at Paradise Beach'],
         accommodation: 'Belvedere Hotel',
         cost: 200,
-        images: ['https://images.unsplash.com/photo-1601581875309-fafbf2d3ed3a?w=400&h=300&fit=crop'],
+        images: ['/images/islands/mykonos.jpg'],
         ferryInfo: { time: '09:00', duration: '1h 45min', price: 35 }
+      },
+      {
+        day: 4,
+        island: 'naxos',
+        title: 'Discover Naxos',
+        activities: ['Portara monument visit', 'Plaka Beach relaxation', 'Traditional village exploration'],
+        accommodation: 'Naxos Resort',
+        cost: 160,
+        images: ['/images/islands/naxos.jpg'],
+        ferryInfo: { time: '11:15', duration: '45min', price: 25 }
+      },
+      {
+        day: 5,
+        island: 'paros',
+        title: 'Paros Adventure',
+        activities: ['Naoussa fishing village', 'Golden Beach windsurfing', 'Parikia old town'],
+        accommodation: 'Paros Bay Hotel',
+        cost: 140,
+        images: ['/images/islands/paros.jpg'],
+        ferryInfo: { time: '16:30', duration: '30min', price: 20 }
       }
     ];
     setCurrentItinerary(sampleItinerary);
@@ -624,15 +705,49 @@ function ChatExperience({
                       className="bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 mt-8 md:mt-12"
                     >
                       <div className="text-center">
-                        <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-r from-[#1E2E48] to-[#E3D7C3] rounded-full flex items-center justify-center mx-auto mb-3 sm:mb-4">
-                          <Sparkles className="h-5 w-5 sm:h-6 sm:w-6 text-white" />
+                        {/* Enhanced Welcome Avatar */}
+                        <div className="relative mx-auto mb-4">
+                          <div className="w-16 h-16 sm:w-20 sm:h-20 bg-gradient-to-br from-[#1E2E48] via-blue-600 to-[#E3D7C3] rounded-full flex items-center justify-center shadow-lg">
+                            <img 
+                              src="/touristas-ai-logo.svg" 
+                              alt="Touristas AI"
+                              className="w-8 h-8 sm:w-10 sm:h-10"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                                const parent = target.parentElement;
+                                if (parent) {
+                                  parent.innerHTML = '<div class="text-white text-2xl">🤖</div>';
+                                }
+                              }}
+                            />
+                          </div>
+                          <div className="absolute -bottom-1 -right-1 w-6 h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                          </div>
                         </div>
-                        <h3 className="text-lg sm:text-xl font-bold text-[#1E2E48] mb-2 sm:mb-3">
+                        
+                        <h3 className="text-xl sm:text-2xl font-bold text-[#1E2E48] mb-3">
                           Γεια σας! Welcome to Touristas AI! 🇬🇷
                         </h3>
-                        <p className="text-gray-600 mb-4 sm:mb-6 max-w-xl mx-auto text-sm leading-relaxed px-2">
-                          I'm your personal Greek islands AI expert. I'll help you create the perfect Cyclades adventure with interactive maps, visual itineraries, and real-time insights!
+                        <p className="text-gray-600 mb-6 max-w-2xl mx-auto leading-relaxed px-2">
+                          I'm your personal Greek islands AI expert trained on 25+ Cyclades destinations. I'll help you create the perfect island-hopping adventure with <span className="font-semibold text-[#1E2E48]">interactive maps</span>, <span className="font-semibold text-[#1E2E48]">visual itineraries</span>, and <span className="font-semibold text-[#1E2E48]">real-time insights</span>!
                         </p>
+                        
+                        {/* AI Capabilities Preview */}
+                        <div className="flex flex-wrap justify-center gap-3 mb-6">
+                          {[
+                            { icon: "🗺️", label: "Interactive Maps" },
+                            { icon: "⛵", label: "Ferry Schedules" },
+                            { icon: "🏨", label: "Live Bookings" },
+                            { icon: "💎", label: "Hidden Gems" }
+                          ].map((feature, index) => (
+                            <div key={index} className="flex items-center gap-2 bg-[#E3D7C3]/20 px-3 py-1.5 rounded-full">
+                              <span className="text-sm">{feature.icon}</span>
+                              <span className="text-xs font-medium text-[#1E2E48]">{feature.label}</span>
+                            </div>
+                          ))}
+                        </div>
                         
                         {/* Quick Start Prompts */}
                         <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 max-w-2xl mx-auto">
@@ -923,18 +1038,31 @@ function InteractiveMap({ islands, selectedIslands, onToggleIsland }: any) {
             >
               <Popup className="custom-popup">
                 <div className="p-4 max-w-sm">
-                  <div className="flex items-center gap-3 mb-3">
-                    <img
-                      src={island.image}
-                      alt={island.name}
-                      className="w-16 h-16 rounded-lg object-cover"
-                      onError={(e) => {
-                        (e.target as HTMLImageElement).style.display = 'none';
-                      }}
-                    />
-                    <div>
-                      <h4 className="font-bold text-[#1E2E48] text-lg">{island.name}</h4>
-                      <p className="text-sm text-gray-600">{island.description}</p>
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-20 h-20 rounded-xl overflow-hidden bg-gray-100 flex-shrink-0 relative">
+                      <img
+                        src={island.image}
+                        alt={`Beautiful view of ${island.name} island`}
+                        className="w-full h-full object-cover transition-all duration-300 group-hover:scale-110"
+                        onError={(e) => {
+                          const target = e.target as HTMLImageElement;
+                          target.src = '/images/islands/default-island.jpg';
+                          target.onerror = () => {
+                            target.style.display = 'none';
+                          };
+                        }}
+                        loading="lazy"
+                      />
+                      <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="font-bold text-[#1E2E48] text-lg mb-1">{island.name}</h4>
+                      <p className="text-sm text-gray-600 leading-relaxed mb-2">{island.description}</p>
+                      <div className="flex items-center gap-2 text-xs text-gray-500">
+                        <span>Average: €{island.avgCost}/day</span>
+                        <span>•</span>
+                        <span>{island.highlights.length} highlights</span>
+                      </div>
                     </div>
                   </div>
                   
