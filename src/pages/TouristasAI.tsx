@@ -615,37 +615,154 @@ function ChatExperience({
           </div>
         </div>
 
-        {/* Navigation Tabs */}
+        {/* Enhanced Navigation Tabs */}
         <div className="p-4">
-          <div className="space-y-2">
+          <div className="space-y-3">
             {[
-              { id: 'chat', label: 'AI Chat', icon: MessageCircle, desc: 'Talk with your AI expert' },
-              { id: 'map', label: 'Islands Map', icon: MapPin, desc: 'Explore Greek islands visually' },
-              { id: 'itinerary', label: 'Trip Planner', icon: Route, desc: 'Build your perfect itinerary' }
+              { id: 'chat', label: 'AI Chat', icon: MessageCircle, desc: 'Talk with your AI expert', color: 'from-blue-500 to-cyan-500' },
+              { id: 'map', label: 'Islands Map', icon: MapPin, desc: 'Explore Greek islands visually', color: 'from-emerald-500 to-teal-500' },
+              { id: 'itinerary', label: 'Trip Planner', icon: Route, desc: 'Build your perfect itinerary', color: 'from-purple-500 to-pink-500' }
             ].map((tab) => {
               const Icon = tab.icon;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`w-full flex items-start gap-3 p-4 rounded-xl text-left transition-all duration-200 ${
+                  className={`w-full flex items-start gap-4 p-4 rounded-xl text-left transition-all duration-300 transform hover:scale-105 ${
                     activeTab === tab.id
-                      ? 'bg-[#1E2E48] text-white shadow-lg'
-                      : 'text-gray-600 hover:bg-gray-50 border border-gray-200'
+                      ? 'bg-[#1E2E48] text-white shadow-xl'
+                      : 'text-gray-600 hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 border border-gray-200 hover:border-gray-300'
                   }`}
                 >
-                  <Icon className="h-5 w-5 mt-0.5 flex-shrink-0" />
-                  <div>
-                    <div className="font-medium">{tab.label}</div>
+                  <div className={`p-2 rounded-lg ${
+                    activeTab === tab.id 
+                      ? 'bg-white/20' 
+                      : `bg-gradient-to-r ${tab.color} text-white`
+                  }`}>
+                    <Icon className="h-5 w-5 flex-shrink-0" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold">{tab.label}</div>
                     <div className={`text-xs mt-1 ${
                       activeTab === tab.id ? 'text-white/80' : 'text-gray-500'
                     }`}>
                       {tab.desc}
                     </div>
                   </div>
+                  {activeTab === tab.id && (
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  )}
                 </button>
               );
             })}
+          </div>
+        </div>
+
+        {/* Enhanced Feature Shortcuts */}
+        <div className="p-4 border-t border-gray-200">
+          <h4 className="font-semibold text-[#1E2E48] mb-3 text-sm flex items-center gap-2">
+            <Zap className="w-4 h-4" />
+            Quick Tools
+          </h4>
+          <div className="grid grid-cols-2 gap-2">
+            <button className="p-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg">
+              <Utensils className="w-4 h-4" />
+              <span>Restaurants</span>
+            </button>
+            <button className="p-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg">
+              <Ship className="w-4 h-4" />
+              <span>Ferries</span>
+            </button>
+            <button className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg">
+              <Camera className="w-4 h-4" />
+              <span>Photos</span>
+            </button>
+            <button className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg">
+              <Sun className="w-4 h-4" />
+              <span>Weather</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Travel Inspiration */}
+        <div className="p-4 border-t border-gray-200">
+          <h4 className="font-semibold text-[#1E2E48] mb-3 text-sm flex items-center gap-2">
+            <Sparkles className="w-4 h-4" />
+            Travel Inspiration
+          </h4>
+          <div className="space-y-2">
+            {[
+              { title: "Hidden Beach Caves", island: "Milos", color: "#FFEAA7" },
+              { title: "Sunset Wine Tour", island: "Santorini", color: "#FF6B6B" },
+              { title: "Traditional Pottery", island: "Sifnos", color: "#DDA0DD" }
+            ].map((inspiration, index) => (
+              <div key={index} className="bg-gradient-to-r from-gray-50 to-blue-50 p-3 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer group">
+                <div className="flex items-center gap-3">
+                  <div 
+                    className="w-3 h-3 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: inspiration.color }}
+                  ></div>
+                  <div className="flex-1">
+                    <div className="text-sm font-medium text-[#1E2E48] group-hover:text-blue-600 transition-colors">
+                      {inspiration.title}
+                    </div>
+                    <div className="text-xs text-gray-500">{inspiration.island}</div>
+                  </div>
+                  <ArrowRight className="w-3 h-3 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Smart Recommendations */}
+        <div className="p-4 border-t border-gray-200">
+          <h4 className="font-semibold text-[#1E2E48] mb-3 text-sm flex items-center gap-2">
+            <Brain className="w-4 h-4" />
+            AI Recommendations
+          </h4>
+          <div className="space-y-3">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-3 rounded-lg border border-green-200">
+              <div className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Star className="w-3 h-3 text-white" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-green-800 mb-1">Perfect Season</div>
+                  <div className="text-xs text-green-600">
+                    May-June: Ideal weather, fewer crowds, blooming islands
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-3 rounded-lg border border-blue-200">
+              <div className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Globe className="w-3 h-3 text-white" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-blue-800 mb-1">Ferry Tip</div>
+                  <div className="text-xs text-blue-600">
+                    Book Santorini-Mykonos ferries 2 weeks ahead in summer
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-3 rounded-lg border border-purple-200">
+              <div className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Coffee className="w-3 h-3 text-white" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-purple-800 mb-1">Local Secret</div>
+                  <div className="text-xs text-purple-600">
+                    Try frappé coffee at local kafeneia for authentic experience
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
 
@@ -689,7 +806,7 @@ function ChatExperience({
       </div>
 
       {/* Mobile Navigation Header */}
-      <div className="md:hidden bg-white border-b border-gray-200 p-4 sticky top-0 z-10">
+      <div className="md:hidden bg-white border-b border-gray-200 p-4 sticky top-0 z-50">
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-3">
             <button
@@ -1469,10 +1586,16 @@ function InteractiveMap({ islands, selectedIslands, onToggleIsland }: any) {
   );
 }
 
-// Visual Itinerary Builder Component
+// Enhanced Visual Itinerary Builder Component
 function ItineraryBuilder({ itinerary, setItinerary, islands, tripDuration, setTripDuration }: any) {
   const [editingDay, setEditingDay] = useState<number | null>(null);
   const [newActivity, setNewActivity] = useState('');
+  const [planningMode, setPlanningMode] = useState<'manual' | 'ai' | 'template'>('manual');
+  const [budget, setBudget] = useState(2000);
+  const [travelStyle, setTravelStyle] = useState('balanced');
+  const [groupSize, setGroupSize] = useState(2);
+  const [showBudgetBreakdown, setShowBudgetBreakdown] = useState(false);
+  const [progressStep, setProgressStep] = useState(0);
 
   const addActivity = (dayIndex: number) => {
     if (!newActivity.trim()) return;
@@ -1494,84 +1617,289 @@ function ItineraryBuilder({ itinerary, setItinerary, islands, tripDuration, setT
     }
   };
 
+  const addNewDay = () => {
+    const newDay = {
+      day: itinerary.length + 1,
+      island: 'santorini',
+      title: `Day ${itinerary.length + 1}`,
+      activities: [],
+      cost: 150,
+      accommodation: 'To be planned'
+    };
+    setItinerary([...itinerary, newDay]);
+  };
+
   const totalCost = itinerary.reduce((sum: number, day: any) => sum + (day.cost || 0), 0);
+  const avgDailyCost = itinerary.length > 0 ? Math.round(totalCost / itinerary.length) : 0;
+  const budgetProgress = budget > 0 ? (totalCost / budget) * 100 : 0;
+
+  // Auto-save progress tracking
+  const completionPercentage = Math.round((itinerary.length / tripDuration) * 100);
+  
+  const travelStyles = [
+    { id: 'luxury', label: 'Luxury', icon: '👑', multiplier: 2.5 },
+    { id: 'comfort', label: 'Comfort', icon: '🏨', multiplier: 1.5 },
+    { id: 'balanced', label: 'Balanced', icon: '⚖️', multiplier: 1.0 },
+    { id: 'budget', label: 'Budget', icon: '💰', multiplier: 0.7 }
+  ];
 
   return (
-    <div className="h-full flex flex-col bg-gray-50">
-      {/* Header - Responsive */}
-      <div className="bg-white border-b border-gray-200 p-3 sm:p-4 lg:p-6">
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-4 mb-4">
-          <div className="flex-1">
-            <h3 className="text-xl sm:text-2xl font-bold text-[#1E2E48] mb-1">Trip Itinerary Planner</h3>
-            <p className="text-sm text-gray-600">Plan your perfect Greek islands adventure day by day</p>
-          </div>
-          
-          {/* Cost & Duration Summary - Responsive */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            <div className="text-center sm:text-right">
-              <div className="text-xs sm:text-sm text-gray-600">Total Cost</div>
-              <div className="text-lg sm:text-2xl font-bold text-[#1E2E48]">€{totalCost}</div>
-            </div>
-            <div className="text-center sm:text-right">
-              <div className="text-xs sm:text-sm text-gray-600">Duration</div>
-              <div className="text-lg sm:text-2xl font-bold text-[#1E2E48]">{itinerary.length} days</div>
-            </div>
-          </div>
+    <div className="h-full flex flex-col bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/30 pt-24 md:pt-20">
+      {/* Enhanced Header with Smart Features */}
+      <div className="bg-white/95 backdrop-blur-sm border-b border-gray-200 shadow-lg sticky top-24 md:top-16 z-40">
+        {/* Decorative Background Elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-20 -right-32 w-80 h-80 bg-gradient-to-br from-blue-400/10 to-purple-400/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-40 -left-20 w-60 h-60 bg-gradient-to-tr from-emerald-400/10 to-teal-400/10 rounded-full blur-3xl"></div>
+          <div className="absolute top-80 right-20 w-40 h-40 bg-gradient-to-br from-pink-400/10 to-rose-400/10 rounded-full blur-2xl"></div>
         </div>
 
-        {/* Trip Controls - Responsive Stack */}
-        <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-4">
-          <label className="flex items-center gap-2 text-xs sm:text-sm font-medium text-gray-700">
-            Duration:
-            <select 
-              value={tripDuration} 
-              onChange={(e) => setTripDuration(Number(e.target.value))}
-              className="border border-gray-300 rounded-lg px-2 sm:px-3 py-1.5 sm:py-2 bg-white focus:border-[#1E2E48] focus:outline-none text-xs sm:text-sm"
-            >
-              {[3, 5, 7, 10, 14].map(days => (
-                <option key={days} value={days}>{days} days</option>
-              ))}
-            </select>
-          </label>
-          
-          <div className="flex gap-2 sm:gap-3">
-            <button className="bg-[#1E2E48] text-white px-3 sm:px-4 py-2 rounded-lg hover:bg-[#1E2E48]/90 transition-colors text-xs sm:text-sm font-medium">
-              <Plus className="w-3 sm:w-4 h-3 sm:h-4 inline mr-1 sm:mr-2" />
-              Add Day
-            </button>
-            <button className="border border-gray-300 text-gray-700 px-3 sm:px-4 py-2 rounded-lg hover:bg-gray-50 transition-colors text-xs sm:text-sm font-medium">
-              <RefreshCw className="w-3 sm:w-4 h-3 sm:h-4 inline mr-1 sm:mr-2" />
-              <span className="hidden sm:inline">Auto-Generate</span>
-              <span className="sm:hidden">Generate</span>
-            </button>
+        <div className="relative p-8 sm:p-10 lg:p-12 pt-12 sm:pt-14 lg:pt-16">
+          {/* Main Header Section */}
+          <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between gap-8 mb-8">
+            <div className="flex-1">
+              <div className="flex items-center gap-4 mb-4">
+                <div className="relative">
+                  <div className="p-3 bg-gradient-to-br from-[#1E2E48] via-blue-600 to-purple-600 rounded-2xl shadow-lg">
+                    <Route className="h-8 w-8 text-white" />
+                  </div>
+                  <div className="absolute -top-1 -right-1 w-6 h-6 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full flex items-center justify-center">
+                    <div className="w-2 h-2 bg-white rounded-full animate-pulse"></div>
+                  </div>
+                </div>
+                <div>
+                  <h3 className="text-3xl sm:text-4xl font-bold bg-gradient-to-r from-[#1E2E48] via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                    Smart Trip Planner
+                  </h3>
+                  <div className="flex items-center gap-3 mt-2">
+                    <div className="flex items-center gap-2 bg-green-100 px-3 py-1 rounded-full">
+                      <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                      <span className="text-xs font-semibold text-green-700">AI-Powered Planning</span>
+                    </div>
+                    <div className="flex items-center gap-2 bg-blue-100 px-3 py-1 rounded-full">
+                      <Zap className="w-3 h-3 text-blue-600" />
+                      <span className="text-xs font-semibold text-blue-700">Real-time Updates</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <p className="text-base text-gray-600 max-w-2xl leading-relaxed">
+                Create your perfect Greek island adventure with intelligent recommendations, 
+                budget tracking, and interactive planning tools
+              </p>
+            </div>
             
-            {/* Enhanced Export & Share Options */}
-            {itinerary.length > 0 && (
-              <>
-                <button 
-                  onClick={() => {
-                    const itineraryText = itinerary.map((day: any) => 
-                      `Day ${day.day}: ${day.title}\n${day.activities?.join('\n') || ''}\nCost: €${day.cost}`
-                    ).join('\n\n');
-                    navigator.clipboard.writeText(itineraryText);
-                  }}
-                  className="border border-[#E3D7C3] text-[#1E2E48] px-3 sm:px-4 py-2 rounded-lg hover:bg-[#E3D7C3]/10 transition-colors text-xs sm:text-sm font-medium"
-                >
-                  <Camera className="w-3 sm:w-4 h-3 sm:h-4 inline mr-1 sm:mr-2" />
-                  Export
-                </button>
-                <button className="border border-[#E3D7C3] text-[#1E2E48] px-3 sm:px-4 py-2 rounded-lg hover:bg-[#E3D7C3]/10 transition-colors text-xs sm:text-sm font-medium">
-                  <Heart className="w-3 sm:w-4 h-3 sm:h-4 inline mr-1 sm:mr-2" />
-                  <span className="hidden sm:inline">Save</span>
-                </button>
-              </>
-            )}
+            {/* Enhanced Analytics Cards */}
+            <div className="flex flex-wrap items-center gap-4">
+              <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-xl min-w-[140px]">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <div className="w-4 h-4 bg-gradient-to-r from-emerald-500 to-green-500 rounded-full shadow-lg"></div>
+                  <span className="text-sm font-semibold text-gray-700">Total Budget</span>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-emerald-600 to-green-600 bg-clip-text text-transparent">
+                    €{totalCost}
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    €{avgDailyCost}/day avg
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                    <div 
+                      className="bg-gradient-to-r from-emerald-500 to-green-500 h-2 rounded-full transition-all duration-500"
+                      style={{ width: `${Math.min(budgetProgress, 100)}%` }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+              
+              <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-xl min-w-[140px]">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <div className="w-4 h-4 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full shadow-lg"></div>
+                  <span className="text-sm font-semibold text-gray-700">Duration</span>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-cyan-600 bg-clip-text text-transparent">
+                    {itinerary.length}
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    of {tripDuration} days
+                  </div>
+                  <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
+                    <div 
+                      className="bg-gradient-to-r from-blue-500 to-cyan-500 h-2 rounded-full transition-all duration-500"
+                      style={{ width: `${completionPercentage}%` }}
+                    ></div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="bg-white/80 backdrop-blur-md rounded-2xl p-6 border border-white/50 shadow-xl min-w-[140px]">
+                <div className="flex items-center justify-center gap-2 mb-3">
+                  <div className="w-4 h-4 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full shadow-lg"></div>
+                  <span className="text-sm font-semibold text-gray-700">Progress</span>
+                </div>
+                <div className="text-center">
+                  <div className="text-3xl font-bold bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent">
+                    {completionPercentage}%
+                  </div>
+                  <div className="text-xs text-gray-500 mt-1">
+                    Complete
+                  </div>
+                  {completionPercentage === 100 && (
+                    <div className="flex items-center justify-center gap-1 mt-2">
+                      <CheckCircle className="w-4 h-4 text-green-500" />
+                      <span className="text-xs text-green-600 font-medium">Ready!</span>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Enhanced Planning Controls */}
+          <div className="bg-gradient-to-r from-gray-50 via-white to-gray-50 rounded-2xl p-8 border border-gray-200/50 shadow-lg">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+              {/* Trip Configuration */}
+              <div className="space-y-6">
+                <h4 className="text-lg font-bold text-[#1E2E48] flex items-center gap-2">
+                  <Target className="w-5 h-5" />
+                  Trip Setup
+                </h4>
+                
+                <div className="space-y-4">
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Duration</label>
+                    <select 
+                      value={tripDuration} 
+                      onChange={(e) => setTripDuration(Number(e.target.value))}
+                      className="w-full border-2 border-gray-300 rounded-xl px-4 py-3 bg-white focus:border-[#1E2E48] focus:outline-none text-sm font-medium shadow-sm hover:shadow-md transition-all"
+                    >
+                      {[3, 5, 7, 10, 14, 21].map(days => (
+                        <option key={days} value={days}>{days} days adventure</option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <div>
+                    <label className="block text-sm font-semibold text-gray-700 mb-2">Group Size</label>
+                    <div className="flex gap-2">
+                      {[1, 2, 4, 6, 8].map(size => (
+                        <button
+                          key={size}
+                          onClick={() => setGroupSize(size)}
+                          className={`flex-1 py-2 px-3 rounded-lg border-2 transition-all text-sm font-medium ${
+                            groupSize === size
+                              ? 'border-[#1E2E48] bg-[#1E2E48] text-white'
+                              : 'border-gray-300 hover:border-gray-400 text-gray-700'
+                          }`}
+                        >
+                          {size}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              {/* Travel Style & Budget */}
+              <div className="space-y-6">
+                <h4 className="text-lg font-bold text-[#1E2E48] flex items-center gap-2">
+                  <Crown className="w-5 h-5" />
+                  Travel Style
+                </h4>
+                
+                <div className="grid grid-cols-2 gap-3">
+                  {travelStyles.map(style => (
+                    <button
+                      key={style.id}
+                      onClick={() => setTravelStyle(style.id)}
+                      className={`p-4 rounded-xl border-2 transition-all text-center ${
+                        travelStyle === style.id
+                          ? 'border-[#1E2E48] bg-[#1E2E48] text-white'
+                          : 'border-gray-300 hover:border-gray-400 text-gray-700'
+                      }`}
+                    >
+                      <div className="text-2xl mb-2">{style.icon}</div>
+                      <div className="text-sm font-semibold">{style.label}</div>
+                    </button>
+                  ))}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Budget: €{budget}
+                  </label>
+                  <input
+                    type="range"
+                    min="500"
+                    max="10000"
+                    step="100"
+                    value={budget}
+                    onChange={(e) => setBudget(Number(e.target.value))}
+                    className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                  />
+                  <div className="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>€500</span>
+                    <span>€10,000</span>
+                  </div>
+                </div>
+              </div>
+
+              {/* Smart Actions */}
+              <div className="space-y-6">
+                <h4 className="text-lg font-bold text-[#1E2E48] flex items-center gap-2">
+                  <Brain className="w-5 h-5" />
+                  Smart Actions
+                </h4>
+                
+                <div className="space-y-3">
+                  <button 
+                    onClick={addNewDay}
+                    className="w-full bg-gradient-to-r from-[#1E2E48] to-blue-600 text-white px-6 py-4 rounded-xl hover:from-[#1E2E48]/90 hover:to-blue-600/90 transition-all duration-300 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3"
+                  >
+                    <Plus className="w-5 h-5" />
+                    Add New Day
+                  </button>
+                  
+                  <button className="w-full bg-gradient-to-r from-amber-500 to-orange-500 text-white px-6 py-4 rounded-xl hover:from-amber-600 hover:to-orange-600 transition-all duration-300 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3">
+                    <Wand2 className="w-5 h-5" />
+                    AI Auto-Plan
+                  </button>
+                  
+                  <button className="w-full bg-gradient-to-r from-emerald-500 to-teal-500 text-white px-6 py-4 rounded-xl hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-3">
+                    <Flame className="w-5 h-5" />
+                    Use Template
+                  </button>
+                  
+                  {itinerary.length > 0 && (
+                    <div className="flex gap-2">
+                      <button 
+                        onClick={() => {
+                          const itineraryText = itinerary.map((day: any) => 
+                            `Day ${day.day}: ${day.title}\n${day.activities?.join('\n') || ''}\nCost: €${day.cost}`
+                          ).join('\n\n');
+                          navigator.clipboard.writeText(itineraryText);
+                        }}
+                        className="flex-1 bg-gradient-to-r from-pink-500 to-rose-500 text-white px-4 py-3 rounded-xl hover:from-pink-600 hover:to-rose-600 transition-all duration-300 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-2"
+                      >
+                        <Camera className="w-4 h-4" />
+                        Export
+                      </button>
+                      <button className="flex-1 bg-gradient-to-r from-purple-500 to-indigo-500 text-white px-4 py-3 rounded-xl hover:from-purple-600 hover:to-indigo-600 transition-all duration-300 text-sm font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 flex items-center justify-center gap-2">
+                        <Heart className="w-4 h-4" />
+                        Save
+                      </button>
+                    </div>
+                  )}
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {/* Itinerary Timeline - Responsive */}
-      <div className="flex-1 overflow-y-auto p-3 sm:p-4 lg:p-6">
+      <div className="flex-1 overflow-y-auto p-6 sm:p-8 lg:p-12 pt-8 sm:pt-12 lg:pt-16">
         {itinerary.length === 0 ? (
           <div className="text-center py-8 sm:py-12">
             <div className="w-12 h-12 sm:w-16 sm:h-16 bg-[#E3D7C3]/30 rounded-full flex items-center justify-center mx-auto mb-4">

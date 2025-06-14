@@ -266,41 +266,41 @@ Naxos is a unique blend of everything that makes Greek islands special. The isla
 
 ## Where to Stay {#where-to-stay}
 ### Luxury Options
-- [Naxian Collection](/hotels/naxian-collection):
-  - Private pool villas
-  - Organic restaurant
-  - Wine cellar
-  - Spa services
-  - Starting from €450/night
+- [Cavo Tagoo](/hotels/cavo-tagoo):
+  - Iconic infinity pool with floating sunbeds
+  - Cave pool suites with private pools
+  - Award-winning Japanese fusion restaurant
+  - Spectacular sunset views
+  - Starting from €800/night
 
-- [Kavos Naxos](/hotels/kavos-naxos):
-  - Sea view suites
-  - Infinity pool
-  - Mediterranean gardens
-  - Art gallery
-  - Starting from €350/night
+- [Belvedere Mykonos](/hotels/belvedere-mykonos):
+  - Central Mykonos Town location
+  - Six Senses Spa
+  - Matsuhisa restaurant by Nobu
+  - Designer interiors
+  - Starting from €600/night
 
-- [Naxos Resort](/hotels/naxos-resort):
-  - Beachfront location
-  - Wellness center
-  - Traditional architecture
-  - Family rooms
-  - Starting from €300/night
+- [Myconian Villa Collection](/hotels/myconian-villa-collection):
+  - Private infinity pools
+  - Personal butler service
+  - Panoramic ocean views
+  - Luxury spa treatments
+  - Starting from €700/night
 
 ### Mid-Range Choices
-- Porto Naxos Hotel:
-  - Swimming pool
-  - Restaurant
-  - Garden views
-  - Close to town
-  - Starting from €150/night
+- Semeli Hotel:
+  - Heart of Mykonos Town
+  - Modern Cycladic design
+  - Thioni Restaurant
+  - Pool with sea views
+  - Starting from €300/night
 
-- Naxos Palace Hotel:
-  - Family-friendly
-  - Large pool
-  - Free parking
-  - Breakfast included
-  - Starting from €120/night
+- Petasos Beach Resort:
+  - Private beach access
+  - Two-tier infinity pool
+  - Wellness center
+  - Sea-view rooms
+  - Starting from €250/night
 
 ## Beaches {#beaches}
 1. **Agios Prokopios**:

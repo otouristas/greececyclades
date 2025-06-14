@@ -1,7 +1,7 @@
 import { useNavigate } from 'react-router-dom';
 import { Ship, Calendar, Trash2, MapPin, Eye, Printer } from 'lucide-react';
 import { useTripStore } from '../store/tripStore';
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from '../stores/authStore';
 import SEO from '../components/SEO';
 import { generateMyTripsSEO } from '../utils/seo';
 import { useCallback } from 'react';

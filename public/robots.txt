@@ -1,4 +1,111 @@
 User-agent: *
 Allow: /
 
+# Disallow trip-planner with query parameters to prevent duplicate content
+Disallow: /trip-planner?*
+
+# Disallow protected user pages
+Disallow: /profile
+Disallow: /my-trips
+
+# Disallow authentication pages
+Disallow: /signin
+Disallow: /signup
+Disallow: /forgot-password
+
+# Disallow admin/test pages
+Disallow: /test-map
+Disallow: /hotels-test
+
+# Disallow API endpoints
+Disallow: /api/
+
+# Disallow search results and dynamic pages with parameters
+Disallow: /ferry-tickets-search
+Disallow: /hotels?*
+Disallow: /activities?*
+
+# Disallow non-existent tips pages
+Disallow: /tips/
+
+# Disallow non-existent service pages (use correct routes instead)
+Disallow: /vehicles
+Disallow: /car-rentals
+Disallow: /ferries
+
+# Disallow non-existent utility pages
+Disallow: /business/
+Disallow: /faq
+Disallow: /travel-insurance
+Disallow: /map
+Disallow: /cookie-policy
+Disallow: /cookies
+Disallow: /gdpr
+Disallow: /emergency-contacts
+
+# Disallow non-existent photo galleries
+Disallow: /photos/
+
+# Disallow old/legacy URL structure
+Disallow: /en/
+
+# Disallow removed hotel pages (redirect to /hotels)
+Disallow: /hotels/cavo-tagoo
+Disallow: /hotels/belvedere-mykonos-mykonos
+Disallow: /hotels/kouros-village-mykonos
+Disallow: /hotels/summer-senses-resort-paros
+Disallow: /hotels/verina-astra-sifnos
+Disallow: /hotels/mystique-hotel-santorini
+Disallow: /hotels/kavos-naxos-naxos
+Disallow: /hotels/paros-agnanti-paros
+Disallow: /hotels/mykonos-breeze-mykonos
+Disallow: /hotels/caldera-villas-santorini
+Disallow: /hotels/skinopi-lodge-milos
+Disallow: /hotels/milos-hideaway-milos
+Disallow: /hotels/paros-luxury-resort-paros
+Disallow: /hotels/yria-boutique-hotel-paros
+Disallow: /hotels/absolute-bliss-santorini
+Disallow: /hotels/katikies
+Disallow: /hotels/parilio-hotel
+Disallow: /hotels/paros-agnanti
+Disallow: /hotels/yria-boutique-hotel
+Disallow: /hotels/belvedere-mykonos
+Disallow: /hotels/kouros-village
+Disallow: /hotels/verina-astra
+Disallow: /hotels/kamaroti-suites
+
+# Disallow removed activity pages (redirect to /activities)
+Disallow: /activities/paros-sup
+Disallow: /activities/kamari-diving
+Disallow: /activities/caldera-cruise
+
+# Disallow restaurant/nightlife pages (redirect to /culinary)
+Disallow: /restaurants/
+Disallow: /nightlife/
+
+# Disallow specific culinary pages (redirect to /culinary)
+Disallow: /culinary/naxos-potatoes
+Disallow: /culinary/naxos-cheese
+Disallow: /culinary/sifnos-cheese
+Disallow: /culinary/kitron
+
+# Disallow specific ferry routes (redirect to /ferry-tickets)
+Disallow: /ferry-tickets/piraeus-*
+
+# Disallow legacy travel guide pages (redirect to /guides)
+Disallow: /travel-guide/
+
+# Disallow legacy planner URLs (redirect to /trip-planner)
+Disallow: /planner
+
+# Disallow legacy guide URLs
+Disallow: /schinoussa-guide
+
+# Disallow legacy terms URL
+Disallow: /terms-of-service
+
+# Disallow legacy transportation URL
+Disallow: /transportation
+
+# Allow main sitemap
 Sitemap: https://greececyclades.com/sitemap.xml

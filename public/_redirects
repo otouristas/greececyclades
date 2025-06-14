@@ -1,1 +1,123 @@
+# Service page redirects (301 permanent)
+/vehicles /rent-a-car 301
+/car-rentals /rent-a-car 301
+/ferries /ferry-tickets 301
+
+# Legacy privacy policy redirect
+/privacy-policy /privacy 301
+
+# Tips pages redirect to guides
+/tips/santorini /guides/santorini 301
+/tips/mykonos /guides/mykonos 301
+/tips/naxos /guides/naxos 301
+/tips/paros /guides/paros 301
+/tips/andros /guides/andros 301
+/tips/sifnos /guides/sifnos 301
+/tips/ios /guides/ios 301
+/tips/milos /guides/milos 301
+/tips/serifos /guides/serifos 301
+/tips/folegandros /guides/folegandros 301
+/tips/syros /guides/syros 301
+/tips/koufonisia /guides/koufonisia 301
+/tips/amorgos /guides/amorgos 301
+/tips/antiparos /guides/antiparos 301
+/tips/kea /guides/kea 301
+/tips/kythnos /guides/kythnos 301
+/tips/sikinos /guides/sikinos 301
+/tips/anafi /guides/anafi 301
+/tips/tinos /guides/tinos 301
+/tips/kimolos /guides/kimolos 301
+/tips/schinoussa /guides/schinoussa 301
+/tips/iraklia /guides/iraklia 301
+/tips/donousa /guides/donousa 301
+/tips/thirasia /guides/thirasia 301
+
+# Utility page redirects
+/faq /help 301
+/map /islands 301
+/cookie-policy /privacy 301
+/cookies /privacy 301
+/gdpr /privacy 301
+/emergency-contacts /help 301
+/business/signup /list-property 301
+/travel-insurance /resources 301
+
+# Photo galleries redirect to island pages
+/photos/santorini /islands/santorini 301
+/photos/mykonos /islands/mykonos 301
+/photos/naxos /islands/naxos 301
+/photos/paros /islands/paros 301
+/photos/milos /islands/milos 301
+
+# Additional redirects
+/schinoussa-guide /guides/schinoussa 301
+/terms-of-service /terms 301
+/transportation /transfers 301
+/business/signin /signin 301
+/planner /trip-planner 301
+
+# Travel guide redirects
+/travel-guide/santorini /guides/santorini 301
+/travel-guide/mykonos /guides/mykonos 301
+/travel-guide/naxos /guides/naxos 301
+/travel-guide/paros /guides/paros 301
+/travel-guide/sifnos /guides/sifnos 301
+/travel-guide/koufonisia /guides/koufonisia 301
+/travel-guide/antiparos /guides/antiparos 301
+/travel-guide/kimolos /guides/kimolos 301
+
+# Hotel redirects (removed hotels redirect to main hotels page)
+/hotels/cavo-tagoo /hotels 301
+/hotels/belvedere-mykonos-mykonos /hotels 301
+/hotels/kouros-village-mykonos /hotels 301
+/hotels/summer-senses-resort-paros /hotels 301
+/hotels/verina-astra-sifnos /hotels 301
+/hotels/mystique-hotel-santorini /hotels 301
+/hotels/kavos-naxos-naxos /hotels 301
+/hotels/paros-agnanti-paros /hotels 301
+/hotels/mykonos-breeze-mykonos /hotels 301
+/hotels/caldera-villas-santorini /hotels 301
+/hotels/skinopi-lodge-milos /hotels 301
+/hotels/milos-hideaway-milos /hotels 301
+/hotels/paros-luxury-resort-paros /hotels 301
+/hotels/yria-boutique-hotel-paros /hotels 301
+/hotels/absolute-bliss-santorini /hotels 301
+/hotels/katikies /hotels 301
+/hotels/parilio-hotel /hotels 301
+/hotels/paros-agnanti /hotels 301
+/hotels/yria-boutique-hotel /hotels 301
+/hotels/belvedere-mykonos /hotels 301
+/hotels/kouros-village /hotels 301
+/hotels/verina-astra /hotels 301
+/hotels/kamaroti-suites /hotels 301
+
+# Activity redirects (removed activities redirect to main activities page)
+/activities/paros-sup /activities 301
+/activities/kamari-diving /activities 301
+/activities/caldera-cruise /activities 301
+
+# Restaurant/nightlife redirects to culinary page
+/restaurants/santorini-caldera /culinary 301
+/restaurants/kikis-tavern /culinary 301
+/restaurants/nammos /culinary 301
+/restaurants/naoussa /culinary 301
+/restaurants/naxos /culinary 301
+/nightlife/galleraki /culinary 301
+/nightlife/caprice /culinary 301
+/nightlife/scarpa /culinary 301
+
+# Culinary specific redirects
+/culinary/naxos-potatoes /culinary 301
+/culinary/naxos-cheese /culinary 301
+/culinary/sifnos-cheese /culinary 301
+/culinary/kitron /culinary 301
+
+# Ferry specific routes
+/ferry-tickets/piraeus-naxos /ferry-tickets 301
+/ferry-tickets/piraeus-mykonos /ferry-tickets 301
+/ferry-tickets/piraeus-milos /ferry-tickets 301
+/ferry-tickets/piraeus-paros /ferry-tickets 301
+/ferry-tickets/piraeus-santorini /ferry-tickets 301
+
+# Catch-all for SPA (must be last)
 /* /index.html 200

@@ -21,57 +21,46 @@ const sitemapData: SitemapSection[] = [
       { title: "Home", path: "/" },
       { title: "About Us", path: "/about" },
       { title: "Contact", path: "/contact" },
-      { title: "Help Center", path: "/help" },
     ]
   },
   {
-    title: "Travel Guides",
-    links: [
-      { title: "Santorini Guide", path: "/guides/santorini" },
-      { title: "Mykonos Guide", path: "/guides/mykonos" },
-      { title: "Naxos Guide", path: "/guides/naxos" },
-      { title: "Paros Guide", path: "/guides/paros" },
-      { title: "Sifnos Guide", path: "/guides/sifnos" },
-      { title: "Ios Guide", path: "/guides/ios" },
-    ]
-  },
-  {
-    title: "Popular Islands",
-    links: [
-      { title: "Santorini", path: "/islands/santorini" },
-      { title: "Mykonos", path: "/islands/mykonos" },
-      { title: "Naxos", path: "/islands/naxos" },
-      { title: "Paros", path: "/islands/paros" },
-      { title: "Sifnos", path: "/islands/sifnos" },
-      { title: "Ios", path: "/islands/ios" },
-    ]
-  },
-  {
-    title: "Plan Your Trip",
+    title: "Travel Services",
     links: [
       { title: "Activities", path: "/activities" },
       { title: "Hotels", path: "/hotels" },
       { title: "Ferry Tickets", path: "/ferry-tickets" },
       { title: "Flight Tickets", path: "/flights" },
       { title: "Car Rentals", path: "/rent-a-car" },
-      { title: "Taxi Transfers", path: "/transfers" },
+      { title: "Airport Transfers", path: "/transfers" },
     ]
   },
   {
-    title: "Travel Tips & Resources",
+    title: "Planning Tools",
+    links: [
+      { title: "Trip Planner", path: "/trip-planner" },
+      { title: "Weather Guide", path: "/weather" },
+      { title: "Budget Calculator", path: "/budget-calculator" },
+      { title: "Greek Phrases", path: "/greek-phrases" },
+      { title: "Ferry Guide", path: "/ferry-guide" },
+      { title: "Resources", path: "/resources" },
+      { title: "Culinary Experiences", path: "/culinary" },
+    ]
+  },
+  {
+    title: "Island Guides",
+    links: [
+      { title: "All Islands", path: "/islands" },
+      { title: "Island Guides", path: "/guides" },
+      { title: "Santorini Guide", path: "/guides/santorini" },
+      { title: "Mykonos Guide", path: "/guides/mykonos" },
+      { title: "Naxos Guide", path: "/guides/naxos" },
+      { title: "Paros Guide", path: "/guides/paros" },
+    ]
+  },
+  {
+    title: "Content & Blog",
     links: [
       { title: "Travel Blog", path: "/blog" },
-      { title: "Culinary Experiences", path: "/culinary" },
-      { title: "Trip Planner", path: "/trip-planner" },
-    ]
-  },
-  {
-    title: "User Account",
-    links: [
-      { title: "Sign In", path: "/signin" },
-      { title: "Sign Up", path: "/signup" },
-      { title: "My Profile", path: "/profile" },
-      { title: "My Trips", path: "/my-trips" },
     ]
   },
   {
@@ -121,11 +110,13 @@ const Sitemap: React.FC = () => {
               </ul>
             </div>
           ))}
-          <div key="All Islands" className="bg-white rounded-lg shadow-sm p-6">
+          
+          {/* All Islands Section */}
+          <div className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
               All Islands
             </h2>
-            <ul className="space-y-2">
+            <ul className="space-y-2 max-h-64 overflow-y-auto">
               {islands.map(island => (
                 <li key={island.id}>
                   <Link 
@@ -138,12 +129,14 @@ const Sitemap: React.FC = () => {
               ))}
             </ul>
           </div>
-          <div key="All Hotels" className="bg-white rounded-lg shadow-sm p-6">
+          
+          {/* Hotels Section */}
+          <div className="bg-white rounded-lg shadow-sm p-6">
             <h2 className="text-xl font-semibold text-gray-900 mb-4">
-              All Hotels
+              Featured Hotels
             </h2>
-            <ul className="space-y-2">
-              {hotels.map(hotel => (
+            <ul className="space-y-2 max-h-64 overflow-y-auto">
+              {hotels.slice(0, 20).map(hotel => (
                 <li key={hotel.id}>
                   <Link 
                     to={`/hotels/${getHotelSlug(hotel.name, hotel.location.island)}`} 
@@ -153,12 +146,22 @@ const Sitemap: React.FC = () => {
                   </Link>
                 </li>
               ))}
+              {hotels.length > 20 && (
+                <li className="pt-2">
+                  <Link 
+                    to="/hotels" 
+                    className="text-blue-600 hover:text-blue-700 font-medium"
+                  >
+                    View All Hotels →
+                  </Link>
+                </li>
+              )}
             </ul>
           </div>
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default Sitemap;

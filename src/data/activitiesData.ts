@@ -85,12 +85,12 @@ const activities: Activity[] = [
     id: 'milos-sea-kayaking',
     title: 'Milos Sea Kayaking & Cave Exploration',
     slug: 'milos-sea-kayaking-adventure',
-    shortDescription: 'Paddle through crystal-clear waters to discover Milos’s stunning coastline, sea caves, and hidden beaches.',
-    description: `Discover the hidden treasures of Milos’s coastline on this exciting sea kayaking adventure. Perfect for both beginners and experienced kayakers, this tour offers a unique perspective of the island’s stunning geological formations and pristine waters.
+    shortDescription: 'Paddle through crystal-clear waters to discover Milos\' stunning coastline, sea caves, and hidden beaches.',
+    description: `Discover the hidden treasures of Milos\' coastline on this exciting sea kayaking adventure. Perfect for both beginners and experienced kayakers, this tour offers a unique perspective of the island\'s stunning geological formations and pristine waters.
 
-Starting from Adamantas port, we’ll paddle along the dramatic coastline, exploring hidden caves and coves that are only accessible by water. Your expert guide will lead you to some of the most spectacular spots, including the famous Kleftiko Bay and Sykia Cave.
+Starting from Adamantas port, we'll paddle along the dramatic coastline, exploring hidden caves and coves that are only accessible by water. Your expert guide will lead you to some of the most spectacular spots, including the famous Kleftiko Bay and Sykia Cave.
 
-Throughout the journey, you’ll learn about the island’s fascinating volcanic history and unique geology. Take breaks to swim and snorkel in crystal-clear waters, discovering the rich marine life beneath the surface.
+Throughout the journey, you'll learn about the island's fascinating volcanic history and unique geology. Take breaks to swim and snorkel in crystal-clear waters, discovering the rich marine life beneath the surface.
 
 This adventure includes:
 • High-quality sea kayaking equipment
@@ -125,7 +125,7 @@ This adventure includes:
       'Personal items'
     ],
     highlights: [
-      'Explore Milos’s volcanic coastline by kayak',
+      'Explore Milos\' volcanic coastline by kayak',
       'Discover hidden caves and secluded beaches',
       'Visit the famous Kleftiko Bay',
       'Swim and snorkel in crystal-clear waters',
@@ -170,7 +170,7 @@ This adventure includes:
     reviews: undefined,
     seoMeta: {
       title: 'Milos Sea Kayaking & Cave Exploration | Greece Cyclades',
-      description: 'Paddle through crystal-clear waters to discover Milos’s stunning coastline, sea caves, and hidden beaches.',
+              description: 'Paddle through crystal-clear waters to discover Milos\' stunning coastline, sea caves, and hidden beaches.',
       keywords: ['milos sea kayaking', 'cave exploration', 'greece activities', 'cyclades']
     }
   },
@@ -190,7 +190,7 @@ Highlights:
 • Professional guide and safety equipment provided
 • Small group size for personalized experience
 
-Perfect for both beginners and experienced kayakers, this tour includes all necessary equipment and safety briefing. Our expert guides will share fascinating insights about Milos's unique geological formations and coastal ecosystem.`,
+Perfect for both beginners and experienced kayakers, this tour includes all necessary equipment and safety briefing. Our expert guides will share fascinating insights about Milos' unique geological formations and coastal ecosystem.`,
     location: 'Adamantas Port',
     island: 'Milos',
     duration: '5 hours',

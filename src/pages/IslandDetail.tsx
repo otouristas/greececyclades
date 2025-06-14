@@ -504,7 +504,7 @@ export default function IslandDetail() {
                   Trip Planner
                 </Link>
                 <Link 
-                  to={`/tips/${selectedIsland.slug}`}
+                  to={`/guides/${selectedIsland.slug}#tips`}
                   className="inline-flex items-center gap-2 rounded-lg bg-blue-400/20 backdrop-blur-sm px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-400/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
                 >
                   <Sun className="h-5 w-5" />

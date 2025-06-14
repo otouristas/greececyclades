@@ -2,14 +2,17 @@ import React from 'react';
 import Head from 'next/head';
 import Navbar from './Navbar';
 import Footer from './Footer';
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from '../stores/authStore';
 
 interface LayoutProps {
   children: React.ReactNode;
 }
 
 const Layout = ({ children }: LayoutProps) => {
-  const { toggleAuthModal } = useAuthStore();
+  const handleAuthClick = () => {
+    // Navigate to signin page
+    window.location.href = '/signin';
+  };
 
   return (
     <div className="flex flex-col min-h-screen">
@@ -19,7 +22,7 @@ const Layout = ({ children }: LayoutProps) => {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Navbar onAuthClick={toggleAuthModal} />
+      <Navbar onAuthClick={handleAuthClick} />
       
       <main className="flex-grow pt-16">
         {children}

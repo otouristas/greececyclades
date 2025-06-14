@@ -2,7 +2,7 @@ import { useState, useRef, useEffect } from 'react';
 import { Send, Sparkles, User, X, ThumbsUp, ThumbsDown, Share2, Download, Save, MapPin, Calendar, Compass, Umbrella, Utensils, Camera, Ship, Hotel, Plane, MapIcon, ExternalLink, MessageCircle, Zap, Globe, Heart, Star, Clock, Euro, Users, Camera as CameraIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import { useAuthStore } from '../store/authStore';
+import { useAuthStore } from '../stores/authStore';
 import { useTripStore } from '../store/tripStore';
 import { generateConversationalTrip } from '../utils/ai';
 import { Island, IslandActivity } from '../types/island';

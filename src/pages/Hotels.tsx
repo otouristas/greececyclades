@@ -82,6 +82,27 @@ export default function Hotels() {
       description: 'Beach clubs and modern accommodations',
       link: '/ios-guide'
     },
+    { 
+      name: 'Syros', 
+      hotels: 42, 
+      image: '/images/islands/syros.jpg',
+      description: 'Neoclassical architecture and cultural heritage',
+      link: '/syros-guide'
+    },
+    { 
+      name: 'Sifnos', 
+      hotels: 38, 
+      image: '/images/islands/sifnos.jpg',
+      description: 'Gastronomy capital with charming villages',
+      link: '/sifnos-guide'
+    },
+    { 
+      name: 'Folegandros', 
+      hotels: 28, 
+      image: '/images/islands/folegandros.jpg',
+      description: 'Dramatic cliffs and romantic sunsets',
+      link: '/folegandros-guide'
+    },
   ];
 
   // Hotel types with icons instead of images
@@ -199,7 +220,7 @@ export default function Hotels() {
     <div className="min-h-screen bg-secondary-50">
       <Helmet>
         <title>Hotels in Cyclades Islands Greece | Best Accommodation Deals Santorini, Mykonos | Greece Cyclades</title>
-        <meta name="description" content="Book the best hotels in Greek Islands. Luxury resorts, boutique hotels, cave accommodations in Santorini, Mykonos, Naxos, Paros. Best prices, free cancellation. Find your perfect Cyclades accommodation today!" />
+        <meta name="description" content="Book the best hotels in Greek Islands. Luxury resorts, boutique hotels, cave accommodations in Santorini, Mykonos, Naxos, Paros, Syros, Sifnos, Folegandros. Best prices, free cancellation. Find your perfect Cyclades accommodation today!" />
         <meta name="keywords" content="hotels greece, cyclades accommodation, greek island hotels, santorini hotels, mykonos hotels, naxos hotels, paros hotels, greece accommodation booking" />
         <link rel="canonical" href="https://greececyclades.com/hotels" />
         <meta property="og:title" content="Hotels in Cyclades Islands Greece | Best Accommodation Deals" />
@@ -213,7 +234,7 @@ export default function Hotels() {
             "name": "Greece Cyclades Hotels",
             "description": "Premium hotel booking service for Cyclades islands including Santorini, Mykonos, Naxos, and Paros",
             "url": "https://greececyclades.com/hotels",
-            "areaServed": ["Santorini", "Mykonos", "Naxos", "Paros", "Milos", "Ios", "Cyclades Islands"],
+            "areaServed": ["Santorini", "Mykonos", "Naxos", "Paros", "Milos", "Ios", "Syros", "Sifnos", "Folegandros", "Cyclades Islands"],
             "priceRange": "€60-€500"
           })}
         </script>
@@ -253,10 +274,14 @@ export default function Hotels() {
                       <option value="Naxos">Naxos</option>
                       <option value="Milos">Milos</option>
                       <option value="Ios">Ios</option>
-                      <option value="Folegandros">Folegandros</option>
-                      <option value="Sifnos">Sifnos</option>
-                      <option value="Amorgos">Amorgos</option>
                       <option value="Syros">Syros</option>
+                      <option value="Sifnos">Sifnos</option>
+                      <option value="Folegandros">Folegandros</option>
+                      <option value="Amorgos">Amorgos</option>
+                      <option value="Tinos">Tinos</option>
+                      <option value="Serifos">Serifos</option>
+                      <option value="Kea">Kea</option>
+                      <option value="Antiparos">Antiparos</option>
                     </select>
                     <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-primary-400" />
                   </div>
@@ -366,7 +391,7 @@ export default function Hotels() {
             <h2 className="text-3xl font-bold text-primary-600 mb-6 text-center">Why Choose Cyclades Islands for Your Perfect Stay?</h2>
             <div className="prose prose-lg max-w-none text-primary-400 leading-relaxed">
               <p className="mb-4">
-                The <strong>Cyclades islands</strong> offer some of the world's most unique and memorable accommodations. From luxury <Link to="/santorini-guide" className="text-primary-600 hover:text-primary-700 font-medium">cave hotels in Santorini</Link> with breathtaking caldera views to charming boutique properties in <Link to="/naxos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Naxos</Link> and <Link to="/paros-guide" className="text-primary-600 hover:text-primary-700 font-medium">Paros</Link>, each island provides distinct accommodation experiences that reflect authentic Greek hospitality.
+                The <strong>Cyclades islands</strong> offer some of the world's most unique and memorable accommodations. From luxury <Link to="/santorini-guide" className="text-primary-600 hover:text-primary-700 font-medium">cave hotels in Santorini</Link> with breathtaking caldera views to charming boutique properties in <Link to="/naxos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Naxos</Link> and <Link to="/paros-guide" className="text-primary-600 hover:text-primary-700 font-medium">Paros</Link>, and from cultural heritage hotels in <Link to="/syros-guide" className="text-primary-600 hover:text-primary-700 font-medium">Syros</Link> to gastronomic retreats in <Link to="/sifnos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Sifnos</Link>, each island provides distinct accommodation experiences that reflect authentic Greek hospitality.
               </p>
               <p className="mb-4">
                 Our <strong>hotel booking service</strong> specializes in the Cyclades, ensuring you find the perfect accommodation for your Greek island adventure. Whether you're seeking a romantic honeymoon suite in <Link to="/mykonos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Mykonos</Link>, a family-friendly resort in Naxos, or a secluded retreat in <Link to="/milos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Milos</Link>, we provide expert recommendations and unbeatable prices.

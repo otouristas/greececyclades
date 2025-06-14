@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { sendPasswordResetEmail } from 'firebase/auth';
-import { auth } from '../config/firebase';
+import { supabase } from '../lib/supabase';
 import { Mail, ArrowLeft, ShieldCheck } from 'lucide-react';
 import SEO from '../components/SEO';
 import { SITE_TAGLINE } from '../constants/seo';
@@ -19,11 +18,16 @@ export default function ForgotPassword() {
     setLoading(true);
 
     try {
-      await sendPasswordResetEmail(auth, email);
+      const { error } = await supabase.auth.resetPasswordForEmail(email, {
+        redirectTo: `${window.location.origin}/reset-password`,
+      });
+      
+      if (error) throw error;
+      
       setSuccessMessage('Password reset link has been sent to your email');
       setEmail(''); // Clear the email field after success
     } catch (error: any) {
-      setError('Failed to send password reset email');
+      setError(error.message || 'Failed to send password reset email');
     } finally {
       setLoading(false);
     }

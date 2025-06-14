@@ -220,3 +220,20 @@ export function generateSitemapSEO(): SEOMetadata {
     canonicalUrl: '/sitemap'
   };
 }
+
+export function generateTripPlannerSEO(params?: { island?: string; duration?: string; budget?: string }): SEOMetadata {
+  const currentYear = 2025;
+  
+  if (params?.island) {
+    return {
+      title: `${params.island} Trip Planner ${currentYear} | Custom Itinerary & Travel Guide`,
+      description: `Plan your perfect ${params.island} vacation with our interactive trip planner. Get personalized recommendations for hotels, activities, and dining based on your preferences and budget.`,
+      keywords: [...DEFAULT_KEYWORDS, `${params.island} Trip Planner`, `${params.island} Itinerary`, `${params.island} Travel Planning`, 'Custom Trip'],
+      ogTitle: `Plan Your Perfect ${params.island} Trip | Interactive Planner ${currentYear}`,
+      ogDescription: `Create your ideal ${params.island} itinerary with our smart trip planner. Personalized recommendations for your perfect vacation.`,
+      ogImage: `/images/trip-planner/${params.island.toLowerCase()}.jpg`
+    };
+  }
+  
+  return TRIP_PLANNER_SEO;
+}

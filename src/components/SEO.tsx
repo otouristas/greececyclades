@@ -13,11 +13,25 @@ export default function SEO({
   canonicalUrl,
   article,
   structuredData,
-  jsonLD
-}: SEOProps) {
+  jsonLD,
+  noIndex = false
+}: SEOProps & { noIndex?: boolean }) {
   useEffect(() => {
     // Update title and meta tags
     document.title = title;
+
+    // Update robots meta tag for noIndex
+    let robotsTag = document.querySelector('meta[name="robots"]');
+    if (noIndex) {
+      if (!robotsTag) {
+        robotsTag = document.createElement('meta');
+        robotsTag.setAttribute('name', 'robots');
+        document.head.appendChild(robotsTag);
+      }
+      robotsTag.setAttribute('content', 'noindex, nofollow');
+    } else if (robotsTag) {
+      robotsTag.remove();
+    }
 
     // Update meta description
     let metaDescription = document.querySelector('meta[name="description"]');
@@ -165,7 +179,7 @@ export default function SEO({
         jsonLdScript.remove();
       }
     };
-  }, [title, description, keywords, ogImage, ogType, canonicalUrl, article, structuredData, jsonLD]);
+  }, [title, description, keywords, ogImage, ogType, canonicalUrl, article, structuredData, jsonLD, noIndex]);
 
   return null;
 }

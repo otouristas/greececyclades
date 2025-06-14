@@ -23,8 +23,7 @@ import {
   Car,
   Calculator
 } from 'lucide-react';
-import { useAuthStore } from '../store/authStore';
-import { auth } from '../config/firebase';
+import { useAuthStore } from '../stores/authStore';
 import Logo from './Logo';
 
 interface NavbarProps {
@@ -128,13 +127,13 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
   const megaMenuRef = useRef<HTMLDivElement>(null);
   const navRef = useRef<HTMLDivElement>(null);
   
-  const { isAuthenticated, user } = useAuthStore();
+  const { user, logout } = useAuthStore();
   const navigate = useNavigate();
   const location = useLocation();
 
   const handleLogout = async () => {
     try {
-      await auth.signOut();
+      await logout();
       navigate('/');
     } catch (error) {
       console.error('Error signing out:', error);
@@ -234,7 +233,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
             
             {/* User Profile & Sign In - Desktop */}
             <div className="hidden md:block">
-              {isAuthenticated ? (
+              {user ? (
                 <div className="relative" ref={dropdownRef}>
                   <button
                     onClick={() => setIsDropdownOpen(!isDropdownOpen)}
@@ -271,13 +270,20 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                   )}
                 </div>
               ) : (
-                <button
-                  onClick={onAuthClick}
-                  className="inline-flex items-center justify-center rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700"
-                >
-                  <User className="h-5 w-5 mr-2" />
-                  Coming Soon
-                </button>
+                <div className="flex items-center gap-3">
+                  <Link
+                    to="/signin"
+                    className="text-gray-600 hover:text-gray-900 px-3 py-2 text-sm font-medium transition-colors"
+                  >
+                    Sign In
+                  </Link>
+                  <Link
+                    to="/signup"
+                    className="inline-flex items-center justify-center rounded-md bg-primary-600 px-4 py-2 text-sm font-medium text-white hover:bg-primary-700 transition-colors"
+                  >
+                    Sign Up
+                  </Link>
+                </div>
               )}
             </div>
 
@@ -726,15 +732,23 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
             </div>
           </div>
           
-          {/* Footer with Coming Soon Button */}
-          <div className="p-4 border-t border-gray-100 bg-white">
-            <button
-              onClick={onAuthClick}
+          {/* Footer with Auth Buttons */}
+          <div className="p-4 border-t border-gray-100 bg-white space-y-3">
+            <Link
+              to="/signin"
+              onClick={toggleMobileMenu}
+              className="w-full flex items-center justify-center rounded-lg border border-primary-600 px-4 py-3 text-sm font-medium text-primary-600 hover:bg-primary-50 transition-colors"
+            >
+              Sign In
+            </Link>
+            <Link
+              to="/signup"
+              onClick={toggleMobileMenu}
               className="w-full flex items-center justify-center rounded-lg bg-primary-600 px-4 py-3 text-sm font-medium text-white hover:bg-primary-700 transition-colors"
             >
               <User className="h-5 w-5 mr-2" />
-              Coming Soon
-            </button>
+              Sign Up
+            </Link>
           </div>
         </div>
       )}

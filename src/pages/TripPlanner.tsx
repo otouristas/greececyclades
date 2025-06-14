@@ -8,10 +8,14 @@ import {
   RefreshCw, ChevronLeft, ChevronRight, X, Check, Plus
 } from 'lucide-react';
 import { generateConversationalTrip } from '../utils/ai';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+import SEO from '../components/SEO';
+import { generateTripPlannerSEO } from '../utils/seoMetadata';
 
 // Revolutionary Trip Planner - Island Discovery Experience
 export default function TripPlanner() {
+  const location = useLocation();
+  const hasQueryParams = location.search.length > 0;
   const [currentStep, setCurrentStep] = useState<'discover' | 'customize' | 'experience'>('discover');
   const [selectedIslands, setSelectedIslands] = useState<string[]>([]);
   const [tripPreferences, setTripPreferences] = useState({
@@ -26,7 +30,12 @@ export default function TripPlanner() {
   const [isGenerating, setIsGenerating] = useState(false);
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-700 relative overflow-hidden">
+    <>
+      <SEO 
+        {...generateTripPlannerSEO()} 
+        noIndex={hasQueryParams} // Don't index pages with query parameters
+      />
+      <div className="min-h-screen bg-gradient-to-br from-indigo-900 via-blue-900 to-cyan-700 relative overflow-hidden">
       {/* Floating Background Elements */}
       <div className="absolute inset-0">
         <div className="absolute top-20 left-20 w-32 h-32 bg-white/5 rounded-full blur-xl animate-pulse"></div>
@@ -86,6 +95,7 @@ export default function TripPlanner() {
         </AnimatePresence>
       </div>
     </div>
+    </>
   );
 }
 
