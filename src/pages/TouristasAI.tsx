@@ -6,12 +6,14 @@ import {
   Heart, Coffee, Sun, Waves, Wind, Anchor, Play, Pause, RefreshCw,
   ChevronLeft, ChevronRight, X, Check, Plus, Wand2, Flame, Crown,
   CheckCircle, Shield, Award, Target, Route, Navigation, Satellite,
-  Map as MapIcon, Minus
+  Map as MapIcon, Minus, Car, Phone
 } from 'lucide-react';
 import { generateConversationalTrip } from '../utils/ai';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css';
+import TaxiAutoCaller from '../components/taxi/TaxiAutoCaller';
+import { RestaurantAutoCaller } from '../components/restaurants/RestaurantAutoCaller';
 
 // Fix Leaflet default markers issue
 delete (L.Icon.Default.prototype as any)._getIconUrl;
@@ -207,7 +209,7 @@ function LandingPage({ onStartChat }: { onStartChat: () => void }) {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-8">
             {[
               {
                 icon: <Brain className="h-8 w-8" />,
@@ -222,6 +224,13 @@ function LandingPage({ onStartChat }: { onStartChat: () => void }) {
                 description: "Optimizes ferry connections, transportation, and timing for the perfect island-hopping experience",
                 preview: "/images/islands/mykonos.jpg",
                 color: "from-green-500 to-teal-600"
+              },
+              {
+                icon: <Utensils className="h-8 w-8" />,
+                title: "Restaurant Auto-Booker",
+                description: "AI calls Sifnos restaurants in Greek to make reservations - natural language booking with voice confirmation",
+                preview: "/images/islands/sifnos.jpg",
+                color: "from-yellow-500 to-orange-600"
               },
               {
                 icon: <Globe className="h-8 w-8" />,
@@ -355,7 +364,7 @@ function ChatExperience({
   onGoBack 
 }: any) {
   const [showWelcome, setShowWelcome] = useState(true);
-  const [activeTab, setActiveTab] = useState<'chat' | 'map' | 'itinerary'>('chat');
+  const [activeTab, setActiveTab] = useState<'chat' | 'map' | 'itinerary' | 'taxi' | 'restaurants'>('chat');
   const [selectedIslands, setSelectedIslands] = useState<string[]>([]);
   const [currentItinerary, setCurrentItinerary] = useState<any[]>([]);
   const [tripDuration, setTripDuration] = useState(7);
@@ -621,7 +630,8 @@ function ChatExperience({
             {[
               { id: 'chat', label: 'AI Chat', icon: MessageCircle, desc: 'Talk with your AI expert', color: 'from-blue-500 to-cyan-500' },
               { id: 'map', label: 'Islands Map', icon: MapPin, desc: 'Explore Greek islands visually', color: 'from-emerald-500 to-teal-500' },
-              { id: 'itinerary', label: 'Trip Planner', icon: Route, desc: 'Build your perfect itinerary', color: 'from-purple-500 to-pink-500' }
+              { id: 'itinerary', label: 'Trip Planner', icon: Route, desc: 'Build your perfect itinerary', color: 'from-purple-500 to-pink-500' },
+              { id: 'restaurants', label: 'Restaurant Booker', icon: Utensils, desc: 'AI restaurant reservations', color: 'from-orange-500 to-red-500' }
             ].map((tab) => {
               const Icon = tab.icon;
               return (
@@ -665,9 +675,12 @@ function ChatExperience({
             Quick Tools
           </h4>
           <div className="grid grid-cols-2 gap-2">
-            <button className="p-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg">
+            <button 
+              onClick={() => setActiveTab('restaurants')}
+              className="p-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg"
+            >
               <Utensils className="w-4 h-4" />
-              <span>Restaurants</span>
+              <span>Book Restaurant</span>
             </button>
             <button className="p-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg">
               <Ship className="w-4 h-4" />
@@ -836,7 +849,8 @@ function ChatExperience({
           {[
             { id: 'chat', label: 'Chat', icon: MessageCircle },
             { id: 'map', label: 'Map', icon: MapPin },
-            { id: 'itinerary', label: 'Plan', icon: Route }
+            { id: 'itinerary', label: 'Plan', icon: Route },
+            { id: 'restaurants', label: 'Food', icon: Utensils }
           ].map((tab) => {
             const Icon = tab.icon;
             return (
@@ -1115,6 +1129,13 @@ function ChatExperience({
                     <Route className="h-3 w-3" />
                     Plan Trip
                   </button>
+                  <button
+                    onClick={() => setActiveTab('restaurants')}
+                    className="flex items-center gap-2 bg-orange-100 hover:bg-orange-200 text-orange-800 px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap font-medium"
+                  >
+                    <Utensils className="h-3 w-3" />
+                    Book Restaurant
+                  </button>
                   
                   {/* Contextual suggestions based on selected islands */}
                   {selectedIslands.length === 0 && (
@@ -1189,6 +1210,13 @@ function ChatExperience({
             tripDuration={tripDuration}
             setTripDuration={setTripDuration}
           />
+        )}
+
+        {/* Restaurant Auto-Booker */}
+        {activeTab === 'restaurants' && (
+          <div className="h-full overflow-y-auto">
+            <RestaurantAutoCaller />
+          </div>
         )}
       </div>
     </motion.div>
