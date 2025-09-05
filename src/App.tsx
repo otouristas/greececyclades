@@ -79,7 +79,8 @@ const BudgetCalculator = lazy(() => import('./pages/BudgetCalculator'));
 const FerryGuide = lazy(() => import('./pages/FerryGuide'));
 const Resources = lazy(() => import('./pages/Resources'));
 const ListProperty = lazy(() => import('./pages/ListProperty'));
-const TouristasAI = lazy(() => import('./pages/TouristasAI'));
+const TouristasAILanding = lazy(() => import('./pages/TouristasAILanding'));
+const TouristasAIChat = lazy(() => import('./pages/TouristasAIChat'));
 
 import { ToastProvider } from './contexts/ToastContext';
 
@@ -298,22 +299,34 @@ function AppContent() {
               <Route path="/sitemap" element={<Sitemap />} />
               <Route path="/help" element={<HelpDesk />} />
               
-              {/* Trip Planner */}
+              {/* Redirect old trip-planner to new Touristas AI */}
               <Route 
                 path="/trip-planner" 
+                element={<Navigate to="/touristas-ai" replace />} 
+              />
+
+              {/* Legacy Enhanced Trip Planner - keeping for backward compatibility */}
+              <Route 
+                path="/trip-planner-legacy" 
                 element={<EnhancedTripPlanner />} 
               />
 
-              {/* Legacy Trip Planner - keeping for backward compatibility */}
+              {/* Legacy Original Trip Planner - keeping for backward compatibility */}
               <Route 
-                path="/trip-planner-legacy" 
+                path="/trip-planner-original" 
                 element={<TripPlanner />} 
               />
 
-              {/* Touristas AI - Revolutionary AI Trip Planner */}
+              {/* Touristas AI - Revolutionary Landing Page */}
               <Route 
                 path="/touristas-ai" 
-                element={<TouristasAI />} 
+                element={<TouristasAILanding />} 
+              />
+
+              {/* Touristas AI Chat - Enhanced Chat Interface */}
+              <Route 
+                path="/touristas-ai/chat" 
+                element={<TouristasAIChat />} 
               />
               
               {/* Protected Routes */}

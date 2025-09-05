@@ -1,13 +1,12 @@
-import { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Send, Sparkles, MapPin, Users, Ship, Camera, Utensils, Star, 
-  ArrowRight, MessageCircle, Zap, Globe, Brain,
-  Heart, Coffee, Sun, RefreshCw, Mic, MicOff, Volume2,
-  ChevronLeft, X, Check, Plus, Wand2, Flame, Crown,
+  ArrowRight, MessageCircle, Mic, Zap, Globe, Brain, Compass,
+  Heart, Coffee, Sun, Waves, Wind, Anchor, Play, Pause, RefreshCw,
+  ChevronLeft, ChevronRight, X, Check, Plus, Wand2, Flame, Crown,
   CheckCircle, Shield, Award, Target, Route, Navigation, Satellite,
-  Map as MapIcon, Minus, Car, Moon, CloudRain,
-  Wind, Eye, Camera as CameraIcon, Compass
+  Map as MapIcon, Minus, Car, Phone
 } from 'lucide-react';
 import { generateConversationalTrip } from '../utils/ai';
 import { MapContainer, TileLayer, Marker, Popup, Polyline } from 'react-leaflet';
@@ -54,177 +53,19 @@ const createIslandIcon = (color: string, isSelected: boolean) => {
   });
 };
 
-// Enhanced Touristas AI with Advanced Features
+// Professional Touristas AI SaaS Landing Page
 export default function TouristasAI() {
-  console.log('TouristasAI component initialization');
-  
-  // Core state
-  const [currentView, setCurrentView] = useState<'landing' | 'chat' | 'quiz'>('landing');
+  const [currentView, setCurrentView] = useState<'landing' | 'chat'>('landing');
   const [messages, setMessages] = useState<any[]>([]);
   const [isTyping, setIsTyping] = useState(false);
   const [userInput, setUserInput] = useState('');
   
-  // Enhanced features state
-  const [darkMode, setDarkMode] = useState(false);
-  const [isVoiceMode, setIsVoiceMode] = useState(false);
-  const [isListening, setIsListening] = useState(false);
-  const [userPersonality, setUserPersonality] = useState<any>(null);
-  const [weatherData, setWeatherData] = useState<any>(null);
-
-
-  
-  // Voice recognition setup
-  const recognition = useRef<any>(null);
-  
-  useEffect(() => {
-    // Initialize speech recognition
-    if ('webkitSpeechRecognition' in window || 'SpeechRecognition' in window) {
-      const SpeechRecognition = (window as any).webkitSpeechRecognition || (window as any).SpeechRecognition;
-      recognition.current = new SpeechRecognition();
-      recognition.current.continuous = false;
-      recognition.current.interimResults = false;
-      recognition.current.lang = 'en-US';
-      
-      recognition.current.onresult = (event: any) => {
-        const transcript = event.results[0][0].transcript;
-        setUserInput(transcript);
-        setIsListening(false);
-      };
-      
-      recognition.current.onerror = () => {
-        setIsListening(false);
-      };
-    }
-    
-
-    
-    const savedPersonality = localStorage.getItem('touristasAI_personality');
-    if (savedPersonality) {
-      setUserPersonality(JSON.parse(savedPersonality));
-    }
-    
-    const savedDarkMode = localStorage.getItem('touristasAI_darkMode');
-    if (savedDarkMode) {
-      setDarkMode(JSON.parse(savedDarkMode));
-    }
-  }, []);
-  
-
-  
-  useEffect(() => {
-    if (userPersonality) {
-      localStorage.setItem('touristasAI_personality', JSON.stringify(userPersonality));
-    }
-  }, [userPersonality]);
-  
-  // Initialize weather data
-  useEffect(() => {
-    const fetchWeatherData = async () => {
-      try {
-        // Mock weather data - in production, integrate with weather API
-        const mockWeatherData = {
-          santorini: { temp: 24, condition: 'sunny', wind: 12, humidity: 65 },
-          mykonos: { temp: 22, condition: 'partly-cloudy', wind: 15, humidity: 70 },
-          paros: { temp: 23, condition: 'sunny', wind: 10, humidity: 60 },
-          naxos: { temp: 25, condition: 'sunny', wind: 8, humidity: 55 }
-        };
-        console.log('Setting weather data', mockWeatherData);
-        setWeatherData(mockWeatherData);
-      } catch (error) {
-        console.error('Weather data unavailable', error);
-      }
-    };
-    
-    fetchWeatherData();
-  }, []);
-  
-  useEffect(() => {
-    localStorage.setItem('touristasAI_darkMode', JSON.stringify(darkMode));
-    if (darkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, [darkMode]);
-  
-  const startVoiceRecognition = () => {
-    if (recognition.current && !isListening) {
-      setIsListening(true);
-      recognition.current.start();
-    }
-  };
-  
-  const stopVoiceRecognition = () => {
-    if (recognition.current && isListening) {
-      recognition.current.stop();
-      setIsListening(false);
-    }
-  };
-  
-  const handleQuizComplete = (personality: any) => {
-    setUserPersonality(personality);
-    setCurrentView('chat');
-  };
-  
   return (
-    <div className={`min-h-screen transition-colors duration-300 ${
-      darkMode ? 'bg-gray-900' : 'bg-white'
-    }`}>
-      {/* Enhanced Settings Panel */}
-      <div className="fixed top-4 right-4 z-50 flex gap-2">
-        <motion.button
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
-          onClick={() => setDarkMode(!darkMode)}
-          className={`p-3 rounded-full shadow-lg transition-colors ${
-            darkMode 
-              ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700' 
-              : 'bg-white text-gray-700 hover:bg-gray-50'
-          }`}
-        >
-          {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-        </motion.button>
-        
-        {currentView === 'chat' && (
-          <motion.button
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            onClick={() => setIsVoiceMode(!isVoiceMode)}
-            className={`p-3 rounded-full shadow-lg transition-colors ${
-              isVoiceMode
-                ? 'bg-emerald-500 text-white'
-                : darkMode 
-                  ? 'bg-gray-800 text-gray-300 hover:bg-gray-700' 
-                  : 'bg-white text-gray-700 hover:bg-gray-50'
-            }`}
-          >
-            {isVoiceMode ? <Volume2 className="w-5 h-5" /> : <Mic className="w-5 h-5" />}
-          </motion.button>
-        )}
-      </div>
-      
+    <div className="min-h-screen bg-white">
       <AnimatePresence mode="wait">
         {currentView === 'landing' && (
-          <LandingPage 
-            onStartChat={() => {
-              if (!userPersonality) {
-                setCurrentView('quiz');
-              } else {
-                setCurrentView('chat');
-              }
-            }}
-            darkMode={darkMode}
-          />
+          <LandingPage onStartChat={() => setCurrentView('chat')} />
         )}
-        
-        {currentView === 'quiz' && (
-          <TravelPersonalityQuiz 
-            onComplete={handleQuizComplete}
-            onSkip={() => setCurrentView('chat')}
-            darkMode={darkMode}
-          />
-        )}
-        
         {currentView === 'chat' && (
           <ChatExperience 
             messages={messages}
@@ -234,13 +75,6 @@ export default function TouristasAI() {
             userInput={userInput}
             setUserInput={setUserInput}
             onGoBack={() => setCurrentView('landing')}
-            darkMode={darkMode}
-            isVoiceMode={isVoiceMode}
-            isListening={isListening}
-            onStartVoice={startVoiceRecognition}
-            onStopVoice={stopVoiceRecognition}
-            userPersonality={userPersonality}
-            weatherData={weatherData}
           />
         )}
       </AnimatePresence>
@@ -248,309 +82,17 @@ export default function TouristasAI() {
   );
 }
 
-// Travel Personality Quiz Component
-function TravelPersonalityQuiz({ onComplete, onSkip, darkMode }: {
-  onComplete: (personality: any) => void;
-  onSkip: () => void;
-  darkMode: boolean;
-}) {
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [answers, setAnswers] = useState<any[]>([]);
-  const [isAnimating, setIsAnimating] = useState(false);
-
-  const questions = [
-    {
-      id: 'travel_style',
-      question: 'What describes your ideal travel style?',
-      options: [
-        { value: 'adventure', label: 'Adventure Seeker', icon: <Compass className="w-6 h-6" />, description: 'Hiking, water sports, exploration' },
-        { value: 'culture', label: 'Culture Lover', icon: <Globe className="w-6 h-6" />, description: 'Museums, history, local traditions' },
-        { value: 'relaxation', label: 'Beach Relaxer', icon: <Sun className="w-6 h-6" />, description: 'Beaches, spas, peaceful moments' },
-        { value: 'foodie', label: 'Culinary Explorer', icon: <Utensils className="w-6 h-6" />, description: 'Local cuisine, cooking classes, markets' }
-      ]
-    },
-    {
-      id: 'budget_preference',
-      question: 'What\'s your budget preference?',
-      options: [
-        { value: 'budget', label: 'Budget-Friendly', icon: <Heart className="w-6 h-6" />, description: 'Great value, local experiences' },
-        { value: 'mid-range', label: 'Comfortable', icon: <Star className="w-6 h-6" />, description: 'Balance of comfort and value' },
-        { value: 'luxury', label: 'Premium', icon: <Crown className="w-6 h-6" />, description: 'High-end experiences, luxury stays' },
-        { value: 'mixed', label: 'Mix & Match', icon: <Sparkles className="w-6 h-6" />, description: 'Splurge on some, save on others' }
-      ]
-    },
-    {
-      id: 'group_type',
-      question: 'Who are you traveling with?',
-      options: [
-        { value: 'solo', label: 'Solo Adventure', icon: <Users className="w-6 h-6" />, description: 'Independent exploration' },
-        { value: 'couple', label: 'Romantic Getaway', icon: <Heart className="w-6 h-6" />, description: 'Couples experiences' },
-        { value: 'family', label: 'Family Trip', icon: <Users className="w-6 h-6" />, description: 'Kid-friendly activities' },
-        { value: 'friends', label: 'Friends Group', icon: <Users className="w-6 h-6" />, description: 'Group activities and fun' }
-      ]
-    },
-    {
-      id: 'interests',
-      question: 'What interests you most? (Select multiple)',
-      multiple: true,
-      options: [
-        { value: 'beaches', label: 'Beautiful Beaches', icon: <Sun className="w-6 h-6" />, description: 'Pristine beaches and crystal waters' },
-        { value: 'history', label: 'Ancient History', icon: <Globe className="w-6 h-6" />, description: 'Archaeological sites and museums' },
-        { value: 'nightlife', label: 'Nightlife & Entertainment', icon: <Sparkles className="w-6 h-6" />, description: 'Bars, clubs, and evening activities' },
-        { value: 'photography', label: 'Photography Spots', icon: <CameraIcon className="w-6 h-6" />, description: 'Instagram-worthy locations' },
-        { value: 'shopping', label: 'Shopping & Markets', icon: <Star className="w-6 h-6" />, description: 'Local markets and boutiques' },
-        { value: 'nature', label: 'Nature & Hiking', icon: <Compass className="w-6 h-6" />, description: 'Trails, nature walks, and outdoor activities' }
-      ]
-    }
-  ];
-
-  const handleAnswer = (answer: any) => {
-    setIsAnimating(true);
-    
-    setTimeout(() => {
-      const newAnswers = [...answers];
-      const question = questions[currentQuestion];
-      
-      if (question.multiple) {
-        const existingIndex = newAnswers.findIndex(a => a.questionId === question.id);
-        if (existingIndex >= 0) {
-          const existingAnswers = newAnswers[existingIndex].value || [];
-          const answerIndex = existingAnswers.indexOf(answer.value);
-          
-          if (answerIndex >= 0) {
-            existingAnswers.splice(answerIndex, 1);
-          } else {
-            existingAnswers.push(answer.value);
-          }
-          
-          newAnswers[existingIndex] = {
-            questionId: question.id,
-            value: existingAnswers
-          };
-        } else {
-          newAnswers.push({
-            questionId: question.id,
-            value: [answer.value]
-          });
-        }
-      } else {
-        const existingIndex = newAnswers.findIndex(a => a.questionId === question.id);
-        if (existingIndex >= 0) {
-          newAnswers[existingIndex] = {
-            questionId: question.id,
-            value: answer.value,
-            label: answer.label
-          };
-        } else {
-          newAnswers.push({
-            questionId: question.id,
-            value: answer.value,
-            label: answer.label
-          });
-        }
-      }
-      
-      setAnswers(newAnswers);
-      setIsAnimating(false);
-    }, 300);
-  };
-
-  const nextQuestion = () => {
-    if (currentQuestion < questions.length - 1) {
-      setCurrentQuestion(currentQuestion + 1);
-    } else {
-      // Calculate personality
-      const personality = {
-        travelStyle: answers.find(a => a.questionId === 'travel_style')?.value || 'balanced',
-        budget: answers.find(a => a.questionId === 'budget_preference')?.value || 'mid-range',
-        groupType: answers.find(a => a.questionId === 'group_type')?.value || 'couple',
-        interests: answers.find(a => a.questionId === 'interests')?.value || [],
-        completedAt: new Date().toISOString()
-      };
-      
-      onComplete(personality);
-    }
-  };
-
-  const prevQuestion = () => {
-    if (currentQuestion > 0) {
-      setCurrentQuestion(currentQuestion - 1);
-    }
-  };
-
-  const currentQ = questions[currentQuestion];
-  const currentAnswer = answers.find(a => a.questionId === currentQ.id);
-  const canProceed = currentAnswer && (currentQ.multiple ? currentAnswer.value?.length > 0 : true);
-
+// Professional SaaS Landing Page
+function LandingPage({ onStartChat }: { onStartChat: () => void }) {
   return (
     <motion.div
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={`min-h-screen flex items-center justify-center p-4 ${
-        darkMode ? 'bg-gray-900' : 'bg-gradient-to-br from-blue-50 to-emerald-50'
-      }`}
+      className="bg-white"
     >
-      <div className={`max-w-2xl w-full rounded-3xl shadow-2xl p-8 ${
-        darkMode ? 'bg-gray-800 border border-gray-700' : 'bg-white'
-      }`}>
-        {/* Header */}
-        <div className="text-center mb-8">
-          <div className="flex items-center justify-between mb-4">
-            <button
-              onClick={onSkip}
-              className={`text-sm font-medium transition-colors ${
-                darkMode ? 'text-gray-400 hover:text-gray-300' : 'text-gray-500 hover:text-gray-700'
-              }`}
-            >
-              Skip Quiz
-            </button>
-            <div className={`text-sm font-medium ${
-              darkMode ? 'text-gray-400' : 'text-gray-500'
-            }`}>
-              {currentQuestion + 1} of {questions.length}
-            </div>
-          </div>
-          
-          <div className={`w-full h-2 rounded-full mb-6 ${
-            darkMode ? 'bg-gray-700' : 'bg-gray-200'
-          }`}>
-            <motion.div
-              className="h-2 bg-gradient-to-r from-emerald-500 to-blue-500 rounded-full"
-              initial={{ width: 0 }}
-              animate={{ width: `${((currentQuestion + 1) / questions.length) * 100}%` }}
-              transition={{ duration: 0.5 }}
-            />
-          </div>
-          
-          <h2 className={`text-2xl font-bold mb-2 ${
-            darkMode ? 'text-white' : 'text-gray-900'
-          }`}>
-            Personalize Your Experience
-          </h2>
-          <p className={`text-lg ${
-            darkMode ? 'text-gray-300' : 'text-gray-600'
-          }`}>
-            {currentQ.question}
-          </p>
-        </div>
-
-        {/* Options */}
-        <motion.div
-          key={currentQuestion}
-          initial={{ opacity: 0, x: 20 }}
-          animate={{ opacity: isAnimating ? 0.5 : 1, x: 0 }}
-          className="space-y-4 mb-8"
-        >
-          {currentQ.options.map((option, index) => {
-            const isSelected = currentQ.multiple 
-              ? currentAnswer?.value?.includes(option.value)
-              : currentAnswer?.value === option.value;
-            
-            return (
-              <motion.button
-                key={option.value}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: index * 0.1 }}
-                onClick={() => handleAnswer(option)}
-                className={`w-full p-6 rounded-2xl border-2 transition-all duration-300 text-left ${
-                  isSelected
-                    ? darkMode
-                      ? 'border-emerald-500 bg-emerald-500/10'
-                      : 'border-emerald-500 bg-emerald-50'
-                    : darkMode
-                      ? 'border-gray-600 bg-gray-700/50 hover:border-gray-500'
-                      : 'border-gray-200 bg-gray-50 hover:border-gray-300'
-                }`}
-              >
-                <div className="flex items-start gap-4">
-                  <div className={`p-3 rounded-xl ${
-                    isSelected
-                      ? 'bg-emerald-500 text-white'
-                      : darkMode
-                        ? 'bg-gray-600 text-gray-300'
-                        : 'bg-gray-200 text-gray-600'
-                  }`}>
-                    {option.icon}
-                  </div>
-                  <div className="flex-1">
-                    <h3 className={`font-semibold text-lg mb-1 ${
-                      darkMode ? 'text-white' : 'text-gray-900'
-                    }`}>
-                      {option.label}
-                    </h3>
-                    {option.description && (
-                      <p className={`text-sm ${
-                        darkMode ? 'text-gray-400' : 'text-gray-600'
-                      }`}>
-                        {option.description}
-                      </p>
-                    )}
-                  </div>
-                  {isSelected && (
-                    <Check className="w-6 h-6 text-emerald-500" />
-                  )}
-                </div>
-              </motion.button>
-            );
-          })}
-        </motion.div>
-
-        {/* Navigation */}
-        <div className="flex justify-between">
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={prevQuestion}
-            disabled={currentQuestion === 0}
-            className={`px-6 py-3 rounded-xl font-medium transition-colors ${
-              currentQuestion === 0
-                ? darkMode
-                  ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
-                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : darkMode
-                  ? 'bg-gray-700 text-white hover:bg-gray-600'
-                  : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-            }`}
-          >
-            Previous
-          </motion.button>
-          
-          <motion.button
-            whileHover={{ scale: 1.02 }}
-            whileTap={{ scale: 0.98 }}
-            onClick={nextQuestion}
-            disabled={!canProceed}
-            className={`px-8 py-3 rounded-xl font-medium transition-colors ${
-              !canProceed
-                ? darkMode
-                  ? 'bg-gray-700 text-gray-500 cursor-not-allowed'
-                  : 'bg-gray-200 text-gray-400 cursor-not-allowed'
-                : 'bg-gradient-to-r from-emerald-500 to-blue-500 text-white hover:from-emerald-600 hover:to-blue-600'
-            }`}
-          >
-            {currentQuestion === questions.length - 1 ? 'Complete' : 'Next'}
-          </motion.button>
-        </div>
-      </div>
-    </motion.div>
-  );
-}
-
-// Enhanced Mobile-First Responsive Landing Page
-function LandingPage({ onStartChat, darkMode }: { onStartChat: () => void; darkMode: boolean }) {
-  return (
-    <motion.div
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      className={`min-h-screen transition-colors duration-300 ${
-        darkMode ? 'bg-gray-900' : 'bg-white'
-      }`}
-    >
-      {/* Hero Section - Mobile First */}
-      <section className="relative py-12 sm:py-16 md:py-20 lg:py-32 overflow-hidden min-h-screen flex items-center">
+      {/* Hero Section */}
+      <section className="relative py-20 lg:py-32 overflow-hidden">
         {/* Hero Background Image */}
         <div className="absolute inset-0">
           <img 
@@ -558,47 +100,37 @@ function LandingPage({ onStartChat, darkMode }: { onStartChat: () => void; darkM
             alt="Greek Cyclades Islands" 
             className="w-full h-full object-cover opacity-10"
           />
-          <div className={`absolute inset-0 ${
-            darkMode 
-              ? 'bg-gradient-to-br from-gray-900/95 via-gray-800/90 to-emerald-900/30'
-              : 'bg-gradient-to-br from-white/90 via-gray-50/95 to-[#E3D7C3]/30'
-          }`}></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-white/90 via-gray-50/95 to-[#E3D7C3]/30"></div>
         </div>
         
-        {/* Enhanced Background Pattern - Responsive */}
+        {/* Background Pattern */}
         <div className="absolute inset-0 opacity-5">
-          <div className={`absolute top-10 left-4 sm:top-20 sm:left-20 w-32 h-32 sm:w-72 sm:h-72 rounded-full blur-3xl ${
-            darkMode ? 'bg-emerald-500' : 'bg-[#1E2E48]'
-          }`}></div>
-          <div className={`absolute bottom-10 right-4 sm:bottom-20 sm:right-20 w-40 h-40 sm:w-96 sm:h-96 rounded-full blur-3xl ${
-            darkMode ? 'bg-blue-500' : 'bg-[#E3D7C3]'
-          }`}></div>
+          <div className="absolute top-20 left-20 w-72 h-72 bg-[#1E2E48] rounded-full blur-3xl"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-[#E3D7C3] rounded-full blur-3xl"></div>
         </div>
 
-        <div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="text-center">
-            {/* Logo - Mobile Responsive */}
+            {/* Logo */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
-              className="mb-6 sm:mb-8"
+              className="mb-8"
             >
               <img 
                 src="/touristas-ai-logo.svg" 
                 alt="Touristas AI" 
-                className="h-12 sm:h-16 md:h-20 w-auto mx-auto drop-shadow-sm"
+                className="h-20 w-auto mx-auto drop-shadow-sm"
               />
             </motion.div>
 
-            {/* Enhanced Headline - Mobile First Typography */}
+            {/* Headline */}
             <motion.h1
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2, duration: 0.8 }}
-              className={`text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black mb-3 sm:mb-4 tracking-tight leading-tight ${
-                darkMode ? 'text-white' : 'text-[#1E2E48]'
-              }`}
+              className="text-4xl md:text-6xl lg:text-7xl font-black text-[#1E2E48] mb-4 tracking-tight"
             >
               Meet Touristas AI
             </motion.h1>
@@ -607,61 +139,59 @@ function LandingPage({ onStartChat, darkMode }: { onStartChat: () => void; darkM
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 0.8 }}
-              className={`text-lg sm:text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 sm:mb-6 px-2 ${
-                darkMode ? 'text-gray-300' : 'text-[#1E2E48]/80'
-              }`}
+              className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1E2E48]/80 mb-6"
             >
               Your Greek Islands AI Travel Expert
             </motion.h2>
 
-            {/* Subheadline - Mobile Optimized */}
+            {/* Subheadline */}
             <motion.p
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.4, duration: 0.8 }}
-              className="text-base sm:text-lg md:text-xl lg:text-2xl text-gray-600 mb-6 sm:mb-8 max-w-4xl mx-auto leading-relaxed px-4"
+              className="text-xl lg:text-2xl text-gray-600 mb-8 max-w-4xl mx-auto leading-relaxed"
             >
               The world's most intelligent AI travel planner, exclusively trained on the Greek Cyclades. 
               Get personalized itineraries, real-time bookings, and insider secrets in seconds.
             </motion.p>
 
-            {/* Stats - Mobile Stack */}
+            {/* Stats */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.6, duration: 0.8 }}
-              className="flex flex-col sm:flex-row items-center justify-center gap-4 sm:gap-6 md:gap-8 mb-8 sm:mb-12 text-sm text-gray-500"
+              className="flex flex-col sm:flex-row items-center justify-center gap-8 mb-12 text-sm text-gray-500"
             >
               <div className="flex items-center gap-2">
-                <MapPin className="h-4 w-4 sm:h-5 sm:w-5 text-[#1E2E48]" />
-                <span className="font-medium">25+ Islands Covered</span>
+                <MapPin className="h-5 w-5 text-[#1E2E48]" />
+                <span>25+ Islands Covered</span>
               </div>
               <div className="flex items-center gap-2">
-                <Zap className="h-4 w-4 sm:h-5 sm:w-5 text-[#1E2E48]" />
-                <span className="font-medium">Instant AI Responses</span>
+                <Zap className="h-5 w-5 text-[#1E2E48]" />
+                <span>Instant AI Responses</span>
               </div>
               <div className="flex items-center gap-2">
-                <Shield className="h-4 w-4 sm:h-5 sm:w-5 text-[#1E2E48]" />
-                <span className="font-medium">Real-Time Booking</span>
+                <Shield className="h-5 w-5 text-[#1E2E48]" />
+                <span>Real-Time Booking</span>
               </div>
             </motion.div>
 
-            {/* CTA Button - Mobile Optimized */}
+            {/* CTA Button */}
             <motion.div
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.8, duration: 0.8 }}
-              className="mb-8 sm:mb-16 px-4"
+              className="mb-16"
             >
               <button
                 onClick={onStartChat}
-                className="w-full sm:w-auto bg-[#1E2E48] hover:bg-[#1E2E48]/90 text-white px-6 sm:px-8 py-3 sm:py-4 rounded-lg text-base sm:text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center justify-center gap-3 mx-auto max-w-sm sm:max-w-none"
+                className="bg-[#1E2E48] hover:bg-[#1E2E48]/90 text-white px-8 py-4 rounded-lg text-lg font-semibold transition-all duration-300 transform hover:scale-105 shadow-xl hover:shadow-2xl flex items-center gap-3 mx-auto"
               >
-                <MessageCircle className="h-5 w-5 sm:h-6 sm:w-6" />
-                <span className="truncate">Start Planning Your Adventure</span>
-                <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5 flex-shrink-0" />
+                <MessageCircle className="h-6 w-6" />
+                Start Planning Your Adventure
+                <ArrowRight className="h-5 w-5" />
               </button>
-              <p className="text-xs sm:text-sm text-gray-500 mt-3 sm:mt-4 px-2">Free to start • No signup required • Instant results</p>
+              <p className="text-sm text-gray-500 mt-4">Free to start • No signup required • Instant results</p>
             </motion.div>
           </div>
         </div>
@@ -823,7 +353,7 @@ function LandingPage({ onStartChat, darkMode }: { onStartChat: () => void; darkM
   );
 }
 
-// Enhanced Professional Chat Experience
+// Professional Chat Experience
 function ChatExperience({ 
   messages, 
   setMessages, 
@@ -831,74 +361,16 @@ function ChatExperience({
   setIsTyping,
   userInput,
   setUserInput,
-  onGoBack,
-  darkMode,
-  isVoiceMode,
-  isListening,
-  onStartVoice,
-  onStopVoice,
-  userPersonality,
-  weatherData
+  onGoBack 
 }: any) {
   const [showWelcome, setShowWelcome] = useState(true);
   const [activeTab, setActiveTab] = useState<'chat' | 'map' | 'itinerary' | 'taxi' | 'restaurants'>('chat');
   const [selectedIslands, setSelectedIslands] = useState<string[]>([]);
   const [currentItinerary, setCurrentItinerary] = useState<any[]>([]);
   const [tripDuration, setTripDuration] = useState(7);
-  const [showWeatherWidget, setShowWeatherWidget] = useState(false);
-  const [quickActions, setQuickActions] = useState<any[]>([]);
+  const [budget, setBudget] = useState(2000);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const chatStartRef = useRef<HTMLDivElement>(null);
-  
-  // Enhanced features
-  useEffect(() => {
-    
-    // Generate contextual quick actions based on user personality
-    if (userPersonality) {
-      const actions = generateQuickActions(userPersonality);
-      setQuickActions(actions);
-    }
-  }, [userPersonality]);
-  
-  const generateQuickActions = (personality: any) => {
-    const baseActions = [
-      { icon: <MapPin className="w-4 h-4" />, text: 'Show me islands', action: () => setActiveTab('map') },
-      { icon: <Route className="w-4 h-4" />, text: 'Plan my route', action: () => setActiveTab('itinerary') }
-    ];
-    
-    if (personality && personality.travelStyle === 'adventure') {
-      baseActions.push(
-        { icon: <Compass className="w-4 h-4" />, text: 'Adventure activities', action: () => handleQuickMessage('Show me adventure activities in the Cyclades') },
-        { icon: <Wind className="w-4 h-4" />, text: 'Water sports', action: () => handleQuickMessage('What water sports are available?') }
-      );
-    } else if (personality && personality.travelStyle === 'culture') {
-      baseActions.push(
-        { icon: <Globe className="w-4 h-4" />, text: 'Historical sites', action: () => handleQuickMessage('Show me ancient sites and museums') },
-        { icon: <CameraIcon className="w-4 h-4" />, text: 'Photo spots', action: () => handleQuickMessage('Best photography locations in Cyclades') }
-      );
-    } else if (personality && personality.travelStyle === 'foodie') {
-      baseActions.push(
-        { icon: <Utensils className="w-4 h-4" />, text: 'Local cuisine', action: () => handleQuickMessage('Recommend traditional Greek dishes to try') },
-        { icon: <Coffee className="w-4 h-4" />, text: 'Best restaurants', action: () => setActiveTab('restaurants') }
-      );
-    }
-    
-    if (weatherData) {
-      baseActions.push(
-        { icon: <CloudRain className="w-4 h-4" />, text: 'Weather forecast', action: () => setShowWeatherWidget(true) }
-      );
-    }
-    
-    return baseActions;
-  };
-  
-  const handleQuickMessage = (message: string) => {
-    setUserInput(message);
-    // Trigger send after setting input
-    setTimeout(() => {
-      handleSendMessage();
-    }, 100);
-  };
 
   const greekIslands = [
     {
@@ -1127,326 +599,609 @@ function ChatExperience({
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      className={`min-h-screen transition-colors duration-300 ${
-        darkMode ? 'bg-gray-900' : 'bg-gray-50'
-      }`}
+      className="min-h-screen bg-gray-50"
     >
-      {/* Universal Mobile-First Layout */}
-      <div className="min-h-screen flex flex-col">
-        {/* Enhanced Mobile-First Navigation Header */}
-        <div className={`border-b p-3 sm:p-4 sticky top-0 z-50 shadow-sm transition-colors ${
-          darkMode 
-            ? 'bg-gray-800 border-gray-700' 
-            : 'bg-white border-gray-200'
-        }`}>
-          <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-2 sm:gap-3">
-              <button
-                onClick={onGoBack}
-                className={`p-1.5 sm:p-2 rounded-lg transition-colors -ml-1 ${
-                  darkMode 
-                    ? 'hover:bg-gray-700 text-white' 
-                    : 'hover:bg-gray-100 text-[#1E2E48]'
-                }`}
-              >
-                <ChevronLeft className="h-4 w-4 sm:h-5 sm:w-5" />
-              </button>
-              <img 
-                src="/touristas-ai-logo.svg" 
-                alt="Touristas AI" 
-                className="h-5 w-auto sm:h-6"
-              />
-              <div className="hidden xs:block">
-                <h2 className={`font-semibold text-xs sm:text-sm ${
-                  darkMode ? 'text-white' : 'text-[#1E2E48]'
-                }`}>Touristas AI</h2>
-                <p className={`text-xs hidden sm:block ${
-                  darkMode ? 'text-gray-400' : 'text-gray-600'
-                }`}>Greek Islands Expert</p>
-              </div>
-            </div>
-            <div className="flex items-center gap-1.5 sm:gap-2 text-green-500">
-              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-green-500 rounded-full animate-pulse"></div>
-              <span className="text-xs font-medium">Online</span>
-              {userPersonality && (
-                <div className={`ml-2 px-2 py-1 rounded-full text-xs ${
-                  darkMode ? 'bg-gray-700 text-gray-300' : 'bg-gray-100 text-gray-600'
-                }`}>
-                  {userPersonality.travelStyle === 'adventure' ? '🏔️' : 
-                   userPersonality.travelStyle === 'culture' ? '🏛️' : 
-                   userPersonality.travelStyle === 'foodie' ? '🍽️' : '🏖️'}
-                </div>
-              )}
+      {/* Desktop Layout */}
+      <div className="hidden lg:flex min-h-screen">
+        {/* Left Sidebar Navigation - Desktop Only */}
+        <div className="w-80 xl:w-80 bg-white border-r border-gray-200 flex flex-col shadow-sm">
+        {/* Sidebar Header */}
+        <div className="p-4 xl:p-6 border-b border-gray-200">
+          <div className="flex items-center gap-3">
+            <button
+              onClick={onGoBack}
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-[#1E2E48]"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <img 
+              src="/touristas-ai-logo.svg" 
+              alt="Touristas AI" 
+              className="h-8 w-auto"
+            />
+            <div>
+              <h2 className="font-semibold text-[#1E2E48] text-sm">Touristas AI</h2>
+              <p className="text-xs text-gray-600">Greek Islands Expert</p>
             </div>
           </div>
-          
-          {/* Enhanced Mobile-First Tab Navigation */}
-          <div className={`flex gap-0.5 sm:gap-1 rounded-lg p-0.5 sm:p-1 ${
-            darkMode ? 'bg-gray-700' : 'bg-gray-100'
-          }`}>
+        </div>
+
+        {/* Enhanced Navigation Tabs */}
+        <div className="p-4">
+          <div className="space-y-3">
             {[
-              { id: 'chat', label: 'Chat', icon: MessageCircle },
-              { id: 'map', label: 'Map', icon: MapPin },
-              { id: 'itinerary', label: 'Plan', icon: Route },
-              { id: 'taxi', label: 'Taxi', icon: Car },
-              { id: 'restaurants', label: 'Food', icon: Utensils }
+              { id: 'chat', label: 'AI Chat', icon: MessageCircle, desc: 'Talk with your AI expert', color: 'from-blue-500 to-cyan-500' },
+              { id: 'map', label: 'Islands Map', icon: MapPin, desc: 'Explore Greek islands visually', color: 'from-emerald-500 to-teal-500' },
+              { id: 'itinerary', label: 'Trip Planner', icon: Route, desc: 'Build your perfect itinerary', color: 'from-purple-500 to-pink-500' },
+              { id: 'taxi', label: 'Taxi Booker', icon: Car, desc: 'AI taxi reservations', color: 'from-yellow-500 to-amber-500' },
+              { id: 'restaurants', label: 'Restaurant Booker', icon: Utensils, desc: 'AI restaurant reservations', color: 'from-orange-500 to-red-500' }
             ].map((tab) => {
               const Icon = tab.icon;
               return (
                 <button
                   key={tab.id}
                   onClick={() => setActiveTab(tab.id as any)}
-                  className={`flex-1 flex flex-col items-center justify-center gap-0.5 sm:gap-1 px-1 sm:px-2 py-1.5 sm:py-2 rounded-md text-xs font-medium transition-all duration-200 min-h-[36px] sm:min-h-[44px] ${
+                  className={`w-full flex items-start gap-4 p-4 rounded-xl text-left transition-all duration-300 transform hover:scale-105 ${
                     activeTab === tab.id
-                      ? darkMode
-                        ? 'bg-emerald-600 text-white shadow-sm'
-                        : 'bg-[#1E2E48] text-white shadow-sm'
-                      : darkMode
-                        ? 'text-gray-400 hover:text-gray-200'
-                        : 'text-gray-600 hover:text-gray-900'
+                      ? 'bg-[#1E2E48] text-white shadow-xl'
+                      : 'text-gray-600 hover:bg-gradient-to-r hover:from-gray-50 hover:to-blue-50 border border-gray-200 hover:border-gray-300'
                   }`}
                 >
-                  <Icon className="h-3 w-3 sm:h-4 sm:w-4 flex-shrink-0" />
-                  <span className="text-xs leading-none">{tab.label}</span>
+                  <div className={`p-2 rounded-lg ${
+                    activeTab === tab.id 
+                      ? 'bg-white/20' 
+                      : `bg-gradient-to-r ${tab.color} text-white`
+                  }`}>
+                    <Icon className="h-5 w-5 flex-shrink-0" />
+                  </div>
+                  <div className="flex-1">
+                    <div className="font-semibold">{tab.label}</div>
+                    <div className={`text-xs mt-1 ${
+                      activeTab === tab.id ? 'text-white/80' : 'text-gray-500'
+                    }`}>
+                      {tab.desc}
+                    </div>
+                  </div>
+                  {activeTab === tab.id && (
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                  )}
                 </button>
               );
             })}
           </div>
-
-          {/* Mobile Selected Islands Preview */}
-          {selectedIslands.length > 0 && (
-            <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
-              {selectedIslands.slice(0, 4).map((islandId: string) => {
-                const island = greekIslands.find((i: any) => i.id === islandId);
-                return (
-                  <div key={islandId} className="flex items-center gap-2 bg-[#E3D7C3]/20 px-2 py-1 rounded-full whitespace-nowrap">
-                    <div className="w-2 h-2 rounded-full" style={{ backgroundColor: island?.color }}></div>
-                    <span className="text-xs font-medium text-[#1E2E48]">{island?.name}</span>
-                  </div>
-                );
-              })}
-              {selectedIslands.length > 4 && (
-                <div className="flex items-center px-2 py-1 bg-gray-100 rounded-full">
-                  <span className="text-xs text-gray-600">+{selectedIslands.length - 4}</span>
-                </div>
-              )}
-            </div>
-          )}
         </div>
 
-        {/* Mobile Content Area */}
-        <div className="flex-1 overflow-hidden">
-          {/* Chat View */}
-          {activeTab === 'chat' && (
-            <>
-              {/* Chat Messages - Fixed Container */}
-              <div className="flex-1 overflow-y-auto">
-                <div ref={chatStartRef} className="h-4 sm:h-8 md:h-12" />
-                <div className="w-full px-3 sm:px-4 lg:px-6 pb-4">
-                  <div className="w-full max-w-4xl mx-auto space-y-3 sm:space-y-4">
-                    {/* Welcome Message - Fully Responsive */}
-                    {showWelcome && (
-                      <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        className={`w-full rounded-xl p-4 sm:p-6 shadow-sm border mt-4 sm:mt-8 ${
-                          darkMode 
-                            ? 'bg-gray-800 border-gray-700' 
-                            : 'bg-white border-gray-200'
-                        }`}
-                      >
-                        <div className="text-center">
-                          {/* Enhanced Welcome Avatar - Mobile Responsive */}
-                          <div className="relative mx-auto mb-4">
-                            <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-[#1E2E48] via-blue-600 to-[#E3D7C3] rounded-full flex items-center justify-center shadow-lg">
-                              <img 
-                                src="/touristas-ai-logo.svg" 
-                                alt="Touristas AI"
-                                className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10"
-                                onError={(e) => {
-                                  const target = e.target as HTMLImageElement;
-                                  target.style.display = 'none';
-                                  const parent = target.parentElement;
-                                  if (parent) {
-                                    parent.innerHTML = '<div class="text-white text-lg sm:text-2xl">🤖</div>';
-                                  }
-                                }}
-                              />
-                            </div>
-                            <div className={`absolute -bottom-1 -right-1 w-4 h-4 sm:w-6 sm:h-6 bg-green-500 rounded-full border-2 flex items-center justify-center ${
-                              darkMode ? 'border-gray-800' : 'border-white'
-                            }`}>
-                              <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-pulse"></div>
-                            </div>
-                          </div>
-                          
-                          <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold mb-2 sm:mb-3 ${
-                            darkMode ? 'text-white' : 'text-[#1E2E48]'
-                          }`}>
-                            Γεια σας! Welcome to Touristas AI! 🇬🇷
-                          </h3>
-                          <p className={`text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed px-2 ${
-                            darkMode ? 'text-gray-300' : 'text-gray-600'
-                          }`}>
-                            I'm your personal Greek islands AI expert trained on 25+ Cyclades destinations. I'll help you create the perfect island-hopping adventure!
-                            {userPersonality && (
-                              <span className={`block mt-2 text-xs ${
-                                darkMode ? 'text-emerald-400' : 'text-emerald-600'
-                              }`}>
-                                ✨ Personalized for {userPersonality.travelStyle} travelers
-                              </span>
-                            )}
-                          </p>
-                          
-                          {/* Enhanced AI Capabilities Preview - Mobile Grid */}
-                          <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
-                            {[
-                              { icon: "🗺️", label: "Interactive Maps" },
-                              { icon: "⛵", label: "Ferry Schedules" },
-                              { icon: "🏨", label: "Live Bookings" },
-                              { icon: "💎", label: "Hidden Gems" },
-                              ...(weatherData ? [{ icon: "🌤️", label: "Live Weather" }] : []),
-                              ...(isVoiceMode ? [{ icon: "🎤", label: "Voice Input" }] : [])
-                            ].map((feature, index) => (
-                              <div key={index} className={`flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full ${
-                                darkMode 
-                                  ? 'bg-emerald-500/20 text-emerald-300' 
-                                  : 'bg-[#E3D7C3]/20 text-[#1E2E48]'
-                              }`}>
-                                <span className="text-xs sm:text-sm">{feature.icon}</span>
-                                <span className="text-xs font-medium">{feature.label}</span>
-                              </div>
-                            ))}
-                          </div>
-                          
-                          {/* Enhanced Quick Start Prompts - Fully Responsive */}
-                          <div className="grid grid-cols-1 gap-2 sm:gap-3 w-full">
-                            {(
-                              userPersonality ? 
-                                // Personalized prompts based on travel style
-                                userPersonality.travelStyle === 'adventure' ? [
-                                  "Show me the best hiking trails in the Cyclades",
-                                  "Plan an adventure-packed island hopping trip",
-                                  "Find water sports and outdoor activities",
-                                  "Discover hidden beaches and secret spots"
-                                ] : userPersonality.travelStyle === 'culture' ? [
-                                  "Explore ancient Greek sites across the islands",
-                                  "Plan a cultural heritage tour",
-                                  "Find the best museums and historical sites",
-                                  "Discover traditional villages and architecture"
-                                ] : userPersonality.travelStyle === 'foodie' ? [
-                                  "Find the best traditional tavernas",
-                                  "Plan a culinary tour of the islands",
-                                  "Discover local wines and food specialties",
-                                  "Book cooking classes and food experiences"
-                                ] : [
-                                  "Plan a relaxing beach-hopping vacation",
-                                  "Find the most beautiful sunset spots",
-                                  "Discover luxury spas and wellness retreats",
-                                  "Create a peaceful island escape"
-                                ]
-                                : // Default prompts
-                                [
-                                  "Plan a 7-day romantic trip to Santorini & Mykonos",
-                                  "Create a family adventure across 3 islands", 
-                                  "Design a luxury yacht hopping experience",
-                                  "Find the best budget islands for 2 weeks"
-                                ]
-                            ).map((prompt, index) => (
-                              <button
-                                key={index}
-                                onClick={() => handleQuickMessage(prompt)}
-                                className={`w-full text-left p-3 sm:p-4 rounded-lg border transition-all duration-200 text-xs sm:text-sm hover:shadow-sm min-h-[44px] flex items-center ${
-                                  darkMode 
-                                    ? 'bg-gradient-to-r from-emerald-500/20 to-emerald-500/10 hover:from-emerald-500/30 hover:to-emerald-500/20 border-emerald-500/50 text-white'
-                                    : 'bg-gradient-to-r from-[#E3D7C3]/20 to-[#E3D7C3]/10 hover:from-[#E3D7C3]/30 hover:to-[#E3D7C3]/20 border-[#E3D7C3]/50 text-[#1E2E48]'
-                                }`}
-                              >
-                                <span className="font-medium leading-snug break-words">{prompt}</span>
-                              </button>
-                            ))}
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
+        {/* Enhanced Feature Shortcuts */}
+        <div className="p-4 border-t border-gray-200">
+          <h4 className="font-semibold text-[#1E2E48] mb-3 text-sm flex items-center gap-2">
+            <Zap className="w-4 h-4" />
+            Quick Tools
+          </h4>
+          <div className="grid grid-cols-2 gap-2">
+            <button 
+              onClick={() => setActiveTab('restaurants')}
+              className="p-3 bg-gradient-to-r from-amber-500 to-orange-500 text-white rounded-lg hover:from-amber-600 hover:to-orange-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg"
+            >
+              <Utensils className="w-4 h-4" />
+              <span>Book Restaurant</span>
+            </button>
+            <button className="p-3 bg-gradient-to-r from-emerald-500 to-teal-500 text-white rounded-lg hover:from-emerald-600 hover:to-teal-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg">
+              <Ship className="w-4 h-4" />
+              <span>Ferries</span>
+            </button>
+            <button className="p-3 bg-gradient-to-r from-blue-500 to-cyan-500 text-white rounded-lg hover:from-blue-600 hover:to-cyan-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg">
+              <Camera className="w-4 h-4" />
+              <span>Photos</span>
+            </button>
+            <button className="p-3 bg-gradient-to-r from-purple-500 to-pink-500 text-white rounded-lg hover:from-purple-600 hover:to-pink-600 transition-all duration-300 text-xs font-medium flex flex-col items-center gap-2 transform hover:scale-105 shadow-lg">
+              <Sun className="w-4 h-4" />
+              <span>Weather</span>
+            </button>
+          </div>
+        </div>
+
+        {/* Travel Inspiration */}
+        <div className="p-4 border-t border-gray-200">
+          <h4 className="font-semibold text-[#1E2E48] mb-3 text-sm flex items-center gap-2">
+            <Sparkles className="w-4 h-4" />
+            Travel Inspiration
+          </h4>
+          <div className="space-y-2">
+            {[
+              { title: "Hidden Beach Caves", island: "Milos", color: "#FFEAA7" },
+              { title: "Sunset Wine Tour", island: "Santorini", color: "#FF6B6B" },
+              { title: "Traditional Pottery", island: "Sifnos", color: "#DDA0DD" }
+            ].map((inspiration, index) => (
+              <div key={index} className="bg-gradient-to-r from-gray-50 to-blue-50 p-3 rounded-lg border border-gray-200 hover:shadow-md transition-all duration-300 cursor-pointer group">
+                <div className="flex items-center gap-3">
+                  <div 
+                    className="w-3 h-3 rounded-full flex-shrink-0"
+                    style={{ backgroundColor: inspiration.color }}
+                  ></div>
+                  <div className="flex-1">
+                    <div className="text-sm font-medium text-[#1E2E48] group-hover:text-blue-600 transition-colors">
+                      {inspiration.title}
+                    </div>
+                    <div className="text-xs text-gray-500">{inspiration.island}</div>
+                  </div>
+                  <ArrowRight className="w-3 h-3 text-gray-400 group-hover:text-blue-500 transition-colors" />
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Smart Recommendations */}
+        <div className="p-4 border-t border-gray-200">
+          <h4 className="font-semibold text-[#1E2E48] mb-3 text-sm flex items-center gap-2">
+            <Brain className="w-4 h-4" />
+            AI Recommendations
+          </h4>
+          <div className="space-y-3">
+            <div className="bg-gradient-to-r from-green-50 to-emerald-50 p-3 rounded-lg border border-green-200">
+              <div className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Star className="w-3 h-3 text-white" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-green-800 mb-1">Perfect Season</div>
+                  <div className="text-xs text-green-600">
+                    May-June: Ideal weather, fewer crowds, blooming islands
                   </div>
                 </div>
               </div>
+            </div>
+            
+            <div className="bg-gradient-to-r from-blue-50 to-cyan-50 p-3 rounded-lg border border-blue-200">
+              <div className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-blue-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Globe className="w-3 h-3 text-white" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-blue-800 mb-1">Ferry Tip</div>
+                  <div className="text-xs text-blue-600">
+                    Book Santorini-Mykonos ferries 2 weeks ahead in summer
+                  </div>
+                </div>
+              </div>
+            </div>
 
-              {/* Enhanced Mobile Chat Input with Voice */}
-              <div className={`w-full border-t p-3 sm:p-4 sticky bottom-0 transition-colors ${
-                darkMode 
-                  ? 'bg-gray-800 border-gray-700' 
-                  : 'bg-white border-gray-200'
-              }`}>
-                {/* Quick Actions Bar */}
-                {quickActions.length > 0 && (
-                  <div className="w-full max-w-4xl mx-auto mb-3">
-                    <div className="flex gap-2 overflow-x-auto pb-2 hide-scrollbar">
-                      {quickActions.map((action, index) => (
-                        <button
-                          key={index}
-                          onClick={action.action}
-                          className="flex items-center gap-1 sm:gap-2 px-2 sm:px-3 py-1.5 rounded-lg text-xs whitespace-nowrap transition-colors bg-gray-100 hover:bg-gray-200 text-gray-700 min-h-[32px] flex-shrink-0"
-                        >
-                          {action.icon}
-                          {action.text}
-                        </button>
-                      ))}
-                      
-                      {/* Restaurant button always highlighted in top section too */}
-                      <button
-                        onClick={() => setActiveTab('restaurants')}
-                        className="flex items-center gap-1 sm:gap-2 bg-orange-100 hover:bg-orange-200 text-orange-800 px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap font-medium min-h-[32px] flex-shrink-0"
-                      >
-                        <Utensils className="h-3 w-3" />
-                        Book Restaurant
-                      </button>
-                      
-                      {/* Contextual suggestions based on selected islands */}
-                      {selectedIslands.length === 0 && (
-                        <button
-                          onClick={() => setUserInput("What are the best islands for families?")}
-                          className="flex items-center gap-1 sm:gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap min-h-[32px] flex-shrink-0"
-                        >
-                          <Users className="h-3 w-3" />
-                          Family Tips
-                        </button>
+            <div className="bg-gradient-to-r from-purple-50 to-pink-50 p-3 rounded-lg border border-purple-200">
+              <div className="flex items-start gap-2">
+                <div className="w-5 h-5 bg-purple-500 rounded-full flex items-center justify-center flex-shrink-0">
+                  <Coffee className="w-3 h-3 text-white" />
+                </div>
+                <div>
+                  <div className="text-sm font-medium text-purple-800 mb-1">Local Secret</div>
+                  <div className="text-xs text-purple-600">
+                    Try frappé coffee at local kafeneia for authentic experience
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Selected Islands Summary */}
+        {selectedIslands.length > 0 && (
+          <div className="p-4 border-t border-gray-200 mt-auto">
+            <h4 className="font-semibold text-[#1E2E48] mb-3 text-sm">Selected Islands</h4>
+            <div className="space-y-2">
+              {selectedIslands.map((islandId: string) => {
+                const island = greekIslands.find((i: any) => i.id === islandId);
+                return (
+                  <div
+                    key={islandId}
+                    className="flex items-center gap-2 bg-gray-50 px-3 py-2 rounded-lg"
+                  >
+                    <div
+                      className="w-4 h-4 rounded-full flex-shrink-0"
+                      style={{ backgroundColor: island?.color }}
+                    ></div>
+                    <span className="text-sm font-medium flex-1">{island?.name}</span>
+                    <button
+                      onClick={() => toggleIslandSelection(islandId)}
+                      className="text-gray-400 hover:text-red-500 transition-colors"
+                    >
+                      <X className="w-3 h-3" />
+                    </button>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        )}
+
+        {/* Online Status */}
+        <div className="p-4 border-t border-gray-200">
+          <div className="flex items-center gap-2 text-green-600">
+            <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse"></div>
+            <span className="text-sm font-medium">AI Expert Online</span>
+          </div>
+        </div>
+        </div>
+
+        {/* Desktop Main Content Area */}
+        <div className="flex-1 flex flex-col min-h-0 relative w-full max-w-full overflow-hidden">
+          {/* Content will be inserted here */}
+        </div>
+      </div>
+
+      {/* Mobile Layout */}
+      <div className="lg:hidden min-h-screen flex flex-col">
+        {/* Mobile Navigation Header */}
+        <div className="bg-white border-b border-gray-200 p-3 sticky top-0 z-50 shadow-sm">
+        <div className="flex items-center justify-between mb-3">
+          <div className="flex items-center gap-2">
+            <button
+              onClick={onGoBack}
+              className="p-2 hover:bg-gray-100 rounded-lg transition-colors text-[#1E2E48] -ml-1"
+            >
+              <ChevronLeft className="h-5 w-5" />
+            </button>
+            <img 
+              src="/touristas-ai-logo.svg" 
+              alt="Touristas AI" 
+              className="h-6 w-auto"
+            />
+            <div>
+              <h2 className="font-semibold text-[#1E2E48] text-sm">Touristas AI</h2>
+              <p className="text-xs text-gray-600 hidden sm:block">Greek Islands Expert</p>
+            </div>
+          </div>
+          <div className="flex items-center gap-2 text-green-600">
+            <div className="w-2 h-2 bg-green-600 rounded-full animate-pulse"></div>
+            <span className="text-xs font-medium">Online</span>
+          </div>
+        </div>
+        
+        {/* Mobile Tab Navigation - Enhanced */}
+        <div className="flex gap-1 bg-gray-100 rounded-lg p-1">
+          {[
+            { id: 'chat', label: 'Chat', icon: MessageCircle, shortLabel: 'Chat' },
+            { id: 'map', label: 'Map', icon: MapPin, shortLabel: 'Map' },
+            { id: 'itinerary', label: 'Plan', icon: Route, shortLabel: 'Plan' },
+            { id: 'taxi', label: 'Taxi', icon: Car, shortLabel: 'Taxi' },
+            { id: 'restaurants', label: 'Food', icon: Utensils, shortLabel: 'Food' }
+          ].map((tab) => {
+            const Icon = tab.icon;
+            return (
+              <button
+                key={tab.id}
+                onClick={() => setActiveTab(tab.id as any)}
+                className={`flex-1 flex flex-col sm:flex-row items-center justify-center gap-1 sm:gap-2 px-2 py-2 rounded-md text-xs sm:text-sm font-medium transition-all duration-200 min-h-[44px] ${
+                  activeTab === tab.id
+                    ? 'bg-[#1E2E48] text-white shadow-sm'
+                    : 'text-gray-600 hover:text-gray-900'
+                }`}
+              >
+                <Icon className="h-4 w-4 flex-shrink-0" />
+                <span className="text-xs sm:text-sm">{window.innerWidth < 400 ? tab.shortLabel : tab.label}</span>
+              </button>
+            );
+          })}
+        </div>
+
+        {/* Mobile Selected Islands Preview */}
+        {selectedIslands.length > 0 && (
+          <div className="mt-3 flex gap-2 overflow-x-auto pb-1">
+            {selectedIslands.slice(0, 4).map((islandId: string) => {
+              const island = greekIslands.find((i: any) => i.id === islandId);
+              return (
+                <div key={islandId} className="flex items-center gap-2 bg-[#E3D7C3]/20 px-2 py-1 rounded-full whitespace-nowrap">
+                  <div className="w-2 h-2 rounded-full" style={{ backgroundColor: island?.color }}></div>
+                  <span className="text-xs font-medium text-[#1E2E48]">{island?.name}</span>
+                </div>
+              );
+            })}
+            {selectedIslands.length > 4 && (
+              <div className="flex items-center px-2 py-1 bg-gray-100 rounded-full">
+                <span className="text-xs text-gray-600">+{selectedIslands.length - 4}</span>
+              </div>
+            )}
+          </div>
+        )}
+      </div>
+
+      {/* Main Content Area - Mobile Responsive */}
+      <div className="flex-1 flex flex-col min-h-0 relative w-full max-w-full overflow-hidden">
+        {/* Chat View */}
+        {activeTab === 'chat' && (
+          <>
+            {/* Chat Messages - Fixed Container */}
+            <div className="flex-1 overflow-y-auto">
+              <div ref={chatStartRef} className="h-4 sm:h-8 md:h-12" />
+              <div className="w-full px-3 sm:px-4 lg:px-6 pb-4">
+                <div className="w-full max-w-4xl mx-auto space-y-3 sm:space-y-4">
+                  {/* Welcome Message - Fully Responsive */}
+                  {showWelcome && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="w-full bg-white rounded-xl p-4 sm:p-6 shadow-sm border border-gray-200 mt-4 sm:mt-8"
+                    >
+                      <div className="text-center">
+                        {/* Enhanced Welcome Avatar - Mobile Responsive */}
+                        <div className="relative mx-auto mb-4">
+                          <div className="w-12 h-12 sm:w-16 sm:h-16 lg:w-20 lg:h-20 bg-gradient-to-br from-[#1E2E48] via-blue-600 to-[#E3D7C3] rounded-full flex items-center justify-center shadow-lg">
+                            <img 
+                              src="/touristas-ai-logo.svg" 
+                              alt="Touristas AI"
+                              className="w-6 h-6 sm:w-8 sm:h-8 lg:w-10 lg:h-10"
+                              onError={(e) => {
+                                const target = e.target as HTMLImageElement;
+                                target.style.display = 'none';
+                                const parent = target.parentElement;
+                                if (parent) {
+                                  parent.innerHTML = '<div class="text-white text-lg sm:text-2xl">🤖</div>';
+                                }
+                              }}
+                            />
+                          </div>
+                          <div className="absolute -bottom-1 -right-1 w-4 h-4 sm:w-6 sm:h-6 bg-green-500 rounded-full border-2 border-white flex items-center justify-center">
+                            <div className="w-1.5 h-1.5 sm:w-2 sm:h-2 bg-white rounded-full animate-pulse"></div>
+                          </div>
+                        </div>
+                        
+                        <h3 className="text-lg sm:text-xl lg:text-2xl font-bold text-[#1E2E48] mb-2 sm:mb-3">
+                          Γεια σας! Welcome to Touristas AI! 🇬🇷
+                        </h3>
+                        <p className="text-gray-600 text-sm sm:text-base mb-4 sm:mb-6 leading-relaxed px-2">
+                          I'm your personal Greek islands AI expert trained on 25+ Cyclades destinations. I'll help you create the perfect island-hopping adventure with <span className="font-semibold text-[#1E2E48]">interactive maps</span>, <span className="font-semibold text-[#1E2E48]">visual itineraries</span>, and <span className="font-semibold text-[#1E2E48]">real-time insights</span>!
+                        </p>
+                        
+                        {/* AI Capabilities Preview - Mobile Grid */}
+                        <div className="grid grid-cols-2 sm:flex sm:flex-wrap sm:justify-center gap-2 sm:gap-3 mb-4 sm:mb-6">
+                          {[
+                            { icon: "🗺️", label: "Interactive Maps" },
+                            { icon: "⛵", label: "Ferry Schedules" },
+                            { icon: "🏨", label: "Live Bookings" },
+                            { icon: "💎", label: "Hidden Gems" }
+                          ].map((feature, index) => (
+                            <div key={index} className="flex items-center gap-1 sm:gap-2 bg-[#E3D7C3]/20 px-2 sm:px-3 py-1 sm:py-1.5 rounded-full">
+                              <span className="text-xs sm:text-sm">{feature.icon}</span>
+                              <span className="text-xs font-medium text-[#1E2E48]">{feature.label}</span>
+                            </div>
+                          ))}
+                        </div>
+                        
+                        {/* Quick Start Prompts - Fully Responsive */}
+                        <div className="grid grid-cols-1 gap-2 sm:gap-3 w-full">
+                          {[
+                            "Plan a 7-day romantic trip to Santorini & Mykonos",
+                            "Create a family adventure across 3 islands", 
+                            "Design a luxury yacht hopping experience",
+                            "Find the best budget islands for 2 weeks"
+                          ].map((prompt, index) => (
+                            <button
+                              key={index}
+                              onClick={() => setUserInput(prompt)}
+                              className="w-full text-left p-3 sm:p-4 bg-gradient-to-r from-[#E3D7C3]/20 to-[#E3D7C3]/10 hover:from-[#E3D7C3]/30 hover:to-[#E3D7C3]/20 rounded-lg border border-[#E3D7C3]/50 transition-all duration-200 text-xs sm:text-sm hover:shadow-sm min-h-[44px] flex items-center"
+                            >
+                              <span className="text-[#1E2E48] font-medium leading-snug break-words">{prompt}</span>
+                            </button>
+                          ))}
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  {/* Chat Messages - Fixed Responsive Layout */}
+                  {messages.map((message: any) => (
+                    <motion.div
+                      key={message.id}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className={`w-full flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
+                    >
+                      {message.role === 'user' ? (
+                        <div className="max-w-[85%] sm:max-w-xl bg-[#1E2E48] text-white px-3 sm:px-4 py-2 sm:py-3 rounded-xl shadow-sm">
+                          <p className="leading-relaxed text-sm word-wrap break-words">{message.content}</p>
+                          <div className="text-xs text-white/70 mt-1 sm:mt-2">
+                            {message.timestamp?.toLocaleTimeString()}
+                          </div>
+                        </div>
+                                              ) : (
+                          <div className="max-w-[95%] sm:max-w-3xl bg-white rounded-xl shadow-sm border border-gray-200 overflow-hidden">
+                          {/* AI Avatar */}
+                          <div className="flex items-start gap-2 sm:gap-3 p-3 sm:p-4">
+                            <div className="w-6 h-6 sm:w-8 sm:h-8 bg-gradient-to-r from-[#1E2E48] to-[#E3D7C3] rounded-full flex items-center justify-center flex-shrink-0">
+                              <Brain className="h-3 w-3 sm:h-4 sm:w-4 text-white" />
+                            </div>
+                            <div className="flex-1 min-w-0">
+                              <div className="flex items-center gap-2 mb-2">
+                                <h4 className="font-semibold text-[#1E2E48] text-sm">Touristas AI</h4>
+                                <span className="text-xs bg-green-100 text-green-700 px-2 py-1 rounded-full">
+                                  Expert Response
+                                </span>
+                              </div>
+                              
+                              {/* Enhanced Message Content */}
+                              <div className="prose prose-sm max-w-none">
+                                <p className="text-gray-700 leading-relaxed mb-2 sm:mb-3 text-sm word-wrap break-words">{message.content}</p>
+                                
+                                {/* Interactive Actions - Mobile Optimized */}
+                                {message.hasInteractiveContent && (
+                                  <div className="flex flex-wrap gap-2 mt-2 sm:mt-3 pt-2 sm:pt-3 border-t border-gray-100">
+                                    <button
+                                      onClick={() => setActiveTab('map')}
+                                      className="flex items-center gap-1 sm:gap-2 bg-[#E3D7C3]/20 hover:bg-[#E3D7C3]/30 text-[#1E2E48] px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs font-medium min-h-[32px]"
+                                    >
+                                      <MapPin className="h-3 w-3" />
+                                      View on Map
+                                    </button>
+                                    <button
+                                      onClick={() => setActiveTab('itinerary')}
+                                      className="flex items-center gap-1 sm:gap-2 bg-[#E3D7C3]/20 hover:bg-[#E3D7C3]/30 text-[#1E2E48] px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs font-medium min-h-[32px]"
+                                    >
+                                      <Route className="h-3 w-3" />
+                                      See Itinerary
+                                    </button>
+                                    <button className="flex items-center gap-1 sm:gap-2 bg-[#E3D7C3]/20 hover:bg-[#E3D7C3]/30 text-[#1E2E48] px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs font-medium min-h-[32px]">
+                                      <Star className="h-3 w-3" />
+                                      Save Trip
+                                    </button>
+                                  </div>
+                                )}
+                              </div>
+                              
+                              <div className="text-xs text-gray-500 mt-2">
+                                {message.timestamp?.toLocaleTimeString()}
+                              </div>
+                            </div>
+                          </div>
+                        </div>
                       )}
-                      
-                      {selectedIslands.length > 0 && selectedIslands.length < 3 && (
-                        <button
-                          onClick={() => {
-                            const selectedNames = selectedIslands.map(id => 
-                              greekIslands.find(i => i.id === id)?.name
-                            ).join(', ');
-                            setUserInput(`Create a 7-day itinerary for ${selectedNames} with ferry connections`);
-                          }}
-                          className="flex items-center gap-1 sm:gap-2 bg-[#E3D7C3]/30 hover:bg-[#E3D7C3]/50 text-[#1E2E48] px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap font-medium min-h-[32px] flex-shrink-0"
-                        >
-                          <Wand2 className="h-3 w-3" />
-                          Plan Selected
-                        </button>
-                      )}
-                      
-                      {selectedIslands.length >= 3 && (
-                        <button
-                          onClick={() => {
-                            const selectedNames = selectedIslands.slice(0, 3).map(id => 
-                              greekIslands.find(i => i.id === id)?.name
-                            ).join(', ');
-                            setUserInput(`Optimize my ${selectedIslands.length}-island trip: ${selectedNames}${selectedIslands.length > 3 ? ' and more' : ''}`);
-                          }}
-                          className="flex items-center gap-1 sm:gap-2 bg-[#1E2E48] text-white px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap font-medium min-h-[32px] flex-shrink-0"
-                        >
-                          <Target className="h-3 w-3" />
-                          Optimize Trip
-                        </button>
-                      )}
+                    </motion.div>
+                  ))}
+
+                  {/* Typing Indicator - Mobile Optimized */}
+                  {isTyping && (
+                    <motion.div
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="w-full flex justify-start"
+                    >
+                      <div className="bg-white rounded-xl px-3 sm:px-4 py-2 sm:py-3 shadow-sm border border-gray-200 flex items-center gap-2 sm:gap-3">
+                        <div className="w-5 h-5 sm:w-6 sm:h-6 bg-gradient-to-r from-[#1E2E48] to-[#E3D7C3] rounded-full flex items-center justify-center">
+                          <Brain className="h-2.5 w-2.5 sm:h-3 sm:w-3 text-white" />
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="flex gap-1">
+                            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#1E2E48] rounded-full animate-bounce"></div>
+                            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#1E2E48] rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                            <div className="w-1 h-1 sm:w-1.5 sm:h-1.5 bg-[#1E2E48] rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
+                          </div>
+                          <span className="text-gray-600 text-xs">Creating your perfect itinerary...</span>
+                        </div>
+                      </div>
+                    </motion.div>
+                  )}
+
+                  <div ref={messagesEndRef} />
+                </div>
+              </div>
+            </div>
+
+            {/* Chat Input - Mobile Responsive */}
+            <div className="w-full bg-white border-t border-gray-200 p-3 sm:p-4 sticky bottom-0">
+              <div className="w-full max-w-4xl mx-auto">
+                <div className="flex gap-2 sm:gap-3">
+                  <div className="flex-1 relative min-w-0">
+                    <textarea
+                      value={userInput}
+                      onChange={(e) => setUserInput(e.target.value)}
+                      placeholder="Tell me about your dream Greek island adventure..."
+                      className="w-full border-2 border-gray-200 rounded-xl px-3 sm:px-4 py-2.5 sm:py-3 text-gray-800 placeholder-gray-500 focus:border-[#1E2E48] focus:outline-none resize-none text-sm sm:text-base min-h-[44px] max-h-[120px]"
+                      rows={1}
+                      style={{ height: 'auto' }}
+                      onInput={(e) => {
+                        const target = e.target as HTMLTextAreaElement;
+                        target.style.height = 'auto';
+                        target.style.height = Math.min(target.scrollHeight, 120) + 'px';
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' && !e.shiftKey) {
+                          e.preventDefault();
+                          handleSendMessage();
+                        }
+                      }}
+                    />
+                    {/* Character count for mobile */}
+                    <div className="absolute bottom-2 right-2 text-xs text-gray-400 sm:hidden">
+                      {userInput.length}/500
                     </div>
                   </div>
+                  <button
+                    onClick={handleSendMessage}
+                    disabled={!userInput.trim() || isTyping}
+                    className={`px-3 sm:px-4 py-2.5 sm:py-3 rounded-xl font-medium transition-all duration-300 flex items-center justify-center min-w-[44px] flex-shrink-0 ${
+                      userInput.trim() && !isTyping
+                        ? "bg-[#1E2E48] hover:bg-[#1E2E48]/90 text-white shadow-md hover:shadow-lg transform hover:scale-105"
+                        : "bg-gray-100 text-gray-400 cursor-not-allowed"
+                    }`}
+                  >
+                    {isTyping ? (
+                      <Sparkles className="w-4 h-4 animate-spin" />
+                    ) : (
+                      <Send className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+                
+                {/* Smart Contextual Quick Actions - Mobile Responsive */}
+                <div className="flex gap-2 mt-3 overflow-x-auto pb-1 hide-scrollbar">
+                  <button
+                    onClick={() => setActiveTab('map')}
+                    className="flex items-center gap-1 sm:gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap min-h-[32px] flex-shrink-0"
+                  >
+                    <MapPin className="h-3 w-3" />
+                    View Map
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('itinerary')}
+                    className="flex items-center gap-1 sm:gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap min-h-[32px] flex-shrink-0"
+                  >
+                    <Route className="h-3 w-3" />
+                    Plan Trip
+                  </button>
+                  <button
+                    onClick={() => setActiveTab('restaurants')}
+                    className="flex items-center gap-1 sm:gap-2 bg-orange-100 hover:bg-orange-200 text-orange-800 px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap font-medium min-h-[32px] flex-shrink-0"
+                  >
+                    <Utensils className="h-3 w-3" />
+                    Book Restaurant
+                  </button>
+                  
+                  {/* Contextual suggestions based on selected islands */}
+                  {selectedIslands.length === 0 && (
+                    <>
+                      <button
+                        onClick={() => setUserInput("What are the best islands for families?")}
+                        className="flex items-center gap-1 sm:gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap min-h-[32px] flex-shrink-0"
+                      >
+                        <Users className="h-3 w-3" />
+                        Family Tips
+                      </button>
+                      <button
+                        onClick={() => setUserInput("Show me romantic islands for couples")}
+                        className="flex items-center gap-1 sm:gap-2 bg-gray-100 hover:bg-gray-200 text-gray-700 px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap min-h-[32px] flex-shrink-0"
+                      >
+                        <Heart className="h-3 w-3" />
+                        Romance
+                      </button>
+                    </>
                   )}
                   
+                  {selectedIslands.length > 0 && selectedIslands.length < 3 && (
+                    <button
+                      onClick={() => {
+                        const selectedNames = selectedIslands.map(id => 
+                          greekIslands.find(i => i.id === id)?.name
+                        ).join(', ');
+                        setUserInput(`Create a 7-day itinerary for ${selectedNames} with ferry connections`);
+                      }}
+                      className="flex items-center gap-1 sm:gap-2 bg-[#E3D7C3]/30 hover:bg-[#E3D7C3]/50 text-[#1E2E48] px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap font-medium min-h-[32px] flex-shrink-0"
+                    >
+                      <Wand2 className="h-3 w-3" />
+                      Plan Selected
+                    </button>
+                  )}
+                  
+                  {selectedIslands.length >= 3 && (
+                    <button
+                      onClick={() => {
+                        const selectedNames = selectedIslands.slice(0, 3).map(id => 
+                          greekIslands.find(i => i.id === id)?.name
+                        ).join(', ');
+                        setUserInput(`Optimize my ${selectedIslands.length}-island trip: ${selectedNames}${selectedIslands.length > 3 ? ' and more' : ''}`);
+                      }}
+                      className="flex items-center gap-1 sm:gap-2 bg-[#1E2E48] text-white px-2 sm:px-3 py-1.5 rounded-lg transition-colors text-xs whitespace-nowrap font-medium min-h-[32px] flex-shrink-0"
+                    >
+                      <Target className="h-3 w-3" />
+                      Optimize Trip
+                    </button>
+                  )}
                 </div>
               </div>
             </div>
@@ -1487,7 +1242,6 @@ function ChatExperience({
           </div>
         )}
       </div>
-    </div>
     </motion.div>
   );
 }
@@ -1634,63 +1388,63 @@ function InteractiveMap({ islands, selectedIslands, onToggleIsland }: any) {
           </button>
         </div>
 
-        {/* Enhanced Island Info Panel - Mobile Optimized */}
-        {hoveredIsland && (
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            exit={{ opacity: 0, scale: 0.9 }}
-            className="absolute bottom-16 sm:bottom-4 left-3 sm:left-4 z-[1000] bg-white/95 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200 p-3 sm:p-4 max-w-[280px] sm:max-w-sm"
-          >
-            {(() => {
-              const island = islands.find((i: any) => i.id === hoveredIsland);
-              if (!island) return null;
-              
-              return (
-                <div>
-                  <div className="flex items-center gap-3 mb-3">
-                    <div className="w-12 h-12 rounded-lg overflow-hidden">
-                      <img
-                        src={island.image}
-                        alt={island.name}
-                        className="w-full h-full object-cover"
-                      />
-                    </div>
-                    <div>
-                      <h4 className="font-bold text-[#1E2E48]">{island.name}</h4>
-                      <p className="text-sm text-gray-600">€{island.avgCost}/day avg</p>
-                    </div>
-                  </div>
-                  
-                  <div className="space-y-2">
-                    <p className="text-sm text-gray-700">{island.description}</p>
-                    
-                    <div className="flex flex-wrap gap-1">
-                      {island.highlights.slice(0, 3).map((highlight: string, index: number) => (
-                        <span key={index} className="text-xs bg-[#E3D7C3]/30 text-[#1E2E48] px-2 py-1 rounded-full">
-                          {highlight}
-                        </span>
-                      ))}
+          {/* Enhanced Island Info Panel - Mobile Optimized */}
+          {hoveredIsland && (
+            <motion.div
+              initial={{ opacity: 0, scale: 0.9 }}
+              animate={{ opacity: 1, scale: 1 }}
+              exit={{ opacity: 0, scale: 0.9 }}
+              className="absolute bottom-16 sm:bottom-4 left-3 sm:left-4 z-[1000] bg-white/95 backdrop-blur-sm rounded-xl shadow-xl border border-gray-200 p-3 sm:p-4 max-w-[280px] sm:max-w-sm"
+            >
+              {(() => {
+                const island = islands.find((i: any) => i.id === hoveredIsland);
+                if (!island) return null;
+                
+                return (
+                  <div>
+                    <div className="flex items-center gap-3 mb-3">
+                      <div className="w-12 h-12 rounded-lg overflow-hidden">
+                        <img
+                          src={island.image}
+                          alt={island.name}
+                          className="w-full h-full object-cover"
+                        />
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-[#1E2E48]">{island.name}</h4>
+                        <p className="text-sm text-gray-600">€{island.avgCost}/day avg</p>
+                      </div>
                     </div>
                     
-                    <button
-                      onClick={() => onToggleIsland(island.id)}
-                      className={`w-full mt-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
-                        selectedIslands.includes(island.id)
-                          ? 'bg-red-100 text-red-700 hover:bg-red-200'
-                          : 'bg-[#1E2E48] text-white hover:bg-[#1E2E48]/90'
-                      }`}
-                    >
-                      {selectedIslands.includes(island.id) ? 'Remove from Trip' : 'Add to Trip'}
-                    </button>
+                    <div className="space-y-2">
+                      <p className="text-sm text-gray-700">{island.description}</p>
+                      
+                      <div className="flex flex-wrap gap-1">
+                        {island.highlights.slice(0, 3).map((highlight: string, index: number) => (
+                          <span key={index} className="text-xs bg-[#E3D7C3]/30 text-[#1E2E48] px-2 py-1 rounded-full">
+                            {highlight}
+                          </span>
+                        ))}
+                      </div>
+                      
+                      <button
+                        onClick={() => onToggleIsland(island.id)}
+                        className={`w-full mt-3 px-3 py-2 rounded-lg text-sm font-medium transition-colors ${
+                          selectedIslands.includes(island.id)
+                            ? 'bg-red-100 text-red-700 hover:bg-red-200'
+                            : 'bg-[#1E2E48] text-white hover:bg-[#1E2E48]/90'
+                        }`}
+                      >
+                        {selectedIslands.includes(island.id) ? 'Remove from Trip' : 'Add to Trip'}
+                      </button>
+                    </div>
                   </div>
-                </div>
-              );
-            })()}
-          </motion.div>
-        )}
+                );
+              })()}
+            </motion.div>
+          )}
 
-        <MapContainer
+          <MapContainer
           center={[mapCenter.lat, mapCenter.lng]}
           zoom={mapZoom}
           style={{ height: '100%', width: '100%' }}
@@ -1887,8 +1641,12 @@ function InteractiveMap({ islands, selectedIslands, onToggleIsland }: any) {
 function ItineraryBuilder({ itinerary, setItinerary, islands, tripDuration, setTripDuration }: any) {
   const [editingDay, setEditingDay] = useState<number | null>(null);
   const [newActivity, setNewActivity] = useState('');
+  const [planningMode, setPlanningMode] = useState<'manual' | 'ai' | 'template'>('manual');
+  const [budget, setBudget] = useState(2000);
   const [travelStyle, setTravelStyle] = useState('balanced');
   const [groupSize, setGroupSize] = useState(2);
+  const [showBudgetBreakdown, setShowBudgetBreakdown] = useState(false);
+  const [progressStep, setProgressStep] = useState(0);
 
   const addActivity = (dayIndex: number) => {
     if (!newActivity.trim()) return;
@@ -1924,6 +1682,7 @@ function ItineraryBuilder({ itinerary, setItinerary, islands, tripDuration, setT
 
   const totalCost = itinerary.reduce((sum: number, day: any) => sum + (day.cost || 0), 0);
   const avgDailyCost = itinerary.length > 0 ? Math.round(totalCost / itinerary.length) : 0;
+  const budgetProgress = budget > 0 ? (totalCost / budget) * 100 : 0;
 
   // Auto-save progress tracking
   const completionPercentage = Math.round((itinerary.length / tripDuration) * 100);
@@ -1998,7 +1757,7 @@ function ItineraryBuilder({ itinerary, setItinerary, islands, tripDuration, setT
                   <div className="w-full bg-gray-200 rounded-full h-2 mt-2">
                     <div 
                       className="bg-gradient-to-r from-emerald-500 to-green-500 h-2 rounded-full transition-all duration-500"
-                      style={{ width: `100%` }}
+                      style={{ width: `${Math.min(budgetProgress, 100)}%` }}
                     ></div>
                   </div>
                 </div>
@@ -2115,6 +1874,25 @@ function ItineraryBuilder({ itinerary, setItinerary, islands, tripDuration, setT
                       <div className="text-sm font-semibold">{style.label}</div>
                     </button>
                   ))}
+                </div>
+
+                <div>
+                  <label className="block text-sm font-semibold text-gray-700 mb-2">
+                    Budget: €{budget}
+                  </label>
+                  <input
+                    type="range"
+                    min="500"
+                    max="10000"
+                    step="100"
+                    value={budget}
+                    onChange={(e) => setBudget(Number(e.target.value))}
+                    className="w-full h-3 bg-gray-200 rounded-lg appearance-none cursor-pointer slider"
+                  />
+                  <div className="flex justify-between text-xs text-gray-500 mt-1">
+                    <span>€500</span>
+                    <span>€10,000</span>
+                  </div>
                 </div>
               </div>
 

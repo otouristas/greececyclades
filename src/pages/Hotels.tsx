@@ -45,63 +45,63 @@ export default function Hotels() {
       hotels: 245, 
       image: '/images/islands/santorini.jpg',
       description: 'Iconic caldera views and luxury cave hotels',
-      link: '/santorini-guide'
+      link: '/guides/santorini'
     },
     { 
       name: 'Mykonos', 
       hotels: 187, 
       image: '/images/islands/mykonos.jpg',
       description: 'Vibrant nightlife and beachfront resorts',
-      link: '/mykonos-guide'
+      link: '/guides/mykonos'
     },
     { 
       name: 'Paros', 
       hotels: 132, 
       image: '/images/islands/paros.jpg',
       description: 'Family-friendly resorts and traditional villages',
-      link: '/paros-guide'
+      link: '/guides/paros'
     },
     { 
       name: 'Naxos', 
       hotels: 98, 
       image: '/images/islands/naxos.jpg',
       description: 'Authentic Greek culture and beach hotels',
-      link: '/naxos-guide'
+      link: '/guides/naxos'
     },
     { 
       name: 'Milos', 
       hotels: 76, 
       image: '/images/islands/milos.jpg',
       description: 'Volcanic landscapes and boutique properties',
-      link: '/milos-guide'
+      link: '/guides/milos'
     },
     { 
       name: 'Ios', 
       hotels: 64, 
       image: '/images/islands/ios.jpg',
       description: 'Beach clubs and modern accommodations',
-      link: '/ios-guide'
+      link: '/guides/ios'
     },
     { 
       name: 'Syros', 
       hotels: 42, 
       image: '/images/islands/syros.jpg',
       description: 'Neoclassical architecture and cultural heritage',
-      link: '/syros-guide'
+      link: '/guides/syros'
     },
     { 
       name: 'Sifnos', 
       hotels: 38, 
       image: '/images/islands/sifnos.jpg',
       description: 'Gastronomy capital with charming villages',
-      link: '/sifnos-guide'
+      link: '/guides/sifnos'
     },
     { 
       name: 'Folegandros', 
       hotels: 28, 
       image: '/images/islands/folegandros.jpg',
       description: 'Dramatic cliffs and romantic sunsets',
-      link: '/folegandros-guide'
+      link: '/guides/folegandros'
     },
   ];
 
@@ -248,7 +248,7 @@ export default function Hotels() {
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Hotels in Cyclades Islands Greece</h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-              Discover luxury resorts, boutique hotels, and authentic accommodations across <Link to="/santorini-guide" className="underline hover:text-secondary-200">Santorini</Link>, <Link to="/mykonos-guide" className="underline hover:text-secondary-200">Mykonos</Link>, <Link to="/naxos-guide" className="underline hover:text-secondary-200">Naxos</Link>, and all Greek islands
+              Discover luxury resorts, boutique hotels, and authentic accommodations across <Link to="/guides/santorini" className="underline hover:text-secondary-200">Santorini</Link>, <Link to="/guides/mykonos" className="underline hover:text-secondary-200">Mykonos</Link>, <Link to="/guides/naxos" className="underline hover:text-secondary-200">Naxos</Link>, and all Greek islands
             </p>
           </div>
           
@@ -391,10 +391,10 @@ export default function Hotels() {
             <h2 className="text-3xl font-bold text-primary-600 mb-6 text-center">Why Choose Cyclades Islands for Your Perfect Stay?</h2>
             <div className="prose prose-lg max-w-none text-primary-400 leading-relaxed">
               <p className="mb-4">
-                The <strong>Cyclades islands</strong> offer some of the world's most unique and memorable accommodations. From luxury <Link to="/santorini-guide" className="text-primary-600 hover:text-primary-700 font-medium">cave hotels in Santorini</Link> with breathtaking caldera views to charming boutique properties in <Link to="/naxos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Naxos</Link> and <Link to="/paros-guide" className="text-primary-600 hover:text-primary-700 font-medium">Paros</Link>, and from cultural heritage hotels in <Link to="/syros-guide" className="text-primary-600 hover:text-primary-700 font-medium">Syros</Link> to gastronomic retreats in <Link to="/sifnos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Sifnos</Link>, each island provides distinct accommodation experiences that reflect authentic Greek hospitality.
+                The <strong>Cyclades islands</strong> offer some of the world's most unique and memorable accommodations. From luxury <Link to="/guides/santorini" className="text-primary-600 hover:text-primary-700 font-medium">cave hotels in Santorini</Link> with breathtaking caldera views to charming boutique properties in <Link to="/guides/naxos" className="text-primary-600 hover:text-primary-700 font-medium">Naxos</Link> and <Link to="/guides/paros" className="text-primary-600 hover:text-primary-700 font-medium">Paros</Link>, and from cultural heritage hotels in <Link to="/guides/syros" className="text-primary-600 hover:text-primary-700 font-medium">Syros</Link> to gastronomic retreats in <Link to="/guides/sifnos" className="text-primary-600 hover:text-primary-700 font-medium">Sifnos</Link>, each island provides distinct accommodation experiences that reflect authentic Greek hospitality.
               </p>
               <p className="mb-4">
-                Our <strong>hotel booking service</strong> specializes in the Cyclades, ensuring you find the perfect accommodation for your Greek island adventure. Whether you're seeking a romantic honeymoon suite in <Link to="/mykonos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Mykonos</Link>, a family-friendly resort in Naxos, or a secluded retreat in <Link to="/milos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Milos</Link>, we provide expert recommendations and unbeatable prices.
+                Our <strong>hotel booking service</strong> specializes in the Cyclades, ensuring you find the perfect accommodation for your Greek island adventure. Whether you're seeking a romantic honeymoon suite in <Link to="/guides/mykonos" className="text-primary-600 hover:text-primary-700 font-medium">Mykonos</Link>, a family-friendly resort in Naxos, or a secluded retreat in <Link to="/guides/milos" className="text-primary-600 hover:text-primary-700 font-medium">Milos</Link>, we provide expert recommendations and unbeatable prices.
               </p>
               <p>
                 Combine your perfect accommodation with our <Link to="/ferry-tickets" className="text-primary-600 hover:text-primary-700 font-medium">ferry booking service</Link> for seamless island hopping, and don't forget to arrange your <Link to="/rent-a-car" className="text-primary-600 hover:text-primary-700 font-medium">car rental</Link> for exploring each island at your own pace.
@@ -512,7 +512,7 @@ export default function Hotels() {
               <div>
                 <h3 className="text-xl font-semibold text-primary-600 mb-4">Planning Your Cyclades Accommodation</h3>
                 <p className="text-primary-400 mb-4">
-                  When booking <strong>hotels in the Cyclades</strong>, consider your travel style and island preferences. <Link to="/santorini-guide" className="text-primary-600 hover:text-primary-700 font-medium">Santorini</Link> offers luxury cave hotels with iconic views, while <Link to="/naxos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Naxos</Link> and <Link to="/paros-guide" className="text-primary-600 hover:text-primary-700 font-medium">Paros</Link> provide excellent family-friendly options.
+                  When booking <strong>hotels in the Cyclades</strong>, consider your travel style and island preferences. <Link to="/guides/santorini" className="text-primary-600 hover:text-primary-700 font-medium">Santorini</Link> offers luxury cave hotels with iconic views, while <Link to="/guides/naxos" className="text-primary-600 hover:text-primary-700 font-medium">Naxos</Link> and <Link to="/guides/paros" className="text-primary-600 hover:text-primary-700 font-medium">Paros</Link> provide excellent family-friendly options.
                 </p>
                 <p className="text-primary-400 mb-4">
                   Combine your hotel booking with our <Link to="/ferry-tickets" className="text-primary-600 hover:text-primary-700 font-medium">ferry ticket service</Link> for seamless island hopping. Many hotels offer transfer services from ports and airports - always inquire when booking.

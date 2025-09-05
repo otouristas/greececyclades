@@ -115,6 +115,15 @@ export default function TaxiAutoCaller({ onClose }: TaxiAutoCallerProps) {
           Πείτε μας που θέλετε να πάτε και εμείς θα καλέσουμε αυτόματα ένα τοπικό ταξί για εσάς. 
           Χωρίς εφαρμογές, χωρίς περιμένω - απλά φυσική ομιλία.
         </p>
+        <div className="mt-4 p-3 bg-yellow-50 border border-yellow-200 rounded-lg max-w-lg mx-auto">
+          <p className="text-yellow-800 text-sm font-medium flex items-center gap-2">
+            <span className="text-lg">😄</span>
+            <span>Μιλάμε και Σιφνέϊκα, μην αγχώνεστε...</span>
+          </p>
+          <p className="text-yellow-700 text-xs mt-1">
+            (Και αγγλικά για τους φίλους τουρίστες!)
+          </p>
+        </div>
       </div>
 
       <AnimatePresence mode="wait">

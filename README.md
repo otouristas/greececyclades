@@ -6,12 +6,12 @@ Experience the magic of the Greek Cyclades with our cutting-edge AI travel assis
 
 ## ✨ Key Features
 
-### 🤖 **Touristas AI Trip Planner**
-- **Advanced AI Assistant**: MindTrip.ai-inspired chat interface with intelligent responses
-- **Personalized Itineraries**: Custom-built based on your preferences, budget, and travel style
-- **Expert Local Knowledge**: Deep insights into all 25+ Cyclades islands
-- **Real-time Planning**: Interactive conversation with instant recommendations
-- **Professional SaaS Design**: Beautiful, responsive interface with brand consistency
+### 🤖 **Touristas AI - Greek Islands Oracle**
+- **Revolutionary AI Oracle**: World's first AI specifically trained for Greek islands
+- **Mystical Intelligence**: Deep cultural knowledge of all 25+ Cyclades islands
+- **Auto-Booking Magic**: Calls restaurants & taxis in Greek language automatically  
+- **Personalized Guidance**: Custom itineraries with authentic local insights
+- **24/7 Availability**: Always-on AI assistant fluent in Greek & English
 
 ### 🌊 **Comprehensive Island Guides**
 - **25+ Island Destinations**: Detailed guides for every Cycladic island

@@ -22,7 +22,7 @@ export default function SchinoussaGuide() {
       <SEO 
         title="Schinoussa Island Guide | Greece Cyclades"
         description="Discover the untouched beauty of Schinoussa island. Pristine beaches, authentic villages, and tranquil atmosphere in this Small Cyclades gem."
-        canonicalUrl="/schinoussa-guide/"
+        canonicalUrl="/guides/schinoussa"
       />
       
       <div className="bg-gray-50">

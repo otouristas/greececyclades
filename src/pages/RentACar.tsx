@@ -110,12 +110,12 @@ export default function RentACar() {
 
   // Island destinations for internal linking
   const popularIslands = [
-    { name: 'Santorini', link: '/santorini-guide', description: 'Famous for sunsets and volcanic landscapes' },
-    { name: 'Mykonos', link: '/mykonos-guide', description: 'Known for nightlife and beautiful beaches' },
-    { name: 'Naxos', link: '/naxos-guide', description: 'Perfect for family vacations and authentic Greek culture' },
-    { name: 'Paros', link: '/paros-guide', description: 'Traditional villages and crystal-clear waters' },
-    { name: 'Milos', link: '/milos-guide', description: 'Volcanic landscapes and unique beaches' },
-    { name: 'Ios', link: '/ios-guide', description: 'Vibrant nightlife and pristine beaches' }
+    { name: 'Santorini', link: '/guides/santorini', description: 'Famous for sunsets and volcanic landscapes' },
+    { name: 'Mykonos', link: '/guides/mykonos', description: 'Known for nightlife and beautiful beaches' },
+    { name: 'Naxos', link: '/guides/naxos', description: 'Perfect for family vacations and authentic Greek culture' },
+    { name: 'Paros', link: '/guides/paros', description: 'Traditional villages and crystal-clear waters' },
+    { name: 'Milos', link: '/guides/milos', description: 'Volcanic landscapes and unique beaches' },
+    { name: 'Ios', link: '/guides/ios', description: 'Vibrant nightlife and pristine beaches' }
   ];
 
   return (
@@ -150,7 +150,7 @@ export default function RentACar() {
           <div className="text-center mb-8">
             <h1 className="text-4xl md:text-5xl font-bold mb-4">Car Rental in Cyclades Islands Greece</h1>
             <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-              Discover the freedom to explore <Link to="/santorini-guide" className="underline hover:text-secondary-200">Santorini</Link>, <Link to="/mykonos-guide" className="underline hover:text-secondary-200">Mykonos</Link>, <Link to="/naxos-guide" className="underline hover:text-secondary-200">Naxos</Link>, and all Greek islands at your own pace with our premium car rental service
+              Discover the freedom to explore <Link to="/guides/santorini" className="underline hover:text-secondary-200">Santorini</Link>, <Link to="/guides/mykonos" className="underline hover:text-secondary-200">Mykonos</Link>, <Link to="/guides/naxos" className="underline hover:text-secondary-200">Naxos</Link>, and all Greek islands at your own pace with our premium car rental service
             </p>
           </div>
           
@@ -175,10 +175,10 @@ export default function RentACar() {
             <h2 className="text-3xl font-bold text-primary-600 mb-6 text-center">Why Choose Car Rental for Your Greek Island Adventure?</h2>
             <div className="prose prose-lg max-w-none text-primary-400 leading-relaxed">
               <p className="mb-4">
-                Exploring the <strong>Cyclades Islands</strong> by car offers unparalleled freedom and flexibility for your Greek vacation. From the iconic sunsets of <Link to="/santorini-guide" className="text-primary-600 hover:text-primary-700 font-medium">Santorini</Link> to the vibrant nightlife of <Link to="/mykonos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Mykonos</Link>, having your own vehicle allows you to discover hidden beaches, traditional villages, and breathtaking viewpoints that tour buses simply cannot reach.
+                Exploring the <strong>Cyclades Islands</strong> by car offers unparalleled freedom and flexibility for your Greek vacation. From the iconic sunsets of <Link to="/guides/santorini" className="text-primary-600 hover:text-primary-700 font-medium">Santorini</Link> to the vibrant nightlife of <Link to="/guides/mykonos" className="text-primary-600 hover:text-primary-700 font-medium">Mykonos</Link>, having your own vehicle allows you to discover hidden beaches, traditional villages, and breathtaking viewpoints that tour buses simply cannot reach.
               </p>
               <p className="mb-4">
-                Our <strong>car rental service in Greece</strong> covers all major Cyclades islands including <Link to="/naxos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Naxos</Link>, <Link to="/paros-guide" className="text-primary-600 hover:text-primary-700 font-medium">Paros</Link>, <Link to="/milos-guide" className="text-primary-600 hover:text-primary-700 font-medium">Milos</Link>, and <Link to="/ios-guide" className="text-primary-600 hover:text-primary-700 font-medium">Ios</Link>. Whether you're planning a romantic getaway, family vacation, or adventure trip, we have the perfect vehicle for your needs.
+                Our <strong>car rental service in Greece</strong> covers all major Cyclades islands including <Link to="/guides/naxos" className="text-primary-600 hover:text-primary-700 font-medium">Naxos</Link>, <Link to="/guides/paros" className="text-primary-600 hover:text-primary-700 font-medium">Paros</Link>, <Link to="/guides/milos" className="text-primary-600 hover:text-primary-700 font-medium">Milos</Link>, and <Link to="/guides/ios" className="text-primary-600 hover:text-primary-700 font-medium">Ios</Link>. Whether you're planning a romantic getaway, family vacation, or adventure trip, we have the perfect vehicle for your needs.
               </p>
               <p>
                 Book your <strong>Greek island car rental</strong> today and experience the authentic beauty of the Cyclades at your own pace. Don't forget to check our <Link to="/ferry-tickets" className="text-primary-600 hover:text-primary-700 font-medium">ferry booking service</Link> for seamless island hopping with your rental car.
@@ -412,7 +412,7 @@ export default function RentACar() {
                   </li>
                   <li className="flex items-start">
                     <span className="mr-3 text-secondary-200">•</span>
-                    <span>Prepare for narrow, winding roads especially in traditional villages like those in <Link to="/naxos-guide" className="underline hover:text-secondary-200">Naxos</Link> and <Link to="/paros-guide" className="underline hover:text-secondary-200">Paros</Link></span>
+                    <span>Prepare for narrow, winding roads especially in traditional villages like those in <Link to="/guides/naxos" className="underline hover:text-secondary-200">Naxos</Link> and <Link to="/guides/paros" className="underline hover:text-secondary-200">Paros</Link></span>
                   </li>
                   <li className="flex items-start">
                     <span className="mr-3 text-secondary-200">•</span>

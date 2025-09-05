@@ -426,60 +426,61 @@ export function RestaurantAutoCaller({ className = '' }: RestaurantAutoCallerPro
   };
 
   return (
-    <div className={`max-w-4xl mx-auto p-6 ${className}`}>
-      {/* Header */}
-      <div className="text-center mb-8">
-        <div className="flex items-center justify-center mb-4">
-          <Utensils className="h-8 w-8 text-blue-600 mr-3" />
-          <h1 className="text-3xl font-bold text-gray-900">Restaurant Auto-Booker</h1>
+    <div className={`max-w-6xl mx-auto p-4 sm:p-6 lg:p-8 ${className}`}>
+      {/* Header - Mobile Optimized */}
+      <div className="text-center mb-6 sm:mb-8">
+        <div className="flex items-center justify-center mb-3 sm:mb-4">
+          <Utensils className="h-6 w-6 sm:h-8 sm:w-8 text-blue-600 mr-2 sm:mr-3" />
+          <h1 className="text-2xl sm:text-3xl font-bold text-gray-900">Restaurant Auto-Booker</h1>
         </div>
-        <p className="text-gray-600 text-lg">
+        <p className="text-gray-600 text-base sm:text-lg px-2">
           Κάντε κράτηση σε εστιατόρια της Σίφνου με φυσική γλώσσα! 🍽️
         </p>
       </div>
 
-      {/* Available Restaurants */}
-      <div className="mb-8">
-        <h2 className="text-xl font-semibold mb-4 flex items-center">
-          <MapPin className="h-5 w-5 mr-2" />
+      {/* Available Restaurants - Mobile Responsive Grid */}
+      <div className="mb-6 sm:mb-8">
+        <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4 flex items-center px-2 sm:px-0">
+          <MapPin className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
           Διαθέσιμα Εστιατόρια Σίφνου
         </h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-4">
           {availableRestaurants.map((restaurant) => (
             <div
               key={restaurant.id}
-              className={`p-4 border-2 rounded-lg cursor-pointer transition-all ${
+              className={`p-3 sm:p-4 border-2 rounded-lg cursor-pointer transition-all min-h-[120px] sm:min-h-[140px] ${
                 selectedRestaurant?.id === restaurant.id
                   ? 'border-blue-500 bg-blue-50'
-                  : 'border-gray-200 hover:border-gray-300'
+                  : 'border-gray-200 hover:border-gray-300 hover:shadow-sm'
               }`}
               onClick={() => setSelectedRestaurant(restaurant)}
             >
-              <div className="flex items-center mb-2">
-                <h3 className="font-semibold text-sm">{restaurant.name}</h3>
-                <div className="ml-auto flex items-center">
-                  <Star className="h-4 w-4 text-yellow-400 fill-current" />
-                  <span className="text-sm ml-1">{restaurant.rating}</span>
+              <div className="flex items-start justify-between mb-2">
+                <h3 className="font-semibold text-sm sm:text-base leading-tight">{restaurant.name}</h3>
+                <div className="flex items-center ml-2 flex-shrink-0">
+                  <Star className="h-3 w-3 sm:h-4 sm:w-4 text-yellow-400 fill-current" />
+                  <span className="text-xs sm:text-sm ml-1">{restaurant.rating}</span>
                 </div>
               </div>
-              <p className="text-xs text-gray-600 mb-2">{restaurant.location}</p>
-              <p className="text-xs text-gray-500">{restaurant.cuisine}</p>
-              <div className="flex items-center mt-2">
+              <p className="text-xs text-gray-600 mb-2 leading-relaxed">{restaurant.location}</p>
+              <p className="text-xs text-gray-500 mb-2 leading-relaxed">{restaurant.cuisine}</p>
+              <div className="flex items-center justify-between mt-auto">
                 <span className="text-xs font-medium text-green-600">
                   {restaurant.priceRange}
                 </span>
+                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
               </div>
             </div>
           ))}
         </div>
       </div>
 
-      {/* Input Section */}
-      <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-        <h2 className="text-xl font-semibold mb-4">Κάντε την Κράτησή σας</h2>
+      {/* Input Section - Mobile Optimized */}
+      <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 mb-4 sm:mb-6">
+        <h2 className="text-lg sm:text-xl font-semibold mb-3 sm:mb-4">Κάντε την Κράτησή σας</h2>
         
         <div className="space-y-4">
-          {/* Phone Input */}
+          {/* Phone Input - Mobile Friendly */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Τηλέφωνο Επικοινωνίας *
@@ -489,11 +490,11 @@ export function RestaurantAutoCaller({ className = '' }: RestaurantAutoCallerPro
               value={userPhone}
               onChange={(e) => setUserPhone(e.target.value)}
               placeholder="+30 6XX XXX XXXX"
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+              className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent text-sm sm:text-base min-h-[44px]"
             />
           </div>
 
-          {/* Natural Language Input */}
+          {/* Natural Language Input - Mobile Optimized */}
           <div>
             <label className="block text-sm font-medium text-gray-700 mb-2">
               Περιγράψτε την κράτησή σας (Ελληνικά ή Αγγλικά)
@@ -503,27 +504,27 @@ export function RestaurantAutoCaller({ className = '' }: RestaurantAutoCallerPro
                 value={inputText}
                 onChange={(e) => setInputText(e.target.value)}
                 placeholder="π.χ. 'Θέλω τραπέζι για 4 άτομα στο Drimoni αύριο στις 8 το βράδυ με θέα στη θάλασσα'"
-                className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                className="w-full px-3 sm:px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none text-sm sm:text-base min-h-[80px] sm:min-h-[100px]"
                 rows={3}
               />
               <button
                 onClick={isListening ? stopListening : startListening}
-                className={`absolute right-3 top-3 p-2 rounded-full transition-colors ${
+                className={`absolute right-3 top-3 p-2 rounded-full transition-colors min-w-[40px] min-h-[40px] flex items-center justify-center ${
                   isListening 
                     ? 'bg-red-500 text-white animate-pulse' 
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                 }`}
                 title={isListening ? 'Σταματήστε την ηχογράφηση' : 'Ξεκινήστε την ηχογράφηση'}
               >
-                {isListening ? <MicOff className="h-5 w-5" /> : <Mic className="h-5 w-5" />}
+                {isListening ? <MicOff className="h-4 w-4 sm:h-5 sm:w-5" /> : <Mic className="h-4 w-4 sm:h-5 sm:w-5" />}
               </button>
             </div>
           </div>
 
-          {/* Example Requests */}
-          <div className="bg-gray-50 p-4 rounded-lg">
+          {/* Example Requests - Mobile Scrollable */}
+          <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
             <h3 className="text-sm font-medium text-gray-700 mb-2">Παραδείγματα αιτημάτων:</h3>
-            <div className="space-y-1 text-sm text-gray-600">
+            <div className="space-y-1 text-xs sm:text-sm text-gray-600 leading-relaxed">
               <p>• "Book a table for 2 at Drimoni tomorrow at 8pm with sunset view"</p>
               <p>• "Θέλω τραπέζι για 4 στη Meropi σήμερα στις 9 το βράδυ"</p>
               <p>• "Table for 6 at Cantina tonight, vegetarian options needed"</p>
@@ -531,20 +532,20 @@ export function RestaurantAutoCaller({ className = '' }: RestaurantAutoCallerPro
             </div>
           </div>
 
-          {/* Book Button */}
+          {/* Book Button - Mobile Optimized */}
           <button
             onClick={handleBookRestaurant}
             disabled={isProcessing || !inputText.trim() || !userPhone.trim()}
-            className="w-full bg-blue-600 text-white py-3 px-6 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center"
+            className="w-full bg-blue-600 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-lg font-medium hover:bg-blue-700 disabled:bg-gray-400 disabled:cursor-not-allowed transition-colors flex items-center justify-center text-sm sm:text-base min-h-[48px] sm:min-h-[52px]"
           >
             {isProcessing ? (
               <>
-                <Loader className="animate-spin h-5 w-5 mr-2" />
+                <Loader className="animate-spin h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 Επεξεργασία κράτησης...
               </>
             ) : (
               <>
-                <Phone className="h-5 w-5 mr-2" />
+                <Phone className="h-4 w-4 sm:h-5 sm:w-5 mr-2" />
                 Κάντε Κράτηση Τώρα
               </>
             )}
@@ -552,29 +553,29 @@ export function RestaurantAutoCaller({ className = '' }: RestaurantAutoCallerPro
         </div>
       </div>
 
-      {/* Booking Process Steps */}
+      {/* Booking Process Steps - Mobile Optimized */}
       {bookingSteps.length > 0 && (
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-          <h3 className="text-lg font-semibold mb-4">Πρόοδος Κράτησης</h3>
-          <div className="space-y-4">
+        <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 mb-4 sm:mb-6">
+          <h3 className="text-lg font-semibold mb-3 sm:mb-4">Πρόοδος Κράτησης</h3>
+          <div className="space-y-3 sm:space-y-4">
             {bookingSteps.map((step, index) => (
               <div
                 key={step.id}
-                className={`flex items-center p-3 rounded-lg transition-colors ${
+                className={`flex items-start p-3 sm:p-4 rounded-lg transition-colors ${
                   step.status === 'active' ? 'bg-blue-50 border border-blue-200' :
                   step.status === 'completed' ? 'bg-green-50 border border-green-200' :
                   step.status === 'error' ? 'bg-red-50 border border-red-200' :
                   'bg-gray-50 border border-gray-200'
                 }`}
               >
-                <div className="flex-shrink-0 mr-4">
+                <div className="flex-shrink-0 mr-3 sm:mr-4">
                   {getStepStatusIcon(step.status)}
                 </div>
-                <div className="flex-grow">
-                  <h4 className="font-medium text-gray-900">{step.title}</h4>
-                  <p className="text-sm text-gray-600">{step.description}</p>
+                <div className="flex-grow min-w-0">
+                  <h4 className="font-medium text-gray-900 text-sm sm:text-base">{step.title}</h4>
+                  <p className="text-xs sm:text-sm text-gray-600 leading-relaxed">{step.description}</p>
                 </div>
-                <div className="flex-shrink-0 text-sm text-gray-500">
+                <div className="flex-shrink-0 text-xs sm:text-sm text-gray-500 ml-2">
                   {index + 1}/5
                 </div>
               </div>
@@ -583,35 +584,35 @@ export function RestaurantAutoCaller({ className = '' }: RestaurantAutoCallerPro
         </div>
       )}
 
-      {/* Selected Restaurant Details */}
+      {/* Selected Restaurant Details - Mobile Responsive */}
       {selectedRestaurant && (
-        <div className="bg-white rounded-lg shadow-lg p-6 mb-6">
-          <h3 className="text-lg font-semibold mb-4">Επιλεγμένο Εστιατόριο</h3>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6 mb-4 sm:mb-6">
+          <h3 className="text-lg font-semibold mb-3 sm:mb-4">Επιλεγμένο Εστιατόριο</h3>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
             <div>
-              <h4 className="font-semibold text-lg mb-2">{selectedRestaurant.name}</h4>
+              <h4 className="font-semibold text-base sm:text-lg mb-2">{selectedRestaurant.name}</h4>
               <div className="space-y-2 text-sm">
                 <div className="flex items-center">
-                  <MapPin className="h-4 w-4 mr-2 text-gray-500" />
-                  <span>{selectedRestaurant.location}</span>
+                  <MapPin className="h-4 w-4 mr-2 text-gray-500 flex-shrink-0" />
+                  <span className="leading-relaxed">{selectedRestaurant.location}</span>
                 </div>
                 <div className="flex items-center">
-                  <Utensils className="h-4 w-4 mr-2 text-gray-500" />
-                  <span>{selectedRestaurant.cuisine}</span>
+                  <Utensils className="h-4 w-4 mr-2 text-gray-500 flex-shrink-0" />
+                  <span className="leading-relaxed">{selectedRestaurant.cuisine}</span>
                 </div>
                 <div className="flex items-center">
-                  <Star className="h-4 w-4 mr-2 text-yellow-400 fill-current" />
-                  <span>{selectedRestaurant.rating} / 5.0</span>
+                  <Star className="h-4 w-4 mr-2 text-yellow-400 fill-current flex-shrink-0" />
+                  <span className="leading-relaxed">{selectedRestaurant.rating} / 5.0</span>
                 </div>
               </div>
             </div>
             <div>
               <h5 className="font-medium mb-2">Ειδικότητες:</h5>
-              <div className="flex flex-wrap gap-1">
+              <div className="flex flex-wrap gap-1 sm:gap-2">
                 {selectedRestaurant.specialties.slice(0, 3).map((specialty, index) => (
                   <span
                     key={index}
-                    className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full"
+                    className="px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full whitespace-nowrap"
                   >
                     {specialty}
                   </span>
@@ -622,42 +623,42 @@ export function RestaurantAutoCaller({ className = '' }: RestaurantAutoCallerPro
         </div>
       )}
 
-      {/* Results */}
+      {/* Results - Mobile Optimized */}
       {bookingResult && (
-        <div className="bg-white rounded-lg shadow-lg p-6">
-          <div className={`flex items-center mb-4 ${
+        <div className="bg-white rounded-lg shadow-lg p-4 sm:p-6">
+          <div className={`flex items-center mb-3 sm:mb-4 ${
             bookingResult.success ? 'text-green-600' : 'text-red-600'
           }`}>
             {bookingResult.success ? (
-              <CheckCircle className="h-6 w-6 mr-2" />
+              <CheckCircle className="h-5 w-5 sm:h-6 sm:w-6 mr-2 flex-shrink-0" />
             ) : (
-              <AlertCircle className="h-6 w-6 mr-2" />
+              <AlertCircle className="h-5 w-5 sm:h-6 sm:w-6 mr-2 flex-shrink-0" />
             )}
-            <h3 className="text-lg font-semibold">
+            <h3 className="text-base sm:text-lg font-semibold">
               {bookingResult.success ? 'Επιτυχής Κράτηση!' : 'Σφάλμα Κράτησης'}
             </h3>
           </div>
           
-          <p className="text-gray-700 mb-4">{bookingResult.message}</p>
+          <p className="text-gray-700 mb-3 sm:mb-4 text-sm sm:text-base leading-relaxed">{bookingResult.message}</p>
           
           {bookingResult.success && bookingResult.confirmationDetails && (
-            <div className="bg-gray-50 p-4 rounded-lg">
-              <h4 className="font-medium mb-2">Στοιχεία Κράτησης:</h4>
-              <div className="grid grid-cols-2 gap-4 text-sm">
+            <div className="bg-gray-50 p-3 sm:p-4 rounded-lg">
+              <h4 className="font-medium mb-2 sm:mb-3">Στοιχεία Κράτησης:</h4>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 sm:gap-4 text-sm">
                 <div className="flex items-center">
-                  <Calendar className="h-4 w-4 mr-2 text-gray-500" />
+                  <Calendar className="h-4 w-4 mr-2 text-gray-500 flex-shrink-0" />
                   <span>{bookingResult.confirmationDetails.date}</span>
                 </div>
                 <div className="flex items-center">
-                  <Clock className="h-4 w-4 mr-2 text-gray-500" />
+                  <Clock className="h-4 w-4 mr-2 text-gray-500 flex-shrink-0" />
                   <span>{bookingResult.confirmationDetails.time}</span>
                 </div>
                 <div className="flex items-center">
-                  <Users className="h-4 w-4 mr-2 text-gray-500" />
+                  <Users className="h-4 w-4 mr-2 text-gray-500 flex-shrink-0" />
                   <span>{bookingResult.confirmationDetails.partySize} άτομα</span>
                 </div>
                 {bookingResult.reservationId && (
-                  <div className="col-span-2">
+                  <div className="sm:col-span-2">
                     <strong>Κωδικός: </strong>{bookingResult.reservationId}
                   </div>
                 )}

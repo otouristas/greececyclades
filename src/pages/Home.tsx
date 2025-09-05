@@ -159,10 +159,10 @@ export default function Home() {
               {/* Action Buttons */}
               <div className="flex flex-wrap justify-center gap-4 mt-12">
                 <Link 
-                  to="/trip-planner"
+                  to="/touristas-ai"
                   className="inline-flex items-center px-8 py-4 bg-[#1E2E48] text-white rounded-xl font-medium hover:bg-[#1E2E48]/90 transition-all transform hover:scale-105 shadow-lg"
                 >
-                  Start Planning Your Trip
+                  Meet Touristas AI
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Link>
                 <Link
@@ -321,10 +321,10 @@ export default function Home() {
                     </div>
                   </div>
                   <Link 
-                    to="/trip-planner" 
+                    to="/touristas-ai" 
                     className="inline-flex items-center text-[#1E2E48] font-medium hover:text-[#1E2E48]/80 transition-colors group"
                   >
-                    Start planning your trip
+                    Consult Touristas AI
                     <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
                   </Link>
                 </div>
@@ -575,23 +575,23 @@ export default function Home() {
                   </div>
                 </div>
                 <p className="text-xl text-[#E3D7C3] mb-8 max-w-2xl leading-relaxed">
-                  Create custom Greek island itineraries tailored to your preferences, travel style, and interests with our intelligent AI planner.
+                  Experience Touristas AI - the world's first mystical Greek islands oracle that plans, books, and guides your perfect Cyclades adventure with revolutionary AI intelligence.
                 </p>
                 <div className="flex flex-wrap gap-4 mb-12">
                   <Link 
-                    to="/trip-planner" 
+                    to="/touristas-ai" 
                     className="inline-flex items-center px-8 py-4 rounded-xl bg-[#E3D7C3] text-[#1E2E48] font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
-                    Try Touristas AI Planner
+                    Experience Touristas AI
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
-                  <a 
-                    href="http://localhost:5173/trip-planner" 
+                  <Link 
+                    to="/touristas-ai/chat" 
                     className="inline-flex items-center px-8 py-4 rounded-xl bg-[#1E2E48]/10 backdrop-blur-sm text-[#E3D7C3] font-medium hover:bg-[#1E2E48]/20 transition-all duration-300 border border-[#E3D7C3]/20"
                   >
-                    Open Planner
+                    Chat with Touristas AI
                     <ArrowRight className="ml-2 h-5 w-5" />
-                  </a>
+                  </Link>
                 </div>
                 <div className="grid grid-cols-2 gap-6">
                   <div className="flex items-center gap-3">

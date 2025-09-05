@@ -21,7 +21,8 @@ import {
   Wallet,
   Plane,
   Car,
-  Calculator
+  Calculator,
+  Sparkles
 } from 'lucide-react';
 import { useAuthStore } from '../stores/authStore';
 import Logo from './Logo';
@@ -72,6 +73,7 @@ const navigationItems: NavItem[] = [
     icon: <MapPin className="h-4 w-4" />,
     megaMenu: true,
     children: [
+      { path: '/touristas-ai', label: 'Touristas AI', type: 'tool', icon: <Sparkles className="w-4 h-4" /> },
       { path: '/activities', label: 'Activities', type: 'tool', icon: <Compass className="w-4 h-4" /> },
       { path: '/hotels', label: 'Hotels', type: 'tool', icon: <Hotel className="w-4 h-4" /> },
       { path: '/ferry-tickets', label: 'Ferry Tickets', type: 'tool', icon: <Sailboat className="w-4 h-4" /> },
@@ -449,7 +451,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                           ))}
                       </ul>
                       <Link
-                        to="/trip-planner"
+                        to="/touristas-ai"
                         className="inline-flex items-center justify-center gap-2 px-4 py-2 text-sm font-medium text-white bg-white/10 rounded-lg hover:bg-white/20 transition-colors"
                         onClick={() => setActiveMegaMenu(null)}
                       >
