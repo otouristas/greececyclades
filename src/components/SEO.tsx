@@ -62,43 +62,59 @@ export default function SEO({
 
   // Generate optimized canonical URL
   const getCanonicalUrl = (): string => {
+    let path: string;
+    
     if (canonicalUrl) {
-      let url = canonicalUrl.startsWith('http') 
-        ? canonicalUrl 
-        : `${SITE_URL}${canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`}`;
-      
-      // Remove ALL index references
-      url = url.replace(/\/index\.html?$/i, '');
-      url = url.replace(/\/index$/i, '');
-      url = url.replace(/index\.html?$/i, '');
-      url = url.replace(/index$/i, '');
-      
-      // Ensure trailing slash consistency (remove from all except root)
-      if (url !== SITE_URL && url !== `${SITE_URL}/`) {
-        url = url.replace(/\/$/, '');
+      if (canonicalUrl.startsWith('http')) {
+        // Extract path from full URL
+        try {
+          const urlObj = new URL(canonicalUrl);
+          path = urlObj.pathname;
+        } catch {
+          path = canonicalUrl.split('?')[0].replace(/^https?:\/\/[^/]+/, '') || '/';
+        }
+      } else {
+        path = canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`;
       }
-      
-      // Ensure root has trailing slash
-      if (url === SITE_URL) {
-        url = `${SITE_URL}/`;
-      }
-      
-      return url;
+    } else {
+      // Auto-generate from current path
+      path = location.pathname;
     }
     
-    // Auto-generate from current path
-    const path = location.pathname;
-    let url = `${SITE_URL}${path}`;
+    // Remove query parameters for filtered pages (hotels, activities, etc.)
+    const pathWithoutQuery = path.split('?')[0];
+    const shouldRemoveQuery = pathWithoutQuery.includes('/hotels') || 
+                              pathWithoutQuery.includes('/activities') ||
+                              pathWithoutQuery.includes('/trip-planner') ||
+                              pathWithoutQuery.includes('/ferry-tickets-search');
     
-    // Remove trailing slash except for root
-    if (url !== `${SITE_URL}/` && url.endsWith('/')) {
-      url = url.slice(0, -1);
+    if (shouldRemoveQuery) {
+      path = pathWithoutQuery;
+    } else {
+      path = pathWithoutQuery;
+    }
+    
+    // Convert path to lowercase
+    path = path.toLowerCase();
+    
+    // Remove ALL index references
+    path = path.replace(/\/index\.html?$/i, '');
+    path = path.replace(/\/index$/i, '');
+    path = path.replace(/index\.html?$/i, '');
+    path = path.replace(/index$/i, '');
+    
+    // Ensure trailing slash consistency (remove from all except root)
+    if (path !== '/' && path.endsWith('/')) {
+      path = path.slice(0, -1);
     }
     
     // Ensure root has trailing slash
-    if (url === SITE_URL) {
-      url = `${SITE_URL}/`;
+    if (path === '') {
+      path = '/';
     }
+    
+    // Build final URL with non-www and https
+    const url = `https://greececyclades.com${path}`;
     
     return url;
   };

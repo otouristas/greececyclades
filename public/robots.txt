@@ -2,16 +2,18 @@ User-agent: *
 Allow: /
 
 # Disallow trip-planner with query parameters to prevent duplicate content
+# Note: trip-planner redirects to touristas-ai, so we allow the base page
+Disallow: /trip-planner?island=*
 Disallow: /trip-planner?*
 
 # Disallow protected user pages
 Disallow: /profile
 Disallow: /my-trips
 
-# Disallow authentication pages
-Disallow: /signin
-Disallow: /signup
-Disallow: /forgot-password
+# Allow authentication pages for SEO (they are public pages)
+# Disallow: /signin
+# Disallow: /signup
+# Disallow: /forgot-password
 
 # Disallow admin/test pages
 Disallow: /test-map
@@ -22,6 +24,9 @@ Disallow: /api/
 
 # Disallow search results and dynamic pages with parameters
 Disallow: /ferry-tickets-search
+# Allow /hotels base page, but disallow query parameters to prevent duplicate content
+Disallow: /hotels?location=*
+Disallow: /hotels?island=*
 Disallow: /hotels?*
 Disallow: /activities?*
 

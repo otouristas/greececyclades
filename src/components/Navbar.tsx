@@ -119,6 +119,8 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState<string | null>(null);
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [scrollProgress, setScrollProgress] = useState(0);
   
   const dropdownRef = useRef<HTMLDivElement>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
@@ -127,6 +129,26 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
   const location = useLocation();
+
+  // Scroll-based navbar behavior
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollY = window.scrollY;
+      setIsScrolled(scrollY > 50);
+      
+      // Calculate scroll progress
+      const windowHeight = window.innerHeight;
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrollableHeight = documentHeight - windowHeight;
+      const progress = scrollableHeight > 0 ? (scrollY / scrollableHeight) * 100 : 0;
+      setScrollProgress(Math.min(100, Math.max(0, progress)));
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    handleScroll(); // Initial check
+    
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleLogout = async () => {
     try {
@@ -184,10 +206,31 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
   };
 
   return (
-    <nav 
-      ref={navRef}
-      className="fixed top-0 left-0 right-0 w-full z-[9999] bg-white shadow-sm h-14 md:h-[72px]"
-    >
+    <>
+      {/* Scroll Progress Indicator */}
+      <div 
+        className="fixed top-0 left-0 right-0 h-1 bg-blue-200 z-[100] transition-opacity duration-300"
+        style={{ 
+          opacity: isScrolled ? 1 : 0,
+        }}
+      >
+        <div 
+          className="h-full bg-blue-600 transition-transform duration-150 ease-out"
+          style={{ 
+            transform: `scaleX(${scrollProgress / 100})`,
+            transformOrigin: 'left'
+          }}
+        />
+      </div>
+      
+      <nav 
+        ref={navRef}
+        className={`fixed top-0 left-0 right-0 w-full z-[9999] h-14 md:h-[72px] transition-all duration-300 ${
+          isScrolled 
+            ? 'bg-white/95 backdrop-blur-md shadow-lg' 
+            : 'bg-white shadow-sm'
+        }`}
+      >
       <div className="max-w-[2000px] mx-auto h-full pl-0">
         <div className="flex items-center h-full">
           {/* Logo and Main Navigation */}

@@ -61,11 +61,28 @@ export default function Breadcrumbs({
     dark: 'hover:text-blue-600'
   };
 
+  // Generate structured data for SEO
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'BreadcrumbList',
+    itemListElement: allItems.map((item, index) => ({
+      '@type': 'ListItem',
+      position: index + 1,
+      name: item.label,
+      item: `${window.location.origin}${item.path}`
+    }))
+  };
+
   return (
-    <nav 
-      aria-label="Breadcrumb"
-      className={`${className} flex items-center space-x-2 text-sm font-medium ${textColors[variant]}`}
-    >
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
+      />
+      <nav 
+        aria-label="Breadcrumb"
+        className={`${className} flex items-center space-x-2 text-sm font-medium ${textColors[variant]}`}
+      >
       {allItems.map((item, index) => {
         const isLast = index === allItems.length - 1;
         
@@ -103,5 +120,6 @@ export default function Breadcrumbs({
         );
       })}
     </nav>
+    </>
   );
 }

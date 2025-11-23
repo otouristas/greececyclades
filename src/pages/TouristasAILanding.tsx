@@ -152,7 +152,7 @@ export default function TouristasAILanding() {
             <div className="absolute -bottom-8 left-1/3 w-72 h-72 bg-accent rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
           </div>
 
-          <div className="container mx-auto px-4 sm:px-6 relative z-10">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div className="max-w-5xl mx-auto text-center space-y-6 sm:space-y-8">
               {/* Logo and Title */}
               <motion.div
@@ -263,8 +263,8 @@ export default function TouristasAILanding() {
         </section>
 
         {/* Integration Partners */}
-        <section className="py-16 bg-white border-y border-gray-200">
-          <div className="container mx-auto px-4">
+        <section className="py-12 sm:py-16 bg-white border-y border-gray-200">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <p className="text-center text-gray-600 text-sm uppercase tracking-wide mb-8 font-semibold">
               Integrates With Leading Booking Platforms
             </p>
@@ -283,16 +283,16 @@ export default function TouristasAILanding() {
         </section>
 
         {/* Live Demo Section */}
-        <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
-          <div className="container mx-auto px-4">
+        <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-12 sm:mb-16">
                 <div className="inline-flex items-center rounded-full border font-semibold bg-primary text-white hover:bg-primary/80 mb-4 px-4 py-2 text-base">
                   <Play className="w-4 h-4 mr-2 inline" />
                   See It In Action
                 </div>
-                <h2 className="text-5xl font-bold text-gray-900 mb-6">Try The Live Demo</h2>
-                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">Try The Live Demo</h2>
+                <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
                   Experience the power of specialized AI. Ask anything about Cyclades hotels, travel, or planning.
                 </p>
               </div>
@@ -335,20 +335,20 @@ export default function TouristasAILanding() {
         </section>
 
         {/* How It Works */}
-        <section className="py-24 bg-white">
-          <div className="container mx-auto px-4">
+        <section className="py-16 sm:py-20 lg:py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-12 sm:mb-16">
                 <div className="inline-flex items-center rounded-full border font-semibold bg-primary text-white hover:bg-primary/80 mb-4 px-4 py-2 text-base">
                   Simple & Powerful
                 </div>
-                <h2 className="text-5xl font-bold text-gray-900 mb-6">How Touristas AI Works</h2>
-                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">How Touristas AI Works</h2>
+                <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
                   Advanced AI technology meets deep local expertise in three simple steps
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-12">
+              <div className="grid md:grid-cols-3 gap-8 lg:gap-12">
                 {[
                   {
                     number: '1',
@@ -390,8 +390,8 @@ export default function TouristasAILanding() {
         </section>
 
         {/* Stats Section */}
-        <section className="py-20 bg-gradient-to-br from-sifnos-deep-blue to-primary text-white">
-          <div className="container mx-auto px-4">
+        <section className="py-16 sm:py-20 bg-gradient-to-br from-sifnos-deep-blue to-primary text-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
               <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
                 {[
@@ -414,15 +414,15 @@ export default function TouristasAILanding() {
         </section>
 
         {/* Comparison Table */}
-        <section id="comparison" className="py-24 bg-gradient-to-b from-white to-gray-50">
-          <div className="container mx-auto px-4">
+        <section id="comparison" className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-white to-gray-50">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-12 sm:mb-16">
                 <div className="inline-flex items-center rounded-full border font-semibold bg-primary text-white hover:bg-primary/80 mb-4 px-4 py-2 text-base">
                   Comparison
                 </div>
-                <h2 className="text-5xl font-bold text-gray-900 mb-6">Why Touristas AI is Better</h2>
-                <p className="text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">Why Touristas AI is Better</h2>
+                <p className="text-lg sm:text-xl lg:text-2xl text-gray-600 max-w-3xl mx-auto leading-relaxed px-4">
                   Generic AI knows a little about everywhere.<br className="hidden md:block" />
                   <span className="text-sifnos-deep-blue font-bold">Touristas AI knows EVERYTHING about the Cyclades.</span>
                 </p>
@@ -432,8 +432,8 @@ export default function TouristasAILanding() {
                 <table className="w-full">
                   <thead className="bg-gradient-to-r from-sifnos-deep-blue to-primary text-white">
                     <tr>
-                      <th className="px-6 py-6 text-left font-bold text-lg">Feature</th>
-                      <th className="px-6 py-6 text-center font-bold text-lg">
+                      <th className="px-4 sm:px-6 py-4 sm:py-6 text-left font-bold text-sm sm:text-lg">Feature</th>
+                      <th className="px-4 sm:px-6 py-4 sm:py-6 text-center font-bold text-sm sm:text-lg">
                         <div className="flex flex-col items-center gap-2">
                           <span>ChatGPT</span>
                           <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold bg-white/20 text-white text-xs">
@@ -441,7 +441,7 @@ export default function TouristasAILanding() {
                           </div>
                         </div>
                       </th>
-                      <th className="px-6 py-6 text-center font-bold text-lg">
+                      <th className="px-4 sm:px-6 py-4 sm:py-6 text-center font-bold text-sm sm:text-lg">
                         <div className="flex flex-col items-center gap-2">
                           <span>Claude</span>
                           <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold bg-white/20 text-white text-xs">
@@ -449,7 +449,7 @@ export default function TouristasAILanding() {
                           </div>
                         </div>
                       </th>
-                      <th className="px-6 py-6 text-center font-bold text-lg">
+                      <th className="px-4 sm:px-6 py-4 sm:py-6 text-center font-bold text-sm sm:text-lg">
                         <div className="flex flex-col items-center gap-2">
                           <span>Gemini</span>
                           <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold bg-white/20 text-white text-xs">
@@ -457,7 +457,7 @@ export default function TouristasAILanding() {
                           </div>
                         </div>
                       </th>
-                      <th className="px-6 py-6 text-center font-bold text-lg bg-sifnos-beige text-sifnos-deep-blue">
+                      <th className="px-4 sm:px-6 py-4 sm:py-6 text-center font-bold text-sm sm:text-lg bg-sifnos-beige text-sifnos-deep-blue">
                         <div className="flex flex-col items-center gap-2">
                           <span>Touristas AI</span>
                           <div className="inline-flex items-center rounded-full border px-2.5 py-0.5 font-semibold bg-sifnos-deep-blue text-white text-xs">
@@ -479,11 +479,11 @@ export default function TouristasAILanding() {
                       { feature: 'Local Expert Knowledge', others: 'Generic', touristas: '✅ Deep Local' }
                     ].map((row, i) => (
                       <tr key={i} className="hover:bg-gray-50 transition-colors">
-                        <td className="px-6 py-4 font-semibold text-gray-900">{row.feature}</td>
-                        <td className="px-6 py-4 text-center text-red-500">{row.others}</td>
-                        <td className="px-6 py-4 text-center text-red-500">{row.others}</td>
-                        <td className="px-6 py-4 text-center text-red-500">{row.others}</td>
-                        <td className="px-6 py-4 text-center bg-green-50">
+                        <td className="px-4 sm:px-6 py-3 sm:py-4 font-semibold text-gray-900 text-sm sm:text-base">{row.feature}</td>
+                        <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-red-500 text-sm sm:text-base">{row.others}</td>
+                        <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-red-500 text-sm sm:text-base">{row.others}</td>
+                        <td className="px-4 sm:px-6 py-3 sm:py-4 text-center text-red-500 text-sm sm:text-base">{row.others}</td>
+                        <td className="px-4 sm:px-6 py-3 sm:py-4 text-center bg-green-50 text-sm sm:text-base">
                           <span className="text-green-600 font-bold">{row.touristas}</span>
                         </td>
                       </tr>
@@ -492,10 +492,10 @@ export default function TouristasAILanding() {
                 </table>
               </div>
 
-              <div className="text-center mt-16">
+              <div className="text-center mt-12 sm:mt-16">
                 <Link
                   to="/touristas-ai/chat"
-                  className="inline-flex items-center justify-center gap-2 h-13 rounded-lg bg-sifnos-deep-blue hover:bg-sifnos-deep-blue/90 text-white px-12 py-7 text-xl font-bold shadow-2xl hover:shadow-sifnos-deep-blue/50 transition-all hover:-translate-y-1"
+                  className="inline-flex items-center justify-center gap-2 h-auto rounded-lg bg-sifnos-deep-blue hover:bg-sifnos-deep-blue/90 text-white px-8 sm:px-12 py-5 sm:py-7 text-lg sm:text-xl font-bold shadow-2xl hover:shadow-sifnos-deep-blue/50 transition-all hover:-translate-y-1"
                 >
                   <MessageCircle className="mr-3 h-6 w-6" />
                   Try Touristas AI Free Now
@@ -508,20 +508,20 @@ export default function TouristasAILanding() {
         </section>
 
         {/* Features Grid */}
-        <section className="py-24 bg-white">
-          <div className="container mx-auto px-4">
+        <section className="py-16 sm:py-20 lg:py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-12 sm:mb-16">
                 <div className="inline-flex items-center rounded-full border font-semibold bg-primary text-white hover:bg-primary/80 mb-4 px-4 py-2 text-base">
                   Powerful Features
                 </div>
-                <h2 className="text-5xl font-bold text-gray-900 mb-6">Everything You Need to Plan Your Perfect Trip</h2>
-                <p className="text-xl text-gray-600 max-w-2xl mx-auto">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">Everything You Need to Plan Your Perfect Trip</h2>
+                <p className="text-lg sm:text-xl text-gray-600 max-w-2xl mx-auto px-4">
                   Advanced AI technology meets local expertise to create the ultimate Cyclades travel companion
                 </p>
               </div>
 
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
                 {features.map((feature, i) => (
                   <motion.div
                     key={i}
@@ -531,14 +531,14 @@ export default function TouristasAILanding() {
                     transition={{ delay: i * 0.1 }}
                     className="rounded-lg bg-white text-gray-900 shadow-sm border-2 hover:border-sifnos-deep-blue hover:shadow-2xl transition-all duration-300"
                   >
-                    <div className="flex flex-col space-y-1.5 p-6">
+                    <div className="flex flex-col space-y-1.5 p-5 sm:p-6">
                       <div className={`w-16 h-16 bg-gradient-to-br ${feature.gradient} rounded-2xl flex items-center justify-center mb-4 shadow-lg`}>
                         {feature.icon}
                       </div>
                       <h3 className="font-semibold tracking-tight text-2xl">{feature.title}</h3>
                       <p className="text-gray-600 text-base">{feature.description}</p>
                     </div>
-                    <div className="p-6 pt-0">
+                    <div className="p-5 sm:p-6 pt-0">
                       {feature.example && (
                         <p className="text-sm text-gray-500 italic">"{feature.example}"</p>
                       )}
@@ -570,17 +570,17 @@ export default function TouristasAILanding() {
         </section>
 
         {/* Testimonials */}
-        <section className="py-24 bg-gradient-to-b from-gray-50 to-white">
-          <div className="container mx-auto px-4">
+        <section className="py-16 sm:py-20 lg:py-24 bg-gradient-to-b from-gray-50 to-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-6xl mx-auto">
-              <div className="text-center mb-16">
+              <div className="text-center mb-12 sm:mb-16">
                 <div className="inline-flex items-center rounded-full border font-semibold bg-primary text-white hover:bg-primary/80 mb-4 px-4 py-2 text-base">
                   Trusted by Travelers
                 </div>
-                <h2 className="text-5xl font-bold text-gray-900 mb-6">Real Results from Real Travelers</h2>
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">Real Results from Real Travelers</h2>
               </div>
 
-              <div className="grid md:grid-cols-3 gap-8 mb-16">
+              <div className="grid md:grid-cols-3 gap-6 lg:gap-8 mb-12 sm:mb-16">
                 {testimonials.map((testimonial, i) => (
                   <motion.div
                     key={i}
@@ -590,7 +590,7 @@ export default function TouristasAILanding() {
                     transition={{ delay: i * 0.2 }}
                     className="rounded-lg bg-white text-gray-900 shadow-sm border-2 hover:shadow-xl transition-all"
                   >
-                    <div className="flex flex-col space-y-1.5 p-6">
+                    <div className="flex flex-col space-y-1.5 p-5 sm:p-6">
                       <div className="flex items-center gap-3 mb-4">
                         <div className="w-12 h-12 rounded-full bg-sifnos-beige flex items-center justify-center text-sifnos-deep-blue font-bold text-xl">
                           {testimonial.initials}
@@ -606,7 +606,7 @@ export default function TouristasAILanding() {
                         ))}
                       </div>
                     </div>
-                    <div className="p-6 pt-0">
+                    <div className="p-5 sm:p-6 pt-0">
                       <p className="text-gray-600 italic">"{testimonial.text}"</p>
                     </div>
                   </motion.div>
@@ -617,18 +617,18 @@ export default function TouristasAILanding() {
         </section>
 
         {/* FAQ Section */}
-        <section className="py-24 bg-white">
-          <div className="container mx-auto px-4">
+        <section className="py-16 sm:py-20 lg:py-24 bg-white">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="text-center mb-16">
-                <h2 className="text-5xl font-bold text-gray-900 mb-6">Frequently Asked Questions</h2>
+              <div className="text-center mb-12 sm:mb-16">
+                <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-gray-900 mb-4 sm:mb-6">Frequently Asked Questions</h2>
               </div>
 
-              <div className="space-y-6">
+              <div className="space-y-4 sm:space-y-6">
                 {faqs.map((faq, i) => (
                   <details
                     key={i}
-                    className="group bg-gradient-to-r from-white to-gray-50 p-6 rounded-2xl border-2 border-gray-200 hover:border-sifnos-deep-blue transition-all shadow-lg"
+                    className="group bg-gradient-to-r from-white to-gray-50 p-5 sm:p-6 rounded-2xl border-2 border-gray-200 hover:border-sifnos-deep-blue transition-all shadow-lg"
                     open={openFaq === i}
                   >
                     <summary
@@ -652,10 +652,10 @@ export default function TouristasAILanding() {
         </section>
 
         {/* Success Metrics */}
-        <section className="py-16 bg-gradient-to-r from-green-50 to-emerald-50 border-y-2 border-green-100">
-          <div className="container mx-auto px-4">
+        <section className="py-12 sm:py-16 bg-gradient-to-r from-green-50 to-emerald-50 border-y-2 border-green-100">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
-              <div className="grid md:grid-cols-3 gap-8 text-center">
+              <div className="grid md:grid-cols-3 gap-6 lg:gap-8 text-center">
                 {[
                   { icon: <TrendingUp className="w-6 h-6 text-green-600" />, value: '98%', label: 'Success Rate', sublabel: 'Travelers find their perfect hotel' },
                   { icon: <Clock className="w-6 h-6 text-green-600" />, value: '3min', label: 'Avg Search Time', sublabel: 'vs 3+ hours manually' },
@@ -676,14 +676,14 @@ export default function TouristasAILanding() {
         </section>
 
         {/* Final CTA */}
-        <section className="py-32 bg-gradient-to-br from-sifnos-deep-blue via-primary to-sifnos-deep-blue text-white relative overflow-hidden">
+        <section className="py-20 sm:py-24 lg:py-32 bg-gradient-to-br from-sifnos-deep-blue via-primary to-sifnos-deep-blue text-white relative overflow-hidden">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-0 left-0 w-96 h-96 bg-sifnos-beige rounded-full mix-blend-multiply filter blur-3xl animate-blob"></div>
             <div className="absolute bottom-0 right-0 w-96 h-96 bg-sifnos-turquoise rounded-full mix-blend-multiply filter blur-3xl animate-blob animation-delay-4000"></div>
           </div>
 
-          <div className="container mx-auto px-4 relative z-10">
-            <div className="max-w-4xl mx-auto text-center space-y-12">
+          <div className="container mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div className="max-w-4xl mx-auto text-center space-y-8 sm:space-y-12">
               <div className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md px-6 py-3 rounded-full border border-white/20">
                 <div className="flex -space-x-2">
                   <div className="w-8 h-8 rounded-full bg-sifnos-beige border-2 border-white"></div>
@@ -693,20 +693,20 @@ export default function TouristasAILanding() {
                 <span className="text-sm font-semibold">Join 10,000+ happy travelers</span>
               </div>
 
-              <h2 className="text-5xl md:text-7xl font-black leading-tight">
+              <h2 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl xl:text-7xl font-black leading-tight px-4">
                 Ready to Plan Your<br />
                 Perfect Cyclades Trip?
               </h2>
 
-              <p className="text-2xl md:text-3xl text-white/90 leading-relaxed max-w-3xl mx-auto">
+              <p className="text-lg sm:text-xl md:text-2xl lg:text-3xl text-white/90 leading-relaxed max-w-3xl mx-auto px-4">
                 Stop wasting hours researching. Get personalized hotel recommendations in{' '}
                 <span className="text-sifnos-beige font-bold">under 30 seconds</span>.
               </p>
 
-              <div className="flex flex-col sm:flex-row gap-6 justify-center pt-8">
+              <div className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center pt-6 sm:pt-8 px-4">
                 <Link
                   to="/touristas-ai/chat"
-                  className="inline-flex items-center justify-center gap-2 h-13 rounded-lg bg-sifnos-beige hover:bg-sifnos-beige/90 text-sifnos-deep-blue px-16 py-10 text-2xl font-black shadow-2xl hover:shadow-sifnos-beige/50 transition-all hover:-translate-y-2 hover:scale-105"
+                  className="inline-flex items-center justify-center gap-2 h-auto rounded-lg bg-sifnos-beige hover:bg-sifnos-beige/90 text-sifnos-deep-blue px-8 sm:px-12 lg:px-16 py-6 sm:py-8 lg:py-10 text-lg sm:text-xl lg:text-2xl font-black shadow-2xl hover:shadow-sifnos-beige/50 transition-all hover:-translate-y-2 hover:scale-105"
                 >
                   <MessageCircle className="mr-3 h-8 w-8" />
                   Start Planning Now - Free
@@ -714,9 +714,9 @@ export default function TouristasAILanding() {
                 </Link>
               </div>
 
-              <div className="pt-12">
-                <p className="text-sm text-white/60 uppercase tracking-wide mb-4 font-semibold">What You'll Get</p>
-                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 max-w-4xl mx-auto">
+              <div className="pt-8 sm:pt-12">
+                <p className="text-xs sm:text-sm text-white/60 uppercase tracking-wide mb-4 sm:mb-6 font-semibold">What You'll Get</p>
+                <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-6 max-w-4xl mx-auto px-4">
                   {[
                     { icon: <Shield className="w-10 h-10 text-sifnos-beige" />, label: 'No Registration' },
                     { icon: <Zap className="w-10 h-10 text-sifnos-beige" />, label: 'Instant Results' },

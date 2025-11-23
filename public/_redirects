@@ -1,3 +1,9 @@
+# www/non-www and http/https redirects (handled at server level, but documented here)
+# Note: These should be configured at the hosting/CDN level for proper 301 redirects
+# http://www.greececyclades.com/* → https://greececyclades.com/*
+# https://www.greececyclades.com/* → https://greececyclades.com/*
+# http://greececyclades.com/* → https://greececyclades.com/*
+
 # Service page redirects (301 permanent)
 /vehicles /rent-a-car 301
 /car-rentals /rent-a-car 301
@@ -118,6 +124,66 @@
 /ferry-tickets/piraeus-milos /ferry-tickets 301
 /ferry-tickets/piraeus-paros /ferry-tickets 301
 /ferry-tickets/piraeus-santorini /ferry-tickets 301
+
+# Legacy /en/ URLs redirect to homepage
+/en / 301
+/en/ / 301
+
+# Legacy guide/excursions/beaches URLs redirect to islands
+/en/guide/excursions/beaches/kleisidi_beach-anafi_cyclades /islands/anafi 301
+/en/guide/excursions/beaches/papas_beach-ios_cyclades_aegean_islands /islands/ios 301
+/en/guide/excursions/beaches/agios_prokopios_beach-naxos_cyclades /islands/naxos 301
+
+# Trip planner redirects to touristas-ai (query params handled in App.tsx)
+/trip-planner /touristas-ai 301
+
+# Ferry tickets search redirect
+/ferry-tickets-search /ferry-tickets 301
+
+# Blog 404s redirect to blog
+/blog/island-hopping-guide /blog 301
+/blog/naxos-guide /blog 301
+
+# Products redirect
+/products/crushing / 301
+/products/crushing/ / 301
+
+# Legacy guide URLs (without /guides prefix)
+/sifnos-guide /guides/sifnos 301
+/folegandros-guide /guides/folegandros 301
+/syros-guide /guides/syros 301
+/mykonos-guide /guides/mykonos 301
+/naxos-guide /guides/naxos 301
+/santorini-guide /guides/santorini 301
+/paros-guide /guides/paros 301
+/milos-guide /guides/milos 301
+/ios-guide /guides/ios 301
+
+# Case-sensitive island redirects
+/islands/Paros /islands/paros 301
+/islands/Milos /islands/milos 301
+/islands/Naxos /islands/naxos 301
+/islands/Ios /islands/ios 301
+/islands/Mykonos /islands/mykonos 301
+/islands/Santorini /islands/santorini 301
+/islands/Syros /islands/syros 301
+/islands/Andros /islands/andros 301
+/islands/Sifnos /islands/sifnos 301
+/islands/Serifos /islands/serifos 301
+/islands/Folegandros /islands/folegandros 301
+/islands/Amorgos /islands/amorgos 301
+/islands/Koufonisia /islands/koufonisia 301
+/islands/Antiparos /islands/antiparos 301
+/islands/Kea /islands/kea 301
+/islands/Kythnos /islands/kythnos 301
+/islands/Sikinos /islands/sikinos 301
+/islands/Anafi /islands/anafi 301
+/islands/Kimolos /islands/kimolos 301
+/islands/Schinoussa /islands/schinoussa 301
+/islands/Iraklia /islands/iraklia 301
+/islands/Donousa /islands/donousa 301
+/islands/Thirasia /islands/thirasia 301
+/islands/Tinos /islands/tinos 301
 
 # Catch-all for SPA (must be last)
 /* /index.html 200

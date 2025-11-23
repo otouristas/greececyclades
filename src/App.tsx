@@ -1,4 +1,4 @@
-import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate, useNavigate, useSearchParams } from 'react-router-dom';
 import { HelmetProvider } from 'react-helmet-async';
 import { useEffect, Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
@@ -100,6 +100,14 @@ const PageLoader = () => (
     </div>
   </div>
 );
+
+// Component to handle trip-planner redirect with query parameters
+function TripPlannerRedirect() {
+  const [searchParams] = useSearchParams();
+  const queryString = searchParams.toString();
+  const to = queryString ? `/touristas-ai?${queryString}` : '/touristas-ai';
+  return <Navigate to={to} replace />;
+}
 
 function AppContent() {
   const navigate = useNavigate();
@@ -247,6 +255,33 @@ function AppContent() {
               <Route path="/about" element={<About />} />
               <Route path="/contact" element={<Contact />} />
               <Route path="/islands" element={<Islands />} />
+              
+              {/* Case-sensitive island redirects */}
+              <Route path="/islands/Paros" element={<Navigate to="/islands/paros" replace />} />
+              <Route path="/islands/Milos" element={<Navigate to="/islands/milos" replace />} />
+              <Route path="/islands/Naxos" element={<Navigate to="/islands/naxos" replace />} />
+              <Route path="/islands/Ios" element={<Navigate to="/islands/ios" replace />} />
+              <Route path="/islands/Mykonos" element={<Navigate to="/islands/mykonos" replace />} />
+              <Route path="/islands/Santorini" element={<Navigate to="/islands/santorini" replace />} />
+              <Route path="/islands/Syros" element={<Navigate to="/islands/syros" replace />} />
+              <Route path="/islands/Andros" element={<Navigate to="/islands/andros" replace />} />
+              <Route path="/islands/Sifnos" element={<Navigate to="/islands/sifnos" replace />} />
+              <Route path="/islands/Serifos" element={<Navigate to="/islands/serifos" replace />} />
+              <Route path="/islands/Folegandros" element={<Navigate to="/islands/folegandros" replace />} />
+              <Route path="/islands/Amorgos" element={<Navigate to="/islands/amorgos" replace />} />
+              <Route path="/islands/Koufonisia" element={<Navigate to="/islands/koufonisia" replace />} />
+              <Route path="/islands/Antiparos" element={<Navigate to="/islands/antiparos" replace />} />
+              <Route path="/islands/Kea" element={<Navigate to="/islands/kea" replace />} />
+              <Route path="/islands/Kythnos" element={<Navigate to="/islands/kythnos" replace />} />
+              <Route path="/islands/Sikinos" element={<Navigate to="/islands/sikinos" replace />} />
+              <Route path="/islands/Anafi" element={<Navigate to="/islands/anafi" replace />} />
+              <Route path="/islands/Kimolos" element={<Navigate to="/islands/kimolos" replace />} />
+              <Route path="/islands/Schinoussa" element={<Navigate to="/islands/schinoussa" replace />} />
+              <Route path="/islands/Iraklia" element={<Navigate to="/islands/iraklia" replace />} />
+              <Route path="/islands/Donousa" element={<Navigate to="/islands/donousa" replace />} />
+              <Route path="/islands/Thirasia" element={<Navigate to="/islands/thirasia" replace />} />
+              <Route path="/islands/Tinos" element={<Navigate to="/islands/tinos" replace />} />
+              
               <Route path="/islands/:slug" element={<IslandDetail />} />
               <Route path="/activities" element={<Activities />} />
               <Route path="/activities/:id" element={<ActivityDetail />} />
@@ -305,10 +340,10 @@ function AppContent() {
               <Route path="/sitemap" element={<Sitemap />} />
               <Route path="/help" element={<HelpDesk />} />
               
-              {/* Redirect old trip-planner to new Touristas AI */}
+              {/* Redirect old trip-planner to new Touristas AI (preserve query params) */}
               <Route 
                 path="/trip-planner" 
-                element={<Navigate to="/touristas-ai" replace />} 
+                element={<TripPlannerRedirect />} 
               />
 
               {/* Legacy Enhanced Trip Planner - keeping for backward compatibility */}
