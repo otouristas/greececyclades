@@ -17,6 +17,8 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
+import { generateKeywordsWithLSI } from '../utils/seo';
+import { Link } from 'react-router-dom';
 
 const AntiparosGuide: React.FC = () => {
   const antiparos = islandGuides.find(island => island.id === 'antiparos');
@@ -25,22 +27,45 @@ const AntiparosGuide: React.FC = () => {
     return <div>Island not found</div>;
   }
 
+  const faqItems = [
+    {
+      question: 'Is Antiparos worth visiting?',
+      answer: 'Absolutely! Antiparos is a charming island perfect for those seeking a more relaxed atmosphere than its larger neighbor Paros. It offers beautiful beaches, the impressive Antiparos Cave, a picturesque main village with a Venetian castle, and excellent water sports. It\'s ideal for day trips from Paros or as a peaceful base for a longer stay.'
+    },
+    {
+      question: 'How long is the ferry from Paros to Antiparos?',
+      answer: 'The ferry from Paros to Antiparos takes only 7-10 minutes, making it one of the shortest ferry crossings in Greece. Ferries depart regularly from Pounta port on Paros throughout the day, especially during summer months. It\'s very convenient for day trips or longer stays.'
+    },
+    {
+      question: 'Can you do a day trip to Antiparos?',
+      answer: 'Yes, Antiparos is perfect for a day trip from Paros! The short ferry ride (7-10 minutes) makes it easy to visit. You can explore the main village, visit the famous cave, enjoy the beaches, and have lunch at a waterfront taverna, all in one day. However, staying overnight allows you to experience the island\'s peaceful evening atmosphere.'
+    },
+    {
+      question: 'Is Antiparos quieter than Paros?',
+      answer: 'Yes, Antiparos is significantly quieter and more relaxed than Paros. While Paros has more tourist infrastructure, nightlife, and crowds, Antiparos maintains a laid-back, authentic atmosphere. It\'s perfect for those seeking peace and tranquility while still having access to beautiful beaches and good restaurants.'
+    }
+  ];
+
   const seoData = {
-    title: "Antiparos Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Antiparos vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. From the famous cave to golden beaches and traditional villages.",
-    keywords: [
-      'Antiparos travel guide',
-      'Antiparos beaches',
-      'Antiparos cave',
-      'Antiparos village',
-      'Greek islands',
-      'Antiparos activities',
-      'water sports Antiparos',
-      'Antiparos restaurants',
-      'best time to visit Antiparos'
-    ],
+    title: "Antiparos Island Guide 2025: Beaches, Cave & Where to Stay (Local Tips)",
+    description: "Complete Antiparos travel guide with the famous cave, best beaches like Soros, where to stay, eat, and things to do. Perfect day trip from Paros or peaceful island getaway.",
+    keywords: generateKeywordsWithLSI(
+      ['Antiparos island guide', 'Antiparos Greece', 'Antiparos travel guide'],
+      [
+        'Antiparos cave',
+        'things to do in Antiparos',
+        'Antiparos beaches',
+        'day trip to Antiparos from Paros',
+        'Antiparos hotels and villas',
+        'soros beach Antiparos'
+      ],
+      ['Antiparos village', 'Greek islands', 'Cyclades', 'water sports Antiparos']
+    ),
     ogImage: antiparos.image,
-    ogType: 'article'
+    ogType: 'article' as const,
+    faq: faqItems,
+    pageType: 'guides' as const,
+    canonicalUrl: '/guides/antiparos'
   };
 
   // Photo gallery images
@@ -559,6 +584,70 @@ const AntiparosGuide: React.FC = () => {
             </div>
           </section>
 
+          {/* FAQ Section */}
+          <section id="faq" className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions About Antiparos</h2>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="space-y-6">
+                {faqItems.map((item, index) => (
+                  <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.question}</h3>
+                    <p className="text-gray-700 leading-relaxed">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Internal Links Section */}
+          <section className="mb-16 bg-blue-50 rounded-lg p-8">
+            <h2 className="text-2xl font-bold mb-6">Explore More Cyclades Islands</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <Link 
+                to="/guides/paros" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Paros Island Guide</h3>
+                <p className="text-sm text-gray-600">Discover Paros, the larger neighbor of Antiparos with excellent ferry connections.</p>
+              </Link>
+              <Link 
+                to="/guides/sifnos" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Sifnos Travel Guide</h3>
+                <p className="text-sm text-gray-600">Explore the culinary capital of the Cyclades with its pottery tradition and excellent restaurants.</p>
+              </Link>
+              <Link 
+                to="/best-cyclades-islands-to-visit" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Best Cyclades Islands</h3>
+                <p className="text-sm text-gray-600">Compare all the best islands in the Cyclades to plan your perfect island hopping trip.</p>
+              </Link>
+              <Link 
+                to="/blog/antiparos-vs-paros-comparison" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Antiparos vs Paros</h3>
+                <p className="text-sm text-gray-600">Compare these neighboring islands to decide which one is right for your trip.</p>
+              </Link>
+              <Link 
+                to="/ferry-guide" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Cyclades Ferry Guide</h3>
+                <p className="text-sm text-gray-600">Learn how to get to Antiparos and navigate between Cyclades islands by ferry.</p>
+              </Link>
+              <Link 
+                to="/blog/where-to-stay-paros-greece" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Where to Stay in Paros</h3>
+                <p className="text-sm text-gray-600">Find the best areas and accommodations for your Paros vacation, perfect for day trips to Antiparos.</p>
+              </Link>
+            </div>
+          </section>
+
           {/* Call to Action */}
           <section className="rounded-xl overflow-hidden shadow-xl mb-16">
             <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
@@ -573,18 +662,18 @@ const AntiparosGuide: React.FC = () => {
                     golden beaches, and authentic Greek atmosphere.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="/hotels/" 
+                    <Link 
+                      to="/hotels" 
                       className="inline-block px-6 py-3 bg-white text-blue-700 rounded-lg font-medium hover:bg-blue-50 transition-colors"
                     >
                       Find Accommodations
-                    </a>
-                    <a 
-                      href="/ferry-tickets/" 
+                    </Link>
+                    <Link 
+                      to="/ferry-tickets" 
                       className="inline-block px-6 py-3 bg-transparent border border-white text-white rounded-lg font-medium hover:bg-white/10 transition-colors"
                     >
                       How to get there
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="hidden lg:block relative">

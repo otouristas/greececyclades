@@ -43,6 +43,7 @@ const AnafiGuide = lazy(() => import('./pages/AnafiGuide'));
 const TinosGuide = lazy(() => import('./pages/TinosGuide'));
 const DonousaGuide = lazy(() => import('./pages/DonousaGuide'));
 const ThirasiaGuide = lazy(() => import('./pages/ThirasiaGuide'));
+const BestCycladesIslands = lazy(() => import('./pages/BestCycladesIslands'));
 const Activities = lazy(() => import('./pages/Activities'));
 const ActivityDetail = lazy(() => import('./pages/ActivityDetail'));
 const Blog = lazy(() => import('./pages/Blog'));
@@ -137,6 +138,7 @@ function AppContent() {
               <Route path="/vehicles" element={<Navigate to="/rent-a-car" replace />} />
               <Route path="/car-rentals" element={<Navigate to="/rent-a-car" replace />} />
               <Route path="/ferries" element={<Navigate to="/ferry-tickets" replace />} />
+              <Route path="/blog/best-cyclades-islands" element={<Navigate to="/best-cyclades-islands-to-visit" replace />} />
               <Route path="/privacy-policy" element={<Navigate to="/privacy" replace />} />
               <Route path="/faq" element={<Navigate to="/help" replace />} />
               <Route path="/map" element={<Navigate to="/islands" replace />} />
@@ -325,6 +327,7 @@ function AppContent() {
               <Route path="/guides/donousa" element={<DonousaGuide />} />
               <Route path="/guides/thirasia" element={<ThirasiaGuide />} />
               <Route path="/guides/:slug" element={<IslandGuidePage />} />
+              <Route path="/best-cyclades-islands-to-visit" element={<BestCycladesIslands />} />
               <Route path="/weather" element={<Weather />} />
               <Route path="/budget-calculator" element={<BudgetCalculator />} />
               <Route path="/resources" element={<Resources />} />

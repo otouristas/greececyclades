@@ -17,6 +17,9 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
+import { generateKeywordsWithLSI } from '../utils/seo';
+import { Link } from 'react-router-dom';
+import { Hotel } from 'lucide-react';
 
 const SifnosGuide: React.FC = () => {
   const sifnos = islandGuides.find(island => island.id === 'sifnos');
@@ -25,23 +28,51 @@ const SifnosGuide: React.FC = () => {
     return <div>Island not found</div>;
   }
 
+  const faqItems = [
+    {
+      question: 'Is Sifnos worth visiting?',
+      answer: 'Absolutely! Sifnos is renowned as the culinary capital of the Cyclades, offering exceptional gastronomy, traditional pottery workshops, beautiful hiking trails, and authentic Greek island charm. It\'s perfect for food enthusiasts, culture lovers, and those seeking a more authentic experience than the more touristy islands.'
+    },
+    {
+      question: 'How many days do you need in Sifnos?',
+      answer: 'We recommend 3-5 days to fully experience Sifnos. This allows time to explore the charming villages (Kastro, Apollonia, Artemonas), visit multiple beaches, enjoy the excellent restaurants, take a pottery workshop, and hike some of the island\'s beautiful trails. For a more relaxed pace, 5-7 days is ideal.'
+    },
+    {
+      question: 'Can you fly to Sifnos?',
+      answer: 'No, Sifnos does not have an airport. You can reach Sifnos by ferry from Piraeus port in Athens (2.5-5 hours depending on ferry type) or from other Cyclades islands like Milos, Paros, or Naxos. The main port is Kamares, which is well-connected to the rest of the island.'
+    },
+    {
+      question: 'What is Sifnos famous for?',
+      answer: 'Sifnos is famous for its exceptional cuisine (it\'s considered the culinary capital of the Cyclades), traditional pottery that dates back thousands of years, beautiful hiking trails connecting villages and beaches, and authentic Cycladic architecture. The island is also known for dishes like revithada (chickpea stew) and mastelo (slow-cooked lamb).'
+    },
+    {
+      question: 'Is Sifnos expensive?',
+      answer: 'Sifnos offers excellent value compared to more famous islands like Santorini and Mykonos. While not as budget-friendly as some smaller islands, you can find good mid-range accommodations and excellent traditional tavernas at reasonable prices. The island provides great value for the quality of experiences, especially its world-class dining scene.'
+    }
+  ];
+
   const seoData = {
-    title: "Sifnos Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Sifnos vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. From the culinary paradise to pristine beaches and traditional pottery.",
-    keywords: [
-      'Sifnos travel guide',
-      'Sifnos beaches',
-      'Kastro Sifnos',
-      'Apollonia',
-      'Greek islands',
-      'Sifnos villages',
-      'Chrysopigi',
-      'pottery Sifnos',
-      'Sifnos restaurants',
-      'best time to visit Sifnos'
-    ],
+    title: "Sifnos Travel Guide 2025: Beaches, Villages & Hidden Gems (Updated)",
+    description: "Complete Sifnos travel guide with the best beaches, authentic villages, where to stay, eat, and secret spots only locals know. Plan your perfect Sifnos trip!",
+    keywords: generateKeywordsWithLSI(
+      ['Sifnos travel guide', 'Sifnos Greece', 'Sifnos island'],
+      [
+        'things to do in Sifnos',
+        'Sifnos best beaches',
+        'where to stay in Sifnos',
+        'Sifnos restaurants',
+        'how to get to Sifnos',
+        'Sifnos pottery villages',
+        'Sifnos hiking trails',
+        'best time to visit Sifnos'
+      ],
+      ['Kastro Sifnos', 'Apollonia', 'Chrysopigi', 'Greek islands', 'Cyclades']
+    ),
     ogImage: sifnos.image,
-    ogType: 'article'
+    ogType: 'article' as const,
+    faq: faqItems,
+    pageType: 'guides' as const,
+    canonicalUrl: '/guides/sifnos'
   };
 
   // Photo gallery images
@@ -149,17 +180,17 @@ const SifnosGuide: React.FC = () => {
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/images/islands/sifnos/landscape.jpg" 
-                  alt="Sifnos Landscape" 
-                  className="w-full h-full object-cover"
-                />
+                  <img 
+                    src="/images/islands/sifnos/landscape.jpg" 
+                    alt="Traditional whitewashed Cycladic architecture in Sifnos Greece with blue domes and Aegean Sea views" 
+                    className="w-full h-full object-cover"
+                  />
               </div>
               <div className="absolute -bottom-8 -left-8 w-2/3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                   <img 
                     src="/images/islands/sifnos/kastro-detail.jpg" 
-                    alt="Kastro Detail" 
+                    alt="Medieval Kastro village Sifnos with ancient architecture and panoramic Aegean Sea views" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -712,6 +743,125 @@ const SifnosGuide: React.FC = () => {
             </div>
           </section>
           
+          {/* FAQ Section */}
+          <section id="faq" className="mb-16">
+            <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions About Sifnos</h2>
+            <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="space-y-6">
+                {faqItems.map((item, index) => (
+                  <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
+                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.question}</h3>
+                    <p className="text-gray-700 leading-relaxed">{item.answer}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Internal Links Section */}
+          <section className="mb-16 bg-blue-50 rounded-lg p-8">
+            <h2 className="text-2xl font-bold mb-6">Explore More Cyclades Islands</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+              <Link 
+                to="/guides/antiparos" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Antiparos Island Guide</h3>
+                <p className="text-sm text-gray-600">Discover the nearby island of Antiparos with its famous cave and beautiful beaches.</p>
+              </Link>
+              <Link 
+                to="/guides/kimolos" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Kimolos Island Guide</h3>
+                <p className="text-sm text-gray-600">Explore the peaceful neighboring island of Kimolos, just a short ferry ride away.</p>
+              </Link>
+              <Link 
+                to="/best-cyclades-islands-to-visit" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Best Cyclades Islands</h3>
+                <p className="text-sm text-gray-600">Compare all the best islands in the Cyclades to plan your perfect island hopping trip.</p>
+              </Link>
+              <Link 
+                to="/blog/cyclades-7-day-island-hopping-itinerary" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">7-Day Cyclades Itinerary</h3>
+                <p className="text-sm text-gray-600">Plan your perfect week-long island hopping adventure through the Cyclades.</p>
+              </Link>
+              <Link 
+                to="/ferry-guide" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Cyclades Ferry Guide</h3>
+                <p className="text-sm text-gray-600">Learn how to get to Sifnos and navigate between Cyclades islands by ferry.</p>
+              </Link>
+              <Link 
+                to="/blog/where-to-stay-sifnos-greece" 
+                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
+              >
+                <h3 className="font-semibold text-blue-800 mb-2">Where to Stay in Sifnos</h3>
+                <p className="text-sm text-gray-600">Find the best areas and accommodations for your Sifnos vacation.</p>
+              </Link>
+            </div>
+          </section>
+
+          {/* Related Resources Section */}
+          <section id="related-resources" className="mb-16">
+            <h2 className="text-3xl font-bold text-gray-800 mb-8">Plan Your Sifnos Trip</h2>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              <Link 
+                to="/ferry-tickets" 
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
+              >
+                <FaShip className="text-3xl text-blue-600 mb-3" />
+                <h3 className="font-semibold text-lg mb-2">Book Ferry Tickets</h3>
+                <p className="text-sm text-gray-600">Find the best ferry routes and prices to Sifnos from Athens and other Cyclades islands.</p>
+              </Link>
+              <Link 
+                to="/hotels" 
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
+              >
+                <Hotel className="text-3xl text-blue-600 mb-3" />
+                <h3 className="font-semibold text-lg mb-2">Find Hotels in Sifnos</h3>
+                <p className="text-sm text-gray-600">Discover the best accommodations from traditional guesthouses to luxury hotels.</p>
+              </Link>
+              <Link 
+                to="/blog/where-to-stay-sifnos-greece" 
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
+              >
+                <FaMapMarkedAlt className="text-3xl text-blue-600 mb-3" />
+                <h3 className="font-semibold text-lg mb-2">Where to Stay Guide</h3>
+                <p className="text-sm text-gray-600">Complete guide to the best areas and neighborhoods in Sifnos for your stay.</p>
+              </Link>
+              <Link 
+                to="/blog/cyclades-7-day-island-hopping-itinerary" 
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
+              >
+                <FaCalendarAlt className="text-3xl text-blue-600 mb-3" />
+                <h3 className="font-semibold text-lg mb-2">Island Hopping Itineraries</h3>
+                <p className="text-sm text-gray-600">Plan your perfect Cyclades island hopping trip including Sifnos.</p>
+              </Link>
+              <Link 
+                to="/blog/best-beaches-cyclades-islands" 
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
+              >
+                <FaUmbrellaBeach className="text-3xl text-blue-600 mb-3" />
+                <h3 className="font-semibold text-lg mb-2">Best Cyclades Beaches</h3>
+                <p className="text-sm text-gray-600">Discover the top beaches across all Cyclades islands including Sifnos.</p>
+              </Link>
+              <Link 
+                to="/guides" 
+                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
+              >
+                <FaMapMarkedAlt className="text-3xl text-blue-600 mb-3" />
+                <h3 className="font-semibold text-lg mb-2">All Island Guides</h3>
+                <p className="text-sm text-gray-600">Explore comprehensive travel guides for all Cyclades islands.</p>
+              </Link>
+            </div>
+          </section>
+
           {/* Call to Action Section */}
           <section id="cta" className="mb-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-md overflow-hidden">
             <div className="container mx-auto px-6 py-12 text-white">
@@ -723,18 +873,18 @@ const SifnosGuide: React.FC = () => {
                     Sifnos offers the perfect blend of culinary excellence, natural beauty, and authentic Greek hospitality.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="/hotels/" 
+                    <Link 
+                      to="/hotels" 
                       className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition duration-300 text-center"
                     >
                       Find Accommodations
-                    </a>
-                    <a 
-                      href="/ferry-tickets/" 
+                    </Link>
+                    <Link 
+                      to="/ferry-tickets" 
                       className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition duration-300 text-center"
                     >
                       How to get there
-                    </a>
+                    </Link>
                   </div>
                 </div>
                 <div className="relative h-64 md:h-auto">

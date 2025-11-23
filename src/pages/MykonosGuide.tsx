@@ -47,32 +47,32 @@ const MykonosGuide: React.FC = () => {
   const galleryImages = [
     {
       src: "/images/islands/mykonos/little-venice.jpg",
-      alt: "Little Venice",
+      alt: "Picturesque Little Venice quarter Mykonos Greece at sunset with colorful waterfront buildings and Aegean Sea",
       caption: "The picturesque Little Venice quarter at sunset"
     },
     {
       src: "/images/islands/mykonos/windmills.jpg",
-      alt: "Mykonos Windmills",
+      alt: "Iconic windmills Kato Mili Mykonos Greece overlooking Mykonos Town and Aegean Sea traditional Cycladic architecture",
       caption: "The iconic windmills overlooking Mykonos Town"
     },
     {
       src: "/images/islands/mykonos/paradise-beach.jpg",
-      alt: "Paradise Beach",
+      alt: "Famous Paradise Beach Mykonos Greece with crystal clear waters golden sand beach parties and water sports",
       caption: "The famous Paradise Beach with its crystal-clear waters"
     },
     {
       src: "/images/islands/mykonos/chora-streets.jpg",
-      alt: "Mykonos Town Streets",
+      alt: "Charming narrow whitewashed streets Mykonos Town Chora Greece with traditional Cycladic architecture and boutiques",
       caption: "The charming narrow streets of Mykonos Town"
     },
     {
       src: "/images/islands/mykonos/beach-club.jpg",
-      alt: "Beach Club",
+      alt: "Luxury beach club Mykonos Greece with sunbeds umbrellas beach bars and crystal clear Aegean Sea waters",
       caption: "Luxury beach clubs with sunbeds and umbrellas"
     },
     {
       src: "/images/islands/mykonos/panagia-paraportiani.jpg",
-      alt: "Panagia Paraportiani Church",
+      alt: "Iconic whitewashed Panagia Paraportiani church Mykonos Greece with unique architecture and Aegean Sea views",
       caption: "The iconic whitewashed church of Panagia Paraportiani"
     }
   ];
@@ -177,7 +177,7 @@ const MykonosGuide: React.FC = () => {
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <img
                   src="/images/islands/mykonos/aerial-view.jpg"
-                  alt="Mykonos Aerial View"
+                  alt="Aerial view Mykonos island Greece with whitewashed villages pristine beaches and crystal clear Aegean Sea"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -185,7 +185,7 @@ const MykonosGuide: React.FC = () => {
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                   <img
                     src="/images/islands/mykonos/little-venice-detail.jpg"
-                    alt="Little Venice Detail"
+                    alt="Colorful waterfront buildings Little Venice Mykonos Greece with traditional architecture and sunset views"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -404,7 +404,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/chora-streets.jpg" 
-                  alt="Mykonos Town (Chora)" 
+                  alt="Vibrant Mykonos Town Chora Greece with whitewashed buildings narrow streets windmills and cosmopolitan atmosphere" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -426,7 +426,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/ano-mera.jpg" 
-                  alt="Ano Mera Village" 
+                  alt="Traditional Ano Mera village Mykonos Greece with Panagia Tourliani monastery authentic tavernas and peaceful atmosphere" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -448,7 +448,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/little-venice.jpg" 
-                  alt="Little Venice" 
+                  alt="Picturesque Little Venice quarter Mykonos Greece with colorful waterfront buildings bars and sunset views" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -471,7 +471,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/ornos-beach.jpg" 
-                  alt="Ornos Village" 
+                  alt="Charming Ornos village Mykonos Greece with beautiful beach traditional tavernas and family friendly atmosphere" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -492,7 +492,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/agios-stefanos.jpg" 
-                  alt="Agios Stefanos Village" 
+                  alt="Quiet Agios Stefanos village Mykonos Greece with beautiful beach traditional architecture and relaxed atmosphere" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -523,7 +523,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/paradise-beach.jpg" 
-                  alt="Paradise Beach" 
+                  alt="Famous Paradise Beach Mykonos Greece with golden sand crystal clear waters beach parties and water sports" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -547,7 +547,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/super-paradise.jpg" 
-                  alt="Super Paradise Beach" 
+                  alt="Super Paradise Beach Mykonos Greece with golden sand clear waters vibrant beach clubs and party atmosphere" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -571,7 +571,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/psarou-beach.jpg" 
-                  alt="Psarou Beach" 
+                  alt="Luxury Psarou Beach Mykonos Greece with golden sand upscale beach clubs fine dining and celebrity visitors" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -595,7 +595,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/elia-beach.jpg" 
-                  alt="Elia Beach" 
+                  alt="Long Elia Beach Mykonos Greece with golden sand clear waters water sports and family friendly atmosphere" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -619,7 +619,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/ornos-beach.jpg" 
-                  alt="Ornos Beach" 
+                  alt="Family friendly Ornos Beach Mykonos Greece with golden sand shallow waters traditional tavernas and calm atmosphere" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -643,7 +643,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/agios-stefanos.jpg" 
-                  alt="Agios Stefanos Beach" 
+                  alt="Peaceful Agios Stefanos Beach Mykonos Greece with golden sand clear waters and traditional beachfront tavernas" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -750,7 +750,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/seafood.jpg" 
-                  alt="Fresh Seafood" 
+                  alt="Fresh Mediterranean seafood Mykonos Greece with traditional Greek cuisine local fish and Aegean Sea specialties" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -765,7 +765,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/taverna.jpg" 
-                  alt="Traditional Taverna" 
+                  alt="Authentic traditional Greek taverna Mykonos Greece with local cuisine fresh seafood and Cycladic atmosphere" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -780,7 +780,7 @@ const MykonosGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/fine-dining.jpg" 
-                  alt="Fine Dining" 
+                  alt="Gourmet fine dining restaurant Mykonos Greece with Mediterranean cuisine sunset views and upscale Cyclades dining" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -1056,7 +1056,7 @@ const MykonosGuide: React.FC = () => {
               <div className="relative h-64 md:h-auto">
                 <img 
                   src="/images/islands/mykonos/little-venice.jpg" 
-                  alt="Mykonos Island View" 
+                  alt="Panoramic view Mykonos island Greece with whitewashed villages pristine beaches windmills and Aegean Sea" 
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-4 py-2 rounded-lg">

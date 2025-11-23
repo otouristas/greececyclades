@@ -146,3 +146,4 @@ export function generateBlurPlaceholder(width: number = 20, height: number = 20)
   return canvas.toDataURL('image/jpeg', 0.1);
 }
 
+

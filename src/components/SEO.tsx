@@ -1,6 +1,8 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
+import { generateFAQSchema } from '../utils/seo';
+import { FAQItem } from '../types/seo';
 
 const SITE_URL = 'https://greececyclades.com';
 const SITE_NAME = 'Discover Cyclades';
@@ -37,6 +39,7 @@ export interface SEOProps {
   twitterCard?: 'summary' | 'summary_large_image';
   twitterSite?: string;
   twitterCreator?: string;
+  faq?: FAQItem[];
 }
 
 export default function SEO({
@@ -47,6 +50,7 @@ export default function SEO({
   ogType = 'website',
   canonicalUrl,
   article,
+  faq,
   structuredData,
   jsonLD,
   noIndex = false,
@@ -340,6 +344,13 @@ export default function SEO({
       <script type="application/ld+json">
         {structuredDataJson}
       </script>
+
+      {/* FAQ Schema (if provided) */}
+      {faq && faq.length > 0 && (
+        <script type="application/ld+json">
+          {generateFAQSchema(faq)}
+        </script>
+      )}
     </Helmet>
   );
 }

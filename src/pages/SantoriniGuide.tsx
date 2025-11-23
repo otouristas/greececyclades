@@ -46,32 +46,32 @@ const SantoriniGuide: React.FC = () => {
   const galleryImages = [
     {
       src: "/images/islands/santorini/oia-sunset.jpg",
-      alt: "Sunset in Oia",
+      alt: "World famous sunset view from Oia village Santorini Greece with whitewashed buildings and Aegean Sea",
       caption: "The world-famous sunset view from Oia"
     },
     {
       src: "/images/islands/santorini/red-beach.jpg",
-      alt: "Red Beach",
+      alt: "Dramatic Red Beach Santorini Greece with volcanic red cliffs and crystal clear Aegean Sea waters",
       caption: "The dramatic Red Beach with its volcanic cliffs"
     },
     {
       src: "/images/islands/santorini/blue-domes.jpg",
-      alt: "Blue Domes",
+      alt: "Iconic blue domed churches Oia Santorini Greece against whitewashed buildings and Aegean Sea",
       caption: "Iconic blue domes against the Aegean Sea"
     },
     {
       src: "/images/islands/santorini/fira-view.jpg",
-      alt: "Fira View",
+      alt: "Panoramic view of Fira town Santorini Greece with caldera views and traditional Cycladic architecture",
       caption: "Panoramic view of Fira town"
     },
     {
       src: "/images/islands/santorini/vineyard.jpg",
-      alt: "Santorini Vineyard",
+      alt: "Traditional basket trained vines Santorini vineyard Greece with volcanic soil unique wine cultivation",
       caption: "Unique basket-trained vines in volcanic soil"
     },
     {
       src: "/images/islands/santorini/akrotiri.jpg",
-      alt: "Akrotiri Archaeological Site",
+      alt: "Ancient Minoan ruins Akrotiri archaeological site Santorini Greece preserved volcanic ash",
       caption: "Ancient ruins of Akrotiri, the 'Minoan Pompeii'"
     }
   ];
@@ -175,7 +175,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-xl">
                 <img 
                   src="/images/islands/santorini/caldera-view.jpg" 
-                  alt="Santorini Caldera View" 
+                  alt="Breathtaking caldera view Santorini Greece with volcanic cliffs whitewashed villages and Aegean Sea" 
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -183,7 +183,7 @@ const SantoriniGuide: React.FC = () => {
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                   <img 
                     src="/images/islands/santorini/oia-detail.jpg" 
-                    alt="Oia Detail" 
+                    alt="Traditional whitewashed architecture and blue domes Oia village Santorini Cyclades Greece" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -398,7 +398,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/oia.jpg" 
-                  alt="Oia Village" 
+                  alt="Famous Oia village Santorini Greece with blue domed churches whitewashed buildings and world famous sunset views" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -420,7 +420,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/fira.jpg" 
-                  alt="Fira Town" 
+                  alt="Vibrant capital Fira town Santorini Greece with caldera views shopping district and traditional Cycladic architecture" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -442,7 +442,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/pyrgos.jpg" 
-                  alt="Pyrgos Village" 
+                  alt="Medieval Pyrgos village Santorini Greece with Venetian castle ruins hilltop panoramic views and traditional architecture" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -465,7 +465,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/imerovigli.jpg" 
-                  alt="Imerovigli Village" 
+                  alt="Imerovigli village balcony to Aegean Santorini Greece with spectacular caldera views Skaros Rock and luxury hotels" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -486,7 +486,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/megalochori.jpg" 
-                  alt="Megalochori Village" 
+                  alt="Picturesque Megalochori village Santorini Greece with neoclassical mansions cave houses bell towers and vineyards" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -517,7 +517,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/perissa-beach.jpg" 
-                  alt="Perissa Beach" 
+                  alt="Long black sand Perissa Beach Santorini Greece with Mesa Vouno mountain water sports and beach bars" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -541,7 +541,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/red-beach.jpg" 
-                  alt="Red Beach" 
+                  alt="Striking Red Beach Santorini Greece with dramatic red volcanic cliffs red sand and crystal clear Aegean Sea waters" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -565,7 +565,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/kamari-beach.jpg" 
-                  alt="Kamari Beach" 
+                  alt="Cosmopolitan Kamari Beach Santorini Greece with black volcanic sand promenade restaurants bars and clear waters" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -589,7 +589,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/white-beach.jpg" 
-                  alt="White Beach" 
+                  alt="Secluded White Beach Santorini Greece with towering white cliffs dark sand accessible by boat perfect for privacy" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -613,7 +613,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/vlychada-beach.jpg" 
-                  alt="Vlychada Beach" 
+                  alt="Lunar landscape Vlychada Beach Santorini Greece with sculpted cliffs dark sand relaxed atmosphere and marina" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -637,7 +637,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/monolithos-beach.jpg" 
-                  alt="Monolithos Beach" 
+                  alt="Family friendly Monolithos Beach Santorini Greece with shallow waters black sand playground and tavernas" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -743,7 +743,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/winery.jpg" 
-                  alt="Santorini Winery" 
+                  alt="Traditional Santorini winery Greece with basket trained vines volcanic soil wine tasting and caldera views" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -758,7 +758,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/taverna.jpg" 
-                  alt="Traditional Taverna" 
+                  alt="Authentic traditional Greek taverna Santorini Greece with local cuisine fava tomatokeftedes and family atmosphere" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -773,7 +773,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="bg-white rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/santorini/fine-dining.jpg" 
-                  alt="Fine Dining" 
+                  alt="Gourmet fine dining restaurant Santorini Greece with sunset views local ingredients and upscale Cyclades cuisine" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -1049,7 +1049,7 @@ const SantoriniGuide: React.FC = () => {
               <div className="relative h-64 md:h-auto">
                 <img 
                   src="/images/islands/santorini/oia-sunset.jpg" 
-                  alt="Santorini Island View" 
+                  alt="World famous sunset view Oia village Santorini Greece with whitewashed buildings blue domes and Aegean Sea caldera" 
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-4 py-2 rounded-lg">

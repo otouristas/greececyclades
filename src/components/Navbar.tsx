@@ -772,5 +772,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
         </div>
       )}
     </nav>
+    </>
   );
 }

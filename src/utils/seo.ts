@@ -1,6 +1,6 @@
 import { Hotel } from '../types/hotel';
 import { Activity } from '../types/activity';
-import { SEOProps, ArticleSEO } from '../types/seo';
+import { SEOProps, ArticleSEO, FAQItem } from '../types/seo';
 import { getHotelSlug, getIslandSlug } from './slugs';
 
 export const DEFAULT_KEYWORDS = [
@@ -12,6 +12,33 @@ export const DEFAULT_KEYWORDS = [
   'Activities',
   'Experiences'
 ].join(', ');
+
+/**
+ * Generates SEO-friendly alt text for images
+ * Format: "Descriptive content + Location + Context + Greece/Cyclades"
+ * @param description - Main description of the image content
+ * @param location - Location name (island, village, beach, etc.)
+ * @param context - Additional context (optional)
+ * @returns SEO-optimized alt text string
+ */
+export function generateImageAltText(
+  description: string,
+  location: string,
+  context?: string
+): string {
+  const parts = [description, location];
+  if (context) {
+    parts.push(context);
+  }
+  // Add "Greece" or "Cyclades" for geographic context
+  if (location.toLowerCase().includes('cyclades') || 
+      location.toLowerCase().includes('greek island')) {
+    parts.push('Greece');
+  } else {
+    parts.push('Cyclades Greece');
+  }
+  return parts.join(' ');
+}
 
 export function generateHotelSEO(hotel: Hotel): SEOProps {
   const keywords = [
@@ -538,4 +565,129 @@ export function generateTripPlannerJsonLD(): string {
   };
 
   return JSON.stringify(structuredData);
+}
+
+/**
+ * Generate FAQ schema markup for SEO
+ */
+export function generateFAQSchema(faqItems: FAQItem[]): string {
+  if (!faqItems || faqItems.length === 0) {
+    return '';
+  }
+
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqItems.map(item => ({
+      '@type': 'Question',
+      name: item.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: item.answer
+      }
+    }))
+  };
+
+  return JSON.stringify(structuredData);
+}
+
+/**
+ * Generate enhanced Article schema with better structure
+ */
+export function generateArticleSchema(data: {
+  headline: string;
+  description: string;
+  image: string;
+  datePublished: string;
+  dateModified?: string;
+  author: string;
+  publisherName?: string;
+  publisherLogo?: string;
+  url: string;
+}): string {
+  const structuredData = {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: data.headline,
+    description: data.description,
+    image: data.image,
+    datePublished: data.datePublished,
+    dateModified: data.dateModified || data.datePublished,
+    author: {
+      '@type': 'Person',
+      name: data.author
+    },
+    publisher: {
+      '@type': 'Organization',
+      name: data.publisherName || 'Greececyclades.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: data.publisherLogo || 'https://greececyclades.com/logo.png'
+      }
+    },
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': data.url
+    }
+  };
+
+  return JSON.stringify(structuredData);
+}
+
+/**
+ * Validate and optimize meta description length
+ */
+export function optimizeMetaDescription(description: string, maxLength: number = 160): string {
+  if (description.length <= maxLength) {
+    return description;
+  }
+
+  // Try to cut at sentence boundary
+  const sentences = description.match(/[^.!?]+[.!?]+/g);
+  if (sentences) {
+    let optimized = '';
+    for (const sentence of sentences) {
+      if ((optimized + sentence).length <= maxLength - 3) {
+        optimized += sentence;
+      } else {
+        break;
+      }
+    }
+    if (optimized.length > 0) {
+      return optimized.trim() + '...';
+    }
+  }
+
+  // Fallback to word boundary
+  const words = description.split(' ');
+  let optimized = '';
+  for (const word of words) {
+    if ((optimized + ' ' + word).length <= maxLength - 3) {
+      optimized += (optimized ? ' ' : '') + word;
+    } else {
+      break;
+    }
+  }
+  return optimized.trim() + '...';
+}
+
+/**
+ * Generate keywords string with LSI keywords
+ */
+export function generateKeywordsWithLSI(
+  primaryKeywords: string[],
+  lsiKeywords?: string[],
+  additionalKeywords?: string[]
+): string {
+  const allKeywords = [
+    ...primaryKeywords,
+    ...(lsiKeywords || []),
+    ...(additionalKeywords || []),
+    ...DEFAULT_KEYWORDS.split(', ')
+  ];
+
+  // Remove duplicates and empty strings
+  const uniqueKeywords = Array.from(new Set(allKeywords.filter(k => k.trim().length > 0)));
+
+  return uniqueKeywords.join(', ');
 }

@@ -5,6 +5,11 @@ export interface ArticleSEO {
   tags: string[];
 }
 
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
 export interface SEOProps {
   title: string;
   description: string;
@@ -18,6 +23,7 @@ export interface SEOProps {
     author?: string;
     tags?: string[];
   };
+  faq?: FAQItem[];
   structuredData?: string;
   jsonLD?: Record<string, any>;
   noIndex?: boolean;
