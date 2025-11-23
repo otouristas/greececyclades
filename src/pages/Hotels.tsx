@@ -706,6 +706,7 @@ export default function Hotels() {
           </div>
         </div>
       </div>
+      </div>
     </>
   );
 }
