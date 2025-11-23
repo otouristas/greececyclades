@@ -1,5 +1,7 @@
-import { Helmet } from 'react-helmet-async';
 import { MapPin, Calendar, Users, Star, Info, Compass, Sunrise, Sailboat, Utensils } from 'lucide-react';
+import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { SITE_TAGLINE } from '../constants/seo';
 
 export default function Activities() {
   // Popular activities categories
@@ -51,40 +53,56 @@ export default function Activities() {
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Helmet>
-        <title>Top-Rated Activities & Tours in the Cyclades Islands | Greece Cyclades</title>
-        <meta name="description" content="Discover and book the best activities and tours in the Cyclades islands. From sailing adventures to cultural experiences, find unforgettable things to do in Santorini, Mykonos, and beyond." />
-        <link rel="canonical" href="https://greececyclades.com/activities" />
-        {/* GetYourGuide Analytics */}
-        <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="YFXNELL"></script>
-      </Helmet>
+    <>
+      <SEO 
+        title={`Top-Rated Activities & Tours in the Cyclades Islands ${SITE_TAGLINE}`}
+        description="Discover and book the best activities and tours in the Cyclades islands. From sailing adventures to cultural experiences, find unforgettable things to do in Santorini, Mykonos, and beyond."
+        canonicalUrl="https://greececyclades.com/activities"
+        pageType="activities"
+      />
       
-      {/* Hero Section */}
-      <div className="relative">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/activites.webp" 
-            alt="Activities in the Cyclades Islands" 
-            className="w-full h-full object-cover"
+      {/* GetYourGuide Analytics */}
+      <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="YFXNELL"></script>
+      
+      {/* Breadcrumbs */}
+      <div className="bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <Breadcrumbs
+            items={[
+              { label: 'Activities', path: '/activities' }
+            ]}
           />
-          <div className="absolute inset-0 bg-gradient-to-b from-blue-900 via-blue-800 to-blue-700 opacity-80"></div>
         </div>
-        
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
-          <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Unforgettable Activities in the Cyclades
-            </h1>
-            <p className="text-xl text-blue-100 max-w-3xl mx-auto">
-              Discover and book the best tours, experiences, and things to do across the Greek islands
-            </p>
+      </div>
+
+      <div className="min-h-screen bg-gray-50">
+        {/* Hero Section */}
+        <div className="relative min-h-[85vh] flex items-center">
+          {/* Background Image with Overlay */}
+          <div className="absolute inset-0">
+            <div className="relative h-full w-full">
+              <img 
+                src="/images/activites.webp" 
+                alt="Activities in the Cyclades Islands" 
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+            </div>
           </div>
+        
+          {/* Content */}
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+            <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-8">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                Unforgettable <span className="text-blue-400">Activities</span>
+              </h1>
+              <p className="text-xl text-gray-200 mb-8">
+                Discover and book the best tours, experiences, and things to do across the Greek islands
+              </p>
+            </div>
           
-          {/* Activity Categories */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+            {/* Activity Categories */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 w-full">
             {categories.map((category, index) => (
               <a 
                 key={index} 
@@ -370,8 +388,9 @@ export default function Activities() {
             Browse Activities
             <Compass className="ml-2 h-5 w-5" />
           </a>
+          </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

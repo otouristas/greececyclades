@@ -2,7 +2,7 @@ import { useEffect, useRef } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { FaPlane, FaCalendarAlt, FaInfoCircle, FaQuestion, FaTicketAlt, FaSuitcase, FaSearch, FaBell, FaCalendar, FaGift, FaMapMarkerAlt, FaClock, FaEuroSign, FaExchangeAlt } from 'react-icons/fa';
 
-const BOOKING_ENGINE_URL = 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2025-05-28&flighttype=D&quantity=1&rdate=2025-06-01&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305';
+const BOOKING_ENGINE_URL = 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-05-28&flighttype=D&quantity=1&rdate=2026-06-01&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305';
 
 const Flights = () => {
   const searchContainerRef = useRef<HTMLDivElement>(null);
@@ -33,7 +33,7 @@ const Flights = () => {
       airline: 'American Airlines', 
       duration: '11h 10m+', 
       price: '$507',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JTR&allianceid=1094387&class=ys&currency=EUR&dcity=JFK&ddate=2025-07-10&flighttype=D&quantity=1&rdate=2025-07-24&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
+      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JTR&allianceid=1094387&class=ys&currency=EUR&dcity=JFK&ddate=2026-07-10&flighttype=D&quantity=1&rdate=2026-07-24&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
     },
     { 
       departure: 'London (LHR)', 
@@ -41,7 +41,7 @@ const Flights = () => {
       airline: 'British Airways', 
       duration: '4h 5m', 
       price: '€180',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=LHR&ddate=2025-06-05&flighttype=D&quantity=1&rdate=2025-06-12&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
+      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=LHR&ddate=2026-06-05&flighttype=D&quantity=1&rdate=2026-06-12&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
     },
     { 
       departure: 'Paris (CDG)', 
@@ -49,7 +49,7 @@ const Flights = () => {
       airline: 'Air France', 
       duration: '3h 40m', 
       price: '€160',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=CDG&ddate=2025-06-10&flighttype=D&quantity=1&rdate=2025-06-17&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
+      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=CDG&ddate=2026-06-10&flighttype=D&quantity=1&rdate=2026-06-17&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
     },
     { 
       departure: 'Frankfurt (FRA)', 
@@ -57,7 +57,7 @@ const Flights = () => {
       airline: 'Lufthansa', 
       duration: '3h 30m', 
       price: '€195',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JTR&allianceid=1094387&class=ys&currency=EUR&dcity=FRA&ddate=2025-06-15&flighttype=D&quantity=1&rdate=2025-06-25&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
+      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JTR&allianceid=1094387&class=ys&currency=EUR&dcity=FRA&ddate=2026-06-15&flighttype=D&quantity=1&rdate=2026-06-25&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
     },
     { 
       departure: 'Athens (ATH)', 
@@ -65,7 +65,7 @@ const Flights = () => {
       airline: 'Aegean/Sky Express', 
       duration: '45m', 
       price: '€50',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2025-05-28&flighttype=D&quantity=1&rdate=2025-06-01&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
+      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-05-28&flighttype=D&quantity=1&rdate=2026-06-01&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
     }
   ];
 
@@ -85,31 +85,31 @@ const Flights = () => {
       name: 'Santorini National Airport (JTR) - Thira',
       description: 'The busiest airport in the Cyclades, welcoming international direct flights from many European cities during the peak season and daily domestic flights from Athens (ATH) and Thessaloniki (SKG) year-round.',
       location: 'Located near Kamari, about 6km southeast of Fira',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JTR&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2025-06-10&flighttype=D&quantity=1&rdate=2025-06-17&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
+      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JTR&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-06-10&flighttype=D&quantity=1&rdate=2026-06-17&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
     },
     {
       name: 'Mykonos International Airport (JMK)',
       description: 'A bustling summer hub with numerous international charter and scheduled flights, plus frequent domestic connections from Athens and Thessaloniki.',
       location: 'Located just 4km from Mykonos Town (Chora)',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2025-05-28&flighttype=D&quantity=1&rdate=2025-06-01&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
+      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-05-28&flighttype=D&quantity=1&rdate=2026-06-01&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
     },
     {
       name: 'Paros National Airport (PAS)',
       description: 'A modern domestic airport that has seen significant upgrades, handling frequent flights from Athens and Thessaloniki.',
       location: 'Located near Aliki, about 10km from Parikia (the main port)',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=PAS&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2025-07-01&flighttype=D&quantity=1&rdate=2025-07-08&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
+      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=PAS&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-07-01&flighttype=D&quantity=1&rdate=2026-07-08&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
     },
     {
       name: 'Naxos Island National Airport (JNX)',
       description: 'A smaller domestic hub located close to Naxos Town (Chora), primarily served by daily flights from Athens.',
       location: 'Near Naxos Town (Chora)',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JNX&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2025-07-05&flighttype=D&quantity=1&rdate=2025-07-12&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
+      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JNX&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-07-05&flighttype=D&quantity=1&rdate=2026-07-12&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
     },
     {
       name: 'Milos Island National Airport (MLO)',
       description: 'Serves daily domestic flights from Athens, making it a convenient gateway to discover the unique volcanic landscapes and stunning beaches of Milos.',
       location: 'Near Milos Town',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=MLO&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2025-07-15&flighttype=D&quantity=1&rdate=2025-07-22&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
+      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=MLO&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-07-15&flighttype=D&quantity=1&rdate=2026-07-22&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
     },
     {
       name: 'Syros Island National Airport (JSY)',
@@ -150,7 +150,7 @@ const Flights = () => {
     <div className="min-h-screen bg-gray-50">
       <Helmet>
         <title>Cheap Flights to Cyclades Islands - Santorini, Mykonos, Naxos & More | Discover Cyclades</title>
-        <meta name="description" content="Book the best deals on flights to the Cyclades Islands including Santorini, Mykonos, Naxos, and Paros for your 2025 Greek holiday. Compare airlines, find the cheapest prices, and explore direct routes. Benefit from flexible bookings, expert travel tips & unlock significant savings on your dream Cycladic adventure." />
+        <meta name="description" content="Book the best deals on flights to the Cyclades Islands including Santorini, Mykonos, Naxos, and Paros for your 2026 Greek holiday. Compare airlines, find the cheapest prices, and explore direct routes. Benefit from flexible bookings, expert travel tips & unlock significant savings on your dream Cycladic adventure." />
         <link rel="canonical" href="https://greececyclades.com/flights" />
       </Helmet>
 
@@ -214,7 +214,7 @@ const Flights = () => {
 
         {/* Cheapest Flights */}
         <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">Cheapest Flights to Cyclades in 2025</h2>
+          <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">Cheapest Flights to Cyclades in 2026</h2>
           <div className="bg-white rounded-lg shadow-md overflow-hidden">
             <div className="overflow-x-auto">
               <table className="min-w-full divide-y divide-gray-200">
@@ -399,7 +399,7 @@ const Flights = () => {
 
         {/* CTA Section */}
         <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">Ready to Book Your Dream Cyclades Island Escape for 2025?</h2>
+          <h2 className="text-3xl font-bold text-gray-800 mb-6">Ready to Book Your Dream Cyclades Island Escape for 2026?</h2>
           <p className="text-gray-600 mb-8">The magic of the Greek Islands awaits! White-washed villages, iconic blue domes, stunning beaches, and unforgettable sunsets are just a flight away.</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a href={BOOKING_ENGINE_URL} className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">

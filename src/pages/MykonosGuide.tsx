@@ -25,8 +25,8 @@ const MykonosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Mykonos Travel Guide 2025 - Best Beaches, Nightlife & Things to Do",
-    description: "Plan your perfect Mykonos vacation with our comprehensive 2025 travel guide. From pristine beaches and vibrant nightlife to traditional villages and luxury experiences.",
+    title: "Mykonos Travel Guide 2026 - Best Beaches, Nightlife & Things to Do",
+    description: "Plan your perfect Mykonos vacation with our comprehensive 2026 travel guide. From pristine beaches and vibrant nightlife to traditional villages and luxury experiences.",
     keywords: [
       'Mykonos travel guide',
       'Mykonos beaches',
@@ -131,16 +131,16 @@ const MykonosGuide: React.FC = () => {
               "@type": "Event",
               "name": "XLSIOR Festival",
               "description": "International music festival that kicks off the party season in May.",
-              "startDate": "2025-05-01",
-              "endDate": "2025-05-10",
+              "startDate": "2026-05-01",
+              "endDate": "2026-05-10",
               "location": "Mykonos Island, Greece"
             },
             {
               "@type": "Event",
               "name": "Mykonos Summer Festival",
               "description": "Cultural events throughout the summer season featuring music, dance, and art.",
-              "startDate": "2025-06-01",
-              "endDate": "2025-08-31",
+              "startDate": "2026-06-01",
+              "endDate": "2026-08-31",
               "location": "Various venues across Mykonos"
             }
           ],
@@ -148,8 +148,8 @@ const MykonosGuide: React.FC = () => {
             "@type": "OpeningHoursSpecification",
             "name": "Best Time to Visit",
             "description": "The best time to visit Mykonos is during the shoulder seasons (May-June, September) when the weather is pleasant and there are fewer crowds.",
-            "validFrom": "2025-05-01",
-            "validThrough": "2025-09-30"
+            "validFrom": "2026-05-01",
+            "validThrough": "2026-09-30"
           }
         }}
       />

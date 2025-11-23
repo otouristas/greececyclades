@@ -315,8 +315,8 @@ export function generateSitemapSEO(): SEOProps {
 
 export function generateTripPlannerSEO(): SEOProps {
   return {
-    title: "Plan Your 2025 Cyclades Island Hopping Trip | Interactive Trip Planner",
-    description: "Create your perfect 2025 Greek island hopping itinerary with our interactive trip planner. Get personalized recommendations for islands, hotels, and activities.",
+    title: "Plan Your 2026 Cyclades Island Hopping Trip | Interactive Trip Planner",
+    description: "Create your perfect 2026 Greek island hopping itinerary with our interactive trip planner. Get personalized recommendations for islands, hotels, and activities.",
     keywords: [
       ...DEFAULT_KEYWORDS.split(', '),
       'trip planner',
@@ -392,8 +392,8 @@ export function generateVehicleDetailSEO(vehicle: { make: string; model: string;
 
 export function generateIslandGuideSEO(islandName: string, image: string): SEOProps {
   return {
-    title: `${islandName} Travel Guide 2025 | Greececyclades.com`,
-    description: `Complete travel guide to ${islandName} for 2025. Discover the best beaches, hotels, restaurants, activities, and local tips for your perfect vacation.`,
+    title: `${islandName} Travel Guide 2026 | Greececyclades.com`,
+    description: `Complete travel guide to ${islandName} for 2026. Discover the best beaches, hotels, restaurants, activities, and local tips for your perfect vacation.`,
     keywords: `${DEFAULT_KEYWORDS}, ${islandName}, travel guide, beaches, hotels, restaurants, activities`,
     ogImage: image,
     ogType: 'article',

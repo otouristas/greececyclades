@@ -1,9 +1,9 @@
 export const santoriniContent = `
-# Santorini 2025: Ultimate Guide to the Volcanic Paradise
+# Santorini 2026: Ultimate Guide to the Volcanic Paradise
 
 ![Panoramic view of Santorini caldera with white buildings and blue domes](/images/islands/santorini/caldera-view.jpg)
 
-Santorini, the crown jewel of the Cyclades, is one of the world's most iconic island destinations. Formed by one of history's largest volcanic eruptions, this crescent-shaped island offers breathtaking landscapes, unique architecture, exceptional wines, and unforgettable sunsets. This comprehensive guide covers everything you need to know to plan your perfect Santorini vacation in 2025.
+Santorini, the crown jewel of the Cyclades, is one of the world's most iconic island destinations. Formed by one of history's largest volcanic eruptions, this crescent-shaped island offers breathtaking landscapes, unique architecture, exceptional wines, and unforgettable sunsets. This comprehensive guide covers everything you need to know to plan your perfect Santorini vacation in 2026.
 
 ## Table of Contents
 - [Best Time to Visit](#best-time-to-visit)

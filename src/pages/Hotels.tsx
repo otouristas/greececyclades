@@ -1,7 +1,9 @@
 import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet-async';
 import { Star, MapPin, Building2, Bed, Wifi, Coffee, Utensils, Calendar, Search, Users, Shield, CheckCircle, Clock, Euro, Award, Heart, Phone, Plane } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import SEO from '../components/SEO';
+import Breadcrumbs from '../components/Breadcrumbs';
+import { SITE_TAGLINE } from '../constants/seo';
 
 export default function Hotels() {
   // State for the custom search form
@@ -217,40 +219,59 @@ export default function Hotels() {
   ];
 
   return (
-    <div className="min-h-screen bg-secondary-50">
-      <Helmet>
-        <title>Hotels in Cyclades Islands Greece | Best Accommodation Deals Santorini, Mykonos | Greece Cyclades</title>
-        <meta name="description" content="Book the best hotels in Greek Islands. Luxury resorts, boutique hotels, cave accommodations in Santorini, Mykonos, Naxos, Paros, Syros, Sifnos, Folegandros. Best prices, free cancellation. Find your perfect Cyclades accommodation today!" />
-        <meta name="keywords" content="hotels greece, cyclades accommodation, greek island hotels, santorini hotels, mykonos hotels, naxos hotels, paros hotels, greece accommodation booking" />
-        <link rel="canonical" href="https://greececyclades.com/hotels" />
-        <meta property="og:title" content="Hotels in Cyclades Islands Greece | Best Accommodation Deals" />
-        <meta property="og:description" content="Find perfect hotels in Greek Islands. Luxury resorts to budget accommodations. Best prices guaranteed." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://greececyclades.com/hotels" />
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "LodgingBusiness",
-            "name": "Greece Cyclades Hotels",
-            "description": "Premium hotel booking service for Cyclades islands including Santorini, Mykonos, Naxos, and Paros",
-            "url": "https://greececyclades.com/hotels",
-            "areaServed": ["Santorini", "Mykonos", "Naxos", "Paros", "Milos", "Ios", "Syros", "Sifnos", "Folegandros", "Cyclades Islands"],
-            "priceRange": "€60-€500"
-          })}
-        </script>
-      </Helmet>
+    <>
+      <SEO 
+        title={`Hotels in Cyclades Islands Greece | Best Accommodation Deals ${SITE_TAGLINE}`}
+        description="Book the best hotels in Greek Islands. Luxury resorts, boutique hotels, cave accommodations in Santorini, Mykonos, Naxos, Paros, Syros, Sifnos, Folegandros. Best prices, free cancellation. Find your perfect Cyclades accommodation today!"
+        keywords={["hotels greece", "cyclades accommodation", "greek island hotels", "santorini hotels", "mykonos hotels", "naxos hotels", "paros hotels", "greece accommodation booking"]}
+        canonicalUrl="https://greececyclades.com/hotels"
+        pageType="hotels"
+        jsonLD={{
+          "@context": "https://schema.org",
+          "@type": "LodgingBusiness",
+          "name": "Greece Cyclades Hotels",
+          "description": "Premium hotel booking service for Cyclades islands including Santorini, Mykonos, Naxos, and Paros",
+          "url": "https://greececyclades.com/hotels",
+          "areaServed": ["Santorini", "Mykonos", "Naxos", "Paros", "Milos", "Ios", "Syros", "Sifnos", "Folegandros", "Cyclades Islands"],
+          "priceRange": "€60-€500"
+        }}
+      />
       
-      {/* Hero Section with Search Widget */}
-      <div className="relative bg-gradient-to-br from-primary-500 via-primary-600 to-primary-700 text-white">
-        <div className="absolute inset-0 bg-primary-800/20"></div>
-        
-        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Hotels in Cyclades Islands Greece</h1>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto opacity-90">
-              Discover luxury resorts, boutique hotels, and authentic accommodations across <Link to="/guides/santorini" className="underline hover:text-secondary-200">Santorini</Link>, <Link to="/guides/mykonos" className="underline hover:text-secondary-200">Mykonos</Link>, <Link to="/guides/naxos" className="underline hover:text-secondary-200">Naxos</Link>, and all Greek islands
-            </p>
+      {/* Breadcrumbs */}
+      <div className="bg-gray-50 border-b">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+          <Breadcrumbs
+            items={[
+              { label: 'Hotels', path: '/hotels' }
+            ]}
+          />
+        </div>
+      </div>
+
+      <div className="min-h-screen bg-gray-50">
+        {/* Hero Section with Search Widget */}
+        <div className="relative min-h-[85vh] flex items-center">
+          {/* Background Image */}
+          <div className="absolute inset-0">
+            <div className="relative h-full w-full">
+              <img
+                src="/images/islands/santorini.jpg"
+                alt="Cyclades Hotels"
+                className="w-full h-full object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-r from-black/70 via-black/50 to-transparent" />
+            </div>
           </div>
+        
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
+            <div className="flex flex-col items-center text-center max-w-3xl mx-auto mb-8">
+              <h1 className="text-5xl md:text-6xl font-bold text-white mb-6">
+                Hotels in the <span className="text-blue-400">Cyclades</span>
+              </h1>
+              <p className="text-xl text-gray-200 mb-8">
+                Discover luxury resorts, boutique hotels, and authentic accommodations across <Link to="/guides/santorini" className="underline hover:text-blue-300">Santorini</Link>, <Link to="/guides/mykonos" className="underline hover:text-blue-300">Mykonos</Link>, <Link to="/guides/naxos" className="underline hover:text-blue-300">Naxos</Link>, and all Greek islands
+              </p>
+            </div>
           
           {/* Search Widget */}
           <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden p-6" id="hotel-search-container">
@@ -382,8 +403,8 @@ export default function Hotels() {
         </div>
       </div>
       
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
+        {/* Main Content */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
         
         {/* SEO Introduction Section */}
         <div className="mb-16 max-w-4xl mx-auto">
@@ -685,6 +706,6 @@ export default function Hotels() {
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

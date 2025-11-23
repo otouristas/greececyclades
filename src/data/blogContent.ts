@@ -1,5 +1,5 @@
 export const mykonosContent = `
-# Mykonos 2025: Complete Guide to the Island of the Winds
+# Mykonos 2026: Complete Guide to the Island of the Winds
 
 Welcome to Mykonos, the Cyclades' most cosmopolitan island. From pristine beaches to world-class nightlife, this guide will help you discover everything this stunning island has to offer.
 
@@ -218,7 +218,7 @@ Ready to experience Mykonos? Start planning with our [Trip Planner](/trip-planne
 `;
 
 export const naxosContent = `
-# Naxos 2025: Experience Authentic Greek Island Life
+# Naxos 2026: Experience Authentic Greek Island Life
 
 Welcome to Naxos, the largest and most fertile of the Cyclades islands. With its impressive mountains, endless beaches, and rich history, Naxos offers an authentic Greek island experience that combines ancient culture with modern comfort.
 
@@ -447,7 +447,7 @@ Ready to explore Naxos? Start planning with our [Trip Planner](/trip-planner)!
 `;
 
 export const parosContent = `
-# Paros 2025: Your Guide to the Cyclades' Best-Kept Secret
+# Paros 2026: Your Guide to the Cyclades' Best-Kept Secret
 
 Discover Paros, an island that perfectly balances traditional Greek charm with modern amenities. From golden beaches to picturesque villages, Paros offers an authentic Cycladic experience without the overwhelming crowds.
 
@@ -658,7 +658,7 @@ Ready to discover Paros? Start planning your trip with our [Trip Planner](/trip-
 `;
 
 export const sifnosContent = `
-# Sifnos 2025: A Gastronomic Journey Through the Cyclades
+# Sifnos 2026: A Gastronomic Journey Through the Cyclades
 
 Welcome to Sifnos, the culinary capital of the Cyclades. Known for its pottery, gastronomy, and traditional villages, Sifnos offers an authentic Greek island experience that will delight all your senses.
 
@@ -907,7 +907,7 @@ Ready to experience Sifnos? Plan your culinary adventure with our [Trip Planner]
 `;
 
 export const antiparosContent = `
-# Antiparos 2025: Hidden Gem of the Cyclades
+# Antiparos 2026: Hidden Gem of the Cyclades
 
 Welcome to Antiparos, a charming island that offers an authentic Greek experience away from the crowds. Known for its stunning cave, beautiful beaches, and relaxed atmosphere, Antiparos is perfect for those seeking tranquility and natural beauty.
 
@@ -1089,7 +1089,7 @@ Ready to experience the authentic charm of Antiparos? Start planning your trip w
 `;
 
 export const santoriniContent = `
-# Santorini 2025: Ultimate Guide to the Volcanic Paradise
+# Santorini 2026: Ultimate Guide to the Volcanic Paradise
 
 Welcome to Santorini, the crown jewel of the Cyclades. Famous for its dramatic caldera views, stunning sunsets, and unique volcanic landscape, this guide will help you plan the perfect Santorini experience.
 

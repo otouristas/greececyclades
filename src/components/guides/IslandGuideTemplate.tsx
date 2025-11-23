@@ -64,8 +64,8 @@ interface Props {
 
 const IslandGuideTemplate: React.FC<Props> = ({ island, content }) => {
   const seoData = {
-    title: `${island.name} Travel Guide 2025 - Best Places to Visit & Things to Do`,
-    description: `Plan your perfect ${island.name} vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities.`,
+    title: `${island.name} Travel Guide 2026 - Best Places to Visit & Things to Do`,
+    description: `Plan your perfect ${island.name} vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities.`,
     keywords: [
       `${island.name} travel guide`,
       `${island.name} hotels`,

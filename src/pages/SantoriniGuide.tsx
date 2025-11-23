@@ -24,8 +24,8 @@ const SantoriniGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Santorini Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Santorini vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. From sunset views in Oia to wine tasting in volcanic vineyards.",
+    title: "Santorini Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Santorini vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities. From sunset views in Oia to wine tasting in volcanic vineyards.",
     keywords: [
       'Santorini travel guide',
       'Oia sunset',
@@ -130,16 +130,16 @@ const SantoriniGuide: React.FC = () => {
               "@type": "Event",
               "name": "Santorini International Music Festival",
               "description": "Classical performances in unique venues around the island during the summer months.",
-              "startDate": "2025-06-15",
-              "endDate": "2025-08-15",
+              "startDate": "2026-06-15",
+              "endDate": "2026-08-15",
               "location": "Various venues across Santorini"
             },
             {
               "@type": "Event",
               "name": "Ifestia Festival",
               "description": "Annual festival in September featuring fireworks that recreate the volcanic eruption that shaped the island.",
-              "startDate": "2025-09-15",
-              "endDate": "2025-09-15",
+              "startDate": "2026-09-15",
+              "endDate": "2026-09-15",
               "location": "Santorini Caldera"
             }
           ],
@@ -147,8 +147,8 @@ const SantoriniGuide: React.FC = () => {
             "@type": "OpeningHoursSpecification",
             "name": "Best Time to Visit",
             "description": "The best time to visit Santorini is during the shoulder seasons (April-May, September-October) when the weather is mild and there are fewer crowds.",
-            "validFrom": "2025-04-01",
-            "validThrough": "2025-10-31"
+            "validFrom": "2026-04-01",
+            "validThrough": "2026-10-31"
           }
         }}
       />

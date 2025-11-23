@@ -13,7 +13,7 @@ interface BlogContent {
 
 export const sifnosContent: BlogContent = {
   title: 'Sifnos: Your Ultimate Guide to the Culinary Capital of the Cyclades',
-  metaTitle: 'Sifnos Travel Guide 2025: The Complete Guide to Greek Gastronomy Paradise',
+  metaTitle: 'Sifnos Travel Guide 2026: The Complete Guide to Greek Gastronomy Paradise',
   metaDescription: 'Discover Sifnos, the culinary capital of the Cyclades. Complete travel guide featuring the best restaurants, pottery workshops, hiking trails, beaches, villages, and authentic Greek experiences on this charming island.',
   content: `
 # Sifnos: Your Ultimate Guide to the Culinary Capital of the Cyclades
@@ -660,8 +660,8 @@ A: Yes! Several local chefs and cooking enthusiasts offer cooking classes featur
           "url": "https://greececyclades.com/logo.png"
         }
       },
-      "datePublished": "2025-01-24",
-      "dateModified": "2025-01-24"
+      "datePublished": "2026-01-24",
+      "dateModified": "2026-01-24"
     },
     faq: {
       "@context": "https://schema.org",

@@ -32,17 +32,28 @@ export default {
           800: '#A78737',
           900: '#8B6F1F',
         },
+        'sifnos-deep-blue': '#1E2E48',
+        'sifnos-beige': '#E3D7C3',
+        'sifnos-turquoise': '#40E0D0',
+        accent: '#FF6B35',
       },
       fontFamily: {
         sans: ['Roboto', 'sans-serif'],
       },
       animation: {
         'subtle-zoom': 'subtle-zoom 20s ease-in-out infinite alternate',
+        'blob': 'blob 7s infinite',
       },
       keyframes: {
         'subtle-zoom': {
           '0%': { transform: 'scale(1.05)' },
           '100%': { transform: 'scale(1.15)' },
+        },
+        'blob': {
+          '0%': { transform: 'translate(0px, 0px) scale(1)' },
+          '33%': { transform: 'translate(30px, -50px) scale(1.1)' },
+          '66%': { transform: 'translate(-20px, 20px) scale(0.9)' },
+          '100%': { transform: 'translate(0px, 0px) scale(1)' },
         },
       },
     },

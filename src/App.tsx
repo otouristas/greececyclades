@@ -81,6 +81,10 @@ const Resources = lazy(() => import('./pages/Resources'));
 const ListProperty = lazy(() => import('./pages/ListProperty'));
 const TouristasAILanding = lazy(() => import('./pages/TouristasAILanding'));
 const TouristasAIChat = lazy(() => import('./pages/TouristasAIChat'));
+const TouristasAIChatFloating = lazy(() => import('./components/touristas-ai/TouristasAIChat'));
+const BusinessSignUp = lazy(() => import('./pages/BusinessSignUp'));
+const BusinessSignIn = lazy(() => import('./pages/BusinessSignIn'));
+const BusinessDashboard = lazy(() => import('./pages/BusinessDashboard'));
 
 import { ToastProvider } from './contexts/ToastContext';
 
@@ -291,6 +295,8 @@ function AppContent() {
               <Route path="/resources" element={<Resources />} />
               <Route path="/signin" element={<SignIn />} />
               <Route path="/signup" element={<SignUp />} />
+              <Route path="/business/signup" element={<BusinessSignUp />} />
+              <Route path="/business/signin" element={<BusinessSignIn />} />
               <Route path="/list-property" element={<ListProperty />} />
               <Route path="/forgot-password" element={<ForgotPassword />} />
               <Route path="/auth" element={<Navigate to="/signin" replace />} />
@@ -345,6 +351,11 @@ function AppContent() {
                   <MyTrips />
                 </ProtectedRoute>
               } />
+              <Route path="/business/dashboard" element={
+                <ProtectedRoute>
+                  <BusinessDashboard />
+                </ProtectedRoute>
+              } />
               
               <Route path="/ferry-tracking" element={<FerryTracking />} />
               <Route path="/about" element={<About />} />
@@ -358,6 +369,11 @@ function AppContent() {
         <Footer />
         <Suspense fallback={null}>
           <BackToTop />
+        </Suspense>
+        
+        {/* Global Floating Touristas AI Chat */}
+        <Suspense fallback={null}>
+          <TouristasAIChatFloating />
         </Suspense>
       </div>
     </>

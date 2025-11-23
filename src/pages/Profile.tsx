@@ -717,75 +717,76 @@ export default function Profile() {
                     </div>
                     
                     {/* Action Buttons */}
-                    <div className="flex flex-wrap gap-3">
+                    <div className="flex flex-wrap gap-2 sm:gap-3 w-full lg:w-auto">
                       <button 
                         onClick={() => setIsEditingProfile(true)}
-                        className="bg-gradient-to-r from-[#1E2E48] to-blue-600 text-white px-6 py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center gap-2"
+                        className="flex-1 sm:flex-none bg-gradient-to-r from-[#1E2E48] to-blue-600 text-white px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold shadow-lg hover:shadow-xl transform hover:scale-105 transition-all duration-300 flex items-center justify-center gap-2 text-sm sm:text-base"
                       >
                         <Edit3 className="w-4 h-4" />
-                        Edit Profile
+                        <span className="hidden sm:inline">Edit Profile</span>
+                        <span className="sm:hidden">Edit</span>
                       </button>
                       <button 
                         onClick={handleShare}
-                        className="bg-white border-2 border-gray-200 text-gray-700 px-6 py-3 rounded-xl font-semibold hover:border-gray-300 transition-colors flex items-center gap-2"
+                        className="flex-1 sm:flex-none bg-white border-2 border-gray-200 text-gray-700 px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:border-gray-300 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
                       >
                         <Share2 className="w-4 h-4" />
-                        Share
+                        <span className="hidden sm:inline">Share</span>
                       </button>
                       <button 
                         onClick={handleLogout}
-                        className="bg-white border-2 border-red-200 text-red-600 px-6 py-3 rounded-xl font-semibold hover:border-red-300 hover:bg-red-50 transition-colors flex items-center gap-2"
+                        className="flex-1 sm:flex-none bg-white border-2 border-red-200 text-red-600 px-4 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold hover:border-red-300 hover:bg-red-50 transition-colors flex items-center justify-center gap-2 text-sm sm:text-base"
                       >
                         <Settings className="w-4 h-4" />
-                        Logout
+                        <span className="hidden sm:inline">Logout</span>
                       </button>
                     </div>
                   </div>
 
                   {/* Enhanced Stats */}
-                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
-                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-6 rounded-2xl border border-blue-200/50">
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-blue-500 rounded-lg">
-                          <ImageIcon className="w-4 h-4 text-white" />
+                  <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 sm:gap-6">
+                    <div className="bg-gradient-to-br from-blue-50 to-cyan-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-blue-200/50">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                        <div className="p-1.5 sm:p-2 bg-blue-500 rounded-lg">
+                          <ImageIcon className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                         </div>
-                        <span className="text-sm font-semibold text-blue-700">Posts</span>
+                        <span className="text-xs sm:text-sm font-semibold text-blue-700">Posts</span>
                       </div>
-                      <div className="text-2xl font-bold text-blue-900">{stats?.postsCount || 0}</div>
-                      <div className="text-xs text-blue-600">+{Math.floor(Math.random() * 5) + 1} this month</div>
+                      <div className="text-xl sm:text-2xl font-bold text-blue-900">{stats?.postsCount || 0}</div>
+                      <div className="text-xs text-blue-600 hidden sm:block">+{Math.floor(Math.random() * 5) + 1} this month</div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-6 rounded-2xl border border-emerald-200/50">
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-emerald-500 rounded-lg">
-                          <Users className="w-4 h-4 text-white" />
+                    <div className="bg-gradient-to-br from-emerald-50 to-teal-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-emerald-200/50">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                        <div className="p-1.5 sm:p-2 bg-emerald-500 rounded-lg">
+                          <Users className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                         </div>
-                        <span className="text-sm font-semibold text-emerald-700">Followers</span>
+                        <span className="text-xs sm:text-sm font-semibold text-emerald-700">Followers</span>
                       </div>
-                      <div className="text-2xl font-bold text-emerald-900">{Math.floor(Math.random() * 500) + 200}</div>
-                      <div className="text-xs text-emerald-600">+{Math.floor(Math.random() * 20) + 5} this week</div>
+                      <div className="text-xl sm:text-2xl font-bold text-emerald-900">{Math.floor(Math.random() * 500) + 200}</div>
+                      <div className="text-xs text-emerald-600 hidden sm:block">+{Math.floor(Math.random() * 20) + 5} this week</div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-6 rounded-2xl border border-purple-200/50">
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-purple-500 rounded-lg">
-                          <Heart className="w-4 h-4 text-white" />
+                    <div className="bg-gradient-to-br from-purple-50 to-pink-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-purple-200/50">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                        <div className="p-1.5 sm:p-2 bg-purple-500 rounded-lg">
+                          <Heart className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                         </div>
-                        <span className="text-sm font-semibold text-purple-700">Following</span>
+                        <span className="text-xs sm:text-sm font-semibold text-purple-700">Following</span>
                       </div>
-                      <div className="text-2xl font-bold text-purple-900">{Math.floor(Math.random() * 300) + 150}</div>
-                      <div className="text-xs text-purple-600">Active connections</div>
+                      <div className="text-xl sm:text-2xl font-bold text-purple-900">{Math.floor(Math.random() * 300) + 150}</div>
+                      <div className="text-xs text-purple-600 hidden sm:block">Active connections</div>
                     </div>
 
-                    <div className="bg-gradient-to-br from-orange-50 to-red-50 p-6 rounded-2xl border border-orange-200/50">
-                      <div className="flex items-center gap-3 mb-2">
-                        <div className="p-2 bg-orange-500 rounded-lg">
-                          <Trophy className="w-4 h-4 text-white" />
+                    <div className="bg-gradient-to-br from-orange-50 to-red-50 p-4 sm:p-6 rounded-xl sm:rounded-2xl border border-orange-200/50">
+                      <div className="flex items-center gap-2 sm:gap-3 mb-2">
+                        <div className="p-1.5 sm:p-2 bg-orange-500 rounded-lg">
+                          <Trophy className="w-3 h-3 sm:w-4 sm:h-4 text-white" />
                         </div>
-                        <span className="text-sm font-semibold text-orange-700">Level</span>
+                        <span className="text-xs sm:text-sm font-semibold text-orange-700">Level</span>
                       </div>
-                      <div className="text-2xl font-bold text-orange-900">Pro</div>
-                      <div className="text-xs text-orange-600">Explorer status</div>
+                      <div className="text-xl sm:text-2xl font-bold text-orange-900">Pro</div>
+                      <div className="text-xs text-orange-600 hidden sm:block">Explorer status</div>
                     </div>
                   </div>
 
@@ -806,10 +807,10 @@ export default function Profile() {
           </div>
         </div>
 
-        {/* Enhanced Navigation Tabs */}
-        <div className="max-w-7xl mx-auto px-6 sm:px-8 lg:px-12 mt-8">
+          {/* Enhanced Navigation Tabs */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-12 mt-6 sm:mt-8">
           <div className="bg-white/90 backdrop-blur-md rounded-2xl shadow-xl border border-white/50 p-2">
-            <div className="flex overflow-x-auto scrollbar-hide">
+            <div className="flex overflow-x-auto scrollbar-hide gap-1 sm:gap-0">
               {[
                 { name: 'Overview', id: 'overview', icon: Target },
                 { name: 'Photos', id: 'photos', icon: CameraIcon, count: stats?.postsCount || 0 },
@@ -821,16 +822,16 @@ export default function Profile() {
                 <button
                   key={tab.name}
                   onClick={() => setActiveTab(tab.id)}
-                  className={`flex items-center gap-3 px-6 py-3 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap ${
+                  className={`flex items-center gap-2 sm:gap-3 px-3 sm:px-6 py-2 sm:py-3 rounded-xl font-semibold transition-all duration-300 whitespace-nowrap text-sm sm:text-base ${
                     activeTab === tab.id
                       ? 'bg-gradient-to-r from-[#1E2E48] to-blue-600 text-white shadow-lg' 
                       : 'text-gray-600 hover:text-blue-600 hover:bg-blue-50'
                   }`}
                 >
-                  <tab.icon className="w-5 h-5" />
-                  {tab.name}
+                  <tab.icon className="w-4 h-4 sm:w-5 sm:h-5" />
+                  <span className="hidden sm:inline">{tab.name}</span>
                   {tab.count !== undefined && (
-                    <span className={`px-2 py-1 rounded-full text-xs font-bold ${
+                    <span className={`px-1.5 sm:px-2 py-0.5 sm:py-1 rounded-full text-xs font-bold ${
                       activeTab === tab.id ? 'bg-white/20 text-white' : 'bg-blue-100 text-blue-600'
                     }`}>
                       {tab.count}

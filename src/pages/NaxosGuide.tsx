@@ -29,8 +29,8 @@ const NaxosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Naxos Travel Guide: Top Attractions, Beaches & Local Tips [2025 Update]",
-    description: "Discover the best of Naxos in 2025—top beaches, villages, hotels, and must-see sights like the Portara. Your perfect Greek island escape starts here.",
+    title: "Naxos Travel Guide: Top Attractions, Beaches & Local Tips [2026 Update]",
+    description: "Discover the best of Naxos in 2026—top beaches, villages, hotels, and must-see sights like the Portara. Your perfect Greek island escape starts here.",
     keywords: [
       'Naxos travel guide',
       'Naxos beaches',
@@ -137,16 +137,16 @@ const NaxosGuide: React.FC = () => {
               "@type": "Event",
               "name": "Naxos Festival",
               "description": "Cultural performances at the Bazeos Tower and other venues.",
-              "startDate": "2025-06-01",
-              "endDate": "2025-08-31",
+              "startDate": "2026-06-01",
+              "endDate": "2026-08-31",
               "location": "Naxos Island, Greece"
             },
             {
               "@type": "Event",
               "name": "Village Festivals (Panigiria)",
               "description": "Traditional celebrations with music, dance, and feasting in villages throughout the island.",
-              "startDate": "2025-06-01",
-              "endDate": "2025-08-31",
+              "startDate": "2026-06-01",
+              "endDate": "2026-08-31",
               "location": "Various villages across Naxos"
             }
           ],
@@ -154,8 +154,8 @@ const NaxosGuide: React.FC = () => {
             "@type": "OpeningHoursSpecification",
             "name": "Best Time to Visit",
             "description": "The best time to visit Naxos is during the shoulder seasons (April-May, September-October) when the weather is mild and there are fewer crowds.",
-            "validFrom": "2025-04-01",
-            "validThrough": "2025-10-31"
+            "validFrom": "2026-04-01",
+            "validThrough": "2026-10-31"
           }
         }}
       />

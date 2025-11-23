@@ -34,12 +34,10 @@ interface NavbarProps {
 interface NavItem {
   path: string;
   label: string;
-  icon?: React.ReactElement;
   megaMenu: boolean;
   children?: Array<{
     path: string;
     label: string;
-    icon: React.ReactElement;
     type?: 'guide' | 'island' | 'tool';
   }>;
 }
@@ -48,49 +46,46 @@ const navigationItems: NavItem[] = [
   {
     path: '/islands',
     label: 'Destinations',
-    icon: <Sun className="h-4 w-4" />,
     megaMenu: true,
     children: [
       // Travel Guides Section
-      { path: '/guides/santorini', label: 'Santorini Guide', type: 'guide', icon: <Sun className="w-4 h-4" /> },
-      { path: '/guides/mykonos', label: 'Mykonos Guide', type: 'guide', icon: <Sailboat className="w-4 h-4" /> },
-      { path: '/guides/naxos', label: 'Naxos Guide', type: 'guide', icon: <UtensilsCrossed className="w-4 h-4" /> },
-      { path: '/guides/paros', label: 'Paros Guide', type: 'guide', icon: <Compass className="w-4 h-4" /> },
-      { path: '/guides/sifnos', label: 'Sifnos Guide', type: 'guide', icon: <UtensilsCrossed className="w-4 h-4" /> },
-      { path: '/guides/ios', label: 'Ios Guide', type: 'guide', icon: <Sun className="w-4 h-4" /> },
+      { path: '/guides/santorini', label: 'Santorini Guide', type: 'guide' },
+      { path: '/guides/mykonos', label: 'Mykonos Guide', type: 'guide' },
+      { path: '/guides/naxos', label: 'Naxos Guide', type: 'guide' },
+      { path: '/guides/paros', label: 'Paros Guide', type: 'guide' },
+      { path: '/guides/sifnos', label: 'Sifnos Guide', type: 'guide' },
+      { path: '/guides/ios', label: 'Ios Guide', type: 'guide' },
       // Popular Islands Section
-      { path: '/islands/santorini', label: 'Santorini', type: 'island', icon: <Sun className="w-4 h-4" /> },
-      { path: '/islands/mykonos', label: 'Mykonos', type: 'island', icon: <Sailboat className="w-4 h-4" /> },
-      { path: '/islands/naxos', label: 'Naxos', type: 'island', icon: <UtensilsCrossed className="w-4 h-4" /> },
-      { path: '/islands/paros', label: 'Paros', type: 'island', icon: <Compass className="w-4 h-4" /> },
-      { path: '/islands/sifnos', label: 'Sifnos', type: 'island', icon: <UtensilsCrossed className="w-4 h-4" /> },
-      { path: '/islands/ios', label: 'Ios', type: 'island', icon: <Sun className="w-4 h-4" /> }
+      { path: '/islands/santorini', label: 'Santorini', type: 'island' },
+      { path: '/islands/mykonos', label: 'Mykonos', type: 'island' },
+      { path: '/islands/naxos', label: 'Naxos', type: 'island' },
+      { path: '/islands/paros', label: 'Paros', type: 'island' },
+      { path: '/islands/sifnos', label: 'Sifnos', type: 'island' },
+      { path: '/islands/ios', label: 'Ios', type: 'island' }
     ]
   },
   {
     path: '/plan',
     label: 'Plan Your Trip',
-    icon: <MapPin className="h-4 w-4" />,
     megaMenu: true,
     children: [
-      { path: '/touristas-ai', label: 'Touristas AI', type: 'tool', icon: <Sparkles className="w-4 h-4" /> },
-      { path: '/activities', label: 'Activities', type: 'tool', icon: <Compass className="w-4 h-4" /> },
-      { path: '/hotels', label: 'Hotels', type: 'tool', icon: <Hotel className="w-4 h-4" /> },
-      { path: '/ferry-tickets', label: 'Ferry Tickets', type: 'tool', icon: <Sailboat className="w-4 h-4" /> },
-      { path: '/ferry-guide', label: 'Ferry Guide', type: 'tool', icon: <Ship className="w-4 h-4" /> },
-      { path: '/flights', label: 'Flight Tickets', type: 'tool', icon: <Plane className="w-4 h-4" /> },
-      { path: '/rent-a-car', label: 'Rent a Car', type: 'tool', icon: <Car className="w-4 h-4" /> },
-      { path: '/weather', label: 'Weather Guide', type: 'tool', icon: <Cloud className="w-4 h-4" /> },
-      { path: '/budget-calculator', label: 'Budget Calculator', type: 'tool', icon: <Calculator className="w-4 h-4" /> },
-      { path: '/greek-phrases', label: 'Greek Phrases', type: 'tool', icon: <Globe className="w-4 h-4" /> },
-      { path: '/resources', label: 'Travel Resources', type: 'tool', icon: <HelpCircle className="w-4 h-4" /> },
-      { path: '/transfers', label: 'Taxi Transfers', type: 'tool', icon: <Car className="w-4 h-4" /> }
+      { path: '/touristas-ai', label: 'Touristas AI', type: 'tool' },
+      { path: '/activities', label: 'Activities', type: 'tool' },
+      { path: '/hotels', label: 'Hotels', type: 'tool' },
+      { path: '/ferry-tickets', label: 'Ferry Tickets', type: 'tool' },
+      { path: '/ferry-guide', label: 'Ferry Guide', type: 'tool' },
+      { path: '/flights', label: 'Flight Tickets', type: 'tool' },
+      { path: '/rent-a-car', label: 'Rent a Car', type: 'tool' },
+      { path: '/weather', label: 'Weather Guide', type: 'tool' },
+      { path: '/budget-calculator', label: 'Budget Calculator', type: 'tool' },
+      { path: '/greek-phrases', label: 'Greek Phrases', type: 'tool' },
+      { path: '/resources', label: 'Travel Resources', type: 'tool' },
+      { path: '/transfers', label: 'Taxi Transfers', type: 'tool' }
     ]
   },
   {
     path: '/blog',
     label: 'Travel Tips',
-    icon: <Compass className="h-4 w-4" />,
     megaMenu: false
   }
 ];
@@ -362,9 +357,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                                 className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
                                 onClick={() => setActiveMegaMenu(null)}
                               >
-                                <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                                  {child.icon}
-                                </span>
                                 <span>{child.label}</span>
                               </Link>
                             </li>
@@ -394,9 +386,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                                 className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
                                 onClick={() => setActiveMegaMenu(null)}
                               >
-                                <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                                  {child.icon}
-                                </span>
                                 <span>{child.label}</span>
                               </Link>
                             </li>
@@ -442,9 +431,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                                 className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
                                 onClick={() => setActiveMegaMenu(null)}
                               >
-                                <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                                  {child.icon}
-                                </span>
                                 <span>{child.label}</span>
                               </Link>
                             </li>
@@ -470,9 +456,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                             className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
                             onClick={() => setActiveMegaMenu(null)}
                           >
-                            <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                              <Ship className="w-4 h-4" />
-                            </span>
                             <span>Ferry Guide</span>
                           </Link>
                         </li>
@@ -482,9 +465,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                             className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
                             onClick={() => setActiveMegaMenu(null)}
                           >
-                            <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                              <Cloud className="w-4 h-4" />
-                            </span>
                             <span>Weather Guide</span>
                           </Link>
                         </li>
@@ -494,9 +474,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                             className="group flex items-center text-lg text-white/90 hover:text-white transition-colors"
                             onClick={() => setActiveMegaMenu(null)}
                           >
-                            <span className="mr-3 text-white/70 group-hover:text-white transform group-hover:scale-110 transition-all">
-                              <Wallet className="w-4 h-4" />
-                            </span>
                             <span>Budget Calculator</span>
                           </Link>
                         </li>
@@ -635,7 +612,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                           className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                           onClick={toggleMobileMenu}
                         >
-                          <span className="mr-3 text-primary-500">{child.icon}</span>
                           <span>{child.label}</span>
                         </Link>
                       ))}
@@ -662,7 +638,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                           className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                           onClick={toggleMobileMenu}
                         >
-                          <span className="mr-3 text-primary-500">{child.icon}</span>
                           <span>{child.label}</span>
                         </Link>
                       ))}
@@ -694,7 +669,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                           className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
                           onClick={toggleMobileMenu}
                         >
-                          <span className="mr-3 text-primary-500">{child.icon}</span>
                           <span>{child.label}</span>
                         </Link>
                       ))}
