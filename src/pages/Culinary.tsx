@@ -29,9 +29,18 @@ export default function Culinary() {
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
       <SEO 
-        title={`Cyclades Food & Dining Guide ${SITE_TAGLINE}`}
-        description="Discover the rich culinary heritage of the Cyclades islands. Find the best restaurants, local dishes, cooking classes, and food experiences."
+        title="Cyclades Food Guide 2025: Best Restaurants, Local Dishes & Wine"
+        description="Discover Cycladic cuisine: Sifnos pottery cooking, Naxos cheeses, Santorini wines, Mykonos seafood. Best tavernas, cooking classes & food tours on every island."
         ogImage="/images/culinary-hero.jpg"
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Food & Dining', url: '/culinary' }
+        ]}
+        faqs={[
+          { question: 'What food is Cyclades known for?', answer: 'Cycladic cuisine features fresh seafood, local cheeses (especially Naxos), fava, tomatokeftedes, moussaka, and island-specific specialties like mastelo in Sifnos.' },
+          { question: 'Which Cyclades island is best for food?', answer: 'Sifnos is Greece\'s culinary capital with traditional pottery cooking. Naxos is famous for potatoes and cheese. Santorini for wine and tomatoes.' },
+          { question: 'What wine comes from Cyclades?', answer: 'Santorini produces world-famous Assyrtiko wine. Try Vinsanto (dessert wine) and wines from volcanic vineyards. Local varieties also exist in Paros and Naxos.' }
+        ]}
       />
 
       {/* Hero Section */}

@@ -19,8 +19,8 @@ const KimolosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Kimolos Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Kimolos vacation with our comprehensive 2025 travel guide. Discover volcanic landscapes, pristine beaches, and authentic Greek island life on this hidden gem of the Western Cyclades.",
+    title: "Kimolos Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Kimolos vacation with our comprehensive 2026 travel guide. Discover volcanic landscapes, pristine beaches, and authentic Greek island life on this hidden gem of the Western Cyclades.",
     keywords: [
       'Kimolos travel guide',
       'Kimolos beaches',
@@ -71,42 +71,42 @@ const KimolosGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Specialties and delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -133,7 +133,7 @@ const KimolosGuide: React.FC = () => {
         <section className="mb-16">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
             <div>
-              <h2 className="text-3xl font-bold mb-6">Discover Kimolos</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Discover Kimolos</h2>
               <div className="prose max-w-none">
                 <p className="text-lg text-gray-700 leading-relaxed mb-4">
                   Kimolos is a hidden gem of the Western Cyclades, located just a stone's throw away from the more famous Milos. 
@@ -174,13 +174,13 @@ const KimolosGuide: React.FC = () => {
 
         {/* Quick Navigation */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Explore Kimolos</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Explore Kimolos</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.map((category, index) => (
               <a 
                 key={index}
                 href={category.link}
-                className="group bg-white rounded-lg shadow-md p-6 hover:bg-blue-500 transition-colors duration-300"
+                className="group bg-white rounded-lg shadow-md p-6 hover:bg-blue-50 dark:bg-cyan-600/100 transition-colors duration-300"
               >
                 <div className="flex items-center space-x-4">
                   <div className="group-hover:text-white transition-colors">
@@ -202,8 +202,8 @@ const KimolosGuide: React.FC = () => {
 
         {/* When to Visit Section */}
         <section id="when-to-visit" className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">When to Visit Kimolos</h2>
-          <div className="bg-white rounded-lg shadow-md p-6">
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">When to Visit Kimolos</h2>
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
             <p className="text-lg text-gray-700 leading-relaxed mb-4">
               The best time to visit Kimolos is from May to September when the weather is warm and sunny. 
               The peak tourist season is in July and August, but even then, Kimolos remains relatively uncrowded 
@@ -222,10 +222,10 @@ const KimolosGuide: React.FC = () => {
 
         {/* Photo Gallery Section */}
         <section id="gallery" className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Photo Gallery</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Photo Gallery</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {galleryImages.map((image, index) => (
-              <div key={index} className="overflow-hidden rounded-lg shadow-md">
+              <div key={index} className="overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src={image.src} 
                   alt={image.alt} 
@@ -242,7 +242,7 @@ const KimolosGuide: React.FC = () => {
             <div className="max-w-7xl mx-auto px-4 py-12">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div>
-                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Kimolos?</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Kimolos?</h2>
                   <p className="text-lg mb-6">
                     Plan your perfect getaway to this hidden gem of the Cyclades. Find the best accommodations
                     and discover how to reach this beautiful island.
@@ -250,7 +250,7 @@ const KimolosGuide: React.FC = () => {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a 
                       href="/hotels/" 
-                      className="bg-white text-blue-700 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium inline-block text-center transition-colors duration-300"
+                      className="bg-white text-blue-700 hover:bg-blue-50 dark:bg-cyan-600/10 px-6 py-3 rounded-lg font-medium inline-block text-center transition-colors duration-300"
                     >
                       Find Accommodations
                     </a>
@@ -279,3 +279,5 @@ const KimolosGuide: React.FC = () => {
 };
 
 export default KimolosGuide;
+
+

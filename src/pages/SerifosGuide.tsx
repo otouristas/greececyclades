@@ -17,6 +17,8 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
+import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
+import { siteLinks } from '../data/siteLinks';
 
 const SerifosGuide: React.FC = () => {
   const serifos = islandGuides.find(island => island.id === 'serifos');
@@ -26,8 +28,8 @@ const SerifosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Serifos Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Serifos vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. From rugged landscapes to pristine beaches and traditional villages.",
+    title: "Serifos Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Serifos vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities. From rugged landscapes to pristine beaches and traditional villages.",
     keywords: [
       'Serifos travel guide',
       'Serifos beaches',
@@ -82,42 +84,42 @@ const SerifosGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Traditional delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -128,14 +130,14 @@ const SerifosGuide: React.FC = () => {
   return (
     <>
       <SEO {...seoData} />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...serifos} />
         
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Serifos</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Serifos</h2>
               <p className="text-gray-700 leading-relaxed">
                 Serifos, with its rugged landscapes and authentic Cycladic charm, offers a peaceful escape from the more 
                 crowded Greek islands. Known for its rich mining history, stunning beaches, and the impressive hilltop 
@@ -168,14 +170,14 @@ const SerifosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
                 <a 
                   key={index}
                   href={category.link} 
-                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
                     {category.icon}
@@ -188,46 +190,46 @@ const SerifosGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Serifos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Serifos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">High Season</h3>
-                <p className="text-gray-600">July to August</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Perfect beach weather</li>
                   <li>• All facilities open</li>
                   <li>• Vibrant atmosphere</li>
                   <li>• Busier but still relaxed</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">May-June, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Pleasant weather</li>
                   <li>• Fewer tourists</li>
                   <li>• Better rates</li>
                   <li>• Ideal for hiking</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Spring</h3>
-                <p className="text-gray-600">April to May</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April to May</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Wildflowers blooming</li>
                   <li>• Mild temperatures</li>
                   <li>• Green landscapes</li>
                   <li>• Easter celebrations</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Water Temperature</h3>
-                <p className="text-gray-600">Best swimming months</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">Best swimming months</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• June: 22°C (72°F)</li>
                   <li>• July: 24°C (75°F)</li>
                   <li>• August: 25°C (77°F)</li>
@@ -239,9 +241,9 @@ const SerifosGuide: React.FC = () => {
           
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Charming Villages of Serifos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Charming Villages of Serifos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/serifos/villages/chora.jpg" 
@@ -265,7 +267,7 @@ const SerifosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/serifos/villages/livadi.jpg" 
@@ -289,7 +291,7 @@ const SerifosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/serifos/villages/megalo-livadi.jpg" 
@@ -313,7 +315,7 @@ const SerifosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/serifos/villages/panagia.jpg" 
@@ -341,9 +343,9 @@ const SerifosGuide: React.FC = () => {
           
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beautiful Beaches of Serifos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beautiful Beaches of Serifos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/serifos/beaches/psili-ammos.jpg" 
@@ -367,7 +369,7 @@ const SerifosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/serifos/beaches/livadakia.jpg" 
@@ -391,7 +393,7 @@ const SerifosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/serifos/beaches/ganema.jpg" 
@@ -415,7 +417,7 @@ const SerifosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/serifos/beaches/agios-sostis.jpg" 
@@ -439,7 +441,7 @@ const SerifosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/serifos/beaches/vagia.jpg" 
@@ -463,7 +465,7 @@ const SerifosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/serifos/beaches/kalo-ampeli.jpg" 
@@ -491,7 +493,7 @@ const SerifosGuide: React.FC = () => {
           
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine & Gastronomy</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine & Gastronomy</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-2">
                 <div className="prose prose-lg max-w-none">
@@ -557,7 +559,7 @@ const SerifosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <FaGlassCheers className="text-3xl text-blue-500 mb-4" />
                   <h3 className="text-xl font-semibold mb-4">Must-Try Experiences</h3>
@@ -587,21 +589,21 @@ const SerifosGuide: React.FC = () => {
                   <div className="mt-8">
                     <h3 className="text-xl font-semibold mb-4">Best Restaurants</h3>
                     <div className="space-y-3">
-                      <div className="p-3 bg-blue-50 rounded-lg">
+                      <div className="p-3 bg-blue-50 dark:bg-cyan-600/10 rounded-lg">
                         <h4 className="font-medium">Kyklopas</h4>
-                        <p className="text-sm text-gray-600">Traditional taverna in Chora with stunning views</p>
+                        <p className="text-sm text-gray-600 dark:text-white/60">Traditional taverna in Chora with stunning views</p>
                       </div>
-                      <div className="p-3 bg-blue-50 rounded-lg">
+                      <div className="p-3 bg-blue-50 dark:bg-cyan-600/10 rounded-lg">
                         <h4 className="font-medium">Aloni</h4>
-                        <p className="text-sm text-gray-600">Farm-to-table cuisine using local ingredients</p>
+                        <p className="text-sm text-gray-600 dark:text-white/60">Farm-to-table cuisine using local ingredients</p>
                       </div>
-                      <div className="p-3 bg-blue-50 rounded-lg">
+                      <div className="p-3 bg-blue-50 dark:bg-cyan-600/10 rounded-lg">
                         <h4 className="font-medium">Takis</h4>
-                        <p className="text-sm text-gray-600">Seafood specialist in Livadi port</p>
+                        <p className="text-sm text-gray-600 dark:text-white/60">Seafood specialist in Livadi port</p>
                       </div>
-                      <div className="p-3 bg-blue-50 rounded-lg">
+                      <div className="p-3 bg-blue-50 dark:bg-cyan-600/10 rounded-lg">
                         <h4 className="font-medium">Stamatis</h4>
-                        <p className="text-sm text-gray-600">Family-run taverna at Psili Ammos beach</p>
+                        <p className="text-sm text-gray-600 dark:text-white/60">Family-run taverna at Psili Ammos beach</p>
                       </div>
                     </div>
                   </div>
@@ -612,10 +614,10 @@ const SerifosGuide: React.FC = () => {
           
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in Serifos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Serifos</h2>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
                   <FaSwimmer className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-xl font-semibold">Water Activities</h3>
@@ -625,34 +627,34 @@ const SerifosGuide: React.FC = () => {
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
                       <p className="font-medium">Beach Hopping</p>
-                      <p className="text-sm text-gray-600">Explore the diverse beaches of Serifos, from organized sandy shores to secluded coves accessible only by boat or hiking trails.</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Explore the diverse beaches of Serifos, from organized sandy shores to secluded coves accessible only by boat or hiking trails.</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
                       <p className="font-medium">Snorkeling & Diving</p>
-                      <p className="text-sm text-gray-600">Discover the underwater world around Serifos, with crystal-clear waters, interesting rock formations, and diverse marine life.</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Discover the underwater world around Serifos, with crystal-clear waters, interesting rock formations, and diverse marine life.</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
                       <p className="font-medium">Boat Tours</p>
-                      <p className="text-sm text-gray-600">Take a boat tour around the island to visit inaccessible beaches, sea caves, and enjoy swimming in secluded bays.</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Take a boat tour around the island to visit inaccessible beaches, sea caves, and enjoy swimming in secluded bays.</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
                       <p className="font-medium">Fishing</p>
-                      <p className="text-sm text-gray-600">Join local fishermen for a traditional fishing experience or rent equipment for your own fishing adventure.</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Join local fishermen for a traditional fishing experience or rent equipment for your own fishing adventure.</p>
                     </div>
                   </li>
                 </ul>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
                   <FaHiking className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-xl font-semibold">Land Activities</h3>
@@ -662,52 +664,52 @@ const SerifosGuide: React.FC = () => {
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
                       <p className="font-medium">Hiking Trails</p>
-                      <p className="text-sm text-gray-600">Explore the extensive network of hiking paths that cross the island, offering stunning views and access to remote beaches and historical sites.</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Explore the extensive network of hiking paths that cross the island, offering stunning views and access to remote beaches and historical sites.</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
                       <p className="font-medium">Mining History Tour</p>
-                      <p className="text-sm text-gray-600">Visit the abandoned mining facilities and learn about Serifos' rich industrial heritage and the miners' strike of 1916.</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Visit the abandoned mining facilities and learn about Serifos' rich industrial heritage and the miners' strike of 1916.</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
                       <p className="font-medium">Village Exploration</p>
-                      <p className="text-sm text-gray-600">Wander through the narrow streets of Chora and other traditional villages, discovering local architecture, churches, and hidden squares.</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Wander through the narrow streets of Chora and other traditional villages, discovering local architecture, churches, and hidden squares.</p>
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
                       <p className="font-medium">Archaeological Sites</p>
-                      <p className="text-sm text-gray-600">Visit the Archaeological Museum in Chora and explore ancient ruins scattered around the island, including the White Tower and Cyclops' Throne.</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Visit the Archaeological Museum in Chora and explore ancient ruins scattered around the island, including the White Tower and Cyclops' Throne.</p>
                     </div>
                   </li>
                 </ul>
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
               <h3 className="text-xl font-semibold mb-4">Unique Experiences</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-4">
                   <h4 className="font-medium mb-2">Sunset at Chora Castle</h4>
-                  <p className="text-sm text-gray-600">Watch the sun set from the highest point of Chora, offering panoramic views of the Aegean Sea.</p>
+                  <p className="text-sm text-gray-600 dark:text-white/60">Watch the sun set from the highest point of Chora, offering panoramic views of the Aegean Sea.</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-4">
                   <h4 className="font-medium mb-2">Local Festivals</h4>
-                  <p className="text-sm text-gray-600">Experience traditional panigiri festivals with music, dancing, and local food, usually held during summer months.</p>
+                  <p className="text-sm text-gray-600 dark:text-white/60">Experience traditional panigiri festivals with music, dancing, and local food, usually held during summer months.</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-4">
                   <h4 className="font-medium mb-2">Cyclops' Throne</h4>
-                  <p className="text-sm text-gray-600">Hike to this mythical rock formation that, according to legend, was the throne of the Cyclops from Greek mythology.</p>
+                  <p className="text-sm text-gray-600 dark:text-white/60">Hike to this mythical rock formation that, according to legend, was the throne of the Cyclops from Greek mythology.</p>
                 </div>
-                <div className="bg-blue-50 rounded-lg p-4">
+                <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-4">
                   <h4 className="font-medium mb-2">Stargazing</h4>
-                  <p className="text-sm text-gray-600">With minimal light pollution, Serifos is perfect for observing the night sky, especially from remote beaches or hilltops.</p>
+                  <p className="text-sm text-gray-600 dark:text-white/60">With minimal light pollution, Serifos is perfect for observing the night sky, especially from remote beaches or hilltops.</p>
                 </div>
               </div>
             </div>
@@ -715,7 +717,7 @@ const SerifosGuide: React.FC = () => {
           
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Serifos Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Serifos Photo Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="relative overflow-hidden rounded-lg shadow-md aspect-w-4 aspect-h-3">
@@ -737,7 +739,7 @@ const SerifosGuide: React.FC = () => {
             <div className="container mx-auto px-6 py-12 text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Serifos?</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Serifos?</h2>
                   <p className="text-lg mb-6">
                     Book your accommodations, tours, and activities for an unforgettable Greek island getaway.
                     Serifos offers the perfect blend of authentic Cycladic charm, beautiful beaches, and rich history.
@@ -771,6 +773,11 @@ const SerifosGuide: React.FC = () => {
             </div>
           </section>
           
+          <RelatedDestinationsSection groups={[
+            siteLinks.popularIslands,
+            siteLinks.topActivities,
+            siteLinks.travelServices
+          ]} />
         </div>
       </div>
     </>
@@ -778,3 +785,5 @@ const SerifosGuide: React.FC = () => {
 };
 
 export default SerifosGuide;
+
+

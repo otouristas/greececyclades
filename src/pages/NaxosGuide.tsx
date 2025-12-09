@@ -20,6 +20,8 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
+import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
+import { siteLinks } from '../data/siteLinks';
 
 const NaxosGuide: React.FC = () => {
   const naxos = islandGuides.find(island => island.id === 'naxos');
@@ -159,14 +161,14 @@ const NaxosGuide: React.FC = () => {
           }
         }}
       />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...naxos} />
         
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Naxos</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Naxos</h2>
               <p className="text-gray-700 leading-relaxed">
                 Naxos, the largest and most fertile island of the Cyclades, offers a perfect blend of ancient history, 
                 traditional mountain villages, and stunning beaches. With its rich mythology as the childhood home of Zeus 
@@ -199,60 +201,60 @@ const NaxosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               <a 
                 href="#villages" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaMapMarkedAlt className="text-blue-500" />
+                  <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">Villages</span>
               </a>
               <a 
                 href="#beaches" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaUmbrellaBeach className="text-blue-500" />
+                  <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">Beaches</span>
               </a>
               <a 
                 href="#dining" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaUtensils className="text-blue-500" />
+                  <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">Local Cuisine</span>
               </a>
               <a 
                 href="#activities" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaRoute className="text-blue-500" />
+                  <FaRoute className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">Activities</span>
               </a>
               <a 
                 href="#gallery" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaCameraRetro className="text-blue-500" />
+                  <FaCameraRetro className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">Photo Gallery</span>
               </a>
               <a 
                 href="#when-to-visit" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaCalendarAlt className="text-blue-500" />
+                  <FaCalendarAlt className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">When to Visit</span>
               </a>
@@ -261,9 +263,9 @@ const NaxosGuide: React.FC = () => {
 
           {/* History & Geology Section */}
           <section id="history" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">History & Culture</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">History & Culture</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-8 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaHistory className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-2xl font-semibold">Ancient Heritage</h3>
@@ -278,13 +280,13 @@ const NaxosGuide: React.FC = () => {
                   temple of Apollo from 530 BC. This massive marble doorway stands as a testament to the island's 
                   ancient significance and greets visitors as they enter the harbor.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">
                   Throughout its history, Naxos has been influenced by various civilizations including the Minoans, 
                   Mycenaeans, Venetians, and Ottomans. The Venetian period (1207-1566) left a particularly strong mark, 
                   evident in the Kastro area of Naxos Town and the defensive towers scattered across the island.
                 </p>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-8 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaLeaf className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-2xl font-semibold">Cultural Landscape</h3>
@@ -299,7 +301,7 @@ const NaxosGuide: React.FC = () => {
                   Naxian marble was used for sculptures and buildings throughout the ancient Greek world. Unfinished 
                   kouros statues can still be seen lying in ancient quarries at Apollonas and Melanes.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">
                   Naxos maintains strong cultural traditions, with local festivals (panigiria) celebrating patron 
                   saints in villages throughout the summer. These events feature traditional music, dance, and 
                   feasting, offering visitors an authentic glimpse into Cycladic culture.
@@ -310,13 +312,13 @@ const NaxosGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Naxos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Naxos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Peak Season</h3>
-                <p className="text-gray-600">June to September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">June to September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Perfect weather (25-30°C)</li>
                   <li>• All attractions open</li>
                   <li>• Bustling atmosphere</li>
@@ -325,11 +327,11 @@ const NaxosGuide: React.FC = () => {
                 </ul>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">April-May, October</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April-May, October</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Mild weather (18-25°C)</li>
                   <li>• Fewer crowds</li>
                   <li>• Better prices</li>
@@ -338,11 +340,11 @@ const NaxosGuide: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Best for Photos</h3>
-                <p className="text-gray-600">May, September-October</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May, September-October</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Clear skies</li>
                   <li>• Perfect lighting</li>
                   <li>• Spring flowers (May)</li>
@@ -351,11 +353,11 @@ const NaxosGuide: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaRoute className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Best for Activities</h3>
-                <p className="text-gray-600">May-June, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Ideal hiking weather</li>
                   <li>• Perfect for windsurfing</li>
                   <li>• Village festivals</li>
@@ -364,32 +366,32 @@ const NaxosGuide: React.FC = () => {
                 </ul>
               </div>
             </div>
-            <div className="mt-8 bg-blue-50 p-6 rounded-lg">
+            <div className="mt-8 bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
               <h4 className="font-semibold text-lg mb-2">Seasonal Highlights</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h5 className="font-medium text-blue-800">Spring (April-May)</h5>
+                  <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Spring (April-May)</h5>
                   <p className="text-gray-700 text-sm">
                     The island blooms with wildflowers, and the landscape turns lush green. Easter celebrations 
                     offer a glimpse into local traditions with processions and special ceremonies.
                   </p>
                 </div>
                 <div>
-                  <h5 className="font-medium text-blue-800">Summer (June-August)</h5>
+                  <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Summer (June-August)</h5>
                   <p className="text-gray-700 text-sm">
                     Village festivals (panigiria) take place throughout the island. The Naxos Festival brings 
                     cultural performances to the Bazeos Tower and other venues.
                   </p>
                 </div>
                 <div>
-                  <h5 className="font-medium text-blue-800">Autumn (September-October)</h5>
+                  <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Autumn (September-October)</h5>
                   <p className="text-gray-700 text-sm">
                     Harvest season brings special events and the chance to participate in traditional agricultural activities. 
                     The sea remains warm enough for swimming while the crowds diminish.
                   </p>
                 </div>
                 <div>
-                  <h5 className="font-medium text-blue-800">Winter (November-March)</h5>
+                  <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Winter (November-March)</h5>
                   <p className="text-gray-700 text-sm">
                     A quiet, authentic experience with mostly locals. The island turns green, and while some 
                     businesses close, you'll experience the true character of Naxos.
@@ -401,9 +403,9 @@ const NaxosGuide: React.FC = () => {
 
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Must-Visit Villages</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Must-Visit Villages</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/chora.jpg" 
@@ -426,7 +428,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/apiranthos.jpg" 
@@ -449,7 +451,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/halki.jpg" 
@@ -472,7 +474,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/filoti.jpg" 
@@ -495,9 +497,9 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-8 bg-blue-50 p-6 rounded-lg">
+            <div className="mt-8 bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
               <h4 className="font-semibold text-lg mb-2">Village Hopping Tips</h4>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-gray-700 dark:text-white/80">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
                   <span>Rent a car to explore multiple villages in one day - most are within 30-45 minutes of each other</span>
@@ -520,9 +522,9 @@ const NaxosGuide: React.FC = () => {
 
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Stunning Beaches</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Stunning Beaches</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/plaka-beach.jpg" 
@@ -549,7 +551,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/agios-prokopios.jpg" 
@@ -576,7 +578,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/agia-anna.jpg" 
@@ -603,7 +605,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/mikri-vigla.jpg" 
@@ -630,7 +632,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/aliko.jpg" 
@@ -656,7 +658,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/apollonas.jpg" 
@@ -683,9 +685,9 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-8 bg-blue-50 p-6 rounded-lg">
+            <div className="mt-8 bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
               <h4 className="font-semibold text-lg mb-2">Beach Tips</h4>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-gray-700 dark:text-white/80">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
                   <span>The west coast beaches are more organized and accessible from Naxos Town</span>
@@ -708,9 +710,9 @@ const NaxosGuide: React.FC = () => {
 
           {/* Local Cuisine Section */}
           <section id="dining" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine & Wine</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine & Wine</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-8 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaUtensils className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-2xl font-semibold">Naxian Specialties</h3>
@@ -748,12 +750,12 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-8 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaWineGlass className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-2xl font-semibold">Must-Try Dishes</h3>
                 </div>
-                <ul className="space-y-3 text-gray-600">
+                <ul className="space-y-3 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
@@ -795,7 +797,7 @@ const NaxosGuide: React.FC = () => {
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/naxian-cheese.jpg" 
@@ -817,7 +819,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/kitron.jpg" 
@@ -840,7 +842,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/naxos/taverna.jpg" 
@@ -862,9 +864,9 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
             </div>
-            <div className="mt-8 bg-blue-50 p-6 rounded-lg">
+            <div className="mt-8 bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
               <h4 className="font-semibold text-lg mb-2">Dining Tips</h4>
-              <ul className="space-y-2 text-gray-700">
+              <ul className="space-y-2 text-gray-700 dark:text-white/80">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
                   <span>Look for the "local products" sign in restaurants for authentic Naxian cuisine</span>
@@ -887,7 +889,7 @@ const NaxosGuide: React.FC = () => {
 
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Photo Gallery</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
                 <div 
@@ -908,9 +910,9 @@ const NaxosGuide: React.FC = () => {
 
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Top Activities</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Top Activities</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
                   <FaWater className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-xl font-semibold">Water Sports</h3>
@@ -926,7 +928,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
                   <FaHiking className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-xl font-semibold">Hiking Trails</h3>
@@ -942,7 +944,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
                   <FaSwimmer className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-xl font-semibold">Swimming & Snorkeling</h3>
@@ -958,7 +960,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
                   <FaHotel className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-xl font-semibold">Cultural Experiences</h3>
@@ -974,7 +976,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
                   <FaGlassCheers className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-xl font-semibold">Food & Wine Tours</h3>
@@ -990,7 +992,7 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
                   <FaShip className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-xl font-semibold">Island Hopping</h3>
@@ -1012,7 +1014,7 @@ const NaxosGuide: React.FC = () => {
           <section id="cta" className="mb-16 bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow-md overflow-hidden">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="p-8 md:p-12">
-                <h2 className="text-3xl font-bold mb-4">Ready to Experience Naxos?</h2>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Naxos?</h2>
                 <p className="text-lg mb-6">
                   Book your accommodations, tours, and activities for an unforgettable Greek island getaway.
                   Discover the authentic charm, stunning landscapes, and rich traditions of this 
@@ -1045,6 +1047,12 @@ const NaxosGuide: React.FC = () => {
               </div>
             </div>
           </section>
+
+          <RelatedDestinationsSection groups={[
+            siteLinks.popularIslands,
+            siteLinks.topActivities,
+            siteLinks.travelServices
+          ]} />
         </div>
       </div>
     </>
@@ -1052,3 +1060,5 @@ const NaxosGuide: React.FC = () => {
 };
 
 export default NaxosGuide;
+
+

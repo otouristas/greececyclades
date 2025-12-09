@@ -13,7 +13,7 @@ robots: index,follow
 
 # Cyclades Ferry Tickets – The Definitive Booking & Travel Resource
 
-Welcome to your one-stop hub for sailing the Cyclades archipelago. All data on this page—routes, prices, and logistics—updates in real time via [**Ferryscanner®**](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/JTR/date/2025-06-03), covering 4,500 routes and 125 ferry operators.
+Welcome to your one-stop hub for sailing the Cyclades archipelago. All data on this page—routes, prices, and logistics—updates in real time via [**Ferryscanner®**](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/JTR/date/2026-06-03), covering 4,500 routes and 125 ferry operators.
 
 ---
 
@@ -32,7 +32,7 @@ Welcome to your one-stop hub for sailing the Cyclades archipelago. All data on t
 ## 2. Book Instantly
 
 Start searching now via Ferryscanner:  
-👉 [Search Ferries](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/JTR/date/2025-06-03)
+👉 [Search Ferries](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/JTR/date/2026-06-03)
 
 ---
 
@@ -40,12 +40,12 @@ Start searching now via Ferryscanner:
 
 | From | To | Duration | From (€) | Type | Book |
 |------|----|----------|----------|------|------|
-| Piraeus | Santorini | 5–8 h | 40 | High-speed / Conventional | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/JTR/date/2025-06-03) |
-| Piraeus | Mykonos | 3–5 h | 35 | High-speed | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/JMK/date/2025-06-03) |
-| Rafina | Mykonos | 2–5 h | 30 | High-speed | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/RAF/arr/JMK/date/2025-06-03) |
-| Piraeus | Naxos | 4–6 h | 38 | High-speed / Conventional | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/JNX/date/2025-06-03) |
-| Piraeus | Paros | 3–5 h | 32 | High-speed / Conventional | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/PRX/date/2025-06-03) |
-| Mykonos | Santorini | 2–3 h | 25 | Catamaran | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/JMK/arr/JTR/date/2025-06-03) |
+| Piraeus | Santorini | 5–8 h | 40 | High-speed / Conventional | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/JTR/date/2026-06-03) |
+| Piraeus | Mykonos | 3–5 h | 35 | High-speed | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/JMK/date/2026-06-03) |
+| Rafina | Mykonos | 2–5 h | 30 | High-speed | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/RAF/arr/JMK/date/2026-06-03) |
+| Piraeus | Naxos | 4–6 h | 38 | High-speed / Conventional | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/JNX/date/2026-06-03) |
+| Piraeus | Paros | 3–5 h | 32 | High-speed / Conventional | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/PIR/arr/PRX/date/2026-06-03) |
+| Mykonos | Santorini | 2–3 h | 25 | Catamaran | [Book Now](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN#search/dep/JMK/arr/JTR/date/2026-06-03) |
 
 More routes → [Full List of Connections](https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN)
 

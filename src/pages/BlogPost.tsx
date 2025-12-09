@@ -120,53 +120,28 @@ export default function BlogPost() {
     </div>
   );
 
-  const RelatedContent = () => {
-    const relatedPosts = post.relatedPosts?.map(slug => 
-      blogPosts.find(p => p.id === slug || p.slug === slug)
-    ).filter(Boolean) || [];
-
-    return (
-      <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
-        <h3 className="text-lg font-bold text-gray-900 mb-4">Related Content</h3>
-        <div className="space-y-4">
-          {relatedPosts.length > 0 && (
-            <div className="mb-4">
-              <h4 className="text-sm font-semibold text-gray-700 mb-2">Related Articles</h4>
-              {relatedPosts.map((relatedPost) => (
-                <Link 
-                  key={relatedPost!.id}
-                  to={`/blog/${relatedPost!.slug}`}
-                  className="flex items-start group mb-3"
-                >
-                  <div className="flex-1">
-                    <span className="text-gray-900 group-hover:text-blue-600 font-medium block">
-                      {relatedPost!.title}
-                    </span>
-                    <p className="text-sm text-gray-500">{relatedPost!.description.substring(0, 100)}...</p>
-                  </div>
-                </Link>
-              ))}
+  const RelatedContent = () => (
+    <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
+      <h3 className="text-lg font-bold text-gray-900 mb-4">Related Content</h3>
+      <div className="space-y-4">
+        {post.relatedIslands?.map((island) => (
+          <Link 
+            key={island}
+            to={`/islands/${island}`}
+            className="flex items-start group"
+          >
+            <MapPin className="w-4 h-4 mt-1 mr-2 text-gray-500 group-hover:text-blue-600" />
+            <div>
+              <span className="text-gray-900 group-hover:text-blue-600 font-medium capitalize">
+                {island.replace(/-/g, ' ')} Island Guide
+              </span>
+              <p className="text-sm text-gray-500">Complete travel guide</p>
             </div>
-          )}
-          {post.relatedIslands?.map((island) => (
-            <Link 
-              key={island}
-              to={`/guides/${island.toLowerCase()}`}
-              className="flex items-start group"
-            >
-              <MapPin className="w-4 h-4 mt-1 mr-2 text-gray-500 group-hover:text-blue-600" />
-              <div>
-                <span className="text-gray-900 group-hover:text-blue-600 font-medium capitalize">
-                  {island.replace(/-/g, ' ')} Island Guide
-                </span>
-                <p className="text-sm text-gray-500">Complete travel guide</p>
-              </div>
-            </Link>
-          ))}
-        </div>
+          </Link>
+        ))}
       </div>
-    );
-  };
+    </div>
+  );
 
   const PopularTags = () => (
     <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
@@ -243,7 +218,7 @@ export default function BlogPost() {
         <div className="relative h-[50vh] pt-20">
           <img
             src={post.featuredImage}
-            alt={`${post.title} - Featured image showing Cyclades islands Greece`}
+            alt={post.title}
             className="absolute inset-0 w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-b from-black/60 to-black/30" />
@@ -289,40 +264,37 @@ export default function BlogPost() {
               </article>
 
               {/* Related Posts */}
-              {post.relatedPosts && post.relatedPosts.length > 0 && (
-                <div className="mt-12">
-                  <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Posts</h2>
-                  <div className="grid gap-6 md:grid-cols-2">
-                    {post.relatedPosts
-                      .map(slug => blogPosts.find(p => p.id === slug || p.slug === slug))
-                      .filter(Boolean)
-                      .slice(0, 4)
-                      .map(relatedPost => (
-                        <Link
-                          key={relatedPost!.id}
-                          to={`/blog/${relatedPost!.slug}`}
-                          className="block group"
-                        >
-                          <div className="bg-white rounded-xl shadow-sm overflow-hidden">
-                            <img
-                              src={relatedPost!.featuredImage}
-                              alt={`${relatedPost!.title} - Related article about Cyclades islands Greece`}
-                              className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
-                            />
-                            <div className="p-6">
-                              <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
-                                {relatedPost!.title}
-                              </h3>
-                              <p className="text-gray-600 mt-2 line-clamp-2">
-                                {relatedPost!.description}
-                              </p>
-                            </div>
+              <div className="mt-12">
+                <h2 className="text-2xl font-bold text-gray-900 mb-6">Related Posts</h2>
+                <div className="grid gap-6 md:grid-cols-2">
+                  {blogPosts
+                    .filter(p => p.id !== post.id)
+                    .slice(0, 2)
+                    .map(relatedPost => (
+                      <Link
+                        key={relatedPost.id}
+                        to={`/blog/${relatedPost.slug}`}
+                        className="block group"
+                      >
+                        <div className="bg-white rounded-xl shadow-sm overflow-hidden">
+                          <img
+                            src={relatedPost.featuredImage}
+                            alt={relatedPost.title}
+                            className="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                          />
+                          <div className="p-6">
+                            <h3 className="text-xl font-bold text-gray-900 group-hover:text-blue-600 transition-colors">
+                              {relatedPost.title}
+                            </h3>
+                            <p className="text-gray-600 mt-2 line-clamp-2">
+                              {relatedPost.description}
+                            </p>
                           </div>
-                        </Link>
-                      ))}
-                  </div>
+                        </div>
+                      </Link>
+                    ))}
                 </div>
-              )}
+              </div>
             </div>
 
             {/* Sidebar */}

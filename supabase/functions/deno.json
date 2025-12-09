@@ -1,0 +1,36 @@
+{
+  "nodeModulesDir": "auto",
+  "lock": false,
+  "unstable": ["kv", "worker-options"],
+  "tasks": {
+    "start": "deno run --allow-all --watch=static/,routes/ dev.ts"
+  },
+  "compilerOptions": {
+    "jsx": "react-jsx",
+    "jsxImportSource": "react",
+    "lib": ["deno.window", "dom"],
+    "strict": false,
+    "noImplicitAny": false,
+    "strictNullChecks": false,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "noImplicitThis": false,
+    "useUnknownInCatchVariables": false
+  },
+  "imports": {
+    "@supabase/supabase-js": "https://esm.sh/@supabase/supabase-js@2",
+    "resend": "npm:resend@2.0.0",
+    "apify-client": "npm:apify-client@2.20.0",
+    "std/": "https://deno.land/std@0.168.0/"
+  },
+  "lint": {
+    "include": ["functions/"],
+    "exclude": ["node_modules/"]
+  },
+  "fmt": {
+    "include": ["functions/"],
+    "lineWidth": 100,
+    "indentWidth": 2,
+    "singleQuote": false
+  }
+}

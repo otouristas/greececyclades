@@ -11,6 +11,8 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { cyclades } from '../data/islandsData';
+import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
+import { siteLinks } from '../data/siteLinks';
 
 const TinosGuide: React.FC = () => {
   const tinos = cyclades.find(island => island.slug === 'tinos');
@@ -20,8 +22,8 @@ const TinosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Tinos Travel Guide 2025 - Religious Heritage & Marble Villages",
-    description: "Plan your perfect Tinos vacation with our comprehensive 2025 travel guide. Discover religious sites, marble villages, beautiful beaches, and authentic Greek culture.",
+    title: "Tinos Travel Guide 2026 - Religious Heritage & Marble Villages",
+    description: "Plan your perfect Tinos vacation with our comprehensive 2026 travel guide. Discover religious sites, marble villages, beautiful beaches, and authentic Greek culture.",
     keywords: [
       'Tinos travel guide',
       'Church of Panagia Evangelistria',
@@ -76,42 +78,42 @@ const TinosGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Local delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -131,14 +133,14 @@ const TinosGuide: React.FC = () => {
   return (
     <>
       <SEO {...seoData} />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...heroProps} />
         
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Tinos</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Tinos</h2>
               <p className="text-gray-700 leading-relaxed">
                 Tinos, a spiritual island in the heart of the Cyclades, is renowned for its religious significance 
                 and rich artistic heritage. Home to the Church of Panagia Evangelistria, one of Greece's most important 
@@ -171,21 +173,21 @@ const TinosGuide: React.FC = () => {
 
           {/* Quick Navigation Section */}
           <section id="quick-nav" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Explore Tinos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Explore Tinos</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {categories.map((category, index) => (
                 <a 
                   key={index} 
                   href={category.link} 
-                  className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105 hover:shadow-lg"
+                  className="bg-white dark:bg-dark-card rounded-xl shadow-md p-6 transition-transform hover:scale-105 hover:shadow-lg"
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="rounded-full bg-blue-50 p-3">
+                    <div className="rounded-full bg-blue-50 dark:bg-cyan-600/10 p-3">
                       {category.icon}
                     </div>
                     <div>
                       <h3 className="font-bold text-lg text-gray-900 mb-1">{category.title}</h3>
-                      <p className="text-gray-600">{category.description}</p>
+                      <p className="text-gray-600 dark:text-white/60">{category.description}</p>
                     </div>
                   </div>
                 </a>
@@ -195,8 +197,8 @@ const TinosGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Tinos</h2>
-            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Tinos</h2>
+            <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="p-8">
                   <div className="flex items-center mb-4">
@@ -208,20 +210,20 @@ const TinosGuide: React.FC = () => {
                   </p>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-medium text-gray-900">Summer (June to August)</h4>
-                      <p className="text-gray-600">Hot and dry with temperatures around 25-30°C. August 15th is the major religious celebration of the Dormition of the Virgin Mary, attracting thousands of pilgrims.</p>
+                      <h4 className="font-medium text-gray-900 dark:text-white">Summer (June to August)</h4>
+                      <p className="text-gray-600 dark:text-white/60">Hot and dry with temperatures around 25-30°C. August 15th is the major religious celebration of the Dormition of the Virgin Mary, attracting thousands of pilgrims.</p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">Spring (April to May)</h4>
-                      <p className="text-gray-600">Mild temperatures (18-24°C) with blooming wildflowers. Perfect for hiking and exploring villages.</p>
+                      <h4 className="font-medium text-gray-900 dark:text-white">Spring (April to May)</h4>
+                      <p className="text-gray-600 dark:text-white/60">Mild temperatures (18-24°C) with blooming wildflowers. Perfect for hiking and exploring villages.</p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">Fall (September to October)</h4>
-                      <p className="text-gray-600">Warm sea temperatures and fewer tourists. Ideal for a more authentic experience.</p>
+                      <h4 className="font-medium text-gray-900 dark:text-white">Fall (September to October)</h4>
+                      <p className="text-gray-600 dark:text-white/60">Warm sea temperatures and fewer tourists. Ideal for a more authentic experience.</p>
                     </div>
                     <div>
-                      <h4 className="font-medium text-gray-900">Winter (November to March)</h4>
-                      <p className="text-gray-600">Quiet and authentic but with limited ferry connections and some businesses closed.</p>
+                      <h4 className="font-medium text-gray-900 dark:text-white">Winter (November to March)</h4>
+                      <p className="text-gray-600 dark:text-white/60">Quiet and authentic but with limited ferry connections and some businesses closed.</p>
                     </div>
                   </div>
                 </div>
@@ -238,8 +240,8 @@ const TinosGuide: React.FC = () => {
 
           {/* Transportation Section */}
           <section id="transport" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">How to Get to Tinos</h2>
-            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">How to Get to Tinos</h2>
+            <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="relative h-full min-h-[300px]">
                   <img 
@@ -252,7 +254,7 @@ const TinosGuide: React.FC = () => {
                   <div className="space-y-6">
                     <div>
                       <h3 className="text-xl font-semibold mb-2">By Ferry</h3>
-                      <p className="text-gray-700">
+                      <p className="text-gray-700 dark:text-white/80">
                         Tinos is well-connected to the mainland and other islands by ferry. Regular connections are available from:
                       </p>
                       <ul className="list-disc list-inside mt-2 text-gray-700 space-y-1">
@@ -267,7 +269,7 @@ const TinosGuide: React.FC = () => {
                     </div>
                     <div>
                       <h3 className="text-xl font-semibold mb-2">Local Transportation</h3>
-                      <p className="text-gray-700">
+                      <p className="text-gray-700 dark:text-white/80">
                         On the island, transportation options include:
                       </p>
                       <ul className="list-disc list-inside mt-2 text-gray-700 space-y-1">
@@ -277,8 +279,8 @@ const TinosGuide: React.FC = () => {
                         <li>Organized tours to main attractions</li>
                       </ul>
                     </div>
-                    <div className="bg-blue-50 p-4 rounded-lg">
-                      <p className="text-sm text-blue-800">
+                    <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
+                      <p className="text-sm text-blue-800 dark:text-cyclades-turquoise">
                         <strong>Tip:</strong> If you plan to visit during the August 15th celebration, book your ferry tickets and accommodation well in advance.
                       </p>
                     </div>
@@ -290,9 +292,9 @@ const TinosGuide: React.FC = () => {
 
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Villages of Tinos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Villages of Tinos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/tinos/pyrgos.jpg" 
@@ -301,7 +303,7 @@ const TinosGuide: React.FC = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">Pyrgos</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Pyrgos</h3>
                   <p className="text-gray-700 mb-4">
                     The marble village of Pyrgos is the center of Tinos' marble craftsmanship tradition. 
                     Home to the School of Fine Arts, the village features marble details on every building, 
@@ -311,7 +313,7 @@ const TinosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/tinos/volax.jpg" 
@@ -320,7 +322,7 @@ const TinosGuide: React.FC = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">Volax</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Volax</h3>
                   <p className="text-gray-700 mb-4">
                     Set in a lunar-like landscape surrounded by round granite boulders, Volax is one of the most 
                     unique villages in Greece. The village is known for its traditional basket weaving and the 
@@ -333,9 +335,9 @@ const TinosGuide: React.FC = () => {
 
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beaches in Tinos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beaches in Tinos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/tinos/kolympithra.jpg" 
@@ -344,7 +346,7 @@ const TinosGuide: React.FC = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">Kolympithra</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Kolympithra</h3>
                   <p className="text-gray-700 mb-4">
                     A beautiful bay with two sandy beaches separated by a small peninsula. 
                     The northern beach is popular with surfers due to its consistent winds, 
@@ -353,7 +355,7 @@ const TinosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/tinos/agios-ioannis.jpg" 
@@ -362,7 +364,7 @@ const TinosGuide: React.FC = () => {
                   />
                 </div>
                 <div className="p-6">
-                  <h3 className="text-xl font-bold mb-2">Agios Ioannis</h3>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Agios Ioannis</h3>
                   <p className="text-gray-700 mb-4">
                     A long, sandy beach with crystal-clear waters, located near the village of Porto. 
                     It's well-organized with sunbeds, umbrellas, and beach bars, making it perfect for families.
@@ -374,12 +376,12 @@ const TinosGuide: React.FC = () => {
 
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in Tinos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Tinos</h2>
             <div className="space-y-8">
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="p-8">
-                    <h3 className="text-xl font-bold mb-4">Visit the Church of Panagia Evangelistria</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Visit the Church of Panagia Evangelistria</h3>
                     <p className="text-gray-700 mb-4">
                       The most important religious site in Tinos, this church houses the miraculous icon of the Virgin Mary. 
                       Thousands of pilgrims visit annually, with many crawling the uphill path from the port to the church 
@@ -402,7 +404,7 @@ const TinosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="relative h-full min-h-[300px] order-2 lg:order-1">
                     <img 
@@ -412,7 +414,7 @@ const TinosGuide: React.FC = () => {
                     />
                   </div>
                   <div className="p-8 order-1 lg:order-2">
-                    <h3 className="text-xl font-bold mb-4">Explore the Dovecotes</h3>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Explore the Dovecotes</h3>
                     <p className="text-gray-700 mb-4">
                       Tinos is famous for its ornate dovecotes, with over 1,000 scattered across the island. 
                       These architectural marvels combine functionality with artistic expression, featuring 
@@ -432,10 +434,10 @@ const TinosGuide: React.FC = () => {
 
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Tinos Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Tinos Photo Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
-                <div key={index} className="bg-white rounded-lg overflow-hidden shadow-md">
+                <div key={index} className="bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <div className="aspect-w-16 aspect-h-12">
                     <img 
                       src={image.src} 
@@ -444,7 +446,7 @@ const TinosGuide: React.FC = () => {
                     />
                   </div>
                   <div className="p-3">
-                    <p className="text-sm text-gray-600">{image.alt}</p>
+                    <p className="text-sm text-gray-600 dark:text-white/60">{image.alt}</p>
                   </div>
                 </div>
               ))}
@@ -460,7 +462,7 @@ const TinosGuide: React.FC = () => {
                   <p className="text-white/90 mb-6">
                     Plan your perfect getaway to this island of religious heritage, marble villages, and beautiful beaches.
                   </p>
-                  <div className="bg-blue-500/30 rounded-lg p-4 mb-6 inline-block w-auto">
+                  <div className="bg-blue-50 dark:bg-cyan-600/100/30 rounded-lg p-4 mb-6 inline-block w-auto">
                     <span className="text-white font-medium flex items-center">
                       <FaCalendarAlt className="mr-2" />
                       Best time to visit: April to October
@@ -469,13 +471,13 @@ const TinosGuide: React.FC = () => {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a 
                       href="/hotels/" 
-                      className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-700 rounded-lg font-medium hover:bg-blue-50 transition-colors"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-700 rounded-lg font-medium hover:bg-blue-50 dark:bg-cyan-600/10 transition-colors"
                     >
                       Find Accommodations
                     </a>
                     <a 
                       href="/ferry-tickets/" 
-                      className="inline-flex items-center justify-center px-6 py-3 bg-blue-500 text-white rounded-lg font-medium hover:bg-blue-400 transition-colors"
+                      className="inline-flex items-center justify-center px-6 py-3 bg-blue-50 dark:bg-cyan-600/100 text-white rounded-lg font-medium hover:bg-blue-400 transition-colors"
                     >
                       How to get there
                     </a>
@@ -491,6 +493,12 @@ const TinosGuide: React.FC = () => {
               </div>
             </div>
           </section>
+
+          <RelatedDestinationsSection groups={[
+            siteLinks.popularIslands,
+            siteLinks.topActivities,
+            siteLinks.travelServices
+          ]} />
         </div>
       </div>
     </>
@@ -498,3 +506,5 @@ const TinosGuide: React.FC = () => {
 };
 
 export default TinosGuide;
+
+

@@ -17,8 +17,6 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
-import { generateKeywordsWithLSI } from '../utils/seo';
-import { Link } from 'react-router-dom';
 
 const AntiparosGuide: React.FC = () => {
   const antiparos = islandGuides.find(island => island.id === 'antiparos');
@@ -27,45 +25,22 @@ const AntiparosGuide: React.FC = () => {
     return <div>Island not found</div>;
   }
 
-  const faqItems = [
-    {
-      question: 'Is Antiparos worth visiting?',
-      answer: 'Absolutely! Antiparos is a charming island perfect for those seeking a more relaxed atmosphere than its larger neighbor Paros. It offers beautiful beaches, the impressive Antiparos Cave, a picturesque main village with a Venetian castle, and excellent water sports. It\'s ideal for day trips from Paros or as a peaceful base for a longer stay.'
-    },
-    {
-      question: 'How long is the ferry from Paros to Antiparos?',
-      answer: 'The ferry from Paros to Antiparos takes only 7-10 minutes, making it one of the shortest ferry crossings in Greece. Ferries depart regularly from Pounta port on Paros throughout the day, especially during summer months. It\'s very convenient for day trips or longer stays.'
-    },
-    {
-      question: 'Can you do a day trip to Antiparos?',
-      answer: 'Yes, Antiparos is perfect for a day trip from Paros! The short ferry ride (7-10 minutes) makes it easy to visit. You can explore the main village, visit the famous cave, enjoy the beaches, and have lunch at a waterfront taverna, all in one day. However, staying overnight allows you to experience the island\'s peaceful evening atmosphere.'
-    },
-    {
-      question: 'Is Antiparos quieter than Paros?',
-      answer: 'Yes, Antiparos is significantly quieter and more relaxed than Paros. While Paros has more tourist infrastructure, nightlife, and crowds, Antiparos maintains a laid-back, authentic atmosphere. It\'s perfect for those seeking peace and tranquility while still having access to beautiful beaches and good restaurants.'
-    }
-  ];
-
   const seoData = {
-    title: "Antiparos Island Guide 2025: Beaches, Cave & Where to Stay (Local Tips)",
-    description: "Complete Antiparos travel guide with the famous cave, best beaches like Soros, where to stay, eat, and things to do. Perfect day trip from Paros or peaceful island getaway.",
-    keywords: generateKeywordsWithLSI(
-      ['Antiparos island guide', 'Antiparos Greece', 'Antiparos travel guide'],
-      [
-        'Antiparos cave',
-        'things to do in Antiparos',
-        'Antiparos beaches',
-        'day trip to Antiparos from Paros',
-        'Antiparos hotels and villas',
-        'soros beach Antiparos'
-      ],
-      ['Antiparos village', 'Greek islands', 'Cyclades', 'water sports Antiparos']
-    ),
+    title: "Antiparos Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Antiparos vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities. From the famous cave to golden beaches and traditional villages.",
+    keywords: [
+      'Antiparos travel guide',
+      'Antiparos beaches',
+      'Antiparos cave',
+      'Antiparos village',
+      'Greek islands',
+      'Antiparos activities',
+      'water sports Antiparos',
+      'Antiparos restaurants',
+      'best time to visit Antiparos'
+    ],
     ogImage: antiparos.image,
-    ogType: 'article' as const,
-    faq: faqItems,
-    pageType: 'guides' as const,
-    canonicalUrl: '/guides/antiparos'
+    ogType: 'article'
   };
 
   // Photo gallery images
@@ -106,42 +81,42 @@ const AntiparosGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Wines and delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -152,14 +127,14 @@ const AntiparosGuide: React.FC = () => {
   return (
     <>
       <SEO {...seoData} />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...antiparos} />
         
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Antiparos</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Antiparos</h2>
               <p className="text-gray-700 leading-relaxed">
                 Antiparos, a small gem in the heart of the Cyclades, is a charming island known for its beautiful beaches, 
                 impressive cave, and laid-back atmosphere. Just a short ferry ride from its larger neighbor Paros, Antiparos 
@@ -193,14 +168,14 @@ const AntiparosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
                 <a 
                   key={index}
                   href={category.link} 
-                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
                     {category.icon}
@@ -213,46 +188,46 @@ const AntiparosGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Antiparos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Antiparos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">High Season</h3>
-                <p className="text-gray-600">July to August</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Perfect beach weather</li>
                   <li>• All facilities open</li>
                   <li>• Vibrant atmosphere</li>
                   <li>• Busier but still relaxed</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">May-June, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Pleasant weather</li>
                   <li>• Fewer tourists</li>
                   <li>• Better rates</li>
                   <li>• Comfortable sightseeing</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Spring</h3>
-                <p className="text-gray-600">April to May</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April to May</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Wildflowers blooming</li>
                   <li>• Mild temperatures</li>
                   <li>• Perfect for hiking</li>
                   <li>• Easter celebrations</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Water Temperature</h3>
-                <p className="text-gray-600">Best swimming months</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">Best swimming months</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• June: 22°C (72°F)</li>
                   <li>• July: 24°C (75°F)</li>
                   <li>• August: 25°C (77°F)</li>
@@ -264,9 +239,9 @@ const AntiparosGuide: React.FC = () => {
           
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Villages of Antiparos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Villages of Antiparos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/antiparos/chora.jpg" 
@@ -289,7 +264,7 @@ const AntiparosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/antiparos/agios-georgios.jpg" 
@@ -316,9 +291,9 @@ const AntiparosGuide: React.FC = () => {
 
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beaches in Antiparos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beaches in Antiparos</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/antiparos/soros-beach.jpg" 
@@ -341,7 +316,7 @@ const AntiparosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/antiparos/psaraliki-beach.jpg" 
@@ -364,7 +339,7 @@ const AntiparosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/antiparos/livadia-beach.jpg" 
@@ -391,9 +366,9 @@ const AntiparosGuide: React.FC = () => {
 
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in Antiparos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Antiparos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/antiparos/cave.jpg" 
@@ -415,7 +390,7 @@ const AntiparosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/antiparos/boat-trip.jpg" 
@@ -437,7 +412,7 @@ const AntiparosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/antiparos/watersports.jpg" 
@@ -459,7 +434,7 @@ const AntiparosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/antiparos/hiking.jpg" 
@@ -485,7 +460,7 @@ const AntiparosGuide: React.FC = () => {
 
           {/* Cuisine Section */}
           <section id="cuisine" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine & Dining</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine & Dining</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed">
@@ -534,7 +509,7 @@ const AntiparosGuide: React.FC = () => {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md p-6">
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
               <h3 className="font-semibold text-xl mb-4">Where to Eat & Drink</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                 <div className="border-b md:border-b-0 md:border-r border-gray-200 pb-4 md:pb-0 md:pr-4">
@@ -570,10 +545,10 @@ const AntiparosGuide: React.FC = () => {
 
           {/* Photo Gallery */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Antiparos Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Antiparos Photo Gallery</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
-                <div key={index} className="rounded-lg overflow-hidden shadow-md">
+                <div key={index} className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <img 
                     src={image.src} 
                     alt={image.alt} 
@@ -584,96 +559,32 @@ const AntiparosGuide: React.FC = () => {
             </div>
           </section>
 
-          {/* FAQ Section */}
-          <section id="faq" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions About Antiparos</h2>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="space-y-6">
-                {faqItems.map((item, index) => (
-                  <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.question}</h3>
-                    <p className="text-gray-700 leading-relaxed">{item.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Internal Links Section */}
-          <section className="mb-16 bg-blue-50 rounded-lg p-8">
-            <h2 className="text-2xl font-bold mb-6">Explore More Cyclades Islands</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <Link 
-                to="/guides/paros" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Paros Island Guide</h3>
-                <p className="text-sm text-gray-600">Discover Paros, the larger neighbor of Antiparos with excellent ferry connections.</p>
-              </Link>
-              <Link 
-                to="/guides/sifnos" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Sifnos Travel Guide</h3>
-                <p className="text-sm text-gray-600">Explore the culinary capital of the Cyclades with its pottery tradition and excellent restaurants.</p>
-              </Link>
-              <Link 
-                to="/best-cyclades-islands-to-visit" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Best Cyclades Islands</h3>
-                <p className="text-sm text-gray-600">Compare all the best islands in the Cyclades to plan your perfect island hopping trip.</p>
-              </Link>
-              <Link 
-                to="/blog/antiparos-vs-paros-comparison" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Antiparos vs Paros</h3>
-                <p className="text-sm text-gray-600">Compare these neighboring islands to decide which one is right for your trip.</p>
-              </Link>
-              <Link 
-                to="/ferry-guide" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Cyclades Ferry Guide</h3>
-                <p className="text-sm text-gray-600">Learn how to get to Antiparos and navigate between Cyclades islands by ferry.</p>
-              </Link>
-              <Link 
-                to="/blog/where-to-stay-paros-greece" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Where to Stay in Paros</h3>
-                <p className="text-sm text-gray-600">Find the best areas and accommodations for your Paros vacation, perfect for day trips to Antiparos.</p>
-              </Link>
-            </div>
-          </section>
-
           {/* Call to Action */}
           <section className="rounded-xl overflow-hidden shadow-xl mb-16">
             <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
                 <div className="p-8 lg:p-12">
-                  <div className="inline-block px-3 py-1 rounded-full bg-blue-500 bg-opacity-30 text-white text-sm font-medium mb-4">
+                  <div className="inline-block px-3 py-1 rounded-full bg-blue-50 dark:bg-cyan-600/100 bg-opacity-30 text-white text-sm font-medium mb-4">
                     Best time to visit: May-June, September
                   </div>
-                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Antiparos?</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Antiparos?</h2>
                   <p className="text-lg mb-8 text-blue-100">
                     Plan your perfect getaway to this charming Cycladic gem with crystal clear waters, 
                     golden beaches, and authentic Greek atmosphere.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Link 
-                      to="/hotels" 
-                      className="inline-block px-6 py-3 bg-white text-blue-700 rounded-lg font-medium hover:bg-blue-50 transition-colors"
+                    <a 
+                      href="/hotels/" 
+                      className="inline-block px-6 py-3 bg-white text-blue-700 rounded-lg font-medium hover:bg-blue-50 dark:bg-cyan-600/10 transition-colors"
                     >
                       Find Accommodations
-                    </Link>
-                    <Link 
-                      to="/ferry-tickets" 
+                    </a>
+                    <a 
+                      href="/ferry-tickets/" 
                       className="inline-block px-6 py-3 bg-transparent border border-white text-white rounded-lg font-medium hover:bg-white/10 transition-colors"
                     >
                       How to get there
-                    </Link>
+                    </a>
                   </div>
                 </div>
                 <div className="hidden lg:block relative">
@@ -693,3 +604,5 @@ const AntiparosGuide: React.FC = () => {
 };
 
 export default AntiparosGuide;
+
+

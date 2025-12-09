@@ -1,10 +1,13 @@
 import { useEffect, useRef } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { FaPlane, FaCalendarAlt, FaInfoCircle, FaQuestion, FaTicketAlt, FaSuitcase, FaSearch, FaBell, FaCalendar, FaGift, FaMapMarkerAlt, FaClock, FaEuroSign, FaExchangeAlt } from 'react-icons/fa';
+import { Link } from 'react-router-dom';
+import { Plane, Calendar, Ticket, Briefcase, Search, MapPin, Clock, DollarSign, ArrowLeftRight, ChevronRight, ArrowRight, Star, Shield, Zap } from 'lucide-react';
+import SEO from '../components/SEO';
+import FAQSection from '../components/FAQSection';
+import RelatedLinks from '../components/RelatedLinks';
 
 const BOOKING_ENGINE_URL = 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-05-28&flighttype=D&quantity=1&rdate=2026-06-01&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305';
 
-const Flights = () => {
+export default function Flights() {
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -17,405 +20,253 @@ const Flights = () => {
       script.charset = 'utf-8';
       searchContainerRef.current.appendChild(script);
     }
-    
+
     return () => {
       const script = document.getElementById('tp-widget-script');
-      if (script && script.parentNode) {
-        script.parentNode.removeChild(script);
-      }
+      if (script?.parentNode) script.parentNode.removeChild(script);
     };
   }, []);
 
   const cheapestFlights = [
-    { 
-      departure: 'New York (JFK)', 
-      destination: 'Santorini (JTR)', 
-      airline: 'American Airlines', 
-      duration: '11h 10m+', 
-      price: '$507',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JTR&allianceid=1094387&class=ys&currency=EUR&dcity=JFK&ddate=2026-07-10&flighttype=D&quantity=1&rdate=2026-07-24&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
-    },
-    { 
-      departure: 'London (LHR)', 
-      destination: 'Mykonos (JMK)', 
-      airline: 'British Airways', 
-      duration: '4h 5m', 
-      price: '€180',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=LHR&ddate=2026-06-05&flighttype=D&quantity=1&rdate=2026-06-12&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
-    },
-    { 
-      departure: 'Paris (CDG)', 
-      destination: 'Mykonos (JMK)', 
-      airline: 'Air France', 
-      duration: '3h 40m', 
-      price: '€160',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=CDG&ddate=2026-06-10&flighttype=D&quantity=1&rdate=2026-06-17&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
-    },
-    { 
-      departure: 'Frankfurt (FRA)', 
-      destination: 'Santorini (JTR)', 
-      airline: 'Lufthansa', 
-      duration: '3h 30m', 
-      price: '€195',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JTR&allianceid=1094387&class=ys&currency=EUR&dcity=FRA&ddate=2026-06-15&flighttype=D&quantity=1&rdate=2026-06-25&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
-    },
-    { 
-      departure: 'Athens (ATH)', 
-      destination: 'Mykonos (JMK)', 
-      airline: 'Aegean/Sky Express', 
-      duration: '45m', 
-      price: '€50',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-05-28&flighttype=D&quantity=1&rdate=2026-06-01&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
-    }
-  ];
-
-  const airlines = [
-    { name: 'Aegean Airlines', description: "Greece's largest airline, offering extensive domestic and international connections" },
-    { name: 'Olympic Air', description: 'A subsidiary of Aegean, focusing on domestic routes within Greece' },
-    { name: 'Sky Express', description: 'A growing Greek airline providing crucial links from mainland Greece to the islands' },
-    { name: 'Lufthansa', description: 'Connects major German cities to Athens and some islands directly in summer' },
-    { name: 'British Airways', description: 'Offers flights from London to Athens, Santorini, and Mykonos' },
-    { name: 'Air France', description: 'Provides connections from Paris to Athens and seasonal flights to popular islands' },
-    { name: 'KLM', description: 'Flies from Amsterdam to Athens, with onward connections to the Cyclades' },
-    { name: 'American Airlines', description: 'Offers flights from the US to Athens, with connections to the islands' }
+    { departure: 'Athens (ATH)', destination: 'Mykonos (JMK)', airline: 'Aegean/Sky Express', duration: '45m', price: '€50', bookingUrl: BOOKING_ENGINE_URL },
+    { departure: 'London (LHR)', destination: 'Mykonos (JMK)', airline: 'British Airways', duration: '4h 5m', price: '€180', bookingUrl: BOOKING_ENGINE_URL },
+    { departure: 'Paris (CDG)', destination: 'Mykonos (JMK)', airline: 'Air France', duration: '3h 40m', price: '€160', bookingUrl: BOOKING_ENGINE_URL },
+    { departure: 'Frankfurt (FRA)', destination: 'Santorini (JTR)', airline: 'Lufthansa', duration: '3h 30m', price: '€195', bookingUrl: BOOKING_ENGINE_URL },
+    { departure: 'New York (JFK)', destination: 'Santorini (JTR)', airline: 'American Airlines', duration: '11h+', price: '$507', bookingUrl: BOOKING_ENGINE_URL },
   ];
 
   const airports = [
-    {
-      name: 'Santorini National Airport (JTR) - Thira',
-      description: 'The busiest airport in the Cyclades, welcoming international direct flights from many European cities during the peak season and daily domestic flights from Athens (ATH) and Thessaloniki (SKG) year-round.',
-      location: 'Located near Kamari, about 6km southeast of Fira',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JTR&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-06-10&flighttype=D&quantity=1&rdate=2026-06-17&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
-    },
-    {
-      name: 'Mykonos International Airport (JMK)',
-      description: 'A bustling summer hub with numerous international charter and scheduled flights, plus frequent domestic connections from Athens and Thessaloniki.',
-      location: 'Located just 4km from Mykonos Town (Chora)',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JMK&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-05-28&flighttype=D&quantity=1&rdate=2026-06-01&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
-    },
-    {
-      name: 'Paros National Airport (PAS)',
-      description: 'A modern domestic airport that has seen significant upgrades, handling frequent flights from Athens and Thessaloniki.',
-      location: 'Located near Aliki, about 10km from Parikia (the main port)',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=PAS&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-07-01&flighttype=D&quantity=1&rdate=2026-07-08&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
-    },
-    {
-      name: 'Naxos Island National Airport (JNX)',
-      description: 'A smaller domestic hub located close to Naxos Town (Chora), primarily served by daily flights from Athens.',
-      location: 'Near Naxos Town (Chora)',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=JNX&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-07-05&flighttype=D&quantity=1&rdate=2026-07-12&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
-    },
-    {
-      name: 'Milos Island National Airport (MLO)',
-      description: 'Serves daily domestic flights from Athens, making it a convenient gateway to discover the unique volcanic landscapes and stunning beaches of Milos.',
-      location: 'Near Milos Town',
-      bookingUrl: 'https://www.trip.com/flights/ShowFareFirst/?SID=2209817&acity=MLO&allianceid=1094387&class=ys&currency=EUR&dcity=ATH&ddate=2026-07-15&flighttype=D&quantity=1&rdate=2026-07-22&trip_sub1=9ee3e71e2cc84d15a5d80b1e6-595305&utm_campaign=595305'
-    },
-    {
-      name: 'Syros Island National Airport (JSY)',
-      description: 'Offers limited domestic service, primarily connecting to Athens. Syros is the administrative capital of the Cyclades.',
-      location: 'Near Ermoupoli',
-      bookingUrl: BOOKING_ENGINE_URL
-    }
-  ];
-
-  const faqs = [
-    {
-      question: "What's the cheapest month to fly to the Cyclades Islands?",
-      answer: "Generally, October and May (shoulder seasons) tend to offer the lowest fares for flights to the Cyclades. Booking 1–3 months in advance for these periods, or even earlier for peak summer, usually yields the best rates."
-    },
-    {
-      question: "Are there direct flights to Cyclades from the USA, UK, or other European countries?",
-      answer: "From the USA: Direct flights to the Cyclades islands themselves are rare. Most US travelers fly into Athens International Airport (ATH) and then take a short connecting domestic flight (30-50 minutes) to islands like Santorini (JTR) or Mykonos (JMK). From the UK: Yes, during the peak season (roughly May to October), several airlines offer direct flights from London airports to Santorini, Mykonos, and sometimes Crete. From other European Countries: Many European cities have seasonal direct flights to popular islands like Santorini and Mykonos."
-    },
-    {
-      question: "Can I easily combine flights with ferry tickets and hotel bookings for my Cyclades trip?",
-      answer: "Absolutely! Our platform is designed to help you plan your entire Cycladic adventure. You can search for flights and then seamlessly add ferry tickets between islands and browse a wide selection of hotels, from budget-friendly studios to luxury villas. Look for our package deals to maximize savings."
-    },
-    {
-      question: "What day of the week is generally best to book flights for the cheapest prices?",
-      answer: "While there's no foolproof rule, some studies suggest that booking flights on a Sunday or Tuesday can sometimes result in slightly lower prices compared to booking on a Friday, which tends to be more expensive. Using our Fare Calendar tool is the best way to see price variations."
-    },
-    {
-      question: "How far in advance should I book flights to the Cyclades for summer travel (June-August)?",
-      answer: "For peak summer travel, especially to high-demand islands like Santorini and Mykonos, it's advisable to book your flights at least 3-6 months in advance. For shoulder seasons (May, September), 2-4 months out is often sufficient. Last-minute deals are rare for popular summer routes."
-    },
-    {
-      question: "What are the main airports in the Cyclades for international visitors?",
-      answer: "Santorini (JTR) and Mykonos (JMK) are the primary Cycladic airports receiving international flights, mainly from Europe during summer. For most intercontinental travelers (e.g., from USA, Canada, Australia), Athens (ATH) is the main entry point, followed by a domestic flight or ferry to the islands."
-    }
+    { name: 'Santorini (JTR)', description: 'International flights in summer, daily Athens connections', location: 'Near Kamari', slug: 'santorini' },
+    { name: 'Mykonos (JMK)', description: 'Major summer hub with European direct flights', location: '4km from Chora', slug: 'mykonos' },
+    { name: 'Paros (PAS)', description: 'Modern domestic airport, Athens & Thessaloniki flights', location: 'Near Aliki', slug: 'paros' },
+    { name: 'Naxos (JNX)', description: 'Small domestic airport with daily Athens flights', location: 'Near Chora', slug: 'naxos' },
+    { name: 'Milos (MLO)', description: 'Daily Athens flights to volcanic island', location: 'Near Milos Town', slug: 'milos' },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Helmet>
-        <title>Cheap Flights to Cyclades Islands - Santorini, Mykonos, Naxos & More | Discover Cyclades</title>
-        <meta name="description" content="Book the best deals on flights to the Cyclades Islands including Santorini, Mykonos, Naxos, and Paros for your 2026 Greek holiday. Compare airlines, find the cheapest prices, and explore direct routes. Benefit from flexible bookings, expert travel tips & unlock significant savings on your dream Cycladic adventure." />
-        <link rel="canonical" href="https://greececyclades.com/flights" />
-      </Helmet>
+    <>
+      <SEO
+        title="Flights to Cyclades 2025: Athens to Santorini & Mykonos Deals"
+        description="Find cheap flights to Greek islands: Santorini, Mykonos airports. Compare airlines, best booking times. Ferry vs flight comparison & tips."
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Flights', url: '/flights' }
+        ]}
+        faqs={[
+          { question: 'Which Cyclades islands have airports?', answer: 'Only Santorini (JTR) and Mykonos (JMK) have commercial airports. All other islands are reached by ferry from Athens or these airports.' },
+          { question: 'Is it better to fly or ferry to Cyclades?', answer: 'Flying saves time (45 min vs 5+ hours) but costs more. Ferries offer scenic views and reach more islands. Many travelers fly to Santorini/Mykonos, then ferry to other islands.' },
+          { question: 'How much do flights to Santorini cost?', answer: 'Athens-Santorini: €50-150 depending on season. Direct international flights (summer only) from major European cities: €100-300.' }
+        ]}
+      />
 
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
-        <div className="absolute inset-0 z-0 opacity-30">
-          <img 
-            src="/images/flights_hero.webp" 
-            alt="Aerial view of Greek islands" 
-            className="w-full h-full object-cover"
-          />
-        </div>
-        
-        <div className="container mx-auto px-4 py-16 md:py-24 relative z-10">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl md:text-5xl font-bold mb-4">Find Cheap Flights to the Cyclades Islands</h1>
-            <p className="text-xl md:text-2xl max-w-3xl mx-auto">Dreaming of a sun-soaked Greek island escape? <a href={BOOKING_ENGINE_URL} className="text-white underline hover:text-blue-200">Discover unbeatable flight deals</a> to Santorini, Mykonos, Paros, Naxos, and more.</p>
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
+        {/* Hero Section */}
+        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-32 pb-24">
+          <div className="absolute inset-0 z-0 opacity-20">
+            <img src="/images/flights_hero.webp" alt="Aerial view of Greek islands" className="w-full h-full object-cover" loading="eager" />
           </div>
-          
-          {/* Search Widget */}
-          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden p-6">
-            <div ref={searchContainerRef} id="flights-search-container" className="min-h-[400px] flex justify-center items-center">
-              <div className="text-center text-gray-700">
-                <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-600 mb-2"></div>
-                <p>Loading flight search widget...</p>
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-white/70 text-sm mb-8">
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-white">Flights</span>
+            </nav>
+
+            <div className="text-center mb-10">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+                Fly to the <span className="text-yellow-300">Cyclades</span>
+              </h1>
+              <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
+                Find cheap flights to Santorini, Mykonos, Paros, Naxos and more. Compare airlines and book with confidence.
+              </p>
+
+              {/* Trust Signals */}
+              <div className="flex flex-wrap justify-center gap-4 mb-8">
+                {[
+                  { icon: Zap, text: 'Real-Time Prices' },
+                  { icon: Shield, text: 'Secure Booking' },
+                  { icon: Star, text: 'Best Price Guarantee' },
+                ].map((item, idx) => (
+                  <div key={idx} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
+                    <item.icon className="h-5 w-5 text-yellow-300" />
+                    <span className="text-white text-sm font-medium">{item.text}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            {/* Search Widget */}
+            <div className="max-w-4xl mx-auto bg-white dark:bg-dark-card rounded-2xl shadow-2xl overflow-hidden p-6">
+              <div ref={searchContainerRef} id="flights-search-container" className="min-h-[350px] flex justify-center items-center">
+                <div className="text-center text-gray-700 dark:text-white/60">
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-cyan-600 mb-2"></div>
+                  <p>Loading flight search...</p>
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Main Content */}
-      <div className="container mx-auto px-4 py-12">
         {/* Why Book With Us */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-10">Why Book Flights with Discover Cyclades</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
-                <FaTicketAlt className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Best Price Guarantee</h3>
-              <p className="text-gray-600">We tirelessly scan hundreds of airlines and booking partners to ensure you secure the absolute lowest price possible for your flight to any of the Cyclades islands. <a href={BOOKING_ENGINE_URL} className="text-blue-600 hover:text-blue-800">Check current deals</a>.</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
-                <FaCalendarAlt className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Flexible Booking Options</h3>
-              <p className="text-gray-600">Travel plans can change, and we understand that. Enjoy complete peace of mind with our selection of flights offering flexible cancellation and rebooking policies.</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
-                <FaSuitcase className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-xl font-semibold text-gray-800 mb-2">Complete Travel Packages</h3>
-              <p className="text-gray-600">Unlock incredible savings! Bundle your flights with inter-island ferry tickets, charming hotel accommodations, or convenient car rentals. Save up to 30% with our exclusive packages.</p>
+        <div className="py-20 bg-white dark:bg-dark-card">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Why Book Flights With Us</h2>
+            <div className="grid md:grid-cols-3 gap-8">
+              {[
+                { icon: Ticket, title: 'Best Price Guarantee', desc: 'We scan hundreds of airlines to find you the lowest prices.' },
+                { icon: Calendar, title: 'Flexible Booking', desc: 'Plans change - enjoy flexible cancellation and rebooking options.' },
+                { icon: Briefcase, title: 'Complete Packages', desc: 'Bundle flights with ferries and hotels to save up to 30%.' },
+              ].map((item, idx) => (
+                <div key={idx} className="bg-gray-50 dark:bg-white/5 rounded-2xl p-8 text-center hover:shadow-lg transition-shadow">
+                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <item.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{item.title}</h3>
+                  <p className="text-gray-600 dark:text-white/60">{item.desc}</p>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Cheapest Flights */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-4">Cheapest Flights to Cyclades in 2026</h2>
-          <div className="bg-white rounded-lg shadow-md overflow-hidden">
-            <div className="overflow-x-auto">
-              <table className="min-w-full divide-y divide-gray-200">
-                <thead className="bg-gray-50">
-                  <tr>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Departure</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Destination</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Airline</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Duration</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Price From</th>
-                    <th scope="col" className="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Book Now</th>
-                  </tr>
-                </thead>
-                <tbody className="bg-white divide-y divide-gray-200">
-                  {cheapestFlights.map((flight, index) => (
-                    <tr key={index} className="hover:bg-gray-50">
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{flight.departure}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{flight.destination}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{flight.airline}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm text-gray-900">{flight.duration}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm font-medium text-blue-600">{flight.price}</td>
-                      <td className="px-6 py-4 whitespace-nowrap text-sm">
-                        <a href={flight.bookingUrl} className="text-blue-600 hover:text-blue-800 font-medium">Book Flight</a>
-                      </td>
+        {/* Cheapest Flights Table */}
+        <div className="py-20 bg-gray-50 dark:bg-dark-bg">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">Popular Flight Routes</h2>
+            <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">Compare prices on the most popular routes to the Cyclades islands</p>
+
+            <div className="bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden border border-gray-200 dark:border-white/10">
+              <div className="overflow-x-auto">
+                <table className="w-full">
+                  <thead className="bg-gray-50 dark:bg-white/5">
+                    <tr>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">From</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">To</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Airline</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">Duration</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white">From</th>
+                      <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900 dark:text-white"></th>
                     </tr>
-                  ))}
-                </tbody>
-              </table>
+                  </thead>
+                  <tbody className="divide-y divide-gray-200 dark:divide-white/10">
+                    {cheapestFlights.map((flight, idx) => (
+                      <tr key={idx} className="hover:bg-gray-50 dark:hover:bg-white/5 transition-colors">
+                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-white">{flight.departure}</td>
+                        <td className="px-6 py-4 text-sm text-gray-900 dark:text-white font-medium">{flight.destination}</td>
+                        <td className="px-6 py-4 text-sm text-gray-600 dark:text-white/70">{flight.airline}</td>
+                        <td className="px-6 py-4 text-sm text-gray-600 dark:text-white/70">{flight.duration}</td>
+                        <td className="px-6 py-4 text-lg font-bold text-cyan-600 dark:text-cyclades-turquoise">{flight.price}</td>
+                        <td className="px-6 py-4">
+                          <a href={flight.bookingUrl} target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-1 text-cyan-600 dark:text-cyclades-turquoise hover:underline font-medium">
+                            Book <ArrowRight className="w-4 h-4" />
+                          </a>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </div>
+            <p className="text-sm text-gray-600 dark:text-white/60 mt-4 text-center italic">Prices are estimates and may vary. Book early for best deals!</p>
           </div>
-          <p className="text-sm text-gray-500 mt-3 text-center italic">Prices are estimates based on historical data and may vary based on season, demand, and availability. Book early for the best deals!</p>
         </div>
 
-        {/* Tips Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">Expert Tips to Find the Cheapest Flights to Cyclades Islands</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <FaCalendar className="text-blue-600 text-xl mt-1" />
+        {/* Cyclades Airports */}
+        <div className="py-20 bg-white dark:bg-dark-card">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">Cyclades Island Airports</h2>
+            <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">Most islands have their own airports with connections from Athens</p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {airports.map((airport, idx) => (
+                <div key={idx} className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 hover:shadow-lg transition-shadow border border-gray-100 dark:border-white/10">
+                  <div className="flex items-start gap-4">
+                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise rounded-xl flex items-center justify-center shrink-0">
+                      <Plane className="w-6 h-6 text-white" />
+                    </div>
+                    <div className="flex-1">
+                      <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-1">{airport.name}</h3>
+                      <p className="text-gray-600 dark:text-white/60 text-sm mb-2">{airport.description}</p>
+                      <p className="text-gray-600 dark:text-white/50 text-xs mb-3">{airport.location}</p>
+                      <Link to={`/islands/${airport.slug}`} className="text-cyan-600 dark:text-cyclades-turquoise text-sm font-medium hover:underline inline-flex items-center gap-1">
+                        Explore {airport.slug.charAt(0).toUpperCase() + airport.slug.slice(1)} <ArrowRight className="w-3 h-3" />
+                      </Link>
+                    </div>
+                  </div>
                 </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Book Early for Peak Season</h3>
-                  <p className="text-gray-600">For summer travel (June-August) to popular islands like Santorini and Mykonos, aim to book your flights 2–4 months in advance.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <FaExchangeAlt className="text-blue-600 text-xl mt-1" />
-                </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Be Flexible with Dates & Times</h3>
-                  <p className="text-gray-600">Midweek flights (Tuesdays and Wednesdays) and early morning or late-night departures often come with lower price tags.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <FaClock className="text-blue-600 text-xl mt-1" />
-                </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Travel in Shoulder Season</h3>
-                  <p className="text-gray-600">Experience the beauty of the Cyclades with fewer crowds and cheaper flights in May, early June, late September, and October.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <FaSearch className="text-blue-600 text-xl mt-1" />
-                </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Use Our Powerful Filters</h3>
-                  <p className="text-gray-600">Customize your flight search by airline, number of stopovers, preferred departure/arrival times, and even nearby airports.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <FaMapMarkerAlt className="text-blue-600 text-xl mt-1" />
-                </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Consider Nearby Airports</h3>
-                  <p className="text-gray-600">Flying into a less popular island airport and taking a short ferry ride can sometimes be cheaper.</p>
-                </div>
-              </div>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="flex items-start">
-                <div className="flex-shrink-0">
-                  <FaEuroSign className="text-blue-600 text-xl mt-1" />
-                </div>
-                <div className="ml-4">
-                  <h3 className="text-lg font-semibold text-gray-800 mb-2">Bundle & Save Big</h3>
-                  <p className="text-gray-600">Don't forget to explore our package deals. Booking flights, ferries, and hotels together can unlock significant discounts.</p>
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Airlines Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">Major Airlines Flying to Cyclades Islands</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            {airlines.map((airline, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">{airline.name}</h3>
-                <p className="text-gray-600 text-sm">{airline.description}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Airports Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">Cyclades Island Airports Overview</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {airports.map((airport, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-xl font-semibold text-gray-800 mb-2">{airport.name}</h3>
-                <p className="text-gray-600 mb-2">{airport.description}</p>
-                <p className="text-sm text-gray-500 mb-4">{airport.location}</p>
-                <a href={airport.bookingUrl} className="text-blue-600 hover:text-blue-800 font-medium">Find Flights to {airport.name.split(' ')[0]}</a>
-              </div>
-            ))}
-          </div>
-        </div>
-
-        {/* Tools Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">Use Discover Cyclades Tools to Maximize Your Savings</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
-                <FaBell className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Price Alerts</h3>
-              <p className="text-gray-600">Track your preferred flight routes and get notified when prices drop. <a href={BOOKING_ENGINE_URL} className="text-blue-600 hover:text-blue-800">Set up alerts</a>.</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
-                <FaCalendar className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Fare Calendar</h3>
-              <p className="text-gray-600">Easily visualize the cheapest dates to fly across a whole month.</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
-                <FaSuitcase className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">One-Click Packages</h3>
-              <p className="text-gray-600">Simplify your planning. Combine flights with ferries and hotels instantly.</p>
-            </div>
-            <div className="bg-white rounded-lg shadow-md p-6 text-center">
-              <div className="inline-block p-3 bg-blue-100 rounded-full mb-4">
-                <FaGift className="text-blue-600 text-2xl" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-800 mb-2">Member Rewards</h3>
-              <p className="text-gray-600">Sign up for Discover Cyclades to earn points or discounts on every booking.</p>
+        {/* Tips */}
+        <div className="py-20 bg-gray-50 dark:bg-dark-bg">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Flight Booking Tips</h2>
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                { icon: Calendar, title: 'Book Early for Summer', desc: 'For June-August, book 2-4 months in advance.' },
+                { icon: ArrowLeftRight, title: 'Be Flexible', desc: 'Midweek flights are often cheaper.' },
+                { icon: Clock, title: 'Shoulder Season', desc: 'May & September offer great weather, lower prices.' },
+                { icon: Search, title: 'Compare Airlines', desc: 'Use our search to find the best deals.' },
+                { icon: MapPin, title: 'Consider Nearby Airports', desc: 'Fly to a nearby island + ferry can save money.' },
+                { icon: DollarSign, title: 'Bundle & Save', desc: 'Combine flights + hotels for up to 30% off.' },
+              ].map((tip, idx) => (
+                <div key={idx} className="bg-white dark:bg-dark-card rounded-xl p-6 border border-gray-100 dark:border-white/10">
+                  <div className="flex items-start gap-4">
+                    <div className="w-10 h-10 bg-cyan-600/10 dark:bg-cyclades-turquoise/20 rounded-lg flex items-center justify-center shrink-0">
+                      <tip.icon className="w-5 h-5 text-cyan-600 dark:text-cyclades-turquoise" />
+                    </div>
+                    <div>
+                      <h3 className="font-semibold text-gray-900 dark:text-white mb-1">{tip.title}</h3>
+                      <p className="text-gray-600 dark:text-white/60 text-sm">{tip.desc}</p>
+                    </div>
+                  </div>
+                </div>
+              ))}
             </div>
           </div>
         </div>
 
         {/* FAQ Section */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold text-gray-800 text-center mb-8">Frequently Asked Questions</h2>
-          <div className="space-y-6">
-            {faqs.map((faq, index) => (
-              <div key={index} className="bg-white rounded-lg shadow-md p-6">
-                <h3 className="text-lg font-semibold text-gray-800 mb-2">{faq.question}</h3>
-                <p className="text-gray-600">{faq.answer}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        <FAQSection
+          faqs={[
+            { question: 'Which Cyclades islands have airports?', answer: 'Santorini (JTR), Mykonos (JMK), Paros (PAS), Naxos (JNX), and Milos (MLO) have airports. Only Santorini and Mykonos have international flights.' },
+            { question: 'Is it better to fly or ferry to Cyclades?', answer: 'Flying saves time (45 min vs 5+ hours) but costs more. Ferries offer scenic views and reach more islands. Many travelers fly to Santorini/Mykonos, then ferry to other islands.' },
+            { question: 'How much do flights to Santorini cost?', answer: 'Athens-Santorini: €50-150 depending on season. Direct international flights (summer only) from major European cities: €100-300.' },
+            { question: 'When is the cheapest time to fly to Cyclades?', answer: 'April-May and October offer the best flight deals. Avoid July-August when prices peak. Book 2-3 months ahead for best rates.' }
+          ]}
+          title="Flights FAQ"
+          subtitle="Common questions about flying to the Cyclades"
+        />
 
-        {/* CTA Section */}
-        <div className="text-center">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6">Ready to Book Your Dream Cyclades Island Escape for 2026?</h2>
-          <p className="text-gray-600 mb-8">The magic of the Greek Islands awaits! White-washed villages, iconic blue domes, stunning beaches, and unforgettable sunsets are just a flight away.</p>
-          <div className="flex flex-wrap justify-center gap-4">
-            <a href={BOOKING_ENGINE_URL} className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
-              Search & Book Your Cheap Flight Now!
-            </a>
-            <a href="/ferry-tickets" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
-              Explore Ferry Tickets
-            </a>
-            <a href="/hotels" className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-600 hover:bg-blue-700">
-              Browse Hotels in Cyclades
-            </a>
+        {/* Related Links */}
+        <RelatedLinks variant="cards" pageType="general" title="Continue Planning" />
+
+        {/* CTA */}
+        <div className="py-20 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready for Your Cyclades Adventure?</h2>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
+              The magic of the Greek Islands awaits. Book your flight and start your dream vacation.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <a href={BOOKING_ENGINE_URL} target="_blank" rel="noopener noreferrer" className="inline-flex items-center px-8 py-4 bg-white text-cyan-600 rounded-xl font-semibold hover:bg-white/90 transition-colors">
+                <Plane className="mr-2 h-5 w-5" />
+                Search Flights
+              </a>
+              <Link to="/ferry-tickets" className="inline-flex items-center px-8 py-4 bg-white/20 text-white border border-white/30 rounded-xl font-semibold hover:bg-white/30 transition-colors">
+                Ferry Tickets
+              </Link>
+              <Link to="/hotels" className="inline-flex items-center px-8 py-4 bg-white/20 text-white border border-white/30 rounded-xl font-semibold hover:bg-white/30 transition-colors">
+                Find Hotels
+              </Link>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
-};
-
-export default Flights;
+}

@@ -1,11 +1,19 @@
-import { useEffect } from 'react';
+// SEO Component with Schema.org support
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
-import { generateFAQSchema } from '../utils/seo';
-import { FAQItem } from '../types/seo';
 
 const SITE_URL = 'https://greececyclades.com';
 const SITE_NAME = 'Discover Cyclades';
+
+export interface FAQItem {
+  question: string;
+  answer: string;
+}
+
+export interface BreadcrumbItem {
+  name: string;
+  url: string;
+}
 
 export interface SEOProps {
   title: string;
@@ -39,7 +47,12 @@ export interface SEOProps {
   twitterCard?: 'summary' | 'summary_large_image';
   twitterSite?: string;
   twitterCreator?: string;
-  faq?: FAQItem[];
+  // NEW: FAQ Schema support
+  faqs?: FAQItem[];
+  // NEW: Breadcrumb support
+  breadcrumbs?: BreadcrumbItem[];
+  // NEW: Last modified date for freshness signals
+  lastModified?: string;
 }
 
 export default function SEO({
@@ -50,7 +63,6 @@ export default function SEO({
   ogType = 'website',
   canonicalUrl,
   article,
-  faq,
   structuredData,
   jsonLD,
   noIndex = false,
@@ -60,65 +72,52 @@ export default function SEO({
   alternateLanguages,
   twitterCard = 'summary_large_image',
   twitterSite = '@greececyclades',
-  twitterCreator
+  twitterCreator,
+  faqs,
+  breadcrumbs,
+  lastModified
 }: SEOProps) {
   const location = useLocation();
 
   // Generate optimized canonical URL
   const getCanonicalUrl = (): string => {
-    let path: string;
-    
     if (canonicalUrl) {
-      if (canonicalUrl.startsWith('http')) {
-        // Extract path from full URL
-        try {
-          const urlObj = new URL(canonicalUrl);
-          path = urlObj.pathname;
-        } catch {
-          path = canonicalUrl.split('?')[0].replace(/^https?:\/\/[^/]+/, '') || '/';
-        }
-      } else {
-        path = canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`;
+      let url = canonicalUrl.startsWith('http') 
+        ? canonicalUrl 
+        : `${SITE_URL}${canonicalUrl.startsWith('/') ? canonicalUrl : `/${canonicalUrl}`}`;
+      
+      // Remove ALL index references
+      url = url.replace(/\/index\.html?$/i, '');
+      url = url.replace(/\/index$/i, '');
+      url = url.replace(/index\.html?$/i, '');
+      url = url.replace(/index$/i, '');
+      
+      // Ensure trailing slash consistency (remove from all except root)
+      if (url !== SITE_URL && url !== `${SITE_URL}/`) {
+        url = url.replace(/\/$/, '');
       }
-    } else {
-      // Auto-generate from current path
-      path = location.pathname;
+      
+      // Ensure root has trailing slash
+      if (url === SITE_URL) {
+        url = `${SITE_URL}/`;
+      }
+      
+      return url;
     }
     
-    // Remove query parameters for filtered pages (hotels, activities, etc.)
-    const pathWithoutQuery = path.split('?')[0];
-    const shouldRemoveQuery = pathWithoutQuery.includes('/hotels') || 
-                              pathWithoutQuery.includes('/activities') ||
-                              pathWithoutQuery.includes('/trip-planner') ||
-                              pathWithoutQuery.includes('/ferry-tickets-search');
+    // Auto-generate from current path
+    const path = location.pathname;
+    let url = `${SITE_URL}${path}`;
     
-    if (shouldRemoveQuery) {
-      path = pathWithoutQuery;
-    } else {
-      path = pathWithoutQuery;
-    }
-    
-    // Convert path to lowercase
-    path = path.toLowerCase();
-    
-    // Remove ALL index references
-    path = path.replace(/\/index\.html?$/i, '');
-    path = path.replace(/\/index$/i, '');
-    path = path.replace(/index\.html?$/i, '');
-    path = path.replace(/index$/i, '');
-    
-    // Ensure trailing slash consistency (remove from all except root)
-    if (path !== '/' && path.endsWith('/')) {
-      path = path.slice(0, -1);
+    // Remove trailing slash except for root
+    if (url !== `${SITE_URL}/` && url.endsWith('/')) {
+      url = url.slice(0, -1);
     }
     
     // Ensure root has trailing slash
-    if (path === '') {
-      path = '/';
+    if (url === SITE_URL) {
+      url = `${SITE_URL}/`;
     }
-    
-    // Build final URL with non-www and https
-    const url = `https://greececyclades.com${path}`;
     
     return url;
   };
@@ -142,6 +141,40 @@ export default function SEO({
     };
     
     return defaultImages[pageType] || `${SITE_URL}/images/default-og.jpg`;
+  };
+
+  // Generate FAQ Schema
+  const generateFAQSchema = () => {
+    if (!faqs || faqs.length === 0) return null;
+    
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'FAQPage',
+      mainEntity: faqs.map(faq => ({
+        '@type': 'Question',
+        name: faq.question,
+        acceptedAnswer: {
+          '@type': 'Answer',
+          text: faq.answer
+        }
+      }))
+    };
+  };
+
+  // Generate Breadcrumb Schema
+  const generateBreadcrumbSchema = () => {
+    if (!breadcrumbs || breadcrumbs.length === 0) return null;
+    
+    return {
+      '@context': 'https://schema.org',
+      '@type': 'BreadcrumbList',
+      itemListElement: breadcrumbs.map((crumb, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        name: crumb.name,
+        item: crumb.url.startsWith('http') ? crumb.url : `${SITE_URL}${crumb.url}`
+      }))
+    };
   };
 
   // Generate page-type specific structured data
@@ -189,15 +222,32 @@ export default function SEO({
         if (islandData) {
           return JSON.stringify({
             '@context': 'https://schema.org',
-            '@type': 'TouristDestination',
-            name: islandData.name,
-            description: islandData.description || description,
+            '@type': 'TravelGuide',
+            name: title,
+            about: {
+              '@type': 'TouristDestination',
+              name: islandData.name,
+              description: islandData.description || description,
+              address: {
+                '@type': 'PostalAddress',
+                addressRegion: 'Cyclades',
+                addressCountry: 'GR'
+              }
+            },
             url: canonical,
             image: imageUrl,
-            address: {
-              '@type': 'PostalAddress',
-              addressRegion: 'Cyclades',
-              addressCountry: 'GR'
+            author: {
+              '@type': 'Organization',
+              name: SITE_NAME
+            },
+            dateModified: lastModified || new Date().toISOString().split('T')[0],
+            publisher: {
+              '@type': 'Organization',
+              name: SITE_NAME,
+              logo: {
+                '@type': 'ImageObject',
+                url: `${SITE_URL}/logo.png`
+              }
             }
           });
         }
@@ -345,10 +395,17 @@ export default function SEO({
         {structuredDataJson}
       </script>
 
-      {/* FAQ Schema (if provided) */}
-      {faq && faq.length > 0 && (
+      {/* FAQ Schema (if FAQs provided) */}
+      {faqs && faqs.length > 0 && (
         <script type="application/ld+json">
-          {generateFAQSchema(faq)}
+          {JSON.stringify(generateFAQSchema())}
+        </script>
+      )}
+
+      {/* Breadcrumb Schema (if breadcrumbs provided) */}
+      {breadcrumbs && breadcrumbs.length > 0 && (
+        <script type="application/ld+json">
+          {JSON.stringify(generateBreadcrumbSchema())}
         </script>
       )}
     </Helmet>

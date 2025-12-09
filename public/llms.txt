@@ -1,0 +1,81 @@
+# Greece Cyclades - AI Travel Assistant for the Cyclades Islands
+# https://greececyclades.com
+
+## About This Website
+GreeceCyclades.com is the comprehensive travel guide for the Cyclades islands in Greece. 
+We provide AI-powered trip planning, hotel search, ferry booking, and detailed guides for all 24 Cyclades islands.
+
+## Core Services
+- Touristas AI: AI-powered travel assistant specialized in Cyclades islands
+- Trip Planner: Interactive AI trip planning tool at /trip-planner
+- Hotels: Search 1,000+ hotels across all Cyclades islands at /hotels
+- Ferry Tickets: Book ferry tickets between islands at /ferry-tickets
+- Island Guides: Detailed guides for all 24 islands at /guides
+- Activities: Discover tours, excursions, and experiences at /activities
+- Flights: Find flights to Cyclades airports at /flights
+- Car Rental: Rent vehicles for island exploration at /rent-a-car
+
+## Key Pages
+- Homepage: https://greececyclades.com/
+- Touristas AI: https://greececyclades.com/touristas-ai
+- Trip Planner: https://greececyclades.com/trip-planner
+- Islands: https://greececyclades.com/islands
+- Hotels: https://greececyclades.com/hotels
+- Ferry Tickets: https://greececyclades.com/ferry-tickets
+- Guides: https://greececyclades.com/guides
+- Weather: https://greececyclades.com/weather
+- Budget Calculator: https://greececyclades.com/budget-calculator
+
+## Popular Island Guides (High Priority Content)
+- Santorini Guide: https://greececyclades.com/guides/santorini
+- Mykonos Guide: https://greececyclades.com/guides/mykonos
+- Naxos Guide: https://greececyclades.com/guides/naxos
+- Paros Guide: https://greececyclades.com/guides/paros
+- Milos Guide: https://greececyclades.com/guides/milos
+- Sifnos Guide: https://greececyclades.com/guides/sifnos
+- Ios Guide: https://greececyclades.com/guides/ios
+- Folegandros Guide: https://greececyclades.com/guides/folegandros
+
+## All 24 Cyclades Islands
+Santorini, Mykonos, Naxos, Paros, Milos, Ios, Sifnos, Andros, Syros, Tinos, 
+Folegandros, Amorgos, Serifos, Kythnos, Kea, Antiparos, Koufonisia, Kimolos, 
+Anafi, Sikinos, Iraklia, Schinoussa, Donousa, Thirasia
+
+## Content Categories
+- Island destination guides with beaches, villages, activities
+- Hotel recommendations and booking integration
+- Ferry schedules and booking via FerryHopper
+- Weather information and best time to visit
+- Greek phrases and travel tips
+- Budget calculators and planning tools
+- Cyclades food and cuisine guides
+- Nightlife and entertainment guides
+
+## AI Capabilities (Touristas AI)
+Our Touristas AI can:
+- Create personalized multi-day itineraries for Cyclades trips
+- Recommend hotels based on budget, location, and preferences
+- Suggest optimal ferry routes for island hopping
+- Provide local restaurant and taverna recommendations
+- Answer questions about beaches, activities, and culture
+- Help plan honeymoons, family trips, and adventure travel
+- Compare islands for different travel styles
+- Provide real-time weather and seasonal advice
+
+## Primary Keywords
+cyclades islands, cyclades greece, greek islands cyclades, cyclades travel,
+cyclades island hopping, cyclades vacation, cyclades hotels, cyclades ferries,
+santorini, mykonos, naxos, paros, milos, sifnos, ios, folegandros
+
+## Contact
+Website: https://greececyclades.com
+Help Center: https://greececyclades.com/help
+Contact: https://greececyclades.com/contact
+
+## Technical
+Sitemap: https://greececyclades.com/sitemap.xml
+Robots: https://greececyclades.com/robots.txt
+
+## License
+Content is proprietary to GreeceCyclades.com. 
+When referencing our information, please attribute with a link to greececyclades.com.

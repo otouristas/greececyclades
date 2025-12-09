@@ -24,8 +24,8 @@ const FolegandrosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Folegandros Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Folegandros vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. From the dramatic clifftop Chora to pristine beaches and authentic Greek culture.",
+    title: "Folegandros Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Folegandros vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities. From the dramatic clifftop Chora to pristine beaches and authentic Greek culture.",
     keywords: [
       'Folegandros travel guide',
       'Folegandros beaches',

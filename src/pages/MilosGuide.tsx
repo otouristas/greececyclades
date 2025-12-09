@@ -17,6 +17,8 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
+import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
+import { siteLinks } from '../data/siteLinks';
 
 const MilosGuide: React.FC = () => {
   const milos = islandGuides.find(island => island.id === 'milos');
@@ -26,8 +28,8 @@ const MilosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Milos Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Milos vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. From lunar landscapes to colorful fishing villages and stunning beaches.",
+    title: "Milos Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Milos vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities. From lunar landscapes to colorful fishing villages and stunning beaches.",
     keywords: [
       'Milos travel guide',
       'Milos beaches',
@@ -82,42 +84,42 @@ const MilosGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Wines and delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -128,14 +130,14 @@ const MilosGuide: React.FC = () => {
   return (
     <>
       <SEO {...seoData} />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...milos} />
         
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Milos</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Milos</h2>
               <p className="text-gray-700 leading-relaxed">
                 Milos, the volcanic gem of the Cyclades, is an island of extraordinary geological beauty and rich history. 
                 Famous for being the discovery site of the Venus de Milo statue, this horseshoe-shaped island captivates 
@@ -169,14 +171,14 @@ const MilosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
                 <a 
                   key={index}
                   href={category.link} 
-                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
                     {category.icon}
@@ -189,46 +191,46 @@ const MilosGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Milos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Milos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">High Season</h3>
-                <p className="text-gray-600">July to August</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Perfect beach weather</li>
                   <li>• All facilities open</li>
                   <li>• Vibrant atmosphere</li>
                   <li>• Busiest period</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">May-June, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Pleasant weather</li>
                   <li>• Fewer tourists</li>
                   <li>• Better rates</li>
                   <li>• Perfect for photography</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Spring</h3>
-                <p className="text-gray-600">April to May</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April to May</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Wildflowers blooming</li>
                   <li>• Mild temperatures</li>
                   <li>• Perfect for hiking</li>
                   <li>• Easter celebrations</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Water Temperature</h3>
-                <p className="text-gray-600">Best swimming months</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">Best swimming months</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• June: 22°C (72°F)</li>
                   <li>• July: 24°C (75°F)</li>
                   <li>• August: 25°C (77°F)</li>
@@ -240,9 +242,9 @@ const MilosGuide: React.FC = () => {
           
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Charming Villages of Milos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Charming Villages of Milos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/milos/villages/plaka.jpg" 
@@ -265,7 +267,7 @@ const MilosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/milos/villages/klima.jpg" 
@@ -288,7 +290,7 @@ const MilosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/milos/villages/pollonia.jpg" 
@@ -311,7 +313,7 @@ const MilosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/milos/villages/adamas.jpg" 
@@ -338,9 +340,9 @@ const MilosGuide: React.FC = () => {
           
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beautiful Beaches of Milos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beautiful Beaches of Milos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/milos/beaches/sarakiniko.jpg" 
@@ -364,7 +366,7 @@ const MilosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/milos/beaches/kleftiko.jpg" 
@@ -388,7 +390,7 @@ const MilosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/milos/beaches/firiplaka.jpg" 
@@ -411,7 +413,7 @@ const MilosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/milos/beaches/paleochori.jpg" 
@@ -438,10 +440,10 @@ const MilosGuide: React.FC = () => {
           
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine of Milos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine of Milos</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-1">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden h-full">
+                <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden h-full">
                   <div className="p-6">
                     <FaGlassCheers className="text-3xl text-blue-500 mb-4" />
                     <h3 className="text-xl font-semibold mb-4">Traditional Dishes</h3>
@@ -482,7 +484,7 @@ const MilosGuide: React.FC = () => {
               </div>
               
               <div className="lg:col-span-2">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     <div className="p-6">
                       <h3 className="text-xl font-semibold mb-4">Where to Eat in Milos</h3>
@@ -531,23 +533,23 @@ const MilosGuide: React.FC = () => {
                       />
                     </div>
                   </div>
-                  <div className="p-6 bg-blue-50">
+                  <div className="p-6 bg-blue-50 dark:bg-cyan-600/10">
                     <h4 className="font-semibold mb-2">Local Products to Try</h4>
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                      <div className="bg-white p-3 rounded-lg shadow-sm">
-                        <span className="font-medium text-blue-800">Milos Cheese</span>
+                      <div className="bg-white dark:bg-dark-card p-3 rounded-lg shadow-sm">
+                        <span className="font-medium text-blue-800 dark:text-cyclades-turquoise">Milos Cheese</span>
                         <p className="text-sm text-gray-600 mt-1">Local soft cheese with distinctive flavor</p>
                       </div>
-                      <div className="bg-white p-3 rounded-lg shadow-sm">
-                        <span className="font-medium text-blue-800">Watermelon</span>
+                      <div className="bg-white dark:bg-dark-card p-3 rounded-lg shadow-sm">
+                        <span className="font-medium text-blue-800 dark:text-cyclades-turquoise">Watermelon</span>
                         <p className="text-sm text-gray-600 mt-1">Famous sweet watermelons of Milos</p>
                       </div>
-                      <div className="bg-white p-3 rounded-lg shadow-sm">
-                        <span className="font-medium text-blue-800">Honey</span>
+                      <div className="bg-white dark:bg-dark-card p-3 rounded-lg shadow-sm">
+                        <span className="font-medium text-blue-800 dark:text-cyclades-turquoise">Honey</span>
                         <p className="text-sm text-gray-600 mt-1">Local thyme honey with unique aroma</p>
                       </div>
-                      <div className="bg-white p-3 rounded-lg shadow-sm">
-                        <span className="font-medium text-blue-800">Koufeto</span>
+                      <div className="bg-white dark:bg-dark-card p-3 rounded-lg shadow-sm">
+                        <span className="font-medium text-blue-800 dark:text-cyclades-turquoise">Koufeto</span>
                         <p className="text-sm text-gray-600 mt-1">Traditional almond sweet</p>
                       </div>
                     </div>
@@ -559,9 +561,9 @@ const MilosGuide: React.FC = () => {
           
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in Milos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Milos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
                     <FaSwimmer className="text-3xl text-blue-500 mr-4" />
@@ -603,7 +605,7 @@ const MilosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
                     <FaHiking className="text-3xl text-blue-500 mr-4" />
@@ -645,35 +647,35 @@ const MilosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden md:col-span-2">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden md:col-span-2">
                 <div className="grid grid-cols-1 md:grid-cols-3">
                   <div className="p-6 md:col-span-2">
                     <h3 className="text-xl font-semibold mb-4">Unique Experiences in Milos</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="bg-blue-50 p-4 rounded-lg">
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Sunset at Plaka Castle</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Hike up to the Venetian Castle in Plaka for one of the most spectacular sunset views in the Cyclades, 
                           overlooking the entire island and the Aegean Sea.
                         </p>
                       </div>
-                      <div className="bg-blue-50 p-4 rounded-lg">
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Moonscape Photography</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Visit Sarakiniko at sunrise or sunset for otherworldly photography opportunities. The white volcanic 
                           rocks against the blue sea create a lunar landscape unlike anywhere else.
                         </p>
                       </div>
-                      <div className="bg-blue-50 p-4 rounded-lg">
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Volcanic Cooking</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Experience traditional food cooked in the volcanic sand at Paleochori Beach, where restaurants like 
                           Sirocco use the natural heat from the ground to cook dishes.
                         </p>
                       </div>
-                      <div className="bg-blue-50 p-4 rounded-lg">
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Village Hopping</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Rent a car or scooter to explore the many charming villages of Milos, each with its own unique character, 
                           from the colorful syrmata of Klima to the hilltop charm of Tripiti.
                         </p>
@@ -694,7 +696,7 @@ const MilosGuide: React.FC = () => {
           
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Milos Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Milos Photo Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
@@ -706,7 +708,7 @@ const MilosGuide: React.FC = () => {
                     />
                   </div>
                   <div className="p-3 bg-white">
-                    <p className="text-sm text-gray-600">{image.alt}</p>
+                    <p className="text-sm text-gray-600 dark:text-white/60">{image.alt}</p>
                   </div>
                 </div>
               ))}
@@ -724,7 +726,7 @@ const MilosGuide: React.FC = () => {
             <div className="container mx-auto px-6 py-12 text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Milos?</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Milos?</h2>
                   <p className="text-lg mb-6">
                     Book your accommodations and plan your journey to this extraordinary volcanic island. 
                     Milos offers a perfect blend of stunning landscapes, beautiful beaches, and authentic Greek hospitality.
@@ -758,6 +760,11 @@ const MilosGuide: React.FC = () => {
             </div>
           </section>
           
+          <RelatedDestinationsSection groups={[
+            siteLinks.popularIslands,
+            siteLinks.topActivities,
+            siteLinks.travelServices
+          ]} />
         </div>
       </div>
     </>
@@ -765,3 +772,5 @@ const MilosGuide: React.FC = () => {
 };
 
 export default MilosGuide;
+
+

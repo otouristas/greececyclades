@@ -25,8 +25,8 @@ const IrakliaGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Iraklia Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Iraklia vacation with our comprehensive 2025 travel guide. Discover the best beaches, hiking trails, and authentic experiences on this tranquil Small Cyclades island.",
+    title: "Iraklia Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Iraklia vacation with our comprehensive 2026 travel guide. Discover the best beaches, hiking trails, and authentic experiences on this tranquil Small Cyclades island.",
     keywords: [
       'Iraklia travel guide',
       'Iraklia beaches',
@@ -82,42 +82,42 @@ const IrakliaGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Honey and delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -149,7 +149,7 @@ const IrakliaGuide: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Iraklia</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Iraklia</h2>
               <p className="text-gray-700 leading-relaxed">
                 Iraklia, the smallest of the Small Cyclades, is a tranquil paradise that offers an authentic Greek island experience away from the crowds. With just two charming villages, pristine beaches, and a network of hiking trails, this hidden gem is perfect for travelers seeking peace, natural beauty, and simplicity.
               </p>
@@ -178,14 +178,14 @@ const IrakliaGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
                 <a 
                   key={index}
                   href={category.link} 
-                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
                     {category.icon}
@@ -198,13 +198,13 @@ const IrakliaGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Iraklia</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Iraklia</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">High Season</h3>
-                <p className="text-gray-600">July to August</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Perfect beach weather</li>
                   <li>• All facilities open</li>
                   <li>• More ferry connections</li>
@@ -212,11 +212,11 @@ const IrakliaGuide: React.FC = () => {
                 </ul>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">May-June & September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June & September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Pleasant temperatures</li>
                   <li>• Ideal for hiking</li>
                   <li>• Fewer visitors</li>
@@ -224,11 +224,11 @@ const IrakliaGuide: React.FC = () => {
                 </ul>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Low Season</h3>
-                <p className="text-gray-600">October to April</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">October to April</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Very few tourists</li>
                   <li>• Limited ferry connections</li>
                   <li>• Many businesses closed</li>
@@ -236,11 +236,11 @@ const IrakliaGuide: React.FC = () => {
                 </ul>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Best For Photography</h3>
-                <p className="text-gray-600">April-May & September-October</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April-May & September-October</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Beautiful light conditions</li>
                   <li>• Spring wildflowers (April-May)</li>
                   <li>• Clear visibility for landscapes</li>
@@ -249,12 +249,12 @@ const IrakliaGuide: React.FC = () => {
               </div>
             </div>
             
-            <div className="mt-8 bg-blue-50 p-6 rounded-lg">
+            <div className="mt-8 bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
               <h3 className="font-semibold text-xl mb-4">Weather Overview</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div>
                   <h4 className="font-medium text-lg mb-2">Temperature Ranges</h4>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li>• Summer (June-August): 25-30°C (77-86°F)</li>
                     <li>• Spring/Autumn: 18-25°C (64-77°F)</li>
                     <li>• Winter (December-February): 10-15°C (50-59°F)</li>
@@ -262,7 +262,7 @@ const IrakliaGuide: React.FC = () => {
                 </div>
                 <div>
                   <h4 className="font-medium text-lg mb-2">Practical Tips</h4>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li>• The meltemi winds can be strong in July and August</li>
                     <li>• Ferry services are reduced in winter months</li>
                     <li>• Many businesses close from November to Easter</li>
@@ -275,10 +275,10 @@ const IrakliaGuide: React.FC = () => {
 
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Villages of Iraklia</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Villages of Iraklia</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold mb-4">Agios Georgios</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Agios Georgios</h3>
                 <p className="text-gray-700 leading-relaxed">
                   The main port and largest settlement on Iraklia, Agios Georgios is a picturesque fishing village that serves as the island's gateway. This charming hamlet wraps around a natural bay with crystal-clear waters and features a small harbor where fishing boats and yachts dock side by side.
                 </p>
@@ -304,7 +304,7 @@ const IrakliaGuide: React.FC = () => {
                 />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-4">Panagia</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Panagia</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Perched on a hillside about 3.5 km from Agios Georgios, Panagia is the second and smaller village of Iraklia. This traditional settlement offers stunning panoramic views of the surrounding islands and the Aegean Sea, making it a perfect spot for photographers and sunset enthusiasts.
                 </p>
@@ -317,10 +317,10 @@ const IrakliaGuide: React.FC = () => {
 
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beaches of Iraklia</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beaches of Iraklia</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold mb-4">Livadi Beach</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Livadi Beach</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Livadi is the most popular and accessible beach on Iraklia, located just a 15-minute walk from Agios Georgios port. This beautiful sandy beach stretches along a sheltered bay with shallow, crystal-clear waters that are perfect for families with children.
                 </p>
@@ -346,7 +346,7 @@ const IrakliaGuide: React.FC = () => {
                 />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-4">Alimia Beach</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Alimia Beach</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Alimia is a secluded beach on the northeastern coast of Iraklia, accessible via a hiking trail (approximately 1 hour from Agios Georgios) or by boat. This untouched pebbled beach offers privacy and tranquility even during the peak summer months.
                 </p>
@@ -359,10 +359,10 @@ const IrakliaGuide: React.FC = () => {
 
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Activities on Iraklia</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Activities on Iraklia</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
-                <h3 className="text-xl font-bold mb-4">Hiking & Nature</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Hiking & Nature</h3>
                 <p className="text-gray-700 leading-relaxed">
                   Iraklia features well-marked hiking paths that connect villages, beaches, and points of interest. The most popular routes include Agios Georgios to Panagia (3.5 km), and the path to Papas Beach (4 km).
                 </p>
@@ -388,7 +388,7 @@ const IrakliaGuide: React.FC = () => {
                 />
               </div>
               <div>
-                <h3 className="text-xl font-bold mb-4">Cave of Agios Ioannis</h3>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">Cave of Agios Ioannis</h3>
                 <p className="text-gray-700 leading-relaxed">
                   One of Iraklia's most significant attractions is the Cave of Agios Ioannis, located on the northeastern part of the island. This impressive cave features spectacular stalactites and stalagmites formed over thousands of years.
                 </p>
@@ -399,7 +399,7 @@ const IrakliaGuide: React.FC = () => {
             </div>
             
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSwimmer className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Swimming & Snorkeling</h3>
                 <p className="text-gray-600 mb-4">
@@ -411,7 +411,7 @@ const IrakliaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaHistory className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Birdwatching</h3>
                 <p className="text-gray-600 mb-4">
@@ -423,7 +423,7 @@ const IrakliaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaShip className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Boat Trips</h3>
                 <p className="text-gray-600 mb-4">
@@ -439,10 +439,10 @@ const IrakliaGuide: React.FC = () => {
           
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine of Iraklia</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine of Iraklia</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-1">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="aspect-w-1 aspect-h-1">
                     <img 
                       src="/images/islands/iraklia/cuisine/iraklia-food.jpg" 
@@ -477,7 +477,7 @@ const IrakliaGuide: React.FC = () => {
             </div>
             
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaUtensils className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Tavernas by the Sea</h3>
                 <p className="text-gray-600 mb-4">
@@ -489,7 +489,7 @@ const IrakliaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaWineGlass className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Local Wines</h3>
                 <p className="text-gray-600 mb-4">
@@ -501,7 +501,7 @@ const IrakliaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Farm to Table</h3>
                 <p className="text-gray-600 mb-4">
@@ -517,7 +517,7 @@ const IrakliaGuide: React.FC = () => {
           
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Iraklia Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Iraklia Photo Gallery</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg">
@@ -541,7 +541,7 @@ const IrakliaGuide: React.FC = () => {
             <div className="container mx-auto px-6 py-12 text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Iraklia?</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Iraklia?</h2>
                   <p className="text-lg mb-6">
                     Book your accommodations, tours, and activities for an unforgettable Greek island getaway.
                     Iraklia offers the perfect blend of natural beauty, tranquility, and authentic Greek hospitality.
@@ -581,3 +581,5 @@ const IrakliaGuide: React.FC = () => {
 };
 
 export default IrakliaGuide;
+
+

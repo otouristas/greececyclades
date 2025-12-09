@@ -1,26 +1,28 @@
-import React from 'react';
 import { useParams } from 'react-router-dom';
 import { FaUmbrellaBeach, FaMapMarkedAlt, FaUtensils, FaSun, FaCameraRetro } from 'react-icons/fa';
 import { islandGuides } from '../data/islandsData';
 import { allIslandGuides, GuideContent } from '../data/allIslandGuides';
-import IslandGuideTemplate from '../components/guides/IslandGuideTemplate';
-import { generateIslandGuideSEO } from '../utils/seo';
-import SEO from '../components/SEO';
+import IslandGuideTemplateNew from '../components/guides/IslandGuideTemplateNew';
 
 export default function IslandGuidePage() {
   const { slug } = useParams<{ slug: string }>();
   const island = islandGuides.find(g => g.id.toLowerCase() === slug?.toLowerCase());
 
   if (!island) {
-    return <div className="min-h-screen flex items-center justify-center">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold text-gray-800 mb-4">Island Guide Not Found</h1>
-        <p className="text-gray-600 mb-8">We couldn't find the guide you're looking for.</p>
-        <a href="/guides" className="text-blue-600 hover:text-blue-700">
-          View all island guides
-        </a>
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-gray-50 dark:bg-dark-bg">
+        <div className="text-center px-4">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Island Guide Not Found</h1>
+          <p className="text-gray-600 dark:text-white/60 mb-8">We couldn't find the guide you're looking for.</p>
+          <a 
+            href="/guides" 
+            className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-600 text-white rounded-xl font-semibold hover:bg-cyan-600/90 transition-colors"
+          >
+            View all island guides
+          </a>
+        </div>
       </div>
-    </div>;
+    );
   }
 
   // Get the content based on the island ID
@@ -119,10 +121,6 @@ export default function IslandGuidePage() {
     ]
   } as GuideContent;
 
-  return (
-    <>
-      <SEO {...generateIslandGuideSEO(island.name, island.description, island.image)} />
-      <IslandGuideTemplate island={island} content={content} />
-    </>
-  );
+  return <IslandGuideTemplateNew island={island} content={content} />;
 }
+

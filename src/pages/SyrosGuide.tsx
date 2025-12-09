@@ -15,6 +15,8 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
+import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
+import { siteLinks } from '../data/siteLinks';
 
 const SyrosGuide: React.FC = () => {
   const syros = islandGuides.find(island => island.id === 'syros');
@@ -24,8 +26,8 @@ const SyrosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Syros Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Syros vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. From the neoclassical architecture of Ermoupolis to pristine beaches and rich cultural heritage.",
+    title: "Syros Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Syros vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities. From the neoclassical architecture of Ermoupolis to pristine beaches and rich cultural heritage.",
     keywords: [
       'Syros travel guide',
       'Syros beaches',
@@ -72,42 +74,42 @@ const SyrosGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Loukoumi and delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -131,7 +133,7 @@ const SyrosGuide: React.FC = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Syros</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Syros</h2>
               <p className="text-gray-700 leading-relaxed">
                 Discover Syros, the captivating capital of the Cyclades islands, where neoclassical grandeur 
                 meets traditional Greek charm. This unique island combines the elegance of Ermoupolis, 
@@ -165,14 +167,14 @@ const SyrosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
                 <a 
                   key={index}
                   href={category.link} 
-                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
                     {category.icon}
@@ -189,7 +191,7 @@ const SyrosGuide: React.FC = () => {
               <FaSun className="text-2xl text-blue-500 mr-3" />
               <h2 className="text-3xl font-bold">When to Visit</h2>
             </div>
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <p className="text-gray-700 mb-6">
                   Syros enjoys a Mediterranean climate with mild winters and warm, sunny summers. Unlike some 
@@ -200,7 +202,7 @@ const SyrosGuide: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <h3 className="text-xl font-semibold mb-3">High Season (June-August)</h3>
-                    <ul className="space-y-2 text-gray-600">
+                    <ul className="space-y-2 text-gray-600 dark:text-white/60">
                       <li>• Warmest weather with temperatures between 25-30°C (77-86°F)</li>
                       <li>• Bustling atmosphere with many cultural events and festivals</li>
                       <li>• All restaurants, shops, and attractions operating at full capacity</li>
@@ -210,7 +212,7 @@ const SyrosGuide: React.FC = () => {
                   
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Shoulder Season (April-May, September-October)</h3>
-                    <ul className="space-y-2 text-gray-600">
+                    <ul className="space-y-2 text-gray-600 dark:text-white/60">
                       <li>• Pleasant temperatures between 18-25°C (64-77°F)</li>
                       <li>• Fewer tourists but most facilities still open</li>
                       <li>• Better deals on accommodations</li>
@@ -225,7 +227,7 @@ const SyrosGuide: React.FC = () => {
                     Unlike many Greek islands that practically shut down in winter, Syros maintains a lively 
                     atmosphere year-round. With around 20,000 permanent residents, the island offers:
                   </p>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li>• Mild winter temperatures between 10-15°C (50-59°F)</li>
                     <li>• An authentic local experience with few tourists</li>
                     <li>• Lower prices for accommodations</li>
@@ -236,7 +238,7 @@ const SyrosGuide: React.FC = () => {
                 
                 <div>
                   <h3 className="text-xl font-semibold mb-3">Water Temperature</h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-white/60">
                     The sea is warmest from July to September (23-25°C/73-77°F), pleasant for swimming from 
                     May to October, and quite cold during winter months (15-17°C/59-63°F).
                   </p>
@@ -253,7 +255,7 @@ const SyrosGuide: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/villages/ermoupolis.jpg" 
@@ -277,7 +279,7 @@ const SyrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/villages/ano-syros.jpg" 
@@ -301,7 +303,7 @@ const SyrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/villages/galissas.jpg" 
@@ -324,7 +326,7 @@ const SyrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/villages/kini.jpg" 
@@ -357,7 +359,7 @@ const SyrosGuide: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/beaches/galissas-beach.jpg" 
@@ -381,7 +383,7 @@ const SyrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/beaches/kini-beach.jpg" 
@@ -404,7 +406,7 @@ const SyrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/beaches/vari-beach.jpg" 
@@ -427,7 +429,7 @@ const SyrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/beaches/delfini-beach.jpg" 
@@ -451,15 +453,15 @@ const SyrosGuide: React.FC = () => {
               </div>
             </div>
             
-            <div className="mt-8 bg-blue-50 p-6 rounded-lg">
+            <div className="mt-8 bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
               <h3 className="text-xl font-semibold mb-3">More Beaches to Explore</h3>
               <ul className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                <li className="bg-white p-4 rounded shadow-sm">Azolimnos - Family-friendly, organized</li>
-                <li className="bg-white p-4 rounded shadow-sm">Megas Gialos - Sheltered bay, calm waters</li>
-                <li className="bg-white p-4 rounded shadow-sm">Posidonia/Dellagrazia - Upscale area, clean waters</li>
-                <li className="bg-white p-4 rounded shadow-sm">Agathopes - Golden sand, shallow waters</li>
-                <li className="bg-white p-4 rounded shadow-sm">Komito - Secluded, natural beauty</li>
-                <li className="bg-white p-4 rounded shadow-sm">Finikas - Protected harbor, facilities</li>
+                <li className="bg-white dark:bg-dark-card p-4 rounded shadow-sm">Azolimnos - Family-friendly, organized</li>
+                <li className="bg-white dark:bg-dark-card p-4 rounded shadow-sm">Megas Gialos - Sheltered bay, calm waters</li>
+                <li className="bg-white dark:bg-dark-card p-4 rounded shadow-sm">Posidonia/Dellagrazia - Upscale area, clean waters</li>
+                <li className="bg-white dark:bg-dark-card p-4 rounded shadow-sm">Agathopes - Golden sand, shallow waters</li>
+                <li className="bg-white dark:bg-dark-card p-4 rounded shadow-sm">Komito - Secluded, natural beauty</li>
+                <li className="bg-white dark:bg-dark-card p-4 rounded shadow-sm">Finikas - Protected harbor, facilities</li>
               </ul>
             </div>
           </section>
@@ -472,7 +474,7 @@ const SyrosGuide: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/activities/apollo-theater.jpg" 
@@ -495,7 +497,7 @@ const SyrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/activities/hiking.jpg" 
@@ -518,7 +520,7 @@ const SyrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/activities/ermoupolis-architecture.jpg" 
@@ -541,7 +543,7 @@ const SyrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/syros/activities/local-products.jpg" 
@@ -573,7 +575,7 @@ const SyrosGuide: React.FC = () => {
               <h2 className="text-3xl font-bold">Cuisine</h2>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <p className="text-gray-700 mb-6">
                   Syros has a unique culinary tradition that blends Cycladic flavors with influences from 
@@ -583,7 +585,7 @@ const SyrosGuide: React.FC = () => {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Local Specialties</h3>
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
@@ -623,7 +625,7 @@ const SyrosGuide: React.FC = () => {
                   
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Seafood & Main Dishes</h3>
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
@@ -665,36 +667,36 @@ const SyrosGuide: React.FC = () => {
                 <div className="mb-8">
                   <h3 className="text-xl font-semibold mb-3">Where to Eat</h3>
                   <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-                    <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                       <h4 className="font-medium mb-1">Ermoupolis</h4>
-                      <p className="text-sm text-gray-600">Upscale restaurants and traditional tavernas around Miaouli Square</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Upscale restaurants and traditional tavernas around Miaouli Square</p>
                     </div>
-                    <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                       <h4 className="font-medium mb-1">Ano Syros</h4>
-                      <p className="text-sm text-gray-600">Authentic tavernas with panoramic views</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Authentic tavernas with panoramic views</p>
                     </div>
-                    <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                       <h4 className="font-medium mb-1">Kini</h4>
-                      <p className="text-sm text-gray-600">Seafood restaurants by the water</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Seafood restaurants by the water</p>
                     </div>
-                    <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                       <h4 className="font-medium mb-1">Galissas</h4>
-                      <p className="text-sm text-gray-600">Beach tavernas serving fresh fish</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Beach tavernas serving fresh fish</p>
                     </div>
-                    <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                       <h4 className="font-medium mb-1">Posidonia</h4>
-                      <p className="text-sm text-gray-600">Upscale dining options</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Upscale dining options</p>
                     </div>
-                    <div className="bg-blue-50 p-4 rounded-lg">
+                    <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                       <h4 className="font-medium mb-1">Vaporia</h4>
-                      <p className="text-sm text-gray-600">Elegant cafes with sea views</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">Elegant cafes with sea views</p>
                     </div>
                   </div>
                 </div>
                 
                 <div>
                   <h3 className="text-xl font-semibold mb-3">Culinary Experiences</h3>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li>• Visit a loukoumi factory to see how this traditional sweet is made</li>
                     <li>• Tour the San Michali cheese production facilities</li>
                     <li>• Take a cooking class featuring local recipes</li>
@@ -715,7 +717,7 @@ const SyrosGuide: React.FC = () => {
             
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {galleryImages.map((image, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div key={index} className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="aspect-w-16 aspect-h-9">
                     <img 
                       src={image.src} 
@@ -724,7 +726,7 @@ const SyrosGuide: React.FC = () => {
                     />
                   </div>
                   <div className="p-3">
-                    <p className="text-sm text-gray-600">{image.alt}</p>
+                    <p className="text-sm text-gray-600 dark:text-white/60">{image.alt}</p>
                   </div>
                 </div>
               ))}
@@ -736,7 +738,7 @@ const SyrosGuide: React.FC = () => {
             <div className="container mx-auto px-6 py-12 text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Syros?</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Syros?</h2>
                   <p className="text-lg mb-6">
                     Book your accommodations, tours, and activities for an unforgettable Greek island getaway.
                     Syros offers the perfect blend of neoclassical elegance, vibrant culture, and authentic Greek hospitality.
@@ -769,6 +771,12 @@ const SyrosGuide: React.FC = () => {
               </div>
             </div>
           </section>
+
+          <RelatedDestinationsSection groups={[
+            siteLinks.popularIslands,
+            siteLinks.topActivities,
+            siteLinks.travelServices
+          ]} />
         </div>
       </div>
     </>
@@ -776,3 +784,5 @@ const SyrosGuide: React.FC = () => {
 };
 
 export default SyrosGuide;
+
+

@@ -1,7 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Calculator, Euro, Bed, Utensils, Ship, Bus, Ticket } from 'lucide-react';
 import SEO from '../components/SEO';
+import FAQSection from '../components/FAQSection';
+import RelatedLinks from '../components/RelatedLinks';
 import { cyclades } from '../data/islandsData';
+import { useTheme } from '../contexts/ThemeContext';
 
 // Budget ranges per person per day (in EUR)
 const budgetRanges = {
@@ -36,6 +39,9 @@ const seasonMultipliers = {
 };
 
 export default function BudgetCalculator() {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
+  
   // Form state
   const [travelers, setTravelers] = useState(2);
   const [days, setDays] = useState(7);
@@ -102,23 +108,34 @@ export default function BudgetCalculator() {
   };
 
   return (
-    <>
+    <div className={`min-h-screen ${isDark ? 'bg-dark-bg' : 'bg-gray-50'}`}>
       <SEO 
-        title="Cyclades Trip Budget Calculator - Plan Your Greek Island Vacation Costs"
-        description="Plan your Cyclades trip budget with our interactive calculator. Estimate costs for accommodation, food, transportation, and activities based on your travel style."
+        title="Cyclades Budget Calculator: Daily Costs by Island & Style"
+        description="How much does a Cyclades trip cost? Calculate your budget by island, travel style & duration. Budget €50/day, mid-range €100-150, luxury €200+. Real prices."
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Budget Calculator', url: '/budget-calculator' }
+        ]}
+        faqs={[
+          { question: 'How much does a Cyclades trip cost per day?', answer: 'Budget: €50-80/day, Mid-range: €100-150/day, Luxury: €200-400+/day. Costs vary by island - Santorini/Mykonos are most expensive.' },
+          { question: 'Which Cyclades island is cheapest?', answer: 'Naxos, Syros, Andros, and Kythnos offer the best value. Expect 30-50% lower prices than Santorini or Mykonos.' },
+          { question: 'What is included in daily costs?', answer: 'Accommodation, 3 meals, local transport, one activity. Ferries, flights, and tours are typically extra.' }
+        ]}
       />
       
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 pt-24 pb-16 md:pt-32 md:pb-24">
+      <div className={`relative pt-24 pb-16 md:pt-32 md:pb-24 ${isDark ? 'bg-gradient-to-r from-cyclades-deep-blue to-cyclades-caldera' : 'bg-gradient-to-r from-cyclades-deep-blue to-cyclades-sea-blue'}`}>
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-blue-900/30" />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-blue-800 to-transparent" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mx-auto h-16 w-16 flex items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm mb-6">
+            <Calculator className="h-8 w-8 text-cyclades-turquoise" />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Cyclades Trip Budget Calculator
           </h1>
-          <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
             Plan your Greek island getaway with confidence by estimating your travel expenses.
           </p>
         </div>
@@ -129,16 +146,16 @@ export default function BudgetCalculator() {
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Input Form */}
           <div className="lg:col-span-1">
-            <div className="bg-white rounded-xl shadow-sm border p-6 sticky top-24">
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-                <Calculator className="h-6 w-6 text-blue-600" />
+            <div className={`rounded-2xl p-6 sticky top-24 ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white shadow-sm border'}`}>
+              <h2 className={`text-2xl font-bold mb-6 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                <Calculator className="h-6 w-6 text-cyclades-turquoise" />
                 Trip Details
               </h2>
               
               <div className="space-y-6">
                 {/* Number of Travelers */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                     Number of Travelers
                   </label>
                   <div className="flex items-center">
@@ -166,7 +183,7 @@ export default function BudgetCalculator() {
                 
                 {/* Number of Days */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                     Duration (Days)
                   </label>
                   <div className="flex items-center">
@@ -194,13 +211,13 @@ export default function BudgetCalculator() {
                 
                 {/* Season */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                     Travel Season
                   </label>
                   <select
                     value={season}
                     onChange={(e) => setSeason(e.target.value)}
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500"
+                    className={`block w-full rounded-xl py-3 px-4 border focus:ring-2 focus:ring-cyclades-turquoise focus:border-transparent ${isDark ? 'bg-dark-bg border-dark-border text-white' : 'bg-white border-gray-300 text-gray-900'}`}
                   >
                     <option value="lowSeason">Low Season (Nov-Apr)</option>
                     <option value="shoulderSeason">Shoulder Season (May, Oct)</option>
@@ -211,36 +228,36 @@ export default function BudgetCalculator() {
                 
                 {/* Budget Level */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                     Budget Level
                   </label>
                   <div className="grid grid-cols-3 gap-2">
                     <button
                       onClick={() => setBudgetLevel('budget')}
-                      className={`px-3 py-2 text-sm rounded-md ${
+                      className={`px-3 py-2 text-sm rounded-xl transition-all ${
                         budgetLevel === 'budget'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          ? 'bg-cyclades-turquoise text-dark-bg font-semibold'
+                          : isDark ? 'bg-dark-bg text-white/70 hover:bg-dark-border' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
                       Budget
                     </button>
                     <button
                       onClick={() => setBudgetLevel('midRange')}
-                      className={`px-3 py-2 text-sm rounded-md ${
+                      className={`px-3 py-2 text-sm rounded-xl transition-all ${
                         budgetLevel === 'midRange'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          ? 'bg-cyclades-turquoise text-dark-bg font-semibold'
+                          : isDark ? 'bg-dark-bg text-white/70 hover:bg-dark-border' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
                       Mid-Range
                     </button>
                     <button
                       onClick={() => setBudgetLevel('luxury')}
-                      className={`px-3 py-2 text-sm rounded-md ${
+                      className={`px-3 py-2 text-sm rounded-xl transition-all ${
                         budgetLevel === 'luxury'
-                          ? 'bg-blue-600 text-white'
-                          : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          ? 'bg-cyclades-turquoise text-dark-bg font-semibold'
+                          : isDark ? 'bg-dark-bg text-white/70 hover:bg-dark-border' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                       }`}
                     >
                       Luxury
@@ -250,7 +267,7 @@ export default function BudgetCalculator() {
                 
                 {/* Islands */}
                 <div>
-                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                  <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
                     Islands to Visit
                   </label>
                   <select
@@ -260,7 +277,7 @@ export default function BudgetCalculator() {
                       const selected = Array.from(e.target.selectedOptions, option => option.value);
                       setIslands(selected);
                     }}
-                    className="block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 h-32"
+                    className={`block w-full rounded-xl border focus:ring-2 focus:ring-cyclades-turquoise focus:border-transparent h-32 ${isDark ? 'bg-dark-bg border-dark-border text-white' : 'bg-white border-gray-300 text-gray-900'}`}
                   >
                     {cyclades.map((island) => (
                       <option key={island.slug} value={island.slug}>
@@ -268,7 +285,7 @@ export default function BudgetCalculator() {
                       </option>
                     ))}
                   </select>
-                  <p className="mt-1 text-xs text-gray-500">
+                  <p className={`mt-1 text-xs ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
                     Hold Ctrl/Cmd to select multiple islands
                   </p>
                 </div>
@@ -279,47 +296,47 @@ export default function BudgetCalculator() {
           {/* Results */}
           <div className="lg:col-span-2">
             {/* Budget Summary */}
-            <div className="bg-white rounded-xl shadow-sm border p-6 mb-8">
-              <h2 className="text-2xl font-bold mb-6">Estimated Budget</h2>
+            <div className={`rounded-2xl p-6 mb-8 ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white shadow-sm border'}`}>
+              <h2 className={`text-2xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>Estimated Budget</h2>
               
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                <div className="bg-blue-50 rounded-xl p-6 text-center">
-                  <h3 className="text-lg font-medium text-gray-700 mb-2">Total Estimated Cost</h3>
-                  <p className="text-4xl font-bold text-blue-600 flex items-center justify-center gap-1">
+                <div className={`rounded-xl p-6 text-center ${isDark ? 'bg-cyclades-turquoise/10' : 'bg-blue-50'}`}>
+                  <h3 className={`text-lg font-medium mb-2 ${isDark ? 'text-white/70' : 'text-gray-700'}`}>Total Estimated Cost</h3>
+                  <p className="text-4xl font-bold text-cyclades-turquoise flex items-center justify-center gap-1">
                     <Euro className="h-6 w-6" />
                     {totalBudget.toLocaleString()}
                   </p>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className={`text-sm mt-2 ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
                     For {travelers} {travelers === 1 ? 'person' : 'people'} for {days} {days === 1 ? 'day' : 'days'}
                   </p>
                 </div>
                 
-                <div className="bg-blue-50 rounded-xl p-6 text-center">
-                  <h3 className="text-lg font-medium text-gray-700 mb-2">Per Person Per Day</h3>
-                  <p className="text-4xl font-bold text-blue-600 flex items-center justify-center gap-1">
+                <div className={`rounded-xl p-6 text-center ${isDark ? 'bg-cyclades-turquoise/10' : 'bg-blue-50'}`}>
+                  <h3 className={`text-lg font-medium mb-2 ${isDark ? 'text-white/70' : 'text-gray-700'}`}>Per Person Per Day</h3>
+                  <p className="text-4xl font-bold text-cyclades-turquoise flex items-center justify-center gap-1">
                     <Euro className="h-6 w-6" />
                     {Math.round(totalBudget / travelers / days).toLocaleString()}
                   </p>
-                  <p className="text-sm text-gray-500 mt-2">
+                  <p className={`text-sm mt-2 ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
                     {budgetLevel === 'budget' ? 'Budget' : budgetLevel === 'midRange' ? 'Mid-Range' : 'Luxury'} travel style
                   </p>
                 </div>
               </div>
               
               {/* Cost Breakdown */}
-              <h3 className="text-lg font-semibold mb-4">Cost Breakdown</h3>
+              <h3 className={`text-lg font-semibold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>Cost Breakdown</h3>
               <div className="space-y-4">
                 {/* Accommodation */}
                 <div>
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-sm font-medium flex items-center gap-1">
-                      <Bed className="h-4 w-4 text-blue-600" /> Accommodation
+                    <span className={`text-sm font-medium flex items-center gap-1 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
+                      <Bed className="h-4 w-4 text-blue-500" /> Accommodation
                     </span>
-                    <span className="text-sm font-semibold">€{breakdown.accommodation.toLocaleString()}</span>
+                    <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>€{breakdown.accommodation.toLocaleString()}</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                  <div className={`w-full rounded-full h-2.5 ${isDark ? 'bg-dark-bg' : 'bg-gray-200'}`}>
                     <div 
-                      className="bg-blue-600 h-2.5 rounded-full" 
+                      className="bg-blue-500 h-2.5 rounded-full" 
                       style={{ width: `${(breakdown.accommodation / totalBudget) * 100}%` }}
                     ></div>
                   </div>
@@ -328,14 +345,14 @@ export default function BudgetCalculator() {
                 {/* Food */}
                 <div>
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-sm font-medium flex items-center gap-1">
-                      <Utensils className="h-4 w-4 text-green-600" /> Food & Drinks
+                    <span className={`text-sm font-medium flex items-center gap-1 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
+                      <Utensils className="h-4 w-4 text-green-500" /> Food & Drinks
                     </span>
-                    <span className="text-sm font-semibold">€{breakdown.food.toLocaleString()}</span>
+                    <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>€{breakdown.food.toLocaleString()}</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                  <div className={`w-full rounded-full h-2.5 ${isDark ? 'bg-dark-bg' : 'bg-gray-200'}`}>
                     <div 
-                      className="bg-green-600 h-2.5 rounded-full" 
+                      className="bg-green-500 h-2.5 rounded-full" 
                       style={{ width: `${(breakdown.food / totalBudget) * 100}%` }}
                     ></div>
                   </div>
@@ -344,14 +361,14 @@ export default function BudgetCalculator() {
                 {/* Local Transportation */}
                 <div>
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-sm font-medium flex items-center gap-1">
-                      <Bus className="h-4 w-4 text-orange-600" /> Local Transportation
+                    <span className={`text-sm font-medium flex items-center gap-1 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
+                      <Bus className="h-4 w-4 text-orange-500" /> Local Transportation
                     </span>
-                    <span className="text-sm font-semibold">€{breakdown.transportation.toLocaleString()}</span>
+                    <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>€{breakdown.transportation.toLocaleString()}</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                  <div className={`w-full rounded-full h-2.5 ${isDark ? 'bg-dark-bg' : 'bg-gray-200'}`}>
                     <div 
-                      className="bg-orange-600 h-2.5 rounded-full" 
+                      className="bg-orange-500 h-2.5 rounded-full" 
                       style={{ width: `${(breakdown.transportation / totalBudget) * 100}%` }}
                     ></div>
                   </div>
@@ -360,14 +377,14 @@ export default function BudgetCalculator() {
                 {/* Activities */}
                 <div>
                   <div className="flex justify-between items-center mb-1">
-                    <span className="text-sm font-medium flex items-center gap-1">
-                      <Ticket className="h-4 w-4 text-purple-600" /> Activities & Sightseeing
+                    <span className={`text-sm font-medium flex items-center gap-1 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
+                      <Ticket className="h-4 w-4 text-purple-500" /> Activities & Sightseeing
                     </span>
-                    <span className="text-sm font-semibold">€{breakdown.activities.toLocaleString()}</span>
+                    <span className={`text-sm font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>€{breakdown.activities.toLocaleString()}</span>
                   </div>
-                  <div className="w-full bg-gray-200 rounded-full h-2.5">
+                  <div className={`w-full rounded-full h-2.5 ${isDark ? 'bg-dark-bg' : 'bg-gray-200'}`}>
                     <div 
-                      className="bg-purple-600 h-2.5 rounded-full" 
+                      className="bg-purple-500 h-2.5 rounded-full" 
                       style={{ width: `${(breakdown.activities / totalBudget) * 100}%` }}
                     ></div>
                   </div>
@@ -437,7 +454,22 @@ export default function BudgetCalculator() {
             </div>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <FAQSection
+          faqs={[
+            { question: 'How much does a Cyclades trip cost per day?', answer: 'Budget travelers: €60-100/day. Mid-range: €120-200/day. Luxury: €300+/day. Costs vary by island - Santorini/Mykonos are 30-50% more expensive than Naxos or Paros.' },
+            { question: 'Which Cyclades island is cheapest?', answer: 'Naxos, Syros, Andros, and Kythnos offer the best value. Expect 30-50% lower prices than Santorini or Mykonos for similar quality accommodation and dining.' },
+            { question: 'When is the cheapest time to visit Cyclades?', answer: 'April-May and October offer 20-40% lower prices. Avoid July-August when prices peak. Shoulder season has great weather with fewer crowds.' },
+            { question: 'How can I save money in Cyclades?', answer: 'Stay in smaller villages, eat at local tavernas, use ferries not flights, visit free beaches, book accommodation early, and consider lesser-known islands.' }
+          ]}
+          title="Budget FAQ"
+          subtitle="Common questions about Cyclades travel costs"
+        />
+
+        {/* Related Links */}
+        <RelatedLinks variant="cards" pageType="general" title="Continue Planning" />
       </div>
-    </>
+    </div>
   );
 }

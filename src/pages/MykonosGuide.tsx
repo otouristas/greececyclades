@@ -16,6 +16,8 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
+import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
+import { siteLinks } from '../data/siteLinks';
 
 const MykonosGuide: React.FC = () => {
   const mykonos = islandGuides.find(island => island.id === 'mykonos');
@@ -47,32 +49,32 @@ const MykonosGuide: React.FC = () => {
   const galleryImages = [
     {
       src: "/images/islands/mykonos/little-venice.jpg",
-      alt: "Picturesque Little Venice quarter Mykonos Greece at sunset with colorful waterfront buildings and Aegean Sea",
+      alt: "Little Venice",
       caption: "The picturesque Little Venice quarter at sunset"
     },
     {
       src: "/images/islands/mykonos/windmills.jpg",
-      alt: "Iconic windmills Kato Mili Mykonos Greece overlooking Mykonos Town and Aegean Sea traditional Cycladic architecture",
+      alt: "Mykonos Windmills",
       caption: "The iconic windmills overlooking Mykonos Town"
     },
     {
       src: "/images/islands/mykonos/paradise-beach.jpg",
-      alt: "Famous Paradise Beach Mykonos Greece with crystal clear waters golden sand beach parties and water sports",
+      alt: "Paradise Beach",
       caption: "The famous Paradise Beach with its crystal-clear waters"
     },
     {
       src: "/images/islands/mykonos/chora-streets.jpg",
-      alt: "Charming narrow whitewashed streets Mykonos Town Chora Greece with traditional Cycladic architecture and boutiques",
+      alt: "Mykonos Town Streets",
       caption: "The charming narrow streets of Mykonos Town"
     },
     {
       src: "/images/islands/mykonos/beach-club.jpg",
-      alt: "Luxury beach club Mykonos Greece with sunbeds umbrellas beach bars and crystal clear Aegean Sea waters",
+      alt: "Beach Club",
       caption: "Luxury beach clubs with sunbeds and umbrellas"
     },
     {
       src: "/images/islands/mykonos/panagia-paraportiani.jpg",
-      alt: "Iconic whitewashed Panagia Paraportiani church Mykonos Greece with unique architecture and Aegean Sea views",
+      alt: "Panagia Paraportiani Church",
       caption: "The iconic whitewashed church of Panagia Paraportiani"
     }
   ];
@@ -153,14 +155,14 @@ const MykonosGuide: React.FC = () => {
           }
         }}
       />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...mykonos} />
 
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Mykonos</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Mykonos</h2>
               <p className="text-gray-700 leading-relaxed">
                 Welcome to Mykonos, Greece's most glamorous island destination. Known for its vibrant nightlife,
                 pristine beaches and cosmopolitan atmosphere, Mykonos perfectly blends traditional Cycladic charm
@@ -177,7 +179,7 @@ const MykonosGuide: React.FC = () => {
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                 <img
                   src="/images/islands/mykonos/aerial-view.jpg"
-                  alt="Aerial view Mykonos island Greece with whitewashed villages pristine beaches and crystal clear Aegean Sea"
+                  alt="Mykonos Aerial View"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -185,7 +187,7 @@ const MykonosGuide: React.FC = () => {
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                   <img
                     src="/images/islands/mykonos/little-venice-detail.jpg"
-                    alt="Colorful waterfront buildings Little Venice Mykonos Greece with traditional architecture and sunset views"
+                    alt="Little Venice Detail"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -194,60 +196,60 @@ const MykonosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               <a 
                 href="#villages" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaMapMarkedAlt className="text-blue-500" />
+                  <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">Villages</span>
               </a>
               <a 
                 href="#beaches" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaUmbrellaBeach className="text-blue-500" />
+                  <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">Beaches</span>
               </a>
               <a 
                 href="#dining" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaUtensils className="text-blue-500" />
+                  <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">Local Cuisine</span>
               </a>
               <a 
                 href="#nightlife" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaGlassCheers className="text-blue-500" />
+                  <FaGlassCheers className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">Nightlife</span>
               </a>
               <a 
                 href="#activities" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaRoute className="text-blue-500" />
+                  <FaRoute className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">Activities</span>
               </a>
               <a 
                 href="#when-to-visit" 
-                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
-                  <FaCalendarAlt className="text-blue-500" />
+                  <FaCalendarAlt className="text-cyan-600 dark:text-cyclades-turquoise" />
                 </div>
                 <span className="font-medium text-sm">When to Visit</span>
               </a>
@@ -256,9 +258,9 @@ const MykonosGuide: React.FC = () => {
 
           {/* History & Culture Section - NEW */}
           <section id="history" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">History & Culture</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">History & Culture</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-8 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaHistory className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-2xl font-semibold">Rich Heritage</h3>
@@ -275,13 +277,13 @@ const MykonosGuide: React.FC = () => {
                   among the international jet set. Today, Mykonos is known worldwide for its vibrant nightlife, luxury
                   accommodations, and celebrity visitors.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">
                   Despite its modern reputation, Mykonos maintains strong ties to its traditional past. The island's architecture,
                   with its iconic whitewashed buildings, narrow streets, and blue-domed churches, reflects the authentic Cycladic
                   style that has been preserved for centuries.
                 </p>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-8 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaLandmark className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-2xl font-semibold">Cultural Highlights</h3>
@@ -297,7 +299,7 @@ const MykonosGuide: React.FC = () => {
                   Museum houses artifacts from Delos, while the Folklore Museum offers insights into traditional Mykonian life
                   through exhibits of furniture, photographs, and handicrafts.
                 </p>
-                <p className="text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">
                   The island celebrates several religious festivals throughout the year, with the most important being the
                   Feast of the Virgin Mary on August 15th. These events feature traditional music, dance, and food, providing
                   visitors with an authentic glimpse into local customs and traditions.
@@ -308,13 +310,13 @@ const MykonosGuide: React.FC = () => {
 
           {/* When to Visit Section - ENHANCED */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Mykonos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Mykonos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Peak Season</h3>
-                <p className="text-gray-600">July to August</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Hot weather (28-32°C)</li>
                   <li>• Vibrant atmosphere</li>
                   <li>• Best nightlife</li>
@@ -323,11 +325,11 @@ const MykonosGuide: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">May-June, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Pleasant weather (22-28°C)</li>
                   <li>• Fewer crowds</li>
                   <li>• Better rates</li>
@@ -336,11 +338,11 @@ const MykonosGuide: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaMusic className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Party Season</h3>
-                <p className="text-gray-600">June to September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">June to September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Beach parties daily</li>
                   <li>• International DJs</li>
                   <li>• Club events</li>
@@ -349,11 +351,11 @@ const MykonosGuide: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Best for Photos</h3>
-                <p className="text-gray-600">April-May, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April-May, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Golden light</li>
                   <li>• Clear skies</li>
                   <li>• Less crowded landmarks</li>
@@ -362,32 +364,32 @@ const MykonosGuide: React.FC = () => {
                 </ul>
               </div>
             </div>
-            <div className="mt-8 bg-blue-50 p-6 rounded-lg">
+            <div className="mt-8 bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
               <h4 className="font-semibold text-lg mb-2">Seasonal Highlights</h4>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                 <div>
-                  <h5 className="font-medium text-blue-800">Spring (April-May)</h5>
+                  <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Spring (April-May)</h5>
                   <p className="text-gray-700 text-sm">
                     Mild temperatures, blooming wildflowers, and fewer tourists make this an ideal time for
                     exploring the island. The XLSIOR Festival in May kicks off the party season.
                   </p>
                 </div>
                 <div>
-                  <h5 className="font-medium text-blue-800">Summer (June-August)</h5>
+                  <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Summer (June-August)</h5>
                   <p className="text-gray-700 text-sm">
                     The height of the season brings hot weather, packed beaches, and world-class DJs at beach clubs.
                     The Mykonos Summer Festival features cultural events throughout the season.
                   </p>
                 </div>
                 <div>
-                  <h5 className="font-medium text-blue-800">Autumn (September-October)</h5>
+                  <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Autumn (September-October)</h5>
                   <p className="text-gray-700 text-sm">
                     Warm sea temperatures, fewer crowds, and more moderate prices make this a perfect time to visit.
                     The Harvest Festival in September celebrates local wine and produce.
                   </p>
                 </div>
                 <div>
-                  <h5 className="font-medium text-blue-800">Winter (November-March)</h5>
+                  <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Winter (November-March)</h5>
                   <p className="text-gray-700 text-sm">
                     The quiet season offers a glimpse of authentic local life. Many businesses close, but you'll
                     experience a more traditional side of the island with mild, though sometimes rainy weather.
@@ -399,12 +401,12 @@ const MykonosGuide: React.FC = () => {
 
           {/* Must-Visit Villages Section - ENHANCED */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Must-Visit Villages</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Must-Visit Villages</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/chora-streets.jpg" 
-                  alt="Vibrant Mykonos Town Chora Greece with whitewashed buildings narrow streets windmills and cosmopolitan atmosphere" 
+                  alt="Mykonos Town (Chora)" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -413,7 +415,7 @@ const MykonosGuide: React.FC = () => {
                     The island's capital is a maze of narrow whitewashed streets, boutique shops, 
                     restaurants, and bars. Home to the iconic windmills and Little Venice.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
                     <li>• Iconic windmills overlooking the town</li>
                     <li>• Little Venice with buildings right on the water</li>
                     <li>• Panagia Paraportiani Church complex</li>
@@ -423,10 +425,10 @@ const MykonosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/ano-mera.jpg" 
-                  alt="Traditional Ano Mera village Mykonos Greece with Panagia Tourliani monastery authentic tavernas and peaceful atmosphere" 
+                  alt="Ano Mera Village" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -435,7 +437,7 @@ const MykonosGuide: React.FC = () => {
                     The second largest settlement on the island offers a more authentic and traditional 
                     side of Mykonos, centered around a beautiful monastery.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
                     <li>• Panagia Tourliani Monastery</li>
                     <li>• Traditional tavernas around the square</li>
                     <li>• Local farmers market</li>
@@ -445,10 +447,10 @@ const MykonosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/little-venice.jpg" 
-                  alt="Picturesque Little Venice quarter Mykonos Greece with colorful waterfront buildings bars and sunset views" 
+                  alt="Little Venice" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -457,7 +459,7 @@ const MykonosGuide: React.FC = () => {
                     A picturesque neighborhood where colorful houses with balconies hang over the sea, 
                     creating one of the most romantic spots on the island.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
                     <li>• Stunning sunset views</li>
                     <li>• Waterfront cocktail bars</li>
                     <li>• Former merchants' houses from the 18th century</li>
@@ -468,10 +470,10 @@ const MykonosGuide: React.FC = () => {
               </div>
             </div>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/ornos-beach.jpg" 
-                  alt="Charming Ornos village Mykonos Greece with beautiful beach traditional tavernas and family friendly atmosphere" 
+                  alt="Ornos Village" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -480,7 +482,7 @@ const MykonosGuide: React.FC = () => {
                     A family-friendly coastal village with a beautiful sheltered beach, upscale 
                     restaurants, and a more relaxed atmosphere than Mykonos Town.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
                     <li>• Protected bay with calm waters</li>
                     <li>• Luxury yacht marina</li>
                     <li>• Seafood restaurants</li>
@@ -489,10 +491,10 @@ const MykonosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/agios-stefanos.jpg" 
-                  alt="Quiet Agios Stefanos village Mykonos Greece with beautiful beach traditional architecture and relaxed atmosphere" 
+                  alt="Agios Stefanos Village" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -501,7 +503,7 @@ const MykonosGuide: React.FC = () => {
                     A charming coastal village close to the new port with a sandy beach, 
                     tavernas, and accommodations with sunset views.
                   </p>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                  <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
                     <li>• Sandy beach with shallow waters</li>
                     <li>• Proximity to the new port</li>
                     <li>• Relaxed atmosphere</li>
@@ -514,16 +516,16 @@ const MykonosGuide: React.FC = () => {
 
           {/* Beaches Section - NEW */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Famous Beaches</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Famous Beaches</h2>
             <p className="text-gray-700 mb-8">
               Mykonos is renowned for its stunning beaches, each with its own unique character and atmosphere. 
               From cosmopolitan party beaches to secluded coves, the island offers something for every type of traveler.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/paradise-beach.jpg" 
-                  alt="Famous Paradise Beach Mykonos Greece with golden sand crystal clear waters beach parties and water sports" 
+                  alt="Paradise Beach" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -536,7 +538,7 @@ const MykonosGuide: React.FC = () => {
                     One of the most famous party beaches in the world, with beach clubs pumping music 
                     from afternoon to dawn. Popular with a younger crowd seeking vibrant nightlife.
                   </p>
-                  <ul className="text-sm text-gray-600">
+                  <ul className="text-sm text-gray-600 dark:text-white/60">
                     <li><span className="font-medium">Best for:</span> Partying, meeting people, water sports</li>
                     <li><span className="font-medium">Facilities:</span> Beach clubs, bars, restaurants, water sports</li>
                     <li><span className="font-medium">Getting there:</span> Bus from Mykonos Town, water taxi</li>
@@ -544,10 +546,10 @@ const MykonosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/super-paradise.jpg" 
-                  alt="Super Paradise Beach Mykonos Greece with golden sand clear waters vibrant beach clubs and party atmosphere" 
+                  alt="Super Paradise Beach" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -560,7 +562,7 @@ const MykonosGuide: React.FC = () => {
                     Known for its crystal-clear waters, vibrant atmosphere, and inclusive environment. 
                     Home to the famous Jackie O' Beach Club and other high-energy venues.
                   </p>
-                  <ul className="text-sm text-gray-600">
+                  <ul className="text-sm text-gray-600 dark:text-white/60">
                     <li><span className="font-medium">Best for:</span> LGBTQ+ scene, dancing, swimming</li>
                     <li><span className="font-medium">Facilities:</span> Beach clubs, restaurants, bars, sunbeds</li>
                     <li><span className="font-medium">Getting there:</span> Shuttle from Mykonos Town, water taxi</li>
@@ -568,10 +570,10 @@ const MykonosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/psarou-beach.jpg" 
-                  alt="Luxury Psarou Beach Mykonos Greece with golden sand upscale beach clubs fine dining and celebrity visitors" 
+                  alt="Psarou Beach" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -584,7 +586,7 @@ const MykonosGuide: React.FC = () => {
                     The most exclusive beach on the island, frequented by celebrities and the jet set. 
                     Home to the famous Nammos beach club and restaurant.
                   </p>
-                  <ul className="text-sm text-gray-600">
+                  <ul className="text-sm text-gray-600 dark:text-white/60">
                     <li><span className="font-medium">Best for:</span> Luxury experience, people watching, fine dining</li>
                     <li><span className="font-medium">Facilities:</span> High-end beach club, gourmet restaurant, boutiques</li>
                     <li><span className="font-medium">Getting there:</span> Taxi, bus from Mykonos Town</li>
@@ -592,10 +594,10 @@ const MykonosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/elia-beach.jpg" 
-                  alt="Long Elia Beach Mykonos Greece with golden sand clear waters water sports and family friendly atmosphere" 
+                  alt="Elia Beach" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -608,7 +610,7 @@ const MykonosGuide: React.FC = () => {
                     The longest sandy beach on Mykonos, offering a more relaxed atmosphere while still 
                     providing amenities and water sports. Popular with a diverse crowd.
                   </p>
-                  <ul className="text-sm text-gray-600">
+                  <ul className="text-sm text-gray-600 dark:text-white/60">
                     <li><span className="font-medium">Best for:</span> Relaxation, water sports, swimming</li>
                     <li><span className="font-medium">Facilities:</span> Beach bars, restaurants, water sports, sunbeds</li>
                     <li><span className="font-medium">Getting there:</span> Bus from Mykonos Town, water taxi</li>
@@ -616,10 +618,10 @@ const MykonosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/ornos-beach.jpg" 
-                  alt="Family friendly Ornos Beach Mykonos Greece with golden sand shallow waters traditional tavernas and calm atmosphere" 
+                  alt="Ornos Beach" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -632,7 +634,7 @@ const MykonosGuide: React.FC = () => {
                     A sheltered bay with calm waters, making it ideal for families with children. 
                     Surrounded by restaurants and accommodations with a cosmopolitan yet relaxed vibe.
                   </p>
-                  <ul className="text-sm text-gray-600">
+                  <ul className="text-sm text-gray-600 dark:text-white/60">
                     <li><span className="font-medium">Best for:</span> Families, swimming, dining</li>
                     <li><span className="font-medium">Facilities:</span> Restaurants, water sports, sunbeds, shops</li>
                     <li><span className="font-medium">Getting there:</span> Regular bus service from Mykonos Town</li>
@@ -640,10 +642,10 @@ const MykonosGuide: React.FC = () => {
                 </div>
               </div>
 
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/agios-stefanos.jpg" 
-                  alt="Peaceful Agios Stefanos Beach Mykonos Greece with golden sand clear waters and traditional beachfront tavernas" 
+                  alt="Agios Stefanos Beach" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -656,7 +658,7 @@ const MykonosGuide: React.FC = () => {
                     Located close to the new port, this beach offers convenience and beautiful sunset views. 
                     A good option for those arriving or departing by ferry.
                   </p>
-                  <ul className="text-sm text-gray-600">
+                  <ul className="text-sm text-gray-600 dark:text-white/60">
                     <li><span className="font-medium">Best for:</span> Convenience, sunset views, relaxation</li>
                     <li><span className="font-medium">Facilities:</span> Tavernas, sunbeds, umbrellas</li>
                     <li><span className="font-medium">Getting there:</span> Short bus ride from Mykonos Town</li>
@@ -668,9 +670,9 @@ const MykonosGuide: React.FC = () => {
 
           {/* Local Cuisine Section - NEW */}
           <section id="dining" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine & Dining</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine & Dining</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-8 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaUtensils className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-2xl font-semibold">Traditional Mykonian Dishes</h3>
@@ -682,36 +684,36 @@ const MykonosGuide: React.FC = () => {
                 </p>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-medium text-gray-900">Kopanisti</h4>
-                    <p className="text-sm text-gray-600">
+                    <h4 className="font-medium text-gray-900 dark:text-white">Kopanisti</h4>
+                    <p className="text-sm text-gray-600 dark:text-white/60">
                       A spicy, peppery cheese with a strong flavor and creamy texture. This PDO-protected 
                       cheese is a Mykonian specialty, often served as a meze with bread or in salads.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Louza</h4>
-                    <p className="text-sm text-gray-600">
+                    <h4 className="font-medium text-gray-900 dark:text-white">Louza</h4>
+                    <p className="text-sm text-gray-600 dark:text-white/60">
                       A local cured meat made from pork fillet, marinated in spices and sun-dried. 
                       Similar to Italian prosciutto but with a distinct Mykonian flavor profile.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Kremidopita</h4>
-                    <p className="text-sm text-gray-600">
+                    <h4 className="font-medium text-gray-900 dark:text-white">Kremidopita</h4>
+                    <p className="text-sm text-gray-600 dark:text-white/60">
                       A traditional onion pie made with local cheese, fresh herbs, and flaky pastry. 
                       A savory treat that showcases the island's simple yet flavorful cooking style.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Amygdalota</h4>
-                    <p className="text-sm text-gray-600">
+                    <h4 className="font-medium text-gray-900 dark:text-white">Amygdalota</h4>
+                    <p className="text-sm text-gray-600 dark:text-white/60">
                       Almond cookies that are chewy on the inside and slightly crisp on the outside. 
                       These gluten-free treats are a perfect sweet ending to a Mykonian meal.
                     </p>
                   </div>
                 </div>
               </div>
-              <div className="bg-white p-8 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-8 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaGlassCheers className="text-3xl text-blue-500 mr-4" />
                   <h3 className="text-2xl font-semibold">Dining Experiences</h3>
@@ -723,22 +725,22 @@ const MykonosGuide: React.FC = () => {
                 </p>
                 <div className="space-y-4">
                   <div>
-                    <h4 className="font-medium text-gray-900">Seaside Dining</h4>
-                    <p className="text-sm text-gray-600">
+                    <h4 className="font-medium text-gray-900 dark:text-white">Seaside Dining</h4>
+                    <p className="text-sm text-gray-600 dark:text-white/60">
                       Many restaurants offer tables right on the sand or overlooking the sea. These venues 
                       combine fresh seafood with spectacular views, especially at sunset.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Little Venice Restaurants</h4>
-                    <p className="text-sm text-gray-600">
+                    <h4 className="font-medium text-gray-900 dark:text-white">Little Venice Restaurants</h4>
+                    <p className="text-sm text-gray-600 dark:text-white/60">
                       Dine with waves occasionally splashing nearby at the romantic waterfront restaurants 
                       in Little Venice. Reservations are essential for the best tables at sunset.
                     </p>
                   </div>
                   <div>
-                    <h4 className="font-medium text-gray-900">Chora Fine Dining</h4>
-                    <p className="text-sm text-gray-600">
+                    <h4 className="font-medium text-gray-900 dark:text-white">Chora Fine Dining</h4>
+                    <p className="text-sm text-gray-600 dark:text-white/60">
                       Mykonos Town offers sophisticated dining options with creative chefs blending 
                       local ingredients with international techniques. Many restaurants feature rooftop terraces.
                     </p>
@@ -747,10 +749,10 @@ const MykonosGuide: React.FC = () => {
               </div>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/seafood.jpg" 
-                  alt="Fresh Mediterranean seafood Mykonos Greece with traditional Greek cuisine local fish and Aegean Sea specialties" 
+                  alt="Fresh Seafood" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -759,13 +761,13 @@ const MykonosGuide: React.FC = () => {
                     As an island, Mykonos offers exceptional seafood caught daily by local fishermen. 
                     From grilled octopus to sea bass cooked in salt crust, seafood lovers will be delighted.
                   </p>
-                  <p className="text-sm text-blue-600">Recommended: Kiki's Tavern, Sea Satin, Hippie Fish</p>
+                  <p className="text-sm text-cyan-600 dark:text-cyclades-turquoise">Recommended: Kiki's Tavern, Sea Satin, Hippie Fish</p>
                 </div>
               </div>
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/taverna.jpg" 
-                  alt="Authentic traditional Greek taverna Mykonos Greece with local cuisine fresh seafood and Cycladic atmosphere" 
+                  alt="Traditional Taverna" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -774,13 +776,13 @@ const MykonosGuide: React.FC = () => {
                     For authentic Mykonian cuisine, head to family-run tavernas in Ano Mera or 
                     the backstreets of Mykonos Town, away from the tourist crowds.
                   </p>
-                  <p className="text-sm text-blue-600">Recommended: Fokos Taverna, Nikolas Taverna, Joanna's Nikos Place</p>
+                  <p className="text-sm text-cyan-600 dark:text-cyclades-turquoise">Recommended: Fokos Taverna, Nikolas Taverna, Joanna's Nikos Place</p>
                 </div>
               </div>
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/mykonos/fine-dining.jpg" 
-                  alt="Gourmet fine dining restaurant Mykonos Greece with Mediterranean cuisine sunset views and upscale Cyclades dining" 
+                  alt="Fine Dining" 
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -789,7 +791,7 @@ const MykonosGuide: React.FC = () => {
                     Experience world-class cuisine at Mykonos' upscale restaurants, many helmed by 
                     internationally acclaimed chefs and offering spectacular settings.
                   </p>
-                  <p className="text-sm text-blue-600">Recommended: Interni, Nobu Matsuhisa, Scorpios</p>
+                  <p className="text-sm text-cyan-600 dark:text-cyclades-turquoise">Recommended: Interni, Nobu Matsuhisa, Scorpios</p>
                 </div>
               </div>
             </div>
@@ -797,7 +799,7 @@ const MykonosGuide: React.FC = () => {
 
           {/* Photo Gallery - NEW */}
           <section id="photos" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Mykonos Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Mykonos Photo Gallery</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="relative group overflow-hidden rounded-lg">
@@ -826,14 +828,14 @@ const MykonosGuide: React.FC = () => {
 
           {/* Activities Section - ENHANCED */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Top Things to Do</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Top Things to Do</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaGlassCheers className="text-2xl text-blue-500 mr-3" />
                   <h3 className="font-semibold text-xl">Nightlife & Entertainment</h3>
                 </div>
-                <ul className="space-y-3 text-gray-600">
+                <ul className="space-y-3 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <span><span className="font-medium">Beach Clubs:</span> Experience day-to-night parties at Paradise and Super Paradise</span>
@@ -857,12 +859,12 @@ const MykonosGuide: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaShip className="text-2xl text-blue-500 mr-3" />
                   <h3 className="font-semibold text-xl">Water Activities</h3>
                 </div>
-                <ul className="space-y-3 text-gray-600">
+                <ul className="space-y-3 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <span><span className="font-medium">Delos Day Trip:</span> Visit the sacred archaeological island</span>
@@ -886,12 +888,12 @@ const MykonosGuide: React.FC = () => {
                 </ul>
               </div>
 
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <div className="flex items-center mb-4">
                   <FaMapMarkedAlt className="text-2xl text-blue-500 mr-3" />
                   <h3 className="font-semibold text-xl">Cultural Experiences</h3>
                 </div>
-                <ul className="space-y-3 text-gray-600">
+                <ul className="space-y-3 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <span><span className="font-medium">Windmills Tour:</span> Visit the iconic symbols of Mykonos</span>
@@ -919,12 +921,12 @@ const MykonosGuide: React.FC = () => {
 
           {/* Travel Tips Section - ENHANCED */}
           <section id="tips" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Essential Travel Tips</h2>
-            <div className="bg-white rounded-lg shadow-md p-8">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Essential Travel Tips</h2>
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Getting Around</h3>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span><span className="font-medium">Rent an ATV or scooter</span> for flexibility and to navigate narrow roads</span>
@@ -950,7 +952,7 @@ const MykonosGuide: React.FC = () => {
 
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Money Saving Tips</h3>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span><span className="font-medium">Book accommodations early</span>, especially for July-August</span>
@@ -977,7 +979,7 @@ const MykonosGuide: React.FC = () => {
               <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Practical Information</h3>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span><span className="font-medium">Currency:</span> Euro (€) - ATMs widely available in tourist areas</span>
@@ -1002,7 +1004,7 @@ const MykonosGuide: React.FC = () => {
                 </div>
                 <div>
                   <h3 className="text-xl font-semibold mb-4">Health & Safety</h3>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span><span className="font-medium">Sunscreen:</span> Essential - the Mediterranean sun is intense</span>
@@ -1033,7 +1035,7 @@ const MykonosGuide: React.FC = () => {
           <section className="bg-gradient-to-r from-blue-600 to-blue-800 text-white rounded-lg shadow-md overflow-hidden mb-16">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
               <div className="p-8 md:p-12">
-                <h2 className="text-3xl font-bold mb-4">Ready to Experience Mykonos?</h2>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Mykonos?</h2>
                 <p className="text-lg mb-6">
                   Book your accommodations, tours, and activities for an unforgettable Greek island getaway.
                   Mykonos offers world-famous beaches, vibrant nightlife, and the perfect blend of luxury and traditional Cycladic charm.
@@ -1056,7 +1058,7 @@ const MykonosGuide: React.FC = () => {
               <div className="relative h-64 md:h-auto">
                 <img 
                   src="/images/islands/mykonos/little-venice.jpg" 
-                  alt="Panoramic view Mykonos island Greece with whitewashed villages pristine beaches windmills and Aegean Sea" 
+                  alt="Mykonos Island View" 
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-4 py-2 rounded-lg">
@@ -1065,6 +1067,12 @@ const MykonosGuide: React.FC = () => {
               </div>
             </div>
           </section>
+
+          <RelatedDestinationsSection groups={[
+            siteLinks.popularIslands,
+            siteLinks.topActivities,
+            siteLinks.travelServices
+          ]} />
         </div>
       </div>
     </>
@@ -1072,3 +1080,5 @@ const MykonosGuide: React.FC = () => {
 };
 
 export default MykonosGuide;
+
+

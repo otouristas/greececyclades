@@ -17,9 +17,12 @@ export default function IslandCard({ island }: IslandCardProps) {
         <div className="relative aspect-[16/9]">
           <img
             src={island.image}
-            alt={island.name}
+            alt={`${island.name} - Cyclades Greek Island`}
             className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
             loading="lazy"
+            decoding="async"
+            width={640}
+            height={360}
           />
           {island.weather?.temp && (
             <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium flex items-center gap-1">

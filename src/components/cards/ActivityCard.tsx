@@ -1,4 +1,3 @@
-import React from 'react';
 import { Clock, Star } from 'lucide-react';
 import { Activity } from '../../types';
 
@@ -12,8 +11,12 @@ export default function ActivityCard({ activity }: ActivityCardProps) {
       <div className="relative aspect-[4/3]">
         <img
           src={activity.image}
-          alt={activity.title}
+          alt={`${activity.title} - Activity in Cyclades`}
           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="lazy"
+          decoding="async"
+          width={640}
+          height={480}
         />
         <div className="absolute top-4 right-4 px-3 py-1 bg-white/90 backdrop-blur-sm rounded-full text-sm font-medium">
           {activity.price}

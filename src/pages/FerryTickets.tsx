@@ -1,1212 +1,270 @@
-import { useState, useEffect } from 'react';
-import { Calendar, Users, Ship, ChevronRight, MapPin, Clock, Euro, Info, Search, Star, Shield, CheckCircle, Zap, Phone } from 'lucide-react';
-import { Helmet } from 'react-helmet-async';
-
-// Define interfaces for our data types
-interface PopularRoute {
-  from: string;
-  to: string;
-  duration: string;
-  price: string;
-  priceNum: number;
-  image: string;
-  type: string;
-  frequency: string;
-  fromCode: string;
-  toCode: string;
-}
-
-interface FerryCompany {
-  name: string;
-  logo: string;
-}
-
-interface FAQ {
-  question: string;
-  answer: string;
-}
-
-interface SeatClass {
-  name: string;
-  description: string;
-  icon: string;
-}
-
-interface TravelTip {
-  title: string;
-  description: string;
-  icon: string;
-}
-
-// Port code mapping
-interface PortCode {
-  name: string;
-  code: string;
-}
+import { useEffect, useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
+import { Ship, MapPin, Clock, Calendar, Shield, CheckCircle, Star, ChevronRight, ArrowRight, Anchor, Users, Zap, ChevronDown } from 'lucide-react';
+import SEO from '../components/SEO';
+import FAQSection from '../components/FAQSection';
+import RelatedLinks from '../components/RelatedLinks';
 
 export default function FerryTickets() {
-  const [from, setFrom] = useState('Piraeus');
-  const [to, setTo] = useState('Santorini');
-  const [departDate, setDepartDate] = useState('');
-  const [returnDate, setReturnDate] = useState('');
-  const [passengers, setPassengers] = useState(2);
-  const [vehicles, setVehicles] = useState(0);
-  const [isRoundTrip, setIsRoundTrip] = useState(false);
+  const widgetRef = useRef<HTMLDivElement>(null);
+  const [expandedFAQ, setExpandedFAQ] = useState<number | null>(null);
 
-  // Port codes mapping
-  const portCodes: PortCode[] = [
-    { name: 'Aegiali, Amorgos', code: 'AIG' },
-    { name: 'Katapola, Amorgos', code: 'AMO' },
-    { name: 'Amorgos (All Ports)', code: 'AMR' },
-    { name: 'Anafi', code: 'ANA' },
-    { name: 'Andros', code: 'AND' },
-    { name: 'Antiparos', code: 'ANP' },
-    { name: 'Donousa', code: 'DON' },
-    { name: 'Folegandros', code: 'FOL' },
-    { name: 'Ios', code: 'IOS' },
-    { name: 'Irakleia', code: 'IRK' },
-    { name: 'Mykonos', code: 'JMK' },
-    { name: 'Naxos', code: 'JNX' },
-    { name: 'Syros', code: 'JSY' },
-    { name: 'Santorini (Thera)', code: 'JTR' },
-    { name: 'Kea (Tzia)', code: 'KEA' },
-    { name: 'Kimolos', code: 'KMS' },
-    { name: 'Koufonisi', code: 'KOU' },
-    { name: 'Kythnos', code: 'KYT' },
-    { name: 'Milos', code: 'MLO' },
-    { name: 'Oia, Santorini', code: 'OIA' },
-    { name: 'Paros', code: 'PAS' },
-    { name: 'Serifos', code: 'SER' },
-    { name: 'Sifnos', code: 'SIF' },
-    { name: 'Sikinos', code: 'SIK' },
-    { name: 'Schinoussa', code: 'SXI' },
-    { name: 'Tinos', code: 'TIN' },
-    { name: 'Thirasia', code: 'TRS' },
-    { name: 'Piraeus', code: 'PIR' },
-    { name: 'Rafina', code: 'RAF' },
-    { name: 'Lavrio', code: 'LAV' },
-    { name: 'Athens(all ports)', code: 'ATH' }
-  ];
-
-  // Helper function to get port code
-  const getPortCode = (portName: string): string => {
-    // Try to find exact match
-    const exactMatch = portCodes.find(port => port.name === portName);
-    if (exactMatch) return exactMatch.code;
-    
-    // Try to find partial match (e.g., "Santorini" should match "Santorini (Thera)")
-    const partialMatch = portCodes.find(port => 
-      port.name.toLowerCase().includes(portName.toLowerCase()) || 
-      portName.toLowerCase().includes(port.name.toLowerCase())
-    );
-    if (partialMatch) return partialMatch.code;
-    
-    // Default to PIR if no match found
-    return 'PIR';
-  };
-
-  // Set default dates (depart: tomorrow, return: 7 days from tomorrow)
   useEffect(() => {
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    
-    const returnDay = new Date();
-    returnDay.setDate(returnDay.getDate() + 8);
-    
-    setDepartDate(formatDate(tomorrow));
-    setReturnDate(formatDate(returnDay));
+    if (widgetRef.current && !document.getElementById('fs-widget-script')) {
+      const script = document.createElement('script');
+      script.id = 'fs-widget-script';
+      script.src = 'https://www.ferryscanner.com/widget.js';
+      script.async = true;
+      widgetRef.current.innerHTML = '<div class="fs-widget" data-partner="greececyclades" data-theme="light"></div>';
+      widgetRef.current.appendChild(script);
+    }
   }, []);
 
-  // Format date as YYYY-MM-DD
-  const formatDate = (date: Date): string => {
-    const year = date.getFullYear();
-    const month = String(date.getMonth() + 1).padStart(2, '0');
-    const day = String(date.getDate()).padStart(2, '0');
-    return `${year}-${month}-${day}`;
-  };
-
-  // Handle form submission
-  const handleSearch = (e: React.FormEvent): void => {
-    e.preventDefault();
-    
-    // Get port codes
-    const fromCode = getPortCode(from);
-    const toCode = getPortCode(to);
-    
-    // Base URL
-    const baseUrl = 'https://www.ferryscanner.com/en/ferry/results';
-    const affiliateParams = 'ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN';
-    
-    // Build search parameters
-    let searchParams = '';
-    
-    if (isRoundTrip && returnDate) {
-      // Round trip
-      searchParams = `#search/dep/${fromCode},${toCode}/arr/${toCode},${fromCode}/date/${departDate},${returnDate}`;
-    } else {
-      // One way trip
-      searchParams = `#search/dep/${fromCode}/arr/${toCode}/date/${departDate}`;
-    }
-    
-    // Construct final URL
-    const finalUrl = `${baseUrl}?${affiliateParams}${searchParams}`;
-    
-    // Open in new tab
-    window.open(finalUrl, '_blank');
-  };
-
-  // Update popular routes links to use FerrryScanner
-  const handlePopularRouteClick = (fromPort: string, toPort: string): void => {
-    const fromCode = getPortCode(fromPort);
-    const toCode = getPortCode(toPort);
-    
-    // Set tomorrow as the default date
-    const tomorrow = new Date();
-    tomorrow.setDate(tomorrow.getDate() + 1);
-    const tomorrowFormatted = formatDate(tomorrow);
-    
-    // Base URL
-    const baseUrl = 'https://www.ferryscanner.com/en/ferry/results';
-    const affiliateParams = 'ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN';
-    
-    // Build search parameters
-    const searchParams = `#search/dep/${fromCode}/arr/${toCode}/date/${tomorrowFormatted}`;
-    
-    // Construct final URL
-    const finalUrl = `${baseUrl}?${affiliateParams}${searchParams}`;
-    
-    // Open in new tab
-    window.open(finalUrl, '_blank');
-  };
-
-  // Popular routes with enhanced data
-  const popularRoutes: PopularRoute[] = [
-    {
-      from: 'Piraeus',
-      to: 'Santorini',
-      duration: '5h - 8h',
-      price: 'From €40',
-      priceNum: 40,
-      image: '/images/islands/santorini.jpg',
-      type: 'High-speed / Conventional',
-      frequency: 'Daily',
-      fromCode: 'PIR',
-      toCode: 'JTR'
-    },
-    {
-      from: 'Piraeus',
-      to: 'Mykonos',
-      duration: '3h - 5h',
-      price: 'From €35',
-      priceNum: 35,
-      image: '/images/islands/mykonos.jpg',
-      type: 'High-speed',
-      frequency: 'Daily',
-      fromCode: 'PIR',
-      toCode: 'JMK'
-    },
-    {
-      from: 'Rafina',
-      to: 'Mykonos',
-      duration: '2h - 5h',
-      price: 'From €30',
-      priceNum: 30,
-      image: '/images/islands/mykonos.jpg',
-      type: 'High-speed',
-      frequency: '2-3 times/day',
-      fromCode: 'RAF',
-      toCode: 'JMK'
-    },
-    {
-      from: 'Piraeus',
-      to: 'Naxos',
-      duration: '4h - 6h',
-      price: 'From €38',
-      priceNum: 38,
-      image: '/images/islands/naxos.jpg',
-      type: 'High-speed / Conventional',
-      frequency: 'Daily',
-      fromCode: 'PIR',
-      toCode: 'JNX'
-    },
-    {
-      from: 'Piraeus',
-      to: 'Paros',
-      duration: '3h - 5h',
-      price: 'From €32',
-      priceNum: 32,
-      image: '/images/islands/paros.jpg',
-      type: 'High-speed / Conventional',
-      frequency: 'Daily',
-      fromCode: 'PIR',
-      toCode: 'PAS'
-    },
-    {
-      from: 'Mykonos',
-      to: 'Santorini',
-      duration: '2h - 3h',
-      price: 'From €25',
-      priceNum: 25,
-      image: '/images/islands/santorini.jpg',
-      type: 'Catamaran',
-      frequency: 'Daily in summer',
-      fromCode: 'JMK',
-      toCode: 'JTR'
-    }
+  const popularRoutes = [
+    { from: 'Piraeus', to: 'Santorini', duration: '5-8h', price: '€40-90', frequency: '3-5/day' },
+    { from: 'Piraeus', to: 'Mykonos', duration: '3-5h', price: '€35-70', frequency: '4-6/day' },
+    { from: 'Santorini', to: 'Mykonos', duration: '2-3h', price: '€50-80', frequency: '2-3/day' },
+    { from: 'Rafina', to: 'Naxos', duration: '4-5h', price: '€35-55', frequency: '2-4/day' },
+    { from: 'Naxos', to: 'Paros', duration: '30min', price: '€10-15', frequency: '5-8/day' },
+    { from: 'Mykonos', to: 'Paros', duration: '45min', price: '€25-40', frequency: '2-4/day' },
   ];
 
-  // Ferry companies
-  const ferryCompanies: FerryCompany[] = [
-    { name: 'Blue Star Ferries', logo: '/images/ferry/companies/blue-star.webp' },
-    { name: 'SeaJets', logo: '/images/ferry/companies/seajets.png' },
-    { name: 'Hellenic Seaways', logo: '/images/ferry/companies/hellenic.svg' },
-    { name: 'Golden Star Ferries', logo: '/images/ferry/companies/golden-star.webp' },
-    { name: 'Fast Ferries', logo: '/images/ferry/companies/fast-ferries.webp' },
-    { name: 'ANEK Lines', logo: '/images/ferry/companies/anek-lines.webp' }
+  const ferryCompanies = [
+    { name: 'Blue Star Ferries', type: 'Conventional', speed: 'Comfortable' },
+    { name: 'SeaJets', type: 'High-Speed', speed: 'Fast' },
+    { name: 'Golden Star', type: 'High-Speed', speed: 'Fast' },
+    { name: 'Hellenic Seaways', type: 'Both', speed: 'Various' },
   ];
 
-  // Seat classes
-  const seatClasses: SeatClass[] = [
-    { name: 'Economy/Deck', description: 'Open seating areas', icon: 'users' },
-    { name: 'Air Seat', description: 'Numbered recliner seats', icon: 'armchair' },
-    { name: 'Business/Lounge', description: 'Spacious, quiet, premium experience', icon: 'crown' },
-    { name: 'Cabin', description: 'Private bed + WC (ideal for overnight)', icon: 'bed' }
+  const faqs = [
+    { q: 'How early should I book?', a: 'For summer (July-August), book 2-4 weeks ahead. Shoulder seasons are more flexible.' },
+    { q: 'Can I take a car on the ferry?', a: 'Yes, most conventional ferries accept vehicles. Book early as car spots fill quickly.' },
+    { q: 'What if my ferry is cancelled?', a: 'Weather cancellations get full refunds or free rebooking on the next departure.' },
+    { q: 'High-speed vs conventional?', a: 'High-speed is faster but pricier. Conventional offers more deck space and is cheaper.' },
   ];
 
-  // Travel tips
-  const travelTips: TravelTip[] = [
-    { title: 'Book Early', description: 'Reserve 2-3 months ahead for July-August routes', icon: 'calendar' },
-    { title: 'Web Check-in', description: 'Avoid port kiosk delays with online check-in', icon: 'smartphone' },
-    { title: 'Vehicle Booking', description: 'Cars require advanced booking and early arrival', icon: 'car' },
-    { title: 'No Luggage Limits', description: 'No weight restrictions or check-in required', icon: 'luggage' }
-  ];
-
-  // FAQs
-  const faqs: FAQ[] = [
-    {
-      question: 'How far in advance should I book ferry tickets?',
-      answer: 'For peak season (July-August), we recommend booking 2-3 months in advance, especially for popular routes like Piraeus to Santorini or Mykonos. For shoulder seasons (May-June, September), 3-4 weeks ahead is usually sufficient. In the off-season, booking a few days before is often fine, but we still recommend booking ahead for peace of mind.'
-    },
-    {
-      question: 'What\'s the difference between conventional and high-speed ferries?',
-      answer: 'Conventional ferries are larger, more stable in rough seas, and usually cheaper, but slower (5-8 hours from Athens to Santorini). High-speed ferries are faster (3-5 hours for the same route) but more expensive and may be canceled in bad weather. Conventional ferries can also accommodate vehicles, while some high-speed vessels are passenger-only.'
-    },
-    {
-      question: 'Can I take my car on the ferry?',
-      answer: 'Yes, most conventional ferries accommodate vehicles, but you should book well in advance, especially in high season. Some high-speed ferries don\'t accept vehicles. Additional fees apply for cars, motorcycles, or bicycles. Make sure to arrive at least 1 hour before departure when traveling with a vehicle.'
-    },
-    {
-      question: 'What happens if my ferry is canceled due to weather?',
-      answer: 'Ferry cancellations due to weather conditions are not uncommon in the Aegean, especially during winter or when strong winds occur. If your ferry is canceled, you\'ll be offered either a full refund or rebooking on the next available departure. We recommend checking the status of your ferry the day before travel, especially during periods of potentially adverse weather.'
-    }
+  const features = [
+    { icon: Shield, title: 'Free Cancellation', desc: '24h before departure' },
+    { icon: Zap, title: 'Instant Confirmation', desc: 'E-tickets to your email' },
+    { icon: Star, title: 'Best Prices', desc: 'Compare all operators' },
   ];
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <Helmet>
-        <title>Ferry Tickets to Cyclades Islands | Book Online | Greece Cyclades</title>
-        <meta name="description" content="Book ferry tickets to Santorini, Mykonos, Naxos, Paros, and all Cyclades islands. Compare schedules, prices, and operators. Secure online booking with instant confirmation." />
-        <meta name="keywords" content="ferry tickets Cyclades, Piraeus to Santorini ferry, Rafina to Mykonos ferry, island hopping Greece, book Greek ferry online, Cyclades ferry schedule, Greek islands ferry" />
-        <link rel="canonical" href="https://greececyclades.com/ferry-tickets" />
-        <meta name="robots" content="index,follow" />
-        
-        {/* Open Graph */}
-        <meta property="og:title" content="Ferry Tickets to Cyclades Islands | Book Online | Greece Cyclades" />
-        <meta property="og:description" content="Book ferry tickets to all Cyclades islands. Compare schedules, prices, and operators with secure online booking." />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://greececyclades.com/ferry-tickets" />
-        <meta property="og:image" content="https://greececyclades.com/images/ferry-tickets.webp" />
-        
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Ferry Tickets to Cyclades Islands | Book Online" />
-        <meta name="twitter:description" content="Book ferry tickets to all Cyclades islands. Compare schedules, prices, and operators with secure online booking." />
-        <meta name="twitter:image" content="https://greececyclades.com/images/ferry-tickets.webp" />
-        
-        {/* FAQ Schema */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "FAQPage",
-            "mainEntity": faqs.map(faq => ({
-              "@type": "Question",
-              "name": faq.question,
-              "acceptedAnswer": {
-                "@type": "Answer",
-                "text": faq.answer
-              }
-            }))
-          })}
-        </script>
-      </Helmet>
-      
-      {/* Hero Section with Search Widget */}
-      <div className="relative">
-        {/* Background Image with Overlay */}
-        <div className="absolute inset-0 z-0">
-          <img 
-            src="/images/ferry-tickets.webp" 
-            alt="Ferry sailing in the Aegean Sea" 
-            className="w-full h-full object-cover"
-          />
-          <div className="absolute inset-0 bg-gradient-to-b from-[#1E2E48] via-[#1E2E48] to-[#1E2E48] opacity-80"></div>
-        </div>
-        
-        {/* Content */}
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 md:py-24 lg:py-32">
-          <div className="text-center mb-10">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-              Ferry Tickets to Cyclades Islands
-            </h1>
-            <p className="text-xl text-[#E3D7C3] max-w-3xl mx-auto mb-8">
-              Book ferry tickets to Santorini, Mykonos, Naxos, Paros, and all Greek islands. Compare schedules, prices, and operators with secure online booking and instant confirmation.
-            </p>
-            
-            {/* Trust Signals */}
-            <div className="flex flex-wrap justify-center items-center gap-6 mb-8">
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-                <Zap className="h-5 w-5 text-yellow-300" />
-                <span className="text-white text-sm font-medium">Real-Time Schedules</span>
+    <>
+      <SEO
+        title="Book Cyclades Ferry Tickets: Compare Prices & Schedules [2025]"
+        description="Search all Cyclades ferry routes. Compare prices across Blue Star, SeaJets, Golden Star. Check real-time schedules, book online. Best prices guaranteed."
+        pageType="ferry-tickets"
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Ferry Tickets', url: '/ferry-tickets' }
+        ]}
+        faqs={[
+          { question: 'How much does a ferry to Cyclades cost?', answer: 'Prices vary by route and ferry type: Athens-Santorini €40-80, Athens-Mykonos €35-65, inter-island ferries €15-45. Fast ferries cost more.' },
+          { question: 'How do I book Cyclades ferry tickets?', answer: 'Book online through our platform or ferry company websites. During peak season (July-August), book 2-4 weeks in advance.' },
+          { question: 'Can I get refunds on ferry tickets?', answer: 'Most operators offer free changes up to 24-48 hours before departure. Refund policies vary by company and ticket type.' }
+        ]}
+      />
+
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
+        {/* Hero Section */}
+        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-32 pb-24">
+          <div className="absolute inset-0 bg-[url('/images/ferry-tickets.webp')] bg-cover bg-center opacity-20" />
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-white/70 text-sm mb-8">
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-white">Ferry Tickets</span>
+            </nav>
+
+            <div className="text-center mb-10">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+                Ferry Tickets to the <span className="text-yellow-300">Cyclades</span>
+              </h1>
+              <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
+                Compare prices and book ferry tickets to Santorini, Mykonos, Naxos, Paros and all Greek islands
+              </p>
+
+              {/* Trust Signals */}
+              <div className="flex flex-wrap justify-center gap-4 mb-8">
+                {features.map((f, idx) => (
+                  <div key={idx} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
+                    <f.icon className="h-5 w-5 text-yellow-300" />
+                    <span className="text-white text-sm font-medium">{f.title}</span>
+                  </div>
+                ))}
               </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-                <Shield className="h-5 w-5 text-[#E3D7C3]" />
-                <span className="text-white text-sm font-medium">Secure Booking</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-                <Phone className="h-5 w-5 text-[#E3D7C3]" />
-                <span className="text-white text-sm font-medium">24/7 Support</span>
-              </div>
-              <div className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-                <CheckCircle className="h-5 w-5 text-[#E3D7C3]" />
-                <span className="text-white text-sm font-medium">Instant Confirmation</span>
+            </div>
+
+            {/* Ferry Widget */}
+            <div className="max-w-4xl mx-auto bg-white dark:bg-dark-card rounded-2xl shadow-2xl overflow-hidden p-6">
+              <div ref={widgetRef} className="min-h-[300px] flex justify-center items-center">
+                <div className="text-center text-gray-700 dark:text-white/60">
+                  <div className="inline-block animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-cyan-600 mb-2"></div>
+                  <p>Loading ferry search...</p>
+                </div>
               </div>
             </div>
           </div>
-          
-          {/* Search Widget */}
-          <div className="max-w-4xl mx-auto bg-white rounded-lg shadow-xl overflow-hidden p-6">
-            <form onSubmit={handleSearch} className="space-y-6">
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                {/* From */}
-                <div>
-                  <label htmlFor="from" className="block text-sm font-medium text-gray-700 mb-1">
-                    Departure Port
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="from"
-                      value={from}
-                      onChange={(e) => setFrom(e.target.value)}
-                      className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#1E2E48] focus:border-transparent"
-                    >
-                      {portCodes.map((port) => (
-                        <option key={port.code} value={port.name}>
-                          {port.name}
-                        </option>
-                      ))}
-                    </select>
-                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  </div>
-                </div>
-                
-                {/* To */}
-                <div>
-                  <label htmlFor="to" className="block text-sm font-medium text-gray-700 mb-1">
-                    Arrival Port
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="to"
-                      value={to}
-                      onChange={(e) => setTo(e.target.value)}
-                      className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#1E2E48] focus:border-transparent"
-                    >
-                      {portCodes.map((port) => (
-                        <option key={port.code} value={port.name}>
-                          {port.name}
-                        </option>
-                      ))}
-                    </select>
-                    <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  </div>
-                </div>
-                
-                {/* Depart Date */}
-                <div>
-                  <label htmlFor="depart-date" className="block text-sm font-medium text-gray-700 mb-1">
-                    Departure Date
-                  </label>
-                  <div className="relative">
-                    <input
-                      id="depart-date"
-                      type="date"
-                      value={departDate}
-                      onChange={(e) => setDepartDate(e.target.value)}
-                      min={formatDate(new Date())}
-                      className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#1E2E48] focus:border-transparent"
-                    />
-                    <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  </div>
-                </div>
-                
-                {/* Return Date */}
-                <div>
-                  <label htmlFor="return-date" className="block text-sm font-medium text-gray-700 mb-1 flex justify-between">
-                    <span>Return Date {isRoundTrip ? '' : '(Optional)'}</span>
-                    <div className="flex items-center">
-                      <input
-                        type="checkbox"
-                        id="round-trip"
-                        checked={isRoundTrip}
-                        onChange={() => setIsRoundTrip(!isRoundTrip)}
-                        className="h-4 w-4 text-[#1E2E48] focus:ring-[#1E2E48] border-gray-300 rounded"
-                      />
-                      <label htmlFor="round-trip" className="ml-2 text-xs text-gray-600">
-                        Round Trip
-                      </label>
+        </div>
+
+        {/* Popular Routes */}
+        <div className="py-20 bg-white dark:bg-dark-card">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">Popular Routes</h2>
+            <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">Most popular ferry connections in the Cyclades</p>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {popularRoutes.map((route, idx) => (
+                <div key={idx} className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/10 hover:shadow-lg transition-shadow">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-cyan-600/10 dark:bg-cyclades-turquoise/20 rounded-xl flex items-center justify-center">
+                      <Ship className="w-5 h-5 text-cyan-600 dark:text-cyclades-turquoise" />
                     </div>
-                  </label>
-                  <div className="relative">
-                    <input
-                      id="return-date"
-                      type="date"
-                      value={returnDate}
-                      onChange={(e) => setReturnDate(e.target.value)}
-                      min={departDate}
-                      required={isRoundTrip}
-                      className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#1E2E48] focus:border-transparent"
-                    />
-                    <Calendar className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  </div>
-                </div>
-                
-                {/* Passengers & Vehicles */}
-                <div>
-                  <label htmlFor="passengers" className="block text-sm font-medium text-gray-700 mb-1">
-                    Passengers
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="passengers"
-                      value={passengers}
-                      onChange={(e) => setPassengers(parseInt(e.target.value))}
-                      className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#1E2E48] focus:border-transparent"
-                    >
-                      {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10].map(num => (
-                        <option key={num} value={num}>{num} {num === 1 ? 'Passenger' : 'Passengers'}</option>
-                      ))}
-                    </select>
-                    <Users className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  </div>
-                </div>
-                
-                <div>
-                  <label htmlFor="vehicles" className="block text-sm font-medium text-gray-700 mb-1">
-                    Vehicles
-                  </label>
-                  <div className="relative">
-                    <select
-                      id="vehicles"
-                      value={vehicles}
-                      onChange={(e) => setVehicles(parseInt(e.target.value))}
-                      className="w-full px-4 py-3 pl-10 bg-white border border-gray-300 rounded-lg text-gray-800 focus:ring-2 focus:ring-[#1E2E48] focus:border-transparent"
-                    >
-                      <option value="0">No Vehicle</option>
-                      <option value="1">1 Car</option>
-                      <option value="2">2 Cars</option>
-                      <option value="3">1 Motorcycle</option>
-                      <option value="4">2 Motorcycles</option>
-                    </select>
-                    <Ship className="absolute left-3 top-1/2 transform -translate-y-1/2 h-5 w-5 text-gray-400" />
-                  </div>
-                </div>
-                
-                {/* Search Button */}
-                <div className="col-span-1 md:col-span-2">
-                  <button
-                    type="submit"
-                    className="w-full py-4 bg-[#1E2E48] hover:bg-[#1E2E48]/90 text-white font-medium rounded-lg transition-colors flex items-center justify-center gap-2"
-                  >
-                    <Search className="h-5 w-5" />
-                    Search Ferry Tickets
-                  </button>
-                </div>
-              </div>
-            </form>
-            
-            {/* Powered by FerrryScanner */}
-            <div className="mt-6 flex flex-col items-center justify-center">
-              <p className="text-sm text-gray-500 mb-2">Proudly powered by</p>
-              <a 
-                href="https://www.ferryscanner.com/en?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN" 
-                target="_blank" 
-                rel="noopener noreferrer"
-                className="block"
-              >
-                <img 
-                  src="https://www.ferryscanner.com/_next/static/media/logo.f9964f3a.svg" 
-                  alt="FerrryScanner Logo" 
-                  className="h-8"
-                />
-              </a>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* Popular Routes Section */}
-      <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Most Popular Cyclades Routes</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Compare the most popular ferry connections with live pricing and real-time availability
-            </p>
-          </div>
-          
-          {/* Routes Table for Desktop */}
-          <div className="hidden lg:block overflow-x-auto mb-12">
-            <table className="w-full bg-white rounded-lg shadow-sm border border-gray-200">
-              <thead className="bg-gray-50">
-                <tr>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Route</th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Duration</th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">From (€)</th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Type</th>
-                  <th className="px-6 py-4 text-left text-sm font-semibold text-gray-900">Action</th>
-                </tr>
-              </thead>
-              <tbody className="divide-y divide-gray-200">
-                {popularRoutes.map((route, index) => (
-                  <tr key={index} className="hover:bg-gray-50 transition-colors">
-                    <td className="px-6 py-4">
-                      <div className="flex items-center gap-3">
-                        <div className="flex-shrink-0 w-12 h-12 rounded-lg overflow-hidden bg-gray-200">
-                          <img 
-                            src={route.image} 
-                            alt={`${route.to} island view`}
-                            className="w-full h-full object-cover"
-                            onError={(e) => {
-                              (e.target as HTMLImageElement).style.display = 'none';
-                            }}
-                          />
-                        </div>
-                        <div>
-                          <div className="font-medium text-gray-900">{route.from} → {route.to}</div>
-                          <div className="text-sm text-gray-500">{route.frequency}</div>
-                        </div>
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="font-bold text-gray-900 dark:text-white">{route.from}</span>
+                        <ArrowRight className="w-4 h-4 text-gray-400" />
+                        <span className="font-bold text-gray-900 dark:text-white">{route.to}</span>
                       </div>
-                    </td>
-                    <td className="px-6 py-4 text-gray-900">{route.duration}</td>
-                    <td className="px-6 py-4">
-                      <span className="text-lg font-semibold text-[#1E2E48]">€{route.priceNum}</span>
-                    </td>
-                    <td className="px-6 py-4 text-gray-600">{route.type}</td>
-                    <td className="px-6 py-4">
-                      <button
-                        onClick={() => handlePopularRouteClick(route.from, route.to)}
-                        className="inline-flex items-center px-4 py-2 bg-[#1E2E48] text-white text-sm font-medium rounded-lg hover:bg-[#1E2E48]/90 transition-colors"
-                      >
-                        Book Now
-                        <ChevronRight className="ml-1 h-4 w-4" />
-                      </button>
-                    </td>
-                  </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
-          
-          {/* Cards for Mobile */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:hidden gap-6">
-            {popularRoutes.map((route, index) => (
-              <div key={index} className="bg-white rounded-xl shadow-md overflow-hidden border border-gray-200">
-                <div className="relative h-48 overflow-hidden bg-gray-200">
-                  <img 
-                    src={route.image} 
-                    alt={`${route.from} to ${route.to} ferry route - Beautiful view of ${route.to} island`}
-                    className="w-full h-full object-cover"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                      target.parentElement!.innerHTML = `<div class="w-full h-full bg-gradient-to-br from-[#1E2E48] to-[#E3D7C3] flex items-center justify-center"><span class="text-white font-medium">${route.to}</span></div>`;
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-900/80 via-gray-800/70 to-transparent"></div>
-                  <div className="absolute bottom-0 left-0 right-0 p-4">
-                    <h3 className="text-xl font-bold text-white">
-                      {route.from} → {route.to}
-                    </h3>
+                    </div>
+                  </div>
+                  <div className="grid grid-cols-3 gap-4 text-sm">
+                    <div>
+                      <span className="text-gray-500 dark:text-white/50 block">Duration</span>
+                      <span className="font-medium text-gray-900 dark:text-white">{route.duration}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-500 dark:text-white/50 block">Price</span>
+                      <span className="font-medium text-cyan-600 dark:text-cyclades-turquoise">{route.price}</span>
+                    </div>
+                    <div>
+                      <span className="text-gray-500 dark:text-white/50 block">Frequency</span>
+                      <span className="font-medium text-gray-900 dark:text-white">{route.frequency}</span>
+                    </div>
                   </div>
                 </div>
-                <div className="p-6">
-                  <div className="grid grid-cols-2 gap-4 mb-4">
-                    <div>
-                      <div className="text-sm text-gray-500">Duration</div>
-                      <div className="font-medium text-gray-900">{route.duration}</div>
-                    </div>
-                    <div>
-                      <div className="text-sm text-gray-500">From</div>
-                      <div className="font-semibold text-[#1E2E48] text-lg">€{route.priceNum}</div>
-                    </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Ferry Companies */}
+        <div className="py-20 bg-gray-50 dark:bg-dark-bg">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Ferry Companies</h2>
+
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+              {ferryCompanies.map((company, idx) => (
+                <div key={idx} className="bg-white dark:bg-dark-card rounded-2xl p-6 text-center border border-gray-100 dark:border-white/10">
+                  <div className="w-14 h-14 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise rounded-2xl flex items-center justify-center mx-auto mb-4">
+                    <Anchor className="w-7 h-7 text-white" />
                   </div>
-                  <div className="mb-4">
-                    <div className="text-sm text-gray-500">Type</div>
-                    <div className="font-medium text-gray-700">{route.type}</div>
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-2">{company.name}</h3>
+                  <div className="flex justify-center gap-2">
+                    <span className="text-xs bg-cyan-600/10 dark:bg-cyclades-turquoise/20 text-cyan-600 dark:text-cyclades-turquoise px-3 py-1 rounded-full">{company.type}</span>
                   </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Travel Tips */}
+        <div className="py-20 bg-white dark:bg-dark-card">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-gradient-to-br from-cyan-600 to-cyclades-turquoise rounded-2xl p-8 md:p-12 text-white">
+              <h2 className="text-2xl md:text-3xl font-bold mb-6">Island Hopping Tips</h2>
+              <div className="grid md:grid-cols-2 gap-6">
+                {[
+                  'Book high-speed ferries for longer routes',
+                  'Conventional ferries are cheaper and have outdoor decks',
+                  'Arrive at port 30-60 min before departure',
+                  'Check weather forecasts - rough seas may cause delays',
+                  'Download e-tickets to your phone offline',
+                  'Consider overnight ferries to save on accommodation',
+                ].map((tip, idx) => (
+                  <div key={idx} className="flex items-start gap-3">
+                    <CheckCircle className="w-5 h-5 text-yellow-300 shrink-0 mt-0.5" />
+                    <span className="text-white/90">{tip}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* FAQ */}
+        <div className="py-20 bg-gray-50 dark:bg-dark-bg">
+          <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Frequently Asked Questions</h2>
+
+            <div className="space-y-4">
+              {faqs.map((faq, idx) => (
+                <div key={idx} className="bg-white dark:bg-dark-card rounded-2xl border border-gray-100 dark:border-white/10 overflow-hidden">
                   <button
-                    onClick={() => handlePopularRouteClick(route.from, route.to)}
-                    className="w-full bg-[#1E2E48] text-white py-3 px-4 rounded-lg font-medium hover:bg-[#1E2E48]/90 transition-colors flex items-center justify-center gap-2"
+                    onClick={() => setExpandedFAQ(expandedFAQ === idx ? null : idx)}
+                    className="w-full flex items-center justify-between p-5 text-left"
                   >
-                    Book Now
-                    <ChevronRight className="h-4 w-4" />
+                    <span className="font-semibold text-gray-900 dark:text-white">{faq.q}</span>
+                    <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${expandedFAQ === idx ? 'rotate-180' : ''}`} />
                   </button>
+                  {expandedFAQ === idx && (
+                    <div className="px-5 pb-5 text-gray-600 dark:text-white/60 border-t border-gray-100 dark:border-white/10 pt-4">
+                      {faq.a}
+                    </div>
+                  )}
                 </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      
-      {/* Booking Workflow Section */}
-      <div className="py-16 bg-[#E3D7C3]/20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Simple Booking Process</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Book your ferry tickets in just a few simple steps
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#1E2E48] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Search className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">1. Search</h3>
-              <p className="text-gray-600">Enter your route and travel dates</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#1E2E48] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Ship className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">2. Select</h3>
-              <p className="text-gray-600">Choose the best ferry and seat type</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#1E2E48] rounded-full flex items-center justify-center mx-auto mb-4">
-                <Shield className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">3. Pay</h3>
-              <p className="text-gray-600">Secure payment with instant confirmation</p>
-            </div>
-            
-            <div className="text-center">
-              <div className="w-16 h-16 bg-[#1E2E48] rounded-full flex items-center justify-center mx-auto mb-4">
-                <CheckCircle className="h-8 w-8 text-white" />
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">4. Travel</h3>
-              <p className="text-gray-600">Show mobile ticket and enjoy your journey</p>
+              ))}
             </div>
           </div>
         </div>
-      </div>
-      
-      {/* Ferry Companies Section */}
-      <div className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Ferry Companies We Work With</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              We partner with all major ferry operators in Greece to offer you the best options
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-8">
-            {ferryCompanies.map((company, index) => (
-              <a 
-                key={index}
-                href="#"
-                onClick={(e) => {
-                  e.preventDefault();
-                  // Use Athens to Santorini as a default popular route
-                  handlePopularRouteClick('Athens(all ports)', 'Santorini (Thera)');
-                }}
-                className="flex items-center justify-center p-4 bg-white rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <img 
-                  src={company.logo} 
-                  alt={`${company.name} logo`}
-                  className="max-h-12 max-w-full"
-                />
-              </a>
-            ))}
-          </div>
-        </div>
-      </div>
-      
-      {/* Seat Classes Section */}
-      <div className="py-16 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Seat Classes & Travel Tips</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Choose your preferred seat class and follow our travel tips for the best experience
-            </p>
-          </div>
-          
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Seat Classes Column */}
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-                <Ship className="h-6 w-6 text-[#1E2E48] mr-2" />
-                Available Seat Classes
-              </h3>
-              <div className="space-y-6">
-                {seatClasses.map((seat, index) => (
-                  <div key={index} className="bg-[#E3D7C3]/10 rounded-lg p-4">
-                    <h4 className="text-lg font-medium text-gray-900 flex items-center mb-2">
-                      <Info className="h-5 w-5 text-[#1E2E48] flex-shrink-0 mr-2" />
-                      {seat.name}
-                    </h4>
-                    <p className="text-gray-600 ml-7">{seat.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-            
-            {/* Travel Tips Column */}
-            <div>
-              <h3 className="text-2xl font-semibold text-gray-900 mb-6 flex items-center">
-                <CheckCircle className="h-6 w-6 text-[#1E2E48] mr-2" />
-                Essential Travel Tips
-              </h3>
-              <div className="space-y-6">
-                {travelTips.map((tip, index) => (
-                  <div key={index} className="bg-[#E3D7C3]/10 rounded-lg p-4">
-                    <h4 className="text-lg font-medium text-gray-900 flex items-center mb-2">
-                      <Info className="h-5 w-5 text-[#1E2E48] flex-shrink-0 mr-2" />
-                      {tip.title}
-                    </h4>
-                    <p className="text-gray-600 ml-7">{tip.description}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      
-      {/* FAQs Section */}
-      <div className="py-16 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
-            <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-              Everything you need to know about booking ferry tickets in Greece
-            </p>
-          </div>
-          
-          <div className="max-w-3xl mx-auto divide-y divide-gray-200">
-            {faqs.map((faq, index) => (
-              <div key={index} className="py-6">
-                <h3 className="text-xl font-medium text-gray-900 flex items-start">
-                  <Info className="h-6 w-6 text-[#1E2E48] flex-shrink-0 mr-2" />
-                  {faq.question}
-                </h3>
-                <div className="mt-3 text-gray-600 ml-8">
-                  <p>{faq.answer}</p>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-      
-      {/* FerryScanner App Section */}
-      <div className="py-20 bg-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-blue-50/30 to-purple-50/30"></div>
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-16 items-center">
-            
-            {/* Left Column - Image */}
-            <div className="relative">
-              <div className="absolute -inset-4 bg-gradient-to-r from-blue-400 to-purple-500 rounded-3xl opacity-20 blur-lg"></div>
-              <div className="relative bg-white rounded-2xl p-8 shadow-2xl">
-                <img 
-                  src="https://hotelssifnos.com/uploads/ferries/iPhones.webp?v=1749114597509-383" 
-                  alt="FerryScanner App on mobile devices"
-                  className="w-full h-auto max-w-md mx-auto rounded-xl"
-                />
-                
-                {/* QR Code Section */}
-                <div className="mt-8 text-center">
-                  <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full mb-4">
-                    <span className="text-white font-bold text-lg">QR</span>
-                  </div>
-                  <p className="text-sm text-gray-600 font-medium">Scan QR</p>
-                  <p className="text-xs text-gray-500 mt-1">MOBILE APP</p>
-                </div>
-              </div>
-            </div>
-            
-            {/* Right Column - Content */}
-            <div className="lg:pl-8">
-              <div className="mb-8">
-                <h2 className="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
-                  Download The <span className="bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">FerryScanner</span> App
-                </h2>
-                <p className="text-xl text-gray-600 leading-relaxed">
-                  Book and manage your ferry trips on the go with our feature-rich mobile application
-                </p>
-              </div>
-              
-              {/* App Store Buttons */}
-              <div className="flex flex-col sm:flex-row gap-4 mb-12">
-                <a
-                  href="https://apps.apple.com/us/app/ferryscanner-book-your-ferry/id6736605125"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors group"
-                >
-                  <svg className="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M13 3.5c.73-.83 1.94-1.46 2.94-1.5.13 1.17-.34 2.35-1.04 3.19-.69.85-1.83 1.51-2.95 1.42-.15-1.15.41-2.35 1.05-3.11z"/>
-                  </svg>
-                  <div className="text-left">
-                    <div className="text-xs">Download on the</div>
-                    <div className="text-lg font-semibold">App Store</div>
-                  </div>
-                </a>
-                
-                <a
-                  href="https://play.google.com/store/apps/details?id=com.ferryscanner.mobile&hl=en"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center px-6 py-3 bg-black text-white rounded-xl hover:bg-gray-800 transition-colors group"
-                >
-                  <svg className="w-8 h-8 mr-3" viewBox="0 0 24 24" fill="currentColor">
-                    <path d="M3,20.5V3.5C3,2.91 3.34,2.39 3.84,2.15L13.69,12L3.84,21.85C3.34,21.6 3,21.09 3,20.5M16.81,15.12L6.05,21.34L14.54,12.85L16.81,15.12M20.16,10.81C20.5,11.08 20.75,11.5 20.75,12C20.75,12.5 20.53,12.9 20.18,13.18L17.89,14.5L15.39,12L17.89,9.5L20.16,10.81M6.05,2.66L16.81,8.88L14.54,11.15L6.05,2.66Z"/>
-                  </svg>
-                  <div className="text-left">
-                    <div className="text-xs">Get it on</div>
-                    <div className="text-lg font-semibold">Google Play</div>
-                  </div>
-                </a>
-              </div>
-              
-              {/* Ferry booking tagline */}
-              <div className="bg-gradient-to-r from-blue-600 to-purple-600 text-white rounded-2xl p-6 mb-8">
-                <h3 className="text-2xl font-bold mb-2">Ferry booking</h3>
-                <p className="text-blue-100 text-lg">at your fingertips!</p>
-              </div>
-              
-              {/* Features List */}
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-blue-500 to-purple-600 rounded-full flex items-center justify-center">
-                    <MapPin className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Explore and Book with Ease</h4>
-                    <p className="text-gray-600">Use our interactive map to find and book ferry trips effortlessly.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-green-500 to-blue-500 rounded-full flex items-center justify-center">
-                    <Search className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Quick Search</h4>
-                    <p className="text-gray-600">Prefer a more classic approach? Input your details and find trips in seconds.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
-                    <Users className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Personalize Your Experience</h4>
-                    <p className="text-gray-600">Sign up to save preferences, passengers, and payment details.</p>
-                  </div>
-                </div>
-                
-                <div className="flex items-start space-x-4">
-                  <div className="flex-shrink-0 w-12 h-12 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center">
-                    <CheckCircle className="w-6 h-6 text-white" />
-                  </div>
-                  <div>
-                    <h4 className="text-lg font-semibold text-gray-900 mb-1">Travel Paper-Free</h4>
-                    <p className="text-gray-600">Book your ferry and store your ticket right on your phone for a smooth journey.</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* SEO Content Section - Redesigned */}
-      <div className="relative py-20 bg-gradient-to-br from-blue-50 via-white to-blue-50 overflow-hidden">
-        {/* Background Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <div className="absolute top-10 left-10 w-32 h-32 rounded-full bg-blue-300"></div>
-          <div className="absolute bottom-20 right-20 w-24 h-24 rounded-full bg-blue-200"></div>
-          <div className="absolute top-1/2 left-1/4 w-16 h-16 rounded-full bg-[#E3D7C3]"></div>
-        </div>
-        
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-          {/* Header Section */}
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-r from-blue-500 to-blue-600 rounded-full mb-6">
-              <Ship className="h-8 w-8 text-white" />
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold bg-gradient-to-r from-[#1E2E48] to-blue-600 bg-clip-text text-transparent mb-6">
-              Ferries to Cyclades islands powered by Touristas AI
-            </h2>
-            <div className="max-w-4xl mx-auto">
-              <p className="text-xl text-gray-700 mb-6 leading-relaxed">
-                The <a href="/islands" className="text-blue-600 hover:text-blue-700 font-semibold hover:underline transition-colors">Cyclades islands</a>, with their iconic white-washed buildings and blue-domed churches, are one of Greece's most beloved destinations. Island hopping by ferry is the perfect way to experience multiple islands during your vacation, allowing you to discover each island's unique character and charm.
-              </p>
-              
-              <p className="text-lg text-gray-600 leading-relaxed">
-                The Greek ferry system is extensive and well-developed, connecting all major islands with regular services. During the summer months (June to September), ferries operate at their highest frequency, with multiple daily connections between popular islands like <a href="/islands/santorini" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Santorini</a>, <a href="/islands/mykonos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Mykonos</a>, <a href="/islands/paros" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Paros</a>, and <a href="/islands/naxos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Naxos</a>.
-              </p>
-            </div>
-          </div>
-          
-          {/* Ferry Types Section */}
-          <div className="mb-16">
-            <h3 className="text-3xl font-bold text-[#1E2E48] text-center mb-4">Types of Ferry Services</h3>
-            <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
-                When traveling between the Cyclades islands, you'll encounter two main types of ferries:
-              </p>
-              
-            <div className="grid md:grid-cols-2 gap-8 max-w-5xl mx-auto">
-              {/* Conventional Ferries */}
-              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div className="flex items-center mb-6">
-                  <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-r from-blue-500 to-blue-600 rounded-xl mr-4">
-                    <Ship className="h-7 w-7 text-white" />
-                  </div>
-                  <h4 className="text-xl font-bold text-gray-900">Conventional Ferries</h4>
-                </div>
-                <p className="text-gray-700 mb-6 leading-relaxed">
-                  These larger vessels are more stable in rough seas and can accommodate vehicles. They're typically slower but more affordable and less likely to be canceled due to weather conditions. Perfect for travelers with cars or those seeking a more comfortable journey.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center text-gray-700">
-                    <Clock className="h-4 w-4 text-blue-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm">Duration: 5-8 hours from Athens to Santorini</span>
-                  </div>
-                  <div className="flex items-center text-gray-700">
-                    <CheckCircle className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm">Vehicle capacity available</span>
-                  </div>
-                  <div className="flex items-center text-gray-700">
-                    <Shield className="h-4 w-4 text-blue-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm">More stable in rough weather</span>
-                  </div>
-                  <div className="flex items-center text-gray-700">
-                    <Euro className="h-4 w-4 text-green-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm">Budget-friendly option</span>
-                  </div>
-                </div>
-              </div>
-              
-              {/* High-Speed Ferries */}
-              <div className="group bg-white rounded-2xl p-8 shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-2 border border-gray-100">
-                <div className="flex items-center mb-6">
-                  <div className="flex items-center justify-center w-14 h-14 bg-gradient-to-r from-orange-500 to-red-500 rounded-xl mr-4">
-                    <Zap className="h-7 w-7 text-white" />
-                  </div>
-                  <h4 className="text-xl font-bold text-gray-900">High-Speed Ferries</h4>
-                </div>
-                <p className="text-gray-700 mb-6 leading-relaxed">
-                  These modern catamarans and hydrofoils offer significantly faster travel times but at a higher price. They're ideal for travelers looking to maximize their time on the islands.
-                </p>
-                <div className="space-y-3">
-                  <div className="flex items-center text-gray-700">
-                    <Clock className="h-4 w-4 text-orange-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm">Duration: 3-5 hours from Athens to Santorini</span>
-                  </div>
-                  <div className="flex items-center text-gray-700">
-                    <Info className="h-4 w-4 text-orange-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm">Limited or no vehicle capacity</span>
-                  </div>
-                  <div className="flex items-center text-gray-700">
-                    <Star className="h-4 w-4 text-orange-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm">Weather-dependent service</span>
-                  </div>
-                  <div className="flex items-center text-gray-700">
-                    <Euro className="h-4 w-4 text-red-500 mr-3 flex-shrink-0" />
-                    <span className="text-sm">Premium pricing</span>
-                  </div>
-                </div>
-              </div>
-            </div>
-              </div>
-              
-          {/* Booking Timing Section */}
-          <div className="mb-16">
-            <h3 className="text-3xl font-bold text-[#1E2E48] text-center mb-4">Best Time to Book Ferry Tickets</h3>
-            <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
-              Timing your ferry booking is crucial for securing the best prices and availability
+        {/* CTA */}
+        <div className="py-20 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Explore the Islands?</h2>
+            <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
+              Book your ferry tickets and start your island hopping adventure
             </p>
-            
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 max-w-6xl mx-auto">
-              <div className="bg-gradient-to-br from-yellow-50 to-orange-50 rounded-2xl p-6 border border-yellow-200 hover:shadow-lg transition-all duration-300">
-                <div className="text-4xl mb-4">🌞</div>
-                <h4 className="font-bold text-gray-900 mb-3">Peak Season</h4>
-                <p className="text-sm text-gray-600 mb-2 font-medium">July-August</p>
-                <p className="text-sm text-gray-700">Book 2-3 months in advance. Prices are highest but availability is crucial.</p>
-                </div>
-                
-              <div className="bg-gradient-to-br from-pink-50 to-rose-50 rounded-2xl p-6 border border-pink-200 hover:shadow-lg transition-all duration-300">
-                <div className="text-4xl mb-4">🌸</div>
-                <h4 className="font-bold text-gray-900 mb-3">Shoulder Season</h4>
-                <p className="text-sm text-gray-600 mb-2 font-medium">May-June, September</p>
-                <p className="text-sm text-gray-700">Book 3-4 weeks ahead. Great weather with better prices and fewer crowds.</p>
-                </div>
-                
-              <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl p-6 border border-blue-200 hover:shadow-lg transition-all duration-300">
-                <div className="text-4xl mb-4">❄️</div>
-                <h4 className="font-bold text-gray-900 mb-3">Low Season</h4>
-                <p className="text-sm text-gray-600 mb-2 font-medium">October-April</p>
-                <p className="text-sm text-gray-700">Book 1-2 weeks ahead. Limited schedules but lowest prices.</p>
-                </div>
-                
-              <div className="bg-gradient-to-br from-green-50 to-emerald-50 rounded-2xl p-6 border border-green-200 hover:shadow-lg transition-all duration-300">
-                <div className="text-4xl mb-4">🎯</div>
-                <h4 className="font-bold text-gray-900 mb-3">Last-Minute Deals</h4>
-                <p className="text-sm text-gray-600 mb-2 font-medium">24-48 hours before</p>
-                <p className="text-sm text-gray-700">Sometimes available during off-peak times.</p>
-              </div>
-                </div>
-              </div>
-              
-          {/* Island Hopping Routes */}
-          <div className="mb-16">
-            <h3 className="text-3xl font-bold text-[#1E2E48] text-center mb-4">Popular Island Hopping Routes</h3>
-            <p className="text-lg text-gray-600 text-center mb-10 max-w-3xl mx-auto">
-              When planning your Cyclades island hopping adventure, consider these popular routes
-            </p>
-            
-            <div className="space-y-6 max-w-4xl mx-auto">
-              <div className="bg-white rounded-2xl p-8 shadow-lg border-l-6 border-[#1E2E48] hover:shadow-xl transition-all duration-300">
-                <div className="flex items-start">
-                  <div className="text-3xl mr-4 mt-1">🏛️</div>
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">Classic Route (7-10 days)</h4>
-                    <p className="text-gray-700 leading-relaxed">
-                      Athens (Piraeus) → <a href="/islands/mykonos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Mykonos</a> → <a href="/islands/paros" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Paros</a> → <a href="/islands/naxos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Naxos</a> → <a href="/islands/santorini" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Santorini</a>
-                    </p>
-                </div>
-                </div>
-                </div>
-                
-              <div className="bg-white rounded-2xl p-8 shadow-lg border-l-6 border-orange-500 hover:shadow-xl transition-all duration-300">
-                <div className="flex items-start">
-                  <div className="text-3xl mr-4 mt-1">🌋</div>
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">Western Cyclades (5-7 days)</h4>
-                    <p className="text-gray-700 leading-relaxed">
-                      Athens (Piraeus) → Kythnos → <a href="/islands/serifos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Serifos</a> → <a href="/islands/sifnos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Sifnos</a> → <a href="/islands/milos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Milos</a>
-                    </p>
-                  </div>
-                </div>
-              </div>
-              
-              <div className="bg-white rounded-2xl p-8 shadow-lg border-l-6 border-purple-500 hover:shadow-xl transition-all duration-300">
-                <div className="flex items-start">
-                  <div className="text-3xl mr-4 mt-1">🎨</div>
-                  <div>
-                    <h4 className="text-xl font-bold text-gray-900 mb-2">Cultural Route (4-6 days)</h4>
-                    <p className="text-gray-700 leading-relaxed">
-                      Athens (Piraeus) → <a href="/islands/syros" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Syros</a> → <a href="/islands/tinos" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Tinos</a> → <a href="/islands/andros" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">Andros</a> → Rafina (Athens)
-                </p>
-              </div>
+            <div className="flex flex-wrap justify-center gap-4">
+              <button onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })} className="inline-flex items-center px-8 py-4 bg-white text-cyan-600 rounded-xl font-semibold hover:bg-white/90 transition-colors">
+                <Ship className="mr-2 h-5 w-5" />
+                Search Ferries
+              </button>
+              <Link to="/hotels" className="inline-flex items-center px-8 py-4 bg-white/20 text-white border border-white/30 rounded-xl font-semibold hover:bg-white/30 transition-colors">
+                Book Hotels
+              </Link>
             </div>
           </div>
         </div>
-      </div>
-      
-          {/* Recommendation Text */}
-          <div className="text-center mb-12 max-w-4xl mx-auto">
-            <p className="text-lg text-gray-700 leading-relaxed">
-              We recommend spending at least 2-3 nights on each island to fully appreciate what each has to offer. During peak season (July-August), it's essential to book your ferry tickets and <a href="/hotels" className="text-blue-600 hover:text-blue-700 font-medium hover:underline transition-colors">accommodation</a> well in advance, as both can sell out quickly.
-            </p>
-          </div>
-          
-          {/* Pro Tip Section */}
-          <div className="bg-gradient-to-r from-[#1E2E48] to-blue-800 rounded-3xl p-8 md:p-12 text-white shadow-2xl relative overflow-hidden">
-            <div className="absolute top-0 right-0 w-32 h-32 bg-white opacity-5 rounded-full -translate-y-16 translate-x-16"></div>
-            <div className="absolute bottom-0 left-0 w-24 h-24 bg-white opacity-5 rounded-full translate-y-12 -translate-x-12"></div>
-            <div className="relative">
-              <div className="flex items-center mb-6">
-                <div className="flex items-center justify-center w-12 h-12 bg-yellow-400 rounded-full mr-4">
-                  <span className="text-2xl">💡</span>
-                </div>
-                <h4 className="text-2xl font-bold">Pro Tip for Island Hopping</h4>
-              </div>
-              <p className="text-lg text-blue-100 leading-relaxed">
-                Book your outbound and return ferries first, then fill in the inter-island connections. This ensures you have your main travel dates secured before planning the detailed itinerary. Also, consider our <a href="/activities" className="text-yellow-300 hover:text-yellow-200 font-medium hover:underline transition-colors">activities and tours</a> to make the most of each island visit.
-              </p>
-            </div>
-          </div>
-        </div>
-      </div>
 
-      {/* CTA Section */}
-      <div className="py-16 bg-[#1E2E48]">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-3xl font-bold text-white mb-4">Ready to Start Your Cyclades Adventure?</h2>
-          <p className="text-xl text-[#E3D7C3] mb-8 max-w-3xl mx-auto">
-            Join thousands of travelers who book their Greek island ferry tickets online. Compare schedules, secure booking, and instant confirmation for all Cyclades destinations.
-          </p>
-          
-          {/* Trust Signals */}
-          <div className="flex flex-wrap justify-center items-center gap-8 mb-8">
-            <div className="flex items-center gap-2">
-              <CheckCircle className="h-5 w-5 text-[#E3D7C3]" />
-              <span className="text-white text-sm">All Major Ferry Companies</span>
+        {/* Related Services */}
+        <div className="py-12 bg-gray-100 dark:bg-dark-card border-t border-gray-200 dark:border-white/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-4 gap-6">
+              {[
+                { to: '/hotels', icon: MapPin, title: 'Hotels', desc: 'Best stays' },
+                { to: '/rent-a-car', icon: Star, title: 'Car Rental', desc: 'Explore freely' },
+                { to: '/activities', icon: Zap, title: 'Activities', desc: 'Tours & fun' },
+                { to: '/trip-planner', icon: Calendar, title: 'Trip Planner', desc: 'Plan your trip' },
+              ].map((item, idx) => (
+                <Link key={idx} to={item.to} className="group flex items-center gap-4 p-4 bg-white dark:bg-white/5 rounded-xl hover:shadow-lg transition-all">
+                  <div className="w-10 h-10 bg-cyan-600/10 dark:bg-cyclades-turquoise/20 rounded-lg flex items-center justify-center">
+                    <item.icon className="w-5 h-5 text-cyan-600 dark:text-cyclades-turquoise" />
+                  </div>
+                  <div>
+                    <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyclades-turquoise transition-colors">{item.title}</h3>
+                    <p className="text-xs text-gray-600 dark:text-white/60">{item.desc}</p>
+                  </div>
+                </Link>
+              ))}
             </div>
-            <div className="flex items-center gap-2">
-              <Shield className="h-5 w-5 text-[#E3D7C3]" />
-              <span className="text-white text-sm">Secure Online Payment</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Star className="h-5 w-5 text-yellow-300" />
-              <span className="text-white text-sm">Best Available Prices</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Phone className="h-5 w-5 text-[#E3D7C3]" />
-              <span className="text-white text-sm">Customer Support</span>
-            </div>
-          </div>
-          
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button 
-              onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-              className="inline-flex items-center px-8 py-4 border border-transparent text-base font-medium rounded-md shadow-sm text-[#1E2E48] bg-[#E3D7C3] hover:bg-[#E3D7C3]/90 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3D7C3] transition-colors"
-            >
-              <Search className="mr-2 h-5 w-5" />
-              Book Ferry Tickets Now
-            </button>
-            
-            <a
-              href="/islands"
-              className="inline-flex items-center px-8 py-4 border-2 border-[#E3D7C3] text-base font-medium rounded-md text-[#E3D7C3] hover:bg-[#E3D7C3] hover:text-[#1E2E48] focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-[#E3D7C3] transition-colors"
-            >
-              Explore All Islands
-              <ChevronRight className="ml-2 h-5 w-5" />
-            </a>
           </div>
         </div>
       </div>
-    </div>
+    </>
   );
 }

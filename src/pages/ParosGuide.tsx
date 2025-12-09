@@ -17,6 +17,8 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
+import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
+import { siteLinks } from '../data/siteLinks';
 
 const ParosGuide: React.FC = () => {
   const paros = islandGuides.find(island => island.id === 'paros');
@@ -26,8 +28,8 @@ const ParosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Paros Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Paros vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. From charming Naoussa to golden beaches and traditional villages.",
+    title: "Paros Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Paros vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities. From charming Naoussa to golden beaches and traditional villages.",
     keywords: [
       'Paros travel guide',
       'Paros beaches',
@@ -82,42 +84,42 @@ const ParosGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Wines and delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -128,14 +130,14 @@ const ParosGuide: React.FC = () => {
   return (
     <>
       <SEO {...seoData} />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...paros} />
         
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Paros</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Paros</h2>
               <p className="text-gray-700 leading-relaxed">
                 Paros, sitting at the heart of the Cyclades, is an island that masterfully balances cosmopolitan flair with traditional Greek island life. 
                 Famous since antiquity for its fine white marble, used in masterpieces like the Venus de Milo and Napoleon's tomb, the island continues 
@@ -168,14 +170,14 @@ const ParosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
                 <a 
                   key={index}
                   href={category.link} 
-                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
                     {category.icon}
@@ -188,46 +190,46 @@ const ParosGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Paros</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Paros</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">High Season</h3>
-                <p className="text-gray-600">July to August</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Perfect beach weather</li>
                   <li>• All facilities open</li>
                   <li>• Vibrant atmosphere</li>
                   <li>• Busiest period</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">May-June, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Pleasant weather</li>
                   <li>• Fewer tourists</li>
                   <li>• Better rates</li>
                   <li>• Comfortable sightseeing</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Spring</h3>
-                <p className="text-gray-600">April to May</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April to May</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Wildflowers blooming</li>
                   <li>• Mild temperatures</li>
                   <li>• Perfect for hiking</li>
                   <li>• Easter celebrations</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Water Temperature</h3>
-                <p className="text-gray-600">Best swimming months</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">Best swimming months</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• June: 22°C (72°F)</li>
                   <li>• July: 24°C (75°F)</li>
                   <li>• August: 25°C (77°F)</li>
@@ -239,9 +241,9 @@ const ParosGuide: React.FC = () => {
           
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Charming Villages of Paros</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Charming Villages of Paros</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/villages/naoussa.jpg" 
@@ -264,7 +266,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/villages/parikia.jpg" 
@@ -287,7 +289,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/villages/lefkes.jpg" 
@@ -311,7 +313,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/villages/marpissa.jpg" 
@@ -338,9 +340,9 @@ const ParosGuide: React.FC = () => {
           
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beautiful Beaches of Paros</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beautiful Beaches of Paros</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/beaches/golden-beach.jpg" 
@@ -363,7 +365,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/beaches/kolymbithres.jpg" 
@@ -386,7 +388,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/beaches/santa-maria.jpg" 
@@ -409,7 +411,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/beaches/lageri.jpg" 
@@ -432,7 +434,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/beaches/pounda.jpg" 
@@ -455,7 +457,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/beaches/monastiri.jpg" 
@@ -482,10 +484,10 @@ const ParosGuide: React.FC = () => {
           
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine of Paros</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine of Paros</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-1">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="aspect-w-1 aspect-h-1">
                     <img 
                       src="/images/islands/paros/cuisine/paros-food.jpg" 
@@ -521,7 +523,7 @@ const ParosGuide: React.FC = () => {
             </div>
             
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaWineGlass className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Wine Tasting</h3>
                 <p className="text-gray-600 mb-4">
@@ -534,7 +536,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaUtensils className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Tavernas by the Sea</h3>
                 <p className="text-gray-600 mb-4">
@@ -547,7 +549,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaGlassCheers className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Dining in Naoussa</h3>
                 <p className="text-gray-600 mb-4">
@@ -564,7 +566,7 @@ const ParosGuide: React.FC = () => {
           
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Paros Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Paros Photo Gallery</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg">
@@ -585,9 +587,9 @@ const ParosGuide: React.FC = () => {
           
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in Paros</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Paros</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/activities/water-sports.jpg" 
@@ -613,7 +615,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/activities/hiking.jpg" 
@@ -640,7 +642,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/activities/boat-tour.jpg" 
@@ -667,7 +669,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/activities/cultural-tour.jpg" 
@@ -694,7 +696,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/activities/wine-tasting.jpg" 
@@ -721,7 +723,7 @@ const ParosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/paros/activities/cooking-class.jpg" 
@@ -755,7 +757,7 @@ const ParosGuide: React.FC = () => {
             <div className="container mx-auto px-6 py-12 text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Paros?</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Paros?</h2>
                   <p className="text-lg mb-6">
                     Book your accommodations, tours, and activities for an unforgettable Greek island getaway.
                     Paros offers the perfect blend of natural beauty, rich history, and authentic Greek hospitality.
@@ -789,6 +791,11 @@ const ParosGuide: React.FC = () => {
             </div>
           </section>
           
+          <RelatedDestinationsSection groups={[
+            siteLinks.popularIslands,
+            siteLinks.topActivities,
+            siteLinks.travelServices
+          ]} />
         </div>
       </div>
     </>
@@ -796,3 +803,5 @@ const ParosGuide: React.FC = () => {
 };
 
 export default ParosGuide;
+
+

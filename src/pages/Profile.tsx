@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Helmet } from 'react-helmet-async';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
-import { supabase } from '../lib/supabase';
+import { useTheme } from '../contexts/ThemeContext';
 import { 
   Heart, 
   MessageSquare, 
@@ -20,37 +19,23 @@ import {
   Camera,
   Edit3,
   Share2,
-  MoreHorizontal,
   Trophy,
   Target,
   TrendingUp,
-  Award,
   Star,
   Users,
   Globe,
   Bookmark,
-  Clock,
   CheckCircle,
   Zap,
   Crown,
-  Diamond,
-  Flame,
   Map,
-  Navigation,
-  Plane,
   Route,
   Waves,
   Wind,
-  Anchor,
   Coffee,
   Camera as CameraIcon,
   Image as ImageIcon,
-  Video,
-  Play,
-  Pause,
-  Volume2,
-  VolumeX,
-  Loader2,
   DollarSign
 } from 'lucide-react';
 import { generateProfileSEO } from '../utils/seo';
@@ -277,7 +262,7 @@ const EditProfileModal = ({
   const removeInterest = (interestToRemove: string) => {
     setFormData({
       ...formData,
-      interests: formData.interests.filter(interest => interest !== interestToRemove)
+      interests: formData.interests.filter((interest: string) => interest !== interestToRemove)
     });
   };
 
@@ -360,7 +345,7 @@ const EditProfileModal = ({
               </button>
             </div>
             <div className="flex flex-wrap gap-2">
-              {formData.interests.map((interest) => (
+              {formData.interests.map((interest: string) => (
                 <span
                   key={interest}
                   className="bg-blue-100 text-blue-800 px-2 py-1 rounded-full text-sm flex items-center gap-1"
@@ -399,16 +384,11 @@ const EditProfileModal = ({
   );
 };
 
-function classNames(...classes: string[]) {
-  return classes.filter(Boolean).join(' ');
-}
-
 export default function Profile() {
   const navigate = useNavigate();
   const { user, logout, loading, initialized, initialize } = useAuthStore();
   
   // Modal states
-  const [isCreateModalOpen, setIsCreateModalOpen] = useState(false);
   const [isCreateTripModalOpen, setIsCreateTripModalOpen] = useState(false);
   const [isCreateDiaryModalOpen, setIsCreateDiaryModalOpen] = useState(false);
   const [isSettingsOpen, setIsSettingsOpen] = useState(false);
@@ -604,12 +584,15 @@ export default function Profile() {
     };
   }, []);
 
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
+
   if (loading || !initialized || dataLoading) {
     return (
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/30 flex items-center justify-center">
+      <div className={`min-h-screen flex items-center justify-center ${isDark ? 'bg-dark-bg' : 'bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/30'}`}>
         <div className="text-center">
-          <div className="w-8 h-8 border-2 border-blue-500 border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
-          <p className="text-gray-600">
+          <div className="w-8 h-8 border-2 border-cyclades-turquoise border-t-transparent rounded-full animate-spin mx-auto mb-4"></div>
+          <p className={isDark ? 'text-white/60' : 'text-gray-600'}>
             {loading || !initialized ? 'Loading your profile...' : 'Loading your data...'}
           </p>
         </div>
@@ -622,7 +605,7 @@ export default function Profile() {
   return (
     <>
       <SEO {...generateProfileSEO()} />
-      <div className="min-h-screen bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/30 pt-16">
+      <div className={`min-h-screen pt-16 ${isDark ? 'bg-dark-bg' : 'bg-gradient-to-br from-slate-50 via-blue-50/30 to-indigo-50/30'}`}>
         {/* Enhanced Hero Section */}
         <div className="relative overflow-hidden">
           {/* Background Decoration */}
@@ -1063,7 +1046,7 @@ export default function Profile() {
                 <motion.button 
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
-                  onClick={() => setIsCreateModalOpen(true)}
+                  onClick={() => setActiveTab('photos')}
                   className="bg-gradient-to-br from-slate-50 via-gray-100/50 to-zinc-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 p-6 border border-gray-200/50 group"
                 >
                   <div className="flex items-start gap-4">
@@ -1161,7 +1144,7 @@ export default function Profile() {
                             {post.likes_count}
                           </span>
                           <span className="flex items-center gap-1">
-                            <MessageCircle className="w-3 h-3" />
+                            <MessageSquare className="w-3 h-3" />
                             {post.comments_count}
                           </span>
                         </div>
@@ -1198,7 +1181,7 @@ export default function Profile() {
                           {trip.status}
                         </span>
                       </div>
-                      {trip.description && <p className="text-gray-600 mb-2">{trip.description}</p>}
+                      {trip.notes && <p className="text-gray-600 mb-2">{trip.notes}</p>}
                       <div className="flex items-center gap-4 text-sm text-gray-500">
                         {trip.start_date && (
                           <span className="flex items-center gap-1">
@@ -1206,10 +1189,10 @@ export default function Profile() {
                             {new Date(trip.start_date).toLocaleDateString()}
                           </span>
                         )}
-                        {trip.budget && (
+                        {trip.estimated_budget && (
                           <span className="flex items-center gap-1">
                             <DollarSign className="w-4 h-4" />
-                            €{trip.budget}
+                            €{trip.estimated_budget}
                           </span>
                         )}
                       </div>
@@ -1235,7 +1218,7 @@ export default function Profile() {
                       <div className="flex justify-between items-start mb-2">
                         <h3 className="font-semibold">{entry.title}</h3>
                         <span className="text-sm text-gray-500">
-                          {new Date(entry.entry_date).toLocaleDateString()}
+                          {new Date(entry.date).toLocaleDateString()}
                         </span>
                       </div>
                       <p className="text-gray-700 mb-2">{entry.content}</p>
@@ -1288,7 +1271,7 @@ export default function Profile() {
                           {favorite.item_type}
                         </span>
                       </div>
-                      {favorite.notes && <p className="text-gray-600 text-sm">{favorite.notes}</p>}
+                      {favorite.item_location && <p className="text-gray-600 text-sm">{favorite.item_location}</p>}
                     </div>
                   ))}
                 </div>

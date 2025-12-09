@@ -1,4 +1,4 @@
-# Mykonos 2025: Complete Guide to the Island of the Winds
+# Mykonos 2026: Complete Guide to the Island of the Winds
 
 Welcome to Mykonos, the most famous and cosmopolitan island of the Cyclades. Known for its vibrant nightlife, stunning beaches, and picturesque Cycladic architecture, Mykonos offers a perfect blend of luxury, tradition, and natural beauty.
 

@@ -19,8 +19,8 @@ const DonousaGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Donousa Travel Guide 2025 - Pristine Beaches & Tranquility",
-    description: "Plan your perfect Donousa vacation with our comprehensive 2025 travel guide. Discover pristine beaches, hiking trails, and authentic Greek island tranquility.",
+    title: "Donousa Travel Guide 2026 - Pristine Beaches & Tranquility",
+    description: "Plan your perfect Donousa vacation with our comprehensive 2026 travel guide. Discover pristine beaches, hiking trails, and authentic Greek island tranquility.",
     keywords: [
       'Donousa travel guide',
       'Small Cyclades',
@@ -39,42 +39,42 @@ const DonousaGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There',
       description: 'Ferry routes and options',
       link: '#getting-there',
       id: 'getting-there'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim',
       description: 'Best beaches and coves',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaHiking className="text-blue-500" />,
+      icon: <FaHiking className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaLandmark className="text-blue-500" />,
+      icon: <FaLandmark className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Local delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -94,14 +94,14 @@ const DonousaGuide: React.FC = () => {
   return (
     <>
       <SEO {...seoData} />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...heroProps} />
         
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Donousa</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Donousa</h2>
               <p className="text-gray-700 leading-relaxed">
                 Donousa, the northernmost of the Small Cyclades, is a tiny paradise that embodies the 
                 essence of island solitude and natural beauty. This remote gem maintains an unspoiled 
@@ -134,21 +134,21 @@ const DonousaGuide: React.FC = () => {
 
           {/* Quick Navigation Section */}
           <section id="quick-nav" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Explore Donousa</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Explore Donousa</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {categories.map((category, index) => (
                 <a 
                   key={index} 
                   href={category.link} 
-                  className="bg-white rounded-xl shadow-md p-6 transition-transform hover:scale-105 hover:shadow-lg"
+                  className="bg-white dark:bg-dark-card rounded-xl shadow-md p-6 transition-transform hover:scale-105 hover:shadow-lg"
                 >
                   <div className="flex items-start space-x-4">
-                    <div className="rounded-full bg-blue-50 p-3">
+                    <div className="rounded-full bg-blue-50 dark:bg-cyan-600/10 p-3">
                       {category.icon}
                     </div>
                     <div>
                       <h3 className="font-bold text-lg text-gray-900 mb-1">{category.title}</h3>
-                      <p className="text-gray-600">{category.description}</p>
+                      <p className="text-gray-600 dark:text-white/60">{category.description}</p>
                     </div>
                   </div>
                 </a>
@@ -158,8 +158,8 @@ const DonousaGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Donousa</h2>
-            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Donousa</h2>
+            <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="p-8">
                   <h3 className="text-2xl font-semibold mb-4">Best Time to Visit</h3>
@@ -170,24 +170,24 @@ const DonousaGuide: React.FC = () => {
                   </p>
                   <div className="space-y-4">
                     <div>
-                      <h4 className="font-semibold text-blue-600">Summer (June to September)</h4>
-                      <p className="text-gray-700">Warm temperatures perfect for swimming and beach activities. 
+                      <h4 className="font-semibold text-cyan-600 dark:text-cyclades-turquoise">Summer (June to September)</h4>
+                      <p className="text-gray-700 dark:text-white/80">Warm temperatures perfect for swimming and beach activities. 
                       Ferry connections are more frequent, and all facilities are open. Water temperatures are 
                       ideal for swimming.</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-blue-600">Spring (April to May)</h4>
-                      <p className="text-gray-700">Pleasant temperatures with the island in full bloom. 
+                      <h4 className="font-semibold text-cyan-600 dark:text-cyclades-turquoise">Spring (April to May)</h4>
+                      <p className="text-gray-700 dark:text-white/80">Pleasant temperatures with the island in full bloom. 
                       Fewer tourists and lower prices, though some facilities may be limited.</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-blue-600">Autumn (October)</h4>
-                      <p className="text-gray-700">Still warm enough for swimming with fewer tourists. 
+                      <h4 className="font-semibold text-cyan-600 dark:text-cyclades-turquoise">Autumn (October)</h4>
+                      <p className="text-gray-700 dark:text-white/80">Still warm enough for swimming with fewer tourists. 
                       The sea remains warm from the summer months.</p>
                     </div>
                     <div>
-                      <h4 className="font-semibold text-blue-600">Winter (November to March)</h4>
-                      <p className="text-gray-700">Very quiet with limited ferry connections and most 
+                      <h4 className="font-semibold text-cyan-600 dark:text-cyclades-turquoise">Winter (November to March)</h4>
+                      <p className="text-gray-700 dark:text-white/80">Very quiet with limited ferry connections and most 
                       facilities closed. Only recommended for those seeking complete solitude.</p>
                     </div>
                   </div>
@@ -205,8 +205,8 @@ const DonousaGuide: React.FC = () => {
 
           {/* Transportation Section */}
           <section id="transport" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Getting to Donousa</h2>
-            <div className="bg-white rounded-xl shadow-md overflow-hidden">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Getting to Donousa</h2>
+            <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
               <div className="p-8">
                 <h3 className="text-2xl font-semibold mb-4">Ferry Connections</h3>
                 <p className="text-gray-700 mb-6">
@@ -214,7 +214,7 @@ const DonousaGuide: React.FC = () => {
                   The most common routes are:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
                     <h4 className="font-semibold text-blue-600 mb-2">From Piraeus (Athens)</h4>
                     <ul className="list-disc pl-5 text-gray-700 space-y-2">
                       <li>2-3 weekly connections</li>
@@ -222,7 +222,7 @@ const DonousaGuide: React.FC = () => {
                       <li>Operated by Blue Star Ferries and Small Cyclades Lines</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
                     <h4 className="font-semibold text-blue-600 mb-2">From Naxos</h4>
                     <ul className="list-disc pl-5 text-gray-700 space-y-2">
                       <li>3-5 weekly connections</li>
@@ -230,7 +230,7 @@ const DonousaGuide: React.FC = () => {
                       <li>Operated by Express Skopelitis and other local ferries</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
                     <h4 className="font-semibold text-blue-600 mb-2">From Amorgos</h4>
                     <ul className="list-disc pl-5 text-gray-700 space-y-2">
                       <li>2-3 weekly connections</li>
@@ -238,7 +238,7 @@ const DonousaGuide: React.FC = () => {
                       <li>Operated by Express Skopelitis</li>
                     </ul>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
                     <h4 className="font-semibold text-blue-600 mb-2">From Other Small Cyclades</h4>
                     <ul className="list-disc pl-5 text-gray-700 space-y-2">
                       <li>Regular connections with Koufonisia, Schinoussa, and Iraklia</li>
@@ -253,22 +253,22 @@ const DonousaGuide: React.FC = () => {
                   Donousa is a small island with limited transportation options:
                 </p>
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
                     <h4 className="font-semibold text-blue-600 mb-2">On Foot</h4>
-                    <p className="text-gray-700">
+                    <p className="text-gray-700 dark:text-white/80">
                       The most common way to explore Donousa. Well-marked hiking paths connect the main village 
                       to beaches and other points of interest.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
                     <h4 className="font-semibold text-blue-600 mb-2">Water Taxis</h4>
-                    <p className="text-gray-700">
+                    <p className="text-gray-700 dark:text-white/80">
                       Available during summer to reach remote beaches. Depart from Stavros port.
                     </p>
                   </div>
-                  <div className="bg-blue-50 p-6 rounded-lg">
+                  <div className="bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
                     <h4 className="font-semibold text-blue-600 mb-2">Limited Bus Service</h4>
-                    <p className="text-gray-700">
+                    <p className="text-gray-700 dark:text-white/80">
                       A mini-bus operates during summer months connecting Stavros with the main beaches.
                     </p>
                   </div>
@@ -279,13 +279,13 @@ const DonousaGuide: React.FC = () => {
 
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beaches in Donousa</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beaches in Donousa</h2>
             <p className="text-gray-700 mb-8">
               Donousa is home to some of the most pristine and unspoiled beaches in the Cyclades, 
               offering crystal-clear turquoise waters and a peaceful atmosphere.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/donousa/kedros.jpg" 
@@ -308,7 +308,7 @@ const DonousaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/donousa/livadi.jpg" 
@@ -331,7 +331,7 @@ const DonousaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/donousa/kalotaritissa.jpg" 
@@ -354,7 +354,7 @@ const DonousaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/donousa/fykio.jpg" 
@@ -381,9 +381,9 @@ const DonousaGuide: React.FC = () => {
 
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in Donousa</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Donousa</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="p-6">
                   <h3 className="text-2xl font-semibold mb-4">Hiking</h3>
                   <p className="text-gray-700 mb-4">
@@ -408,7 +408,7 @@ const DonousaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-xl shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="p-6">
                   <h3 className="text-2xl font-semibold mb-4">Swimming & Snorkeling</h3>
                   <p className="text-gray-700 mb-4">
@@ -434,25 +434,25 @@ const DonousaGuide: React.FC = () => {
             </div>
             
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-              <div className="bg-white rounded-xl shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-3">Explore Stavros Village</h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-white/80">
                   Wander through the charming main village with its traditional Cycladic architecture, 
                   small shops, and local tavernas. Visit the Church of Panagia with its beautiful views.
                 </p>
               </div>
               
-              <div className="bg-white rounded-xl shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-3">Visit Mersini Spring</h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-white/80">
                   A natural freshwater spring that has been vital to the island for centuries. 
                   The area around the spring is lush with vegetation, unusual for the Cyclades.
                 </p>
               </div>
               
-              <div className="bg-white rounded-xl shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-xl shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-3">Local Festivals</h3>
-                <p className="text-gray-700">
+                <p className="text-gray-700 dark:text-white/80">
                   Experience traditional Greek celebrations, especially the Panagia festival on August 15th 
                   with music, dancing, and local food in Stavros village.
                 </p>
@@ -476,7 +476,7 @@ const DonousaGuide: React.FC = () => {
                   <div className="flex flex-col sm:flex-row gap-4">
                     <a 
                       href="/hotels/" 
-                      className="inline-block bg-white text-blue-700 font-medium px-6 py-3 rounded-lg hover:bg-blue-50 transition duration-300"
+                      className="inline-block bg-white text-blue-700 font-medium px-6 py-3 rounded-lg hover:bg-blue-50 dark:bg-cyan-600/10 transition duration-300"
                     >
                       Find Accommodations
                     </a>
@@ -505,3 +505,5 @@ const DonousaGuide: React.FC = () => {
 };
 
 export default DonousaGuide;
+
+

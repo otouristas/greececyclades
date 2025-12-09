@@ -17,9 +17,6 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
-import { generateKeywordsWithLSI } from '../utils/seo';
-import { Link } from 'react-router-dom';
-import { Hotel } from 'lucide-react';
 
 const SifnosGuide: React.FC = () => {
   const sifnos = islandGuides.find(island => island.id === 'sifnos');
@@ -28,51 +25,23 @@ const SifnosGuide: React.FC = () => {
     return <div>Island not found</div>;
   }
 
-  const faqItems = [
-    {
-      question: 'Is Sifnos worth visiting?',
-      answer: 'Absolutely! Sifnos is renowned as the culinary capital of the Cyclades, offering exceptional gastronomy, traditional pottery workshops, beautiful hiking trails, and authentic Greek island charm. It\'s perfect for food enthusiasts, culture lovers, and those seeking a more authentic experience than the more touristy islands.'
-    },
-    {
-      question: 'How many days do you need in Sifnos?',
-      answer: 'We recommend 3-5 days to fully experience Sifnos. This allows time to explore the charming villages (Kastro, Apollonia, Artemonas), visit multiple beaches, enjoy the excellent restaurants, take a pottery workshop, and hike some of the island\'s beautiful trails. For a more relaxed pace, 5-7 days is ideal.'
-    },
-    {
-      question: 'Can you fly to Sifnos?',
-      answer: 'No, Sifnos does not have an airport. You can reach Sifnos by ferry from Piraeus port in Athens (2.5-5 hours depending on ferry type) or from other Cyclades islands like Milos, Paros, or Naxos. The main port is Kamares, which is well-connected to the rest of the island.'
-    },
-    {
-      question: 'What is Sifnos famous for?',
-      answer: 'Sifnos is famous for its exceptional cuisine (it\'s considered the culinary capital of the Cyclades), traditional pottery that dates back thousands of years, beautiful hiking trails connecting villages and beaches, and authentic Cycladic architecture. The island is also known for dishes like revithada (chickpea stew) and mastelo (slow-cooked lamb).'
-    },
-    {
-      question: 'Is Sifnos expensive?',
-      answer: 'Sifnos offers excellent value compared to more famous islands like Santorini and Mykonos. While not as budget-friendly as some smaller islands, you can find good mid-range accommodations and excellent traditional tavernas at reasonable prices. The island provides great value for the quality of experiences, especially its world-class dining scene.'
-    }
-  ];
-
   const seoData = {
-    title: "Sifnos Travel Guide 2025: Beaches, Villages & Hidden Gems (Updated)",
-    description: "Complete Sifnos travel guide with the best beaches, authentic villages, where to stay, eat, and secret spots only locals know. Plan your perfect Sifnos trip!",
-    keywords: generateKeywordsWithLSI(
-      ['Sifnos travel guide', 'Sifnos Greece', 'Sifnos island'],
-      [
-        'things to do in Sifnos',
-        'Sifnos best beaches',
-        'where to stay in Sifnos',
-        'Sifnos restaurants',
-        'how to get to Sifnos',
-        'Sifnos pottery villages',
-        'Sifnos hiking trails',
-        'best time to visit Sifnos'
-      ],
-      ['Kastro Sifnos', 'Apollonia', 'Chrysopigi', 'Greek islands', 'Cyclades']
-    ),
+    title: "Sifnos Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Sifnos vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities. From the culinary paradise to pristine beaches and traditional pottery.",
+    keywords: [
+      'Sifnos travel guide',
+      'Sifnos beaches',
+      'Kastro Sifnos',
+      'Apollonia',
+      'Greek islands',
+      'Sifnos villages',
+      'Chrysopigi',
+      'pottery Sifnos',
+      'Sifnos restaurants',
+      'best time to visit Sifnos'
+    ],
     ogImage: sifnos.image,
-    ogType: 'article' as const,
-    faq: faqItems,
-    pageType: 'guides' as const,
-    canonicalUrl: '/guides/sifnos'
+    ogType: 'article'
   };
 
   // Photo gallery images
@@ -113,42 +82,42 @@ const SifnosGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Pottery and delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -159,14 +128,14 @@ const SifnosGuide: React.FC = () => {
   return (
     <>
       <SEO {...seoData} />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...sifnos} />
         
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Sifnos</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Sifnos</h2>
               <p className="text-gray-700 leading-relaxed">
                 Sifnos, the gastronomic capital of the Cyclades, is an island where culinary tradition meets architectural elegance. 
                 The island's rich clay deposits have fostered a long tradition of pottery making, evident in its distinctive chimney pots 
@@ -180,17 +149,17 @@ const SifnosGuide: React.FC = () => {
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/islands/sifnos/landscape.jpg" 
-                    alt="Traditional whitewashed Cycladic architecture in Sifnos Greece with blue domes and Aegean Sea views" 
-                    className="w-full h-full object-cover"
-                  />
+                <img 
+                  src="/images/islands/sifnos/landscape.jpg" 
+                  alt="Sifnos Landscape" 
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div className="absolute -bottom-8 -left-8 w-2/3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
                   <img 
                     src="/images/islands/sifnos/kastro-detail.jpg" 
-                    alt="Medieval Kastro village Sifnos with ancient architecture and panoramic Aegean Sea views" 
+                    alt="Kastro Detail" 
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -199,14 +168,14 @@ const SifnosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
                 <a 
                   key={index}
                   href={category.link} 
-                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
                     {category.icon}
@@ -219,46 +188,46 @@ const SifnosGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Sifnos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Sifnos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">High Season</h3>
-                <p className="text-gray-600">July to August</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Perfect beach weather</li>
                   <li>• All facilities open</li>
                   <li>• Vibrant atmosphere</li>
                   <li>• Busiest period</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">May-June, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Pleasant weather</li>
                   <li>• Fewer tourists</li>
                   <li>• Better rates</li>
                   <li>• Comfortable sightseeing</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Spring</h3>
-                <p className="text-gray-600">April to May</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April to May</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Wildflowers blooming</li>
                   <li>• Mild temperatures</li>
                   <li>• Perfect for hiking</li>
                   <li>• Easter celebrations</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Water Temperature</h3>
-                <p className="text-gray-600">Best swimming months</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">Best swimming months</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• June: 22°C (72°F)</li>
                   <li>• July: 24°C (75°F)</li>
                   <li>• August: 25°C (77°F)</li>
@@ -270,9 +239,9 @@ const SifnosGuide: React.FC = () => {
           
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Charming Villages of Sifnos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Charming Villages of Sifnos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sifnos/villages/kastro.jpg" 
@@ -296,7 +265,7 @@ const SifnosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sifnos/villages/apollonia.jpg" 
@@ -319,7 +288,7 @@ const SifnosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sifnos/villages/artemonas.jpg" 
@@ -342,7 +311,7 @@ const SifnosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sifnos/villages/faros.jpg" 
@@ -369,9 +338,9 @@ const SifnosGuide: React.FC = () => {
           
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beautiful Beaches of Sifnos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beautiful Beaches of Sifnos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sifnos/beaches/platis-gialos.jpg" 
@@ -394,7 +363,7 @@ const SifnosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sifnos/beaches/vathi.jpg" 
@@ -417,7 +386,7 @@ const SifnosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sifnos/beaches/chrysopigi.jpg" 
@@ -440,7 +409,7 @@ const SifnosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sifnos/beaches/kamares.jpg" 
@@ -467,10 +436,10 @@ const SifnosGuide: React.FC = () => {
           
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine of Sifnos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine of Sifnos</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-1">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden h-full">
+                <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden h-full">
                   <div className="p-6">
                     <FaGlassCheers className="text-3xl text-blue-500 mb-4" />
                     <h3 className="text-xl font-semibold mb-4">Traditional Dishes</h3>
@@ -511,7 +480,7 @@ const SifnosGuide: React.FC = () => {
               </div>
               
               <div className="lg:col-span-2">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     <div className="p-6">
                       <h3 className="text-xl font-semibold mb-4">Where to Eat in Sifnos</h3>
@@ -522,14 +491,14 @@ const SifnosGuide: React.FC = () => {
                       <div className="space-y-4">
                         <div className="border-l-4 border-blue-500 pl-4">
                           <h4 className="font-semibold">Fine Dining</h4>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-gray-600 dark:text-white/60">
                             <strong>Omega3</strong> in Platis Gialos offers creative fish and seafood dishes with a modern twist. 
                             <strong>Cayenne</strong> in Apollonia serves Mediterranean cuisine with local ingredients in an elegant setting.
                           </p>
                         </div>
                         <div className="border-l-4 border-blue-500 pl-4">
                           <h4 className="font-semibold">Traditional Tavernas</h4>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-gray-600 dark:text-white/60">
                             <strong>Leonidas</strong> in Kastro serves authentic Sifnian dishes in a historic setting. 
                             <strong>Drimoni</strong> in Apollonia offers fresh seafood right on the beach. 
                             <strong>To Tsikali</strong> in Vathi beach serves traditional dishes cooked in clay pots.
@@ -537,7 +506,7 @@ const SifnosGuide: React.FC = () => {
                         </div>
                         <div className="border-l-4 border-blue-500 pl-4">
                           <h4 className="font-semibold">Sweet Treats</h4>
-                          <p className="text-sm text-gray-600">
+                          <p className="text-sm text-gray-600 dark:text-white/60">
                             <strong>Theodorou Sweet Shop</strong> in Artemonas is famous for its traditional almond cookies and honey pie. 
                             <strong>Grigoris</strong> in Apollonia offers excellent pastries and local sweets.
                           </p>
@@ -552,24 +521,24 @@ const SifnosGuide: React.FC = () => {
                       />
                     </div>
                   </div>
-                  <div className="p-6 bg-blue-50">
+                  <div className="p-6 bg-blue-50 dark:bg-cyan-600/10">
                     <h3 className="text-lg font-semibold mb-3">Local Products to Try</h3>
                     <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
-                      <div className="bg-white p-4 rounded-lg shadow-sm">
+                      <div className="bg-white dark:bg-dark-card p-4 rounded-lg shadow-sm">
                         <h4 className="font-medium text-blue-800 mb-2">Sifnian Pottery</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Not edible, but essential to Sifnian cuisine! The island's famous clay pots are used for cooking many traditional dishes.
                         </p>
                       </div>
-                      <div className="bg-white p-4 rounded-lg shadow-sm">
+                      <div className="bg-white dark:bg-dark-card p-4 rounded-lg shadow-sm">
                         <h4 className="font-medium text-blue-800 mb-2">Local Honey</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Thyme honey from Sifnos has a distinctive flavor and aroma, used in many traditional desserts.
                         </p>
                       </div>
-                      <div className="bg-white p-4 rounded-lg shadow-sm">
+                      <div className="bg-white dark:bg-dark-card p-4 rounded-lg shadow-sm">
                         <h4 className="font-medium text-blue-800 mb-2">Capers</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Wild capers grow abundantly on the island and are used in many local dishes for their distinctive tangy flavor.
                         </p>
                       </div>
@@ -582,9 +551,9 @@ const SifnosGuide: React.FC = () => {
           
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in Sifnos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Sifnos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
                     <FaSwimmer className="text-3xl text-blue-500 mr-4" />
@@ -626,7 +595,7 @@ const SifnosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
                     <FaHiking className="text-3xl text-blue-500 mr-4" />
@@ -668,35 +637,35 @@ const SifnosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden md:col-span-2">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden md:col-span-2">
                 <div className="grid grid-cols-1 md:grid-cols-3">
                   <div className="p-6 md:col-span-2">
                     <h3 className="text-xl font-semibold mb-4">Unique Experiences in Sifnos</h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                      <div className="bg-blue-50 p-4 rounded-lg">
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Panigiri Festivals</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Experience a traditional Greek festival at one of the many church celebrations throughout summer. 
                           Enjoy local music, dancing, and free food and wine in a joyful atmosphere.
                         </p>
                       </div>
-                      <div className="bg-blue-50 p-4 rounded-lg">
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Sunset at Kastro</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Climb to the Church of Seven Martyrs near Kastro for one of the most spectacular sunset views in the Cyclades, 
                           with the church silhouetted against the golden sky.
                         </p>
                       </div>
-                      <div className="bg-blue-50 p-4 rounded-lg">
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Sifnos Gastronomy Festival</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Visit during the annual food festival in September to taste dishes prepared by local and guest chefs, 
                           attend cooking demonstrations, and participate in food-related events.
                         </p>
                       </div>
-                      <div className="bg-blue-50 p-4 rounded-lg">
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Monastery of Chrysopigi</h4>
-                        <p className="text-sm text-gray-600">
+                        <p className="text-sm text-gray-600 dark:text-white/60">
                           Visit the island's patron saint monastery built on a dramatic rock formation jutting into the sea. 
                           The monastery celebrates its feast day on Ascension Day with special events.
                         </p>
@@ -717,7 +686,7 @@ const SifnosGuide: React.FC = () => {
           
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Sifnos Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Sifnos Photo Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
@@ -729,7 +698,7 @@ const SifnosGuide: React.FC = () => {
                     />
                   </div>
                   <div className="p-3 bg-white">
-                    <p className="text-sm text-gray-600">{image.alt}</p>
+                    <p className="text-sm text-gray-600 dark:text-white/60">{image.alt}</p>
                   </div>
                 </div>
               ))}
@@ -743,148 +712,29 @@ const SifnosGuide: React.FC = () => {
             </div>
           </section>
           
-          {/* FAQ Section */}
-          <section id="faq" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Frequently Asked Questions About Sifnos</h2>
-            <div className="bg-white rounded-lg shadow-md p-6">
-              <div className="space-y-6">
-                {faqItems.map((item, index) => (
-                  <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
-                    <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.question}</h3>
-                    <p className="text-gray-700 leading-relaxed">{item.answer}</p>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </section>
-
-          {/* Internal Links Section */}
-          <section className="mb-16 bg-blue-50 rounded-lg p-8">
-            <h2 className="text-2xl font-bold mb-6">Explore More Cyclades Islands</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <Link 
-                to="/guides/antiparos" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Antiparos Island Guide</h3>
-                <p className="text-sm text-gray-600">Discover the nearby island of Antiparos with its famous cave and beautiful beaches.</p>
-              </Link>
-              <Link 
-                to="/guides/kimolos" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Kimolos Island Guide</h3>
-                <p className="text-sm text-gray-600">Explore the peaceful neighboring island of Kimolos, just a short ferry ride away.</p>
-              </Link>
-              <Link 
-                to="/best-cyclades-islands-to-visit" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Best Cyclades Islands</h3>
-                <p className="text-sm text-gray-600">Compare all the best islands in the Cyclades to plan your perfect island hopping trip.</p>
-              </Link>
-              <Link 
-                to="/blog/cyclades-7-day-island-hopping-itinerary" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">7-Day Cyclades Itinerary</h3>
-                <p className="text-sm text-gray-600">Plan your perfect week-long island hopping adventure through the Cyclades.</p>
-              </Link>
-              <Link 
-                to="/ferry-guide" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Cyclades Ferry Guide</h3>
-                <p className="text-sm text-gray-600">Learn how to get to Sifnos and navigate between Cyclades islands by ferry.</p>
-              </Link>
-              <Link 
-                to="/blog/where-to-stay-sifnos-greece" 
-                className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-              >
-                <h3 className="font-semibold text-blue-800 mb-2">Where to Stay in Sifnos</h3>
-                <p className="text-sm text-gray-600">Find the best areas and accommodations for your Sifnos vacation.</p>
-              </Link>
-            </div>
-          </section>
-
-          {/* Related Resources Section */}
-          <section id="related-resources" className="mb-16">
-            <h2 className="text-3xl font-bold text-gray-800 mb-8">Plan Your Sifnos Trip</h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <Link 
-                to="/ferry-tickets" 
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
-              >
-                <FaShip className="text-3xl text-blue-600 mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Book Ferry Tickets</h3>
-                <p className="text-sm text-gray-600">Find the best ferry routes and prices to Sifnos from Athens and other Cyclades islands.</p>
-              </Link>
-              <Link 
-                to="/hotels" 
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
-              >
-                <Hotel className="text-3xl text-blue-600 mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Find Hotels in Sifnos</h3>
-                <p className="text-sm text-gray-600">Discover the best accommodations from traditional guesthouses to luxury hotels.</p>
-              </Link>
-              <Link 
-                to="/blog/where-to-stay-sifnos-greece" 
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
-              >
-                <FaMapMarkedAlt className="text-3xl text-blue-600 mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Where to Stay Guide</h3>
-                <p className="text-sm text-gray-600">Complete guide to the best areas and neighborhoods in Sifnos for your stay.</p>
-              </Link>
-              <Link 
-                to="/blog/cyclades-7-day-island-hopping-itinerary" 
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
-              >
-                <FaCalendarAlt className="text-3xl text-blue-600 mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Island Hopping Itineraries</h3>
-                <p className="text-sm text-gray-600">Plan your perfect Cyclades island hopping trip including Sifnos.</p>
-              </Link>
-              <Link 
-                to="/blog/best-beaches-cyclades-islands" 
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
-              >
-                <FaUmbrellaBeach className="text-3xl text-blue-600 mb-3" />
-                <h3 className="font-semibold text-lg mb-2">Best Cyclades Beaches</h3>
-                <p className="text-sm text-gray-600">Discover the top beaches across all Cyclades islands including Sifnos.</p>
-              </Link>
-              <Link 
-                to="/guides" 
-                className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
-              >
-                <FaMapMarkedAlt className="text-3xl text-blue-600 mb-3" />
-                <h3 className="font-semibold text-lg mb-2">All Island Guides</h3>
-                <p className="text-sm text-gray-600">Explore comprehensive travel guides for all Cyclades islands.</p>
-              </Link>
-            </div>
-          </section>
-
           {/* Call to Action Section */}
           <section id="cta" className="mb-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-md overflow-hidden">
             <div className="container mx-auto px-6 py-12 text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Sifnos?</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Sifnos?</h2>
                   <p className="text-lg mb-6">
                     Book your accommodations, tours, and activities for an unforgettable Greek island getaway.
                     Sifnos offers the perfect blend of culinary excellence, natural beauty, and authentic Greek hospitality.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <Link 
-                      to="/hotels" 
+                    <a 
+                      href="/hotels/" 
                       className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition duration-300 text-center"
                     >
                       Find Accommodations
-                    </Link>
-                    <Link 
-                      to="/ferry-tickets" 
+                    </a>
+                    <a 
+                      href="/ferry-tickets/" 
                       className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition duration-300 text-center"
                     >
                       How to get there
-                    </Link>
+                    </a>
                   </div>
                 </div>
                 <div className="relative h-64 md:h-auto">
@@ -908,3 +758,5 @@ const SifnosGuide: React.FC = () => {
 };
 
 export default SifnosGuide;
+
+

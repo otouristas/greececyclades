@@ -247,17 +247,17 @@ export default function TouristasAIChat() {
         keywords={["Touristas AI", "Greek islands chat", "AI oracle", "travel assistant", "Cyclades AI"]}
       />
       
-      <div className={`flex flex-col h-screen bg-white ${isFullscreen ? 'fixed inset-0 z-50' : ''}`}>
+      <div className={`flex flex-col h-screen bg-gray-50 dark:bg-dark-bg ${isFullscreen ? 'fixed inset-0 z-50' : ''}`}>
         {/* Touristas AI Header */}
-        <header className="flex-shrink-0 bg-white border-b border-[#E3D7C3]/20 px-4 py-3 shadow-sm">
+        <header className="flex-shrink-0 bg-white dark:bg-dark-card border-b border-gray-200 dark:border-dark-border px-4 py-3 shadow-sm">
           <div className="flex items-center justify-between max-w-6xl mx-auto">
             {/* Left - Back & Touristas AI Branding */}
             <div className="flex items-center space-x-4">
               <Link
                 to="/touristas-ai"
-                className="p-2 hover:bg-[#E3D7C3]/20 rounded-full transition-colors"
+                className="p-2 hover:bg-gray-100 dark:bg-white/20 rounded-full transition-colors"
               >
-                <ArrowLeft className="w-5 h-5 text-[#1E2E48]" />
+                <ArrowLeft className="w-5 h-5 text-gray-900 dark:text-white" />
               </Link>
               
               <div className="flex items-center space-x-3">
@@ -267,11 +267,11 @@ export default function TouristasAIChat() {
                     alt="Touristas AI" 
                     className="h-10 w-auto"
                   />
-                  <div className="absolute -inset-1 bg-[#1E2E48]/10 rounded-full blur-sm"></div>
+                  <div className="absolute -inset-1 bg-gray-900 dark:bg-dark-card/10 rounded-full blur-sm"></div>
                 </div>
                 <div>
-                  <div className="text-lg font-semibold text-[#1E2E48]">Touristas AI</div>
-                  <div className="text-sm text-[#1E2E48]/60 flex items-center space-x-2">
+                  <div className="text-lg font-semibold text-gray-900 dark:text-white">Touristas AI</div>
+                  <div className="text-sm text-gray-600 dark:text-white/60 flex items-center space-x-2">
                     <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                     <span>Greek Islands Oracle Online</span>
                   </div>
@@ -280,7 +280,7 @@ export default function TouristasAIChat() {
             </div>
 
             {/* Center - Mode Selector */}
-            <div className="hidden md:flex items-center space-x-2 bg-[#E3D7C3]/20 rounded-full p-1">
+            <div className="hidden md:flex items-center space-x-2 bg-gray-100 dark:bg-dark-card rounded-full p-1">
               {[
                 { id: 'chat', label: 'Oracle Chat', icon: MessageCircle },
                 { id: 'map', label: 'Island Map', icon: Globe },
@@ -291,8 +291,8 @@ export default function TouristasAIChat() {
                   onClick={() => setActiveTab(tab.id)}
                   className={`px-4 py-2 rounded-full text-sm flex items-center space-x-2 transition-all duration-300 ${
                     activeTab === tab.id 
-                      ? 'bg-[#1E2E48] text-white shadow-lg' 
-                      : 'text-[#1E2E48]/60 hover:text-[#1E2E48] hover:bg-white/50'
+                      ? 'bg-cyclades-turquoise text-dark-bg shadow-lg' 
+                      : 'text-gray-600 dark:text-white/60 hover:text-gray-900 dark:hover:text-white hover:bg-white dark:hover:bg-white/10'
                   }`}
                 >
                   <tab.icon className="w-4 h-4" />
@@ -303,7 +303,7 @@ export default function TouristasAIChat() {
 
             {/* Right - Touristas AI Controls */}
             <div className="flex items-center space-x-2">
-              <div className="hidden md:flex items-center space-x-3 text-xs text-[#1E2E48]/50">
+              <div className="hidden md:flex items-center space-x-3 text-xs text-gray-500 dark:text-white/50">
                 <div className="flex items-center space-x-1">
                   <Brain className="w-3 h-3" />
                   <span>AI Mode: {aiPersonality}</span>
@@ -314,8 +314,8 @@ export default function TouristasAIChat() {
                 onClick={() => setIsVoiceMode(!isVoiceMode)}
                 className={`p-2 rounded-full transition-colors ${
                   isVoiceMode 
-                    ? 'bg-[#1E2E48] text-white' 
-                    : 'hover:bg-[#E3D7C3]/20 text-[#1E2E48]/60'
+                    ? 'bg-cyclades-turquoise text-dark-bg' 
+                    : 'hover:bg-gray-100 dark:hover:bg-white/10 text-gray-600 dark:text-white/60'
                 }`}
                 title="Touristas AI Voice Mode"
               >
@@ -324,7 +324,7 @@ export default function TouristasAIChat() {
               
               <button
                 onClick={() => setIsFullscreen(!isFullscreen)}
-                className="p-2 hover:bg-[#E3D7C3]/20 rounded-full transition-colors text-[#1E2E48]/60"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full transition-colors text-gray-600 dark:text-white/60"
                 title="Fullscreen Touristas AI"
               >
                 {isFullscreen ? <Minimize2 className="w-5 h-5" /> : <Maximize2 className="w-5 h-5" />}
@@ -332,7 +332,7 @@ export default function TouristasAIChat() {
               
               <button
                 onClick={() => setShowSettings(!showSettings)}
-                className="p-2 hover:bg-[#E3D7C3]/20 rounded-full transition-colors text-[#1E2E48]/60"
+                className="p-2 hover:bg-gray-100 dark:hover:bg-white/10 rounded-full transition-colors text-gray-600 dark:text-white/60"
                 title="Touristas AI Settings"
               >
                 <Settings className="w-5 h-5" />
@@ -359,18 +359,18 @@ export default function TouristasAIChat() {
                         className="mb-8"
                       >
                         <div className="text-center mb-8 sm:mb-10 lg:mb-12">
-                          <div className="inline-flex items-center space-x-3 bg-[#E3D7C3]/20 rounded-full px-6 py-3 mb-6">
+                          <div className="inline-flex items-center space-x-3 bg-gray-100 dark:bg-white/20 rounded-full px-6 py-3 mb-6">
                             <img 
                               src="/touristas-ai-logo.svg" 
                               alt="Touristas AI" 
                               className="w-6 h-6"
                             />
-                            <span className="text-[#1E2E48] text-sm font-semibold">World's Most Intelligent Travel AI</span>
+                            <span className="text-gray-900 dark:text-white text-sm font-semibold">World's Most Intelligent Travel AI</span>
                           </div>
-                          <h3 className="text-xl sm:text-2xl font-bold text-[#1E2E48] mb-4">
+                          <h3 className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white mb-4">
                             ✨ Experience Touristas AI's Revolutionary Intelligence
                           </h3>
-                          <p className="text-sm sm:text-base text-[#1E2E48]/70 max-w-3xl mx-auto leading-relaxed px-4">
+                          <p className="text-sm sm:text-base text-gray-900 dark:text-white/70 max-w-3xl mx-auto leading-relaxed px-4">
                             The most advanced AI system ever created for travel - with deep Greek cultural knowledge, 
                             natural language processing, and automated booking capabilities
                           </p>
@@ -384,15 +384,15 @@ export default function TouristasAIChat() {
                               animate={{ opacity: 1, scale: 1 }}
                               transition={{ delay: i * 0.1 }}
                               onClick={() => handleQuickAction(action.action)}
-                              className="group p-6 sm:p-8 bg-white hover:bg-[#E3D7C3]/10 rounded-3xl shadow-lg border border-[#E3D7C3]/20 hover:border-[#1E2E48]/20 transition-all duration-300 hover:shadow-xl text-center"
+                              className="group p-6 sm:p-8 bg-white hover:bg-gray-100 dark:bg-white/10 rounded-3xl shadow-lg border border-gray-200 dark:border-white/20 hover:border-[#1E2E48]/20 transition-all duration-300 hover:shadow-xl text-center"
                             >
                               <div className="text-3xl sm:text-4xl mb-4 sm:mb-6 group-hover:scale-110 transition-transform">
                                 {action.icon}
                               </div>
-                              <div className="text-sm sm:text-base font-semibold text-[#1E2E48] mb-3 group-hover:text-[#1E2E48]/80">
+                              <div className="text-sm sm:text-base font-semibold text-gray-900 dark:text-white mb-3 group-hover:text-gray-900 dark:text-white/80">
                                 {action.text}
                               </div>
-                              <div className="text-xs text-[#1E2E48]/50 bg-[#E3D7C3]/20 rounded-full px-3 py-1 inline-block">
+                              <div className="text-xs text-gray-900 dark:text-white/50 bg-gray-100 dark:bg-white/20 rounded-full px-3 py-1 inline-block">
                                 {action.category}
                               </div>
                             </motion.button>
@@ -414,8 +414,8 @@ export default function TouristasAIChat() {
                         >
                           <div className={`max-w-[90%] sm:max-w-[85%] lg:max-w-[80%] ${
                             message.role === 'user' 
-                              ? 'bg-[#1E2E48] text-white rounded-3xl rounded-br-lg shadow-lg' 
-                              : 'bg-white text-[#1E2E48] rounded-3xl rounded-bl-lg border border-[#E3D7C3]/30 shadow-xl'
+                              ? 'bg-gray-900 dark:bg-dark-card text-white rounded-3xl rounded-br-lg shadow-lg' 
+                              : 'bg-white text-gray-900 dark:text-white rounded-3xl rounded-bl-lg border border-gray-200 dark:border-white/30 shadow-xl'
                           } px-4 sm:px-6 lg:px-8 py-4 sm:py-6 lg:py-8 relative group`}>
                             
                             {message.typing ? (
@@ -426,29 +426,29 @@ export default function TouristasAIChat() {
                                   className="w-8 h-8 sm:w-10 sm:h-10 animate-pulse"
                                 />
                                 <div className="flex space-x-2">
-                                  <div className="w-3 h-3 bg-[#1E2E48]/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
-                                  <div className="w-3 h-3 bg-[#1E2E48]/60 rounded-full animate-bounce" style={{ animationDelay: '200ms' }} />
-                                  <div className="w-3 h-3 bg-[#1E2E48]/60 rounded-full animate-bounce" style={{ animationDelay: '400ms' }} />
+                                  <div className="w-3 h-3 bg-gray-900 dark:bg-dark-card/60 rounded-full animate-bounce" style={{ animationDelay: '0ms' }} />
+                                  <div className="w-3 h-3 bg-gray-900 dark:bg-dark-card/60 rounded-full animate-bounce" style={{ animationDelay: '200ms' }} />
+                                  <div className="w-3 h-3 bg-gray-900 dark:bg-dark-card/60 rounded-full animate-bounce" style={{ animationDelay: '400ms' }} />
                                 </div>
-                                <span className="text-sm sm:text-base text-[#1E2E48]/60 font-medium">
+                                <span className="text-sm sm:text-base text-gray-900 dark:text-white/60 font-medium">
                                   Touristas AI is consulting the oracle...
                                 </span>
                               </div>
                             ) : (
                               <>
                                 {message.role === 'assistant' && (
-                                  <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-[#E3D7C3]/20">
+                                  <div className="flex items-center space-x-3 sm:space-x-4 mb-4 sm:mb-6 pb-3 sm:pb-4 border-b border-gray-200 dark:border-white/20">
                                     <img 
                                       src="/touristas-ai-logo.svg" 
                                       alt="Touristas AI" 
                                       className="w-8 h-8 sm:w-10 sm:h-10"
                                     />
                                     <div className="flex-1">
-                                      <span className="text-base sm:text-lg font-bold text-[#1E2E48]">Touristas AI</span>
-                                      <div className="text-xs sm:text-sm text-[#1E2E48]/60">Greek Islands Oracle • World's Most Intelligent Travel AI</div>
+                                      <span className="text-base sm:text-lg font-bold text-gray-900 dark:text-white">Touristas AI</span>
+                                      <div className="text-xs sm:text-sm text-gray-900 dark:text-white/60">Greek Islands Oracle • World's Most Intelligent Travel AI</div>
                                     </div>
                                     <div className="flex items-center space-x-2">
-                                      <Sparkles className="w-5 h-5 text-[#1E2E48]/60" />
+                                      <Sparkles className="w-5 h-5 text-gray-900 dark:text-white/60" />
                                       <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                                     </div>
                                   </div>
@@ -465,7 +465,7 @@ export default function TouristasAIChat() {
                                       <button
                                         key={i}
                                         onClick={() => handleQuickAction(suggestion)}
-                                        className="bg-[#E3D7C3]/30 hover:bg-[#E3D7C3]/50 text-[#1E2E48] px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 hover:shadow-md"
+                                        className="bg-gray-100 dark:bg-white/30 hover:bg-gray-100 dark:bg-white/50 text-gray-900 dark:text-white px-4 sm:px-6 py-2 sm:py-3 rounded-full text-xs sm:text-sm font-medium transition-all duration-300 hover:shadow-md"
                                       >
                                         {suggestion}
                                       </button>
@@ -478,7 +478,7 @@ export default function TouristasAIChat() {
                                   <div className="flex items-center space-x-1 bg-white/90 backdrop-blur-sm rounded-full px-2 py-1 shadow-sm">
                                     <button
                                       onClick={() => copyMessage(message.content)}
-                                      className="p-1 hover:bg-[#E3D7C3]/20 rounded-full text-[#1E2E48]/60 hover:text-[#1E2E48]"
+                                      className="p-1 hover:bg-gray-100 dark:bg-white/20 rounded-full text-gray-900 dark:text-white/60 hover:text-gray-900 dark:text-white"
                                       title="Copy Touristas AI response"
                                     >
                                       <Copy className="w-3 h-3" />
@@ -486,13 +486,13 @@ export default function TouristasAIChat() {
                                     {message.role === 'assistant' && (
                                       <>
                                         <button 
-                                          className="p-1 hover:bg-[#E3D7C3]/20 rounded-full text-[#1E2E48]/60 hover:text-[#1E2E48]"
+                                          className="p-1 hover:bg-gray-100 dark:bg-white/20 rounded-full text-gray-900 dark:text-white/60 hover:text-gray-900 dark:text-white"
                                           title="Like Touristas AI response"
                                         >
                                           <ThumbsUp className="w-3 h-3" />
                                         </button>
                                         <button 
-                                          className="p-1 hover:bg-[#E3D7C3]/20 rounded-full text-[#1E2E48]/60 hover:text-[#1E2E48]"
+                                          className="p-1 hover:bg-gray-100 dark:bg-white/20 rounded-full text-gray-900 dark:text-white/60 hover:text-gray-900 dark:text-white"
                                           title="Improve Touristas AI"
                                         >
                                           <ThumbsDown className="w-3 h-3" />
@@ -513,7 +513,7 @@ export default function TouristasAIChat() {
                 </div>
 
                 {/* Enhanced Touristas AI Input Canvas */}
-                <div className="flex-shrink-0 border-t border-[#E3D7C3]/20 bg-white/95 backdrop-blur-sm">
+                <div className="flex-shrink-0 border-t border-gray-200 dark:border-white/20 bg-white/95 backdrop-blur-sm">
                   <div className="max-w-5xl mx-auto p-4 sm:p-6 lg:p-8">
                     <form onSubmit={handleSubmit} className="flex items-end space-x-4 sm:space-x-6">
                       <div className="flex-1 relative">
@@ -523,10 +523,10 @@ export default function TouristasAIChat() {
                             alt="Touristas AI" 
                             className="w-5 h-5 sm:w-6 sm:h-6"
                           />
-                          <span className="text-xs sm:text-sm text-[#1E2E48]/60 font-medium">
+                          <span className="text-xs sm:text-sm text-gray-900 dark:text-white/60 font-medium">
                             Ask Touristas AI anything about Greek islands...
                           </span>
-                          <div className="ml-auto flex items-center space-x-1 text-xs text-[#1E2E48]/40">
+                          <div className="ml-auto flex items-center space-x-1 text-xs text-gray-900 dark:text-white/40">
                             <Zap className="w-3 h-3" />
                             <span>Most Intelligent AI</span>
                           </div>
@@ -537,7 +537,7 @@ export default function TouristasAIChat() {
                           value={inputValue}
                           onChange={(e) => setInputValue(e.target.value)}
                           placeholder="Plan my perfect trip, book restaurants in Greek, call taxis, get local insights, check weather..."
-                          className="w-full resize-none border-2 border-[#E3D7C3]/30 rounded-3xl px-6 sm:px-8 py-4 sm:py-6 pr-16 sm:pr-20 focus:outline-none focus:ring-4 focus:ring-[#1E2E48]/10 focus:border-[#1E2E48]/40 text-sm sm:text-base bg-white shadow-lg"
+                          className="w-full resize-none border-2 border-gray-200 dark:border-white/30 rounded-3xl px-6 sm:px-8 py-4 sm:py-6 pr-16 sm:pr-20 focus:outline-none focus:ring-4 focus:ring-[#1E2E48]/10 focus:border-[#1E2E48]/40 text-sm sm:text-base bg-white shadow-lg"
                           rows={1}
                           style={{ minHeight: '64px' }}
                           disabled={isLoading}
@@ -557,7 +557,7 @@ export default function TouristasAIChat() {
                             className={`absolute right-14 top-1/2 transform -translate-y-1/2 p-2 rounded-full transition-colors ${
                               isListening 
                                 ? 'bg-red-100 text-red-600 animate-pulse' 
-                                : 'text-[#1E2E48]/40 hover:text-[#1E2E48] hover:bg-[#E3D7C3]/20'
+                                : 'text-gray-900 dark:text-white/40 hover:text-gray-900 dark:text-white hover:bg-gray-100 dark:bg-white/20'
                             }`}
                             title="Voice input for Touristas AI"
                           >
@@ -569,7 +569,7 @@ export default function TouristasAIChat() {
                       <button
                         type="submit"
                         disabled={isLoading || !inputValue.trim()}
-                        className="bg-[#1E2E48] text-white p-4 sm:p-5 lg:p-6 rounded-3xl hover:bg-[#1E2E48]/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-xl group flex-shrink-0"
+                        className="bg-gray-900 dark:bg-dark-card text-white p-4 sm:p-5 lg:p-6 rounded-3xl hover:bg-gray-900 dark:bg-dark-card/90 disabled:opacity-50 disabled:cursor-not-allowed transition-all duration-300 shadow-xl group flex-shrink-0"
                         title="Send to Touristas AI - World's Most Intelligent Travel AI"
                       >
                         {isLoading ? (
@@ -584,7 +584,7 @@ export default function TouristasAIChat() {
               </div>
 
               {/* Right Side - Enhanced Live Context */}
-              <div className="hidden lg:block w-80 xl:w-96 border-l border-[#E3D7C3]/20 bg-gradient-to-b from-[#E3D7C3]/5 to-white">
+              <div className="hidden lg:block w-80 xl:w-96 border-l border-gray-200 dark:border-white/20 bg-gradient-to-b from-[#E3D7C3]/5 to-white">
                 <div className="p-6 lg:p-8 h-full flex flex-col">
                   <div className="text-center mb-8 lg:mb-10">
                     <div className="relative inline-block mb-4">
@@ -593,12 +593,12 @@ export default function TouristasAIChat() {
                         alt="Touristas AI" 
                         className="h-10 w-auto mx-auto"
                       />
-                      <div className="absolute -inset-2 bg-[#1E2E48]/10 rounded-full blur-sm"></div>
+                      <div className="absolute -inset-2 bg-gray-900 dark:bg-dark-card/10 rounded-full blur-sm"></div>
                     </div>
-                    <h3 className="text-xl font-bold text-[#1E2E48] mb-2">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">
                       Touristas AI Intelligence
                     </h3>
-                    <p className="text-sm text-[#1E2E48]/60 leading-relaxed">
+                    <p className="text-sm text-gray-900 dark:text-white/60 leading-relaxed">
                       World's most advanced travel AI with live Greek islands data
                     </p>
                   </div>
@@ -607,60 +607,60 @@ export default function TouristasAIChat() {
                     {/* Enhanced Intelligence Widgets */}
                     
                     {/* AI Intelligence Status */}
-                    <div className="bg-white rounded-3xl p-6 lg:p-8 border border-[#E3D7C3]/20 shadow-lg">
+                    <div className="bg-white rounded-3xl p-6 lg:p-8 border border-gray-200 dark:border-white/20 shadow-lg">
                       <div className="flex items-center space-x-3 mb-4">
-                        <div className="w-8 h-8 bg-[#1E2E48] rounded-full flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-900 dark:bg-dark-card rounded-full flex items-center justify-center">
                           <Brain className="w-4 h-4 text-white" />
                         </div>
                         <div>
-                          <span className="text-base font-bold text-[#1E2E48]">AI Intelligence</span>
-                          <div className="text-xs text-[#1E2E48]/60">Revolutionary Neural Network</div>
+                          <span className="text-base font-bold text-gray-900 dark:text-white">AI Intelligence</span>
+                          <div className="text-xs text-gray-900 dark:text-white/60">Revolutionary Neural Network</div>
                         </div>
                       </div>
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-[#1E2E48]/70">Knowledge Base</span>
+                          <span className="text-sm text-gray-900 dark:text-white/70">Knowledge Base</span>
                           <span className="text-green-600 font-medium text-sm">25+ Islands</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-[#1E2E48]/70">Language Processing</span>
+                          <span className="text-sm text-gray-900 dark:text-white/70">Language Processing</span>
                           <span className="text-green-600 font-medium text-sm">Advanced NLP</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-[#1E2E48]/70">Cultural Depth</span>
+                          <span className="text-sm text-gray-900 dark:text-white/70">Cultural Depth</span>
                           <span className="text-green-600 font-medium text-sm">Expert Level</span>
                         </div>
                       </div>
                     </div>
 
                     {/* Live Services Status */}
-                    <div className="bg-white rounded-3xl p-6 lg:p-8 border border-[#E3D7C3]/20 shadow-lg">
+                    <div className="bg-white rounded-3xl p-6 lg:p-8 border border-gray-200 dark:border-white/20 shadow-lg">
                       <div className="flex items-center space-x-3 mb-4">
-                        <div className="w-8 h-8 bg-[#1E2E48] rounded-full flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-900 dark:bg-dark-card rounded-full flex items-center justify-center">
                           <Phone className="w-4 h-4 text-white" />
                         </div>
                         <div>
-                          <span className="text-base font-bold text-[#1E2E48]">Live Services</span>
-                          <div className="text-xs text-[#1E2E48]/60">Automated Booking System</div>
+                          <span className="text-base font-bold text-gray-900 dark:text-white">Live Services</span>
+                          <div className="text-xs text-gray-900 dark:text-white/60">Automated Booking System</div>
                         </div>
                       </div>
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-[#1E2E48]/70">Restaurant Calling</span>
+                          <span className="text-sm text-gray-900 dark:text-white/70">Restaurant Calling</span>
                           <div className="flex items-center space-x-2">
                             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                             <span className="text-green-600 font-medium text-sm">Online</span>
                           </div>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-[#1E2E48]/70">Taxi Booking</span>
+                          <span className="text-sm text-gray-900 dark:text-white/70">Taxi Booking</span>
                           <div className="flex items-center space-x-2">
                             <div className="w-2 h-2 bg-green-500 rounded-full"></div>
                             <span className="text-green-600 font-medium text-sm">Ready</span>
                           </div>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-[#1E2E48]/70">Greek Translation</span>
+                          <span className="text-sm text-gray-900 dark:text-white/70">Greek Translation</span>
                           <div className="flex items-center space-x-2">
                             <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
                             <span className="text-green-600 font-medium text-sm">Active</span>
@@ -670,27 +670,27 @@ export default function TouristasAIChat() {
                     </div>
 
                     {/* Real-Time Data */}
-                    <div className="bg-white rounded-3xl p-6 lg:p-8 border border-[#E3D7C3]/20 shadow-lg">
+                    <div className="bg-white rounded-3xl p-6 lg:p-8 border border-gray-200 dark:border-white/20 shadow-lg">
                       <div className="flex items-center space-x-3 mb-4">
-                        <div className="w-8 h-8 bg-[#1E2E48] rounded-full flex items-center justify-center">
+                        <div className="w-8 h-8 bg-gray-900 dark:bg-dark-card rounded-full flex items-center justify-center">
                           <Globe className="w-4 h-4 text-white" />
                         </div>
                         <div>
-                          <span className="text-base font-bold text-[#1E2E48]">Live Data</span>
-                          <div className="text-xs text-[#1E2E48]/60">Real-Time Intelligence</div>
+                          <span className="text-base font-bold text-gray-900 dark:text-white">Live Data</span>
+                          <div className="text-xs text-gray-900 dark:text-white/60">Real-Time Intelligence</div>
                         </div>
                       </div>
                       <div className="space-y-3">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-[#1E2E48]/70">Weather Updates</span>
+                          <span className="text-sm text-gray-900 dark:text-white/70">Weather Updates</span>
                           <span className="text-blue-600 font-medium text-sm">Live</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-[#1E2E48]/70">Ferry Schedules</span>
+                          <span className="text-sm text-gray-900 dark:text-white/70">Ferry Schedules</span>
                           <span className="text-blue-600 font-medium text-sm">Real-Time</span>
                         </div>
                         <div className="flex items-center justify-between">
-                          <span className="text-sm text-[#1E2E48]/70">Local Events</span>
+                          <span className="text-sm text-gray-900 dark:text-white/70">Local Events</span>
                           <span className="text-blue-600 font-medium text-sm">Updated</span>
                         </div>
                       </div>
@@ -727,8 +727,8 @@ export default function TouristasAIChat() {
                     <Popup>
                       <div className="text-center p-3">
                         <div className="text-2xl mb-2">{island.emoji}</div>
-                        <h3 className="font-semibold text-[#1E2E48] mb-2">{island.name}</h3>
-                        <p className="text-xs text-[#1E2E48]/70 mb-3">
+                        <h3 className="font-semibold text-gray-900 dark:text-white mb-2">{island.name}</h3>
+                        <p className="text-xs text-gray-900 dark:text-white/70 mb-3">
                           Ask Touristas AI about this island
                         </p>
                         <button
@@ -736,7 +736,7 @@ export default function TouristasAIChat() {
                             setActiveTab('chat');
                             setInputValue(`Tell me everything about ${island.name} - best activities, restaurants, and hotels`);
                           }}
-                          className="bg-[#1E2E48] text-white px-4 py-2 rounded-full text-xs hover:bg-[#1E2E48]/90 transition-colors flex items-center space-x-2 mx-auto"
+                          className="bg-gray-900 dark:bg-dark-card text-white px-4 py-2 rounded-full text-xs hover:bg-gray-900 dark:bg-dark-card/90 transition-colors flex items-center space-x-2 mx-auto"
                         >
                           <img 
                             src="/touristas-ai-logo.svg" 
@@ -752,7 +752,7 @@ export default function TouristasAIChat() {
               </MapContainer>
               
               {/* Touristas AI Map Overlay */}
-              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-[#E3D7C3]/20">
+              <div className="absolute top-4 left-4 bg-white/95 backdrop-blur-sm rounded-2xl p-4 shadow-lg border border-gray-200 dark:border-white/20">
                 <div className="flex items-center space-x-3">
                   <img 
                     src="/touristas-ai-logo.svg" 
@@ -760,10 +760,10 @@ export default function TouristasAIChat() {
                     className="w-6 h-6"
                   />
                   <div>
-                    <div className="text-sm font-semibold text-[#1E2E48]">
+                    <div className="text-sm font-semibold text-gray-900 dark:text-white">
                       Touristas AI Map
                     </div>
-                    <div className="text-xs text-[#1E2E48]/60">
+                    <div className="text-xs text-gray-900 dark:text-white/60">
                       Click islands to ask Touristas AI
                     </div>
                   </div>
@@ -774,7 +774,7 @@ export default function TouristasAIChat() {
 
           {/* Touristas AI Services Tab */}
           {activeTab === 'services' && (
-            <div className="h-full p-6 overflow-y-auto bg-[#E3D7C3]/5">
+            <div className="h-full p-6 overflow-y-auto bg-gray-100 dark:bg-white/5">
               <div className="max-w-4xl mx-auto">
                 <div className="text-center mb-8">
                   <img 
@@ -782,10 +782,10 @@ export default function TouristasAIChat() {
                     alt="Touristas AI" 
                     className="h-12 w-auto mx-auto mb-4"
                   />
-                  <h2 className="text-3xl font-light text-[#1E2E48] mb-4">
+                  <h2 className="text-3xl font-light text-gray-900 dark:text-white mb-4">
                     Touristas AI Services
                   </h2>
-                  <p className="text-lg text-[#1E2E48]/70">
+                  <p className="text-lg text-gray-900 dark:text-white/70">
                     Revolutionary AI-powered booking and assistance
                   </p>
                 </div>
@@ -827,21 +827,21 @@ export default function TouristasAIChat() {
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true }}
                       transition={{ delay: i * 0.1 }}
-                      className="bg-white rounded-2xl p-6 shadow-lg border border-[#E3D7C3]/20 hover:shadow-xl transition-shadow group"
+                      className="bg-white rounded-2xl p-6 shadow-lg border border-gray-200 dark:border-white/20 hover:shadow-xl transition-shadow group"
                     >
                       <div className="flex items-start space-x-4 mb-4">
                         <div className="text-4xl">{service.icon}</div>
                         <div className="flex-1">
-                          <h3 className="text-lg font-semibold text-[#1E2E48] mb-2 group-hover:text-[#1E2E48]/80">
+                          <h3 className="text-lg font-semibold text-gray-900 dark:text-white mb-2 group-hover:text-gray-900 dark:text-white/80">
                             {service.title}
                           </h3>
-                          <p className="text-sm text-[#1E2E48]/70 mb-4">{service.desc}</p>
+                          <p className="text-sm text-gray-900 dark:text-white/70 mb-4">{service.desc}</p>
                           
                           <div className="space-y-1 mb-4">
                             {service.features.map((feature, j) => (
                               <div key={j} className="flex items-center space-x-2">
-                                <div className="w-1 h-1 bg-[#1E2E48]/40 rounded-full"></div>
-                                <span className="text-xs text-[#1E2E48]/60">{feature}</span>
+                                <div className="w-1 h-1 bg-gray-900 dark:bg-dark-card/40 rounded-full"></div>
+                                <span className="text-xs text-gray-900 dark:text-white/60">{feature}</span>
                               </div>
                             ))}
                           </div>
@@ -851,7 +851,7 @@ export default function TouristasAIChat() {
                               setActiveTab('chat');
                               setInputValue(service.action);
                             }}
-                            className="w-full bg-[#E3D7C3]/30 hover:bg-[#E3D7C3]/50 text-[#1E2E48] py-2 px-4 rounded-xl transition-colors text-sm flex items-center justify-center space-x-2"
+                            className="w-full bg-gray-100 dark:bg-white/30 hover:bg-gray-100 dark:bg-white/50 text-gray-900 dark:text-white py-2 px-4 rounded-xl transition-colors text-sm flex items-center justify-center space-x-2"
                           >
                             <img 
                               src="/touristas-ai-logo.svg" 
@@ -871,7 +871,7 @@ export default function TouristasAIChat() {
         </div>
 
         {/* Enhanced Mobile Touristas AI Tab Bar */}
-        <div className="lg:hidden flex-shrink-0 bg-white border-t border-[#E3D7C3]/20 px-4 sm:px-6 py-3 sm:py-4 shadow-lg">
+        <div className="lg:hidden flex-shrink-0 bg-white border-t border-gray-200 dark:border-white/20 px-4 sm:px-6 py-3 sm:py-4 shadow-lg">
           <div className="flex items-center justify-around max-w-md mx-auto">
             {[
               { id: 'chat', icon: MessageCircle, label: 'Oracle Chat' },
@@ -883,14 +883,14 @@ export default function TouristasAIChat() {
                 onClick={() => setActiveTab(tab.id)}
                 className={`flex flex-col items-center space-y-2 p-3 sm:p-4 rounded-2xl transition-all duration-300 ${
                   activeTab === tab.id 
-                    ? 'text-[#1E2E48] bg-[#E3D7C3]/30 shadow-md' 
-                    : 'text-[#1E2E48]/50 hover:text-[#1E2E48]/70 hover:bg-[#E3D7C3]/10'
+                    ? 'text-gray-900 dark:text-white bg-gray-100 dark:bg-white/30 shadow-md' 
+                    : 'text-gray-900 dark:text-white/50 hover:text-gray-900 dark:text-white/70 hover:bg-gray-100 dark:bg-white/10'
                 }`}
               >
                 <tab.icon className="w-6 h-6 sm:w-7 sm:h-7" />
                 <span className="text-xs sm:text-sm font-medium">{tab.label}</span>
                 {activeTab === tab.id && (
-                  <div className="w-1 h-1 bg-[#1E2E48] rounded-full"></div>
+                  <div className="w-1 h-1 bg-gray-900 dark:bg-dark-card rounded-full"></div>
                 )}
               </button>
             ))}
@@ -904,7 +904,7 @@ export default function TouristasAIChat() {
               initial={{ opacity: 0, x: 400 }}
               animate={{ opacity: 1, x: 0 }}
               exit={{ opacity: 0, x: 400 }}
-              className="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl z-40 border-l border-[#E3D7C3]/20"
+              className="fixed right-0 top-0 h-full w-80 bg-white shadow-2xl z-40 border-l border-gray-200 dark:border-white/20"
             >
               <div className="p-6">
                 <div className="flex items-center justify-between mb-6">
@@ -914,13 +914,13 @@ export default function TouristasAIChat() {
                       alt="Touristas AI" 
                       className="w-6 h-6"
                     />
-                    <h3 className="text-lg font-semibold text-[#1E2E48]">
+                    <h3 className="text-lg font-semibold text-gray-900 dark:text-white">
                       Touristas AI Settings
                     </h3>
                   </div>
                   <button
                     onClick={() => setShowSettings(false)}
-                    className="p-2 hover:bg-[#E3D7C3]/20 rounded-full text-[#1E2E48]/60"
+                    className="p-2 hover:bg-gray-100 dark:bg-white/20 rounded-full text-gray-900 dark:text-white/60"
                   >
                     ✕
                   </button>
@@ -929,7 +929,7 @@ export default function TouristasAIChat() {
                 <div className="space-y-6">
                   {/* AI Personality */}
                   <div>
-                    <label className="text-sm font-medium text-[#1E2E48] mb-3 block">
+                    <label className="text-sm font-medium text-gray-900 dark:text-white mb-3 block">
                       Touristas AI Personality
                     </label>
                     <div className="space-y-2">
@@ -943,13 +943,13 @@ export default function TouristasAIChat() {
                           onClick={() => setAiPersonality(personality.id as any)}
                           className={`w-full p-3 rounded-xl text-left transition-colors ${
                             aiPersonality === personality.id 
-                              ? 'bg-[#1E2E48] text-white' 
-                              : 'bg-[#E3D7C3]/20 text-[#1E2E48] hover:bg-[#E3D7C3]/30'
+                              ? 'bg-gray-900 dark:bg-dark-card text-white' 
+                              : 'bg-gray-100 dark:bg-white/20 text-gray-900 dark:text-white hover:bg-gray-100 dark:bg-white/30'
                           }`}
                         >
                           <div className="font-medium text-sm">{personality.name}</div>
                           <div className={`text-xs ${
-                            aiPersonality === personality.id ? 'text-white/70' : 'text-[#1E2E48]/60'
+                            aiPersonality === personality.id ? 'text-white/70' : 'text-gray-900 dark:text-white/60'
                           }`}>
                             {personality.desc}
                           </div>
@@ -961,13 +961,13 @@ export default function TouristasAIChat() {
                   {/* Voice Settings */}
                   <div className="flex items-center justify-between">
                     <div>
-                      <span className="text-sm font-medium text-[#1E2E48]">Voice Mode</span>
-                      <div className="text-xs text-[#1E2E48]/60">Talk to Touristas AI</div>
+                      <span className="text-sm font-medium text-gray-900 dark:text-white">Voice Mode</span>
+                      <div className="text-xs text-gray-900 dark:text-white/60">Talk to Touristas AI</div>
                     </div>
                     <button
                       onClick={() => setIsVoiceMode(!isVoiceMode)}
                       className={`w-12 h-6 rounded-full transition-colors ${
-                        isVoiceMode ? 'bg-[#1E2E48]' : 'bg-[#E3D7C3]'
+                        isVoiceMode ? 'bg-gray-900 dark:bg-dark-card' : 'bg-gray-100 dark:bg-white'
                       }`}
                     >
                       <div className={`w-4 h-4 bg-white rounded-full transform transition-transform ${
@@ -977,13 +977,13 @@ export default function TouristasAIChat() {
                   </div>
                   
                   {/* Reset Chat */}
-                  <div className="pt-4 border-t border-[#E3D7C3]/20">
+                  <div className="pt-4 border-t border-gray-200 dark:border-white/20">
                     <button
                       onClick={() => {
                         setMessages([messages[0]]);
                         setShowSettings(false);
                       }}
-                      className="flex items-center space-x-2 text-sm text-[#1E2E48]/60 hover:text-[#1E2E48] transition-colors"
+                      className="flex items-center space-x-2 text-sm text-gray-900 dark:text-white/60 hover:text-gray-900 dark:text-white transition-colors"
                     >
                       <RotateCcw className="w-4 h-4" />
                       <span>Reset Touristas AI Chat</span>

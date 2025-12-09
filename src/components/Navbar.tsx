@@ -3,29 +3,15 @@ import { Link, useNavigate, useLocation } from 'react-router-dom';
 import { 
   User, 
   ChevronDown, 
-  Sun, 
-  Compass, 
-  Sailboat, 
-  UtensilsCrossed,
-  Hotel,
   Menu, 
   X, 
-  ChevronRight,
-  MapPin,
-  Building2,
   Globe,
   HelpCircle,
-  ArrowRight,
-  Ship,
-  Cloud,
-  Wallet,
-  Plane,
-  Car,
-  Calculator,
-  Sparkles
+  ArrowRight
 } from 'lucide-react';
 import { useAuthStore } from '../stores/authStore';
 import Logo from './Logo';
+import MobileMenuNew from './navigation/MobileMenuNew';
 
 interface NavbarProps {
   onAuthClick: () => void;
@@ -114,13 +100,10 @@ const navigationItems: NavItem[] = [
   }
 ]; */
 
-export default function Navbar({ onAuthClick }: NavbarProps) {
+export default function Navbar({}: NavbarProps) {
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const [activeMegaMenu, setActiveMegaMenu] = useState<string | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeSection, setActiveSection] = useState<string | null>(null);
-  const [isScrolled, setIsScrolled] = useState(false);
-  const [scrollProgress, setScrollProgress] = useState(0);
   
   const dropdownRef = useRef<HTMLDivElement>(null);
   const megaMenuRef = useRef<HTMLDivElement>(null);
@@ -129,26 +112,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
   const location = useLocation();
-
-  // Scroll-based navbar behavior
-  useEffect(() => {
-    const handleScroll = () => {
-      const scrollY = window.scrollY;
-      setIsScrolled(scrollY > 50);
-      
-      // Calculate scroll progress
-      const windowHeight = window.innerHeight;
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrollableHeight = documentHeight - windowHeight;
-      const progress = scrollableHeight > 0 ? (scrollY / scrollableHeight) * 100 : 0;
-      setScrollProgress(Math.min(100, Math.max(0, progress)));
-    };
-
-    window.addEventListener('scroll', handleScroll, { passive: true });
-    handleScroll(); // Initial check
-    
-    return () => window.removeEventListener('scroll', handleScroll);
-  }, []);
 
   const handleLogout = async () => {
     try {
@@ -177,7 +140,6 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
   // Close mobile menu on route change
   useEffect(() => {
     setIsMobileMenuOpen(false);
-    setActiveSection(null);
   }, [location]);
 
   // Handle body scroll lock
@@ -198,39 +160,13 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
 
   const toggleMobileMenu = () => {
     setIsMobileMenuOpen(!isMobileMenuOpen);
-    setActiveSection(null);
-  };
-
-  const toggleSection = (section: string) => {
-    setActiveSection(activeSection === section ? null : section);
   };
 
   return (
-    <>
-      {/* Scroll Progress Indicator */}
-      <div 
-        className="fixed top-0 left-0 right-0 h-1 bg-blue-200 z-[100] transition-opacity duration-300"
-        style={{ 
-          opacity: isScrolled ? 1 : 0,
-        }}
-      >
-        <div 
-          className="h-full bg-blue-600 transition-transform duration-150 ease-out"
-          style={{ 
-            transform: `scaleX(${scrollProgress / 100})`,
-            transformOrigin: 'left'
-          }}
-        />
-      </div>
-      
-      <nav 
-        ref={navRef}
-        className={`fixed top-0 left-0 right-0 w-full z-[9999] h-14 md:h-[72px] transition-all duration-300 ${
-          isScrolled 
-            ? 'bg-white/95 backdrop-blur-md shadow-lg' 
-            : 'bg-white shadow-sm'
-        }`}
-      >
+    <nav 
+      ref={navRef}
+      className="fixed top-0 left-0 right-0 w-full z-[9999] bg-white shadow-sm h-14 md:h-[72px]"
+    >
       <div className="max-w-[2000px] mx-auto h-full pl-0">
         <div className="flex items-center h-full">
           {/* Logo and Main Navigation */}
@@ -280,7 +216,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
                     className="flex items-center space-x-2 text-gray-700 hover:text-primary-500"
                   >
                     <User className="h-5 w-5" />
-                    <span className="text-sm font-medium">{user?.displayName || user?.name || user?.email?.split('@')[0] || 'User'}</span>
+                    <span className="text-sm font-medium">{user?.name || user?.email?.split('@')[0] || 'User'}</span>
                     <ChevronDown className="h-4 w-4" />
                   </button>
 
@@ -562,216 +498,7 @@ export default function Navbar({ onAuthClick }: NavbarProps) {
       )}
 
       {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="fixed inset-0 bg-white z-50 flex flex-col h-full">
-          {/* Header with Logo and Close Button */}
-          <div className="flex justify-between items-center p-4 border-b border-gray-100 bg-white sticky top-0">
-            <Link to="/" onClick={toggleMobileMenu} className="flex-shrink-0">
-              <Logo />
-            </Link>
-            <button
-              onClick={toggleMobileMenu}
-              className="text-gray-600 hover:text-gray-900 p-2 rounded-full hover:bg-gray-100 transition-colors"
-              aria-label="Close menu"
-            >
-              <X className="h-6 w-6" />
-            </button>
-          </div>
-
-          {/* Main Navigation Area */}
-          <div className="flex-1 overflow-y-auto">
-            {/* Quick Actions */}
-            <div className="grid grid-cols-4 gap-2 p-4 border-b border-gray-100">
-              <Link 
-                to="/ferry-tickets" 
-                onClick={toggleMobileMenu}
-                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-primary-50 transition-colors text-center"
-              >
-                <Sailboat className="h-6 w-6 text-primary-600 mb-2" />
-                <span className="text-xs font-medium text-gray-700">Ferries</span>
-              </Link>
-              <Link 
-                to="/activities" 
-                onClick={toggleMobileMenu}
-                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-primary-50 transition-colors text-center"
-              >
-                <Compass className="h-6 w-6 text-primary-600 mb-2" />
-                <span className="text-xs font-medium text-gray-700">Activities</span>
-              </Link>
-              <Link 
-                to="/flights" 
-                onClick={toggleMobileMenu}
-                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-primary-50 transition-colors text-center"
-              >
-                <Plane className="h-6 w-6 text-primary-600 mb-2" />
-                <span className="text-xs font-medium text-gray-700">Flights</span>
-              </Link>
-              <Link 
-                to="/rent-a-car" 
-                onClick={toggleMobileMenu}
-                className="flex flex-col items-center justify-center p-3 rounded-xl hover:bg-primary-50 transition-colors text-center"
-              >
-                <Car className="h-6 w-6 text-primary-600 mb-2" />
-                <span className="text-xs font-medium text-gray-700">Cars</span>
-              </Link>
-            </div>
-
-            {/* Main Navigation Items */}
-            <div className="p-4">
-              {/* Destinations Section */}
-              <div className="mb-6">
-                <button
-                  onClick={() => toggleSection('/islands')}
-                  className="flex items-center justify-between w-full py-3 text-gray-800 hover:text-primary-600 transition-colors"
-                >
-                  <div className="flex items-center">
-                    <Sun className="h-5 w-5 text-primary-600 mr-3" />
-                    <span className="text-base font-medium">Destinations</span>
-                  </div>
-                  <ChevronDown className={`h-5 w-5 text-gray-400 transform transition-transform duration-200 ${activeSection === '/islands' ? 'rotate-180' : ''}`} />
-                </button>
-                
-                {activeSection === '/islands' && (
-                  <div className="mt-2 ml-8 space-y-1 animate-fadeIn">
-                    <div className="flex items-center justify-between mb-2 mt-4">
-                      <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Popular Islands</h4>
-                      <Link 
-                        to="/islands" 
-                        onClick={toggleMobileMenu}
-                        className="text-xs font-medium text-primary-600 flex items-center hover:text-primary-700"
-                      >
-                        View All
-                        <ChevronRight className="h-3 w-3 ml-1" />
-                      </Link>
-                    </div>
-                    {navigationItems
-                      .find(item => item.path === '/islands')
-                      ?.children?.filter(child => child.type === 'island')
-                      .slice(0, 4) // Limit to 4 islands
-                      .map((child) => (
-                        <Link
-                          key={child.path}
-                          to={child.path}
-                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
-                          onClick={toggleMobileMenu}
-                        >
-                          <span>{child.label}</span>
-                        </Link>
-                      ))}
-                      
-                    <div className="flex items-center justify-between mb-2 mt-4">
-                      <h4 className="text-xs font-semibold text-gray-500 uppercase tracking-wider">Travel Guides</h4>
-                      <Link 
-                        to="/guides" 
-                        onClick={toggleMobileMenu}
-                        className="text-xs font-medium text-primary-600 flex items-center hover:text-primary-700"
-                      >
-                        View All
-                        <ChevronRight className="h-3 w-3 ml-1" />
-                      </Link>
-                    </div>
-                    {navigationItems
-                      .find(item => item.path === '/islands')
-                      ?.children?.filter(child => child.type === 'guide')
-                      .slice(0, 4) // Limit to 4 guides
-                      .map((child) => (
-                        <Link
-                          key={child.path}
-                          to={child.path}
-                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
-                          onClick={toggleMobileMenu}
-                        >
-                          <span>{child.label}</span>
-                        </Link>
-                      ))}
-                  </div>
-                )}
-              </div>
-              
-              {/* Plan Your Trip Section */}
-              <div className="mb-6">
-                <button
-                  onClick={() => toggleSection('/plan')}
-                  className="flex items-center justify-between w-full py-3 text-gray-800 hover:text-primary-600 transition-colors"
-                >
-                  <div className="flex items-center">
-                    <MapPin className="h-5 w-5 text-primary-600 mr-3" />
-                    <span className="text-base font-medium">Plan Your Trip</span>
-                  </div>
-                  <ChevronDown className={`h-5 w-5 text-gray-400 transform transition-transform duration-200 ${activeSection === '/plan' ? 'rotate-180' : ''}`} />
-                </button>
-                
-                {activeSection === '/plan' && (
-                  <div className="mt-2 ml-8 space-y-1 animate-fadeIn">
-                    {navigationItems
-                      .find(item => item.path === '/plan')
-                      ?.children?.map((child) => (
-                        <Link
-                          key={child.path}
-                          to={child.path}
-                          className="flex items-center py-2 px-3 rounded-lg text-gray-700 hover:bg-primary-50 hover:text-primary-600 transition-colors"
-                          onClick={toggleMobileMenu}
-                        >
-                          <span>{child.label}</span>
-                        </Link>
-                      ))}
-                  </div>
-                )}
-              </div>
-              
-              {/* Travel Tips */}
-              <Link
-                to="/blog"
-                className="flex items-center py-3 text-gray-800 hover:text-primary-600 transition-colors"
-                onClick={toggleMobileMenu}
-              >
-                <Compass className="h-5 w-5 text-primary-600 mr-3" />
-                <span className="text-base font-medium">Travel Tips</span>
-              </Link>
-              
-              {/* Other Links */}
-              <div className="mt-6 pt-6 border-t border-gray-100">
-                <Link
-                  to="/about"
-                  className="flex items-center py-3 text-gray-800 hover:text-primary-600 transition-colors"
-                  onClick={toggleMobileMenu}
-                >
-                  <User className="h-5 w-5 text-primary-600 mr-3" />
-                  <span className="text-base font-medium">About</span>
-                </Link>
-                <Link
-                  to="/contact"
-                  className="flex items-center py-3 text-gray-800 hover:text-primary-600 transition-colors"
-                  onClick={toggleMobileMenu}
-                >
-                  <MapPin className="h-5 w-5 text-primary-600 mr-3" />
-                  <span className="text-base font-medium">Contact</span>
-                </Link>
-              </div>
-            </div>
-          </div>
-          
-          {/* Footer with Auth Buttons */}
-          <div className="p-4 border-t border-gray-100 bg-white space-y-3">
-            <Link
-              to="/signin"
-              onClick={toggleMobileMenu}
-              className="w-full flex items-center justify-center rounded-lg border border-primary-600 px-4 py-3 text-sm font-medium text-primary-600 hover:bg-primary-50 transition-colors"
-            >
-              Sign In
-            </Link>
-            <Link
-              to="/signup"
-              onClick={toggleMobileMenu}
-              className="w-full flex items-center justify-center rounded-lg bg-primary-600 px-4 py-3 text-sm font-medium text-white hover:bg-primary-700 transition-colors"
-            >
-              <User className="h-5 w-5 mr-2" />
-              Sign Up
-            </Link>
-          </div>
-        </div>
-      )}
+      <MobileMenuNew isOpen={isMobileMenuOpen} onClose={() => setIsMobileMenuOpen(false)} />
     </nav>
-    </>
   );
 }

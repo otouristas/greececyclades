@@ -1,520 +1,399 @@
-import { useEffect, useState } from 'react';
-import { useParams, useNavigate, Link } from 'react-router-dom';
-import { 
-  MapPin, 
-  Sun, 
-  Plane, 
-  Ship, 
-  Calendar, 
-  Users, 
-  ArrowRight, 
-  BookOpen,
-  Waves,
-  Mountain,
-  Church,
-  Home,
-  Music,
-  Utensils,
-  Footprints,
-  MapPinned,
-  Car,
-  Building
+import { useParams, Link } from 'react-router-dom';
+import {
+  MapPin, Calendar, Sun, Users, Ship, ArrowRight, Car, Building, BookOpen,
+  Plane, Clock, Star, Camera, Utensils, Heart, ChevronRight, ExternalLink
 } from 'lucide-react';
-import SEO from '../components/SEO';
-import { SITE_TAGLINE } from '../constants/seo';
 import { cyclades } from '../data/islandsData';
-import type { Island } from '../types/island';
+import SEO from '../components/SEO';
 
 export default function IslandDetail() {
-  const { slug } = useParams();
-  const navigate = useNavigate();
-  const [selectedIsland, setSelectedIsland] = useState<Partial<Island> | null>(null);
+  const { slug } = useParams<{ slug: string }>();
+  const island = cyclades.find(i => i.slug === slug);
 
-  useEffect(() => {
-    console.log('IslandDetail - Current slug:', slug);
-    console.log('IslandDetail - Available islands:', cyclades);
-    
-    if (slug) {
-      const island = cyclades.find(island => island.slug === slug);
-      console.log('IslandDetail - Found island:', island);
-      
-      if (island) {
-        setSelectedIsland(island);
-      } else {
-        console.log('IslandDetail - Island not found, navigating to /islands');
-        navigate('/islands');
-      }
-    }
-  }, [slug, navigate]);
+  // Get related islands (excluding current)
+  const relatedIslands = cyclades
+    .filter(i => i.slug !== slug)
+    .slice(0, 4);
 
-  if (!selectedIsland) {
-    console.log('IslandDetail - No selected island, returning null');
-    return null;
+  if (!island) {
+    return (
+      <div className="min-h-screen pt-24 pb-16 bg-white dark:bg-dark-bg">
+        <div className="max-w-4xl mx-auto px-4 text-center">
+          <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Island Not Found</h1>
+          <p className="text-gray-600 dark:text-white/70 mb-8">We couldn't find an island with the slug: {slug}</p>
+          <Link
+            to="/islands"
+            className="inline-flex items-center gap-2 bg-cyan-600 text-white px-6 py-3 rounded-lg font-medium hover:bg-cyan-600/90 transition-colors"
+          >
+            View All Islands
+          </Link>
+        </div>
+      </div>
+    );
   }
 
-  console.log('IslandDetail - Rendering with selectedIsland:', selectedIsland);
-
   return (
-    <>
-      <SEO 
-        title={`Visit ${selectedIsland.name} in the Cyclades ${SITE_TAGLINE}`}
-        description={`Discover the beauty of ${selectedIsland.name}. Plan your perfect vacation with our comprehensive guide including best beaches, activities, hotels, and travel tips.`}
-        ogImage={selectedIsland.image}
+    <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
+      <SEO
+        title={`${island.name} Island 2025: Complete Travel Guide | Cyclades Greece`}
+        description={`Everything about ${island.name}: best beaches, where to stay, top restaurants, ferry info & travel tips. Expert 2025 guide with insider recommendations.`}
+        ogImage={island.heroImage || island.image}
+        pageType="islands"
+        islandData={{
+          name: island.name || '',
+          description: island.description || ''
+        }}
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Islands', url: '/islands' },
+          { name: island.name || '', url: `/islands/${slug || ''}` }
+        ]}
+        faqs={[
+          { question: `What is ${island.name} known for?`, answer: island.shortDescription || `${island.name} is a beautiful Cycladic island known for its stunning beaches, traditional villages, and authentic Greek atmosphere.` },
+          { question: `How do I get to ${island.name}?`, answer: `Reach ${island.name} by ferry from Athens (Piraeus) or nearby islands. Ferry times vary by operator and season.` },
+          { question: `When is the best time to visit ${island.name}?`, answer: `September-October for perfect weather and fewer crowds. May-June is also excellent. July-August is peak season.` }
+        ]}
       />
-      
-      {/* Hero Section with Parallax */}
-      <div className="relative min-h-[60vh] md:h-[85vh] overflow-hidden">
-        <div 
-          className="absolute inset-0 bg-cover bg-center"
-          style={{
-            backgroundImage: `url("${selectedIsland.heroImage || selectedIsland.image}")`,
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black/60" />
+
+      {/* Hero Section */}
+      <div
+        className="relative min-h-[70vh] bg-cover bg-center"
+        style={{ backgroundImage: `url(${island.heroImage || island.image || '/images/placeholder-island.jpg'})` }}
+      >
+        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
+
+        {/* Breadcrumb */}
+        <div className="absolute top-24 left-0 right-0 z-10">
+          <div className="max-w-7xl mx-auto px-4">
+            <nav className="flex items-center gap-2 text-white/80 text-sm">
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <ChevronRight className="w-4 h-4" />
+              <Link to="/islands" className="hover:text-white transition-colors">Islands</Link>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-white">{island.name}</span>
+            </nav>
+          </div>
         </div>
-        
-        {/* Content overlay */}
-        <div className="relative h-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="h-full flex flex-col justify-between pt-24 md:pt-8 pb-8 md:pb-12">
-            <div className="flex items-center gap-2 text-white/90">
-              <MapPin className="h-4 w-4 md:h-5 md:w-5" />
-              <span className="text-sm md:text-base">Cyclades, Greece</span>
+
+        {/* Hero Content */}
+        <div className="relative z-10 h-full min-h-[70vh] max-w-7xl mx-auto px-4 flex flex-col justify-end pb-16">
+          <div className="flex items-center gap-2 text-white/80 mb-4">
+            <MapPin className="w-5 h-5" />
+            <span className="text-lg">Cyclades, Greece</span>
+          </div>
+          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+            {island.name}
+          </h1>
+          <p className="text-xl md:text-2xl text-white/90 max-w-3xl leading-relaxed">
+            {island.quote || island.shortDescription}
+          </p>
+
+          {/* Quick Info Cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
+              <Calendar className="w-6 h-6 text-cyclades-turquoise mb-3" />
+              <p className="text-white font-semibold mb-1">Best Time</p>
+              <p className="text-white/70 text-sm">{island.bestTime?.months?.slice(0, 2).join(' - ') || 'May - October'}</p>
             </div>
-            
-            <div className="max-w-3xl space-y-4 md:space-y-6">
-              <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold text-white mb-2 md:mb-4 font-display">
-                Welcome to {selectedIsland.name}
-              </h1>
-              <p className="text-lg sm:text-xl md:text-2xl text-white/90 font-light">
-                {selectedIsland.quote}
-              </p>
-              <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 md:gap-4 pt-4 md:pt-6">
-                <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 md:p-4 text-white">
-                  <Calendar className="h-4 w-4 md:h-5 md:w-5 mb-1.5 md:mb-2" />
-                  <p className="text-xs md:text-sm font-medium">Best Time</p>
-                  <p className="text-[10px] md:text-xs opacity-80">{selectedIsland.bestTime?.months.join(', ')}</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 md:p-4 text-white">
-                  <Sun className="h-4 w-4 md:h-5 md:w-5 mb-1.5 md:mb-2" />
-                  <p className="text-xs md:text-sm font-medium">Weather</p>
-                  <p className="text-[10px] md:text-xs opacity-80">{selectedIsland.weather?.summer}</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 md:p-4 text-white">
-                  <Plane className="h-4 w-4 md:h-5 md:w-5 mb-1.5 md:mb-2" />
-                  <p className="text-xs md:text-sm font-medium">Transport</p>
-                  <p className="text-[10px] md:text-xs opacity-80">Ferry & Local Bus</p>
-                </div>
-                <div className="bg-white/10 backdrop-blur-md rounded-lg p-3 md:p-4 text-white">
-                  <Users className="h-4 w-4 md:h-5 md:w-5 mb-1.5 md:mb-2" />
-                  <p className="text-xs md:text-sm font-medium">Perfect For</p>
-                  <p className="text-[10px] md:text-xs opacity-80">{selectedIsland.idealFor?.[0]}</p>
-                </div>
-              </div>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
+              <Sun className="w-6 h-6 text-yellow-400 mb-3" />
+              <p className="text-white font-semibold mb-1">Weather</p>
+              <p className="text-white/70 text-sm">25-32°C in Summer</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
+              <Ship className="w-6 h-6 text-blue-400 mb-3" />
+              <p className="text-white font-semibold mb-1">Getting There</p>
+              <p className="text-white/70 text-sm">Ferry from Piraeus</p>
+            </div>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
+              <Users className="w-6 h-6 text-green-400 mb-3" />
+              <p className="text-white font-semibold mb-1">Perfect For</p>
+              <p className="text-white/70 text-sm">{island.idealFor?.[0] || 'All Travelers'}</p>
             </div>
           </div>
         </div>
       </div>
 
       {/* Main Content */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-        {/* About Section */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-16">
-          <div className="lg:col-span-2">
-            <h2 className="text-3xl font-bold mb-6">About {selectedIsland.name}</h2>
-            <p className="text-gray-600 leading-relaxed mb-8">{selectedIsland.description}</p>
-            
-            {/* Activities */}
-            <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 gap-4">
-              {selectedIsland.activities?.map((activity) => {
-                // Get icon based on activity
-                const getActivityIcon = (activity: string) => {
-                  switch (activity) {
-                    case 'swimming':
-                      return <Waves className="h-6 w-6" />;
-                    case 'beach-hopping':
-                      return <MapPinned className="h-6 w-6" />;
-                    case 'hiking':
-                      return <Mountain className="h-6 w-6" />;
-                    case 'rock-climbing':
-                      return <Mountain className="h-6 w-6" />;
-                    case 'monastery-visits':
-                      return <Church className="h-6 w-6" />;
-                    case 'traditional-villages':
-                      return <Home className="h-6 w-6" />;
-                    case 'nightlife':
-                      return <Music className="h-6 w-6" />;
-                    case 'local-cuisine':
-                      return <Utensils className="h-6 w-6" />;
-                    default:
-                      return <Footprints className="h-6 w-6" />;
-                  }
-                };
-
-                // Get description based on activity
-                const getActivityDescription = (activity: string) => {
-                  switch (activity) {
-                    case 'swimming':
-                      return 'Crystal clear waters perfect for swimming';
-                    case 'beach-hopping':
-                      return 'Explore multiple pristine beaches';
-                    case 'hiking':
-                      return 'Scenic trails with breathtaking views';
-                    case 'rock-climbing':
-                      return 'Challenging climbs for all levels';
-                    case 'monastery-visits':
-                      return 'Historic monasteries with rich heritage';
-                    case 'traditional-villages':
-                      return 'Authentic Greek village experiences';
-                    case 'nightlife':
-                      return 'Vibrant evening entertainment';
-                    case 'local-cuisine':
-                      return 'Delicious traditional Greek dishes';
-                    default:
-                      return 'Explore and enjoy';
-                  }
-                };
-
-                return (
-                  <div 
-                    key={activity} 
-                    className="bg-white rounded-xl p-4 shadow-sm border border-gray-100 hover:shadow-md transition-shadow duration-300"
-                  >
-                    <div className="text-blue-600 mb-3">
-                      {getActivityIcon(activity)}
-                    </div>
-                    <h3 className="text-sm font-semibold text-gray-900 capitalize mb-1">
-                      {activity.replace(/-/g, ' ')}
-                    </h3>
-                    <p className="text-xs text-gray-500 leading-relaxed">
-                      {getActivityDescription(activity)}
-                    </p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-
-          {/* Quick Info Sidebar */}
-          <div className="bg-gray-50 rounded-xl p-6 h-fit">
-            <h3 className="text-xl font-semibold mb-4">Essential Information</h3>
-            <div className="space-y-4">
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2">Best Time to Visit</h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedIsland.bestTime?.months.map((month) => (
-                    <span key={month} className="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded">
-                      {month}
-                    </span>
-                  ))}
-                </div>
+      <div className="max-w-7xl mx-auto px-4 py-16">
+        <div className="grid lg:grid-cols-3 gap-12">
+          {/* Main Content Area */}
+          <div className="lg:col-span-2 space-y-16">
+            {/* About Section */}
+            <section>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                <span className="w-12 h-1 bg-cyan-600 rounded-full"></span>
+                About {island.name}
+              </h2>
+              <div className="prose prose-lg dark:prose-invert max-w-none">
+                <p className="text-gray-700 dark:text-white/80 leading-relaxed text-lg">
+                  {island.description}
+                </p>
               </div>
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2">Weather</h4>
-                <div className="space-y-2 text-sm text-gray-600">
-                  <p> Summer: {selectedIsland.weather?.summer}</p>
-                  <p> Autumn: {selectedIsland.weather?.autumn}</p>
-                  <p> Winter: {selectedIsland.weather?.winter}</p>
-                  <p> Spring: {selectedIsland.weather?.spring}</p>
-                </div>
-              </div>
-              <div>
-                <h4 className="font-medium text-gray-900 mb-2">Perfect For</h4>
-                <div className="flex flex-wrap gap-2">
-                  {selectedIsland.idealFor?.map((ideal) => (
-                    <span key={ideal} className="bg-green-100 text-green-800 text-xs px-2.5 py-1 rounded">
-                      {ideal}
-                    </span>
-                  ))}
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
+            </section>
 
-        {/* Transportation & Contacts */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          {/* Transportation */}
-          {selectedIsland.transportation && (
-            <div className="bg-white rounded-xl shadow-sm border p-6">
-              <h3 className="text-xl font-semibold mb-4">Getting Around</h3>
-              {selectedIsland.transportation.localBus && (
-                <div className="mb-4">
-                  <h4 className="font-medium text-gray-900 mb-2">Local Bus Service</h4>
-                  <ul className="space-y-2 text-gray-600">
-                    <li className="flex items-center gap-2">
-                      <span className="w-20 text-sm font-medium">Routes:</span>
-                      <span className="text-sm">{selectedIsland.transportation.localBus.routes.join(', ')}</span>
-                    </li>
-                    <li className="flex items-center gap-2">
-                      <span className="w-20 text-sm font-medium">Schedule:</span>
-                      <span className="text-sm">{selectedIsland.transportation.localBus.frequency}</span>
-                    </li>
-                  </ul>
-                </div>
-              )}
-              {selectedIsland.transportation.facilities && (
-                <div>
-                  <h4 className="font-medium text-gray-900 mb-2">Local Facilities</h4>
-                  <div className="grid grid-cols-2 gap-4">
-                    {Object.entries(selectedIsland.transportation.facilities).map(([key, value]) => (
-                      value && (
-                        <div key={key} className="bg-gray-50 rounded-lg p-3">
-                          <p className="text-sm capitalize">{key.replace(/([A-Z])/g, ' $1').trim()}</p>
-                          <p className="text-xs text-gray-500">{value}</p>
-                        </div>
-                      )
-                    ))}
-                  </div>
-                </div>
-              )}
-            </div>
-          )}
-
-          {/* Contacts */}
-          {selectedIsland.contacts && (
-            <div className="bg-white rounded-xl shadow-sm border p-6">
-              <h3 className="text-xl font-semibold mb-4">Important Contacts</h3>
-              <div className="grid gap-4">
-                {Object.entries(selectedIsland.contacts).map(([key, value]) => (
-                  <div key={key} className="flex items-center justify-between p-3 bg-gray-50 rounded-lg">
-                    <span className="text-sm font-medium capitalize">
-                      {key.replace(/([A-Z])/g, ' $1').trim()}
-                    </span>
-                    <a 
-                      href={`tel:${value}`}
-                      className="text-sm text-blue-600 hover:text-blue-800 transition-colors"
+            {/* Highlights Section */}
+            {island.highlights && island.highlights.length > 0 && (
+              <section>
+                <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                  <Star className="w-8 h-8 text-yellow-500" />
+                  Top Highlights
+                </h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {island.highlights.map((highlight, idx) => (
+                    <div
+                      key={idx}
+                      className="bg-white dark:bg-dark-card rounded-xl p-5 border border-gray-100 dark:border-white/10 hover:border-cyan-600/30 dark:hover:border-cyclades-turquoise/30 transition-all hover:shadow-lg group"
                     >
-                      {value}
-                    </a>
-                  </div>
+                      <div className="flex items-start gap-4">
+                        <div className="w-10 h-10 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise rounded-lg flex items-center justify-center text-white font-bold shrink-0">
+                          {idx + 1}
+                        </div>
+                        <p className="text-gray-800 dark:text-white/90 font-medium group-hover:text-cyan-600 dark:group-hover:text-cyclades-turquoise transition-colors">
+                          {highlight}
+                        </p>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Activities Section */}
+            {island.activities && island.activities.length > 0 && (
+              <section>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+                    <Heart className="w-8 h-8 text-red-500" />
+                    Things to Do
+                  </h2>
+                  <Link
+                    to="/activities"
+                    className="text-cyan-600 dark:text-cyclades-turquoise hover:underline flex items-center gap-1 font-medium"
+                  >
+                    View all activities <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+                <div className="flex flex-wrap gap-3">
+                  {island.activities.map((activity, idx) => (
+                    <Link
+                      key={idx}
+                      to={`/activities?type=${String(activity)}`}
+                      className="bg-gradient-to-r from-cyan-600/10 to-cyclades-turquoise/10 dark:from-cyan-600/20 dark:to-cyclades-turquoise/20 text-cyan-600 dark:text-cyclades-turquoise px-5 py-2.5 rounded-full text-sm font-medium capitalize hover:from-cyan-600/20 hover:to-cyclades-turquoise/20 dark:hover:from-cyan-600/30 dark:hover:to-cyclades-turquoise/30 transition-all border border-cyan-600/20 dark:border-cyclades-turquoise/20"
+                    >
+                      {String(activity).replace(/-/g, ' ')}
+                    </Link>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {/* Island Connections */}
+            {island.connectedIslands?.direct && island.connectedIslands.direct.length > 0 && (
+              <section>
+                <div className="flex items-center justify-between mb-6">
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white flex items-center gap-3">
+                    <Ship className="w-8 h-8 text-blue-500" />
+                    Ferry Connections
+                  </h2>
+                  <Link
+                    to="/ferry-tickets"
+                    className="text-cyan-600 dark:text-cyclades-turquoise hover:underline flex items-center gap-1 font-medium"
+                  >
+                    Book ferry tickets <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
+                <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+                  {island.connectedIslands.direct.slice(0, 6).map((connectedSlug, idx) => {
+                    const connected = cyclades.find(i => i.slug === connectedSlug || i.name === connectedSlug);
+                    if (!connected) return null;
+                    return (
+                      <Link
+                        key={idx}
+                        to={`/islands/${connected.slug}`}
+                        className="group bg-white dark:bg-dark-card rounded-xl p-4 border border-gray-100 dark:border-white/10 hover:border-cyan-600/30 dark:hover:border-cyclades-turquoise/30 transition-all hover:shadow-lg flex items-center gap-4"
+                      >
+                        <div className="w-14 h-14 rounded-lg bg-cover bg-center shrink-0" style={{ backgroundImage: `url(${connected.image})` }} />
+                        <div className="flex-1 min-w-0">
+                          <p className="font-semibold text-gray-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyclades-turquoise transition-colors truncate">
+                            {connected.name}
+                          </p>
+                          <p className="text-sm text-gray-500 dark:text-white/50">Ferry available</p>
+                        </div>
+                        <ArrowRight className="w-5 h-5 text-gray-400 group-hover:text-cyan-600 dark:group-hover:text-cyclades-turquoise group-hover:translate-x-1 transition-all" />
+                      </Link>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
+
+            {/* Related Islands */}
+            <section>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6 flex items-center gap-3">
+                <Camera className="w-8 h-8 text-purple-500" />
+                Explore More Islands
+              </h2>
+              <div className="grid sm:grid-cols-2 gap-6">
+                {relatedIslands.map((related) => (
+                  <Link
+                    key={related.slug}
+                    to={`/islands/${related.slug}`}
+                    className="group relative h-48 rounded-2xl overflow-hidden"
+                  >
+                    <div
+                      className="absolute inset-0 bg-cover bg-center transition-transform duration-500 group-hover:scale-110"
+                      style={{ backgroundImage: `url(${related.image})` }}
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+                    <div className="absolute bottom-0 left-0 right-0 p-5">
+                      <h3 className="text-xl font-bold text-white mb-1">{related.name}</h3>
+                      <p className="text-white/70 text-sm line-clamp-1">{related.shortDescription}</p>
+                    </div>
+                  </Link>
                 ))}
               </div>
-            </div>
-          )}
-        </div>
+            </section>
+          </div>
 
-        {/* Connected Islands */}
-        {selectedIsland.connectedIslands && (
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Island Connections</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              {/* Direct Connections */}
-              <div className="bg-white rounded-xl shadow-sm border p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <Ship className="h-6 w-6 text-blue-600" />
-                  <h3 className="text-xl font-semibold">Direct Ferry Routes</h3>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  {selectedIsland.connectedIslands?.direct?.map((islandSlug) => {
-                    const island = cyclades.find(i => i.slug === islandSlug);
-                    return island ? (
-                      <Link
-                        key={islandSlug}
-                        to={`/islands/${islandSlug}`}
-                        className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1.5 py-1"
-                      >
-                        <div className="w-8 h-8 rounded-full overflow-hidden shrink-0">
-                          <img 
-                            src={`/images/islands/${islandSlug}.jpg`}
-                            alt={island.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        {island.name}
-                      </Link>
-                    ) : null;
-                  })}
+          {/* Sidebar */}
+          <div className="lg:col-span-1">
+            <div className="sticky top-24 space-y-6">
+              {/* Quick Actions Card */}
+              <div className="bg-white dark:bg-dark-card rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 p-6">
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6">Plan Your Trip</h3>
+
+                <div className="space-y-3">
+                  <Link
+                    to={`/hotels?location=${island.slug}`}
+                    className="flex items-center gap-3 w-full bg-gradient-to-r from-cyan-600 to-cyclades-turquoise text-white py-3.5 px-4 rounded-xl font-medium hover:opacity-90 transition-opacity group"
+                  >
+                    <Building className="w-5 h-5" />
+                    <span>Find Hotels in {island.name}</span>
+                    <ArrowRight className="w-4 h-4 ml-auto group-hover:translate-x-1 transition-transform" />
+                  </Link>
+
+                  <Link
+                    to="/ferry-tickets"
+                    className="flex items-center gap-3 w-full bg-gray-100 dark:bg-white/10 text-gray-800 dark:text-white py-3.5 px-4 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-white/20 transition-colors group"
+                  >
+                    <Ship className="w-5 h-5" />
+                    <span>Book Ferry Tickets</span>
+                    <ArrowRight className="w-4 h-4 ml-auto group-hover:translate-x-1 transition-transform" />
+                  </Link>
+
+                  <Link
+                    to={`/rent-a-car?location=${island.name}`}
+                    className="flex items-center gap-3 w-full bg-gray-100 dark:bg-white/10 text-gray-800 dark:text-white py-3.5 px-4 rounded-xl font-medium hover:bg-gray-200 dark:hover:bg-white/20 transition-colors group"
+                  >
+                    <Car className="w-5 h-5" />
+                    <span>Rent a Car</span>
+                    <ArrowRight className="w-4 h-4 ml-auto group-hover:translate-x-1 transition-transform" />
+                  </Link>
+
+                  <Link
+                    to={`/guides/${island.slug}`}
+                    className="flex items-center gap-3 w-full border-2 border-gray-200 dark:border-white/20 text-gray-700 dark:text-white py-3.5 px-4 rounded-xl font-medium hover:border-cyan-600 dark:hover:border-cyclades-turquoise transition-colors group"
+                  >
+                    <BookOpen className="w-5 h-5" />
+                    <span>Full Travel Guide</span>
+                    <ArrowRight className="w-4 h-4 ml-auto group-hover:translate-x-1 transition-transform" />
+                  </Link>
                 </div>
               </div>
 
-              {/* Nearby Islands */}
-              <div className="bg-white rounded-xl shadow-sm border p-6">
-                <div className="flex items-center gap-2 mb-4">
-                  <MapPin className="h-6 w-6 text-green-600" />
-                  <h3 className="text-xl font-semibold">Nearby Islands</h3>
-                </div>
-                <div className="grid grid-cols-2 gap-2">
-                  {selectedIsland.connectedIslands?.nearby?.map((islandSlug) => {
-                    const island = cyclades.find(i => i.slug === islandSlug);
-                    return island ? (
-                      <Link
-                        key={islandSlug}
-                        to={`/islands/${islandSlug}`}
-                        className="text-sm text-gray-600 hover:text-blue-600 transition-colors flex items-center gap-1.5 py-1"
+              {/* Best Time Card */}
+              {island.bestTime?.months && island.bestTime.months.length > 0 && (
+                <div className="bg-white dark:bg-dark-card rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 p-6">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                    <Calendar className="w-5 h-5 text-cyan-600" />
+                    Best Time to Visit
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {island.bestTime.months.map((month, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-cyan-600/10 dark:bg-cyclades-turquoise/20 text-cyan-600 dark:text-cyclades-turquoise text-sm px-3 py-1.5 rounded-lg font-medium"
                       >
-                        <div className="w-8 h-8 rounded-full overflow-hidden shrink-0">
-                          <img 
-                            src={`/images/islands/${islandSlug}.jpg`}
-                            alt={island.name}
-                            className="w-full h-full object-cover"
-                          />
-                        </div>
-                        {island.name}
-                      </Link>
-                    ) : null;
-                  })}
-                </div>
-              </div>
-
-              {/* Other Connections */}
-              {selectedIsland.connectedIslands?.other && (
-                <div className="bg-white rounded-xl shadow-sm border p-6">
-                  <div className="flex items-center gap-2 mb-4">
-                    <Plane className="h-6 w-6 text-indigo-600" />
-                    <h3 className="text-xl font-semibold">Other Connections</h3>
+                        {String(month)}
+                      </span>
+                    ))}
                   </div>
-                  <div className="grid grid-cols-2 gap-2">
-                    {selectedIsland.connectedIslands.other.map((islandName) => (
-                      <span 
-                        key={islandName}
-                        className="text-sm text-gray-600 flex items-center gap-1.5 py-1"
+                  {island.bestTime.description && (
+                    <p className="mt-4 text-gray-600 dark:text-white/60 text-sm">
+                      {island.bestTime.description}
+                    </p>
+                  )}
+                </div>
+              )}
+
+              {/* Ideal For Card */}
+              {island.idealFor && island.idealFor.length > 0 && (
+                <div className="bg-white dark:bg-dark-card rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 p-6">
+                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                    <Users className="w-5 h-5 text-green-500" />
+                    Perfect For
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {island.idealFor.map((ideal, idx) => (
+                      <span
+                        key={idx}
+                        className="bg-green-50 dark:bg-green-500/20 text-green-700 dark:text-green-400 text-sm px-3 py-1.5 rounded-lg font-medium"
                       >
-                        <div className="w-2 h-2 rounded-full bg-gray-400" />
-                        {islandName}
+                        {ideal}
                       </span>
                     ))}
                   </div>
                 </div>
               )}
-            </div>
-            
-            {/* Ferry Information */}
-            <div className="mt-6 bg-blue-50 rounded-lg p-4 text-sm text-blue-800">
-              <p className="flex items-center gap-2">
-                <Ship className="h-4 w-4" />
-                Ferry schedules and routes may vary by season. Check with local operators for current timetables.
-              </p>
-            </div>
-          </div>
-        )}
 
-        {/* Highlights Grid */}
-        {selectedIsland.highlights && selectedIsland.highlights.length > 0 && (
-          <div className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Island Highlights</h2>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-              {selectedIsland.highlights.map((highlight, index) => (
-                <div 
-                  key={index}
-                  className="relative aspect-[4/3] rounded-xl overflow-hidden group"
+              {/* Quick Links */}
+              <div className="bg-gradient-to-br from-cyan-600 to-cyclades-turquoise rounded-2xl p-6 text-white">
+                <h3 className="text-lg font-bold mb-4">Need Help Planning?</h3>
+                <p className="text-white/80 text-sm mb-4">
+                  Our AI travel assistant can help you create the perfect {island.name} itinerary.
+                </p>
+                <Link
+                  to="/touristas-ai"
+                  className="flex items-center gap-2 bg-white/20 hover:bg-white/30 transition-colors py-2.5 px-4 rounded-lg text-sm font-medium"
                 >
-                  <img 
-                    src={`/images/islands/${selectedIsland.slug}/${index + 1}.jpg`}
-                    alt={highlight}
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 p-6">
-                    <h3 className="text-xl font-semibold text-white">{highlight}</h3>
-                  </div>
-                </div>
-              ))}
-            </div>
-          </div>
-        )}
-
-        {/* Services CTA Section - 2 columns */}
-        <div className="mb-16">
-          <h2 className="text-3xl font-bold mb-8">Plan Your {selectedIsland.name} Trip</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Car Rental CTA */}
-            <div className="relative overflow-hidden rounded-xl group">
-              <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-800 opacity-90 group-hover:opacity-95 transition-opacity duration-300"></div>
-              <img 
-                src="/images/car-rental-cta.jpg" 
-                alt="Rent a car in Cyclades" 
-                className="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="relative p-8 md:p-10 h-full flex flex-col justify-between min-h-[320px]">
-                <div>
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-6">
-                    <Car className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Explore {selectedIsland.name} at Your Own Pace</h3>
-                  <p className="text-white/90 mb-6">
-                    Discover hidden gems and scenic routes with the freedom of your own vehicle. 
-                    Choose from a wide range of cars perfect for island exploration.
-                  </p>
-                </div>
-                <Link 
-                  to="/rent-a-car"
-                  className="inline-flex items-center gap-2 bg-white text-blue-600 hover:bg-blue-50 px-6 py-3 rounded-lg font-medium transition-colors duration-300 w-fit"
-                >
-                  Find Your Perfect Car
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-
-            {/* Hotels CTA */}
-            <div className="relative overflow-hidden rounded-xl group">
-              <div className="absolute inset-0 bg-gradient-to-r from-indigo-600 to-purple-700 opacity-90 group-hover:opacity-95 transition-opacity duration-300"></div>
-              <img 
-                src="/images/hotel-cta.jpg" 
-                alt="Book hotels in Cyclades" 
-                className="w-full h-full object-cover object-center absolute inset-0 group-hover:scale-105 transition-transform duration-500"
-              />
-              <div className="relative p-8 md:p-10 h-full flex flex-col justify-between min-h-[320px]">
-                <div>
-                  <div className="w-12 h-12 bg-white/20 backdrop-blur-md rounded-full flex items-center justify-center mb-6">
-                    <Building className="h-6 w-6 text-white" />
-                  </div>
-                  <h3 className="text-2xl md:text-3xl font-bold text-white mb-3">Stay in the Heart of {selectedIsland.name}</h3>
-                  <p className="text-white/90 mb-6">
-                    From luxury resorts to charming boutique hotels, find the perfect accommodation 
-                    for your dream island getaway.
-                  </p>
-                </div>
-                <Link 
-                  to="/hotels"
-                  className="inline-flex items-center gap-2 bg-white text-indigo-600 hover:bg-indigo-50 px-6 py-3 rounded-lg font-medium transition-colors duration-300 w-fit"
-                >
-                  Browse Accommodations
-                  <ArrowRight className="h-4 w-4" />
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Travel Guide CTA */}
-        <div className="relative overflow-hidden rounded-2xl bg-gradient-to-r from-blue-600 to-indigo-600">
-          <div className="absolute inset-0 bg-grid-white/10" />
-          <div className="relative px-6 py-12 sm:px-12 lg:px-16">
-            <div className="md:pr-12 lg:pr-16 xl:pr-20">
-              <h2 className="text-3xl font-bold tracking-tight text-white">
-                Plan Your Perfect {selectedIsland.name} Experience
-              </h2>
-              <p className="mt-4 text-lg text-blue-100">
-                Everything you need to know about {selectedIsland.name} - from insider tips to detailed itineraries.
-              </p>
-              <div className="mt-8 flex flex-wrap gap-4">
-                <Link 
-                  to={`/guides/${selectedIsland.slug}`}
-                  className="inline-flex items-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-blue-600 shadow-sm hover:bg-blue-50 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  <BookOpen className="h-5 w-5" />
-                  Travel Guide
-                </Link>
-                <Link 
-                  to={`/planner?island=${selectedIsland.slug}`}
-                  className="inline-flex items-center gap-2 rounded-lg bg-blue-500 px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-400 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  <Calendar className="h-5 w-5" />
-                  Trip Planner
-                </Link>
-                <Link 
-                  to={`/guides/${selectedIsland.slug}#tips`}
-                  className="inline-flex items-center gap-2 rounded-lg bg-blue-400/20 backdrop-blur-sm px-6 py-3 text-sm font-semibold text-white shadow-sm hover:bg-blue-400/30 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white"
-                >
-                  <Sun className="h-5 w-5" />
-                  Travel Tips
+                  <span>Chat with Touristas AI</span>
+                  <ExternalLink className="w-4 h-4" />
                 </Link>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </>
+
+      {/* Bottom CTA */}
+      <div className="bg-gray-100 dark:bg-dark-card border-t border-gray-200 dark:border-white/10">
+        <div className="max-w-7xl mx-auto px-4 py-12">
+          <div className="text-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
+              Ready to explore {island.name}?
+            </h2>
+            <p className="text-gray-600 dark:text-white/70 mb-8 max-w-2xl mx-auto">
+              Book your accommodation, ferry tickets, and activities all in one place.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link
+                to={`/hotels?location=${island.slug}`}
+                className="bg-cyan-600 text-white px-8 py-3 rounded-xl font-medium hover:bg-cyan-600/90 transition-colors"
+              >
+                Find Hotels
+              </Link>
+              <Link
+                to="/ferry-tickets"
+                className="bg-white dark:bg-dark-bg text-gray-900 dark:text-white px-8 py-3 rounded-xl font-medium border border-gray-200 dark:border-white/20 hover:border-cyan-600 dark:hover:border-cyclades-turquoise transition-colors"
+              >
+                Book Ferries
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 }
+

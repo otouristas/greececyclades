@@ -26,8 +26,8 @@ const SikinosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Sikinos Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Sikinos vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. Experience authentic Greek island life in this untouched Cycladic gem.",
+    title: "Sikinos Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Sikinos vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities. Experience authentic Greek island life in this untouched Cycladic gem.",
     keywords: [
       'Sikinos travel guide',
       'Sikinos beaches',
@@ -82,42 +82,42 @@ const SikinosGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Wines and delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -137,14 +137,14 @@ const SikinosGuide: React.FC = () => {
   return (
     <>
       <SEO {...seoData} />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...heroProps} />
         
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Sikinos</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Sikinos</h2>
               <p className="text-gray-700 leading-relaxed">
                 Sikinos, a hidden gem in the Cyclades, offers unspoiled beauty, traditional architecture, and a peaceful escape from modern life. 
                 This small island between Ios and Folegandros provides an authentic Greek island experience far from the crowds of more popular destinations.
@@ -176,14 +176,14 @@ const SikinosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
                 <a 
                   key={index}
                   href={category.link} 
-                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
                     {category.icon}
@@ -196,10 +196,10 @@ const SikinosGuide: React.FC = () => {
 
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Sikinos Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Sikinos Photo Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
-                <div key={index} className="bg-white rounded-lg overflow-hidden shadow-md">
+                <div key={index} className="bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <div className="aspect-w-16 aspect-h-12">
                     <img 
                       src={image.src} 
@@ -208,7 +208,7 @@ const SikinosGuide: React.FC = () => {
                     />
                   </div>
                   <div className="p-3">
-                    <p className="text-sm text-gray-600">{image.alt}</p>
+                    <p className="text-sm text-gray-600 dark:text-white/60">{image.alt}</p>
                   </div>
                 </div>
               ))}
@@ -217,46 +217,46 @@ const SikinosGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Sikinos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Sikinos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">High Season</h3>
-                <p className="text-gray-600">July to August</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Warmest weather</li>
                   <li>• All facilities open</li>
                   <li>• More frequent ferries</li>
                   <li>• Still relatively quiet</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">May-June, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Pleasant weather</li>
                   <li>• Very few tourists</li>
                   <li>• Better rates</li>
                   <li>• Perfect for hiking</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Spring</h3>
-                <p className="text-gray-600">April to May</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April to May</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Wildflowers blooming</li>
                   <li>• Mild temperatures</li>
                   <li>• Green landscapes</li>
                   <li>• Easter celebrations</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Water Temperature</h3>
-                <p className="text-gray-600">Best swimming months</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">Best swimming months</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• June: 21°C (70°F)</li>
                   <li>• July: 23°C (73°F)</li>
                   <li>• August: 24°C (75°F)</li>
@@ -268,9 +268,9 @@ const SikinosGuide: React.FC = () => {
 
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Charming Villages of Sikinos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Charming Villages of Sikinos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sikinos/villages/chora.jpg" 
@@ -293,7 +293,7 @@ const SikinosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sikinos/villages/alopronia.jpg" 
@@ -320,9 +320,9 @@ const SikinosGuide: React.FC = () => {
 
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beautiful Beaches of Sikinos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beautiful Beaches of Sikinos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sikinos/beaches/malta.jpg" 
@@ -348,7 +348,7 @@ const SikinosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sikinos/beaches/alopronia.jpg" 
@@ -374,7 +374,7 @@ const SikinosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/sikinos/beaches/dialiskari.jpg" 
@@ -404,9 +404,9 @@ const SikinosGuide: React.FC = () => {
           
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in Sikinos</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Sikinos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <FaHiking className="text-blue-500 mr-3" /> Hiking Adventures
                 </h3>
@@ -415,7 +415,7 @@ const SikinosGuide: React.FC = () => {
                   The island's rugged landscape and minimal development make it perfect for nature lovers. Don't miss the trail from Chora to 
                   Episkopi Monastery, which offers breathtaking views of the Aegean Sea.
                 </p>
-                <ul className="space-y-2 text-gray-600">
+                <ul className="space-y-2 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <span>Chora to Episkopi Monastery (1.5 hours)</span>
@@ -435,7 +435,7 @@ const SikinosGuide: React.FC = () => {
                 </ul>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <FaHistory className="text-blue-500 mr-3" /> Historical Exploration
                 </h3>
@@ -444,7 +444,7 @@ const SikinosGuide: React.FC = () => {
                   This unique structure dates back to the 3rd century AD and offers a fascinating glimpse into the island's 
                   rich history. Also explore the ancient winery, one of the best-preserved in the Cyclades.
                 </p>
-                <ul className="space-y-2 text-gray-600">
+                <ul className="space-y-2 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <span>Episkopi Monastery (3rd century AD)</span>
@@ -464,7 +464,7 @@ const SikinosGuide: React.FC = () => {
                 </ul>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <FaWineGlass className="text-blue-500 mr-3" /> Wine Tasting
                 </h3>
@@ -473,7 +473,7 @@ const SikinosGuide: React.FC = () => {
                   the island's distinctive wines made from indigenous grape varieties. The dry, volcanic soil gives these 
                   wines their unique character and flavor profile.
                 </p>
-                <ul className="space-y-2 text-gray-600">
+                <ul className="space-y-2 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <span>Manalis Winery tours and tastings</span>
@@ -493,7 +493,7 @@ const SikinosGuide: React.FC = () => {
                 </ul>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <FaGlassCheers className="text-blue-500 mr-3" /> Local Festivals
                 </h3>
@@ -502,7 +502,7 @@ const SikinosGuide: React.FC = () => {
                   The most important is the feast of Panagia Pantanassa on August 15th, featuring live music, traditional 
                   dancing, and local delicacies. These celebrations offer a genuine glimpse into local customs and traditions.
                 </p>
-                <ul className="space-y-2 text-gray-600">
+                <ul className="space-y-2 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <span>Panagia Pantanassa Festival (August 15)</span>
@@ -526,7 +526,7 @@ const SikinosGuide: React.FC = () => {
           
           {/* Cuisine Section */}
           <section id="cuisine" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine & Dining</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine & Dining</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-6">
@@ -535,7 +535,7 @@ const SikinosGuide: React.FC = () => {
                   fresh fish, locally-raised meat, and vegetables grown in the island's gardens.
                 </p>
                 <h3 className="text-xl font-semibold mb-3">Must-Try Local Specialties:</h3>
-                <ul className="space-y-3 text-gray-600">
+                <ul className="space-y-3 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2 font-bold">•</span>
                     <div>
@@ -568,7 +568,7 @@ const SikinosGuide: React.FC = () => {
                   </li>
                 </ul>
                 <h3 className="text-xl font-semibold mb-3 mt-6">Where to Eat:</h3>
-                <ul className="space-y-3 text-gray-600">
+                <ul className="space-y-3 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2 font-bold">•</span>
                     <div>
@@ -590,28 +590,28 @@ const SikinosGuide: React.FC = () => {
                 </ul>
               </div>
               <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-lg overflow-hidden shadow-md">
+                <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <img 
                     src="/images/islands/sikinos/food/local-dishes.jpg" 
                     alt="Local Sikinos Dishes" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="rounded-lg overflow-hidden shadow-md">
+                <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <img 
                     src="/images/islands/sikinos/food/wine.jpg" 
                     alt="Sikinos Wine" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="rounded-lg overflow-hidden shadow-md">
+                <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <img 
                     src="/images/islands/sikinos/food/taverna.jpg" 
                     alt="Traditional Taverna" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="rounded-lg overflow-hidden shadow-md">
+                <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <img 
                     src="/images/islands/sikinos/food/honey.jpg" 
                     alt="Local Honey" 
@@ -624,8 +624,8 @@ const SikinosGuide: React.FC = () => {
           
           {/* Transport Section */}
           <section id="transport" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Getting to Sikinos</h2>
-            <div className="bg-white rounded-lg shadow-md p-8">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Getting to Sikinos</h2>
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-8">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div>
                   <h3 className="text-xl font-semibold mb-4 flex items-center">
@@ -635,7 +635,7 @@ const SikinosGuide: React.FC = () => {
                     Sikinos is accessible by ferry from Piraeus (Athens) and other Cycladic islands. Ferry schedules vary by season, 
                     with more frequent connections during the summer months.
                   </p>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2 font-bold">•</span>
                       <div>
@@ -669,7 +669,7 @@ const SikinosGuide: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Sikinos is a small island with limited transportation options. Here are the best ways to explore the island:
                   </p>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2 font-bold">•</span>
                       <div>
@@ -706,10 +706,10 @@ const SikinosGuide: React.FC = () => {
               <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
                   <div>
-                    <div className="inline-block px-3 py-1 rounded-full bg-blue-500 bg-opacity-30 text-white text-sm font-medium mb-4">
+                    <div className="inline-block px-3 py-1 rounded-full bg-blue-50 dark:bg-cyan-600/100 bg-opacity-30 text-white text-sm font-medium mb-4">
                       Best time to visit: May to September
                     </div>
-                    <h2 className="text-3xl font-bold mb-6">Ready to Experience Sikinos?</h2>
+                    <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Ready to Experience Sikinos?</h2>
                     <p className="text-lg mb-8 text-blue-100">
                       Discover the authentic charm of this untouched Cycladic gem. Plan your perfect getaway to Sikinos and experience 
                       traditional island life, stunning landscapes, and genuine Greek hospitality.
@@ -717,7 +717,7 @@ const SikinosGuide: React.FC = () => {
                     <div className="flex flex-wrap gap-4">
                       <a 
                         href="/hotels/" 
-                        className="px-6 py-3 bg-white text-blue-700 font-medium rounded-lg shadow-md hover:bg-blue-50 transition duration-300"
+                        className="px-6 py-3 bg-white text-blue-700 font-medium rounded-lg shadow-md hover:bg-blue-50 dark:bg-cyan-600/10 transition duration-300"
                       >
                         Find Accommodations
                       </a>
@@ -747,3 +747,5 @@ const SikinosGuide: React.FC = () => {
 };
 
 export default SikinosGuide;
+
+

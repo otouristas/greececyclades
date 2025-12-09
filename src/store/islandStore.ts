@@ -50,7 +50,7 @@ const mockIslands: Island[] = [
     slug: 'naxos',
     bestTime: {
       months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
-      reason: 'May to October - Perfect weather for beaches and sightseeing with fewer crowds in shoulder seasons'
+      description: 'May to October - Perfect weather for beaches and sightseeing with fewer crowds in shoulder seasons'
     },
     idealFor: ['Families', 'History Buffs', 'Beach Lovers', 'Hikers'],
     ports: []
@@ -96,7 +96,7 @@ const mockIslands: Island[] = [
     slug: 'santorini',
     bestTime: {
       months: [AvailableMonth.APRIL, AvailableMonth.MAY, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
-      reason: 'April to October - Ideal weather with fewer crowds in spring and fall'
+      description: 'April to October - Ideal weather with fewer crowds in spring and fall'
     },
     idealFor: ['Couples', 'Photographers', 'Wine Lovers', 'Luxury Travelers'],
     ports: []
@@ -140,7 +140,7 @@ const mockIslands: Island[] = [
     slug: 'mykonos',
     bestTime: {
       months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER],
-      reason: 'May to September - Perfect beach weather with vibrant nightlife'
+      description: 'May to September - Perfect beach weather with vibrant nightlife'
     },
     idealFor: ['Party Lovers', 'Beach Enthusiasts', 'Luxury Travelers', 'Socialites']
   },
@@ -184,7 +184,7 @@ const mockIslands: Island[] = [
     slug: 'paros',
     bestTime: {
       months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
-      reason: 'May to October - Perfect weather for beaches and water sports with fewer crowds in shoulder seasons'
+      description: 'May to October - Perfect weather for beaches and water sports with fewer crowds in shoulder seasons'
     },
     idealFor: ['Water Sports Enthusiasts', 'Couples', 'Families', 'Culture Lovers']
   },
@@ -227,7 +227,7 @@ const mockIslands: Island[] = [
     slug: 'sifnos',
     bestTime: {
       months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
-      reason: 'May to October - Perfect weather for hiking and sightseeing with fewer crowds in shoulder seasons'
+      description: 'May to October - Perfect weather for hiking and sightseeing with fewer crowds in shoulder seasons'
     },
     idealFor: ['Food Lovers', 'Hikers', 'Culture Enthusiasts', 'Pottery Fans']
   },
@@ -271,7 +271,7 @@ const mockIslands: Island[] = [
     slug: 'milos',
     bestTime: {
       months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
-      reason: 'May to October - Perfect weather for beaches and sightseeing with fewer crowds in shoulder seasons'
+      description: 'May to October - Perfect weather for beaches and sightseeing with fewer crowds in shoulder seasons'
     },
     idealFor: ['Nature Lovers', 'Photographers', 'Beach Enthusiasts', 'Adventure Seekers']
   },
@@ -313,7 +313,7 @@ const mockIslands: Island[] = [
     slug: 'ios',
     bestTime: {
       months: [AvailableMonth.JUNE, AvailableMonth.JULY, AvailableMonth.AUGUST, AvailableMonth.SEPTEMBER],
-      reason: 'June to September - Perfect beach weather and vibrant nightlife'
+      description: 'June to September - Perfect beach weather and vibrant nightlife'
     },
     idealFor: ['Young Travelers', 'Beach Lovers', 'Party Enthusiasts', 'Adventure Seekers']
   },
@@ -355,7 +355,7 @@ const mockIslands: Island[] = [
     slug: 'tinos',
     bestTime: {
       months: [AvailableMonth.APRIL, AvailableMonth.MAY, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
-      reason: 'April to October - Ideal weather for sightseeing and pilgrimage with fewer crowds in shoulder seasons'
+      description: 'April to October - Ideal weather for sightseeing and pilgrimage with fewer crowds in shoulder seasons'
     },
     idealFor: ['Pilgrims', 'Art Lovers', 'Culture Enthusiasts', 'Peace Seekers']
   },
@@ -397,7 +397,7 @@ const mockIslands: Island[] = [
     slug: 'antiparos',
     bestTime: {
       months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER],
-      reason: 'May to September - Perfect weather for beaches and relaxation'
+      description: 'May to September - Perfect weather for beaches and relaxation'
     },
     idealFor: ['Peace Seekers', 'Beach Lovers', 'Cave Explorers', 'Couples']
   },
@@ -438,7 +438,7 @@ const mockIslands: Island[] = [
     slug: 'koufonisia',
     bestTime: {
       months: [AvailableMonth.JUNE, AvailableMonth.JULY, AvailableMonth.AUGUST, AvailableMonth.SEPTEMBER],
-      reason: 'June to September - Perfect weather for beaches and swimming'
+      description: 'June to September - Perfect weather for beaches and swimming'
     },
     idealFor: ['Beach Enthusiasts', 'Swimmers', 'Off-the-beaten-path Travelers', 'Nature Lovers']
   },
@@ -481,7 +481,7 @@ const mockIslands: Island[] = [
     slug: 'kimolos',
     bestTime: {
       months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
-      reason: 'May to October - Perfect weather for sightseeing and relaxation with fewer crowds in shoulder seasons'
+      description: 'May to October - Perfect weather for sightseeing and relaxation with fewer crowds in shoulder seasons'
     },
     idealFor: ['Nature Lovers', 'Hikers', 'Authenticity Seekers', 'Geology Enthusiasts']
   },
@@ -524,7 +524,7 @@ const mockIslands: Island[] = [
     slug: 'syros',
     bestTime: {
       months: [AvailableMonth.APRIL, AvailableMonth.MAY, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
-      reason: 'April to October - Ideal weather for sightseeing and cultural exploration with fewer crowds in shoulder seasons'
+      description: 'April to October - Ideal weather for sightseeing and cultural exploration with fewer crowds in shoulder seasons'
     },
     idealFor: ['Culture Enthusiasts', 'Architecture Lovers', 'Foodies', 'History Buffs']
   },
@@ -567,7 +567,7 @@ const mockIslands: Island[] = [
     slug: 'andros',
     bestTime: {
       months: [AvailableMonth.APRIL, AvailableMonth.MAY, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
-      reason: 'April to November - Ideal weather for hiking and sightseeing with fewer crowds in shoulder seasons'
+      description: 'April to November - Ideal weather for hiking and sightseeing with fewer crowds in shoulder seasons'
     },
     idealFor: ['Hikers', 'Nature Photographers', 'Cultural Tourists', 'Adventure Seekers']
   },
@@ -610,7 +610,7 @@ const mockIslands: Island[] = [
     slug: 'kea',
     bestTime: {
       months: [AvailableMonth.MAY, AvailableMonth.JUNE, AvailableMonth.SEPTEMBER, AvailableMonth.OCTOBER],
-      reason: 'May to October - Perfect weather for hiking and sightseeing with fewer crowds in shoulder seasons'
+      description: 'May to October - Perfect weather for hiking and sightseeing with fewer crowds in shoulder seasons'
     },
     idealFor: ['Weekend Travelers', 'Hikers', 'History Buffs', 'Nature Lovers']
   }

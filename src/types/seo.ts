@@ -1,46 +1,30 @@
-export interface ArticleSEO {
-  publishedTime: string;
-  modifiedTime: string;
-  author: string;
-  tags: string[];
+export interface TopAttraction {
+  id: string;
+  name: string;
+  url: string;
+  rank: number;
 }
 
-export interface FAQItem {
-  question: string;
-  answer: string;
+export interface RelatedLink {
+  label: string;
+  url: string;
 }
 
-export interface SEOProps {
+export interface LinkGroup {
   title: string;
-  description: string;
-  keywords?: string | string[];
-  ogImage?: string;
-  ogType?: 'website' | 'article';
-  canonicalUrl?: string;
-  article?: {
-    publishedTime?: string;
-    modifiedTime?: string;
-    author?: string;
-    tags?: string[];
-  };
-  faq?: FAQItem[];
-  structuredData?: string;
-  jsonLD?: Record<string, any>;
-  noIndex?: boolean;
-  pageType?: 'homepage' | 'islands' | 'guides' | 'hotels' | 'activities' | 'blog' | 'ferry-tickets' | 'touristas-ai' | 'general';
-  locationData?: {
-    name: string;
-    type?: string;
-  };
-  islandData?: {
-    name: string;
-    description?: string;
-  };
-  alternateLanguages?: Array<{
-    hreflang: string;
-    href: string;
-  }>;
-  twitterCard?: 'summary' | 'summary_large_image';
-  twitterSite?: string;
-  twitterCreator?: string;
+  links: RelatedLink[];
+}
+
+export interface IslandAttractionData {
+  topAttractions: TopAttraction[];
+  relatedIslands: RelatedLink[];
+  relatedServices: RelatedLink[];
+  relatedActivities: RelatedLink[];
+}
+
+export interface SiteLinksData {
+  popularIslands: LinkGroup;
+  islandCategories: LinkGroup;
+  topActivities: LinkGroup;
+  travelServices: LinkGroup;
 }

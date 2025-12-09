@@ -30,42 +30,42 @@ const KeaGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Honey and delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -105,7 +105,7 @@ const KeaGuide: React.FC = () => {
                 Kea's rich maritime history is evident in its numerous shipwrecks, including the famous 
                 HMHS Britannic, making it a paradise for diving enthusiasts.
               </p>
-              <p className="text-lg text-gray-700">
+              <p className="text-lg text-gray-700 dark:text-white/80">
                 The island's extensive network of ancient paths, recently restored and well-marked, 
                 connects four ancient city-states through landscapes of dramatic variety. Whether you're 
                 hiking through oak forests, exploring ancient ruins, or relaxing on golden beaches, 
@@ -113,14 +113,14 @@ const KeaGuide: React.FC = () => {
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <div className="rounded-lg overflow-hidden shadow-md">
+              <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src="/images/islands/kea/kea-intro-1.jpg" 
                   alt="Ioulida village view" 
                   className="w-full h-full object-cover"
                 />
               </div>
-              <div className="rounded-lg overflow-hidden shadow-md">
+              <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src="/images/islands/kea/kea-intro-2.jpg" 
                   alt="Lion of Kea" 
@@ -151,12 +151,12 @@ const KeaGuide: React.FC = () => {
                 >
                   <div className="p-6">
                     <div className="flex items-center mb-4">
-                      <div className="bg-blue-50 p-3 rounded-full mr-4">
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-3 rounded-full mr-4">
                         {category.icon}
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900">{category.title}</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">{category.title}</h3>
                     </div>
-                    <p className="text-gray-600">{category.description}</p>
+                    <p className="text-gray-600 dark:text-white/60">{category.description}</p>
                   </div>
                 </a>
               ))}
@@ -168,7 +168,7 @@ const KeaGuide: React.FC = () => {
         <section id="when-to-visit" className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">When to Visit Kea</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">When to Visit Kea</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 The best time to experience Kea's beauty is from May to September, with May, June, and September being ideal for hiking and exploring.
               </p>
@@ -176,38 +176,38 @@ const KeaGuide: React.FC = () => {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="p-6">
                     <div className="flex items-center mb-4">
-                      <div className="bg-blue-50 p-3 rounded-full mr-4">
-                        <FaCalendarAlt className="text-blue-500" />
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-3 rounded-full mr-4">
+                        <FaCalendarAlt className="text-cyan-600 dark:text-cyclades-turquoise" />
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900">Seasonal Guide</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Seasonal Guide</h3>
                     </div>
                     
                     <div className="space-y-4">
                       <div>
-                        <h4 className="font-medium text-gray-900">Summer (June to August)</h4>
-                        <p className="text-gray-600">{kea.weather.summer}</p>
-                        <p className="text-gray-600">Peak tourist season with warm temperatures perfect for swimming and beach activities.</p>
+                        <h4 className="font-medium text-gray-900 dark:text-white">Summer (June to August)</h4>
+                        <p className="text-gray-600 dark:text-white/60">{kea.weather.summer}</p>
+                        <p className="text-gray-600 dark:text-white/60">Peak tourist season with warm temperatures perfect for swimming and beach activities.</p>
                       </div>
                       
                       <div>
-                        <h4 className="font-medium text-gray-900">Spring (April to May)</h4>
-                        <p className="text-gray-600">{kea.weather.spring}</p>
-                        <p className="text-gray-600">Ideal for hiking with mild temperatures and blooming wildflowers covering the landscape.</p>
+                        <h4 className="font-medium text-gray-900 dark:text-white">Spring (April to May)</h4>
+                        <p className="text-gray-600 dark:text-white/60">{kea.weather.spring}</p>
+                        <p className="text-gray-600 dark:text-white/60">Ideal for hiking with mild temperatures and blooming wildflowers covering the landscape.</p>
                       </div>
                       
                       <div>
-                        <h4 className="font-medium text-gray-900">Autumn (September to October)</h4>
-                        <p className="text-gray-600">{kea.weather.autumn}</p>
-                        <p className="text-gray-600">Pleasant temperatures for hiking and swimming with fewer crowds.</p>
+                        <h4 className="font-medium text-gray-900 dark:text-white">Autumn (September to October)</h4>
+                        <p className="text-gray-600 dark:text-white/60">{kea.weather.autumn}</p>
+                        <p className="text-gray-600 dark:text-white/60">Pleasant temperatures for hiking and swimming with fewer crowds.</p>
                       </div>
                       
                       <div>
-                        <h4 className="font-medium text-gray-900">Winter (November to March)</h4>
-                        <p className="text-gray-600">{kea.weather.winter}</p>
-                        <p className="text-gray-600">Quiet season with occasional rain, perfect for experiencing authentic local life.</p>
+                        <h4 className="font-medium text-gray-900 dark:text-white">Winter (November to March)</h4>
+                        <p className="text-gray-600 dark:text-white/60">{kea.weather.winter}</p>
+                        <p className="text-gray-600 dark:text-white/60">Quiet season with occasional rain, perfect for experiencing authentic local life.</p>
                       </div>
                     </div>
                   </div>
@@ -215,16 +215,16 @@ const KeaGuide: React.FC = () => {
               </div>
               
               <div>
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="p-6">
                     <div className="flex items-center mb-4">
-                      <div className="bg-blue-50 p-3 rounded-full mr-4">
-                        <FaSun className="text-blue-500" />
+                      <div className="bg-blue-50 dark:bg-cyan-600/10 p-3 rounded-full mr-4">
+                        <FaSun className="text-cyan-600 dark:text-cyclades-turquoise" />
                       </div>
-                      <h3 className="text-xl font-semibold text-gray-900">Travel Tips</h3>
+                      <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Travel Tips</h3>
                     </div>
                     
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <span>Book accommodations in advance during July and August as options are limited.</span>
@@ -276,18 +276,18 @@ const KeaGuide: React.FC = () => {
         <section id="transport" className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">How to Get to Kea</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">How to Get to Kea</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 Kea is easily accessible from Athens, making it a perfect weekend getaway or the start of your island-hopping adventure.
               </p>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-4">By Ferry</h3>
-                    <ul className="space-y-4 text-gray-600">
+                    <ul className="space-y-4 text-gray-600 dark:text-white/60">
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
@@ -310,7 +310,7 @@ const KeaGuide: React.FC = () => {
                   
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-4">Travel Tips</h3>
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <span>Book ferry tickets in advance during high season (June-September).</span>
@@ -339,14 +339,14 @@ const KeaGuide: React.FC = () => {
         <section id="beaches" className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">Beaches in Kea</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Beaches in Kea</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 Kea offers a variety of beaches from organized sandy shores to secluded coves with crystal-clear waters.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/kea/koundouros-beach.jpg" 
                   alt="Koundouros Beach" 
@@ -366,7 +366,7 @@ const KeaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/kea/otzias-beach.jpg" 
                   alt="Otzias Beach" 
@@ -386,7 +386,7 @@ const KeaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/kea/pisses-beach.jpg" 
                   alt="Pisses Beach" 
@@ -419,14 +419,14 @@ const KeaGuide: React.FC = () => {
         <section id="activities" className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">What to Do in Kea</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">What to Do in Kea</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 From hiking ancient trails to exploring underwater shipwrecks, Kea offers diverse activities for every type of traveler.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/kea/hiking-trails.jpg" 
                   alt="Hiking Trails in Kea" 
@@ -437,7 +437,7 @@ const KeaGuide: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Kea boasts an extensive network of well-marked hiking trails that connect ancient sites, traditional villages, and beautiful viewpoints.
                   </p>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span>The Lion Trail: Visit the famous stone lion carving (6th century BC)</span>
@@ -454,7 +454,7 @@ const KeaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/kea/diving.jpg" 
                   alt="Diving in Kea" 
@@ -465,7 +465,7 @@ const KeaGuide: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Kea is a paradise for diving enthusiasts with its rich underwater world and famous shipwrecks.
                   </p>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span>HMHS Britannic: Sister ship to the Titanic, sunk in 1916 (for experienced divers)</span>
@@ -482,7 +482,7 @@ const KeaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/kea/ioulida.jpg" 
                   alt="Ioulida Village" 
@@ -493,7 +493,7 @@ const KeaGuide: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Discover the authentic charm of Kea's traditional settlements with their unique architecture and local culture.
                   </p>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span>Ioulida: The capital with its maze of narrow streets and traditional houses</span>
@@ -510,7 +510,7 @@ const KeaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/kea/local-products.jpg" 
                   alt="Local Products of Kea" 
@@ -521,7 +521,7 @@ const KeaGuide: React.FC = () => {
                   <p className="text-gray-600 mb-4">
                     Sample Kea's culinary treasures, from locally produced honey to traditional recipes passed down through generations.
                   </p>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span>Thyme Honey: Kea is famous for its exceptional honey with a distinct aroma</span>
@@ -547,13 +547,13 @@ const KeaGuide: React.FC = () => {
 
         {/* Must Visit Locations */}
         <section className="mb-16">
-          <h2 className="text-3xl font-bold mb-6">Must Visit Locations</h2>
+          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Must Visit Locations</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {kea.idealFor && kea.idealFor.map((highlight: string, index: number) => (
-              <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div key={index} className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <h3 className="font-semibold text-xl mb-2">{highlight}</h3>
-                  <p className="text-gray-600">Perfect for {highlight.toLowerCase()}</p>
+                  <p className="text-gray-600 dark:text-white/60">Perfect for {highlight.toLowerCase()}</p>
                 </div>
               </div>
             ))}
@@ -564,22 +564,22 @@ const KeaGuide: React.FC = () => {
         <section id="getting-around" className="py-16 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">Getting Around Kea</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Getting Around Kea</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 Navigating Kea is relatively easy with several transportation options available.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="bg-blue-50 p-3 rounded-full mr-4">
-                      <FaShip className="text-blue-500" />
+                    <div className="bg-blue-50 dark:bg-cyan-600/10 p-3 rounded-full mr-4">
+                      <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">By Bus</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">By Bus</h3>
                   </div>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span>Public buses connect the main port (Korissia) to Ioulida (the capital) and other villages.</span>
@@ -596,15 +596,15 @@ const KeaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="bg-blue-50 p-3 rounded-full mr-4">
-                      <FaMapMarkedAlt className="text-blue-500" />
+                    <div className="bg-blue-50 dark:bg-cyan-600/10 p-3 rounded-full mr-4">
+                      <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">By Car or Scooter</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">By Car or Scooter</h3>
                   </div>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span>Rental agencies available at the port and main villages.</span>
@@ -625,15 +625,15 @@ const KeaGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
-                    <div className="bg-blue-50 p-3 rounded-full mr-4">
-                      <FaUmbrellaBeach className="text-blue-500" />
+                    <div className="bg-blue-50 dark:bg-cyan-600/10 p-3 rounded-full mr-4">
+                      <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />
                     </div>
-                    <h3 className="text-xl font-semibold text-gray-900">By Taxi & Walking</h3>
+                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white">By Taxi & Walking</h3>
                   </div>
-                  <ul className="space-y-3 text-gray-600">
+                  <ul className="space-y-3 text-gray-600 dark:text-white/60">
                     <li className="flex items-start">
                       <span className="text-blue-500 mr-2">•</span>
                       <span>Taxis are available at the port and can be booked by phone.</span>
@@ -661,7 +661,7 @@ const KeaGuide: React.FC = () => {
         <section id="gallery" className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">Kea Photo Gallery</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Kea Photo Gallery</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 Explore the beauty of Kea through our curated collection of images.
               </p>
@@ -672,42 +672,42 @@ const KeaGuide: React.FC = () => {
                 <img 
                   src="/images/islands/kea/gallery-1.jpg" 
                   alt="Panoramic view of Ioulida" 
-                  className="w-full h-full object-cover rounded-lg shadow-md"
+                  className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
               <div>
                 <img 
                   src="/images/islands/kea/gallery-2.jpg" 
                   alt="Kea beach" 
-                  className="w-full h-full object-cover rounded-lg shadow-md"
+                  className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
               <div>
                 <img 
                   src="/images/islands/kea/gallery-3.jpg" 
                   alt="Traditional architecture" 
-                  className="w-full h-full object-cover rounded-lg shadow-md"
+                  className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
               <div>
                 <img 
                   src="/images/islands/kea/gallery-4.jpg" 
                   alt="Lion of Kea" 
-                  className="w-full h-full object-cover rounded-lg shadow-md"
+                  className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
               <div>
                 <img 
                   src="/images/islands/kea/gallery-5.jpg" 
                   alt="Hiking trail" 
-                  className="w-full h-full object-cover rounded-lg shadow-md"
+                  className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
               <div className="col-span-2">
                 <img 
                   src="/images/islands/kea/gallery-6.jpg" 
                   alt="Koundouros beach" 
-                  className="w-full h-full object-cover rounded-lg shadow-md"
+                  className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
             </div>
@@ -733,7 +733,7 @@ const KeaGuide: React.FC = () => {
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
                   <button 
                     onClick={() => navigate('/hotels/')}
-                    className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 shadow-sm"
+                    className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 dark:bg-cyan-600/10 shadow-sm"
                   >
                     Find Accommodations
                   </button>
@@ -761,3 +761,5 @@ const KeaGuide: React.FC = () => {
 };
 
 export default KeaGuide;
+
+

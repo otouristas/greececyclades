@@ -75,28 +75,28 @@ const IslandGuide: React.FC = () => {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 my-12">
             <div className="flex items-center space-x-4">
-              <Sun className="w-8 h-8 text-blue-500" />
+              <Sun className="w-8 h-8 text-cyan-600 dark:text-cyclades-turquoise" />
               <div>
                 <h3 className="font-semibold">Weather</h3>
                 <p>{island.weather.temp}, {island.weather.condition}</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <CalendarDays className="w-8 h-8 text-blue-500" />
+              <CalendarDays className="w-8 h-8 text-cyan-600 dark:text-cyclades-turquoise" />
               <div>
                 <h3 className="font-semibold">Best Time to Visit</h3>
                 <p>{island.bestTime.months.join(', ')} - {island.bestTime.reason}</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Users className="w-8 h-8 text-blue-500" />
+              <Users className="w-8 h-8 text-cyan-600 dark:text-cyclades-turquoise" />
               <div>
                 <h3 className="font-semibold">Perfect For</h3>
                 <p>{island.idealFor.join(', ')}</p>
               </div>
             </div>
             <div className="flex items-center space-x-4">
-              <Star className="w-8 h-8 text-blue-500" />
+              <Star className="w-8 h-8 text-cyan-600 dark:text-cyclades-turquoise" />
               <div>
                 <h3 className="font-semibold">Activities</h3>
                 <p>{island.activities}+ things to do</p>
@@ -106,12 +106,12 @@ const IslandGuide: React.FC = () => {
 
           {sections.map((section, index) => (
             <div key={index} className="mb-12">
-              <h2 className="text-3xl font-bold mb-6">{section.title}</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">{section.title}</h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {section.items.map((item, itemIndex) => (
                   <div key={itemIndex} className="bg-gray-50 p-6 rounded-lg">
                     <h3 className="text-xl font-semibold mb-2">{item.name}</h3>
-                    <p className="text-gray-600">{item.description}</p>
+                    <p className="text-gray-600 dark:text-white/60">{item.description}</p>
                   </div>
                 ))}
               </div>
@@ -119,7 +119,7 @@ const IslandGuide: React.FC = () => {
           ))}
 
           <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-6">Travel Tips</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Travel Tips</h2>
             <ul className="space-y-4">
               {travelTips.map((tip, index) => (
                 <li key={index} className="flex items-start space-x-3">
@@ -131,21 +131,21 @@ const IslandGuide: React.FC = () => {
           </div>
 
           <div className="mb-12">
-            <h2 className="text-3xl font-bold mb-6">Estimated Daily Costs</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Estimated Daily Costs</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-2">Budget</h3>
-                <p className="text-3xl font-bold text-blue-500">{costs.budget}</p>
+                <p className="text-3xl font-bold text-cyan-600 dark:text-cyclades-turquoise">{costs.budget}</p>
                 <p className="text-gray-600 mt-2">Hostels, local food, public transport</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-2">Mid-Range</h3>
-                <p className="text-3xl font-bold text-blue-500">{costs.midRange}</p>
+                <p className="text-3xl font-bold text-cyan-600 dark:text-cyclades-turquoise">{costs.midRange}</p>
                 <p className="text-gray-600 mt-2">Hotels, restaurants, some activities</p>
               </div>
               <div className="bg-gray-50 p-6 rounded-lg">
                 <h3 className="text-xl font-semibold mb-2">Luxury</h3>
-                <p className="text-3xl font-bold text-blue-500">{costs.luxury}</p>
+                <p className="text-3xl font-bold text-cyan-600 dark:text-cyclades-turquoise">{costs.luxury}</p>
                 <p className="text-gray-600 mt-2">Luxury resorts, fine dining, private tours</p>
               </div>
             </div>
@@ -157,3 +157,5 @@ const IslandGuide: React.FC = () => {
 };
 
 export default IslandGuide;
+
+

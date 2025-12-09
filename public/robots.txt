@@ -112,5 +112,8 @@ Disallow: /terms-of-service
 # Disallow legacy transportation URL
 Disallow: /transportation
 
+# LLMs.txt for AI crawlers
+# See: https://greececyclades.com/llms.txt
+
 # Allow main sitemap
 Sitemap: https://greececyclades.com/sitemap.xml

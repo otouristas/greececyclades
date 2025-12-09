@@ -17,6 +17,8 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
+import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
+import { siteLinks } from '../data/siteLinks';
 
 const IosGuide: React.FC = () => {
   const ios = islandGuides.find(island => island.id === 'ios');
@@ -26,8 +28,8 @@ const IosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Ios Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Ios vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities. From vibrant nightlife to pristine beaches and traditional villages.",
+    title: "Ios Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Ios vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities. From vibrant nightlife to pristine beaches and traditional villages.",
     keywords: [
       'Ios travel guide',
       'Ios beaches',
@@ -82,42 +84,42 @@ const IosGuide: React.FC = () => {
 
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry routes and travel options',
       link: '#transport',
       id: 'transport'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches and swimming spots',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaMapMarkedAlt className="text-blue-500" />,
+      icon: <FaMapMarkedAlt className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaWineGlass className="text-blue-500" />,
+      icon: <FaWineGlass className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Traditional delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -128,14 +130,14 @@ const IosGuide: React.FC = () => {
   return (
     <>
       <SEO {...seoData} />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...ios} />
         
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
-              <h2 className="text-3xl font-bold mb-6">Welcome to Ios</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Ios</h2>
               <p className="text-gray-700 leading-relaxed">
                 Ios, known as the party island of the Cyclades, offers much more than its vibrant nightlife. 
                 With its golden beaches, crystal-clear waters, and picturesque Cycladic architecture, Ios 
@@ -169,14 +171,14 @@ const IosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
                 <a 
                   key={index}
                   href={category.link} 
-                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
                     {category.icon}
@@ -189,46 +191,46 @@ const IosGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Ios</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Ios</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">High Season</h3>
-                <p className="text-gray-600">July to August</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Perfect beach weather</li>
                   <li>• Peak nightlife scene</li>
                   <li>• All facilities open</li>
                   <li>• Busiest and most vibrant</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">May-June, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Pleasant weather</li>
                   <li>• Fewer crowds</li>
                   <li>• Better rates</li>
                   <li>• Still lively atmosphere</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Spring</h3>
-                <p className="text-gray-600">April to May</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April to May</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Wildflowers blooming</li>
                   <li>• Mild temperatures</li>
                   <li>• Green landscapes</li>
                   <li>• Easter celebrations</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Water Temperature</h3>
-                <p className="text-gray-600">Best swimming months</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">Best swimming months</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• June: 22°C (72°F)</li>
                   <li>• July: 24°C (75°F)</li>
                   <li>• August: 25°C (77°F)</li>
@@ -240,9 +242,9 @@ const IosGuide: React.FC = () => {
           
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Charming Villages of Ios</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Charming Villages of Ios</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/ios/villages/chora.jpg" 
@@ -267,7 +269,7 @@ const IosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/ios/villages/ormos.jpg" 
@@ -292,7 +294,7 @@ const IosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/ios/villages/mylopotas.jpg" 
@@ -317,7 +319,7 @@ const IosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/ios/villages/koumbara.jpg" 
@@ -345,9 +347,9 @@ const IosGuide: React.FC = () => {
           
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beautiful Beaches of Ios</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beautiful Beaches of Ios</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/ios/beaches/mylopotas.jpg" 
@@ -372,7 +374,7 @@ const IosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/ios/beaches/manganari.jpg" 
@@ -397,7 +399,7 @@ const IosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/ios/beaches/koumbara.jpg" 
@@ -422,7 +424,7 @@ const IosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/ios/beaches/agia-theodoti.jpg" 
@@ -447,7 +449,7 @@ const IosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/ios/beaches/psathi.jpg" 
@@ -472,7 +474,7 @@ const IosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/ios/beaches/kalamos.jpg" 
@@ -502,14 +504,14 @@ const IosGuide: React.FC = () => {
 
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine & Dining</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine & Dining</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-start mb-4">
                   <FaGlassCheers className="text-3xl text-blue-500 mr-4 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Traditional Dishes</h3>
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li>
                         <span className="font-medium">Tsimetia</span> - Traditional Ios cheese pies made with local goat cheese, herbs, and honey
                       </li>
@@ -537,12 +539,12 @@ const IosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-start mb-4">
                   <FaWineGlass className="text-3xl text-blue-500 mr-4 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Local Products</h3>
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li>
                         <span className="font-medium">Skotiri</span> - Soft, creamy cheese unique to Ios, made from goat's milk
                       </li>
@@ -571,12 +573,12 @@ const IosGuide: React.FC = () => {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
               <h3 className="text-xl font-semibold mb-4">Where to Eat in Ios</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 <div className="border border-gray-200 rounded-lg p-4">
                   <h4 className="font-medium text-lg mb-2">Chora</h4>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li>• <span className="font-medium">Lord Byron Restaurant</span> - Traditional Greek cuisine with panoramic views</li>
                     <li>• <span className="font-medium">Grandma's</span> - Homestyle cooking in a cozy setting</li>
                     <li>• <span className="font-medium">The Nest</span> - Creative Mediterranean dishes with a modern twist</li>
@@ -584,7 +586,7 @@ const IosGuide: React.FC = () => {
                 </div>
                 <div className="border border-gray-200 rounded-lg p-4">
                   <h4 className="font-medium text-lg mb-2">Mylopotas Beach</h4>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li>• <span className="font-medium">Drakos Taverna</span> - Fresh seafood right on the beach</li>
                     <li>• <span className="font-medium">Salt</span> - Upscale dining with Mediterranean flavors</li>
                     <li>• <span className="font-medium">Free Beach Bar</span> - Casual dining and cocktails with beach views</li>
@@ -592,7 +594,7 @@ const IosGuide: React.FC = () => {
                 </div>
                 <div className="border border-gray-200 rounded-lg p-4">
                   <h4 className="font-medium text-lg mb-2">Port Area & Beyond</h4>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li>• <span className="font-medium">Octopus Tree</span> - Seafood specialties in the port area</li>
                     <li>• <span className="font-medium">Koumbara Restaurant</span> - Sunset dining at Koumbara Beach</li>
                     <li>• <span className="font-medium">Manganari Restaurant</span> - Simple taverna serving fresh food at Manganari Beach</li>
@@ -601,9 +603,9 @@ const IosGuide: React.FC = () => {
               </div>
             </div>
             
-            <div className="bg-blue-50 rounded-lg p-6">
+            <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-4">Dining Tips for Ios</h3>
-              <ul className="space-y-3 text-gray-700">
+              <ul className="space-y-3 text-gray-700 dark:text-white/80">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
                   <span>For the most authentic experience, look for tavernas frequented by locals, especially in Chora's back streets</span>
@@ -630,14 +632,14 @@ const IosGuide: React.FC = () => {
           
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in Ios</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Ios</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-start mb-4">
                   <FaSwimmer className="text-3xl text-blue-500 mr-4 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Water Activities</h3>
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li>
                         <span className="font-medium">Beach Hopping</span> - Explore the diverse beaches of Ios, from the popular Mylopotas to the secluded Manganari
                       </li>
@@ -665,12 +667,12 @@ const IosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md p-6">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-start mb-4">
                   <FaHiking className="text-3xl text-blue-500 mr-4 mt-1" />
                   <div>
                     <h3 className="text-xl font-semibold mb-2">Land Activities</h3>
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li>
                         <span className="font-medium">Hiking Trails</span> - Explore ancient paths connecting villages and beaches, with stunning views of the Aegean Sea
                       </li>
@@ -699,12 +701,12 @@ const IosGuide: React.FC = () => {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
               <h3 className="text-xl font-semibold mb-4">Unique Experiences in Ios</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="border border-gray-200 rounded-lg p-4">
                   <h4 className="font-medium text-lg mb-2">Cultural Experiences</h4>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li>• <span className="font-medium">Skarkos Archaeological Site</span> - One of the best-preserved prehistoric settlements in the Aegean</li>
                     <li>• <span className="font-medium">Traditional Festivals</span> - Experience local "panigiria" celebrations with music, dance, and food</li>
                     <li>• <span className="font-medium">Cooking Classes</span> - Learn to prepare traditional Cycladic dishes with local ingredients</li>
@@ -712,7 +714,7 @@ const IosGuide: React.FC = () => {
                 </div>
                 <div className="border border-gray-200 rounded-lg p-4">
                   <h4 className="font-medium text-lg mb-2">Nightlife & Entertainment</h4>
-                  <ul className="space-y-2 text-gray-600">
+                  <ul className="space-y-2 text-gray-600 dark:text-white/60">
                     <li>• <span className="font-medium">Beach Parties</span> - Join the famous beach parties at Mylopotas during summer</li>
                     <li>• <span className="font-medium">Bar Hopping in Chora</span> - Experience the legendary nightlife scene in the town center</li>
                     <li>• <span className="font-medium">Sunset Cocktails</span> - Enjoy signature cocktails with spectacular sunset views</li>
@@ -721,9 +723,9 @@ const IosGuide: React.FC = () => {
               </div>
             </div>
             
-            <div className="bg-blue-50 rounded-lg p-6">
+            <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6">
               <h3 className="text-xl font-semibold mb-4">Activity Tips</h3>
-              <ul className="space-y-3 text-gray-700">
+              <ul className="space-y-3 text-gray-700 dark:text-white/80">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
                   <span>Book water sports and boat tours in advance during high season (July-August)</span>
@@ -750,10 +752,10 @@ const IosGuide: React.FC = () => {
           
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Ios Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Ios Photo Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
-                <div key={index} className="rounded-lg overflow-hidden shadow-md">
+                <div key={index} className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <div className="aspect-w-4 aspect-h-3">
                     <img 
                       src={image.src} 
@@ -762,7 +764,7 @@ const IosGuide: React.FC = () => {
                     />
                   </div>
                   <div className="p-3 bg-white">
-                    <p className="text-sm text-gray-600">{image.alt}</p>
+                    <p className="text-sm text-gray-600 dark:text-white/60">{image.alt}</p>
                   </div>
                 </div>
               ))}
@@ -774,7 +776,7 @@ const IosGuide: React.FC = () => {
             <div className="container mx-auto px-6 py-12 text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Ios?</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Ios?</h2>
                   <p className="text-lg mb-6">
                     Book your accommodations, tours, and activities for an unforgettable Greek island getaway.
                     Ios offers the perfect blend of vibrant nightlife, stunning beaches, and authentic Greek hospitality.
@@ -808,6 +810,11 @@ const IosGuide: React.FC = () => {
             </div>
           </section>
           
+          <RelatedDestinationsSection groups={[
+            siteLinks.popularIslands,
+            siteLinks.topActivities,
+            siteLinks.travelServices
+          ]} />
         </div>
       </div>
     </>
@@ -815,3 +822,5 @@ const IosGuide: React.FC = () => {
 };
 
 export default IosGuide;
+
+

@@ -3,19 +3,19 @@
   <!-- Core Pages -->
   <url>
     <loc>https://greececyclades.com/</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/about</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/contact</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -23,59 +23,65 @@
   <!-- Main Sections -->
   <url>
     <loc>https://greececyclades.com/islands</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   
-  <!-- Touristas AI (Trip Planner replacement) -->
+  <!-- Touristas AI & Trip Planner -->
   <url>
     <loc>https://greececyclades.com/touristas-ai</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/touristas-ai/chat</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
-    <priority>0.8</priority>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://greececyclades.com/trip-planner</loc>
+    <lastmod>2025-12-09</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.9</priority>
   </url>
   
   <!-- Active Services -->
   <url>
     <loc>https://greececyclades.com/activities</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/hotels</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/ferry-tickets</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/rent-a-car</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/flights</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>daily</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/transfers</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -83,37 +89,37 @@
   <!-- Planning Tools Pages -->
   <url>
     <loc>https://greececyclades.com/weather</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/budget-calculator</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/greek-phrases</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/ferry-guide</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/resources</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/culinary</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -121,145 +127,145 @@
   <!-- Island Pages (only existing ones) -->
   <url>
     <loc>https://greececyclades.com/islands/santorini</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/mykonos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/naxos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/paros</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/milos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/ios</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/sifnos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/andros</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/syros</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/tinos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/serifos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/folegandros</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/amorgos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/koufonisia</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/antiparos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/kea</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/kythnos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/sikinos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/anafi</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/kimolos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/schinoussa</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/iraklia</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/donousa</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/islands/thirasia</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -267,151 +273,151 @@
   <!-- Guide Pages -->
   <url>
     <loc>https://greececyclades.com/guides</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/santorini</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/mykonos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/naxos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/paros</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/andros</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/sifnos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/ios</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/milos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/serifos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/folegandros</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/syros</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/koufonisia</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/amorgos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/iraklia</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/antiparos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/schinoussa</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/kea</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/kimolos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/kythnos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/sikinos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/anafi</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/tinos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/donousa</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/guides/thirasia</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
@@ -419,25 +425,25 @@
   <!-- Blog Pages -->
   <url>
     <loc>https://greececyclades.com/blog</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/blog/santorini-ultimate-guide</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/blog/best-cyclades-islands</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/blog/sifnos</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
@@ -448,19 +454,19 @@
   <!-- Authentication Pages -->
   <url>
     <loc>https://greececyclades.com/signin</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/signup</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/forgot-password</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -468,13 +474,13 @@
   <!-- Utility Pages -->
   <url>
     <loc>https://greececyclades.com/help</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/list-property</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
@@ -482,19 +488,19 @@
   <!-- Legal Pages -->
   <url>
     <loc>https://greececyclades.com/privacy</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/terms</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
     <loc>https://greececyclades.com/sitemap</loc>
-    <lastmod>2025-11-18</lastmod>
+    <lastmod>2025-12-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.4</priority>
   </url>

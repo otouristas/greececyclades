@@ -18,6 +18,8 @@ import {
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
+import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
+import { siteLinks } from '../data/siteLinks';
 
 const AndrosGuide: React.FC = () => {
   const andros = islandGuides.find(island => island.id === 'andros');
@@ -27,8 +29,8 @@ const AndrosGuide: React.FC = () => {
   }
 
   const seoData = {
-    title: "Andros Travel Guide 2025 - Best Places to Visit & Things to Do",
-    description: "Plan your perfect Andros vacation with our comprehensive 2025 travel guide. Discover the best hotels, restaurants, beaches, and activities on this beautiful Cycladic island.",
+    title: "Andros Travel Guide 2026 - Best Places to Visit & Things to Do",
+    description: "Plan your perfect Andros vacation with our comprehensive 2026 travel guide. Discover the best hotels, restaurants, beaches, and activities on this beautiful Cycladic island.",
     keywords: [
       'Andros travel guide',
       'Andros beaches',
@@ -48,42 +50,42 @@ const AndrosGuide: React.FC = () => {
   // Categories for Quick Navigation
   const categories = [
     {
-      icon: <FaShip className="text-blue-500" />,
+      icon: <FaShip className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'How to Get There?',
       description: 'Ferry and travel info',
       link: '#transportation',
       id: 'transportation'
     },
     {
-      icon: <FaUmbrellaBeach className="text-blue-500" />,
+      icon: <FaUmbrellaBeach className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Swim?',
       description: 'Best beaches',
       link: '#beaches',
       id: 'beaches'
     },
     {
-      icon: <FaRoute className="text-blue-500" />,
+      icon: <FaRoute className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'What to Do?',
       description: 'Activities and attractions',
       link: '#activities',
       id: 'activities'
     },
     {
-      icon: <FaUtensils className="text-blue-500" />,
+      icon: <FaUtensils className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Where to Eat & Drink?',
       description: 'Restaurants and bars',
       link: '#cuisine',
       id: 'cuisine'
     },
     {
-      icon: <FaHome className="text-blue-500" />,
+      icon: <FaHome className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'Local Products',
       description: 'Specialties and delicacies',
       link: '#products',
       id: 'products'
     },
     {
-      icon: <FaHistory className="text-blue-500" />,
+      icon: <FaHistory className="text-cyan-600 dark:text-cyclades-turquoise" />,
       title: 'History & Culture',
       description: 'Island heritage',
       link: '#history',
@@ -106,7 +108,7 @@ const AndrosGuide: React.FC = () => {
         <div className="container mx-auto px-4 py-12">
           {/* Introduction Section */}
           <div className="mb-16">
-            <h1 className="text-4xl font-bold mb-6">Andros Island Travel Guide</h1>
+            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-6">Andros Island Travel Guide</h1>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
                 <p className="text-lg leading-relaxed mb-6">
@@ -148,14 +150,14 @@ const AndrosGuide: React.FC = () => {
           </div>
 
           {/* Quick Navigation */}
-          <div className="bg-white rounded-lg shadow-md p-6 mb-8">
+          <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
                 <a 
                   key={index}
                   href={category.link} 
-                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
+                  className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
                     {category.icon}
@@ -168,46 +170,46 @@ const AndrosGuide: React.FC = () => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit Andros</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit Andros</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSun className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">High Season</h3>
-                <p className="text-gray-600">July to August</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">July to August</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Warm beach weather</li>
                   <li>• All facilities open</li>
                   <li>• Cultural festivals</li>
                   <li>• Busiest period</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
-                <p className="text-gray-600">May-June, September</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">May-June, September</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Mild temperatures</li>
                   <li>• Fewer tourists</li>
                   <li>• Better rates</li>
                   <li>• Ideal for hiking</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Spring</h3>
-                <p className="text-gray-600">April to May</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">April to May</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• Lush green landscapes</li>
                   <li>• Flowing streams</li>
                   <li>• Wildflowers blooming</li>
                   <li>• Easter celebrations</li>
                 </ul>
               </div>
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Water Temperature</h3>
-                <p className="text-gray-600">Best swimming months</p>
-                <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                <p className="text-gray-600 dark:text-white/60">Best swimming months</p>
+                <ul className="mt-4 space-y-2 text-sm text-gray-600 dark:text-white/60">
                   <li>• June: 21°C (70°F)</li>
                   <li>• July: 23°C (73°F)</li>
                   <li>• August: 24°C (75°F)</li>
@@ -219,9 +221,9 @@ const AndrosGuide: React.FC = () => {
 
           {/* Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Charming Villages of Andros</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Charming Villages of Andros</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/villages/chora.jpg" 
@@ -245,7 +247,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/villages/batsi.jpg" 
@@ -269,7 +271,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/villages/stenies.jpg" 
@@ -293,7 +295,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/villages/korthi.jpg" 
@@ -321,9 +323,9 @@ const AndrosGuide: React.FC = () => {
           
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Beautiful Beaches of Andros</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beautiful Beaches of Andros</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/beaches/golden-sand.jpg" 
@@ -347,7 +349,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/beaches/achla.jpg" 
@@ -371,7 +373,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/beaches/tis-grias.jpg" 
@@ -395,7 +397,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/beaches/zorkos.jpg" 
@@ -419,7 +421,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/beaches/fellos.jpg" 
@@ -443,7 +445,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/beaches/vitali.jpg" 
@@ -471,10 +473,10 @@ const AndrosGuide: React.FC = () => {
           
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Local Cuisine of Andros</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine of Andros</h2>
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
               <div className="lg:col-span-1">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden">
+                <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="aspect-w-1 aspect-h-1">
                     <img 
                       src="/images/islands/andros/cuisine/andros-food.jpg" 
@@ -510,7 +512,7 @@ const AndrosGuide: React.FC = () => {
             </div>
             
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaWineGlass className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Local Drinks</h3>
                 <p className="text-gray-600 mb-4">
@@ -523,7 +525,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaUtensils className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Seaside Tavernas</h3>
                 <p className="text-gray-600 mb-4">
@@ -536,7 +538,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white p-6 rounded-lg shadow-md">
+              <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaGlassCheers className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Dining in Chora</h3>
                 <p className="text-gray-600 mb-4">
@@ -553,9 +555,9 @@ const AndrosGuide: React.FC = () => {
           
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in Andros</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Andros</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/activities/hiking.jpg" 
@@ -582,7 +584,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/activities/water-sports.jpg" 
@@ -609,7 +611,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/activities/museums.jpg" 
@@ -636,7 +638,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/activities/monasteries.jpg" 
@@ -663,7 +665,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/activities/boat-tour.jpg" 
@@ -690,7 +692,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
                   <img 
                     src="/images/islands/andros/activities/springs.jpg" 
@@ -721,9 +723,9 @@ const AndrosGuide: React.FC = () => {
 
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Photo Gallery</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Photo Gallery</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md">
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src="/images/islands/andros/gallery/andros-chora.jpg" 
                   alt="Chora, Andros" 
@@ -734,7 +736,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md">
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src="/images/islands/andros/gallery/andros-batsi.jpg" 
                   alt="Batsi, Andros" 
@@ -745,7 +747,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md">
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src="/images/islands/andros/gallery/andros-achla-beach.jpg" 
                   alt="Achla Beach, Andros" 
@@ -756,7 +758,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md">
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src="/images/islands/andros/gallery/andros-tis-grias-to-pidima.jpg" 
                   alt="Tis Grias to Pidima, Andros" 
@@ -767,7 +769,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md">
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src="/images/islands/andros/gallery/andros-monastery.jpg" 
                   alt="Monastery, Andros" 
@@ -778,7 +780,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md">
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src="/images/islands/andros/gallery/andros-hiking.jpg" 
                   alt="Hiking Trail, Andros" 
@@ -789,7 +791,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md">
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src="/images/islands/andros/gallery/andros-waterfalls.jpg" 
                   alt="Waterfalls, Andros" 
@@ -800,7 +802,7 @@ const AndrosGuide: React.FC = () => {
                 </div>
               </div>
               
-              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md">
+              <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <img 
                   src="/images/islands/andros/gallery/andros-cuisine.jpg" 
                   alt="Local Cuisine, Andros" 
@@ -818,7 +820,7 @@ const AndrosGuide: React.FC = () => {
             <div className="container mx-auto px-6 py-12 text-white">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div className="p-8 md:p-12">
-                  <h2 className="text-3xl font-bold mb-4">Ready to Experience Andros?</h2>
+                  <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Andros?</h2>
                   <p className="text-lg mb-6">
                     Book your accommodations, tours, and activities for an unforgettable Greek island getaway.
                     Andros offers the perfect blend of natural beauty, rich history, and authentic Greek hospitality.
@@ -852,6 +854,12 @@ const AndrosGuide: React.FC = () => {
               </div>
             </div>
           </section>
+
+          <RelatedDestinationsSection groups={[
+            siteLinks.popularIslands,
+            siteLinks.topActivities,
+            siteLinks.travelServices
+          ]} />
         </div>
       </div>
     </>
@@ -859,3 +867,5 @@ const AndrosGuide: React.FC = () => {
 };
 
 export default AndrosGuide;
+
+

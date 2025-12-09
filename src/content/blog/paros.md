@@ -1,4 +1,4 @@
-# Paros 2025: Your Guide to the Cyclades' Best-Kept Secret
+# Paros 2026: Your Guide to the Cyclades' Best-Kept Secret
 
 Discover Paros, a hidden gem in the heart of the Cyclades that perfectly balances traditional Greek island life with modern amenities. From pristine beaches to charming villages, this comprehensive guide will help you explore everything this enchanting island has to offer.
 

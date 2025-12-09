@@ -3,7 +3,8 @@ import { Link } from 'react-router-dom';
 import { IconType } from 'react-icons';
 import SEO from '../SEO';
 import IslandGuideHero from './IslandGuideHero';
-import { Island } from '../../types/islands';
+import { Island } from '../../types/island';
+import { Star, Heart, ArrowRight, Utensils } from 'lucide-react';
 
 interface QuickLink {
   iconType: IconType;
@@ -76,41 +77,48 @@ const IslandGuideTemplate: React.FC<Props> = ({ island, content }) => {
       'Cyclades islands',
       'Greece travel'
     ],
-    ogImage: island.image,
-    ogType: 'article'
+    ogImage: island.heroImage || island.image,
+    ogType: 'article' as const
   };
 
   return (
     <>
       <SEO {...seoData} />
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero
-          id={island.id}
           name={island.name}
           description={island.description}
-          image={island.image}
-          bestTime={island.bestTime.reason}
-          idealFor={island.idealFor}
+          image={island.heroImage || island.image}
+          bestTime={island.bestTime?.description || 'May to October'}
+          idealFor={island.idealFor || ['All travelers']}
         />
-        
+
         {/* Introduction Section */}
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
-          <div className="prose prose-lg max-w-none mb-16">
-            <h2 className="text-3xl font-bold mb-6">Welcome to {island.name}</h2>
-            <p className="text-gray-700 leading-relaxed">{content.introduction.text1}</p>
-            <p className="text-gray-700 leading-relaxed">{content.introduction.text2}</p>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+          <div className="max-w-4xl mx-auto mb-16">
+            <div className="bg-white dark:bg-dark-card rounded-2xl p-8 shadow-lg border border-gray-100 dark:border-white/10">
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to {island.name}</h2>
+              <div className="space-y-4 text-gray-600 dark:text-white/70 leading-relaxed">
+                <p>{content.introduction.text1}</p>
+                <p>{content.introduction.text2}</p>
+              </div>
+            </div>
           </div>
 
           {/* Quick Navigation Cards */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-16">
             {content.quickLinks.map((link, index) => {
               const Icon = link.iconType;
               return (
-                <div key={index} className="p-6 bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow">
-                  <Icon className="text-3xl text-blue-500 mb-4" />
-                  <h3 className="text-xl font-semibold mb-2">{link.title}</h3>
-                  <p className="text-gray-600 mb-4">{link.description}</p>
-                  <Link to={link.link} className="text-blue-500 hover:text-blue-600">Learn more →</Link>
+                <div key={index} className="group bg-white dark:bg-dark-card rounded-2xl p-6 shadow-lg border border-gray-100 dark:border-white/10 hover:shadow-xl hover:border-cyan-600/30 dark:hover:border-cyclades-turquoise/30 transition-all">
+                  <div className="w-12 h-12 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise rounded-xl flex items-center justify-center mb-4">
+                    <Icon className="text-2xl text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{link.title}</h3>
+                  <p className="text-gray-600 dark:text-white/60 mb-4">{link.description}</p>
+                  <Link to={link.link} className="inline-flex items-center text-cyan-600 dark:text-cyclades-turquoise font-medium hover:gap-2 transition-all">
+                    Learn more <ArrowRight className="ml-1 w-4 h-4" />
+                  </Link>
                 </div>
               );
             })}
@@ -118,18 +126,23 @@ const IslandGuideTemplate: React.FC<Props> = ({ island, content }) => {
 
           {/* When to Visit Section */}
           <section id="when-to-visit" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">When to Visit {island.name}</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">When to Visit {island.name}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
               {content.whenToVisit.map((period, index) => {
                 const Icon = period.iconType;
                 return (
-                  <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                    <Icon className="text-3xl text-blue-500 mb-4" />
-                    <h3 className="font-semibold text-xl mb-2">{period.title}</h3>
-                    <p className="text-gray-600">{period.period}</p>
-                    <ul className="mt-4 space-y-2 text-sm text-gray-600">
+                  <div key={index} className="bg-white dark:bg-dark-card p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-white/10">
+                    <div className="w-12 h-12 bg-cyan-600/10 dark:bg-cyclades-turquoise/20 rounded-xl flex items-center justify-center mb-4">
+                      <Icon className="text-2xl text-cyan-600 dark:text-cyclades-turquoise" />
+                    </div>
+                    <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-2">{period.title}</h3>
+                    <p className="text-cyan-600 dark:text-cyclades-turquoise font-medium mb-4">{period.period}</p>
+                    <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
                       {period.bullets.map((bullet, idx) => (
-                        <li key={idx}>• {bullet}</li>
+                        <li key={idx} className="flex items-center gap-2">
+                          <span className="w-1.5 h-1.5 rounded-full bg-cyclades-turquoise" />
+                          {bullet}
+                        </li>
                       ))}
                     </ul>
                   </div>
@@ -140,21 +153,27 @@ const IslandGuideTemplate: React.FC<Props> = ({ island, content }) => {
 
           {/* Must-Visit Villages Section */}
           <section id="villages" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Must-Visit Villages</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Must-Visit Villages</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {content.villages.map((village, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                  <img 
-                    src={`https://source.unsplash.com/1600x900/?${village.imageQuery}`}
-                    alt={`${village.name} Village`}
-                    className="w-full h-48 object-cover"
-                  />
+                <div key={index} className="group bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-white/10 hover:shadow-xl transition-all">
+                  <div className="relative h-56 overflow-hidden">
+                    <img
+                      src={`https://source.unsplash.com/1600x900/?${village.imageQuery}`}
+                      alt={`${village.name} Village`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
+                    <h3 className="absolute bottom-4 left-6 text-2xl font-bold text-white">{village.name}</h3>
+                  </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{village.name}</h3>
-                    <p className="text-gray-600 mb-4">{village.description}</p>
-                    <ul className="space-y-2 text-sm text-gray-600">
+                    <p className="text-gray-600 dark:text-white/70 mb-4">{village.description}</p>
+                    <ul className="space-y-2">
                       {village.highlights.map((highlight, idx) => (
-                        <li key={idx}>• {highlight}</li>
+                        <li key={idx} className="flex items-center gap-2 text-sm text-gray-600 dark:text-white/60">
+                          <Star className="w-4 h-4 text-yellow-500" />
+                          {highlight}
+                        </li>
                       ))}
                     </ul>
                   </div>
@@ -165,14 +184,17 @@ const IslandGuideTemplate: React.FC<Props> = ({ island, content }) => {
 
           {/* Activities Section */}
           <section id="activities" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Things to Do in {island.name}</h2>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in {island.name}</h2>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               {content.activities.map((activity, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold mb-4">{activity.title}</h3>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                <div key={index} className="bg-white dark:bg-dark-card p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-white/10">
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{activity.title}</h3>
+                  <ul className="space-y-3">
                     {activity.items.map((item, idx) => (
-                      <li key={idx}>• {item}</li>
+                      <li key={idx} className="flex items-center gap-3 text-gray-600 dark:text-white/60">
+                        <div className="w-2 h-2 rounded-full bg-cyclades-turquoise" />
+                        {item}
+                      </li>
                     ))}
                   </ul>
                 </div>
@@ -182,23 +204,30 @@ const IslandGuideTemplate: React.FC<Props> = ({ island, content }) => {
 
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Best Beaches in {island.name}</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Best Beaches in {island.name}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {content.beaches.map((beach, index) => (
-                <div key={index} className="bg-white rounded-lg shadow-md overflow-hidden">
-                  <img 
-                    src={`https://source.unsplash.com/1600x900/?${beach.imageQuery}`}
-                    alt={`${beach.name} Beach`}
-                    className="w-full h-48 object-cover"
-                  />
+                <div key={index} className="group bg-white dark:bg-dark-card rounded-2xl shadow-lg overflow-hidden border border-gray-100 dark:border-white/10">
+                  <div className="relative h-48 overflow-hidden">
+                    <img
+                      src={`https://source.unsplash.com/1600x900/?${beach.imageQuery}`}
+                      alt={`${beach.name} Beach`}
+                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                    />
+                    <div className="absolute top-4 right-4 bg-white/90 dark:bg-dark-card/90 backdrop-blur-sm px-3 py-1 rounded-full">
+                      <span className="text-xs font-medium text-cyan-600 dark:text-cyclades-turquoise">Beach</span>
+                    </div>
+                  </div>
                   <div className="p-6">
-                    <h3 className="text-xl font-semibold mb-2">{beach.name}</h3>
-                    <p className="text-gray-600 mb-4">{beach.description}</p>
-                    <ul className="space-y-2 text-sm text-gray-600">
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">{beach.name}</h3>
+                    <p className="text-gray-600 dark:text-white/60 mb-4 text-sm">{beach.description}</p>
+                    <div className="flex flex-wrap gap-2">
                       {beach.highlights.map((highlight, idx) => (
-                        <li key={idx}>• {highlight}</li>
+                        <span key={idx} className="text-xs bg-cyan-600/10 dark:bg-cyclades-turquoise/20 text-cyan-600 dark:text-cyclades-turquoise px-3 py-1 rounded-full">
+                          {highlight}
+                        </span>
                       ))}
-                    </ul>
+                    </div>
                   </div>
                 </div>
               ))}
@@ -207,20 +236,47 @@ const IslandGuideTemplate: React.FC<Props> = ({ island, content }) => {
 
           {/* Dining Section */}
           <section id="dining" className="mb-16">
-            <h2 className="text-3xl font-bold mb-8">Where to Eat in {island.name}</h2>
+            <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Where to Eat in {island.name}</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               {content.dining.map((dining, index) => (
-                <div key={index} className="bg-white p-6 rounded-lg shadow-md">
-                  <h3 className="text-xl font-semibold mb-2">{dining.name}</h3>
-                  <p className="text-gray-600 mb-4">{dining.description}</p>
-                  <h4 className="font-medium mb-2">What to Try:</h4>
-                  <ul className="space-y-2 text-sm text-gray-600">
+                <div key={index} className="bg-white dark:bg-dark-card p-6 rounded-2xl shadow-lg border border-gray-100 dark:border-white/10">
+                  <div className="flex items-center gap-3 mb-4">
+                    <div className="w-10 h-10 bg-cyan-600/10 dark:bg-cyclades-turquoise/20 rounded-xl flex items-center justify-center">
+                      <Utensils className="w-5 h-5 text-cyan-600 dark:text-cyclades-turquoise" />
+                    </div>
+                    <h3 className="text-xl font-bold text-gray-900 dark:text-white">{dining.name}</h3>
+                  </div>
+                  <p className="text-gray-600 dark:text-white/60 mb-4">{dining.description}</p>
+                  <h4 className="font-medium text-gray-900 dark:text-white mb-3">What to Try:</h4>
+                  <ul className="space-y-2">
                     {dining.recommendations.map((rec, idx) => (
-                      <li key={idx}>• {rec}</li>
+                      <li key={idx} className="flex items-center gap-2 text-sm text-gray-600 dark:text-white/60">
+                        <Heart className="w-4 h-4 text-red-400" />
+                        {rec}
+                      </li>
                     ))}
                   </ul>
                 </div>
               ))}
+            </div>
+          </section>
+
+          {/* CTA Section */}
+          <section className="bg-gradient-to-br from-cyan-600 to-cyclades-turquoise rounded-2xl p-8 md:p-12 text-white text-center">
+            <h2 className="text-3xl font-bold mb-4">Ready to Explore {island.name}?</h2>
+            <p className="text-white/90 mb-8 max-w-2xl mx-auto">
+              Start planning your perfect trip with our booking tools and travel guides.
+            </p>
+            <div className="flex flex-wrap justify-center gap-4">
+              <Link to="/hotels" className="inline-flex items-center px-6 py-3 bg-white text-cyan-600 rounded-xl font-semibold hover:bg-white/90 transition-colors">
+                Find Hotels
+              </Link>
+              <Link to="/ferry-tickets" className="inline-flex items-center px-6 py-3 bg-white/20 text-white border border-white/30 rounded-xl font-semibold hover:bg-white/30 transition-colors">
+                Book Ferry
+              </Link>
+              <Link to="/activities" className="inline-flex items-center px-6 py-3 bg-white/20 text-white border border-white/30 rounded-xl font-semibold hover:bg-white/30 transition-colors">
+                View Activities
+              </Link>
             </div>
           </section>
         </div>
@@ -230,3 +286,4 @@ const IslandGuideTemplate: React.FC<Props> = ({ island, content }) => {
 };
 
 export default IslandGuideTemplate;
+

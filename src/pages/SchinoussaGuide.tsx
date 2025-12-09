@@ -52,7 +52,7 @@ export default function SchinoussaGuide() {
                   with over 15 beautiful beaches. Its two main settlements, Chora (the main village) and Messaria, 
                   preserve the traditional Cycladic architecture and way of life.
                 </p>
-                <p className="text-lg text-gray-600">
+                <p className="text-lg text-gray-600 dark:text-white/60">
                   Whether you're seeking peaceful relaxation, hiking adventures, or an authentic taste of 
                   Greek island life, Schinoussa offers a genuine experience far from mass tourism. 
                   The island's slow pace and friendly locals create an atmosphere that invites visitors 
@@ -61,14 +61,14 @@ export default function SchinoussaGuide() {
               </div>
               
               <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-lg overflow-hidden shadow-md">
+                <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <img 
                     src="/images/islands/schinoussa/village-view.jpg" 
                     alt="Schinoussa village view" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="rounded-lg overflow-hidden shadow-md">
+                <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <img 
                     src="/images/islands/schinoussa/beach-cove.jpg" 
                     alt="Beautiful beach cove in Schinoussa" 
@@ -91,7 +91,7 @@ export default function SchinoussaGuide() {
         <section className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">When to Visit</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">When to Visit</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 Schinoussa enjoys a typical Mediterranean climate with mild winters and warm, dry summers.
               </p>
@@ -99,39 +99,39 @@ export default function SchinoussaGuide() {
             
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
-                <div className="bg-blue-50 rounded-lg p-6 mb-6">
+                <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6 mb-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">Best Time to Visit</h3>
                   <p className="text-gray-600 mb-4">
                     The ideal time to visit Schinoussa is from late May to early October when the weather is warm 
                     and perfect for swimming and outdoor activities. July and August are the busiest months, 
                     though even then, Schinoussa remains relatively quiet compared to larger Cycladic islands.
                   </p>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-white/60">
                     For those seeking complete tranquility and a more authentic experience, consider visiting in 
                     May, June, or September when the weather is still pleasant but with fewer visitors.
                   </p>
                 </div>
                 
                 <div className="grid grid-cols-2 gap-4">
-                  <div className="bg-white rounded-lg shadow-md p-4">
+                  <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
                     <h4 className="font-semibold text-gray-900 mb-2">Summer (June-August)</h4>
                     <p className="text-gray-600 text-sm">
                       {schinoussa.weather.summer}. Perfect for beach activities and swimming.
                     </p>
                   </div>
-                  <div className="bg-white rounded-lg shadow-md p-4">
+                  <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
                     <h4 className="font-semibold text-gray-900 mb-2">Autumn (Sept-Nov)</h4>
                     <p className="text-gray-600 text-sm">
                       {schinoussa.weather.autumn}. Great for hiking and exploring.
                     </p>
                   </div>
-                  <div className="bg-white rounded-lg shadow-md p-4">
+                  <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
                     <h4 className="font-semibold text-gray-900 mb-2">Winter (Dec-Feb)</h4>
                     <p className="text-gray-600 text-sm">
                       {schinoussa.weather.winter}. Quiet season with limited services.
                     </p>
                   </div>
-                  <div className="bg-white rounded-lg shadow-md p-4">
+                  <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-4">
                     <h4 className="font-semibold text-gray-900 mb-2">Spring (Mar-May)</h4>
                     <p className="text-gray-600 text-sm">
                       {schinoussa.weather.spring}. Beautiful wildflowers and mild temperatures.
@@ -146,28 +146,28 @@ export default function SchinoussaGuide() {
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
-                      <strong className="text-gray-900">Panigiri Festival (July-August):</strong> Experience 
+                      <strong className="text-gray-900 dark:text-white">Panigiri Festival (July-August):</strong> Experience 
                       traditional Greek celebrations with music, dancing, and local food during the summer months.
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
-                      <strong className="text-gray-900">Easter Celebrations:</strong> If you visit during Greek Orthodox 
+                      <strong className="text-gray-900 dark:text-white">Easter Celebrations:</strong> If you visit during Greek Orthodox 
                       Easter, you'll witness authentic religious traditions and community celebrations.
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
-                      <strong className="text-gray-900">Spring Wildflowers (April-May):</strong> The island becomes 
+                      <strong className="text-gray-900 dark:text-white">Spring Wildflowers (April-May):</strong> The island becomes 
                       carpeted with colorful wildflowers, creating stunning landscapes for hiking and photography.
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
-                      <strong className="text-gray-900">Harvest Season (September-October):</strong> Witness local 
+                      <strong className="text-gray-900 dark:text-white">Harvest Season (September-October):</strong> Witness local 
                       agricultural activities as residents harvest grapes, figs, and other produce.
                     </div>
                   </li>
@@ -175,7 +175,7 @@ export default function SchinoussaGuide() {
                 
                 <div className="mt-8 bg-yellow-50 rounded-lg p-6">
                   <h4 className="font-semibold text-gray-900 mb-2">Traveler's Tip</h4>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-white/60">
                     Ferry connections to Schinoussa are less frequent during the off-season (November to April). 
                     If planning a visit during these months, check ferry schedules carefully and consider potential 
                     weather disruptions. Many businesses, including restaurants and accommodations, may have limited 
@@ -191,14 +191,14 @@ export default function SchinoussaGuide() {
         <section id="beaches" className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">Beautiful Beaches</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Beautiful Beaches</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 Schinoussa boasts over 15 pristine beaches with crystal-clear waters and unique characteristics.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/tsigouri-beach.jpg" 
                   alt="Tsigouri Beach" 
@@ -219,7 +219,7 @@ export default function SchinoussaGuide() {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/lioliou-beach.jpg" 
                   alt="Lioliou Beach" 
@@ -240,7 +240,7 @@ export default function SchinoussaGuide() {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/almyros-beach.jpg" 
                   alt="Almyros Beach" 
@@ -261,7 +261,7 @@ export default function SchinoussaGuide() {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/psili-ammos-beach.jpg" 
                   alt="Psili Ammos Beach" 
@@ -282,7 +282,7 @@ export default function SchinoussaGuide() {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/fidou-beach.jpg" 
                   alt="Fidou Beach" 
@@ -303,7 +303,7 @@ export default function SchinoussaGuide() {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/gerolimnionas-beach.jpg" 
                   alt="Gerolimnionas Beach" 
@@ -325,9 +325,9 @@ export default function SchinoussaGuide() {
               </div>
             </div>
             
-            <div className="mt-12 bg-blue-50 rounded-lg p-6">
+            <div className="mt-12 bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Beach Tips</h3>
-              <ul className="space-y-2 text-gray-600">
+              <ul className="space-y-2 text-gray-600 dark:text-white/60">
                 <li className="flex items-start">
                   <span className="text-blue-500 mr-2">•</span>
                   <span>Most beaches on Schinoussa are unorganized, so bring water, snacks, and sun protection.</span>
@@ -353,14 +353,14 @@ export default function SchinoussaGuide() {
         <section id="activities" className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">Things to Do</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Things to Do</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 Beyond its beautiful beaches, Schinoussa offers a variety of activities to enjoy the island's natural beauty and authentic culture.
               </p>
             </div>
             
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/hiking.jpg" 
                   alt="Hiking in Schinoussa" 
@@ -368,7 +368,7 @@ export default function SchinoussaGuide() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Hiking Trails</h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-white/60">
                     Explore Schinoussa's natural beauty on foot through a network of walking paths that connect 
                     villages, beaches, and viewpoints. The island's small size makes it perfect for hiking, with 
                     most trails offering stunning sea views. Don't miss the path from Chora to Messaria and the 
@@ -377,7 +377,7 @@ export default function SchinoussaGuide() {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/village-exploration.jpg" 
                   alt="Village Exploration" 
@@ -385,7 +385,7 @@ export default function SchinoussaGuide() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Village Exploration</h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-white/60">
                     Wander through Chora, the main village, with its whitewashed houses, narrow alleys, and 
                     blue-domed churches. Visit the small folklore museum to learn about local traditions and 
                     history. Don't miss Messaria, the island's second settlement, for an authentic glimpse of 
@@ -394,7 +394,7 @@ export default function SchinoussaGuide() {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/boat-tour.jpg" 
                   alt="Boat Tours" 
@@ -402,7 +402,7 @@ export default function SchinoussaGuide() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Boat Tours</h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-white/60">
                     Join a boat tour to explore Schinoussa's coastline and visit secluded beaches inaccessible by 
                     land. Many tours also include visits to neighboring Small Cyclades islands like Koufonisia, 
                     Iraklia, and Donoussa. These excursions offer opportunities for swimming in crystal-clear waters 
@@ -411,7 +411,7 @@ export default function SchinoussaGuide() {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/snorkeling.jpg" 
                   alt="Snorkeling and Swimming" 
@@ -419,7 +419,7 @@ export default function SchinoussaGuide() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Snorkeling and Swimming</h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-white/60">
                     The pristine waters around Schinoussa are perfect for snorkeling, with excellent visibility and 
                     diverse marine life. Bring your own equipment and explore the underwater world at beaches like 
                     Fidou and Gerolimnionas. The calm, clear waters also make swimming a delight at any of the 
@@ -428,7 +428,7 @@ export default function SchinoussaGuide() {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/local-products.jpg" 
                   alt="Local Products" 
@@ -436,7 +436,7 @@ export default function SchinoussaGuide() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Local Products</h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-white/60">
                     Sample and purchase authentic local products including thyme honey, goat cheese, herbs, and 
                     homemade preserves. Visit the small farms and meet local producers who maintain traditional 
                     methods. These products make excellent souvenirs and offer a taste of Schinoussa's culinary 
@@ -445,7 +445,7 @@ export default function SchinoussaGuide() {
                 </div>
               </div>
               
-              <div className="bg-white rounded-lg shadow-md overflow-hidden">
+              <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <img 
                   src="/images/islands/schinoussa/stargazing.jpg" 
                   alt="Stargazing" 
@@ -453,7 +453,7 @@ export default function SchinoussaGuide() {
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 mb-2">Stargazing</h3>
-                  <p className="text-gray-600">
+                  <p className="text-gray-600 dark:text-white/60">
                     Experience the magic of Schinoussa's night sky, unpolluted by artificial light. The island's 
                     remote location and minimal light pollution create perfect conditions for stargazing. Find a 
                     comfortable spot on one of the beaches or hilltops and witness the Milky Way and countless 
@@ -469,7 +469,7 @@ export default function SchinoussaGuide() {
         <section id="cuisine" className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">Cuisine & Dining</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Cuisine & Dining</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 Discover the authentic flavors of Schinoussa through its traditional cuisine and local products.
               </p>
@@ -478,55 +478,55 @@ export default function SchinoussaGuide() {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center mb-12">
               <div>
                 <h3 className="text-2xl font-semibold text-gray-900 mb-4">Local Specialties</h3>
-                <ul className="space-y-4 text-gray-600">
+                <ul className="space-y-4 text-gray-600 dark:text-white/60">
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
-                      <strong className="text-gray-900">Fresh Seafood:</strong> As a small island with a fishing tradition, Schinoussa offers excellent fresh seafood including octopus, squid, and a variety of fish caught daily by local fishermen.
+                      <strong className="text-gray-900 dark:text-white">Fresh Seafood:</strong> As a small island with a fishing tradition, Schinoussa offers excellent fresh seafood including octopus, squid, and a variety of fish caught daily by local fishermen.
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
-                      <strong className="text-gray-900">Xirotiri:</strong> A local hard cheese made from goat's milk, aged and preserved in olive oil. It has a distinctive tangy flavor and is often served as a meze or grated over pasta.
+                      <strong className="text-gray-900 dark:text-white">Xirotiri:</strong> A local hard cheese made from goat's milk, aged and preserved in olive oil. It has a distinctive tangy flavor and is often served as a meze or grated over pasta.
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
-                      <strong className="text-gray-900">Chickpea Balls:</strong> A traditional dish made from ground chickpeas mixed with herbs and spices, shaped into balls and fried. A delicious vegetarian option often served with yogurt sauce.
+                      <strong className="text-gray-900 dark:text-white">Chickpea Balls:</strong> A traditional dish made from ground chickpeas mixed with herbs and spices, shaped into balls and fried. A delicious vegetarian option often served with yogurt sauce.
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
-                      <strong className="text-gray-900">Thyme Honey:</strong> The island produces excellent honey with a distinctive flavor from the abundant wild thyme that grows on its hills.
+                      <strong className="text-gray-900 dark:text-white">Thyme Honey:</strong> The island produces excellent honey with a distinctive flavor from the abundant wild thyme that grows on its hills.
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
-                      <strong className="text-gray-900">Marathotiganites:</strong> Fennel fritters made with fresh fennel, herbs, and flour, then fried to golden perfection. A unique local appetizer.
+                      <strong className="text-gray-900 dark:text-white">Marathotiganites:</strong> Fennel fritters made with fresh fennel, herbs, and flour, then fried to golden perfection. A unique local appetizer.
                     </div>
                   </li>
                   <li className="flex items-start">
                     <span className="text-blue-500 mr-2">•</span>
                     <div>
-                      <strong className="text-gray-900">Pasteli:</strong> A traditional sweet made from sesame seeds and honey, formed into bars. The perfect natural energy snack for hiking or beach days.
+                      <strong className="text-gray-900 dark:text-white">Pasteli:</strong> A traditional sweet made from sesame seeds and honey, formed into bars. The perfect natural energy snack for hiking or beach days.
                     </div>
                   </li>
                 </ul>
               </div>
               
               <div className="grid grid-cols-2 gap-4">
-                <div className="rounded-lg overflow-hidden shadow-md">
+                <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <img 
                     src="/images/islands/schinoussa/seafood-dish.jpg" 
                     alt="Fresh seafood dish" 
                     className="w-full h-full object-cover"
                   />
                 </div>
-                <div className="rounded-lg overflow-hidden shadow-md">
+                <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <img 
                     src="/images/islands/schinoussa/local-cheese.jpg" 
                     alt="Local cheese and honey" 
@@ -543,7 +543,7 @@ export default function SchinoussaGuide() {
               </div>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-8">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Where to Eat & Drink</h3>
                 
@@ -555,7 +555,7 @@ export default function SchinoussaGuide() {
                       on local ingredients. Most are located in Chora and offer homestyle cooking in a relaxed 
                       atmosphere. Try "Deli Restaurant" or "Nikolas Taverna" for excellent traditional dishes.
                     </p>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-white/60">
                       Don't miss the opportunity to try the catch of the day, always fresh and simply prepared 
                       with olive oil, lemon, and herbs.
                     </p>
@@ -568,7 +568,7 @@ export default function SchinoussaGuide() {
                       These establishments often double as mini-markets where you can purchase snacks and supplies 
                       for beach picnics.
                     </p>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-white/60">
                       In the afternoon, enjoy a refreshing frappe (iced coffee) or fresh fruit juice while watching 
                       island life unfold around you.
                     </p>
@@ -581,7 +581,7 @@ export default function SchinoussaGuide() {
                       honey, and preserves. These visits provide insight into traditional agricultural practices 
                       and the opportunity to purchase authentic products directly from producers.
                     </p>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-white/60">
                       Ask at your accommodation for recommendations on which farms are currently open to visitors.
                     </p>
                   </div>
@@ -593,7 +593,7 @@ export default function SchinoussaGuide() {
                       local wines, ouzo, or creative cocktails while chatting with locals and fellow travelers 
                       in a friendly, relaxed atmosphere.
                     </p>
-                    <p className="text-gray-600">
+                    <p className="text-gray-600 dark:text-white/60">
                       "Schinoussa Bar" offers a good selection of drinks and occasional live music during the 
                       summer months.
                     </p>
@@ -608,7 +608,7 @@ export default function SchinoussaGuide() {
         <section id="gallery" className="bg-white py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">Photo Gallery</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">Photo Gallery</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 Explore the beauty of Schinoussa through our collection of stunning photographs.
               </p>
@@ -637,18 +637,18 @@ export default function SchinoussaGuide() {
         <section id="transport" className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl font-bold text-gray-900">How to Get to Schinoussa</h2>
+              <h2 className="text-3xl font-bold text-gray-900 dark:text-white">How to Get to Schinoussa</h2>
               <p className="mt-4 text-lg text-gray-600 max-w-3xl mx-auto">
                 Schinoussa is accessible by ferry from Athens and neighboring Cycladic islands.
               </p>
             </div>
             
-            <div className="bg-white rounded-lg shadow-md overflow-hidden">
+            <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-8">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-4">By Ferry</h3>
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <span><strong>From Athens (Piraeus):</strong> Regular ferry connections operate from the port of Piraeus, taking approximately 5-8 hours depending on the type of vessel and route.</span>
@@ -670,7 +670,7 @@ export default function SchinoussaGuide() {
                   
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-4">Getting Around</h3>
-                    <ul className="space-y-3 text-gray-600">
+                    <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <span><strong>On Foot:</strong> Schinoussa is small enough to explore entirely on foot. The main village (Chora) is just a short walk from the port, and most beaches are accessible via walking paths.</span>
@@ -706,7 +706,7 @@ export default function SchinoussaGuide() {
                   authentic village life, and the tranquility of unspoiled nature await you on this enchanting island.
                 </p>
                 
-                <div className="bg-blue-500 bg-opacity-30 rounded-lg p-4 mb-8 inline-block">
+                <div className="bg-blue-50 dark:bg-cyan-600/100 bg-opacity-30 rounded-lg p-4 mb-8 inline-block">
                   <span className="text-white font-medium">
                     Best time to visit: {schinoussa.bestTime}
                   </span>
@@ -743,3 +743,5 @@ export default function SchinoussaGuide() {
     </>
   );
 }
+
+

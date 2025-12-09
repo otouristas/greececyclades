@@ -6,6 +6,7 @@ import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import "react-datepicker/dist/react-datepicker.css";
 import TransferRouteCard from '../components/TransferRouteCard';
+import { useTheme } from '../contexts/ThemeContext';
 
 const locations = [
   'Athens International Airport (ATH)',
@@ -86,6 +87,8 @@ export default function Transfers() {
     passengers: 2,
     luggage: 2
   });
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -93,7 +96,7 @@ export default function Transfers() {
   };
 
   return (
-    <div className="min-h-screen bg-white">
+    <div className={`min-h-screen ${isDark ? 'bg-dark-bg' : 'bg-white'}`}>
       <SEO 
         title="Greece Cyclades Transfer Booking"
         description="Book your ride to and from the airport, port or any destination, in just a few steps!Get Ready for Cyclades!"
@@ -126,8 +129,8 @@ export default function Transfers() {
 
             {/* Booking Form - Sticky on right */}
             <div className="w-full lg:w-[360px] sticky top-24">
-              <div className="bg-white rounded-lg shadow-xl p-6">
-                <h3 className="text-xl font-semibold text-gray-900 mb-6">Book a transfer</h3>
+              <div className={`rounded-2xl shadow-xl p-6 ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white'}`}>
+                <h3 className={`text-xl font-semibold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>Book a transfer</h3>
                 <form onSubmit={handleSubmit} className="space-y-6">
                   {/* From */}
                   <div className="mb-4">
@@ -135,7 +138,7 @@ export default function Transfers() {
                       <select
                         value={form.from}
                         onChange={(e) => setForm({ ...form, from: e.target.value })}
-                        className="w-full h-12 pl-10 pr-10 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none"
+                        className={`w-full h-12 pl-10 pr-10 rounded-xl border focus:ring-2 focus:ring-cyclades-turquoise focus:border-transparent appearance-none ${isDark ? 'bg-dark-bg border-dark-border text-white' : 'border-gray-300 text-gray-700'}`}
                       >
                         {locations.map((location) => (
                           <option key={location} value={location}>
@@ -154,7 +157,7 @@ export default function Transfers() {
                       <select
                         value={form.to}
                         onChange={(e) => setForm({ ...form, to: e.target.value })}
-                        className="w-full h-12 pl-10 pr-10 rounded border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 text-gray-700 appearance-none"
+                        className={`w-full h-12 pl-10 pr-10 rounded-xl border focus:ring-2 focus:ring-cyclades-turquoise focus:border-transparent appearance-none ${isDark ? 'bg-dark-bg border-dark-border text-white' : 'border-gray-300 text-gray-700'}`}
                       >
                         {locations.map((location) => (
                           <option key={location} value={location}>
@@ -170,7 +173,7 @@ export default function Transfers() {
                   {/* Date and Time */}
                   <div className="grid grid-cols-2 gap-4 mb-4">
                     <div>
-                      <label className="block text-sm font-medium text-gray-600 mb-2">
+                      <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
                         Pick Up Date
                       </label>
                       <div className="relative">
@@ -186,7 +189,7 @@ export default function Transfers() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-600 mb-2">
+                      <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
                         Time
                       </label>
                       <div className="relative">
@@ -213,7 +216,7 @@ export default function Transfers() {
                   {/* Passengers and Luggage */}
                   <div className="grid grid-cols-2 gap-4 mb-6">
                     <div>
-                      <label className="block text-sm font-medium text-gray-600 mb-2">
+                      <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
                         Passengers
                       </label>
                       <div className="flex items-center border rounded border-gray-300 h-12">
@@ -241,7 +244,7 @@ export default function Transfers() {
                     </div>
 
                     <div>
-                      <label className="block text-sm font-medium text-gray-600 mb-2">
+                      <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
                         Luggage Pieces
                       </label>
                       <div className="flex items-center border rounded border-gray-300 h-12">
@@ -271,7 +274,7 @@ export default function Transfers() {
 
                   <button
                     type="submit"
-                    className="w-full bg-blue-600 text-white h-12 rounded font-medium hover:bg-blue-700 transition-colors"
+                    className="w-full bg-cyclades-turquoise text-dark-bg h-12 rounded-xl font-semibold hover:bg-cyclades-turquoise/90 transition-colors"
                   >
                     Continue
                   </button>
@@ -290,36 +293,36 @@ export default function Transfers() {
       </div>
 
       {/* How it Works Section */}
-      <div className="bg-gray-50 py-16">
+      <div className={`py-16 ${isDark ? 'bg-dark-card' : 'bg-gray-50'}`}>
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">
+          <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? 'text-white' : 'text-gray-900'}`}>
             How Our Transfers Work
           </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Car className="w-8 h-8 text-blue-600" />
+              <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${isDark ? 'bg-cyclades-turquoise/20' : 'bg-blue-100'}`}>
+                <Car className="w-8 h-8 text-cyclades-turquoise" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Book Your Transfer</h3>
-              <p className="text-gray-600">
+              <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Book Your Transfer</h3>
+              <p className={isDark ? 'text-white/60' : 'text-gray-600'}>
                 Select your pickup and drop-off locations, date, and number of passengers.
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <Users className="w-8 h-8 text-blue-600" />
+              <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${isDark ? 'bg-cyclades-turquoise/20' : 'bg-blue-100'}`}>
+                <Users className="w-8 h-8 text-cyclades-turquoise" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Meet Your Driver</h3>
-              <p className="text-gray-600">
+              <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Meet Your Driver</h3>
+              <p className={isDark ? 'text-white/60' : 'text-gray-600'}>
                 Your professional driver will meet you at the specified location with a name sign.
               </p>
             </div>
             <div className="text-center">
-              <div className="w-16 h-16 bg-blue-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <HeadphonesIcon className="w-8 h-8 text-blue-600" />
+              <div className={`w-16 h-16 rounded-full flex items-center justify-center mx-auto mb-4 ${isDark ? 'bg-cyclades-turquoise/20' : 'bg-blue-100'}`}>
+                <HeadphonesIcon className="w-8 h-8 text-cyclades-turquoise" />
               </div>
-              <h3 className="text-xl font-semibold mb-2">Enjoy the Ride</h3>
-              <p className="text-gray-600">
+              <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Enjoy the Ride</h3>
+              <p className={isDark ? 'text-white/60' : 'text-gray-600'}>
                 Relax in a comfortable vehicle while your driver takes you to your destination.
               </p>
             </div>
@@ -330,10 +333,10 @@ export default function Transfers() {
       {/* Popular Routes Section */}
       <div className="py-16">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold text-center text-gray-900 mb-4">
+          <h2 className={`text-3xl font-bold text-center mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
             Popular Transfer Routes
           </h2>
-          <p className="text-center text-gray-600 mb-12 max-w-2xl mx-auto">
+          <p className={`text-center mb-12 max-w-2xl mx-auto ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
             Discover our most frequently booked transfer routes with fixed prices and professional drivers.
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -373,7 +376,7 @@ export default function Transfers() {
 
       {/* Features Grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-16">
-        <h1 className="text-4xl font-bold text-gray-900 text-center mb-16">
+        <h1 className={`text-4xl font-bold text-center mb-16 ${isDark ? 'text-white' : 'text-gray-900'}`}>
           Greece Cyclades Transfer Booking
         </h1>
 
@@ -381,15 +384,15 @@ export default function Transfers() {
           {features.map((feature, index) => (
             <div
               key={index}
-              className="flex flex-col items-center text-center p-6 bg-white rounded-xl shadow-md hover:shadow-lg transition-shadow"
+              className={`flex flex-col items-center text-center p-6 rounded-2xl transition-shadow ${isDark ? 'bg-dark-card border border-dark-border hover:border-cyclades-turquoise/50' : 'bg-white shadow-md hover:shadow-lg'}`}
             >
-              <div className="w-16 h-16 flex items-center justify-center rounded-full bg-blue-100 mb-4">
-                <feature.icon className="w-8 h-8 text-blue-600" />
+              <div className={`w-16 h-16 flex items-center justify-center rounded-full mb-4 ${isDark ? 'bg-cyclades-turquoise/20' : 'bg-blue-100'}`}>
+                <feature.icon className="w-8 h-8 text-cyclades-turquoise" />
               </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-2">
+              <h3 className={`text-lg font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 {feature.title}
               </h3>
-              <p className="text-gray-600">
+              <p className={isDark ? 'text-white/60' : 'text-gray-600'}>
                 {feature.description}
               </p>
             </div>
@@ -398,21 +401,21 @@ export default function Transfers() {
 
         {/* FAQ Section */}
         <div className="max-w-3xl mx-auto">
-          <h2 className="text-3xl font-bold text-gray-900 text-center mb-12">
+          <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? 'text-white' : 'text-gray-900'}`}>
             FAQ
           </h2>
           <div className="space-y-4">
             {faqs.map((faq, index) => (
               <Disclosure key={index}>
                 {({ open }: { open: boolean }) => (
-                  <div className="bg-white rounded-lg shadow">
-                    <Disclosure.Button className="flex justify-between w-full px-6 py-4 text-left text-lg font-medium text-gray-900 focus:outline-none">
+                  <div className={`rounded-2xl ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white shadow'}`}>
+                    <Disclosure.Button className={`flex justify-between w-full px-6 py-4 text-left text-lg font-medium focus:outline-none ${isDark ? 'text-white' : 'text-gray-900'}`}>
                       <span>{faq.question}</span>
-                      <span className={`ml-6 ${open ? 'transform rotate-180' : ''}`}>
+                      <span className={`ml-6 transition-transform ${open ? 'transform rotate-180' : ''}`}>
                         ↓
                       </span>
                     </Disclosure.Button>
-                    <Disclosure.Panel className="px-6 pb-4 text-gray-600">
+                    <Disclosure.Panel className={`px-6 pb-4 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
                       {faq.answer}
                     </Disclosure.Panel>
                   </div>

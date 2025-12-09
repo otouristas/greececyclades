@@ -20,18 +20,24 @@ export default function HotelCard({ hotel }: HotelCardProps) {
       <div className="bg-white rounded-xl shadow-sm overflow-hidden transition-transform duration-300 hover:-translate-y-1">
         <div className="relative aspect-[4/3] overflow-hidden">
           <img
-            src={hotel.images[0]}
-            alt={hotel.name}
+            src={hotel.images.main}
+            alt={`${hotel.name} - Hotel in ${hotel.location?.island || 'Cyclades'}`}
             className="w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
+            loading="lazy"
+            decoding="async"
+            width={640}
+            height={480}
           />
           <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
-          <div className="absolute top-4 right-4 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-full text-sm font-medium">
-            From {formatPrice(hotel.priceRange.min, hotel.priceRange.currency)}/night
-          </div>
+          {(hotel.priceRange || hotel.price_range) && (
+            <div className="absolute top-4 right-4 px-3 py-1.5 bg-white/95 backdrop-blur-sm rounded-full text-sm font-medium">
+              From {formatPrice((hotel.priceRange || hotel.price_range)?.min || 0, (hotel.priceRange || hotel.price_range)?.currency || 'EUR')}/night
+            </div>
+          )}
           <div className="absolute bottom-4 left-4 flex items-center gap-1.5 text-white">
             <Star className="h-4 w-4 text-yellow-400 fill-yellow-400" />
-            <span className="font-medium">{hotel.rating.toFixed(1)}</span>
-            <span className="text-sm text-white/90">({hotel.reviews.count})</span>
+            <span className="font-medium">{hotel.rating?.toFixed(1) || 'N/A'}</span>
+            <span className="text-sm text-white/90">({hotel.reviews?.count || hotel.reviews_count || 0})</span>
           </div>
         </div>
 

@@ -1,11 +1,11 @@
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
 import { Search, Check } from 'lucide-react';
-import SEO from '../components/SEO';
 import PhraseCard from '../components/PhraseCard';
 import GreekTranslator from '../components/GreekTranslator';
 import { greekPhrases, phraseCategories } from '../data/greekPhrasesData';
-import { generateKeywordsWithLSI, optimizeMetaDescription } from '../utils/seo';
+import SEO from '../components/SEO';
+import FAQSection from '../components/FAQSection';
+import RelatedLinks from '../components/RelatedLinks';
 
 export default function GreekPhrases() {
   const [selectedCategory, setSelectedCategory] = useState<string>('all');
@@ -18,52 +18,23 @@ export default function GreekPhrases() {
      phrase.greek.toLowerCase().includes(searchQuery.toLowerCase()))
   );
 
-  const faqItems = [
-    {
-      question: 'What are the most important Greek phrases to know?',
-      answer: 'The most essential phrases include: Yia sas (hello), Efcharistó (thank you), Parakaló (please), Signómi (excuse me), Miláte angliká? (Do you speak English?), Póso káni? (How much?), and Kaliméra (good morning). These will help you navigate restaurants, shops, and basic interactions throughout the Cyclades islands.'
-    },
-    {
-      question: 'Is English widely spoken in the Cyclades?',
-      answer: 'Yes, English is widely spoken in tourist areas, hotels, restaurants, and shops throughout the Cyclades islands. However, learning a few basic Greek phrases is appreciated by locals and can be helpful in less touristy areas or when interacting with older residents. In remote villages, English may be less common.'
-    },
-    {
-      question: 'How do you pronounce Greek travel phrases?',
-      answer: 'Greek pronunciation can seem challenging, but our guide includes phonetic spellings and audio pronunciations for each phrase. Key tips: stress the capitalized syllables, roll the \'r\' sound slightly, and listen to the audio examples. Practice makes perfect - even attempting Greek phrases will be appreciated by locals.'
-    },
-    {
-      question: 'What does Kalimera mean?',
-      answer: 'Kalimera (Καλημέρα) means "good morning" in Greek. It\'s pronounced "ka-lee-MER-ah" with the stress on the third syllable. You can use it from early morning until around noon. After noon, Greeks switch to "Kalispera" (good afternoon/evening). It\'s one of the most common greetings you\'ll hear and use in the Cyclades.'
-    }
-  ];
-
-  const seoData = {
-    title: 'Essential Greek Travel Phrases for the Cyclades | Pronunciation Guide',
-    description: optimizeMetaDescription(
-      'Learn essential Greek phrases for your trip to the Cyclades islands with audio pronunciation. Master greetings, restaurant phrases, numbers, and common expressions. Free pronunciation guide with phonetic spelling to help you communicate like a local.'
-    ),
-    keywords: generateKeywordsWithLSI(
-      ['Greek travel phrases', 'Greek phrases for tourists', 'Greek phrases Cyclades'],
-      [
-        'basic Greek phrases for tourists',
-        'Greek phrases for travel with pronunciation',
-        'common Greek phrases for travelers',
-        'Greek words for tourists',
-        'how to say hello in Greek',
-        'Greek restaurant phrases'
-      ],
-      ['Greek language', 'Cyclades travel', 'Greece travel tips']
-    ),
-    ogImage: '/images/greek-phrases-hero.jpg',
-    ogType: 'website' as const,
-    faq: faqItems,
-    pageType: 'general' as const,
-    canonicalUrl: '/greek-phrases'
-  };
-
   return (
-    <div className="min-h-screen bg-gray-50">
-      <SEO {...seoData} />
+    <>
+      <SEO
+        title="Greek Phrases for Travel: 50+ Essential Words with Audio"
+        description="Learn Greek phrases before your trip. Audio pronunciation, phonetic spelling & translator tool. Greetings, dining, directions & more. Impress locals!"
+        canonicalUrl="/greek-phrases"
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Greek Phrases', url: '/greek-phrases' }
+        ]}
+        faqs={[
+          { question: 'Do I need to speak Greek in Cyclades?', answer: 'No, English is widely spoken in tourist areas. But learning basic phrases (hello, thank you, please) makes locals appreciate you and enhances your experience.' },
+          { question: 'What are the most useful Greek phrases?', answer: 'Yassas (hello), Efcharisto (thank you), Parakalo (please/you\'re welcome), Signomi (excuse me), and Nero (water) will get you far.' },
+          { question: 'Is Greek hard to learn?', answer: 'Basic tourist phrases are manageable. Greek alphabet looks different but many sounds are familiar. Our audio pronunciation guide helps you get it right.' }
+        ]}
+      />
+      <div className="min-h-screen bg-gray-50">
 
       {/* Hero Section */}
       <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 text-white">
@@ -190,56 +161,6 @@ export default function GreekPhrases() {
           </div>
         </div>
 
-        {/* FAQ Section */}
-        <div className="max-w-4xl mx-auto mb-12">
-          <h2 className="text-3xl font-bold text-gray-800 mb-6 text-center">Frequently Asked Questions</h2>
-          <div className="bg-white rounded-lg shadow-md p-6">
-            <div className="space-y-6">
-              {faqItems.map((item, index) => (
-                <div key={index} className="border-b border-gray-200 pb-6 last:border-b-0 last:pb-0">
-                  <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.question}</h3>
-                  <p className="text-gray-700 leading-relaxed">{item.answer}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </div>
-
-        {/* Internal Links Section */}
-        <div className="max-w-4xl mx-auto mb-12 bg-blue-50 rounded-lg p-8">
-          <h2 className="text-2xl font-bold mb-6">Continue Planning Your Cyclades Trip</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <Link 
-              to="/best-cyclades-islands-to-visit" 
-              className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-semibold text-blue-800 mb-2">Best Cyclades Islands</h3>
-              <p className="text-sm text-gray-600">Discover the 15 best islands to visit in the Cyclades archipelago.</p>
-            </Link>
-            <Link 
-              to="/ferry-guide" 
-              className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-semibold text-blue-800 mb-2">Cyclades Ferry Guide</h3>
-              <p className="text-sm text-gray-600">Learn how to navigate between islands with our complete ferry guide.</p>
-            </Link>
-            <Link 
-              to="/blog/cyclades-7-day-island-hopping-itinerary" 
-              className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-semibold text-blue-800 mb-2">7-Day Itinerary</h3>
-              <p className="text-sm text-gray-600">Plan your perfect week-long island hopping adventure.</p>
-            </Link>
-            <Link 
-              to="/islands" 
-              className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
-            >
-              <h3 className="font-semibold text-blue-800 mb-2">Explore All Islands</h3>
-              <p className="text-sm text-gray-600">Browse detailed guides for every Cyclades island.</p>
-            </Link>
-          </div>
-        </div>
-
         {/* Call to Action */}
         <div className="max-w-4xl mx-auto text-center">
           <h2 className="text-2xl font-bold text-gray-800 mb-4">Ready to Practice Your Greek?</h2>
@@ -247,21 +168,37 @@ export default function GreekPhrases() {
             Explore the Cyclades islands and put your new language skills to use!
           </p>
           <div className="flex flex-wrap justify-center gap-4">
-            <Link 
-              to="/islands" 
+            <a 
+              href="/islands" 
               className="px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
             >
               Explore Islands
-            </Link>
-            <Link 
-              to="/ferry-guide" 
+            </a>
+            <a 
+              href="/ferry-guide" 
               className="px-6 py-3 bg-white border border-blue-600 text-blue-600 rounded-lg hover:bg-blue-50 transition-colors"
             >
               Ferry Guide
-            </Link>
+            </a>
           </div>
         </div>
+
+        {/* FAQ Section */}
+        <FAQSection
+          faqs={[
+            { question: 'Do Greeks speak English?', answer: 'Yes, most Greeks in tourist areas speak English, especially younger generations. However, learning basic Greek phrases shows respect and often leads to warmer interactions with locals.' },
+            { question: 'How do you say "thank you" in Greek?', answer: 'Efharisto (Ευχαριστώ) is the standard "thank you." For emphasis, say "efharisto poli" (thank you very much). Locals really appreciate when tourists make the effort!' },
+            { question: 'What are essential Greek phrases for restaurants?', answer: 'Key phrases: "Ena kafe parakalo" (one coffee please), "To logariasmo" (the bill), "Nosteemo!" (delicious!), "Yamas!" (cheers!). Staff will appreciate your effort.' },
+            { question: 'Is Greek hard to learn?', answer: 'Basic phrases are easy to learn. The Greek alphabet looks different but many sounds are similar to English. Focus on common tourist phrases - you don\'t need to be fluent to get by!' }
+          ]}
+          title="Greek Language FAQ"
+          subtitle="Common questions about speaking Greek in Greece"
+        />
+
+        {/* Related Links */}
+        <RelatedLinks variant="cards" pageType="general" title="Continue Planning" />
       </div>
-    </div>
+      </div>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-# Santorini 2025: Ultimate Guide to the Volcanic Paradise
+# Santorini 2026: Ultimate Guide to the Volcanic Paradise
 
 Discover the magic of Santorini, a crescent-shaped island in the Cyclades that's the jewel of the Aegean Sea. From its dramatic caldera cliffs to charming blue-domed churches, this comprehensive guide covers everything you need to know for an unforgettable Santorini experience.
 

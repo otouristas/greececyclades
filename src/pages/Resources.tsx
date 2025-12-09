@@ -1,5 +1,6 @@
 import { ExternalLink, BookOpen, Map, Phone, Globe, FileText, Shield, Landmark, Wallet } from 'lucide-react';
 import SEO from '../components/SEO';
+import { useTheme } from '../contexts/ThemeContext';
 
 // Resource categories and links
 const resourceCategories = [
@@ -121,24 +122,29 @@ const emergencyContacts = [
 ];
 
 export default function Resources() {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
+
   return (
-    <>
+    <div className={`min-h-screen ${isDark ? 'bg-dark-bg' : 'bg-gray-50'}`}>
       <SEO 
         title="Cyclades Travel Resources - Useful Links & Information"
         description="Essential resources for planning your trip to the Cyclades islands. Find official websites, transportation information, health & safety tips, and practical guides."
       />
       
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-r from-blue-600 to-blue-800 pt-24 pb-16 md:pt-32 md:pb-24">
+      <div className={`relative pt-24 pb-16 md:pt-32 md:pb-24 ${isDark ? 'bg-gradient-to-r from-cyclades-deep-blue to-cyclades-caldera' : 'bg-gradient-to-r from-cyclades-deep-blue to-cyclades-sea-blue'}`}>
         <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute inset-0 bg-blue-900/30" />
-          <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-blue-800 to-transparent" />
+          <div className="absolute inset-0 bg-black/20" />
         </div>
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+          <div className="mx-auto h-16 w-16 flex items-center justify-center rounded-2xl bg-white/10 backdrop-blur-sm mb-6">
+            <BookOpen className="h-8 w-8 text-cyclades-turquoise" />
+          </div>
           <h1 className="text-4xl md:text-5xl font-bold text-white mb-6">
             Travel Resources
           </h1>
-          <p className="text-lg md:text-xl text-blue-100 max-w-3xl mx-auto">
+          <p className="text-lg md:text-xl text-white/80 max-w-3xl mx-auto">
             Essential information and useful links to help you plan your perfect Cyclades vacation
           </p>
         </div>
@@ -148,7 +154,7 @@ export default function Resources() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Introduction */}
         <div className="mb-12">
-          <p className="text-lg text-gray-600 max-w-3xl">
+          <p className={`text-lg max-w-3xl ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
             We've compiled a comprehensive collection of resources to help you plan and enjoy your trip to the Cyclades islands. From official tourism websites to practical travel information, you'll find everything you need here.
           </p>
         </div>
@@ -157,20 +163,20 @@ export default function Resources() {
         <div className="space-y-12 mb-16">
           {resourceCategories.map((category) => (
             <div key={category.title}>
-              <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
+              <h2 className={`text-2xl font-bold mb-6 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
                 {category.icon}
                 {category.title}
               </h2>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {category.resources.map((resource) => (
-                  <div key={resource.name} className="bg-white rounded-xl shadow-sm border p-6 hover:shadow-md transition-shadow duration-300">
-                    <h3 className="text-lg font-semibold mb-2">{resource.name}</h3>
-                    <p className="text-gray-600 text-sm mb-4">{resource.description}</p>
+                  <div key={resource.name} className={`rounded-2xl p-6 transition-all duration-300 ${isDark ? 'bg-dark-card border border-dark-border hover:border-cyclades-turquoise/50' : 'bg-white shadow-sm border hover:shadow-md'}`}>
+                    <h3 className={`text-lg font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{resource.name}</h3>
+                    <p className={`text-sm mb-4 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>{resource.description}</p>
                     <a 
                       href={resource.url}
                       target={resource.url.startsWith('http') ? "_blank" : "_self"}
                       rel={resource.url.startsWith('http') ? "noopener noreferrer" : ""}
-                      className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
+                      className="inline-flex items-center text-cyclades-turquoise hover:underline text-sm font-medium"
                     >
                       {resource.url.startsWith('http') ? 'Visit Website' : 'View Page'}
                       <ExternalLink className="h-4 w-4 ml-1" />
@@ -184,23 +190,23 @@ export default function Resources() {
         
         {/* Emergency Contacts */}
         <div className="mb-16">
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <Phone className="h-6 w-6 text-red-600" />
+          <h2 className={`text-2xl font-bold mb-6 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <Phone className="h-6 w-6 text-red-500" />
             Emergency Contacts
           </h2>
-          <div className="bg-red-50 rounded-xl p-6 border border-red-100">
-            <p className="text-gray-700 mb-4">
+          <div className={`rounded-2xl p-6 ${isDark ? 'bg-red-500/10 border border-red-500/30' : 'bg-red-50 border border-red-100'}`}>
+            <p className={`mb-4 ${isDark ? 'text-white/70' : 'text-gray-700'}`}>
               Keep these important emergency numbers handy during your stay in Greece:
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {emergencyContacts.map((contact) => (
-                <div key={contact.service} className="bg-white rounded-lg p-4 shadow-sm">
-                  <p className="font-medium text-gray-900">{contact.service}</p>
-                  <p className="text-xl font-bold text-red-600">{contact.number}</p>
+                <div key={contact.service} className={`rounded-xl p-4 ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white shadow-sm'}`}>
+                  <p className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>{contact.service}</p>
+                  <p className="text-xl font-bold text-red-500">{contact.number}</p>
                 </div>
               ))}
             </div>
-            <p className="text-sm text-gray-500 mt-4">
+            <p className={`text-sm mt-4 ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
               Note: The European Emergency Number (112) works throughout Greece and operators speak English.
             </p>
           </div>
@@ -208,56 +214,56 @@ export default function Resources() {
         
         {/* Travel Planning Tools */}
         <div>
-          <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
-            <BookOpen className="h-6 w-6 text-blue-600" />
+          <h2 className={`text-2xl font-bold mb-6 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            <BookOpen className="h-6 w-6 text-cyclades-turquoise" />
             Travel Planning Tools
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            <div className="bg-blue-50 rounded-xl p-6 border border-blue-100">
+            <div className={`rounded-2xl p-6 ${isDark ? 'bg-cyclades-turquoise/10 border border-cyclades-turquoise/30' : 'bg-blue-50 border border-blue-100'}`}>
               <div className="mb-4">
-                <Map className="h-8 w-8 text-blue-600" />
+                <Map className="h-8 w-8 text-cyclades-turquoise" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Island Guides</h3>
-              <p className="text-gray-600 text-sm mb-4">
+              <h3 className={`text-lg font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Island Guides</h3>
+              <p className={`text-sm mb-4 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
                 Detailed guides for each Cyclades island with attractions, beaches, dining recommendations, and more.
               </p>
               <a 
                 href="/islands"
-                className="inline-flex items-center text-blue-600 hover:text-blue-800 text-sm font-medium"
+                className="inline-flex items-center text-cyclades-turquoise hover:underline text-sm font-medium"
               >
                 Explore Island Guides
                 <ExternalLink className="h-4 w-4 ml-1" />
               </a>
             </div>
             
-            <div className="bg-green-50 rounded-xl p-6 border border-green-100">
+            <div className={`rounded-2xl p-6 ${isDark ? 'bg-green-500/10 border border-green-500/30' : 'bg-green-50 border border-green-100'}`}>
               <div className="mb-4">
-                <Wallet className="h-8 w-8 text-green-600" />
+                <Wallet className="h-8 w-8 text-green-500" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Budget Calculator</h3>
-              <p className="text-gray-600 text-sm mb-4">
+              <h3 className={`text-lg font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Budget Calculator</h3>
+              <p className={`text-sm mb-4 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
                 Plan your travel budget with our interactive calculator. Estimate costs for accommodation, food, activities, and transportation.
               </p>
               <a 
                 href="/budget-calculator"
-                className="inline-flex items-center text-green-600 hover:text-green-800 text-sm font-medium"
+                className="inline-flex items-center text-green-500 hover:underline text-sm font-medium"
               >
                 Calculate Your Budget
                 <ExternalLink className="h-4 w-4 ml-1" />
               </a>
             </div>
             
-            <div className="bg-amber-50 rounded-xl p-6 border border-amber-100">
+            <div className={`rounded-2xl p-6 ${isDark ? 'bg-amber-500/10 border border-amber-500/30' : 'bg-amber-50 border border-amber-100'}`}>
               <div className="mb-4">
-                <Globe className="h-8 w-8 text-amber-600" />
+                <Globe className="h-8 w-8 text-amber-500" />
               </div>
-              <h3 className="text-lg font-semibold mb-2">Ferry Guide</h3>
-              <p className="text-gray-600 text-sm mb-4">
+              <h3 className={`text-lg font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>Ferry Guide</h3>
+              <p className={`text-sm mb-4 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
                 Everything you need to know about traveling by ferry between the Greek islands, including companies, routes, and tips.
               </p>
               <a 
                 href="/ferry-guide"
-                className="inline-flex items-center text-amber-600 hover:text-amber-800 text-sm font-medium"
+                className="inline-flex items-center text-amber-500 hover:underline text-sm font-medium"
               >
                 Read Ferry Guide
                 <ExternalLink className="h-4 w-4 ml-1" />
@@ -266,6 +272,6 @@ export default function Resources() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }

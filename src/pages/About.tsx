@@ -1,242 +1,276 @@
-import { motion } from 'framer-motion';
-import { Helmet } from 'react-helmet-async';
-import { MapPin, Mail, Phone, Award, Users, Clock, Globe } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { MapPin, Mail, Phone, Award, Users, Globe, Heart, Shield, Star, ArrowRight, ChevronRight } from 'lucide-react';
+import SEO from '../components/SEO';
+
+const stats = [
+  { number: '10+', label: 'Years Experience', icon: Award },
+  { number: '25+', label: 'Islands Covered', icon: MapPin },
+  { number: '50K+', label: 'Happy Travelers', icon: Users },
+  { number: '4.9', label: 'User Rating', icon: Star },
+];
+
+const values = [
+  {
+    icon: Heart,
+    title: 'Passion for Greece',
+    description: 'We live and breathe the Cyclades. Our love for these islands drives everything we do.'
+  },
+  {
+    icon: Shield,
+    title: 'Trust & Reliability',
+    description: 'Accurate information, honest recommendations, and dependable service every time.'
+  },
+  {
+    icon: Globe,
+    title: 'Sustainable Tourism',
+    description: 'Promoting responsible travel that preserves island cultures and environments.'
+  },
+  {
+    icon: Users,
+    title: 'Local Expertise',
+    description: 'Strong partnerships with local businesses and communities across the Cyclades.'
+  },
+];
 
 export default function About() {
   return (
     <>
-      <Helmet>
-        <title>About Discover Cyclades | Your Expert Guide to Greek Island Travel</title>
-        <meta
-          name="description"
-          content="Learn about Discover Cyclades, your trusted travel companion for exploring the Greek islands. With over a decade of experience, we provide expert guidance, curated accommodations, and authentic local experiences."
-        />
-        <meta
-          name="keywords"
-          content="Discover Cyclades, Greek islands travel, Cyclades expert, island hopping Greece, Greek travel agency, authentic Greek experiences"
-        />
-        <meta property="og:title" content="About Discover Cyclades | Your Expert Guide to Greek Island Travel" />
-        <meta
-          property="og:description"
-          content="Your trusted travel companion for exploring the Greek islands. Expert guidance, curated accommodations, and authentic local experiences."
-        />
-        <meta property="og:type" content="website" />
-        <meta property="og:url" content="https://greececyclades.com/about" />
-        <link rel="canonical" href="https://greececyclades.com/about" />
-      </Helmet>
+      <SEO
+        title="About Discover Cyclades: AI-Powered Greek Island Experts"
+        description="Meet the team behind Discover Cyclades. Local experts + AI technology = the world's best Cyclades travel resource. Our story, mission & commitment to authentic travel."
+        ogImage="/images/about/about-hero.jpg"
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'About', url: '/about' }
+        ]}
+      />
 
-      <div className="bg-white">
+      <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         {/* Hero Section */}
-        <div className="relative bg-gray-900 text-white py-24">
+        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-32 pb-24">
           <div className="absolute inset-0">
             <img
-              src="/assets/images/about/about-hero.jpg"
-              alt="Discover Cyclades Team"
-              className="w-full h-full object-cover opacity-30"
+              src="/images/about/about-hero.jpg"
+              alt="Cyclades Islands View"
+              className="w-full h-full object-cover opacity-20"
+              onError={(e) => { e.currentTarget.style.display = 'none'; }}
             />
           </div>
+          <div className="absolute inset-0 bg-gradient-to-t from-cyan-600/80 to-transparent" />
+
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <h1 className="text-4xl md:text-5xl font-bold mb-6">About Discover Cyclades</h1>
-              <p className="text-xl md:text-2xl max-w-3xl mx-auto">
-                Your trusted companion in exploring the magical Cyclades islands of Greece
+            {/* Breadcrumb */}
+            <nav className="flex items-center gap-2 text-white/70 text-sm mb-8">
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <ChevronRight className="w-4 h-4" />
+              <span className="text-white">About Us</span>
+            </nav>
+
+            <div className="max-w-3xl">
+              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+                Your Gateway to the Cyclades
+              </h1>
+              <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
+                We're passionate travelers, local experts, and technology enthusiasts united by our love for the Greek islands.
               </p>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Mission Statement */}
-        <div className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center max-w-3xl mx-auto"
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Our Mission</h2>
-              <p className="text-lg text-gray-600">
-                At Discover Cyclades, we're passionate about creating unforgettable Greek island experiences. 
-                Our mission is to help travelers discover the authentic beauty, rich culture, and hidden gems 
-                of the Cyclades islands while promoting sustainable tourism and supporting local communities.
-              </p>
-            </motion.div>
-          </div>
-        </div>
-
-        {/* Key Features */}
-        <div className="py-16 bg-gray-50">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-center p-6"
-              >
-                <Award className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Expert Knowledge</h3>
-                <p className="text-gray-600">
-                  Over 10 years of experience in Greek island travel, providing expert guidance and insider tips.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-center p-6"
-              >
-                <Users className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Local Connections</h3>
-                <p className="text-gray-600">
-                  Strong partnerships with local businesses and communities across the Cyclades.
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-center p-6"
-              >
-                <Globe className="w-12 h-12 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-xl font-semibold mb-2">Sustainable Tourism</h3>
-                <p className="text-gray-600">
-                  Committed to promoting responsible travel and preserving island cultures.
-                </p>
-              </motion.div>
             </div>
           </div>
         </div>
 
-        {/* Company Story */}
-        <div className="py-16 bg-white">
-          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="max-w-3xl mx-auto"
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6 text-center">Our Story</h2>
-              <div className="prose prose-lg mx-auto">
-                <p>
-                  Founded in 2014, Discover Cyclades began with a simple vision: to share the authentic beauty 
-                  and culture of the Greek islands with travelers from around the world. What started as a 
-                  small team of passionate local guides has grown into a comprehensive travel platform, 
-                  serving thousands of visitors annually.
-                </p>
-                <p>
-                  Our team consists of experienced travel professionals, local experts, and technology 
-                  specialists who work together to provide you with the most comprehensive and up-to-date 
-                  information about the Cyclades islands. We take pride in our deep understanding of each 
-                  island's unique character and our ability to create personalized travel experiences.
-                </p>
+        {/* Stats Section */}
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-12 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-6">
+            {stats.map((stat, idx) => (
+              <div key={idx} className="bg-white dark:bg-dark-card rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 p-6 text-center">
+                <stat.icon className="w-8 h-8 text-cyan-600 dark:text-cyclades-turquoise mx-auto mb-3" />
+                <div className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-1">{stat.number}</div>
+                <div className="text-sm text-gray-600 dark:text-white/60">{stat.label}</div>
               </div>
-            </motion.div>
+            ))}
           </div>
         </div>
 
-        {/* Contact Information */}
-        <div className="py-16 bg-gray-50">
+        {/* Mission Section */}
+        <div className="py-20">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center mb-12"
-            >
-              <h2 className="text-3xl font-bold text-gray-900 mb-6">Get in Touch</h2>
-              <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-                Have questions about planning your Cyclades adventure? Our team is here to help you create 
-                the perfect island-hopping experience.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-center p-6"
-              >
-                <MapPin className="w-8 h-8 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Our Location</h3>
-                <p className="text-gray-600">
-                  123 Ermou Street<br />
-                  Athens, 10563<br />
-                  Greece
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-                className="text-center p-6"
-              >
-                <Phone className="w-8 h-8 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Phone</h3>
-                <p className="text-gray-600">
-                  +30 210 1234567<br />
-                  Monday - Friday: 9:00 - 18:00<br />
-                  Saturday: 10:00 - 15:00
-                </p>
-              </motion.div>
-
-              <motion.div
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.3 }}
-                className="text-center p-6"
-              >
-                <Mail className="w-8 h-8 text-blue-600 mx-auto mb-4" />
-                <h3 className="text-lg font-semibold mb-2">Email</h3>
-                <p className="text-gray-600">
-                  greececycladesgr@gmail.com
-                </p>
-              </motion.div>
+            <div className="grid lg:grid-cols-2 gap-16 items-center">
+              <div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
+                  Our Mission
+                </h2>
+                <div className="space-y-4 text-gray-700 dark:text-white/80 text-lg leading-relaxed">
+                  <p>
+                    At Discover Cyclades, we believe that traveling to Greece should be more than just visiting tourist spots.
+                    It should be an immersive experience that connects you with the authentic culture, history, and people of the islands.
+                  </p>
+                  <p>
+                    Our mission is to help travelers discover the hidden gems, traditional villages, and local experiences
+                    that make the Cyclades truly magical – while promoting sustainable tourism that benefits local communities.
+                  </p>
+                </div>
+                <div className="mt-8 flex flex-wrap gap-4">
+                  <Link
+                    to="/islands"
+                    className="inline-flex items-center gap-2 bg-cyan-600 text-white px-6 py-3 rounded-xl font-medium hover:bg-cyan-600/90 transition-colors"
+                  >
+                    Explore Islands <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    to="/contact"
+                    className="inline-flex items-center gap-2 border-2 border-gray-200 dark:border-white/20 text-gray-700 dark:text-white px-6 py-3 rounded-xl font-medium hover:border-cyan-600 dark:hover:border-cyclades-turquoise transition-colors"
+                  >
+                    Contact Us
+                  </Link>
+                </div>
+              </div>
+              <div className="relative">
+                <div className="aspect-square rounded-3xl overflow-hidden shadow-2xl">
+                  <img
+                    src="/images/about/team.jpg"
+                    alt="Our Team"
+                    className="w-full h-full object-cover"
+                    onError={(e) => {
+                      e.currentTarget.src = '/images/islands/santorini/1.jpg';
+                    }}
+                  />
+                </div>
+                <div className="absolute -bottom-6 -left-6 bg-white dark:bg-dark-card rounded-2xl shadow-xl p-6 border border-gray-100 dark:border-white/10">
+                  <div className="flex items-center gap-3">
+                    <div className="w-12 h-12 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise rounded-full flex items-center justify-center">
+                      <Heart className="w-6 h-6 text-white" />
+                    </div>
+                    <div>
+                      <p className="font-bold text-gray-900 dark:text-white">Made with love</p>
+                      <p className="text-sm text-gray-600 dark:text-white/60">From Athens, Greece</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
 
-        {/* Call to Action */}
-        <div className="py-16 bg-blue-600 text-white">
+        {/* Values Section */}
+        <div className="py-20 bg-white dark:bg-dark-card">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0 }}
-              whileInView={{ opacity: 1 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
-              className="text-center"
-            >
-              <h2 className="text-3xl font-bold mb-6">Start Your Cyclades Adventure Today</h2>
-              <p className="text-xl mb-8 max-w-2xl mx-auto">
-                Let us help you discover the magic of the Greek islands. From pristine beaches to ancient 
-                ruins, your perfect island experience awaits.
+            <div className="text-center mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
+                Our Values
+              </h2>
+              <p className="text-lg text-gray-600 dark:text-white/60 max-w-2xl mx-auto">
+                The principles that guide everything we do
               </p>
-              <button className="bg-white text-blue-600 px-8 py-3 rounded-lg font-semibold hover:bg-gray-100 transition-colors">
-                Plan Your Trip
-              </button>
-            </motion.div>
+            </div>
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+              {values.map((value, idx) => (
+                <div key={idx} className="text-center p-6 rounded-2xl bg-gray-50 dark:bg-white/5 hover:bg-gray-100 dark:hover:bg-white/10 transition-colors">
+                  <div className="w-16 h-16 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise rounded-2xl flex items-center justify-center mx-auto mb-6">
+                    <value.icon className="w-8 h-8 text-white" />
+                  </div>
+                  <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">{value.title}</h3>
+                  <p className="text-gray-600 dark:text-white/60">{value.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Story Section */}
+        <div className="py-20">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
+              Our Story
+            </h2>
+            <div className="prose prose-lg dark:prose-invert mx-auto">
+              <p className="text-gray-700 dark:text-white/80 leading-relaxed">
+                Founded in 2014, Discover Cyclades began with a simple vision: to share the authentic beauty
+                and culture of the Greek islands with travelers from around the world. What started as a
+                small team of passionate local guides has grown into a comprehensive travel platform,
+                serving thousands of visitors annually.
+              </p>
+              <p className="text-gray-700 dark:text-white/80 leading-relaxed">
+                Our team consists of experienced travel professionals, local experts, and technology
+                specialists who work together to provide you with the most comprehensive and up-to-date
+                information about the Cyclades islands. We take pride in our deep understanding of each
+                island's unique character and our ability to create personalized travel experiences.
+              </p>
+              <p className="text-gray-700 dark:text-white/80 leading-relaxed">
+                Today, we continue to innovate with tools like our AI travel assistant, Touristas,
+                making it easier than ever to plan your perfect Greek island adventure.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        {/* Contact CTA */}
+        <div className="py-20 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="text-center text-white">
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Plan Your Adventure</h2>
+              <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
+                Have questions? Want personalized recommendations? Our team is here to help you create
+                the perfect Cyclades experience.
+              </p>
+              <div className="flex flex-wrap justify-center gap-4">
+                <Link
+                  to="/contact"
+                  className="inline-flex items-center gap-2 bg-white text-cyan-600 px-8 py-4 rounded-xl font-semibold hover:bg-white/90 transition-colors"
+                >
+                  <Mail className="w-5 h-5" />
+                  Contact Us
+                </Link>
+                <Link
+                  to="/touristas-ai"
+                  className="inline-flex items-center gap-2 bg-white/20 text-white px-8 py-4 rounded-xl font-semibold hover:bg-white/30 transition-colors border border-white/30"
+                >
+                  Chat with AI Assistant
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Quick Links */}
+        <div className="py-12 bg-gray-100 dark:bg-dark-card border-t border-gray-200 dark:border-white/10">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="grid md:grid-cols-3 gap-6">
+              <Link to="/guides" className="group flex items-center gap-4 p-4 bg-white dark:bg-white/5 rounded-xl hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-cyan-600/10 dark:bg-cyclades-turquoise/20 rounded-xl flex items-center justify-center">
+                  <MapPin className="w-6 h-6 text-cyan-600 dark:text-cyclades-turquoise" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyclades-turquoise transition-colors">Travel Guides</h3>
+                  <p className="text-sm text-gray-600 dark:text-white/60">Explore our island guides</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-gray-400 ml-auto group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              <Link to="/ferry-tickets" className="group flex items-center gap-4 p-4 bg-white dark:bg-white/5 rounded-xl hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-blue-100 dark:bg-blue-500/20 rounded-xl flex items-center justify-center">
+                  <Award className="w-6 h-6 text-blue-600 dark:text-blue-400" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyclades-turquoise transition-colors">Ferry Tickets</h3>
+                  <p className="text-sm text-gray-600 dark:text-white/60">Book your ferry crossings</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-gray-400 ml-auto group-hover:translate-x-1 transition-transform" />
+              </Link>
+
+              <Link to="/hotels" className="group flex items-center gap-4 p-4 bg-white dark:bg-white/5 rounded-xl hover:shadow-lg transition-all">
+                <div className="w-12 h-12 bg-purple-100 dark:bg-purple-500/20 rounded-xl flex items-center justify-center">
+                  <Star className="w-6 h-6 text-purple-600 dark:text-purple-400" />
+                </div>
+                <div>
+                  <h3 className="font-semibold text-gray-900 dark:text-white group-hover:text-cyan-600 dark:group-hover:text-cyclades-turquoise transition-colors">Hotels & Stays</h3>
+                  <p className="text-sm text-gray-600 dark:text-white/60">Find perfect accommodations</p>
+                </div>
+                <ArrowRight className="w-5 h-5 text-gray-400 ml-auto group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
           </div>
         </div>
       </div>
     </>
   );
 }
+

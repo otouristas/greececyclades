@@ -181,11 +181,12 @@ export default function TouristasAIChat({ initialMessage, onClose }: TouristasAI
             initial={{ opacity: 0, scale: 0.9, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.9, y: 20 }}
-            className={`fixed z-50 ${
-              isMinimized
-                ? 'bottom-6 right-6 w-80 h-16'
-                : 'bottom-6 right-6 w-full max-w-md h-[600px] md:h-[700px]'
-            } md:max-w-md bg-white rounded-2xl shadow-2xl border-2 border-gray-200 flex flex-col overflow-hidden`}
+            className={`fixed z-50 bg-white shadow-2xl border-2 border-gray-200 flex flex-col overflow-hidden
+              ${isMinimized
+                ? 'bottom-6 right-6 w-80 h-16 rounded-2xl'
+                : 'bottom-0 left-0 right-0 top-auto w-full h-[80vh] rounded-t-2xl md:bottom-6 md:right-6 md:left-auto md:top-auto md:w-full md:max-w-md md:h-[700px] md:rounded-2xl'
+              }
+            `}
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-sifnos-deep-blue to-primary text-white p-4 flex items-center justify-between">
@@ -203,20 +204,20 @@ export default function TouristasAIChat({ initialMessage, onClose }: TouristasAI
               <div className="flex items-center gap-2">
                 <button
                   onClick={() => setIsMinimized(!isMinimized)}
-                  className="p-1.5 hover:bg-white/10 rounded-lg transition-colors"
+                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
                   aria-label={isMinimized ? 'Maximize' : 'Minimize'}
                 >
-                  {isMinimized ? <Maximize2 className="w-4 h-4" /> : <Minimize2 className="w-4 h-4" />}
+                  {isMinimized ? <Maximize2 className="w-5 h-5" /> : <Minimize2 className="w-5 h-5" />}
                 </button>
                 <button
                   onClick={() => {
                     setIsOpen(false);
                     onClose?.();
                   }}
-                  className="p-1.5 hover:bg-white/10 rounded-lg transition-colors"
+                  className="p-2 hover:bg-white/10 rounded-lg transition-colors"
                   aria-label="Close"
                 >
-                  <X className="w-4 h-4" />
+                  <X className="w-5 h-5" />
                 </button>
               </div>
             </div>
