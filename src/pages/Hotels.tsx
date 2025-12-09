@@ -1,11 +1,12 @@
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-import { Star, MapPin, Building2, Bed, Wifi, Coffee, Utensils, Calendar, Search, Users, Shield, CheckCircle, Clock, Euro, Award, Heart, ChevronRight, ArrowRight } from 'lucide-react';
+import { Link, useNavigate } from 'react-router-dom';
+import { Star, MapPin, Building2, Bed, Calendar, Search, Users, Shield, CheckCircle, Clock, Euro, Award, Heart, ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
 
 export default function Hotels() {
+  const navigate = useNavigate();
   const [destination, setDestination] = useState('Santorini');
   const [checkIn, setCheckIn] = useState('');
   const [checkOut, setCheckOut] = useState('');
@@ -24,7 +25,8 @@ export default function Hotels() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    window.open('https://trip.tp.st/F29Ncvt6', '_blank');
+    // Navigate to the LiteAPI booking page with search params
+    navigate(`/book?destination=${encodeURIComponent(destination)}&checkin=${checkIn}&checkout=${checkOut}&guests=${guests}`);
   };
 
   const destinations = [
@@ -177,6 +179,37 @@ export default function Hotels() {
                   <p className="text-gray-600 dark:text-white/60">{f.desc}</p>
                 </div>
               ))}
+            </div>
+          </div>
+        </div>
+
+        {/* Advanced Booking CTA */}
+        <div className="py-12 bg-gradient-to-r from-cyclades-turquoise/10 to-cyan-600/10 dark:from-cyclades-turquoise/5 dark:to-cyan-600/5">
+          <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div className="bg-white dark:bg-dark-card rounded-2xl shadow-xl p-8 border border-gray-100 dark:border-white/10">
+              <div className="flex flex-col md:flex-row items-center gap-6">
+                <div className="flex-shrink-0">
+                  <div className="w-16 h-16 bg-gradient-to-br from-cyclades-turquoise to-cyan-600 rounded-2xl flex items-center justify-center">
+                    <Sparkles className="w-8 h-8 text-white" />
+                  </div>
+                </div>
+                <div className="flex-1 text-center md:text-left">
+                  <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
+                    Advanced Hotel Search with AI
+                  </h3>
+                  <p className="text-gray-600 dark:text-white/70">
+                    Search by vibe, compare real-time prices across booking sites, and find the perfect stay with our LiteAPI-powered search.
+                  </p>
+                </div>
+                <Link
+                  to="/book"
+                  className="flex-shrink-0 inline-flex items-center gap-2 px-8 py-4 bg-gradient-to-r from-cyclades-turquoise to-cyan-600 text-white rounded-xl font-semibold hover:shadow-lg transition-all hover:-translate-y-0.5"
+                >
+                  <Search className="w-5 h-5" />
+                  Search Hotels
+                  <ArrowRight className="w-5 h-5" />
+                </Link>
+              </div>
             </div>
           </div>
         </div>

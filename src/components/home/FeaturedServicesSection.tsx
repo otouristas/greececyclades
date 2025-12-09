@@ -22,8 +22,8 @@ const services = [
         image: '/images/services/ferry-tickets.webp',
         link: '/ferry-tickets',
         partner: {
-            name: 'FerryScanner',
-            logo: 'https://www.ferryscanner.com/_next/static/media/logo.f9964f3a.svg'
+            name: 'FerryHopper',
+            logo: 'https://cdn1.ferryhopper.com/img/ferryhopper-logo-small.svg'
         },
         stats: '50+ routes daily'
     },

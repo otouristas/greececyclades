@@ -60,6 +60,13 @@ const TouristasAIChat = lazy(() => import('./pages/TouristasAIChatNew'));
 const BusinessSignUp = lazy(() => import('./pages/BusinessSignUp'));
 const BusinessSignIn = lazy(() => import('./pages/BusinessSignIn'));
 const BusinessDashboard = lazy(() => import('./pages/BusinessDashboard'));
+const Directory = lazy(() => import('./pages/Directory'));
+// Booking pages
+const BookingPage = lazy(() => import('./pages/BookingPage'));
+const BookingResultsPage = lazy(() => import('./pages/BookingResultsPage'));
+const BookingHotelPage = lazy(() => import('./pages/BookingHotelPage'));
+const BookingCheckoutPage = lazy(() => import('./pages/BookingCheckoutPage'));
+const BookingConfirmationPage = lazy(() => import('./pages/BookingConfirmationPage'));
 
 import { ToastProvider } from './contexts/ToastContext';
 import { ThemeProvider } from './contexts/ThemeContext';
@@ -225,6 +232,14 @@ function AppContent() {
               <Route path="/activities/:id" element={<ActivityDetail />} />
               <Route path="/hotels" element={<Hotels />} />
               <Route path="/hotels/:slug" element={<HotelDetail />} />
+              
+              {/* Booking System */}
+              <Route path="/book" element={<BookingPage />} />
+              <Route path="/book/search" element={<BookingResultsPage />} />
+              <Route path="/book/hotel/:hotelId" element={<BookingHotelPage />} />
+              <Route path="/book/checkout" element={<BookingCheckoutPage />} />
+              <Route path="/book/confirmation" element={<BookingConfirmationPage />} />
+              <Route path="/directory" element={<Directory />} />
               <Route path="/hotels-test" element={<HotelsTest />} />
               <Route path="/greek-phrases" element={<GreekPhrases />} />
               <Route path="/ferry-tickets" element={<FerryTickets />} />

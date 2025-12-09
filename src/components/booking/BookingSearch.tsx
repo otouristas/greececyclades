@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import { Calendar, Users, Sparkles, MapPin, Search, SlidersHorizontal, Star, Utensils, Shield, ChevronDown, ChevronUp } from 'lucide-react';
 import { Button } from '@/components/ui/button';
-import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -9,6 +8,7 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@
 import { Switch } from '@/components/ui/switch';
 import { CityAutocomplete } from './CityAutocomplete';
 import { formatDateForAPI, type Occupancy, BOARD_TYPE_LABELS, STAR_RATING_OPTIONS } from '@/lib/liteapi';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface BookingSearchProps {
   onSearch: (params: SearchFormData) => void;
@@ -38,6 +38,8 @@ export interface SearchFormData {
 }
 
 export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destination', showAdvancedFilters = true }: BookingSearchProps) {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
   
   // Date handling
   const tomorrow = new Date();
@@ -171,16 +173,30 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
   }
 
   return (
-    <div>
+    <div className={`p-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
       <Tabs value={searchMode} onValueChange={(v) => setSearchMode(v as 'destination' | 'vibe')}>
-        <TabsList className="grid w-full grid-cols-2 mb-4 h-auto">
-          <TabsTrigger value="destination" className="flex items-center gap-2 py-3 px-2 sm:px-4 text-xs sm:text-sm whitespace-normal text-center h-full">
-            <MapPin className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
-            Search by Destination
+        <TabsList className={`grid w-full grid-cols-2 mb-6 h-auto p-1 rounded-xl ${isDark ? 'bg-white/10' : 'bg-gray-100'}`}>
+          <TabsTrigger 
+            value="destination" 
+            className={`flex items-center gap-2 py-3 px-4 text-sm font-medium rounded-lg transition-all ${
+              searchMode === 'destination' 
+                ? 'bg-cyclades-turquoise text-white shadow-lg' 
+                : isDark ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            <MapPin className="w-4 h-4" />
+            By Destination
           </TabsTrigger>
-          <TabsTrigger value="vibe" className="flex items-center gap-2 py-3 px-2 sm:px-4 text-xs sm:text-sm whitespace-normal text-center h-full">
-            <Sparkles className="w-3 h-3 sm:w-4 sm:h-4 shrink-0" />
-            Search by Vibe
+          <TabsTrigger 
+            value="vibe" 
+            className={`flex items-center gap-2 py-3 px-4 text-sm font-medium rounded-lg transition-all ${
+              searchMode === 'vibe' 
+                ? 'bg-gradient-to-r from-purple-500 to-pink-500 text-white shadow-lg' 
+                : isDark ? 'text-white/70 hover:text-white' : 'text-gray-600 hover:text-gray-900'
+            }`}
+          >
+            <Sparkles className="w-4 h-4" />
+            By Vibe (AI)
           </TabsTrigger>
         </TabsList>
 
@@ -195,8 +211,8 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
 
         <TabsContent value="vibe" className="space-y-4">
           <div>
-            <Label htmlFor="vibe-search" className="flex items-center gap-2 mb-2">
-              <Sparkles className="w-4 h-4" />
+            <Label htmlFor="vibe-search" className={`flex items-center gap-2 mb-2 font-medium ${isDark ? 'text-white' : 'text-gray-700'}`}>
+              <Sparkles className="w-4 h-4 text-purple-500" />
               Describe your ideal hotel
             </Label>
             <Input
@@ -206,21 +222,21 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
               onChange={(e) => setVibeQuery(e.target.value)}
               placeholder="e.g., romantic sunset views with infinity pool in Santorini"
               disabled={isLoading}
-              className="text-base"
+              className={`text-base h-12 ${isDark ? 'bg-white/10 border-white/20 text-white placeholder:text-white/50' : 'bg-white border-gray-300'}`}
             />
-            <p className="text-sm text-gray-500 mt-2">
+            <p className={`text-sm mt-2 ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
               Tell us what you're looking for, and we'll find the perfect match using AI
             </p>
           </div>
         </TabsContent>
       </Tabs>
 
-      <div className="space-y-4 mt-6">
+      <div className="space-y-6 mt-6">
         {/* Dates */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
-            <Label htmlFor="checkin" className="flex items-center gap-2 mb-2">
-              <Calendar className="w-4 h-4" />
+            <Label htmlFor="checkin" className={`flex items-center gap-2 mb-2 font-medium ${isDark ? 'text-white' : 'text-gray-700'}`}>
+              <Calendar className="w-4 h-4 text-cyclades-turquoise" />
               Check-in
             </Label>
             <input
@@ -229,12 +245,16 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
               value={checkin}
               onChange={(e) => setCheckin(e.target.value)}
               min={formatDateForAPI(new Date())}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sifnos-turquoise"
+              className={`w-full px-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:ring-2 focus:ring-cyclades-turquoise/50 ${
+                isDark 
+                  ? 'bg-white/10 border-white/20 text-white focus:border-cyclades-turquoise' 
+                  : 'bg-white border-gray-200 text-gray-900 focus:border-cyclades-turquoise'
+              }`}
             />
           </div>
           <div>
-            <Label htmlFor="checkout" className="flex items-center gap-2 mb-2">
-              <Calendar className="w-4 h-4" />
+            <Label htmlFor="checkout" className={`flex items-center gap-2 mb-2 font-medium ${isDark ? 'text-white' : 'text-gray-700'}`}>
+              <Calendar className="w-4 h-4 text-cyclades-turquoise" />
               Check-out
             </Label>
             <input
@@ -243,24 +263,28 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
               value={checkout}
               onChange={(e) => setCheckout(e.target.value)}
               min={checkin}
-              className="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-sifnos-turquoise"
+              className={`w-full px-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:ring-2 focus:ring-cyclades-turquoise/50 ${
+                isDark 
+                  ? 'bg-white/10 border-white/20 text-white focus:border-cyclades-turquoise' 
+                  : 'bg-white border-gray-200 text-gray-900 focus:border-cyclades-turquoise'
+              }`}
             />
           </div>
         </div>
 
         {/* Guests */}
         <div>
-          <Label className="flex items-center gap-2 mb-2">
-            <Users className="w-4 h-4" />
+          <Label className={`flex items-center gap-2 mb-3 font-medium ${isDark ? 'text-white' : 'text-gray-700'}`}>
+            <Users className="w-4 h-4 text-cyclades-turquoise" />
             Guests & Rooms
           </Label>
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+          <div className="grid grid-cols-3 gap-4">
             <div>
-              <Label htmlFor="adults" className="text-xs sm:text-sm text-gray-600 mb-1 block">
+              <Label htmlFor="adults" className={`text-xs mb-1 block ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
                 Adults
               </Label>
               <Select value={adults.toString()} onValueChange={(v) => setAdults(parseInt(v))}>
-                <SelectTrigger id="adults">
+                <SelectTrigger id="adults" className={`h-12 rounded-xl ${isDark ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-gray-200'}`}>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -273,11 +297,11 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
               </Select>
             </div>
             <div>
-              <Label htmlFor="children" className="text-xs sm:text-sm text-gray-600 mb-1 block">
+              <Label htmlFor="children" className={`text-xs mb-1 block ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
                 Children
               </Label>
               <Select value={children.toString()} onValueChange={(v) => setChildren(parseInt(v))}>
-                <SelectTrigger id="children">
+                <SelectTrigger id="children" className={`h-12 rounded-xl ${isDark ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-gray-200'}`}>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -290,11 +314,11 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
               </Select>
             </div>
             <div>
-              <Label htmlFor="rooms" className="text-xs sm:text-sm text-gray-600 mb-1 block">
+              <Label htmlFor="rooms" className={`text-xs mb-1 block ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
                 Rooms
               </Label>
               <Select value={rooms.toString()} onValueChange={(v) => setRooms(parseInt(v))}>
-                <SelectTrigger id="rooms">
+                <SelectTrigger id="rooms" className={`h-12 rounded-xl ${isDark ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-gray-200'}`}>
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -309,14 +333,14 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
           </div>
         </div>
 
-        {/* Currency & Nationality */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        {/* Currency & Nationality - Collapsed into one row */}
+        <div className="grid grid-cols-2 gap-4">
           <div>
-            <Label htmlFor="currency" className="text-sm text-gray-600 mb-2 block">
+            <Label htmlFor="currency" className={`text-xs mb-1 block ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
               Currency
             </Label>
             <Select value={currency} onValueChange={setCurrency}>
-              <SelectTrigger id="currency">
+              <SelectTrigger id="currency" className={`h-12 rounded-xl ${isDark ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-gray-200'}`}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -327,11 +351,11 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
             </Select>
           </div>
           <div>
-            <Label htmlFor="nationality" className="text-sm text-gray-600 mb-2 block">
-              Guest Nationality
+            <Label htmlFor="nationality" className={`text-xs mb-1 block ${isDark ? 'text-white/60' : 'text-gray-500'}`}>
+              Nationality
             </Label>
             <Select value={guestNationality} onValueChange={setGuestNationality}>
-              <SelectTrigger id="nationality">
+              <SelectTrigger id="nationality" className={`h-12 rounded-xl ${isDark ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-gray-200'}`}>
                 <SelectValue />
               </SelectTrigger>
               <SelectContent>
@@ -352,18 +376,18 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
 
         {/* Advanced Filters Toggle */}
         {showAdvancedFilters && (
-          <div className="border-t border-gray-200 pt-4">
+          <div className={`border-t pt-4 ${isDark ? 'border-white/10' : 'border-gray-200'}`}>
             <Button
               type="button"
               variant="ghost"
               onClick={() => setShowFilters(!showFilters)}
-              className="w-full flex items-center justify-between text-gray-700 hover:text-sifnos-turquoise"
+              className={`w-full flex items-center justify-between ${isDark ? 'text-white/80 hover:text-cyclades-turquoise hover:bg-white/5' : 'text-gray-700 hover:text-cyclades-turquoise'}`}
             >
               <span className="flex items-center gap-2">
                 <SlidersHorizontal className="w-4 h-4" />
                 Advanced Filters
                 {activeFilterCount > 0 && (
-                  <span className="bg-sifnos-turquoise text-white text-xs px-2 py-0.5 rounded-full">
+                  <span className="bg-cyclades-turquoise text-white text-xs px-2 py-0.5 rounded-full">
                     {activeFilterCount}
                   </span>
                 )}
@@ -372,10 +396,10 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
             </Button>
 
             {showFilters && (
-              <div className="mt-4 p-4 bg-gray-50 rounded-lg space-y-4">
+              <div className={`mt-4 p-4 rounded-xl space-y-4 ${isDark ? 'bg-white/5' : 'bg-gray-50'}`}>
                 {/* Star Rating */}
                 <div>
-                  <Label className="flex items-center gap-2 mb-2">
+                  <Label className={`flex items-center gap-2 mb-2 ${isDark ? 'text-white' : 'text-gray-700'}`}>
                     <Star className="w-4 h-4 text-yellow-500" />
                     Star Rating
                   </Label>
@@ -383,7 +407,7 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
                     value={starRating ? JSON.stringify(starRating) : 'any'} 
                     onValueChange={(v) => setStarRating(v === 'any' ? undefined : JSON.parse(v))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className={`h-11 rounded-xl ${isDark ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-gray-200'}`}>
                       <SelectValue placeholder="Any star rating" />
                     </SelectTrigger>
                     <SelectContent>
@@ -399,7 +423,7 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
 
                 {/* Board Type */}
                 <div>
-                  <Label className="flex items-center gap-2 mb-2">
+                  <Label className={`flex items-center gap-2 mb-2 ${isDark ? 'text-white' : 'text-gray-700'}`}>
                     <Utensils className="w-4 h-4 text-orange-500" />
                     Meal Plan
                   </Label>
@@ -407,7 +431,7 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
                     value={boardType || 'any'} 
                     onValueChange={(v) => setBoardType(v === 'any' ? undefined : v as any)}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className={`h-11 rounded-xl ${isDark ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-gray-200'}`}>
                       <SelectValue placeholder="Any meal plan" />
                     </SelectTrigger>
                     <SelectContent>
@@ -423,7 +447,7 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
 
                 {/* Min Guest Rating */}
                 <div>
-                  <Label className="flex items-center gap-2 mb-2">
+                  <Label className={`flex items-center gap-2 mb-2 ${isDark ? 'text-white' : 'text-gray-700'}`}>
                     <Star className="w-4 h-4 text-blue-500" />
                     Minimum Guest Rating
                   </Label>
@@ -431,7 +455,7 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
                     value={minRating?.toString() || 'any'} 
                     onValueChange={(v) => setMinRating(v === 'any' ? undefined : parseFloat(v))}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className={`h-11 rounded-xl ${isDark ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-gray-200'}`}>
                       <SelectValue placeholder="Any rating" />
                     </SelectTrigger>
                     <SelectContent>
@@ -446,7 +470,7 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
 
                 {/* Refundable Only */}
                 <div className="flex items-center justify-between">
-                  <Label className="flex items-center gap-2">
+                  <Label className={`flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-700'}`}>
                     <Shield className="w-4 h-4 text-green-500" />
                     Refundable rates only
                   </Label>
@@ -458,12 +482,12 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
 
                 {/* Sort By */}
                 <div>
-                  <Label className="text-sm text-gray-600 mb-2 block">Sort Results By</Label>
+                  <Label className={`text-sm mb-2 block ${isDark ? 'text-white/60' : 'text-gray-600'}`}>Sort Results By</Label>
                   <Select 
                     value={sortBy || 'default'} 
                     onValueChange={(v) => setSortBy(v === 'default' ? undefined : v as any)}
                   >
-                    <SelectTrigger>
+                    <SelectTrigger className={`h-11 rounded-xl ${isDark ? 'bg-white/10 border-white/20 text-white' : 'bg-white border-gray-200'}`}>
                       <SelectValue placeholder="Default (Top Picks)" />
                     </SelectTrigger>
                     <SelectContent>
@@ -481,7 +505,7 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
                     type="button"
                     variant="outline"
                     onClick={clearFilters}
-                    className="w-full text-gray-600"
+                    className={`w-full ${isDark ? 'border-white/20 text-white hover:bg-white/10' : 'text-gray-600'}`}
                   >
                     Clear All Filters
                   </Button>
@@ -495,7 +519,7 @@ export function BookingSearch({ onSearch, isLoading, defaultSearchMode = 'destin
         <Button
           onClick={validateAndSearch}
           disabled={isLoading}
-          className="w-full bg-sifnos-turquoise hover:bg-sifnos-deep-blue text-white py-4 sm:py-6 text-base sm:text-lg font-semibold"
+          className="w-full h-14 bg-gradient-to-r from-cyclades-turquoise to-cyan-600 hover:from-cyclades-turquoise/90 hover:to-cyan-600/90 text-white text-lg font-semibold rounded-xl shadow-lg hover:shadow-xl transition-all"
         >
           {isLoading ? (
             <>

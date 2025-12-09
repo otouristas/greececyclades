@@ -1,12 +1,12 @@
 import { useState, useRef, useEffect } from 'react';
-import { Send, Sparkles, User, X, ThumbsUp, ThumbsDown, Share2, Download, Save, MapPin, Calendar, Compass, Umbrella, Utensils, Camera, Ship, Hotel, Plane, MapIcon, ExternalLink, MessageCircle, Zap, Globe, Heart, Star, Clock, Euro, Users, Camera as CameraIcon } from 'lucide-react';
+import { Send, Sparkles, X, ThumbsUp, ThumbsDown, Save, MapPin, Compass, Umbrella, Utensils, Camera, Ship, Hotel, Plane, MapIcon, MessageCircle, Globe, Heart, Euro, Users, Camera as CameraIcon } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '../stores/authStore';
 import { useTripStore } from '../store/tripStore';
-import { generateConversationalTrip } from '../utils/ai';
-import { Island, IslandActivity } from '../types/island';
-import { toast } from './ui/toast';
+import { sendChatMessage, ChatMessage as APIChatMessage } from '../services/aiChatService';
+import { Island } from '../types/island';
+import { toast } from '@/hooks/use-toast';
 import { cyclades } from '../data/islandsData';
 
 type Message = {
@@ -138,32 +138,39 @@ export default function ConversationalTripPlanner() {
     setMessages(prev => [...prev, typingMessage]);
 
     try {
-      // Get conversation history for context
-      const conversationHistory = messages
-        .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
-        .join('\n');
+      // Build chat history for API
+      const chatHistory: APIChatMessage[] = messages
+        .filter(m => !m.typing)
+        .map(m => ({ role: m.role, content: m.content }));
+      chatHistory.push({ role: 'user', content: inputValue });
+
+      // Create placeholder for streaming
+      const assistantMessageId = Date.now().toString();
+      setMessages(prev => [
+        ...prev.filter(msg => msg.id !== 'typing'),
+        { id: assistantMessageId, role: 'assistant', content: '', timestamp: new Date() }
+      ]);
+
+      let fullResponse = '';
       
-      const response = await generateConversationalTrip(inputValue, conversationHistory);
+      // Stream response from Perplexity API
+      await sendChatMessage(chatHistory, {
+        onChunk: (chunk) => {
+          fullResponse += chunk;
+          setMessages(prev => prev.map(m => 
+            m.id === assistantMessageId 
+              ? { ...m, content: m.content + chunk }
+              : m
+          ));
+        }
+      });
       
-      // Remove typing indicator
-      setMessages(prev => prev.filter(msg => msg.id !== 'typing'));
-      
-      // Extract trip plan from the text response since AI returns a string
-      const tripPlan = extractTripPlanFromText(response);
+      // Extract trip plan from the full response
+      const tripPlan = extractTripPlanFromText(fullResponse);
       if (tripPlan) {
         setGeneratedTrip(tripPlan);
         setActiveTab('trip');
       }
-      
-      // Add assistant message
-      const assistantMessage: Message = {
-        id: Date.now().toString(),
-        role: 'assistant',
-        content: response,
-        timestamp: new Date(),
-      };
-      
-      setMessages(prev => [...prev, assistantMessage]);
       
     } catch (error) {
       console.error('Error generating trip:', error);
@@ -209,8 +216,9 @@ export default function ConversationalTripPlanner() {
           description: `Visit the beautiful island of ${island}`,
           image: `/images/islands/${island.toLowerCase()}.jpg`,
           shortDescription: `Discover ${island}`,
-          highlights: []
-        });
+          highlights: [],
+          activities: []
+        } as Island);
       }
     });
     
@@ -331,7 +339,7 @@ export default function ConversationalTripPlanner() {
     }
     
     try {
-      if (!user.uid) {
+      if (!user.id) {
         toast({
           title: 'Error',
           description: 'User ID not available. Please try signing in again.',
@@ -343,7 +351,7 @@ export default function ConversationalTripPlanner() {
       const newTrip = {
         name: `Greek Islands: ${generatedTrip.islands.map(i => i.name).join(', ')}`,
         description: `AI-generated Cyclades adventure for ${generatedTrip.islands.length} islands`,
-        userId: user.uid,
+        userId: user.id,
         createdAt: new Date(),
         islands: generatedTrip.islands,
         itinerary: generatedTrip.itinerary,

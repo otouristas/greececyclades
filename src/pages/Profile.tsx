@@ -39,7 +39,7 @@ import {
   DollarSign
 } from 'lucide-react';
 import { generateProfileSEO } from '../utils/seo';
-import Switch from '../components/ui/Switch';
+import { Switch } from '../components/ui/switch';
 import { Link } from 'react-router-dom';
 import { useAuthStore } from '../stores/authStore';
 import { ProfileService, type Profile, type Post, type Favorite, type TripPlan, type DiaryEntry } from '../services/profileService';

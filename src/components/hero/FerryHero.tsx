@@ -20,12 +20,12 @@ const FerryHero: React.FC = () => {
         </p>
         <div className="mt-8">
           <a 
-            href="https://www.ferryscanner.com/en/ferry/results?ref=ztdimtue&utm_source=georgekasiotis&utm_campaign=Ferryscanner+affiliate+program+EN"
+            href="https://www.ferryhopper.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
+            className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-cyclades-turquoise hover:bg-cyclades-turquoise/90"
           >
-            Search Ferries on Ferryscanner
+            Search Ferries on FerryHopper
           </a>
         </div>
       </div>

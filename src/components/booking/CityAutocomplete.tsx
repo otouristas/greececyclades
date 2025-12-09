@@ -1,12 +1,12 @@
 import { useState, useEffect, useMemo } from 'react';
-import { MapPin, Search, Globe } from 'lucide-react';
+import { MapPin, Search, Globe, Check } from 'lucide-react';
 import { getCountries, getCities, type Country, type City } from '@/lib/liteapi-data';
 import { Label } from '@/components/ui/label';
 import { Button } from '@/components/ui/button';
 import { Command, CommandEmpty, CommandGroup, CommandInput, CommandItem, CommandList } from '@/components/ui/command';
 import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
-import { Check } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { useTheme } from '@/contexts/ThemeContext';
 
 interface CityAutocompleteProps {
   value: { cityName: string; countryCode: string } | null;
@@ -21,6 +21,9 @@ export function CityAutocomplete({
   label = 'Destination',
   disabled = false,
 }: CityAutocompleteProps) {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
+  
   // State
   const [countries, setCountries] = useState<Country[]>([]);
   const [cities, setCities] = useState<City[]>([]);
@@ -169,15 +172,18 @@ export function CityAutocomplete({
   };
 
   return (
-    <div className="space-y-4">
+    <div className="space-y-3">
       {label && (
-        <Label className="flex items-center gap-2">
-          <MapPin className="w-4 h-4" />
+        <Label className={cn(
+          "flex items-center gap-2 font-medium",
+          isDark ? "text-white" : "text-gray-700"
+        )}>
+          <MapPin className="w-4 h-4 text-cyclades-turquoise" />
           {label}
         </Label>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
         {/* Country Selection */}
         <Popover open={openCountry} onOpenChange={setOpenCountry}>
           <PopoverTrigger asChild>
@@ -185,31 +191,39 @@ export function CityAutocomplete({
               variant="outline"
               role="combobox"
               aria-expanded={openCountry}
-              className="w-full justify-between border-gray-300 hover:border-sifnos-deep-blue focus:border-sifnos-deep-blue focus:ring-sifnos-deep-blue/20"
+              className={cn(
+                "w-full h-12 justify-between rounded-xl transition-all",
+                isDark 
+                  ? "bg-white/10 border-white/20 text-white hover:border-cyclades-turquoise hover:bg-white/15" 
+                  : "bg-white border-gray-200 text-gray-900 hover:border-cyclades-turquoise"
+              )}
               disabled={disabled || isLoadingCountries}
             >
               {selectedCountry ? (
                 <span className="flex items-center gap-2 truncate">
-                  <Globe className="w-4 h-4 opacity-50" />
+                  <Globe className="w-4 h-4 text-cyclades-turquoise" />
                   {selectedCountry.name}
                 </span>
               ) : (
-                <span className="text-muted-foreground">Select country...</span>
+                <span className={isDark ? "text-white/50" : "text-gray-400"}>Select country...</span>
               )}
               <Search className="ml-2 h-4 w-4 shrink-0 opacity-50" />
             </Button>
           </PopoverTrigger>
           <PopoverContent 
-            className="w-[300px] p-0 z-[200]" 
+            className={cn(
+              "w-[300px] p-0 z-[200] rounded-xl border-2",
+              isDark ? "bg-dark-card border-dark-border" : "bg-white border-gray-200"
+            )}
             onOpenAutoFocus={(e) => e.preventDefault()}
             sideOffset={5}
             align="start"
             side="bottom"
           >
-            <Command>
-              <CommandInput placeholder="Search country..." className="border-sifnos-deep-blue/20 focus:border-sifnos-deep-blue" />
+            <Command className={isDark ? "bg-dark-card" : "bg-white"}>
+              <CommandInput placeholder="Search country..." className={isDark ? "text-white" : ""} />
               <CommandList className="max-h-[300px] overflow-y-auto">
-                <CommandEmpty>No country found.</CommandEmpty>
+                <CommandEmpty className={isDark ? "text-white/60" : ""}>No country found.</CommandEmpty>
                 <CommandGroup>
                   {countries.map((country) => (
                     <CommandItem
@@ -218,15 +232,15 @@ export function CityAutocomplete({
                       onSelect={(currentValue) => {
                         handleCountrySelect(currentValue);
                       }}
-                      className="cursor-pointer hover:bg-sifnos-beige/20 touch-manipulation"
-                      onTouchStart={(e) => {
-                        // Ensure touch events work properly on mobile
-                        e.stopPropagation();
-                      }}
+                      className={cn(
+                        "cursor-pointer touch-manipulation",
+                        isDark ? "text-white hover:bg-cyclades-turquoise/20" : "hover:bg-cyclades-turquoise/10"
+                      )}
+                      onTouchStart={(e) => e.stopPropagation()}
                     >
                       <Check
                         className={cn(
-                          "mr-2 h-4 w-4 text-sifnos-deep-blue",
+                          "mr-2 h-4 w-4 text-cyclades-turquoise",
                           selectedCountry?.code === country.code ? "opacity-100" : "opacity-0"
                         )}
                       />
@@ -246,16 +260,21 @@ export function CityAutocomplete({
               variant="outline"
               role="combobox"
               aria-expanded={openCity}
-              className="w-full justify-between border-gray-300 hover:border-sifnos-deep-blue focus:border-sifnos-deep-blue focus:ring-sifnos-deep-blue/20"
+              className={cn(
+                "w-full h-12 justify-between rounded-xl transition-all",
+                isDark 
+                  ? "bg-white/10 border-white/20 text-white hover:border-cyclades-turquoise hover:bg-white/15" 
+                  : "bg-white border-gray-200 text-gray-900 hover:border-cyclades-turquoise"
+              )}
               disabled={!selectedCountry || disabled || isLoadingCities}
             >
               {value?.cityName ? (
                 <span className="flex items-center gap-2 truncate">
-                  <MapPin className="w-4 h-4 opacity-50" />
+                  <MapPin className="w-4 h-4 text-cyclades-turquoise" />
                   {value.cityName}
                 </span>
               ) : (
-                <span className="text-muted-foreground">
+                <span className={isDark ? "text-white/50" : "text-gray-400"}>
                   {isLoadingCities ? "Loading cities..." : "Select city..."}
                 </span>
               )}
@@ -263,16 +282,19 @@ export function CityAutocomplete({
             </Button>
           </PopoverTrigger>
           <PopoverContent 
-            className="w-[300px] p-0 z-[200]" 
+            className={cn(
+              "w-[300px] p-0 z-[200] rounded-xl border-2",
+              isDark ? "bg-dark-card border-dark-border" : "bg-white border-gray-200"
+            )}
             onOpenAutoFocus={(e) => e.preventDefault()}
             sideOffset={5}
             align="start"
             side="bottom"
           >
-            <Command>
-              <CommandInput placeholder="Search city..." className="border-sifnos-deep-blue/20 focus:border-sifnos-deep-blue" />
+            <Command className={isDark ? "bg-dark-card" : "bg-white"}>
+              <CommandInput placeholder="Search city..." className={isDark ? "text-white" : ""} />
               <CommandList className="max-h-[300px] overflow-y-auto">
-                <CommandEmpty>No city found.</CommandEmpty>
+                <CommandEmpty className={isDark ? "text-white/60" : ""}>No city found.</CommandEmpty>
                 <CommandGroup>
                   {cities.map((city) => (
                     <CommandItem
@@ -281,15 +303,15 @@ export function CityAutocomplete({
                       onSelect={(currentValue) => {
                         handleCitySelect(currentValue);
                       }}
-                      className="cursor-pointer hover:bg-sifnos-beige/20 touch-manipulation"
-                      onTouchStart={(e) => {
-                        // Ensure touch events work properly on mobile
-                        e.stopPropagation();
-                      }}
+                      className={cn(
+                        "cursor-pointer touch-manipulation",
+                        isDark ? "text-white hover:bg-cyclades-turquoise/20" : "hover:bg-cyclades-turquoise/10"
+                      )}
+                      onTouchStart={(e) => e.stopPropagation()}
                     >
                       <Check
                         className={cn(
-                          "mr-2 h-4 w-4 text-sifnos-deep-blue",
+                          "mr-2 h-4 w-4 text-cyclades-turquoise",
                           value?.cityName === city.name ? "opacity-100" : "opacity-0"
                         )}
                       />

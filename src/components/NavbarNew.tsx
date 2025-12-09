@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import {
     Menu, ChevronRight, ChevronDown, Search, Sparkles,
-    MapPin, Compass, Ship, User, Calendar
+    MapPin, Compass, Ship, User, Calendar, Hotel
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import Logo from './Logo';
@@ -147,6 +147,52 @@ export const megaMenuConfig = {
         banner: {
             text: '🚢 Compare all ferry operators',
             subtext: 'Best prices guaranteed'
+        }
+    },
+    stay: {
+        name: 'Where to Stay',
+        icon: Hotel,
+        path: '/hotels',
+        featured: {
+            title: 'Find Your Perfect Stay',
+            description: 'Hotels, villas & boutique accommodations',
+            image: '/photos/santorini-hotel-pool.jpg',
+            cta: { text: 'Search Hotels', path: '/hotels' }
+        },
+        columns: [
+            {
+                title: 'By Island',
+                links: [
+                    { name: 'Santorini Hotels', path: '/hotels?island=santorini', badge: 'Popular' },
+                    { name: 'Mykonos Hotels', path: '/hotels?island=mykonos' },
+                    { name: 'Paros Hotels', path: '/hotels?island=paros' },
+                    { name: 'Naxos Hotels', path: '/hotels?island=naxos' },
+                    { name: 'Milos Hotels', path: '/hotels?island=milos', badge: 'New' },
+                ]
+            },
+            {
+                title: 'By Type',
+                links: [
+                    { name: 'Luxury Villas', path: '/hotels?type=villa' },
+                    { name: 'Cave Hotels', path: '/hotels?type=cave', badge: 'Unique' },
+                    { name: 'Boutique Hotels', path: '/hotels?type=boutique' },
+                    { name: 'Budget-Friendly', path: '/hotels?type=budget' },
+                ]
+            },
+            {
+                title: 'Explore',
+                links: [
+                    { name: 'Book Hotels', path: '/book', badge: 'LiteAPI' },
+                    { name: 'All Hotels', path: '/hotels' },
+                    { name: 'Business Directory', path: '/directory', badge: 'New' },
+                    { name: 'Restaurants & Bars', path: '/directory?type=restaurant' },
+                    { name: 'List Your Property', path: '/list-property' },
+                ]
+            }
+        ],
+        banner: {
+            text: '🏨 Best price guarantee',
+            subtext: 'Compare rates from top booking sites'
         }
     },
     planning: {

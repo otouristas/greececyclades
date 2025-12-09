@@ -5,7 +5,7 @@ import {
     Send, X, Sparkles, Mic, MicOff, Maximize2, Minimize2,
     Hotel, MapPin, Ship, Camera, Heart, Loader2, Compass
 } from 'lucide-react';
-import { generateConversationalTrip } from '../../utils/ai';
+import { sendChatMessage, ChatMessage } from '../../services/aiChatService';
 import ChatMessagesDark from './ChatMessagesDark';
 import {
     Message,
@@ -158,27 +158,38 @@ What would you like to explore today?`,
             const updatedPreferences = { ...userPreferences, ...newPreferences };
             setUserPreferences(updatedPreferences);
 
-            // Build conversation history
-            const conversationHistory = messages
-                .filter(m => !m.typing)
-                .map(m => `${m.role === 'user' ? 'User' : 'Touristas AI'}: ${m.content}`)
-                .join('\n');
+            // Build chat history for Perplexity API
+            const chatHistory: ChatMessage[] = messages
+                .filter(m => !m.typing && m.id !== 'welcome')
+                .map(m => ({ role: m.role, content: m.content }));
+            
+            // Add current user message
+            chatHistory.push({ role: 'user', content: input.trim() });
 
-            // Call AI
-            const response = await generateConversationalTrip(input.trim(), conversationHistory);
+            // Remove typing indicator and add empty assistant message for streaming
+            const assistantMessageId = (Date.now() + 1).toString();
+            setMessages(prev => [
+                ...prev.filter(m => m.id !== typingId),
+                {
+                    id: assistantMessageId,
+                    role: 'assistant',
+                    content: '',
+                    preferences: updatedPreferences
+                }
+            ]);
 
-            // Remove typing indicator
-            setMessages(prev => prev.filter(m => m.id !== typingId));
-
-            // Add response
-            const assistantMessage: Message = {
-                id: (Date.now() + 1).toString(),
-                role: 'assistant',
-                content: response,
-                preferences: updatedPreferences
-            };
-
-            setMessages(prev => [...prev, assistantMessage]);
+            // Stream response from Perplexity API
+            await sendChatMessage(chatHistory, {
+                budget: updatedPreferences.budget as any,
+                travelers: updatedPreferences.travelers ? parseInt(updatedPreferences.travelers) : undefined,
+                onChunk: (chunk) => {
+                    setMessages(prev => prev.map(m => 
+                        m.id === assistantMessageId 
+                            ? { ...m, content: m.content + chunk }
+                            : m
+                    ));
+                }
+            });
 
         } catch (error) {
             console.error('Chat error:', error);

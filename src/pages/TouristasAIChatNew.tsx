@@ -6,8 +6,8 @@ import {
   Ship, UtensilsCrossed, Camera, Heart, Sun,
   Wallet, Compass, ArrowRight
 } from 'lucide-react';
-import { generateConversationalTrip } from '../utils/ai';
-import { toast } from '../components/ui/toast';
+import { sendChatMessage, ChatMessage } from '../services/aiChatService';
+import { toast } from '@/hooks/use-toast';
 import SEO from '../components/SEO';
 import { useTheme } from '../contexts/ThemeContext';
 
@@ -152,27 +152,35 @@ I'm your personal Greek islands travel assistant. I can help you:
     setIsLoading(true);
 
     try {
-      // Build context from filters
-      let context = '';
-      if (budget) context += `Budget preference: ${budget}. `;
-      if (travelers) context += `Number of travelers: ${travelers}. `;
-      
-      const conversationHistory = messages
-        .map(msg => `${msg.role === 'user' ? 'User' : 'Assistant'}: ${msg.content}`)
-        .join('\n');
-      
-      const response = await generateConversationalTrip(
-        context + userInput, 
-        conversationHistory
-      );
-      
-      const assistantMessage: Message = {
-        id: (Date.now() + 1).toString(),
+      // Create placeholder for streaming response
+      const assistantMessageId = (Date.now() + 1).toString();
+      setMessages(prev => [...prev, {
+        id: assistantMessageId,
         role: 'assistant',
-        content: response,
-      };
+        content: ''
+      }]);
+
+      // Build chat history for API
+      const chatHistory: ChatMessage[] = messages
+        .filter(m => m.id !== 'welcome') // Exclude welcome message
+        .map(m => ({ role: m.role, content: m.content }));
       
-      setMessages(prev => [...prev, assistantMessage]);
+      // Add current user message
+      chatHistory.push({ role: 'user', content: userInput });
+
+      // Stream response from Perplexity via Supabase Edge Function
+      await sendChatMessage(chatHistory, {
+        budget: budget || undefined,
+        travelers: travelers,
+        onChunk: (chunk) => {
+          // Update assistant message with streaming content
+          setMessages(prev => prev.map(m => 
+            m.id === assistantMessageId 
+              ? { ...m, content: m.content + chunk }
+              : m
+          ));
+        }
+      });
       
     } catch (error) {
       console.error('Chat error:', error);

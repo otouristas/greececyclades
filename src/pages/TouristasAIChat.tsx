@@ -9,8 +9,8 @@ import {
 } from 'lucide-react';
 import { Link, useSearchParams, useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../stores/authStore';
-import { generateConversationalTrip } from '../utils/ai';
-import { toast } from '../components/ui/toast';
+import { sendChatMessage, ChatMessage as APIChatMessage } from '../services/aiChatService';
+import { toast } from '@/hooks/use-toast';
 import SEO from '../components/SEO';
 
 // OpenStreetMap component
@@ -184,28 +184,42 @@ export default function TouristasAIChat() {
     setMessages(prev => [...prev, typingMessage]);
 
     try {
-      const conversationHistory = messages
-        .map(msg => `${msg.role === 'user' ? 'User' : 'Touristas AI'}: ${msg.content}`)
-        .join('\n');
-      
-      const response = await generateConversationalTrip(inputValue, conversationHistory);
-      
-      setMessages(prev => prev.filter(msg => msg.id !== 'typing'));
-      
-      const assistantMessage: Message = {
-        id: Date.now().toString(),
-        role: 'assistant',
-        content: response,
-        timestamp: new Date(),
-        aiSuggestions: [
-          '🔄 Modify this plan',
-          '💾 Save to my trips',
-          '📞 Book restaurants',
-          '🗺️ View on map'
-        ]
-      };
-      
-      setMessages(prev => [...prev, assistantMessage]);
+      // Build chat history for API
+      const chatHistory: APIChatMessage[] = messages
+        .filter(m => !m.typing)
+        .map(m => ({ role: m.role, content: m.content }));
+      chatHistory.push({ role: 'user', content: inputValue });
+
+      // Create placeholder for streaming
+      const assistantMessageId = Date.now().toString();
+      setMessages(prev => [
+        ...prev.filter(msg => msg.id !== 'typing'),
+        {
+          id: assistantMessageId,
+          role: 'assistant',
+          content: '',
+          timestamp: new Date(),
+          aiSuggestions: []
+        }
+      ]);
+
+      // Stream response from Perplexity API
+      await sendChatMessage(chatHistory, {
+        onChunk: (chunk) => {
+          setMessages(prev => prev.map(m => 
+            m.id === assistantMessageId 
+              ? { ...m, content: m.content + chunk }
+              : m
+          ));
+        }
+      });
+
+      // Add suggestions after complete
+      setMessages(prev => prev.map(m => 
+        m.id === assistantMessageId 
+          ? { ...m, aiSuggestions: ['🔄 Modify this plan', '💾 Save to my trips', '📞 Book restaurants', '🗺️ View on map'] }
+          : m
+      ));
       
     } catch (error) {
       console.error('Touristas AI Error:', error);

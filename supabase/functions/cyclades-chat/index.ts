@@ -209,20 +209,55 @@ Before sending, ensure your response:
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                model: "llama-3.1-sonar-large-128k-online",
-                messages: [
-                    {
-                        role: "system",
-                        content: systemPrompt,
-                    },
-                    ...messages.map((msg: { role: string; content: string }) => ({
-                        role: msg.role,
-                        content: msg.content,
-                    })),
-                ],
+                model: "sonar",
+                messages: (() => {
+                    // Build messages array with proper alternation
+                    const formattedMessages: { role: string; content: string }[] = [
+                        { role: "system", content: systemPrompt }
+                    ];
+                    
+                    // Filter and ensure proper user/assistant alternation
+                    let lastRole = "system";
+                    for (const msg of messages) {
+                        // Skip if same role as previous (except system)
+                        if (msg.role === lastRole && lastRole !== "system") {
+                            // Merge content if consecutive same roles
+                            const lastMsg = formattedMessages[formattedMessages.length - 1];
+                            if (lastMsg) {
+                                lastMsg.content += "\n\n" + msg.content;
+                            }
+                            continue;
+                        }
+                        
+                        // Ensure first message after system is user
+                        if (lastRole === "system" && msg.role === "assistant") {
+                            // Skip orphan assistant messages
+                            continue;
+                        }
+                        
+                        formattedMessages.push({
+                            role: msg.role,
+                            content: msg.content
+                        });
+                        lastRole = msg.role;
+                    }
+                    
+                    // Ensure we end with a user message (required by Perplexity)
+                    if (formattedMessages.length > 1 && formattedMessages[formattedMessages.length - 1].role !== "user") {
+                        formattedMessages.pop();
+                    }
+                    
+                    // If no user messages, add a default
+                    if (formattedMessages.length === 1) {
+                        formattedMessages.push({ role: "user", content: "Hello, tell me about the Cyclades islands!" });
+                    }
+                    
+                    console.log("Formatted messages count:", formattedMessages.length);
+                    return formattedMessages;
+                })(),
                 stream: true,
                 max_tokens: 4096,
-                temperature: 0.75,
+                temperature: 0.7,
             }),
         });
 
