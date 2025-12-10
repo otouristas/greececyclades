@@ -1,8 +1,9 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Calendar, Users, Star, Info, Compass, Sunrise, Sailboat, Utensils, ChevronRight, ArrowRight, Waves } from 'lucide-react';
+import { MapPin, Calendar, Users, Star, Info, Compass, Sailboat, Utensils, ArrowRight, Waves } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
+import GetYourGuideWidget, { GYG_LOCATIONS } from '../components/activities/GetYourGuideWidget';
 
 export default function Activities() {
   const categories = [
@@ -78,11 +79,9 @@ export default function Activities() {
         ]}
       />
 
-      <script async defer src="https://widget.getyourguide.com/dist/pa.umd.production.min.js" data-gyg-partner-id="YFXNELL"></script>
-
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         {/* Hero Section */}
-        <div className="relative min-h-[80vh] flex items-center">
+        <div className="relative min-h-[70vh] md:min-h-[80vh] flex items-center">
           <div className="absolute inset-0">
             <img
               src="/images/activites.webp"
@@ -92,19 +91,12 @@ export default function Activities() {
             <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/60 to-black/40" />
           </div>
 
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 w-full">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-white/70 text-sm mb-8">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">Activities</span>
-            </nav>
-
-            <div className="max-w-3xl mb-12">
-              <h1 className="text-5xl md:text-7xl font-bold text-white mb-6 tracking-tight">
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 w-full">
+            <div className="max-w-3xl mb-10 md:mb-12">
+              <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 tracking-tight">
                 Unforgettable <span className="text-cyclades-turquoise">Experiences</span>
               </h1>
-              <p className="text-xl text-white/90 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/90 leading-relaxed px-1">
                 Discover and book the best tours, experiences, and things to do across the Greek islands.
                 From sailing adventures to cultural immersion.
               </p>
@@ -152,15 +144,11 @@ export default function Activities() {
             </div>
 
             <div id="activities-widget" className="min-h-[600px] bg-gray-50 dark:bg-white/5 rounded-2xl p-4">
-              <div data-gyg-href="https://widget.getyourguide.com/default/activities.frame"
-                data-gyg-location-id="751"
-                data-gyg-locale-code="en-US"
-                data-gyg-widget="activities"
-                data-gyg-number-of-items="12"
-                data-gyg-partner-id="YFXNELL"
-                data-gyg-columns="3">
-                <span>Powered by <a target="_blank" rel="sponsored" href="https://www.getyourguide.com/cyclades-l751/">GetYourGuide</a></span>
-              </div>
+              <GetYourGuideWidget
+                locationId={GYG_LOCATIONS.CYCLADES}
+                numberOfItems={15}
+                columns={3}
+              />
             </div>
           </div>
         </div>

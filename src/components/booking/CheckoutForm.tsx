@@ -1,14 +1,16 @@
 import { useState } from 'react';
-import { User, Mail, Phone, Check } from 'lucide-react';
+import { User, Mail, Phone, Check, AlertCircle } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Card } from '@/components/ui/card';
 import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Checkbox } from '@/components/ui/checkbox';
-import type { PrebookResponse } from '@/lib/liteapi';
+import { useTheme } from '@/contexts/ThemeContext';
+import type { PrebookResponse, HotelRate } from '@/lib/liteapi';
 
 interface CheckoutFormProps {
-  prebookData: PrebookResponse['data'];
+  prebookData: PrebookResponse['data'] | null | undefined;
+  rate?: HotelRate | null;
   onSubmit: (holderData: HolderData, guestsData: GuestData[]) => void;
   isLoading?: boolean;
 }
@@ -27,7 +29,10 @@ export interface GuestData {
   email?: string;
 }
 
-export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormProps) {
+export function CheckoutForm({ prebookData, rate, onSubmit, isLoading }: CheckoutFormProps) {
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
+
   // Holder (primary guest) information
   const [holder, setHolder] = useState<HolderData>({
     firstName: '',
@@ -55,7 +60,7 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    
+
     if (!holder.firstName || !holder.lastName || !holder.email) {
       alert('Please fill in all required fields');
       return;
@@ -69,8 +74,65 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
     onSubmit(holder, guests);
   }
 
-  const price = prebookData.price.total;
-  const currencySymbol = price.currency === 'EUR' ? '€' : price.currency === 'USD' ? '$' : '£';
+  // Safe access to price data - try multiple sources
+  // 1. From prebookData.price.total (object format)
+  // 2. From prebookData.price (if it's the direct amount)
+  // 3. From prebookData.retailRate (LiteAPI v3 format)
+  // 4. From rate prop as fallback
+  let priceAmount = 0;
+  let priceCurrency = 'EUR';
+
+  if (prebookData) {
+    // Try different response formats from LiteAPI
+    if (prebookData.price?.total?.amount !== undefined) {
+      priceAmount = prebookData.price.total.amount;
+      priceCurrency = prebookData.price.total.currency || 'EUR';
+    } else if ((prebookData as any).retailRate?.total?.[0]?.amount !== undefined) {
+      priceAmount = (prebookData as any).retailRate.total[0].amount;
+      priceCurrency = (prebookData as any).retailRate.total[0].currency || 'EUR';
+    } else if ((prebookData as any).totalPrice !== undefined) {
+      priceAmount = (prebookData as any).totalPrice;
+      priceCurrency = (prebookData as any).currency || 'EUR';
+    } else if ((prebookData as any).price?.amount !== undefined) {
+      priceAmount = (prebookData as any).price.amount;
+      priceCurrency = (prebookData as any).price.currency || 'EUR';
+    }
+  }
+
+  // Fallback to rate data if prebook price is 0
+  if (priceAmount === 0 && rate?.retailRate?.total?.[0]) {
+    priceAmount = rate.retailRate.total[0].amount;
+    priceCurrency = rate.retailRate.total[0].currency || 'EUR';
+  }
+
+  const currencySymbol = priceCurrency === 'EUR' ? '€' : priceCurrency === 'USD' ? '$' : '£';
+
+  // Get room info
+  const roomName = prebookData?.room?.name || rate?.name || 'Hotel Room';
+  const boardName = prebookData?.room?.boardName || rate?.boardName || 'Room Only';
+  const isRefundable = prebookData?.cancellationPolicies?.refundableTag === 'RFN' ||
+    rate?.cancellationPolicies?.refundableTag === 'RFN';
+
+  // Show error state if prebookData is missing
+  if (!prebookData) {
+    return (
+      <Card className={`p-8 text-center ${isDark ? 'bg-dark-card border-white/10' : 'bg-white'}`}>
+        <AlertCircle className={`w-16 h-16 mx-auto mb-4 ${isDark ? 'text-red-400' : 'text-red-500'}`} />
+        <h2 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+          Booking Data Not Found
+        </h2>
+        <p className={`mb-4 ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
+          The prebooking information is missing. Please go back and select a room again.
+        </p>
+        <Button
+          onClick={() => window.history.back()}
+          className="bg-sifnos-turquoise hover:bg-sifnos-deep-blue text-white"
+        >
+          Go Back
+        </Button>
+      </Card>
+    );
+  }
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
@@ -78,12 +140,14 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
       <div className="lg:col-span-2">
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Primary Guest (Holder) */}
-          <Card className="p-6">
-            <h2 className="text-2xl font-bold text-gray-900 mb-4">Primary Guest Information</h2>
-            
+          <Card className={`p-6 ${isDark ? 'bg-dark-card border-white/10' : 'bg-white'}`}>
+            <h2 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+              Primary Guest Information
+            </h2>
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
-                <Label htmlFor="holder-firstName" className="flex items-center gap-2 mb-2">
+                <Label htmlFor="holder-firstName" className={`flex items-center gap-2 mb-2 ${isDark ? 'text-white/80' : ''}`}>
                   <User className="w-4 h-4" />
                   First Name *
                 </Label>
@@ -94,11 +158,12 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
                   onChange={(e) => handleHolderChange('firstName', e.target.value)}
                   placeholder="John"
                   required
+                  className={isDark ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40' : ''}
                 />
               </div>
 
               <div>
-                <Label htmlFor="holder-lastName" className="mb-2 block">
+                <Label htmlFor="holder-lastName" className={`mb-2 block ${isDark ? 'text-white/80' : ''}`}>
                   Last Name *
                 </Label>
                 <Input
@@ -108,11 +173,12 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
                   onChange={(e) => handleHolderChange('lastName', e.target.value)}
                   placeholder="Doe"
                   required
+                  className={isDark ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40' : ''}
                 />
               </div>
 
               <div>
-                <Label htmlFor="holder-email" className="flex items-center gap-2 mb-2">
+                <Label htmlFor="holder-email" className={`flex items-center gap-2 mb-2 ${isDark ? 'text-white/80' : ''}`}>
                   <Mail className="w-4 h-4" />
                   Email *
                 </Label>
@@ -123,12 +189,15 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
                   onChange={(e) => handleHolderChange('email', e.target.value)}
                   placeholder="john.doe@example.com"
                   required
+                  className={isDark ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40' : ''}
                 />
-                <p className="text-xs text-gray-500 mt-1">Confirmation will be sent to this email</p>
+                <p className={`text-xs mt-1 ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
+                  Confirmation will be sent to this email
+                </p>
               </div>
 
               <div>
-                <Label htmlFor="holder-phone" className="flex items-center gap-2 mb-2">
+                <Label htmlFor="holder-phone" className={`flex items-center gap-2 mb-2 ${isDark ? 'text-white/80' : ''}`}>
                   <Phone className="w-4 h-4" />
                   Phone (Optional)
                 </Label>
@@ -138,6 +207,7 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
                   value={holder.phone}
                   onChange={(e) => handleHolderChange('phone', e.target.value)}
                   placeholder="+30 123 456 7890"
+                  className={isDark ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40' : ''}
                 />
               </div>
             </div>
@@ -145,18 +215,20 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
 
           {/* Additional Guests */}
           {guests.length > 0 && (
-            <Card className="p-6">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Additional Guest Information</h2>
-              
+            <Card className={`p-6 ${isDark ? 'bg-dark-card border-white/10' : 'bg-white'}`}>
+              <h2 className={`text-2xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                Additional Guest Information
+              </h2>
+
               <div className="space-y-4">
                 {guests.map((guest, index) => (
-                  <div key={index} className="border-b border-gray-200 pb-4 last:border-0">
-                    <h3 className="text-sm font-medium text-gray-700 mb-3">
+                  <div key={index} className={`pb-4 last:border-0 ${isDark ? 'border-b border-white/10' : 'border-b border-gray-200'}`}>
+                    <h3 className={`text-sm font-medium mb-3 ${isDark ? 'text-white/70' : 'text-gray-700'}`}>
                       Guest {index + 1}
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                       <div>
-                        <Label htmlFor={`guest-${index}-firstName`} className="mb-2 block text-sm">
+                        <Label htmlFor={`guest-${index}-firstName`} className={`mb-2 block text-sm ${isDark ? 'text-white/70' : ''}`}>
                           First Name
                         </Label>
                         <Input
@@ -165,10 +237,11 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
                           value={guest.firstName}
                           onChange={(e) => handleGuestChange(index, 'firstName', e.target.value)}
                           placeholder="Jane"
+                          className={isDark ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40' : ''}
                         />
                       </div>
                       <div>
-                        <Label htmlFor={`guest-${index}-lastName`} className="mb-2 block text-sm">
+                        <Label htmlFor={`guest-${index}-lastName`} className={`mb-2 block text-sm ${isDark ? 'text-white/70' : ''}`}>
                           Last Name
                         </Label>
                         <Input
@@ -177,6 +250,7 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
                           value={guest.lastName}
                           onChange={(e) => handleGuestChange(index, 'lastName', e.target.value)}
                           placeholder="Doe"
+                          className={isDark ? 'bg-white/5 border-white/10 text-white placeholder:text-white/40' : ''}
                         />
                       </div>
                     </div>
@@ -187,7 +261,7 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
           )}
 
           {/* Terms & Conditions */}
-          <Card className="p-6">
+          <Card className={`p-6 ${isDark ? 'bg-dark-card border-white/10' : 'bg-white'}`}>
             <div className="flex items-start gap-3">
               <Checkbox
                 id="terms"
@@ -195,7 +269,7 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
                 onCheckedChange={(checked) => setAgreeTerms(checked as boolean)}
               />
               <div className="flex-1">
-                <label htmlFor="terms" className="text-sm text-gray-700 cursor-pointer">
+                <label htmlFor="terms" className={`text-sm cursor-pointer ${isDark ? 'text-white/70' : 'text-gray-700'}`}>
                   I agree to the{' '}
                   <a href="/terms-of-service" target="_blank" className="text-sifnos-turquoise hover:underline">
                     Terms of Service
@@ -223,50 +297,58 @@ export function CheckoutForm({ prebookData, onSubmit, isLoading }: CheckoutFormP
 
       {/* Booking Summary Sidebar */}
       <div className="lg:col-span-1">
-        <Card className="p-6 sticky top-4">
-          <h2 className="text-xl font-bold text-gray-900 mb-4">Booking Summary</h2>
-          
+        <Card className={`p-6 sticky top-4 ${isDark ? 'bg-dark-card border-white/10' : 'bg-white'}`}>
+          <h2 className={`text-xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+            Booking Summary
+          </h2>
+
           <div className="space-y-4 mb-6">
             <div>
-              <div className="text-sm text-gray-600">Hotel</div>
-              <div className="font-medium text-gray-900">
-                {prebookData.room?.name || 'Hotel Room'}
+              <div className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-600'}`}>Room</div>
+              <div className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                {roomName}
               </div>
             </div>
 
             <div>
-              <div className="text-sm text-gray-600">Board Type</div>
-              <div className="font-medium text-gray-900">
-                {prebookData.room?.boardName || 'Room Only'}
+              <div className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-600'}`}>Board Type</div>
+              <div className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                {boardName}
               </div>
             </div>
 
             <div>
-              <div className="text-sm text-gray-600">Cancellation</div>
-              <div className="font-medium text-gray-900">
-                {prebookData.cancellationPolicies?.refundableTag === 'RFN' ? (
-                  <span className="text-green-600 flex items-center gap-1">
+              <div className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-600'}`}>Cancellation</div>
+              <div className={`font-medium ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                {isRefundable ? (
+                  <span className="text-green-500 flex items-center gap-1">
                     <Check className="w-4 h-4" /> Refundable
                   </span>
                 ) : (
-                  <span className="text-gray-600">Non-refundable</span>
+                  <span className={isDark ? 'text-white/60' : 'text-gray-600'}>Non-refundable</span>
                 )}
               </div>
             </div>
           </div>
 
-          <div className="border-t border-gray-200 pt-4">
+          <div className={`pt-4 ${isDark ? 'border-t border-white/10' : 'border-t border-gray-200'}`}>
             <div className="flex justify-between items-center mb-2">
-              <span className="text-gray-700">Total Amount</span>
+              <span className={isDark ? 'text-white/70' : 'text-gray-700'}>Total Amount</span>
               <span className="text-2xl font-bold text-sifnos-turquoise">
-                {currencySymbol}{price.amount.toFixed(2)}
+                {currencySymbol}{priceAmount.toFixed(2)}
               </span>
             </div>
-            <p className="text-xs text-gray-500">All taxes and fees included</p>
+            {priceAmount === 0 && (
+              <p className={`text-xs ${isDark ? 'text-yellow-400' : 'text-yellow-600'}`}>
+                Price will be confirmed on payment page
+              </p>
+            )}
+            <p className={`text-xs ${isDark ? 'text-white/50' : 'text-gray-500'}`}>
+              All taxes and fees included
+            </p>
           </div>
         </Card>
       </div>
     </div>
   );
 }
-

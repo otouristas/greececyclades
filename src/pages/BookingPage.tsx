@@ -1,48 +1,48 @@
 import { useNavigate } from 'react-router-dom';
-import { Star, Sparkles, Shield, Clock, ChevronRight } from 'lucide-react';
+import { Star, Sparkles, Shield, Clock } from 'lucide-react';
 import { BookingSearch, type SearchFormData } from '@/components/booking/BookingSearch';
 import SEO from '@/components/SEO';
 import { useTheme } from '@/contexts/ThemeContext';
 import { Link } from 'react-router-dom';
 
 const POPULAR_DESTINATIONS = [
-  { 
-    name: 'Santorini', 
+  {
+    name: 'Santorini',
     countryCode: 'GR',
     image: '/images/islands/santorini.jpg',
     hotels: '245+',
     desc: 'Caldera views & cave hotels'
   },
-  { 
-    name: 'Mykonos', 
+  {
+    name: 'Mykonos',
     countryCode: 'GR',
     image: '/images/islands/mykonos.jpg',
     hotels: '187+',
     desc: 'Luxury resorts & nightlife'
   },
-  { 
-    name: 'Paros', 
+  {
+    name: 'Paros',
     countryCode: 'GR',
     image: '/images/islands/paros.jpg',
     hotels: '132+',
     desc: 'Family-friendly beaches'
   },
-  { 
-    name: 'Naxos', 
+  {
+    name: 'Naxos',
     countryCode: 'GR',
     image: '/images/islands/naxos.jpg',
     hotels: '98+',
     desc: 'Authentic Greek culture'
   },
-  { 
-    name: 'Milos', 
+  {
+    name: 'Milos',
     countryCode: 'GR',
     image: '/images/islands/milos.jpg',
     hotels: '76+',
     desc: 'Volcanic landscapes'
   },
-  { 
-    name: 'Ios', 
+  {
+    name: 'Ios',
     countryCode: 'GR',
     image: '/images/islands/ios.jpg',
     hotels: '64+',
@@ -151,38 +151,31 @@ export default function BookingPage() {
         <div className="relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-br from-cyclades-turquoise via-cyan-600 to-blue-700" />
           <div className="absolute inset-0 bg-[url('/images/islands/santorini.jpg')] bg-cover bg-center opacity-20" />
-          
-          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-32 pb-20">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-white/70 text-sm mb-8">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">Book Hotels</span>
-            </nav>
-            
-            <div className="text-center mb-12">
-              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm mb-6">
+
+          <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-24 md:pt-32 pb-16 md:pb-20">
+            <div className="text-center mb-10 md:mb-12">
+              <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full text-white/90 text-sm mb-4 md:mb-6">
                 <Sparkles className="w-4 h-4" />
                 <span>Powered by LiteAPI</span>
               </div>
-              <h1 className="text-4xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-4 md:mb-6 tracking-tight">
                 Find Your Perfect <span className="text-yellow-300">Cyclades</span> Hotel
               </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
+              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-6 md:mb-8 px-2">
                 Search by destination or describe your ideal stay. Compare prices across all major booking sites.
               </p>
-              
-              <div className="flex flex-wrap justify-center gap-6 text-sm text-white/80">
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg">
-                  <Star className="w-5 h-5 text-yellow-400" />
+
+              <div className="flex flex-wrap justify-center gap-4 md:gap-6 text-sm text-white/80">
+                <div className="flex items-center gap-2 px-3 md:px-4 py-2 bg-white/10 rounded-lg">
+                  <Star className="w-4 h-4 md:w-5 md:h-5 text-yellow-400" />
                   <span>800+ Hotels</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg">
-                  <Shield className="w-5 h-5 text-green-400" />
+                <div className="flex items-center gap-2 px-3 md:px-4 py-2 bg-white/10 rounded-lg">
+                  <Shield className="w-4 h-4 md:w-5 md:h-5 text-green-400" />
                   <span>Best Price Guarantee</span>
                 </div>
-                <div className="flex items-center gap-2 px-4 py-2 bg-white/10 rounded-lg">
-                  <Clock className="w-5 h-5 text-blue-300" />
+                <div className="flex items-center gap-2 px-3 md:px-4 py-2 bg-white/10 rounded-lg">
+                  <Clock className="w-4 h-4 md:w-5 md:h-5 text-blue-300" />
                   <span>Instant Confirmation</span>
                 </div>
               </div>
@@ -207,14 +200,13 @@ export default function BookingPage() {
               Click to search hotels on your favorite island
             </p>
           </div>
-          
+
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {POPULAR_DESTINATIONS.map((dest) => (
               <div
                 key={`${dest.countryCode}-${dest.name}`}
-                className={`group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${
-                  isDark ? 'bg-dark-card border border-dark-border hover:border-cyclades-turquoise/50' : 'bg-white shadow-md hover:shadow-xl'
-                }`}
+                className={`group cursor-pointer rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-2 hover:shadow-xl ${isDark ? 'bg-dark-card border border-dark-border hover:border-cyclades-turquoise/50' : 'bg-white shadow-md hover:shadow-xl'
+                  }`}
                 onClick={() => quickSearch(dest.name, dest.countryCode)}
               >
                 <div className="aspect-[4/3] relative overflow-hidden">
@@ -249,17 +241,16 @@ export default function BookingPage() {
                 Describe your ideal hotel and let AI find the perfect match
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {VIBE_SUGGESTIONS.map((item) => (
                 <button
                   key={item.vibe}
                   onClick={() => vibeSearch(item.vibe)}
-                  className={`group p-6 rounded-2xl text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lg border ${
-                    isDark 
-                      ? 'bg-white/5 border-white/10 hover:border-cyclades-turquoise/50 hover:bg-cyclades-turquoise/10' 
-                      : 'bg-gray-50 border-gray-200 hover:border-cyclades-turquoise hover:bg-cyclades-turquoise/5'
-                  }`}
+                  className={`group p-6 rounded-2xl text-left transition-all duration-300 hover:-translate-y-1 hover:shadow-lg border ${isDark
+                    ? 'bg-white/5 border-white/10 hover:border-cyclades-turquoise/50 hover:bg-cyclades-turquoise/10'
+                    : 'bg-gray-50 border-gray-200 hover:border-cyclades-turquoise hover:bg-cyclades-turquoise/5'
+                    }`}
                 >
                   <div className="flex items-start gap-4">
                     <span className={`text-4xl p-3 rounded-xl bg-gradient-to-br ${item.color} bg-opacity-20`}>

@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
-import { Car, Calendar, MapPin, Shield, Zap, Truck, Wind, Award, Star, CheckCircle, Users, Clock, Euro, ChevronRight, ArrowRight, Fuel } from 'lucide-react';
+import { Car, MapPin, Shield, Zap, Truck, Wind, Award, Star, CheckCircle, Clock, ArrowRight, Fuel } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
@@ -68,35 +68,28 @@ export default function RentACar() {
 
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-32 pb-24">
+        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-24 md:pt-32 pb-16 md:pb-24">
           <div className="absolute inset-0 bg-[url('/images/rent-a-car-hero.jpg')] bg-cover bg-center opacity-10" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-white/70 text-sm mb-8">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">Rent a Car</span>
-            </nav>
-
-            <div className="text-center mb-10">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            <div className="text-center mb-8 md:mb-10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
                 Rent a Car in the <span className="text-yellow-300">Cyclades</span>
               </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto mb-8">
+              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-6 md:mb-8 px-2">
                 Explore Santorini, Mykonos, Naxos and more at your own pace. Compare deals from top rental companies.
               </p>
 
               {/* Trust Signals */}
-              <div className="flex flex-wrap justify-center gap-4 mb-8">
+              <div className="flex flex-wrap justify-center gap-3 md:gap-4 mb-6 md:mb-8">
                 {[
                   { icon: Shield, text: 'Full Insurance' },
                   { icon: Zap, text: 'Instant Confirmation' },
                   { icon: Star, text: 'Best Price Guarantee' },
                 ].map((item, idx) => (
-                  <div key={idx} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-4 py-2">
-                    <item.icon className="h-5 w-5 text-yellow-300" />
-                    <span className="text-white text-sm font-medium">{item.text}</span>
+                  <div key={idx} className="flex items-center gap-2 bg-white/10 backdrop-blur-sm rounded-lg px-3 md:px-4 py-2">
+                    <item.icon className="h-4 w-4 md:h-5 md:w-5 text-yellow-300" />
+                    <span className="text-white text-xs md:text-sm font-medium">{item.text}</span>
                   </div>
                 ))}
               </div>

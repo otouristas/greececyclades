@@ -1,176 +1,208 @@
-import { MapPin, Star, Clock, Phone, Mail, Building, Car, Baby, Dog, Award, Shield, Wifi, UtensilsCrossed, Waves, Dumbbell, Sparkles } from 'lucide-react';
+import { MapPin, Star, Clock, Phone, Mail, Building, Car, Baby, Dog, Award, Shield, Wifi, Sparkles, Bed, Users, Home } from 'lucide-react';
 import { Card } from '@/components/ui/card';
 import { Badge } from '@/components/ui/badge';
 import { HotelImageGallery } from './HotelImageGallery';
 import { HotelAmenitiesList } from './HotelAmenitiesList';
-import type { HotelDetailsFull } from '@/lib/liteapi';
+import { HotelLocationMap } from './HotelLocationMap';
+import { useTheme } from '@/contexts/ThemeContext';
+import type { HotelDetailsFull as HotelDetailsFullType } from '@/lib/liteapi';
 
 interface HotelDetailsFullProps {
-  hotelDetails: HotelDetailsFull;
+  hotelDetails: HotelDetailsFullType;
 }
 
 export function HotelDetailsFull({ hotelDetails }: HotelDetailsFullProps) {
-  const hasRates = false; // This will be passed from parent if needed
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
+
+  // Card style helper
+  const cardStyle = isDark
+    ? 'bg-dark-card border border-white/10'
+    : 'bg-white border border-gray-100';
+
+  const textPrimary = isDark ? 'text-white' : 'text-gray-900';
+  const textSecondary = isDark ? 'text-white/70' : 'text-gray-600';
+  const textMuted = isDark ? 'text-white/50' : 'text-gray-500';
 
   return (
     <div className="space-y-6">
-      {/* Hero Section with Image Gallery */}
-      <div className="relative -mx-4 md:-mx-8 lg:-mx-16">
+      {/* Image Gallery */}
+      <div className="relative">
         <HotelImageGallery images={hotelDetails.hotelImages || []} hotelName={hotelDetails.name} />
       </div>
 
-      {/* Hotel Header - Premium Design */}
-      <div className="relative -mt-8 md:-mt-12 lg:-mt-16">
-        <Card className="p-6 md:p-8 lg:p-10 shadow-2xl border-0 bg-white/95 backdrop-blur-sm">
-          <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-6">
-            <div className="flex-1">
-              {/* Hotel Name & Chain */}
-              <div className="flex items-start justify-between gap-4 mb-4">
-                <div className="flex-1">
-                  <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-gray-900 mb-2 leading-tight">
-                    {hotelDetails.name}
-                  </h1>
-                  {hotelDetails.chain && (
-                    <div className="flex items-center gap-2 text-gray-600 mb-3">
-                      <Building className="w-4 h-4" />
-                      <span className="text-sm font-medium">{hotelDetails.chain}</span>
-                    </div>
+      {/* Hotel Header Card - Premium compact design */}
+      <Card className={`p-5 md:p-6 shadow-lg ${cardStyle}`}>
+        <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-5">
+          <div className="flex-1">
+            {/* Hotel Name & Chain */}
+            <div className="mb-4">
+              {hotelDetails.chain && (
+                <div className="flex items-center gap-2 mb-2">
+                  <Building className={`w-4 h-4 ${isDark ? 'text-cyclades-turquoise' : 'text-cyan-600'}`} />
+                  <span className={`text-sm font-medium ${textSecondary}`}>{hotelDetails.chain}</span>
+                </div>
+              )}
+              <h1 className={`text-2xl md:text-3xl lg:text-4xl font-bold leading-tight ${textPrimary}`}>
+                {hotelDetails.name}
+              </h1>
+            </div>
+
+            {/* Rating Badges Row */}
+            <div className="flex flex-wrap items-center gap-3 mb-4">
+              {/* Star Rating */}
+              {hotelDetails.starRating && (
+                <div className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full ${isDark ? 'bg-yellow-500/20 border border-yellow-500/30' : 'bg-yellow-50 border border-yellow-200'}`}>
+                  {Array.from({ length: Math.min(hotelDetails.starRating, 5) }).map((_, i) => (
+                    <Star key={i} className="w-3.5 h-3.5 text-yellow-500 fill-yellow-500" />
+                  ))}
+                  <span className={`ml-1 text-sm font-semibold ${isDark ? 'text-yellow-400' : 'text-yellow-700'}`}>
+                    {hotelDetails.starRating}-Star
+                  </span>
+                </div>
+              )}
+              {/* Guest Rating */}
+              {hotelDetails.rating && hotelDetails.rating > 0 && (
+                <div className={`inline-flex items-center gap-2 px-3 py-1.5 rounded-full ${isDark ? 'bg-cyclades-turquoise/20 border border-cyclades-turquoise/30' : 'bg-cyan-50 border border-cyan-200'}`}>
+                  <Award className={`w-4 h-4 ${isDark ? 'text-cyclades-turquoise' : 'text-cyan-600'}`} />
+                  <span className={`text-lg font-bold ${isDark ? 'text-cyclades-turquoise' : 'text-cyan-700'}`}>
+                    {hotelDetails.rating.toFixed(1)}
+                  </span>
+                  <span className={`text-sm ${textMuted}`}>/10</span>
+                  {hotelDetails.reviewCount && (
+                    <span className={`text-xs ${textMuted}`}>
+                      ({hotelDetails.reviewCount.toLocaleString()} reviews)
+                    </span>
                   )}
-                </div>
-              </div>
-
-              {/* Rating & Reviews - Premium Badge Style */}
-              <div className="flex flex-wrap items-center gap-4 mb-6">
-                {hotelDetails.starRating && (
-                  <div className="flex items-center gap-1 bg-yellow-50 px-3 py-1.5 rounded-full border border-yellow-200">
-                    {Array.from({ length: hotelDetails.starRating }).map((_, i) => (
-                      <Star key={i} className="w-4 h-4 text-yellow-500 fill-yellow-500" />
-                    ))}
-                    <span className="ml-2 text-sm font-semibold text-gray-700">{hotelDetails.starRating} Stars</span>
-                  </div>
-                )}
-                {hotelDetails.rating && (
-                  <div className="flex items-center gap-2 bg-gradient-to-r from-sifnos-turquoise/10 to-sifnos-deep-blue/10 px-4 py-2 rounded-full border border-sifnos-turquoise/20">
-                    <Award className="w-5 h-5 text-sifnos-turquoise" />
-                    <div>
-                      <div className="flex items-baseline gap-1">
-                        <span className="text-2xl font-bold text-sifnos-deep-blue">
-                          {hotelDetails.rating.toFixed(1)}
-                        </span>
-                        <span className="text-sm text-gray-600">/ 10</span>
-                      </div>
-                      {hotelDetails.reviewCount && (
-                        <div className="text-xs text-gray-600">
-                          {hotelDetails.reviewCount.toLocaleString()} reviews
-                        </div>
-                      )}
-                    </div>
-                  </div>
-                )}
-              </div>
-
-              {/* Location - Enhanced */}
-              <div className="flex items-start gap-3 mb-6 p-4 bg-gradient-to-r from-gray-50 to-sifnos-beige/10 rounded-xl border border-gray-200">
-                <div className="p-2 bg-sifnos-turquoise/10 rounded-lg">
-                  <MapPin className="w-5 h-5 text-sifnos-turquoise" />
-                </div>
-                <div className="flex-1">
-                  <div className="font-semibold text-gray-900 mb-1">{hotelDetails.address}</div>
-                  <div className="text-sm text-gray-600">
-                    {hotelDetails.city}, {hotelDetails.country}
-                    {hotelDetails.zip && ` ${hotelDetails.zip}`}
-                  </div>
-                </div>
-              </div>
-
-              {/* Quick Info Badges - Premium Style */}
-              <div className="flex flex-wrap gap-2 mb-6">
-                {hotelDetails.parking && (
-                  <Badge variant="outline" className="px-4 py-2 bg-white border-sifnos-turquoise/30 hover:bg-sifnos-turquoise/10 transition-colors">
-                    <Car className="w-4 h-4 mr-2 text-sifnos-turquoise" />
-                    <span className="font-medium">Parking Available</span>
-                  </Badge>
-                )}
-                {hotelDetails.childAllowed && (
-                  <Badge variant="outline" className="px-4 py-2 bg-white border-sifnos-turquoise/30 hover:bg-sifnos-turquoise/10 transition-colors">
-                    <Baby className="w-4 h-4 mr-2 text-sifnos-turquoise" />
-                    <span className="font-medium">Family Friendly</span>
-                  </Badge>
-                )}
-                {hotelDetails.petsAllowed && (
-                  <Badge variant="outline" className="px-4 py-2 bg-white border-sifnos-turquoise/30 hover:bg-sifnos-turquoise/10 transition-colors">
-                    <Dog className="w-4 h-4 mr-2 text-sifnos-turquoise" />
-                    <span className="font-medium">Pets Welcome</span>
-                  </Badge>
-                )}
-              </div>
-            </div>
-          </div>
-        </Card>
-      </div>
-
-      {/* Check-in/Check-out Times - Premium Card */}
-      {hotelDetails.checkinCheckoutTimes && (
-        <Card className="p-6 bg-gradient-to-br from-sifnos-deep-blue/5 via-white to-sifnos-turquoise/5 border-sifnos-turquoise/20 shadow-lg">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-sifnos-turquoise/10 rounded-lg">
-              <Clock className="w-6 h-6 text-sifnos-turquoise" />
-            </div>
-            <h2 className="text-2xl font-bold text-gray-900">Check-in & Check-out</h2>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <div className="p-4 bg-white/60 rounded-lg border border-gray-200">
-              <div className="text-sm font-medium text-gray-600 mb-2">Check-in</div>
-              <div className="text-xl font-bold text-gray-900">
-                {hotelDetails.checkinCheckoutTimes.checkin}
-              </div>
-              {hotelDetails.checkinCheckoutTimes.checkinStart && (
-                <div className="text-xs text-gray-500 mt-1">
-                  From {hotelDetails.checkinCheckoutTimes.checkinStart}
                 </div>
               )}
             </div>
-            <div className="p-4 bg-white/60 rounded-lg border border-gray-200">
-              <div className="text-sm font-medium text-gray-600 mb-2">Check-out</div>
-              <div className="text-xl font-bold text-gray-900">
-                {hotelDetails.checkinCheckoutTimes.checkout}
+
+            {/* Location */}
+            <div className={`flex items-start gap-3 p-3 rounded-xl ${isDark ? 'bg-white/5' : 'bg-gray-50'}`}>
+              <MapPin className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isDark ? 'text-cyclades-turquoise' : 'text-cyan-600'}`} />
+              <div>
+                <div className={`font-medium text-sm ${textPrimary}`}>{hotelDetails.address}</div>
+                <div className={`text-xs ${textMuted}`}>
+                  {hotelDetails.city}, {hotelDetails.country}
+                  {hotelDetails.zip && ` • ${hotelDetails.zip}`}
+                </div>
+              </div>
+            </div>
+
+            {/* Quick Info Badges */}
+            <div className="flex flex-wrap gap-2 mt-4">
+              {hotelDetails.parking && (
+                <Badge variant="outline" className={`text-xs px-2.5 py-1 ${isDark ? 'bg-white/5 border-white/20 text-white/80' : 'bg-white border-gray-200'}`}>
+                  <Car className="w-3.5 h-3.5 mr-1.5 text-green-500" /> Parking
+                </Badge>
+              )}
+              {hotelDetails.childAllowed && (
+                <Badge variant="outline" className={`text-xs px-2.5 py-1 ${isDark ? 'bg-white/5 border-white/20 text-white/80' : 'bg-white border-gray-200'}`}>
+                  <Baby className="w-3.5 h-3.5 mr-1.5 text-blue-500" /> Family-Friendly
+                </Badge>
+              )}
+              {hotelDetails.petsAllowed && (
+                <Badge variant="outline" className={`text-xs px-2.5 py-1 ${isDark ? 'bg-white/5 border-white/20 text-white/80' : 'bg-white border-gray-200'}`}>
+                  <Dog className="w-3.5 h-3.5 mr-1.5 text-orange-500" /> Pets Welcome
+                </Badge>
+              )}
+            </div>
+          </div>
+        </div>
+      </Card>
+
+      {/* Check-in/Check-out Times - Compact */}
+      {hotelDetails.checkinCheckoutTimes && (
+        <Card className={`p-5 shadow-lg ${cardStyle}`}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className={`p-2 rounded-lg ${isDark ? 'bg-cyclades-turquoise/20' : 'bg-cyan-100'}`}>
+              <Clock className={`w-5 h-5 ${isDark ? 'text-cyclades-turquoise' : 'text-cyan-600'}`} />
+            </div>
+            <h2 className={`text-lg font-bold ${textPrimary}`}>Check-in & Check-out</h2>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className={`p-3 rounded-lg ${isDark ? 'bg-white/5' : 'bg-gray-50'}`}>
+              <div className={`text-xs font-medium mb-1 ${textMuted}`}>Check-in</div>
+              <div className={`text-lg font-bold ${textPrimary}`}>
+                {hotelDetails.checkinCheckoutTimes.checkin || 'Flexible'}
+              </div>
+              {hotelDetails.checkinCheckoutTimes.checkinStart && (
+                <div className={`text-xs ${textMuted}`}>From {hotelDetails.checkinCheckoutTimes.checkinStart}</div>
+              )}
+            </div>
+            <div className={`p-3 rounded-lg ${isDark ? 'bg-white/5' : 'bg-gray-50'}`}>
+              <div className={`text-xs font-medium mb-1 ${textMuted}`}>Check-out</div>
+              <div className={`text-lg font-bold ${textPrimary}`}>
+                {hotelDetails.checkinCheckoutTimes.checkout || 'Flexible'}
               </div>
             </div>
           </div>
         </Card>
       )}
 
-      {/* Description - Enhanced */}
+      {/* Description - Clean and readable */}
       {hotelDetails.hotelDescription && (
-        <Card className="p-6 md:p-8 shadow-lg border-0">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-gradient-to-br from-sifnos-turquoise to-sifnos-deep-blue rounded-lg">
-              <Sparkles className="w-6 h-6 text-white" />
+        <Card className={`p-5 shadow-lg ${cardStyle}`}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className={`p-2 rounded-lg ${isDark ? 'bg-gradient-to-br from-purple-500/20 to-pink-500/20' : 'bg-gradient-to-br from-purple-100 to-pink-100'}`}>
+              <Sparkles className={`w-5 h-5 ${isDark ? 'text-purple-400' : 'text-purple-600'}`} />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">About This Hotel</h2>
+            <h2 className={`text-lg font-bold ${textPrimary}`}>About This Hotel</h2>
           </div>
           <div
-            className="prose prose-lg max-w-none text-gray-700 leading-relaxed"
-            style={{
-              fontSize: '1.125rem',
-              lineHeight: '1.75rem',
-            }}
+            className={`prose prose-sm max-w-none leading-relaxed ${isDark ? 'prose-invert' : ''}`}
+            style={{ fontSize: '0.95rem', lineHeight: '1.7' }}
             dangerouslySetInnerHTML={{ __html: hotelDetails.hotelDescription }}
           />
         </Card>
       )}
 
-      {/* Important Information - Premium Alert Style */}
+      {/* Rooms Info - If available */}
+      {hotelDetails.rooms && hotelDetails.rooms.length > 0 && (
+        <Card className={`p-5 shadow-lg ${cardStyle}`}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className={`p-2 rounded-lg ${isDark ? 'bg-cyclades-turquoise/20' : 'bg-cyan-100'}`}>
+              <Bed className={`w-5 h-5 ${isDark ? 'text-cyclades-turquoise' : 'text-cyan-600'}`} />
+            </div>
+            <h2 className={`text-lg font-bold ${textPrimary}`}>Room Types</h2>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+            {hotelDetails.rooms.slice(0, 4).map((room, index) => (
+              <div key={room.id || index} className={`p-3 rounded-xl ${isDark ? 'bg-white/5 border border-white/10' : 'bg-gray-50 border border-gray-100'}`}>
+                <h3 className={`font-semibold text-sm mb-2 ${textPrimary}`}>{room.roomName}</h3>
+                <div className="flex flex-wrap gap-2">
+                  <Badge variant="outline" className={`text-xs ${isDark ? 'bg-white/5 border-white/20' : ''}`}>
+                    <Users className="w-3 h-3 mr-1" /> Max {room.maxOccupancy}
+                  </Badge>
+                  {room.roomSizeSquare && (
+                    <Badge variant="outline" className={`text-xs ${isDark ? 'bg-white/5 border-white/20' : ''}`}>
+                      <Home className="w-3 h-3 mr-1" /> {room.roomSizeSquare}m²
+                    </Badge>
+                  )}
+                </div>
+                {room.bedTypes && room.bedTypes.length > 0 && (
+                  <div className={`mt-2 text-xs ${textMuted}`}>
+                    {room.bedTypes.map((bed, i) => `${bed.quantity}x ${bed.bedType}`).join(', ')}
+                  </div>
+                )}
+              </div>
+            ))}
+          </div>
+        </Card>
+      )}
+
+      {/* Important Information */}
       {hotelDetails.hotelImportantInformation && (
-        <Card className="p-6 md:p-8 bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-50 border-blue-200 shadow-lg">
-          <div className="flex items-start gap-4">
-            <div className="p-2 bg-blue-500 rounded-lg flex-shrink-0">
-              <Shield className="w-6 h-6 text-white" />
+        <Card className={`p-5 shadow-lg ${isDark ? 'bg-blue-900/20 border border-blue-500/30' : 'bg-blue-50 border border-blue-200'}`}>
+          <div className="flex items-start gap-3">
+            <div className={`p-2 rounded-lg flex-shrink-0 ${isDark ? 'bg-blue-500/30' : 'bg-blue-100'}`}>
+              <Shield className={`w-5 h-5 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} />
             </div>
             <div className="flex-1">
-              <h2 className="text-2xl font-bold text-gray-900 mb-4">Important Information</h2>
+              <h2 className={`text-lg font-bold mb-2 ${isDark ? 'text-blue-300' : 'text-blue-900'}`}>Important Information</h2>
               <div
-                className="prose prose-sm max-w-none text-gray-700 whitespace-pre-line leading-relaxed"
+                className={`prose prose-sm max-w-none ${isDark ? 'text-blue-200' : 'text-blue-800'}`}
                 dangerouslySetInnerHTML={{ __html: hotelDetails.hotelImportantInformation }}
               />
             </div>
@@ -178,156 +210,93 @@ export function HotelDetailsFull({ hotelDetails }: HotelDetailsFullProps) {
         </Card>
       )}
 
-      {/* Amenities - Premium Grid */}
+      {/* Amenities - Compact grid */}
       {(hotelDetails.hotelFacilities?.length > 0 || hotelDetails.facilities?.length > 0) && (
-        <Card className="p-6 md:p-8 shadow-lg border-0">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-gradient-to-br from-sifnos-turquoise to-sifnos-deep-blue rounded-lg">
-              <Wifi className="w-6 h-6 text-white" />
+        <Card className={`p-5 shadow-lg ${cardStyle}`}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className={`p-2 rounded-lg ${isDark ? 'bg-green-500/20' : 'bg-green-100'}`}>
+              <Wifi className={`w-5 h-5 ${isDark ? 'text-green-400' : 'text-green-600'}`} />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Hotel Facilities & Amenities</h2>
+            <h2 className={`text-lg font-bold ${textPrimary}`}>Facilities & Amenities</h2>
           </div>
           <HotelAmenitiesList
-            facilities={hotelDetails.facilities?.length > 0 
-              ? hotelDetails.facilities 
+            facilities={hotelDetails.facilities?.length > 0
+              ? hotelDetails.facilities
               : hotelDetails.hotelFacilities || []}
             title=""
           />
         </Card>
       )}
 
-      {/* Policies - Premium Cards */}
+      {/* Policies - Compact cards */}
       {hotelDetails.policies && hotelDetails.policies.length > 0 && (
-        <Card className="p-6 md:p-8 shadow-lg border-0">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-gradient-to-br from-sifnos-turquoise to-sifnos-deep-blue rounded-lg">
-              <Shield className="w-6 h-6 text-white" />
+        <Card className={`p-5 shadow-lg ${cardStyle}`}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className={`p-2 rounded-lg ${isDark ? 'bg-indigo-500/20' : 'bg-indigo-100'}`}>
+              <Shield className={`w-5 h-5 ${isDark ? 'text-indigo-400' : 'text-indigo-600'}`} />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Hotel Policies</h2>
+            <h2 className={`text-lg font-bold ${textPrimary}`}>Policies</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
             {hotelDetails.policies.map((policy, index) => (
-              <div key={index} className="p-5 bg-gradient-to-br from-gray-50 to-white rounded-xl border-l-4 border-sifnos-turquoise shadow-sm hover:shadow-md transition-shadow">
-                <h3 className="font-bold text-gray-900 mb-2 text-lg">{policy.name}</h3>
-                <p className="text-sm text-gray-700 mb-3 leading-relaxed">{policy.description}</p>
-                <div className="space-y-2 text-xs text-gray-600">
-                  {policy.child_allowed && (
-                    <div className="flex items-center gap-2">
-                      <Baby className="w-4 h-4 text-sifnos-turquoise" />
-                      <span><strong>Children:</strong> {policy.child_allowed}</span>
-                    </div>
-                  )}
-                  {policy.pets_allowed && (
-                    <div className="flex items-center gap-2">
-                      <Dog className="w-4 h-4 text-sifnos-turquoise" />
-                      <span><strong>Pets:</strong> {policy.pets_allowed}</span>
-                    </div>
-                  )}
-                  {policy.parking && (
-                    <div className="flex items-center gap-2">
-                      <Car className="w-4 h-4 text-sifnos-turquoise" />
-                      <span><strong>Parking:</strong> {policy.parking}</span>
-                    </div>
-                  )}
-                </div>
+              <div key={index} className={`p-3 rounded-xl border-l-4 border-cyclades-turquoise ${isDark ? 'bg-white/5' : 'bg-gray-50'}`}>
+                <h3 className={`font-semibold text-sm mb-1 ${textPrimary}`}>{policy.name}</h3>
+                <p className={`text-xs leading-relaxed ${textSecondary}`}>{policy.description}</p>
               </div>
             ))}
           </div>
         </Card>
       )}
 
-      {/* Contact Information - Premium Style */}
+      {/* Contact Information - Compact */}
       {(hotelDetails.phone || hotelDetails.email) && (
-        <Card className="p-6 md:p-8 bg-gradient-to-br from-sifnos-deep-blue/5 to-sifnos-turquoise/5 shadow-lg border-0">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-gradient-to-br from-sifnos-turquoise to-sifnos-deep-blue rounded-lg">
-              <Phone className="w-6 h-6 text-white" />
+        <Card className={`p-5 shadow-lg ${cardStyle}`}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className={`p-2 rounded-lg ${isDark ? 'bg-cyclades-turquoise/20' : 'bg-cyan-100'}`}>
+              <Phone className={`w-5 h-5 ${isDark ? 'text-cyclades-turquoise' : 'text-cyan-600'}`} />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Contact Information</h2>
+            <h2 className={`text-lg font-bold ${textPrimary}`}>Contact</h2>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-wrap gap-3">
             {hotelDetails.phone && (
               <a
                 href={`tel:${hotelDetails.phone}`}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:border-sifnos-turquoise hover:shadow-md transition-all group"
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl transition-colors ${isDark ? 'bg-white/5 hover:bg-white/10 border border-white/10' : 'bg-gray-50 hover:bg-gray-100 border border-gray-200'}`}
               >
-                <div className="p-3 bg-sifnos-turquoise/10 rounded-lg group-hover:bg-sifnos-turquoise/20 transition-colors">
-                  <Phone className="w-6 h-6 text-sifnos-turquoise" />
-                </div>
-                <div>
-                  <div className="text-sm text-gray-600 mb-1">Phone</div>
-                  <div className="font-semibold text-gray-900 group-hover:text-sifnos-deep-blue transition-colors">
-                    {hotelDetails.phone}
-                  </div>
-                </div>
+                <Phone className={`w-4 h-4 ${isDark ? 'text-green-400' : 'text-green-600'}`} />
+                <span className={`font-medium ${textPrimary}`}>{hotelDetails.phone}</span>
               </a>
             )}
             {hotelDetails.email && (
               <a
                 href={`mailto:${hotelDetails.email}`}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl border border-gray-200 hover:border-sifnos-turquoise hover:shadow-md transition-all group"
+                className={`inline-flex items-center gap-2 px-4 py-2 rounded-xl transition-colors ${isDark ? 'bg-white/5 hover:bg-white/10 border border-white/10' : 'bg-gray-50 hover:bg-gray-100 border border-gray-200'}`}
               >
-                <div className="p-3 bg-sifnos-turquoise/10 rounded-lg group-hover:bg-sifnos-turquoise/20 transition-colors">
-                  <Mail className="w-6 h-6 text-sifnos-turquoise" />
-                </div>
-                <div>
-                  <div className="text-sm text-gray-600 mb-1">Email</div>
-                  <div className="font-semibold text-gray-900 group-hover:text-sifnos-deep-blue transition-colors">
-                    {hotelDetails.email}
-                  </div>
-                </div>
+                <Mail className={`w-4 h-4 ${isDark ? 'text-blue-400' : 'text-blue-600'}`} />
+                <span className={`font-medium ${textPrimary}`}>{hotelDetails.email}</span>
               </a>
             )}
           </div>
         </Card>
       )}
 
-      {/* Location Map - Premium */}
+      {/* Location Map with Coordinates */}
       {hotelDetails.location && (
-        <Card className="p-6 md:p-8 shadow-lg border-0 overflow-hidden">
-          <div className="flex items-center gap-3 mb-6">
-            <div className="p-2 bg-gradient-to-br from-sifnos-turquoise to-sifnos-deep-blue rounded-lg">
-              <MapPin className="w-6 h-6 text-white" />
+        <Card className={`p-5 shadow-lg ${cardStyle}`}>
+          <div className="flex items-center gap-3 mb-4">
+            <div className={`p-2 rounded-lg ${isDark ? 'bg-cyclades-turquoise/20' : 'bg-cyan-100'}`}>
+              <MapPin className={`w-5 h-5 ${isDark ? 'text-cyclades-turquoise' : 'text-cyan-600'}`} />
             </div>
-            <h2 className="text-2xl font-bold text-gray-900">Location</h2>
+            <h2 className={`text-lg font-bold ${textPrimary}`}>Location</h2>
           </div>
-          <div className="h-96 bg-gray-100 rounded-xl overflow-hidden shadow-inner border border-gray-200">
-            {import.meta.env.VITE_GOOGLE_MAPS_API_KEY ? (
-              <iframe
-                width="100%"
-                height="100%"
-                style={{ border: 0 }}
-                loading="lazy"
-                allowFullScreen
-                referrerPolicy="no-referrer-when-downgrade"
-                src={`https://www.google.com/maps/embed/v1/place?key=${import.meta.env.VITE_GOOGLE_MAPS_API_KEY}&q=${hotelDetails.location.latitude},${hotelDetails.location.longitude}`}
-                title={`${hotelDetails.name} Location`}
-              />
-            ) : (
-              <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${hotelDetails.address}, ${hotelDetails.city}, ${hotelDetails.country}`)}`}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="w-full h-full flex items-center justify-center bg-gradient-to-br from-gray-100 to-gray-200 hover:from-gray-200 hover:to-gray-300 transition-all group"
-              >
-                <div className="text-center">
-                  <div className="p-4 bg-white rounded-full shadow-lg mb-4 mx-auto w-fit group-hover:scale-110 transition-transform">
-                    <MapPin className="w-12 h-12 text-sifnos-turquoise" />
-                  </div>
-                  <p className="text-gray-900 font-bold text-lg mb-1">View on Google Maps</p>
-                  <p className="text-sm text-gray-600">Click to open location</p>
-                </div>
-              </a>
-            )}
-          </div>
-          <div className="mt-4 flex items-center gap-2 p-4 bg-gray-50 rounded-lg">
-            <MapPin className="w-5 h-5 text-sifnos-turquoise flex-shrink-0" />
-            <div className="text-sm text-gray-700">
-              <span className="font-medium">{hotelDetails.address}</span>
-              {', '}
-              <span>{hotelDetails.city}, {hotelDetails.country}</span>
-            </div>
-          </div>
+          <HotelLocationMap
+            latitude={hotelDetails.location.latitude}
+            longitude={hotelDetails.location.longitude}
+            hotelName={hotelDetails.name}
+            address={hotelDetails.address}
+            city={hotelDetails.city}
+            country={hotelDetails.country}
+          />
         </Card>
       )}
     </div>

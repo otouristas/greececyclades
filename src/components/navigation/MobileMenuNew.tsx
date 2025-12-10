@@ -1,6 +1,10 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { X, ChevronRight, Sparkles, Search, Ship, Calendar, MapPin, Home, HelpCircle } from 'lucide-react';
+import {
+  X, ChevronRight, Sparkles, Search, Ship, Calendar, MapPin, Home, HelpCircle,
+  Plane, Car, Globe, Calculator, MessageCircle, BookOpen, Compass, Cloud, Users,
+  Newspaper, Building2
+} from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 
 interface MobileMenuNewProps {
@@ -34,13 +38,15 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
       icon: MapPin,
       description: 'Explore 24 Cyclades islands',
       links: [
-        { name: 'All Islands', path: '/islands' },
-        { name: 'Santorini', path: '/guides/santorini' },
-        { name: 'Mykonos', path: '/guides/mykonos' },
-        { name: 'Naxos', path: '/guides/naxos' },
-        { name: 'Paros', path: '/guides/paros' },
-        { name: 'Milos', path: '/guides/milos' },
-        { name: 'Sifnos', path: '/guides/sifnos' },
+        { name: 'All Islands', path: '/islands', icon: Globe },
+        { name: 'Island Guides', path: '/guides', icon: BookOpen },
+        { name: 'Santorini Guide', path: '/guides/santorini' },
+        { name: 'Mykonos Guide', path: '/guides/mykonos' },
+        { name: 'Naxos Guide', path: '/guides/naxos' },
+        { name: 'Paros Guide', path: '/guides/paros' },
+        { name: 'Milos Guide', path: '/guides/milos' },
+        { name: 'Sifnos Guide', path: '/guides/sifnos' },
+        { name: 'Ios Guide', path: '/guides/ios' },
       ]
     },
     {
@@ -49,12 +55,31 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
       icon: Calendar,
       description: 'Tools & resources',
       links: [
-        { name: 'Trip Planner', path: '/trip-planner' },
-        { name: 'Hotels', path: '/hotels' },
-        { name: 'Activities', path: '/activities' },
-        { name: 'Ferry Tickets', path: '/ferry-tickets' },
-        { name: 'Rent a Car', path: '/rent-a-car' },
-        { name: 'Flights', path: '/flights' },
+        { name: 'Touristas AI', path: '/touristas-ai', icon: Sparkles },
+        { name: 'Trip Planner', path: '/trip-planner', icon: Calendar },
+        { name: 'Hotels', path: '/hotels', icon: Building2 },
+        { name: 'Activities', path: '/activities', icon: Compass },
+        { name: 'Ferry Tickets', path: '/ferry-tickets', icon: Ship },
+        { name: 'Ferry Guide', path: '/ferry-guide', icon: BookOpen },
+        { name: 'Flight Tickets', path: '/flights', icon: Plane },
+        { name: 'Rent a Car', path: '/rent-a-car', icon: Car },
+        { name: 'Taxi Transfers', path: '/transfers', icon: Car },
+        { name: 'Weather Guide', path: '/weather', icon: Cloud },
+        { name: 'Budget Calculator', path: '/budget-calculator', icon: Calculator },
+        { name: 'Greek Phrases', path: '/greek-phrases', icon: MessageCircle },
+        { name: 'Travel Resources', path: '/resources', icon: BookOpen },
+      ]
+    },
+    {
+      id: 'blog',
+      name: 'Travel Tips',
+      icon: Newspaper,
+      description: 'Articles & guides',
+      links: [
+        { name: 'All Articles', path: '/blog', icon: Newspaper },
+        { name: 'Best Cyclades Islands', path: '/blog/best-cyclades-islands' },
+        { name: 'Island Hopping Guide', path: '/guides/island-hopping' },
+        { name: 'Best Time to Visit', path: '/guides/best-time-to-visit' },
       ]
     },
   ];
@@ -62,12 +87,11 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
   return (
     <div className="fixed inset-0 z-[1000]">
       {/* Full-screen backdrop */}
-      <div className={`absolute inset-0 ${
-        isDark 
-          ? 'bg-gradient-to-br from-dark-bg via-dark-card to-cyclades-caldera' 
+      <div className={`absolute inset-0 ${isDark
+          ? 'bg-gradient-to-br from-dark-bg via-dark-card to-cyclades-caldera'
           : 'bg-gradient-to-br from-cyclades-deep-blue via-cyclades-sea-blue to-cyclades-caldera'
-      }`} />
-      
+        }`} />
+
       {/* Decorative elements */}
       <div className="absolute inset-0 overflow-hidden pointer-events-none">
         <div className="absolute -top-40 -right-40 w-80 h-80 bg-cyclades-turquoise/20 rounded-full blur-3xl" />
@@ -107,7 +131,7 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
               <div className="space-y-3">
                 {/* Plan Trip AI - Featured */}
                 <Link
-                  to="/trip-planner"
+                  to="/touristas-ai"
                   onClick={onClose}
                   className="flex items-center gap-4 p-5 bg-gradient-to-r from-cyclades-turquoise to-cyan-600 rounded-2xl group hover:scale-[1.01] transition-transform"
                 >
@@ -115,12 +139,12 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
                     <Sparkles className="w-7 h-7 text-white" />
                   </div>
                   <div className="flex-1">
-                    <span className="font-bold text-white text-lg block">Plan Trip AI</span>
-                    <span className="text-sm text-white/70">AI-powered trip planner</span>
+                    <span className="font-bold text-white text-lg block">Touristas AI</span>
+                    <span className="text-sm text-white/70">AI-powered travel assistant</span>
                   </div>
                   <ChevronRight className="w-5 h-5 text-white/60" />
                 </Link>
-                
+
                 <div className="grid grid-cols-2 gap-3">
                   <Link
                     to="/hotels"
@@ -134,15 +158,15 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
                     <span className="text-xs text-gray-500 mt-0.5">1000+ options</span>
                   </Link>
                   <Link
-                    to="/touristas-ai"
+                    to="/trip-planner"
                     onClick={onClose}
                     className="flex flex-col items-center justify-center p-5 bg-cyclades-deep-blue rounded-2xl text-center group hover:scale-[1.02] transition-transform"
                   >
                     <div className="w-11 h-11 bg-white/20 rounded-xl flex items-center justify-center mb-2">
-                      <Sparkles className="w-5 h-5 text-white" />
+                      <Calendar className="w-5 h-5 text-white" />
                     </div>
-                    <span className="font-bold text-white text-sm">Touristas AI</span>
-                    <span className="text-xs text-white/70 mt-0.5">Instant answers</span>
+                    <span className="font-bold text-white text-sm">Plan Trip</span>
+                    <span className="text-xs text-white/70 mt-0.5">Build itinerary</span>
                   </Link>
                 </div>
               </div>
@@ -174,7 +198,7 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
               {/* Quick Links */}
               <div className="space-y-3">
                 <h3 className="text-xs font-bold text-white/50 uppercase tracking-wider px-1">Quick Links</h3>
-                <div className="grid grid-cols-3 gap-2">
+                <div className="grid grid-cols-4 gap-2">
                   <Link
                     to="/"
                     onClick={onClose}
@@ -192,12 +216,76 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
                     <span className="text-xs text-white/70">Ferries</span>
                   </Link>
                   <Link
+                    to="/flights"
+                    onClick={onClose}
+                    className="flex flex-col items-center p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors"
+                  >
+                    <Plane className="w-5 h-5 text-white/70 mb-1" />
+                    <span className="text-xs text-white/70">Flights</span>
+                  </Link>
+                  <Link
                     to="/help"
                     onClick={onClose}
                     className="flex flex-col items-center p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors"
                   >
                     <HelpCircle className="w-5 h-5 text-white/70 mb-1" />
                     <span className="text-xs text-white/70">Help</span>
+                  </Link>
+                </div>
+                <div className="grid grid-cols-4 gap-2">
+                  <Link
+                    to="/activities"
+                    onClick={onClose}
+                    className="flex flex-col items-center p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors"
+                  >
+                    <Compass className="w-5 h-5 text-white/70 mb-1" />
+                    <span className="text-xs text-white/70">Activities</span>
+                  </Link>
+                  <Link
+                    to="/rent-a-car"
+                    onClick={onClose}
+                    className="flex flex-col items-center p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors"
+                  >
+                    <Car className="w-5 h-5 text-white/70 mb-1" />
+                    <span className="text-xs text-white/70">Cars</span>
+                  </Link>
+                  <Link
+                    to="/weather"
+                    onClick={onClose}
+                    className="flex flex-col items-center p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors"
+                  >
+                    <Cloud className="w-5 h-5 text-white/70 mb-1" />
+                    <span className="text-xs text-white/70">Weather</span>
+                  </Link>
+                  <Link
+                    to="/blog"
+                    onClick={onClose}
+                    className="flex flex-col items-center p-3 bg-white/5 rounded-xl hover:bg-white/10 transition-colors"
+                  >
+                    <Newspaper className="w-5 h-5 text-white/70 mb-1" />
+                    <span className="text-xs text-white/70">Blog</span>
+                  </Link>
+                </div>
+              </div>
+
+              {/* Auth Links */}
+              <div className="space-y-3">
+                <h3 className="text-xs font-bold text-white/50 uppercase tracking-wider px-1">Account</h3>
+                <div className="grid grid-cols-2 gap-3">
+                  <Link
+                    to="/signin"
+                    onClick={onClose}
+                    className="flex items-center justify-center gap-2 p-3 bg-white/10 rounded-xl hover:bg-white/15 transition-colors"
+                  >
+                    <Users className="w-4 h-4 text-white/70" />
+                    <span className="text-sm text-white font-medium">Sign In</span>
+                  </Link>
+                  <Link
+                    to="/signup"
+                    onClick={onClose}
+                    className="flex items-center justify-center gap-2 p-3 bg-cyclades-turquoise rounded-xl hover:bg-cyclades-turquoise/90 transition-colors"
+                  >
+                    <span className="text-sm text-dark-bg font-semibold">Sign Up</span>
                   </Link>
                 </div>
               </div>

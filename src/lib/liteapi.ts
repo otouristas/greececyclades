@@ -21,11 +21,11 @@ export interface SearchParams {
   checkin: string; // YYYY-MM-DD
   checkout: string; // YYYY-MM-DD
   occupancies: Occupancy[];
-  
+
   // Optional base settings
   currency?: string;
   guestNationality?: string;
-  
+
   // Location search methods (at least one required)
   countryCode?: string; // e.g., 'GR' for Greece
   cityName?: string; // e.g., 'Santorini'
@@ -36,13 +36,13 @@ export interface SearchParams {
   latitude?: number; // Geo-search latitude
   longitude?: number; // Geo-search longitude
   radius?: number; // Search radius in meters (for geo-search)
-  
+
   // Rate/room options
   maxRatesPerHotel?: number;
   limit?: number; // Limit number of hotels returned (for pagination/cost control)
   offset?: number; // Pagination offset
   timeout?: number; // Request timeout in seconds (recommended 6-12)
-  
+
   // Filtering options
   boardType?: 'RO' | 'BB' | 'HB' | 'FB' | 'AI'; // Room Only, Bed & Breakfast, Half Board, Full Board, All Inclusive
   refundableRatesOnly?: boolean; // Only show refundable rates
@@ -56,7 +56,7 @@ export interface SearchParams {
   strictFacilityFiltering?: boolean; // Require ALL facilities
   advancedAccessibilityOnly?: boolean; // Only accessible hotels
   zip?: string; // Filter by zip code
-  
+
   // Sorting
   sort?: Array<{
     field: 'price' | 'top_picks';
@@ -125,14 +125,36 @@ export interface PrebookResponse {
     offerId: string;
     transactionId: string;
     secretKey: string;
-    cancellationPolicies: any;
-    price: {
-      total: { amount: number; currency: string };
+    cancellationPolicies?: {
+      refundableTag?: string;
+      cancelPolicyInfos?: Array<{
+        cancelTime: string;
+        amount: number;
+        currency: string;
+        type: string;
+      }>;
     };
-    room: {
+    // Multiple possible price formats from LiteAPI
+    price?: {
+      total?: { amount: number; currency: string };
+      amount?: number;
+      currency?: string;
+    };
+    // Alternative format from v3.0 API
+    retailRate?: {
+      total?: Array<{ amount: number; currency: string }>;
+    };
+    totalPrice?: number;
+    currency?: string;
+    room?: {
       name: string;
       boardName: string;
     };
+    // Room info in different format
+    roomName?: string;
+    boardName?: string;
+    checkIn?: string;
+    checkOut?: string;
   };
 }
 
@@ -177,7 +199,7 @@ export interface BookingResponse {
  */
 export async function searchPlaces(textQuery: string): Promise<Place[]> {
   const { data: sessionData } = await supabase.auth.getSession();
-  
+
   const response = await fetch(`${getSupabaseFunctionsUrl()}/liteapi-places`, {
     method: 'POST',
     headers: {
@@ -204,7 +226,7 @@ export async function searchHotelRatesStream(
   onChunk: (hotels: Hotel[]) => void
 ): Promise<Hotel[]> {
   const { data: sessionData } = await supabase.auth.getSession();
-  
+
   const response = await fetch(`${getSupabaseFunctionsUrl()}/liteapi-hotel-rates`, {
     method: 'POST',
     headers: {
@@ -256,7 +278,7 @@ export async function searchHotelRatesStream(
       const message = messages[i].trim();
       if (message.startsWith('data: ')) {
         const data = message.slice(6); // Remove "data: " prefix
-        
+
         if (data === '[DONE]') {
           console.log('Stream complete!');
           continue;
@@ -288,7 +310,7 @@ export async function searchHotelRatesStream(
                   rates: [],
                 });
               }
-              
+
               const hotel = hotelMap.get(hotelId)!;
               const rates = rateChunk.roomTypes?.flatMap((rt: any) => rt.rates || []) || [];
               hotel.rates.push(...rates);
@@ -353,7 +375,7 @@ export async function searchHotelRatesStream(
 function normalizeHotel(hotel: any, params: SearchParams): Hotel {
   // Extract images from various possible structures
   let images: Array<{ url: string }> = [];
-  
+
   if (hotel.images && Array.isArray(hotel.images)) {
     images = hotel.images.map((img: any) => ({
       url: typeof img === 'string' ? img : (img.url || img.urlHd || img.thumbnailUrl || '')
@@ -372,11 +394,11 @@ function normalizeHotel(hotel: any, params: SearchParams): Hotel {
 
   // Extract rates from roomTypes - LiteAPI v3.0 structure
   let extractedRates: HotelRate[] = [];
-  
+
   if (hotel.roomTypes && Array.isArray(hotel.roomTypes)) {
     extractedRates = hotel.roomTypes.flatMap((roomType: any) => {
       if (!roomType.rates || !Array.isArray(roomType.rates)) return [];
-      
+
       return roomType.rates.map((rate: any) => ({
         hotelId: hotel.hotelId || hotel.id,
         offerId: roomType.offerId || '',
@@ -427,7 +449,7 @@ function normalizeHotel(hotel: any, params: SearchParams): Hotel {
  */
 export async function searchHotelRates(params: SearchParams): Promise<Hotel[]> {
   const { data: sessionData } = await supabase.auth.getSession();
-  
+
   // Build request body with all supported parameters
   const requestBody: Record<string, any> = {
     checkin: params.checkin,
@@ -448,18 +470,18 @@ export async function searchHotelRates(params: SearchParams): Promise<Hotel[]> {
   if (params.hotelIds) requestBody.hotelIds = params.hotelIds;
   if (params.aiSearch) requestBody.aiSearch = params.aiSearch;
   if (params.iataCode) requestBody.iataCode = params.iataCode;
-  
+
   // Geo-search parameters
   if (params.latitude && params.longitude) {
     requestBody.latitude = params.latitude;
     requestBody.longitude = params.longitude;
     if (params.radius) requestBody.radius = params.radius;
   }
-  
+
   // Pagination
   if (params.limit) requestBody.limit = params.limit;
   if (params.offset) requestBody.offset = params.offset;
-  
+
   // Filtering options
   if (params.boardType) requestBody.boardType = params.boardType;
   if (params.refundableRatesOnly) requestBody.refundableRatesOnly = true;
@@ -473,7 +495,7 @@ export async function searchHotelRates(params: SearchParams): Promise<Hotel[]> {
   if (params.strictFacilityFiltering) requestBody.strictFacilityFiltering = true;
   if (params.advancedAccessibilityOnly) requestBody.advancedAccessibilityOnly = true;
   if (params.zip) requestBody.zip = params.zip;
-  
+
   // Sorting
   if (params.sort) requestBody.sort = params.sort;
 
@@ -494,28 +516,28 @@ export async function searchHotelRates(params: SearchParams): Promise<Hotel[]> {
 
   const data = await response.json();
   console.log('LiteAPI response structure:', JSON.stringify(data, null, 2).substring(0, 2000));
-  
+
   // LiteAPI /v3.0/hotels/rates endpoint returns:
   // { data: [{ hotelId, roomTypes: [{ offerId, rates: [...] }] }], hotels: [{ id, name, main_photo }] }
   let ratesData: any[] = [];
   let hotelsInfo: any[] = [];
-  
+
   // Extract rates data (contains hotelId and roomTypes with rates)
   if (Array.isArray(data.data)) {
     ratesData = data.data;
     console.log(`Found ${ratesData.length} hotels with rates in data.data`);
   }
-  
+
   // Extract hotel info (contains name, photo, address, rating)
   if (Array.isArray(data.hotels)) {
     hotelsInfo = data.hotels;
     console.log(`Found ${hotelsInfo.length} hotels info in data.hotels`);
   }
-  
+
   // Merge rates with hotel info
   let hotels: any[] = ratesData.map((rateItem: any) => {
     const hotelInfo = hotelsInfo.find((h: any) => h.id === rateItem.hotelId) || {};
-    
+
     return {
       ...rateItem,
       ...hotelInfo,
@@ -530,7 +552,7 @@ export async function searchHotelRates(params: SearchParams): Promise<Hotel[]> {
       roomTypes: rateItem.roomTypes,
     };
   });
-  
+
   // Fallback: if no rates data, try other structures
   if (hotels.length === 0) {
     if (data.data?.hotels && Array.isArray(data.data.hotels)) {
@@ -539,7 +561,7 @@ export async function searchHotelRates(params: SearchParams): Promise<Hotel[]> {
       hotels = data.hotels;
     }
   }
-  
+
   console.log(`Final merged hotels count: ${hotels.length}`);
   if (hotels.length > 0) {
     console.log('First hotel sample:', JSON.stringify({
@@ -550,13 +572,13 @@ export async function searchHotelRates(params: SearchParams): Promise<Hotel[]> {
       firstRoomTypeRates: hotels[0].roomTypes?.[0]?.rates?.length || 0,
     }));
   }
-  
+
   console.log(`Found ${hotels.length} hotels in response`);
   console.log('Sample hotel structure:', hotels[0] ? JSON.stringify(hotels[0], null, 2) : 'No hotels');
-  
+
   // Normalize hotel structure using the shared function
   const normalizedHotels = hotels.map((hotel: any) => normalizeHotel(hotel, params));
-  
+
   console.log(`Normalized ${normalizedHotels.length} hotels`);
   console.log('Sample normalized hotel:', normalizedHotels[0] ? {
     id: normalizedHotels[0].id,
@@ -648,7 +670,7 @@ export interface HotelDetailsFull {
  */
 export async function getHotelDetailsFull(hotelId: string): Promise<HotelDetailsFull> {
   const { data: sessionData } = await supabase.auth.getSession();
-  
+
   const response = await fetch(
     `${getSupabaseFunctionsUrl()}/liteapi-hotel-details?hotelId=${hotelId}`,
     {
@@ -667,7 +689,7 @@ export async function getHotelDetailsFull(hotelId: string): Promise<HotelDetails
 
   const data = await response.json();
   console.log('LiteAPI hotel details response:', data);
-  
+
   // Handle response structure: { data: {...} } or direct object
   return data.data || data;
 }
@@ -684,7 +706,7 @@ export async function getHotelDetails(hotelId: string): Promise<any> {
  */
 export async function prebookHotelRate(offerId: string): Promise<PrebookResponse['data']> {
   const { data: sessionData } = await supabase.auth.getSession();
-  
+
   const response = await fetch(`${getSupabaseFunctionsUrl()}/liteapi-prebook`, {
     method: 'POST',
     headers: {
@@ -713,7 +735,7 @@ export async function bookHotel(
   guests: BookingGuest[]
 ): Promise<BookingResponse['data']> {
   const { data: sessionData } = await supabase.auth.getSession();
-  
+
   const response = await fetch(`${getSupabaseFunctionsUrl()}/liteapi-book`, {
     method: 'POST',
     headers: {

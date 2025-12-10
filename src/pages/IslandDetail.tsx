@@ -1,7 +1,7 @@
 import { useParams, Link } from 'react-router-dom';
 import {
   MapPin, Calendar, Sun, Users, Ship, ArrowRight, Car, Building, BookOpen,
-  Plane, Clock, Star, Camera, Utensils, Heart, ChevronRight, ExternalLink
+  Star, Camera, Heart, ExternalLink
 } from 'lucide-react';
 import { cyclades } from '../data/islandsData';
 import SEO from '../components/SEO';
@@ -57,58 +57,45 @@ export default function IslandDetail() {
 
       {/* Hero Section */}
       <div
-        className="relative min-h-[70vh] bg-cover bg-center"
+        className="relative min-h-[60vh] md:min-h-[70vh] bg-cover bg-center"
         style={{ backgroundImage: `url(${island.heroImage || island.image || '/images/placeholder-island.jpg'})` }}
       >
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-black/20" />
 
-        {/* Breadcrumb */}
-        <div className="absolute top-24 left-0 right-0 z-10">
-          <div className="max-w-7xl mx-auto px-4">
-            <nav className="flex items-center gap-2 text-white/80 text-sm">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <ChevronRight className="w-4 h-4" />
-              <Link to="/islands" className="hover:text-white transition-colors">Islands</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">{island.name}</span>
-            </nav>
-          </div>
-        </div>
-
         {/* Hero Content */}
-        <div className="relative z-10 h-full min-h-[70vh] max-w-7xl mx-auto px-4 flex flex-col justify-end pb-16">
-          <div className="flex items-center gap-2 text-white/80 mb-4">
-            <MapPin className="w-5 h-5" />
-            <span className="text-lg">Cyclades, Greece</span>
+        <div className="relative z-10 h-full min-h-[60vh] md:min-h-[70vh] max-w-7xl mx-auto px-4 flex flex-col justify-end pb-8 md:pb-16 pt-24 md:pt-32">
+          <div className="flex items-center gap-2 text-white/80 mb-3 md:mb-4">
+            <MapPin className="w-4 h-4 md:w-5 md:h-5" />
+            <span className="text-base md:text-lg">Cyclades, Greece</span>
           </div>
-          <h1 className="text-5xl md:text-7xl font-bold text-white mb-4 tracking-tight">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-3 md:mb-4 tracking-tight">
             {island.name}
           </h1>
-          <p className="text-xl md:text-2xl text-white/90 max-w-3xl leading-relaxed">
+          <p className="text-lg md:text-xl lg:text-2xl text-white/90 max-w-3xl leading-relaxed">
             {island.quote || island.shortDescription}
           </p>
 
           {/* Quick Info Cards */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-10">
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
-              <Calendar className="w-6 h-6 text-cyclades-turquoise mb-3" />
-              <p className="text-white font-semibold mb-1">Best Time</p>
-              <p className="text-white/70 text-sm">{island.bestTime?.months?.slice(0, 2).join(' - ') || 'May - October'}</p>
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-3 md:gap-4 mt-6 md:mt-10">
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-5 border border-white/20">
+              <Calendar className="w-5 h-5 md:w-6 md:h-6 text-cyclades-turquoise mb-2 md:mb-3" />
+              <p className="text-white font-semibold mb-1 text-sm md:text-base">Best Time</p>
+              <p className="text-white/70 text-xs md:text-sm">{island.bestTime?.months?.slice(0, 2).join(' - ') || 'May - October'}</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
-              <Sun className="w-6 h-6 text-yellow-400 mb-3" />
-              <p className="text-white font-semibold mb-1">Weather</p>
-              <p className="text-white/70 text-sm">25-32°C in Summer</p>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-5 border border-white/20">
+              <Sun className="w-5 h-5 md:w-6 md:h-6 text-yellow-400 mb-2 md:mb-3" />
+              <p className="text-white font-semibold mb-1 text-sm md:text-base">Weather</p>
+              <p className="text-white/70 text-xs md:text-sm">25-32°C in Summer</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
-              <Ship className="w-6 h-6 text-blue-400 mb-3" />
-              <p className="text-white font-semibold mb-1">Getting There</p>
-              <p className="text-white/70 text-sm">Ferry from Piraeus</p>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-5 border border-white/20">
+              <Ship className="w-5 h-5 md:w-6 md:h-6 text-blue-400 mb-2 md:mb-3" />
+              <p className="text-white font-semibold mb-1 text-sm md:text-base">Getting There</p>
+              <p className="text-white/70 text-xs md:text-sm">Ferry from Piraeus</p>
             </div>
-            <div className="bg-white/10 backdrop-blur-md rounded-xl p-5 border border-white/20">
-              <Users className="w-6 h-6 text-green-400 mb-3" />
-              <p className="text-white font-semibold mb-1">Perfect For</p>
-              <p className="text-white/70 text-sm">{island.idealFor?.[0] || 'All Travelers'}</p>
+            <div className="bg-white/10 backdrop-blur-md rounded-xl p-4 md:p-5 border border-white/20">
+              <Users className="w-5 h-5 md:w-6 md:h-6 text-green-400 mb-2 md:mb-3" />
+              <p className="text-white font-semibold mb-1 text-sm md:text-base">Perfect For</p>
+              <p className="text-white/70 text-xs md:text-sm">{island.idealFor?.[0] || 'All Travelers'}</p>
             </div>
           </div>
         </div>

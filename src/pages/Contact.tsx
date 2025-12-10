@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Mail, Phone, MapPin, Send, Loader2, MessageCircle, Clock, Globe, ChevronRight, ArrowRight } from 'lucide-react';
+import { Mail, MapPin, Send, Loader2, MessageCircle, Clock, Globe, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 
 interface FormData {
@@ -87,21 +87,14 @@ export default function Contact() {
 
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-32 pb-20">
+        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-24 md:pt-32 pb-16 md:pb-20">
           <div className="absolute inset-0 bg-[url('/images/pattern-dots.svg')] opacity-10" />
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-white/70 text-sm mb-8">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">Contact</span>
-            </nav>
-
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
                 Get in Touch
               </h1>
-              <p className="text-xl text-white/90 leading-relaxed">
+              <p className="text-lg md:text-xl text-white/90 leading-relaxed px-1">
                 Have questions about planning your Cyclades adventure? We're here to help!
                 Our team of local experts is ready to assist you in creating your perfect Greek island experience.
               </p>

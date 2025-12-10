@@ -7,9 +7,10 @@ import { IslandGuide } from '../../types/island';
 import { generateGuideSEO } from '../../utils/seoMetadata';
 import FAQSection from '../FAQSection';
 import RelatedLinks from '../RelatedLinks';
-import { 
-  Heart, ArrowRight, Utensils, MapPin, Calendar, 
-  Camera, Waves, Mountain, Compass, Sparkles, Ship, 
+import GetYourGuideWidget, { GYG_LOCATIONS } from '../activities/GetYourGuideWidget';
+import {
+  Heart, ArrowRight, Utensils, MapPin, Calendar,
+  Camera, Waves, Mountain, Compass, Sparkles, Ship,
   Hotel, Car, ChevronRight, Thermometer, Clock,
   Wine, Sunset, Plane, Info, CheckCircle,
   ExternalLink, Navigation, Globe, Sun,
@@ -101,7 +102,7 @@ const FloatingNav = ({ sections, islandName }: { sections: { id: string; label: 
     window.addEventListener('scroll', handleScroll);
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
-  
+
   return (
     <div className="fixed right-4 lg:right-8 top-1/2 -translate-y-1/2 z-50 hidden lg:block">
       <motion.div
@@ -131,7 +132,7 @@ const FloatingNav = ({ sections, islandName }: { sections: { id: string; label: 
             )}
           </AnimatePresence>
         </button>
-        
+
         <nav className="py-2">
           {sections.map((section) => {
             const isActive = activeSection === section.id;
@@ -140,11 +141,10 @@ const FloatingNav = ({ sections, islandName }: { sections: { id: string; label: 
                 key={section.id}
                 href={`#${section.id}`}
                 onClick={() => setIsOpen(false)}
-                className={`flex items-center gap-3 px-4 py-3 transition-all ${
-                  isActive 
-                    ? 'bg-cyan-600/10 dark:bg-cyclades-turquoise/10 text-cyan-600 dark:text-cyclades-turquoise border-r-2 border-cyan-600 dark:border-cyclades-turquoise' 
-                    : 'text-gray-600 dark:text-white/60 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white'
-                }`}
+                className={`flex items-center gap-3 px-4 py-3 transition-all ${isActive
+                  ? 'bg-cyan-600/10 dark:bg-cyclades-turquoise/10 text-cyan-600 dark:text-cyclades-turquoise border-r-2 border-cyan-600 dark:border-cyclades-turquoise'
+                  : 'text-gray-600 dark:text-white/60 hover:bg-gray-50 dark:hover:bg-white/5 hover:text-gray-900 dark:hover:text-white'
+                  }`}
               >
                 <span className={`shrink-0 ${isActive ? 'scale-110' : ''} transition-transform`}>
                   {section.icon}
@@ -173,7 +173,7 @@ const FloatingNav = ({ sections, islandName }: { sections: { id: string; label: 
 // Image Gallery Component
 const ImageGallery = ({ images, islandId }: { images: { src: string; alt: string; caption?: string }[]; islandId: string }) => {
   const [selectedImage, setSelectedImage] = useState<number | null>(null);
-  
+
   return (
     <>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
@@ -185,8 +185,8 @@ const ImageGallery = ({ images, islandId }: { images: { src: string; alt: string
             onClick={() => setSelectedImage(idx)}
             className={`relative overflow-hidden rounded-xl ${idx === 0 ? 'col-span-2 row-span-2' : ''}`}
           >
-            <img 
-              src={getIslandImagePath(islandId, img.src)} 
+            <img
+              src={getIslandImagePath(islandId, img.src)}
               alt={img.alt}
               className="w-full h-full object-cover aspect-square"
               onError={(e) => {
@@ -199,7 +199,7 @@ const ImageGallery = ({ images, islandId }: { images: { src: string; alt: string
           </motion.button>
         ))}
       </div>
-      
+
       {/* Lightbox */}
       <AnimatePresence>
         {selectedImage !== null && (
@@ -235,29 +235,29 @@ const QuickBookingBar = ({ islandName }: { islandName: string }) => (
           <span className="font-semibold text-gray-900 dark:text-white">{islandName}</span>
         </div>
         <div className="flex items-center gap-3">
-          <Link 
-            to="/hotels" 
+          <Link
+            to="/hotels"
             className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 rounded-lg text-gray-800 dark:text-white text-sm font-medium transition-colors whitespace-nowrap"
           >
             <Hotel className="w-4 h-4 text-gray-600 dark:text-white/70" />
             Hotels
           </Link>
-          <Link 
-            to="/ferry-tickets" 
+          <Link
+            to="/ferry-tickets"
             className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 rounded-lg text-gray-800 dark:text-white text-sm font-medium transition-colors whitespace-nowrap"
           >
             <Ship className="w-4 h-4 text-gray-600 dark:text-white/70" />
             Ferries
           </Link>
-          <Link 
-            to="/flights" 
+          <Link
+            to="/flights"
             className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 rounded-lg text-gray-800 dark:text-white text-sm font-medium transition-colors whitespace-nowrap"
           >
             <Plane className="w-4 h-4 text-gray-600 dark:text-white/70" />
             Flights
           </Link>
-          <Link 
-            to="/rent-a-car" 
+          <Link
+            to="/rent-a-car"
             className="flex items-center gap-2 px-4 py-2 bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 rounded-lg text-gray-800 dark:text-white text-sm font-medium transition-colors whitespace-nowrap"
           >
             <Car className="w-4 h-4 text-gray-600 dark:text-white/70" />
@@ -272,7 +272,7 @@ const QuickBookingBar = ({ islandName }: { islandName: string }) => (
 // Main Component
 const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
   const islandId = island.id || island.name.toLowerCase();
-  
+
   // Define images based on available files
   const galleryImages = [
     { src: 'hero.jpg', alt: `${island.name} panoramic view` },
@@ -298,7 +298,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
 
   // Generate optimized SEO data using our high-CTR meta strategy
   const baseSeoData = generateGuideSEO(island.name);
-  
+
   // Island-specific FAQs for rich snippets
   const islandFaqs: FAQItem[] = [
     {
@@ -353,7 +353,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
   return (
     <>
       <SEO {...seoData} />
-      
+
       <div className="min-h-screen bg-white dark:bg-dark-bg">
         {/* HERO SECTION */}
         <section id="hero" className="relative h-[85vh] min-h-[600px]">
@@ -369,19 +369,10 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
             />
             <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-black/20 to-black/70" />
           </div>
-          
+
           {/* Hero Content */}
           <div className="absolute inset-0 flex flex-col justify-end">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-16 w-full">
-              {/* Breadcrumb */}
-              <nav className="flex items-center gap-2 text-white/80 text-sm mb-6">
-                <Link to="/" className="hover:text-white transition-colors">Home</Link>
-                <ChevronRight className="w-4 h-4" />
-                <Link to="/guides" className="hover:text-white transition-colors">Island Guides</Link>
-                <ChevronRight className="w-4 h-4" />
-                <span className="text-white">{island.name}</span>
-              </nav>
-              
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -397,15 +388,15 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                     Updated December 2025
                   </span>
                 </div>
-                
+
                 <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-4 tracking-tight">
                   {island.name}
                 </h1>
-                
+
                 <p className="text-xl md:text-2xl text-white/90 max-w-3xl mb-8">
                   {island.description}
                 </p>
-                
+
                 {/* Quick Stats */}
                 <div className="flex flex-wrap gap-4 mb-8">
                   {island.idealFor?.slice(0, 4).map((tag: string, idx: number) => (
@@ -414,7 +405,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                     </span>
                   ))}
                 </div>
-                
+
                 {/* CTA Buttons */}
                 <div className="flex flex-wrap gap-4">
                   <Link
@@ -435,9 +426,9 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
               </motion.div>
             </div>
           </div>
-          
+
           {/* Scroll Indicator */}
-          <motion.div 
+          <motion.div
             className="absolute bottom-8 left-1/2 -translate-x-1/2"
             animate={{ y: [0, 10, 0] }}
             transition={{ duration: 2, repeat: Infinity }}
@@ -450,7 +441,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
 
         {/* Quick Booking Bar */}
         <QuickBookingBar islandName={island.name} />
-        
+
         {/* Floating Navigation */}
         <FloatingNav sections={navSections} islandName={island.name} />
 
@@ -468,7 +459,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                   <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-6">
                     Discover {island.name}
                   </h2>
-                  
+
                   <div className="prose prose-lg dark:prose-invert max-w-none">
                     <p className="text-gray-600 dark:text-white/70 text-lg leading-relaxed mb-6">
                       {content.introduction.text1}
@@ -477,7 +468,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                       {content.introduction.text2}
                     </p>
                   </div>
-                  
+
                   {/* Highlights Grid */}
                   <div className="grid sm:grid-cols-2 gap-4 mt-8">
                     {[
@@ -499,7 +490,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                   </div>
                 </motion.div>
               </div>
-              
+
               {/* Sidebar */}
               <div className="space-y-6">
                 {/* Quick Facts Card */}
@@ -527,7 +518,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                     </li>
                   </ul>
                 </div>
-                
+
                 {/* Book Now Card */}
                 <div className="bg-white dark:bg-dark-card rounded-2xl p-6 border border-gray-200 dark:border-white/10 shadow-lg">
                   <h3 className="font-bold text-gray-900 dark:text-white mb-3">Plan Your Trip</h3>
@@ -576,14 +567,14 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                   </h2>
                   <p className="text-gray-600 dark:text-white/60">Discover the beauty of {island.name}</p>
                 </div>
-                <Link 
+                <Link
                   to={`/islands/${islandId}`}
                   className="hidden md:flex items-center gap-2 text-cyan-600 dark:text-cyclades-turquoise hover:underline"
                 >
                   View more photos <ExternalLink className="w-4 h-4" />
                 </Link>
               </div>
-              
+
               <ImageGallery images={galleryImages} islandId={islandId} />
             </motion.div>
           </div>
@@ -603,7 +594,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
               <p className="text-gray-600 dark:text-white/60 mb-10 max-w-2xl">
                 Explore the charming villages of {island.name}, each with its own unique character and atmosphere.
               </p>
-              
+
               <div className="grid md:grid-cols-2 gap-8">
                 {content.villages.map((village, idx) => {
                   // Map village names to actual image files
@@ -615,7 +606,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                     'Megalochori': 'megalochori.jpg',
                   };
                   const imageName = villageImages[village.name] || `${village.name.toLowerCase()}.jpg`;
-                  
+
                   return (
                     <motion.div
                       key={idx}
@@ -626,7 +617,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                       className="group bg-white dark:bg-dark-card rounded-2xl overflow-hidden shadow-sm hover:shadow-xl transition-all border border-gray-100 dark:border-white/10"
                     >
                       <div className="relative h-64 overflow-hidden">
-                        <img 
+                        <img
                           src={getIslandImagePath(islandId, imageName)}
                           alt={village.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
@@ -675,7 +666,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
               <p className="text-gray-600 dark:text-white/60 mb-10 max-w-2xl">
                 {island.name}'s beaches are unlike any others, featuring volcanic sand in stunning colors.
               </p>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {content.beaches.map((beach, idx) => {
                   // Map beach names to actual image files
@@ -688,7 +679,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                     'Monolithos Beach': 'monolithos-beach.jpg',
                   };
                   const imageName = beachImages[beach.name] || `${beach.name.toLowerCase().replace(' ', '-')}.jpg`;
-                  
+
                   return (
                     <motion.div
                       key={idx}
@@ -699,7 +690,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                       className="group bg-gray-50 dark:bg-white/5 rounded-2xl overflow-hidden hover:shadow-lg transition-all border border-gray-100 dark:border-white/10"
                     >
                       <div className="relative h-48 overflow-hidden">
-                        <img 
+                        <img
                           src={getIslandImagePath(islandId, imageName)}
                           alt={beach.name}
                           className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
@@ -746,7 +737,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
               <p className="text-gray-600 dark:text-white/60 mb-10 max-w-2xl">
                 Plan your trip according to the season that best suits your preferences.
               </p>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
                 {[
                   { season: 'Spring', months: 'Apr - May', icon: Leaf, temp: '18-24°C', color: 'emerald', desc: 'Wildflowers, fewer crowds, pleasant weather' },
@@ -762,26 +753,23 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                     transition={{ delay: idx * 0.1 }}
                     className="bg-white dark:bg-dark-card rounded-2xl p-6 border border-gray-100 dark:border-white/10 hover:shadow-lg transition-all"
                   >
-                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 ${
-                      s.color === 'emerald' ? 'bg-emerald-100 dark:bg-emerald-500/20' :
+                    <div className={`w-14 h-14 rounded-2xl flex items-center justify-center mb-4 ${s.color === 'emerald' ? 'bg-emerald-100 dark:bg-emerald-500/20' :
                       s.color === 'amber' ? 'bg-amber-100 dark:bg-amber-500/20' :
-                      s.color === 'orange' ? 'bg-orange-100 dark:bg-orange-500/20' :
-                      'bg-blue-100 dark:bg-blue-500/20'
-                    }`}>
-                      <s.icon className={`w-7 h-7 ${
-                        s.color === 'emerald' ? 'text-emerald-600 dark:text-emerald-400' :
+                        s.color === 'orange' ? 'bg-orange-100 dark:bg-orange-500/20' :
+                          'bg-blue-100 dark:bg-blue-500/20'
+                      }`}>
+                      <s.icon className={`w-7 h-7 ${s.color === 'emerald' ? 'text-emerald-600 dark:text-emerald-400' :
                         s.color === 'amber' ? 'text-amber-600 dark:text-amber-400' :
-                        s.color === 'orange' ? 'text-orange-600 dark:text-orange-400' :
-                        'text-blue-600 dark:text-blue-400'
-                      }`} />
+                          s.color === 'orange' ? 'text-orange-600 dark:text-orange-400' :
+                            'text-blue-600 dark:text-blue-400'
+                        }`} />
                     </div>
                     <h3 className="font-bold text-xl text-gray-900 dark:text-white mb-1">{s.season}</h3>
-                    <p className={`font-medium mb-3 ${
-                      s.color === 'emerald' ? 'text-emerald-600 dark:text-emerald-400' :
+                    <p className={`font-medium mb-3 ${s.color === 'emerald' ? 'text-emerald-600 dark:text-emerald-400' :
                       s.color === 'amber' ? 'text-amber-600 dark:text-amber-400' :
-                      s.color === 'orange' ? 'text-orange-600 dark:text-orange-400' :
-                      'text-blue-600 dark:text-blue-400'
-                    }`}>{s.months}</p>
+                        s.color === 'orange' ? 'text-orange-600 dark:text-orange-400' :
+                          'text-blue-600 dark:text-blue-400'
+                      }`}>{s.months}</p>
                     <div className="flex items-center gap-2 text-gray-600 dark:text-white/60 text-sm mb-3">
                       <Thermometer className="w-4 h-4" />
                       {s.temp}
@@ -809,38 +797,67 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                   </h2>
                   <p className="text-gray-600 dark:text-white/60">Activities and experiences in {island.name}</p>
                 </div>
-                <Link 
+                <Link
                   to="/activities"
                   className="hidden md:flex items-center gap-2 px-5 py-2.5 bg-cyan-600/10 dark:bg-cyclades-turquoise/20 text-cyan-600 dark:text-cyclades-turquoise rounded-xl hover:bg-cyan-600/20 dark:hover:bg-cyclades-turquoise/30 transition-colors font-medium"
                 >
                   Browse All Activities <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
-              
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-                {content.activities.map((activity, idx) => (
+
+              {/* Two Column Layout: Activities List (40%) + GetYourGuide Widget (60%) */}
+              <div className="grid lg:grid-cols-5 gap-8">
+                {/* Activities List - 40% */}
+                <div className="lg:col-span-2 space-y-6">
+                  {content.activities.map((activity, idx) => (
+                    <motion.div
+                      key={idx}
+                      initial={{ opacity: 0, y: 20 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true }}
+                      transition={{ delay: idx * 0.1 }}
+                      className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/10"
+                    >
+                      <h3 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
+                        <Sparkles className="w-5 h-5 text-cyclades-turquoise" />
+                        {activity.title}
+                      </h3>
+                      <ul className="space-y-2">
+                        {activity.items.map((item, i) => (
+                          <li key={i} className="flex items-center gap-3 text-gray-600 dark:text-white/70 text-sm">
+                            <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
+                            {item}
+                          </li>
+                        ))}
+                      </ul>
+                    </motion.div>
+                  ))}
+                </div>
+
+                {/* GetYourGuide Widget - 60% */}
+                <div className="lg:col-span-3">
                   <motion.div
-                    key={idx}
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: idx * 0.1 }}
-                    className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/10"
+                    className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/10 h-full"
                   >
                     <h3 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
-                      <Sparkles className="w-5 h-5 text-cyclades-turquoise" />
-                      {activity.title}
+                      <Compass className="w-5 h-5 text-cyclades-turquoise" />
+                      Book Tours & Activities
                     </h3>
-                    <ul className="space-y-2">
-                      {activity.items.map((item, i) => (
-                        <li key={i} className="flex items-center gap-3 text-gray-600 dark:text-white/70 text-sm">
-                          <CheckCircle className="w-4 h-4 text-green-500 shrink-0" />
-                          {item}
-                        </li>
-                      ))}
-                    </ul>
+                    <p className="text-gray-600 dark:text-white/60 text-sm mb-4">
+                      Discover top-rated tours and experiences in {island.name} from verified providers.
+                    </p>
+                    <div className="min-h-[400px] bg-white dark:bg-dark-card rounded-xl overflow-hidden">
+                      <GetYourGuideWidget
+                        locationId={GYG_LOCATIONS.CYCLADES}
+                        numberOfItems={3}
+                        columns={1}
+                      />
+                    </div>
                   </motion.div>
-                ))}
+                </div>
               </div>
             </motion.div>
           </div>
@@ -860,7 +877,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
               <p className="text-gray-600 dark:text-white/60 mb-10 max-w-2xl">
                 Savor the authentic flavors of {island.name}'s cuisine and world-renowned wines.
               </p>
-              
+
               <div className="grid lg:grid-cols-2 gap-8">
                 {/* Dining Cards */}
                 <div className="space-y-6">
@@ -892,7 +909,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                     </motion.div>
                   ))}
                 </div>
-                
+
                 {/* Wine & Winery Image */}
                 <motion.div
                   initial={{ opacity: 0, x: 20 }}
@@ -900,7 +917,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                   viewport={{ once: true }}
                   className="relative rounded-2xl overflow-hidden h-[400px] lg:h-auto"
                 >
-                  <img 
+                  <img
                     src={getIslandImagePath(islandId, 'winery.jpg')}
                     alt={`${island.name} winery`}
                     className="w-full h-full object-cover"
@@ -910,13 +927,13 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end p-8">
                     <div className="text-white">
-                      <h4 className="text-2xl font-bold mb-2">Wine Tasting</h4>
-                      <p className="text-white/80 mb-4">Discover {island.name}'s unique volcanic wines at local wineries.</p>
-                      <Link 
-                        to="/activities" 
+                      <h4 className="text-2xl font-bold mb-2">Local Wine & Cuisine</h4>
+                      <p className="text-white/80 mb-4">Discover {island.name}'s unique flavors and local culinary traditions.</p>
+                      <Link
+                        to="/activities"
                         className="inline-flex items-center gap-2 text-white bg-white/20 px-4 py-2 rounded-lg hover:bg-white/30 transition-colors"
                       >
-                        Book a Wine Tour <ArrowRight className="w-4 h-4" />
+                        Book a Food Tour <ArrowRight className="w-4 h-4" />
                       </Link>
                     </div>
                   </div>
@@ -937,7 +954,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-10">
                 Travel Information
               </h2>
-              
+
               <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {/* Getting There */}
                 <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/10">
@@ -968,7 +985,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                     </Link>
                   </div>
                 </div>
-                
+
                 {/* Getting Around */}
                 <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/10">
                   <h3 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
@@ -993,7 +1010,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                     Rent a Car
                   </Link>
                 </div>
-                
+
                 {/* Useful Info */}
                 <div className="bg-gray-50 dark:bg-white/5 rounded-2xl p-6 border border-gray-100 dark:border-white/10">
                   <h3 className="font-bold text-gray-900 dark:text-white mb-4 flex items-center gap-2">
@@ -1024,7 +1041,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
         </section>
 
         {/* FAQ SECTION */}
-        <FAQSection 
+        <FAQSection
           faqs={islandFaqs}
           title={`${island.name} Travel FAQs`}
           subtitle={`Common questions about visiting ${island.name} answered by local experts`}
@@ -1041,7 +1058,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
         {/* FINAL CTA */}
         <section className="py-20 bg-gray-900 dark:bg-gray-950 relative overflow-hidden">
           <div className="absolute inset-0 opacity-20" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, #38bdf8 1px, transparent 0)', backgroundSize: '40px 40px' }} />
-          
+
           <div className="max-w-4xl mx-auto px-4 text-center relative z-10">
             <motion.div
               initial={{ opacity: 0, y: 20 }}

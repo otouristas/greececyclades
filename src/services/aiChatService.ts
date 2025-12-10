@@ -30,7 +30,7 @@ function getDateContext(): string {
   const month = now.toLocaleString('default', { month: 'long' });
   const year = now.getFullYear();
   const season = getSeason(now.getMonth());
-  
+
   return `Current date: ${month} ${year}
 Current season: ${season}
 Best time to visit: May-October (peak: July-August)
@@ -57,6 +57,27 @@ export interface ChatOptions {
 }
 
 /**
+ * Process a single SSE line and extract content
+ */
+function processSSELine(line: string, onContent: (content: string) => void): void {
+  const trimmed = line.trim();
+  if (!trimmed.startsWith('data: ')) return;
+
+  const data = trimmed.slice(6);
+  if (data === '[DONE]') return;
+
+  try {
+    const parsed = JSON.parse(data);
+    const content = parsed.choices?.[0]?.delta?.content || '';
+    if (content) {
+      onContent(content);
+    }
+  } catch {
+    // Not valid JSON, might be partial data - ignore
+  }
+}
+
+/**
  * Call the Perplexity-powered Cyclades Chat API with streaming
  */
 export async function sendChatMessage(
@@ -64,7 +85,7 @@ export async function sendChatMessage(
   options: ChatOptions = {}
 ): Promise<string> {
   const { islandContext, budget, travelers, onChunk } = options;
-  
+
   // Build preferences object
   const preferences: Record<string, any> = {};
   if (budget) preferences.budget = budget;
@@ -105,33 +126,39 @@ export async function sendChatMessage(
     }
 
     const reader = response.body.getReader();
-    const decoder = new TextDecoder();
+    // Use TextDecoder with stream: false at end to flush incomplete bytes
+    const decoder = new TextDecoder('utf-8');
     let fullContent = '';
+    let buffer = ''; // Buffer for incomplete SSE lines
 
     while (true) {
       const { done, value } = await reader.read();
-      if (done) break;
 
-      const chunk = decoder.decode(value, { stream: true });
-      
-      // Parse SSE events
-      const lines = chunk.split('\n');
-      for (const line of lines) {
-        if (line.startsWith('data: ')) {
-          const data = line.slice(6);
-          if (data === '[DONE]') continue;
-          
-          try {
-            const parsed = JSON.parse(data);
-            const content = parsed.choices?.[0]?.delta?.content || '';
-            if (content) {
-              fullContent += content;
-              onChunk?.(content);
-            }
-          } catch {
-            // Not valid JSON, might be partial data
-          }
+      if (done) {
+        // Flush any remaining buffer
+        if (buffer.trim()) {
+          processSSELine(buffer, (content) => {
+            fullContent += content;
+            onChunk?.(content);
+          });
         }
+        break;
+      }
+
+      // Decode with stream:true to handle multi-byte UTF-8 chars across chunks
+      const text = decoder.decode(value, { stream: true });
+      buffer += text;
+
+      // Process complete lines only (SSE lines end with \n)
+      const lines = buffer.split('\n');
+      // Keep the last incomplete line in buffer
+      buffer = lines.pop() || '';
+
+      for (const line of lines) {
+        processSSELine(line, (content) => {
+          fullContent += content;
+          onChunk?.(content);
+        });
       }
     }
 

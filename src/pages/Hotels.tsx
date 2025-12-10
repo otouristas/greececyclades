@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Star, MapPin, Building2, Bed, Calendar, Search, Users, Shield, CheckCircle, Clock, Euro, Award, Heart, ChevronRight, ArrowRight, Sparkles } from 'lucide-react';
+import { Star, MapPin, Building2, Bed, Calendar, Search, Users, Shield, CheckCircle, Clock, Euro, Award, Heart, ArrowRight, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
@@ -73,22 +73,15 @@ export default function Hotels() {
 
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-32 pb-24">
+        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-24 md:pt-32 pb-16 md:pb-24">
           <div className="absolute inset-0 bg-[url('/images/islands/santorini.jpg')] bg-cover bg-center opacity-20" />
 
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-white/70 text-sm mb-8">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">Hotels</span>
-            </nav>
-
-            <div className="text-center mb-10">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+            <div className="text-center mb-8 md:mb-10">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
                 Hotels in the <span className="text-yellow-300">Cyclades</span>
               </h1>
-              <p className="text-xl text-white/90 max-w-3xl mx-auto">
+              <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto px-2">
                 Discover luxury resorts, boutique hotels, and cave accommodations across all Greek Islands
               </p>
             </div>

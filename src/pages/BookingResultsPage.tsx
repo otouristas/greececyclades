@@ -1,17 +1,20 @@
 import { useState, useEffect } from 'react';
 import { useNavigate, useSearchParams } from 'react-router-dom';
-import { AlertCircle, Sparkles } from 'lucide-react';
+import { AlertCircle, Sparkles, Building2 } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { BookingSearch, type SearchFormData } from '@/components/booking/BookingSearch';
 import { HotelResults } from '@/components/booking/HotelResults';
 import { searchHotelRates, type Hotel } from '@/lib/liteapi';
 import SEO from '@/components/SEO';
 import SimpleBreadcrumbs from '@/components/SimpleBreadcrumbs';
+import { useTheme } from '@/contexts/ThemeContext';
 
 export default function BookingResultsPage() {
   const [searchParams] = useSearchParams();
   const navigate = useNavigate();
-  
+  const { resolvedTheme } = useTheme();
+  const isDark = resolvedTheme === 'dark';
+
   const [hotels, setHotels] = useState<Hotel[]>([]);
   const [allHotels, setAllHotels] = useState<Hotel[]>([]); // Store all hotels
   const [displayedHotels, setDisplayedHotels] = useState<Hotel[]>([]); // Currently displayed hotels
@@ -19,7 +22,7 @@ export default function BookingResultsPage() {
   const [isLoadingMore, setIsLoadingMore] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [hasMore, setHasMore] = useState(false);
-  
+
   const RESULTS_PER_PAGE = 20;
 
   // Parse search params
@@ -29,12 +32,12 @@ export default function BookingResultsPage() {
   const currency = searchParams.get('currency') || 'EUR';
   const guestNationality = searchParams.get('guestNationality') || 'GR';
   const searchMode = (searchParams.get('searchMode') || 'destination') as 'destination' | 'vibe';
-  
+
   // Search mode specific params
   const cityName = searchParams.get('cityName');
   const countryCode = searchParams.get('countryCode');
   const aiSearch = searchParams.get('aiSearch');
-  
+
   // Advanced filter params
   const starRatingParam = searchParams.get('starRating');
   const starRating = starRatingParam ? JSON.parse(starRatingParam) : undefined;
@@ -187,7 +190,7 @@ export default function BookingResultsPage() {
 
   function handleLoadMore() {
     setIsLoadingMore(true);
-    
+
     // Simulate a small delay for better UX
     setTimeout(() => {
       const currentCount = displayedHotels.length;
@@ -200,11 +203,11 @@ export default function BookingResultsPage() {
   }
 
   // Build search query display text
-  const searchQueryDisplay = searchMode === 'vibe' 
+  const searchQueryDisplay = searchMode === 'vibe'
     ? aiSearch || 'AI Search'
     : `${cityName || 'Selected City'}, ${countryCode || ''}`;
 
-  const pageTitle = hotels.length > 0 
+  const pageTitle = hotels.length > 0
     ? `${hotels.length} Hotels Found | ${searchQueryDisplay}`
     : `Search Hotels | ${searchQueryDisplay}`;
 
@@ -217,7 +220,7 @@ export default function BookingResultsPage() {
       <SEO
         title={pageTitle}
         description={pageDescription}
-        canonical="https://hotelssantorini.gr/book/search"
+        canonicalUrl="https://greececyclades.com/book/search"
       />
 
       <SimpleBreadcrumbs
@@ -227,9 +230,9 @@ export default function BookingResultsPage() {
         ]}
       />
 
-      <div className="min-h-screen bg-gray-50">
+      <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-dark-bg' : 'bg-gray-50'}`}>
         {/* Search Bar */}
-        <div className="bg-white border-b border-gray-200 shadow-sm">
+        <div className={`border-b shadow-sm ${isDark ? 'bg-dark-card border-white/10' : 'bg-white border-gray-200'}`}>
           <div className="container mx-auto px-4 py-4">
             <BookingSearch
               onSearch={handleNewSearch}
@@ -244,19 +247,19 @@ export default function BookingResultsPage() {
           {/* Search Info Header */}
           <div className="mb-8">
             {searchMode === 'vibe' && (
-              <div className="flex items-center gap-2 text-sifnos-turquoise mb-2">
+              <div className={`flex items-center gap-2 mb-2 ${isDark ? 'text-cyclades-turquoise' : 'text-cyan-600'}`}>
                 <Sparkles className="w-5 h-5" />
                 <span className="text-sm font-medium">AI-Powered Search</span>
               </div>
             )}
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+            <h1 className={`text-2xl md:text-3xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
               {searchMode === 'vibe' ? (
                 <>"{aiSearch}"</>
               ) : (
                 <>Hotels in {searchQueryDisplay}</>
               )}
             </h1>
-            <p className="text-gray-600">
+            <p className={isDark ? 'text-white/70' : 'text-gray-600'}>
               {checkin} → {checkout}
               {' • '}
               {occupancies.reduce((sum: number, occ: any) => sum + occ.adults, 0)} guests
@@ -265,7 +268,7 @@ export default function BookingResultsPage() {
                   {' • '}
                   <span className="font-semibold">{allHotels.length}</span> hotels found
                   {displayedHotels.length < allHotels.length && (
-                    <span className="text-gray-500">
+                    <span className={isDark ? 'text-white/50' : 'text-gray-500'}>
                       {' '}(showing {displayedHotels.length} of {allHotels.length})
                     </span>
                   )}
@@ -275,14 +278,17 @@ export default function BookingResultsPage() {
           </div>
 
           {error ? (
-            <div className="bg-red-50 border border-red-200 rounded-lg p-6 flex items-start gap-3">
-              <AlertCircle className="w-6 h-6 text-red-600 flex-shrink-0 mt-1" />
+            <div className={`rounded-2xl p-6 flex items-start gap-3 ${isDark
+              ? 'bg-red-900/20 border border-red-500/30'
+              : 'bg-red-50 border border-red-200'
+              }`}>
+              <AlertCircle className={`w-6 h-6 flex-shrink-0 mt-1 ${isDark ? 'text-red-400' : 'text-red-600'}`} />
               <div>
-                <h3 className="font-semibold text-red-900 mb-1">Search Error</h3>
-                <p className="text-red-700">{error}</p>
+                <h3 className={`font-semibold mb-1 ${isDark ? 'text-red-300' : 'text-red-900'}`}>Search Error</h3>
+                <p className={isDark ? 'text-red-200' : 'text-red-700'}>{error}</p>
                 <button
                   onClick={() => navigate('/book')}
-                  className="mt-3 text-sm text-red-600 hover:text-red-800 underline"
+                  className={`mt-3 text-sm underline ${isDark ? 'text-red-300 hover:text-red-200' : 'text-red-600 hover:text-red-800'}`}
                 >
                   Start a new search
                 </button>
@@ -290,19 +296,26 @@ export default function BookingResultsPage() {
             </div>
           ) : isLoading ? (
             <div className="flex flex-col items-center justify-center py-16">
-              <div className="w-16 h-16 border-4 border-gray-200 border-t-sifnos-turquoise rounded-full animate-spin mb-4" />
-              <p className="text-gray-600 text-lg">
+              <div className={`w-16 h-16 border-4 rounded-full animate-spin mb-4 ${isDark
+                ? 'border-white/10 border-t-cyclades-turquoise'
+                : 'border-gray-200 border-t-cyan-600'
+                }`} />
+              <p className={`text-lg ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
                 {searchMode === 'vibe' ? 'Finding your perfect match...' : 'Searching for hotels...'}
               </p>
             </div>
           ) : hotels.length === 0 ? (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-6 text-center">
-              <p className="text-gray-700 text-lg mb-4">
+            <div className={`rounded-2xl p-8 text-center ${isDark
+              ? 'bg-amber-900/20 border border-amber-500/30'
+              : 'bg-yellow-50 border border-yellow-200'
+              }`}>
+              <Building2 className={`w-16 h-16 mx-auto mb-4 ${isDark ? 'text-white/30' : 'text-gray-400'}`} />
+              <p className={`text-lg mb-4 ${isDark ? 'text-white' : 'text-gray-700'}`}>
                 No hotels found for your search criteria.
               </p>
               <button
                 onClick={() => navigate('/book')}
-                className="text-sifnos-turquoise hover:text-sifnos-deep-blue underline"
+                className={`underline ${isDark ? 'text-cyclades-turquoise hover:text-cyan-300' : 'text-cyan-600 hover:text-cyan-800'}`}
               >
                 Try a different search
               </button>
@@ -315,14 +328,17 @@ export default function BookingResultsPage() {
                 isLoading={false}
                 currency={currency}
               />
-              
+
               {/* Load More Button */}
               {hasMore && (
                 <div className="flex justify-center mt-8">
                   <Button
                     onClick={handleLoadMore}
                     disabled={isLoadingMore}
-                    className="bg-gradient-to-r from-sifnos-turquoise to-sifnos-deep-blue hover:from-sifnos-deep-blue hover:to-sifnos-turquoise text-white font-semibold px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all"
+                    className={`font-semibold px-8 py-6 text-lg shadow-lg hover:shadow-xl transition-all ${isDark
+                      ? 'bg-gradient-to-r from-cyclades-turquoise to-cyan-600 hover:from-cyan-600 hover:to-cyclades-turquoise text-white'
+                      : 'bg-gradient-to-r from-cyan-600 to-blue-600 hover:from-blue-600 hover:to-cyan-600 text-white'
+                      }`}
                   >
                     {isLoadingMore ? (
                       <>
@@ -337,10 +353,10 @@ export default function BookingResultsPage() {
                   </Button>
                 </div>
               )}
-              
+
               {/* Results Summary */}
               {displayedHotels.length > 0 && (
-                <div className="mt-6 text-center text-sm text-gray-600">
+                <div className={`mt-6 text-center text-sm ${isDark ? 'text-white/50' : 'text-gray-600'}`}>
                   Showing {displayedHotels.length} of {allHotels.length} hotels
                 </div>
               )}
@@ -351,3 +367,4 @@ export default function BookingResultsPage() {
     </>
   );
 }
+

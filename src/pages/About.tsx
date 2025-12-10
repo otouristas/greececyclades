@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { MapPin, Mail, Phone, Award, Users, Globe, Heart, Shield, Star, ArrowRight, ChevronRight } from 'lucide-react';
+import { MapPin, Mail, Award, Users, Globe, Heart, Shield, Star, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 
 const stats = [
@@ -47,7 +47,7 @@ export default function About() {
 
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         {/* Hero Section */}
-        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-32 pb-24">
+        <div className="relative bg-gradient-to-br from-cyan-600 via-cyan-600 to-cyclades-turquoise text-white pt-24 md:pt-32 pb-16 md:pb-24">
           <div className="absolute inset-0">
             <img
               src="/images/about/about-hero.jpg"
@@ -59,18 +59,11 @@ export default function About() {
           <div className="absolute inset-0 bg-gradient-to-t from-cyan-600/80 to-transparent" />
 
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            {/* Breadcrumb */}
-            <nav className="flex items-center gap-2 text-white/70 text-sm mb-8">
-              <Link to="/" className="hover:text-white transition-colors">Home</Link>
-              <ChevronRight className="w-4 h-4" />
-              <span className="text-white">About Us</span>
-            </nav>
-
             <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-6xl font-bold mb-6 tracking-tight">
+              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
                 Your Gateway to the Cyclades
               </h1>
-              <p className="text-xl md:text-2xl text-white/90 leading-relaxed">
+              <p className="text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed px-1">
                 We're passionate travelers, local experts, and technology enthusiasts united by our love for the Greek islands.
               </p>
             </div>
