@@ -1,9 +1,6 @@
-
-import React from "react";
-import { Filter, SlidersHorizontal, Search } from "lucide-react";
-import { RadioGroup, RadioGroupItem } from "@/components/ui/radio-group";
+import { Filter, SlidersHorizontal } from "lucide-react";
 import { Label } from "@/components/ui/label";
-import { Switch } from "@/components/ui/switch";
+import { Switch } from "@/components/ui/Switch";
 import {
   Collapsible,
   CollapsibleTrigger,
@@ -18,26 +15,11 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select";
-import { Popover, PopoverTrigger, PopoverContent } from "@/components/ui/popover";
 import { Button } from "@/components/ui/button";
-import {
-  Tabs,
-  TabsContent,
-  TabsList,
-  TabsTrigger,
-} from "@/components/ui/tabs";
 import {
   ToggleGroup,
   ToggleGroupItem,
 } from "@/components/ui/toggle-group";
-import {
-  Form,
-  FormControl,
-  FormField,
-  FormItem,
-  FormLabel,
-} from "@/components/ui/form";
-import { useForm } from "react-hook-form";
 import { cn } from "@/lib/utils";
 
 interface FilterSidebarProps {
@@ -68,12 +50,6 @@ const FilterSidebar = ({
   className,
   isMobile = false
 }: FilterSidebarProps) => {
-  const form = useForm({
-    defaultValues: {
-      location: filters.location || "",
-    },
-  });
-
   const handleStarRatingChange = (rating: number) => {
     onFiltersChange({
       ...filters,

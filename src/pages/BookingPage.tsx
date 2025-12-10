@@ -143,7 +143,7 @@ export default function BookingPage() {
       <SEO
         title="Book Hotels in the Cyclades | Best Rates Guaranteed"
         description="Book your perfect Cyclades hotel with instant confirmation. Search by island or vibe. Best rates, no booking fees. Santorini, Mykonos, Paros & more."
-        canonical="https://greececyclades.com/book"
+        canonicalUrl="https://greececyclades.com/book"
       />
 
       <div className={`min-h-screen transition-colors duration-300 ${isDark ? 'bg-dark-bg' : 'bg-gray-50'}`}>

@@ -5,7 +5,7 @@ import { Label } from '@/components/ui/label';
 import { Input } from '@/components/ui/input';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
-import { Switch } from '@/components/ui/switch';
+import { Switch } from '@/components/ui/Switch';
 import { CityAutocomplete } from './CityAutocomplete';
 import { formatDateForAPI, type Occupancy, BOARD_TYPE_LABELS, STAR_RATING_OPTIONS } from '@/lib/liteapi';
 import { useTheme } from '@/contexts/ThemeContext';

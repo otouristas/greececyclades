@@ -12,7 +12,7 @@ export * from "./form";
 export * from "./select";
 export * from "./checkbox";
 export * from "./radio-group";
-export * from "./switch";
+export * from "./Switch";
 export * from "./slider";
 export * from "./input-otp";
 

@@ -347,6 +347,8 @@ export async function searchHotelRatesStream(
 
 /**
  * Normalize hotel data structure
+ * LiteAPI v3.0 response structure:
+ * { hotelId, roomTypes: [{ roomTypeId, offerId, rates: [{ rateId, retailRate: { total: [{amount, currency}] } }] }] }
  */
 function normalizeHotel(hotel: any, params: SearchParams): Hotel {
   // Extract images from various possible structures
@@ -368,6 +370,34 @@ function normalizeHotel(hotel: any, params: SearchParams): Hotel {
     images = [{ url: hotel.photo }];
   }
 
+  // Extract rates from roomTypes - LiteAPI v3.0 structure
+  let extractedRates: HotelRate[] = [];
+  
+  if (hotel.roomTypes && Array.isArray(hotel.roomTypes)) {
+    extractedRates = hotel.roomTypes.flatMap((roomType: any) => {
+      if (!roomType.rates || !Array.isArray(roomType.rates)) return [];
+      
+      return roomType.rates.map((rate: any) => ({
+        hotelId: hotel.hotelId || hotel.id,
+        offerId: roomType.offerId || '',
+        mappedRoomId: roomType.roomTypeId || 0,
+        name: rate.name || roomType.name || 'Room',
+        boardName: rate.boardName || 'Room Only',
+        boardCode: rate.boardType || 'RO',
+        retailRate: {
+          total: rate.retailRate?.total || [],
+          taxesAndFees: rate.retailRate?.taxesAndFees || [],
+        },
+        cancellationPolicies: {
+          refundableTag: rate.cancellationPolicies?.refundableTag || 'NRFN',
+          cancelPolicyInfos: rate.cancellationPolicies?.cancelPolicyInfos || [],
+        },
+      }));
+    });
+  } else if (hotel.rates && Array.isArray(hotel.rates)) {
+    extractedRates = hotel.rates;
+  }
+
   return {
     id: hotel.id || hotel.hotelId,
     name: hotel.name || hotel.hotelName || 'Unknown Hotel',
@@ -383,7 +413,7 @@ function normalizeHotel(hotel: any, params: SearchParams): Hotel {
     countryCode: hotel.country || hotel.countryCode || '',
     images: images,
     rating: hotel.rating || hotel.starRating || 0,
-    rates: hotel.rates || hotel.roomTypes?.flatMap((rt: any) => rt.rates || []) || [],
+    rates: extractedRates,
   };
 }
 
@@ -463,20 +493,62 @@ export async function searchHotelRates(params: SearchParams): Promise<Hotel[]> {
   }
 
   const data = await response.json();
-  console.log('LiteAPI response structure:', JSON.stringify(data, null, 2));
+  console.log('LiteAPI response structure:', JSON.stringify(data, null, 2).substring(0, 2000));
   
   // LiteAPI /v3.0/hotels/rates endpoint returns:
-  // { data: { hotels: [...] } } or { hotels: [...] }
-  let hotels: any[] = [];
+  // { data: [{ hotelId, roomTypes: [{ offerId, rates: [...] }] }], hotels: [{ id, name, main_photo }] }
+  let ratesData: any[] = [];
+  let hotelsInfo: any[] = [];
   
-  if (data.data?.hotels && Array.isArray(data.data.hotels)) {
-    hotels = data.data.hotels;
-  } else if (data.hotels && Array.isArray(data.hotels)) {
-    hotels = data.hotels;
-  } else if (Array.isArray(data.data)) {
-    hotels = data.data;
-  } else if (Array.isArray(data)) {
-    hotels = data;
+  // Extract rates data (contains hotelId and roomTypes with rates)
+  if (Array.isArray(data.data)) {
+    ratesData = data.data;
+    console.log(`Found ${ratesData.length} hotels with rates in data.data`);
+  }
+  
+  // Extract hotel info (contains name, photo, address, rating)
+  if (Array.isArray(data.hotels)) {
+    hotelsInfo = data.hotels;
+    console.log(`Found ${hotelsInfo.length} hotels info in data.hotels`);
+  }
+  
+  // Merge rates with hotel info
+  let hotels: any[] = ratesData.map((rateItem: any) => {
+    const hotelInfo = hotelsInfo.find((h: any) => h.id === rateItem.hotelId) || {};
+    
+    return {
+      ...rateItem,
+      ...hotelInfo,
+      // Keep hotelId from rates, use id from hotel info
+      id: rateItem.hotelId || hotelInfo.id,
+      hotelId: rateItem.hotelId,
+      name: hotelInfo.name || rateItem.name || 'Unknown Hotel',
+      main_photo: hotelInfo.main_photo,
+      address: hotelInfo.address,
+      rating: hotelInfo.rating,
+      // Keep roomTypes from rates
+      roomTypes: rateItem.roomTypes,
+    };
+  });
+  
+  // Fallback: if no rates data, try other structures
+  if (hotels.length === 0) {
+    if (data.data?.hotels && Array.isArray(data.data.hotels)) {
+      hotels = data.data.hotels;
+    } else if (data.hotels && Array.isArray(data.hotels) && !Array.isArray(data.data)) {
+      hotels = data.hotels;
+    }
+  }
+  
+  console.log(`Final merged hotels count: ${hotels.length}`);
+  if (hotels.length > 0) {
+    console.log('First hotel sample:', JSON.stringify({
+      id: hotels[0].id || hotels[0].hotelId,
+      name: hotels[0].name,
+      hasRoomTypes: !!hotels[0].roomTypes,
+      roomTypesCount: hotels[0].roomTypes?.length || 0,
+      firstRoomTypeRates: hotels[0].roomTypes?.[0]?.rates?.length || 0,
+    }));
   }
   
   console.log(`Found ${hotels.length} hotels in response`);
