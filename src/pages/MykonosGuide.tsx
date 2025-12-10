@@ -87,7 +87,7 @@ const MykonosGuide: React.FC = () => {
           "@type": "TouristDestination",
           "name": "Mykonos Island, Greece",
           "description": "Welcome to Mykonos, Greece's most glamorous island destination. Known for its vibrant nightlife, pristine beaches and cosmopolitan atmosphere, Mykonos perfectly blends traditional Cycladic charm with modern luxury and excitement.",
-          "url": "https://greececyclades.com/islands/mykonos",
+          "url": "https://discovercyclades.gr/islands/mykonos",
           "touristType": {
             "@type": "Audience",
             "audienceType": [
@@ -107,25 +107,25 @@ const MykonosGuide: React.FC = () => {
               "@type": "TouristAttraction",
               "name": "Little Venice",
               "description": "The picturesque Little Venice quarter at sunset with colorful buildings right at the water's edge.",
-              "image": "https://greececyclades.com/images/islands/mykonos/little-venice.jpg"
+              "image": "https://discovercyclades.gr/images/islands/mykonos/little-venice.jpg"
             },
             {
               "@type": "TouristAttraction",
               "name": "Mykonos Windmills",
               "description": "The iconic windmills overlooking Mykonos Town, a symbol of the island's rich history.",
-              "image": "https://greececyclades.com/images/islands/mykonos/windmills.jpg"
+              "image": "https://discovercyclades.gr/images/islands/mykonos/windmills.jpg"
             },
             {
               "@type": "TouristAttraction",
               "name": "Paradise Beach",
               "description": "The famous Paradise Beach with its crystal-clear waters and vibrant beach clubs.",
-              "image": "https://greececyclades.com/images/islands/mykonos/paradise-beach.jpg"
+              "image": "https://discovercyclades.gr/images/islands/mykonos/paradise-beach.jpg"
             },
             {
               "@type": "TouristAttraction",
               "name": "Panagia Paraportiani Church",
               "description": "The iconic whitewashed church complex, one of the most photographed churches in the world.",
-              "image": "https://greececyclades.com/images/islands/mykonos/panagia-paraportiani.jpg"
+              "image": "https://discovercyclades.gr/images/islands/mykonos/panagia-paraportiani.jpg"
             }
           ],
           "event": [

@@ -170,7 +170,7 @@ export function generateHotelRequestEmail(params: {
         
         <div class="footer">
           <p>Greece Cyclades - Your Perfect Island Experience</p>
-          <p>Questions? Email us at greececycladesgr@gmail.com</p>
+          <p>Questions? Email us at discovercycladesgr@gmail.com</p>
         </div>
       </div>
     </body>

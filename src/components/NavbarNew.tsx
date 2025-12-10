@@ -5,8 +5,10 @@ import {
     MapPin, Compass, Ship, User, Calendar, Hotel
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import Logo from './Logo';
 import MobileMenuNew from './navigation/MobileMenuNew';
+import LanguageSwitcher from './LanguageSwitcher';
 import { ThemeToggle, useTheme } from '../contexts/ThemeContext';
 import { useTouristas } from '../contexts/TouristasContext';
 import { useAuthStore } from '../stores/authStore';
@@ -361,6 +363,9 @@ export default function NavbarNew() {
 
                             {/* Theme Toggle */}
                             <ThemeToggle size="sm" />
+
+                            {/* Language Switcher */}
+                            <LanguageSwitcher variant="minimal" />
 
                             {/* AI Chat Button */}
                             <button

@@ -306,7 +306,7 @@ export function generateHotelsListingJsonLD(hotels: Array<{
       'position': index + 1,
       'item': {
         '@type': 'Hotel',
-        '@id': `https://greececyclades.com/hotels/${hotel.id}`,
+        '@id': `https://discovercyclades.gr/hotels/${hotel.id}`,
         'name': hotel.name,
         'description': hotel.description,
         'image': hotel.image,

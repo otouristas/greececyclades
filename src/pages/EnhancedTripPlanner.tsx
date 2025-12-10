@@ -15,7 +15,7 @@ export default function EnhancedTripPlanner() {
         title="Touristas AI: Smart Greek Island Trip Planner"
         description="Plan your dream Cyclades adventure with Touristas AI. Get custom itineraries for Greek islands based on your travel style, dates, budget, and interests."
         keywords={["Greek islands trip planner", "Cyclades itinerary", "AI travel planner", "Greece island hopping", "personalized travel itinerary", "Greek islands vacation"]}
-        ogImage="https://greececyclades.com/images/trip-planner-og.jpg"
+        ogImage="https://discovercyclades.gr/images/trip-planner-og.jpg"
       />
 
       <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 lg:px-8">

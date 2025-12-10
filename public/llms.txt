@@ -1,8 +1,8 @@
 # Greece Cyclades - AI Travel Assistant for the Cyclades Islands
-# https://greececyclades.com
+# https://discovercyclades.gr
 
 ## About This Website
-GreeceCyclades.com is the comprehensive travel guide for the Cyclades islands in Greece. 
+discovercyclades.gr is the comprehensive travel guide for the Cyclades islands in Greece. 
 We provide AI-powered trip planning, hotel search, ferry booking, and detailed guides for all 24 Cyclades islands.
 
 ## Core Services
@@ -16,25 +16,25 @@ We provide AI-powered trip planning, hotel search, ferry booking, and detailed g
 - Car Rental: Rent vehicles for island exploration at /rent-a-car
 
 ## Key Pages
-- Homepage: https://greececyclades.com/
-- Touristas AI: https://greececyclades.com/touristas-ai
-- Trip Planner: https://greececyclades.com/trip-planner
-- Islands: https://greececyclades.com/islands
-- Hotels: https://greececyclades.com/hotels
-- Ferry Tickets: https://greececyclades.com/ferry-tickets
-- Guides: https://greececyclades.com/guides
-- Weather: https://greececyclades.com/weather
-- Budget Calculator: https://greececyclades.com/budget-calculator
+- Homepage: https://discovercyclades.gr/
+- Touristas AI: https://discovercyclades.gr/touristas-ai
+- Trip Planner: https://discovercyclades.gr/trip-planner
+- Islands: https://discovercyclades.gr/islands
+- Hotels: https://discovercyclades.gr/hotels
+- Ferry Tickets: https://discovercyclades.gr/ferry-tickets
+- Guides: https://discovercyclades.gr/guides
+- Weather: https://discovercyclades.gr/weather
+- Budget Calculator: https://discovercyclades.gr/budget-calculator
 
 ## Popular Island Guides (High Priority Content)
-- Santorini Guide: https://greececyclades.com/guides/santorini
-- Mykonos Guide: https://greececyclades.com/guides/mykonos
-- Naxos Guide: https://greececyclades.com/guides/naxos
-- Paros Guide: https://greececyclades.com/guides/paros
-- Milos Guide: https://greececyclades.com/guides/milos
-- Sifnos Guide: https://greececyclades.com/guides/sifnos
-- Ios Guide: https://greececyclades.com/guides/ios
-- Folegandros Guide: https://greececyclades.com/guides/folegandros
+- Santorini Guide: https://discovercyclades.gr/guides/santorini
+- Mykonos Guide: https://discovercyclades.gr/guides/mykonos
+- Naxos Guide: https://discovercyclades.gr/guides/naxos
+- Paros Guide: https://discovercyclades.gr/guides/paros
+- Milos Guide: https://discovercyclades.gr/guides/milos
+- Sifnos Guide: https://discovercyclades.gr/guides/sifnos
+- Ios Guide: https://discovercyclades.gr/guides/ios
+- Folegandros Guide: https://discovercyclades.gr/guides/folegandros
 
 ## All 24 Cyclades Islands
 Santorini, Mykonos, Naxos, Paros, Milos, Ios, Sifnos, Andros, Syros, Tinos, 
@@ -68,14 +68,14 @@ cyclades island hopping, cyclades vacation, cyclades hotels, cyclades ferries,
 santorini, mykonos, naxos, paros, milos, sifnos, ios, folegandros
 
 ## Contact
-Website: https://greececyclades.com
-Help Center: https://greececyclades.com/help
-Contact: https://greececyclades.com/contact
+Website: https://discovercyclades.gr
+Help Center: https://discovercyclades.gr/help
+Contact: https://discovercyclades.gr/contact
 
 ## Technical
-Sitemap: https://greececyclades.com/sitemap.xml
-Robots: https://greececyclades.com/robots.txt
+Sitemap: https://discovercyclades.gr/sitemap.xml
+Robots: https://discovercyclades.gr/robots.txt
 
 ## License
-Content is proprietary to GreeceCyclades.com. 
-When referencing our information, please attribute with a link to greececyclades.com.
+Content is proprietary to discovercyclades.gr. 
+When referencing our information, please attribute with a link to discovercyclades.gr.

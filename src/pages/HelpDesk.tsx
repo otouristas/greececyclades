@@ -286,7 +286,7 @@ export default function HelpDesk() {
               </div>
               <div className="flex items-center">
                 <Mail className="h-5 w-5 text-gray-400 mr-3" />
-                <span className="text-gray-600">support@greececyclades.com</span>
+                <span className="text-gray-600">support@discovercyclades.gr</span>
               </div>
             </div>
           </div>

@@ -48,7 +48,7 @@ serve(async (req) => {
         console.log("✅ PERPLEXITY_API_KEY found, using Perplexity API for Cyclades");
 
         // Cyclades Islands AI system prompt
-        const systemPrompt = `You are **Touristas**, the official Greek Islands travel expert for GreeceCyclades.com - a warm, passionate travel expert who knows every corner of the Cyclades islands.
+        const systemPrompt = `You are **Touristas**, the official Greek Islands travel expert for DiscoverCyclades.gr - a warm, passionate travel expert who knows every corner of the Cyclades islands.
 
 ═══════════════════════════════════════════════════════════════
 🎭 YOUR PERSONALITY & VOICE

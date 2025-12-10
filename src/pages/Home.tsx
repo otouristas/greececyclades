@@ -27,9 +27,9 @@ export default function Home() {
   const jsonLD = {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
-    "name": "Greececyclades.com",
+    "name": "discovercyclades.gr",
     "description": "Your complete guide to the Cyclades islands in Greece",
-    "url": "https://greececyclades.com",
+    "url": "https://discovercyclades.gr",
     "areaServed": {
       "@type": "AdministrativeArea",
       "name": "Cyclades Islands",
@@ -193,7 +193,7 @@ export default function Home() {
             {/* SEO Text for Services */}
             <div className="prose prose-lg mx-auto mb-12">
               <p className="text-[#1E2E48]/80 text-center">
-                From practical travel tips and weather information to immersive cultural experiences and off-the-beaten-path adventures, GreeceCyclades.com provides everything you need to transform your Cyclades dreams into unforgettable memories. Start planning your journey today and discover why the Cyclades islands continue to captivate travelers year after year.
+                From practical travel tips and weather information to immersive cultural experiences and off-the-beaten-path adventures, discovercyclades.gr provides everything you need to transform your Cyclades dreams into unforgettable memories. Start planning your journey today and discover why the Cyclades islands continue to captivate travelers year after year.
               </p>
             </div>
             

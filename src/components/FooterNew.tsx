@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import {
     Facebook, Twitter, Instagram, Youtube, MapPin, Mail,
     Shield, CheckCircle, Headphones, TrendingUp,
@@ -8,6 +9,7 @@ import { getIslandSlug } from '../utils/slugify';
 import Logo from './Logo';
 
 export default function FooterNew() {
+    const { t } = useTranslation();
     const currentYear = new Date().getFullYear();
 
     const popularIslands = [
@@ -20,11 +22,11 @@ export default function FooterNew() {
     ];
 
     const services = [
-        { name: 'Ferry Tickets', path: '/ferry-tickets', icon: Ship },
-        { name: 'Hotels & Villas', path: '/hotels', icon: Hotel },
-        { name: 'Tours & Activities', path: '/activities', icon: Camera },
-        { name: 'Car Rentals', path: '/rent-a-car', icon: Car },
-        { name: 'Flights', path: '/flights', icon: Plane },
+        { nameKey: 'footer.services.ferryTickets', path: '/ferry-tickets', icon: Ship },
+        { nameKey: 'footer.services.hotelsVillas', path: '/hotels', icon: Hotel },
+        { nameKey: 'footer.services.toursActivities', path: '/activities', icon: Camera },
+        { nameKey: 'footer.services.carRentals', path: '/rent-a-car', icon: Car },
+        { nameKey: 'footer.services.flights', path: '/flights', icon: Plane },
     ];
 
     return (
@@ -40,16 +42,16 @@ export default function FooterNew() {
                             </div>
                             <div>
                                 <h3 className="text-2xl font-display font-bold mb-2">
-                                    Plan with <span className="text-gradient">Touristas AI</span>
+                                    {t('footer.prefooter.title')} <span className="text-gradient">{t('footer.prefooter.titleHighlight')}</span>
                                 </h3>
                                 <p className="text-white/60 mb-4">
-                                    Your personal AI travel assistant for the perfect Cyclades adventure
+                                    {t('footer.prefooter.subtitle')}
                                 </p>
                                 <Link
                                     to="/touristas-ai"
                                     className="inline-flex items-center gap-2 text-cyclades-turquoise font-semibold hover:underline"
                                 >
-                                    Start Planning
+                                    {t('footer.prefooter.cta')}
                                     <ArrowRight className="w-4 h-4" />
                                 </Link>
                             </div>
@@ -58,14 +60,14 @@ export default function FooterNew() {
                         {/* Stats */}
                         <div className="grid grid-cols-4 gap-4">
                             {[
-                                { value: '24', label: 'Islands' },
-                                { value: '500+', label: 'Activities' },
-                                { value: '50K+', label: 'Travelers' },
-                                { value: '4.9★', label: 'Rating' },
+                                { value: '24', labelKey: 'footer.prefooter.stats.islands' },
+                                { value: '500+', labelKey: 'footer.prefooter.stats.activities' },
+                                { value: '50K+', labelKey: 'footer.prefooter.stats.travelers' },
+                                { value: '4.9★', labelKey: 'footer.prefooter.stats.rating' },
                             ].map((stat) => (
-                                <div key={stat.label} className="text-center">
+                                <div key={stat.labelKey} className="text-center">
                                     <div className="text-2xl font-bold text-cyclades-turquoise font-display">{stat.value}</div>
-                                    <div className="text-xs text-white/50">{stat.label}</div>
+                                    <div className="text-xs text-white/50">{t(stat.labelKey)}</div>
                                 </div>
                             ))}
                         </div>
@@ -83,19 +85,18 @@ export default function FooterNew() {
                             <Logo variant="white" />
                         </div>
                         <p className="text-white/60 text-sm leading-relaxed mb-6 max-w-md">
-                            Your AI-powered guide to the Greek Cyclades. Discover authentic experiences,
-                            book with confidence, and create unforgettable island memories.
+                            {t('footer.brand.description')}
                         </p>
 
                         {/* Contact */}
                         <div className="space-y-3 text-sm text-white/60 mb-8">
-                            <a href="mailto:hello@greececyclades.com" className="flex items-center gap-3 hover:text-cyclades-turquoise transition-colors">
+                            <a href="mailto:hello@discovercyclades.gr" className="flex items-center gap-3 hover:text-cyclades-turquoise transition-colors">
                                 <Mail className="w-4 h-4 text-cyclades-turquoise" />
-                                hello@greececyclades.com
+                                hello@discovercyclades.gr
                             </a>
                             <div className="flex items-center gap-3">
                                 <MapPin className="w-4 h-4 text-cyclades-turquoise" />
-                                Athens, Greece
+                                {t('footer.brand.location')}
                             </div>
                         </div>
 
@@ -123,7 +124,7 @@ export default function FooterNew() {
 
                     {/* Islands Column */}
                     <div>
-                        <h4 className="font-semibold text-cyclades-turquoise mb-6">Popular Islands</h4>
+                        <h4 className="font-semibold text-cyclades-turquoise mb-6">{t('footer.sections.popularIslands')}</h4>
                         <ul className="space-y-3">
                             {popularIslands.map((island) => (
                                 <li key={island.slug}>
@@ -140,7 +141,7 @@ export default function FooterNew() {
                                     to="/guides"
                                     className="text-sm text-cyclades-turquoise hover:underline"
                                 >
-                                    View All 24 Islands →
+                                    {t('footer.sections.viewAllIslands')}
                                 </Link>
                             </li>
                         </ul>
@@ -148,7 +149,7 @@ export default function FooterNew() {
 
                     {/* Services Column */}
                     <div>
-                        <h4 className="font-semibold text-cyclades-turquoise mb-6">Travel Services</h4>
+                        <h4 className="font-semibold text-cyclades-turquoise mb-6">{t('footer.sections.travelServices')}</h4>
                         <ul className="space-y-3">
                             {services.map((service) => (
                                 <li key={service.path}>
@@ -157,22 +158,22 @@ export default function FooterNew() {
                                         className="flex items-center gap-2 text-sm text-white/60 hover:text-white transition-colors"
                                     >
                                         <service.icon className="w-4 h-4" />
-                                        {service.name}
+                                        {t(service.nameKey)}
                                     </Link>
                                 </li>
                             ))}
                         </ul>
 
-                        <h4 className="font-semibold text-cyclades-turquoise mt-8 mb-4">AI & Planning</h4>
+                        <h4 className="font-semibold text-cyclades-turquoise mt-8 mb-4">{t('footer.sections.aiPlanning')}</h4>
                         <ul className="space-y-3">
                             <li>
                                 <Link to="/touristas-ai" className="text-sm text-white/60 hover:text-white transition-colors">
-                                    Touristas AI
+                                    {t('footer.links.touristasAI')}
                                 </Link>
                             </li>
                             <li>
                                 <Link to="/trip-planner" className="text-sm text-white/60 hover:text-white transition-colors">
-                                    Trip Planner
+                                    {t('footer.links.tripPlanner')}
                                 </Link>
                             </li>
                         </ul>
@@ -180,35 +181,35 @@ export default function FooterNew() {
 
                     {/* Support Column */}
                     <div>
-                        <h4 className="font-semibold text-cyclades-turquoise mb-6">Support</h4>
+                        <h4 className="font-semibold text-cyclades-turquoise mb-6">{t('footer.sections.support')}</h4>
                         <ul className="space-y-3">
                             <li>
                                 <Link to="/help" className="text-sm text-white/60 hover:text-white transition-colors">
-                                    Help Center
+                                    {t('footer.links.helpCenter')}
                                 </Link>
                             </li>
                             <li>
                                 <Link to="/about" className="text-sm text-white/60 hover:text-white transition-colors">
-                                    About Us
+                                    {t('footer.links.aboutUs')}
                                 </Link>
                             </li>
                             <li>
                                 <Link to="/blog" className="text-sm text-white/60 hover:text-white transition-colors">
-                                    Travel Blog
+                                    {t('footer.links.travelBlog')}
                                 </Link>
                             </li>
                         </ul>
 
-                        <h4 className="font-semibold text-cyclades-turquoise mt-8 mb-4">Legal</h4>
+                        <h4 className="font-semibold text-cyclades-turquoise mt-8 mb-4">{t('footer.sections.legal')}</h4>
                         <ul className="space-y-3">
                             <li>
                                 <Link to="/privacy" className="text-sm text-white/60 hover:text-white transition-colors">
-                                    Privacy Policy
+                                    {t('footer.links.privacyPolicy')}
                                 </Link>
                             </li>
                             <li>
                                 <Link to="/terms" className="text-sm text-white/60 hover:text-white transition-colors">
-                                    Terms of Service
+                                    {t('footer.links.termsOfService')}
                                 </Link>
                             </li>
                         </ul>
@@ -221,18 +222,18 @@ export default function FooterNew() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
                         {[
-                            { icon: Shield, title: 'Secure Booking', desc: 'SSL Protected' },
-                            { icon: CheckCircle, title: 'Free Cancellation', desc: 'Most Bookings' },
-                            { icon: Headphones, title: '24/7 Support', desc: 'Always Available' },
-                            { icon: TrendingUp, title: 'Best Prices', desc: 'Guaranteed' },
+                            { icon: Shield, titleKey: 'footer.trustBadges.secureBooking.title', descKey: 'footer.trustBadges.secureBooking.desc' },
+                            { icon: CheckCircle, titleKey: 'footer.trustBadges.freeCancellation.title', descKey: 'footer.trustBadges.freeCancellation.desc' },
+                            { icon: Headphones, titleKey: 'footer.trustBadges.support247.title', descKey: 'footer.trustBadges.support247.desc' },
+                            { icon: TrendingUp, titleKey: 'footer.trustBadges.bestPrices.title', descKey: 'footer.trustBadges.bestPrices.desc' },
                         ].map((badge) => (
-                            <div key={badge.title} className="flex items-center gap-3">
+                            <div key={badge.titleKey} className="flex items-center gap-3">
                                 <div className="p-2 rounded-lg bg-cyclades-turquoise/10">
                                     <badge.icon className="w-5 h-5 text-cyclades-turquoise" />
                                 </div>
                                 <div>
-                                    <div className="text-sm font-medium text-white">{badge.title}</div>
-                                    <div className="text-xs text-white/50">{badge.desc}</div>
+                                    <div className="text-sm font-medium text-white">{t(badge.titleKey)}</div>
+                                    <div className="text-xs text-white/50">{t(badge.descKey)}</div>
                                 </div>
                             </div>
                         ))}
@@ -245,7 +246,7 @@ export default function FooterNew() {
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
                     <div className="flex flex-col md:flex-row justify-between items-center gap-4">
                         <div className="text-sm text-white/50 flex items-center gap-2">
-                            <span>© {currentYear} Greece Cyclades. Made with ❤️ by</span>
+                            <span>© {currentYear} {t('footer.bottom.copyright')}</span>
                             <a
                                 href="https://anotherseoguru.com"
                                 target="_blank"
@@ -256,9 +257,9 @@ export default function FooterNew() {
                             </a>
                         </div>
                         <div className="flex items-center gap-4 text-xs text-white/40">
-                            <Link to="/sitemap" className="hover:text-white transition-colors">Sitemap</Link>
+                            <Link to="/sitemap" className="hover:text-white transition-colors">{t('footer.bottom.sitemap')}</Link>
                             <span>•</span>
-                            <span>🇬🇷 Powered by Touristas AI</span>
+                            <span>🇬🇷 {t('footer.bottom.poweredBy')}</span>
                         </div>
                     </div>
                 </div>

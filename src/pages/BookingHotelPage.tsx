@@ -238,7 +238,7 @@ export default function BookingHotelPage() {
       <SEO
         title={`${hotelDetails?.name || displayHotel?.name || 'Hotel Details'} - Book Now | Discover Cyclades`}
         description={hotelDetails?.hotelDescription?.substring(0, 160) || displayHotel?.hotelDescription?.substring(0, 160) || `View hotel details and book with best rates.`}
-        canonicalUrl={`https://greececyclades.com/book/hotel/${hotelId}`}
+        canonicalUrl={`https://discovercyclades.gr/book/hotel/${hotelId}`}
         imageUrl={hotelDetails?.main_photo || displayHotel?.images?.[0]?.url}
       />
 

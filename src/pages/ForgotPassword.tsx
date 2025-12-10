@@ -144,8 +144,8 @@ export default function ForgotPassword() {
                 <p className="text-white/80">
                   Our support team is available 24/7 to assist you with any account-related issues.
                   Contact us at{' '}
-                  <a href="mailto:support@greececyclades.com" className="underline hover:text-white">
-                    support@greececyclades.com
+                  <a href="mailto:support@discovercyclades.gr" className="underline hover:text-white">
+                    support@discovercyclades.gr
                   </a>
                 </p>
               </div>

@@ -646,7 +646,7 @@ A: Yes! Several local chefs and cooking enthusiasts offer cooking classes featur
       "@type": "Article",
       "headline": "Sifnos: Your Ultimate Guide to the Culinary Capital of the Cyclades",
       "description": "Discover Sifnos, the culinary capital of the Cyclades. Complete travel guide featuring the best restaurants, pottery workshops, hiking trails, beaches, villages, and authentic Greek experiences on this charming island.",
-      "image": "https://greececyclades.com/images/blog/sifnos/sifnos-blog-hero.webp",
+      "image": "https://discovercyclades.gr/images/blog/sifnos/sifnos-blog-hero.webp",
       "author": {
         "@type": "Person",
         "name": "Greece Cyclades Travel Expert",
@@ -657,7 +657,7 @@ A: Yes! Several local chefs and cooking enthusiasts offer cooking classes featur
         "name": "Greece Cyclades",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://greececyclades.com/logo.png"
+          "url": "https://discovercyclades.gr/logo.png"
         }
       },
       "datePublished": "2026-01-24",

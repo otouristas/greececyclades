@@ -1,6 +1,7 @@
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import { useTheme } from '../contexts/ThemeContext';
+import { useTranslation } from 'react-i18next';
 import {
     HeroSection,
     SocialProofStrip,
@@ -13,17 +14,18 @@ import {
 
 export default function HomeNew() {
     const { resolvedTheme } = useTheme();
+    const { t } = useTranslation();
     const isDark = resolvedTheme === 'dark';
 
     const seoData = {
-        title: "Discover Cyclades: AI-Powered Greek Islands Travel Guide 2025",
-        description: "Plan your perfect Cyclades adventure with AI. 25 island guides, ferry booking, trip planning & local insights. Santorini, Mykonos, Naxos & more. Your Greek islands journey starts here.",
+        title: t('meta.homeTitle'),
+        description: t('meta.homeDescription'),
         pageType: 'homepage' as const,
         faqs: [
-            { question: "What are the Cyclades islands?", answer: "The Cyclades are a group of 24 inhabited Greek islands in the Aegean Sea. Famous islands include Santorini, Mykonos, Naxos, and Paros. Known for whitewashed villages, crystal-clear waters, and ancient history." },
-            { question: "How do I get to the Cyclades?", answer: "Fly to Athens then take a ferry (2-5 hours) or fly directly to Santorini or Mykonos airports. Ferries run daily from Piraeus port to all major islands." },
-            { question: "What's the best time to visit Cyclades?", answer: "September-October for perfect weather and fewer crowds. May-June is also excellent. July-August is peak season with higher prices and more tourists." },
-            { question: "How many days do I need in the Cyclades?", answer: "7-10 days is ideal for visiting 3-4 islands. 2 weeks allows for deeper exploration of 5-6 islands. Even 5 days can work for 2-3 islands." }
+            { question: t('home.faq.q1'), answer: t('home.faq.a1') },
+            { question: t('home.faq.q2'), answer: t('home.faq.a2') },
+            { question: t('home.faq.q3'), answer: t('home.faq.a3') },
+            { question: t('home.faq.q4'), answer: t('home.faq.a4') }
         ]
     };
 
@@ -33,43 +35,43 @@ export default function HomeNew() {
         "@graph": [
             {
                 "@type": "WebSite",
-                "@id": "https://greececyclades.com/#website",
+                "@id": "https://discovercyclades.gr/#website",
                 "name": "Discover Cyclades",
-                "url": "https://greececyclades.com",
+                "url": "https://discovercyclades.gr",
                 "description": "AI-powered Greek Islands travel platform",
                 "potentialAction": {
                     "@type": "SearchAction",
                     "target": {
                         "@type": "EntryPoint",
-                        "urlTemplate": "https://greececyclades.com/search?q={search_term_string}"
+                        "urlTemplate": "https://discovercyclades.gr/search?q={search_term_string}"
                     },
                     "query-input": "required name=search_term_string"
                 },
                 "publisher": {
                     "@type": "Organization",
-                    "@id": "https://greececyclades.com/#organization"
+                    "@id": "https://discovercyclades.gr/#organization"
                 }
             },
             {
                 "@type": "Organization",
-                "@id": "https://greececyclades.com/#organization",
+                "@id": "https://discovercyclades.gr/#organization",
                 "name": "Discover Cyclades",
-                "url": "https://greececyclades.com",
+                "url": "https://discovercyclades.gr",
                 "logo": {
                     "@type": "ImageObject",
-                    "url": "https://greececyclades.com/logo.png"
+                    "url": "https://discovercyclades.gr/logo.png"
                 },
                 "sameAs": [
                     "https://www.facebook.com/discovercyclades",
                     "https://www.instagram.com/discovercyclades",
-                    "https://twitter.com/greececyclades"
+                    "https://twitter.com/discovercyclades"
                 ]
             },
             {
                 "@type": "TravelAgency",
                 "name": "Discover Cyclades",
                 "description": "AI-powered Greek Islands travel guide with Touristas AI assistant",
-                "url": "https://greececyclades.com",
+                "url": "https://discovercyclades.gr",
                 "areaServed": {
                     "@type": "AdministrativeArea",
                     "name": "Cyclades Islands",
@@ -111,13 +113,13 @@ export default function HomeNew() {
                 {/* FAQ Section */}
                 <FAQSection
                     faqs={[
-                        { question: "What are the Cyclades islands?", answer: "The Cyclades are a group of 24 inhabited Greek islands in the Aegean Sea. Famous islands include Santorini, Mykonos, Naxos, and Paros. Known for whitewashed villages, crystal-clear waters, and ancient history." },
-                        { question: "How do I get to the Cyclades?", answer: "Fly to Athens then take a ferry (2-5 hours) or fly directly to Santorini or Mykonos airports. Ferries run daily from Piraeus port to all major islands." },
-                        { question: "What's the best time to visit Cyclades?", answer: "September-October for perfect weather and fewer crowds. May-June is also excellent. July-August is peak season with higher prices and more tourists." },
-                        { question: "How many days do I need in the Cyclades?", answer: "7-10 days is ideal for visiting 3-4 islands. 2 weeks allows for deeper exploration of 5-6 islands. Even 5 days can work for 2-3 islands." }
+                        { question: t('home.faq.q1'), answer: t('home.faq.a1') },
+                        { question: t('home.faq.q2'), answer: t('home.faq.a2') },
+                        { question: t('home.faq.q3'), answer: t('home.faq.a3') },
+                        { question: t('home.faq.q4'), answer: t('home.faq.a4') }
                     ]}
-                    title="Cyclades Travel FAQ"
-                    subtitle="Your questions about Greek island travel, answered"
+                    title={t('home.faq.title')}
+                    subtitle={t('home.faq.subtitle')}
                 />
 
                 {/* Newsletter & CTA */}
@@ -126,4 +128,5 @@ export default function HomeNew() {
         </>
     );
 }
+
 

@@ -220,7 +220,7 @@ export default function BookingResultsPage() {
       <SEO
         title={pageTitle}
         description={pageDescription}
-        canonicalUrl="https://greececyclades.com/book/search"
+        canonicalUrl="https://discovercyclades.gr/book/search"
       />
 
       <SimpleBreadcrumbs

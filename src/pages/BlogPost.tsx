@@ -206,7 +206,7 @@ export default function BlogPost() {
             "name": "Greece Cyclades",
             "logo": {
               "@type": "ImageObject",
-              "url": "https://greececyclades.com/logo.png"
+              "url": "https://discovercyclades.gr/logo.png"
             }
           },
           "datePublished": post.publishedAt

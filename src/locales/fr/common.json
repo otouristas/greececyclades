@@ -1,0 +1,340 @@
+{
+    "nav": {
+        "home": "Accueil",
+        "islands": "Îles",
+        "guides": "Guides",
+        "hotels": "Hôtels",
+        "ferries": "Ferries",
+        "flights": "Vols",
+        "activities": "Activités",
+        "restaurants": "Restaurants",
+        "transfers": "Transferts",
+        "planner": "Planificateur",
+        "community": "Communauté",
+        "business": "Entreprises",
+        "signIn": "Connexion",
+        "signUp": "Inscription",
+        "myAccount": "Mon Compte",
+        "myTrips": "Mes Voyages",
+        "myProfile": "Mon Profil",
+        "favorites": "Favoris",
+        "settings": "Paramètres",
+        "logout": "Déconnexion",
+        "signOut": "Déconnexion",
+        "search": "Rechercher",
+        "searchPlaceholder": "Rechercher îles, guides, activités..."
+    },
+    "home": {
+        "hero": {
+            "badge": "Voyage avec Intelligence Artificielle",
+            "titlePart1": "Découvrez les",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Des couchers de soleil emblématiques de Santorin aux plages cachées de Milos. Planifiez votre aventure grecque parfaite avec Touristas AI.",
+            "imageAlt": "Îles des Cyclades - Les belles îles grecques de la mer Égée",
+            "ctaPrimary": "Découvrir Touristas AI",
+            "ctaSecondary": "Explorer les Îles",
+            "stats": {
+                "islands": "Îles",
+                "tips": "Conseils Locaux",
+                "visitors": "Visiteurs Annuels",
+                "sunnyDays": "Jours Ensoleillés"
+            }
+        },
+        "socialProof": {
+            "happyTravelers": "Voyageurs Satisfaits",
+            "avgRating": "Note Moyenne",
+            "secureBooking": "Réservation Sécurisée",
+            "aiAssistant": "Assistant IA Voyage"
+        },
+        "destinations": {
+            "badge": "Découverte des Îles",
+            "titlePart1": "Explorez les",
+            "titleHighlight": "Cyclades",
+            "subtitle": "24 îles magnifiques, chacune avec son caractère et son charme uniques",
+            "viewAll": "Voir les 24 Îles",
+            "exploreGuide": "Explorer le Guide",
+            "tags": {
+                "mostPopular": "Plus Populaire",
+                "trending": "Tendance",
+                "bestValue": "Meilleur Rapport Q/P",
+                "hiddenGem": "Joyau Caché"
+            },
+            "santorini": {
+                "desc": "Couchers de soleil iconiques et vue caldeira"
+            },
+            "mykonos": {
+                "desc": "Charme cosmopolite et vie nocturne"
+            },
+            "naxos": {
+                "desc": "Plages familiales et cuisine locale"
+            },
+            "paros": {
+                "desc": "Plages dorées et planche à voile"
+            },
+            "milos": {
+                "desc": "Plages volcaniques et paysages lunaires"
+            },
+            "ios": {
+                "desc": "Paradis de la fête et vie de plage"
+            }
+        },
+        "services": {
+            "titlePart1": "Tout Ce Dont Vous Avez",
+            "titleHighlight": "Besoin",
+            "subtitle": "Réservez hôtels, ferries, tours et voitures de location - tout en un seul endroit",
+            "needHelp": "Besoin d'aide pour planifier?",
+            "askAI": "Demander à Touristas AI",
+            "hotels": {
+                "title": "Hôtels et Villas",
+                "desc": "Hébergements sélectionnés sur toutes les îles",
+                "stats": "2 000+ propriétés"
+            },
+            "ferries": {
+                "title": "Billets Ferry",
+                "desc": "Island hopping sans stress",
+                "stats": "50+ lignes quotidiennes"
+            },
+            "tours": {
+                "title": "Tours et Activités",
+                "desc": "Des expériences inoubliables vous attendent",
+                "stats": "500+ expériences"
+            },
+            "cars": {
+                "title": "Location de Voitures",
+                "desc": "Explorez à votre rythme",
+                "stats": "À partir de 35€/jour"
+            }
+        },
+        "newsletter": {
+            "title": "Restez Informé",
+            "subtitle": "Recevez conseils voyage et offres exclusives",
+            "placeholder": "Entrez votre adresse email",
+            "button": "S'abonner à la Newsletter",
+            "disclaimer": "En vous abonnant, vous acceptez de recevoir nos actualités voyage. Désabonnement possible à tout moment.",
+            "successTitle": "C'est fait!",
+            "successMessage": "Vérifiez votre boîte mail pour un email de bienvenue."
+        },
+        "cta": {
+            "titlePart1": "Prêt à Explorer les",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Rejoignez des milliers de voyageurs qui ont découvert leur aventure grecque parfaite avec notre plateforme IA.",
+            "startPlanning": "Commencer à Planifier",
+            "browseIslands": "Parcourir les Îles",
+            "freeToUse": "Gratuit",
+            "noFees": "Sans frais de réservation",
+            "aiPowered": "Powered by IA"
+        },
+        "touristasAI": {
+            "badge": "Voyage Powered by IA",
+            "titlePart1": "Rencontrez",
+            "titleHighlight": "Touristas AI",
+            "subtitle": "Votre oracle personnel des îles grecques. Demandez n'importe quoi sur les Cyclades - des plages cachées aux restaurants locaux.",
+            "cta": {
+                "try": "Essayer Touristas AI",
+                "chat": "Commencer à Discuter"
+            },
+            "features": {
+                "knowledge": {
+                    "title": "Connaissance Locale",
+                    "desc": "Conseils d'experts"
+                },
+                "itineraries": {
+                    "title": "Itinéraires Intelligents",
+                    "desc": "Plans personnalisés jour par jour"
+                },
+                "matching": {
+                    "title": "Matching d'Îles",
+                    "desc": "Trouvez votre île parfaite"
+                },
+                "instant": {
+                    "title": "Réponses Instantanées",
+                    "desc": "Assistance voyage 24/7"
+                }
+            },
+            "queries": {
+                "plan7day": "Planifier un voyage de 7 jours entre les îles...",
+                "milosBeaches": "Les meilleures plages de Milos moins fréquentées...",
+                "honeymoon": "Itinéraire romantique pour lune de miel à Santorin...",
+                "familyHotels": "Hôtels familiaux à Naxos...",
+                "nightlife": "Quelle île est la meilleure pour la vie nocturne?"
+            },
+            "demo": {
+                "status": "En ligne • Prêt à vous aider",
+                "response": "Je serais ravi de vous aider à planifier votre parfaite aventure dans les Cyclades...",
+                "placeholder": "Demandez-moi n'importe quoi sur les Cyclades...",
+                "badge": "Powered by AI 🇬🇷"
+            }
+        }
+    },
+    "hero": {
+        "title": "Découvrez les Cyclades",
+        "subtitle": "Votre portail vers les plus belles îles grecques",
+        "searchPlaceholder": "Où voulez-vous aller?",
+        "searchButton": "Rechercher",
+        "popularDestinations": "Destinations Populaires"
+    },
+    "islands": {
+        "santorini": "Santorin",
+        "mykonos": "Mykonos",
+        "paros": "Paros",
+        "naxos": "Naxos",
+        "milos": "Milos",
+        "ios": "Ios",
+        "sifnos": "Sifnos",
+        "tinos": "Tinos",
+        "syros": "Syros",
+        "andros": "Andros",
+        "amorgos": "Amorgos",
+        "folegandros": "Folegandros",
+        "koufonisia": "Koufonisia",
+        "serifos": "Serifos",
+        "antiparos": "Antiparos",
+        "kimolos": "Kimolos",
+        "sikinos": "Sikinos",
+        "anafi": "Anafi",
+        "donousa": "Donousa",
+        "schinoussa": "Schinoussa",
+        "iraklia": "Iraklia",
+        "kea": "Kea",
+        "kythnos": "Kythnos",
+        "thirasia": "Thirasia"
+    },
+    "common": {
+        "search": "Rechercher",
+        "book": "Réserver",
+        "bookNow": "Réserver Maintenant",
+        "viewDetails": "Voir Détails",
+        "learnMore": "En Savoir Plus",
+        "seeAll": "Voir Tout",
+        "from": "De",
+        "to": "À",
+        "date": "Date",
+        "guests": "Voyageurs",
+        "nights": "Nuits",
+        "perNight": "par nuit",
+        "perPerson": "par personne",
+        "total": "Total",
+        "loading": "Chargement...",
+        "error": "Erreur",
+        "success": "Succès",
+        "cancel": "Annuler",
+        "confirm": "Confirmer",
+        "save": "Enregistrer",
+        "delete": "Supprimer",
+        "edit": "Modifier",
+        "share": "Partager",
+        "close": "Fermer",
+        "back": "Retour",
+        "next": "Suivant",
+        "previous": "Précédent",
+        "yes": "Oui",
+        "no": "Non",
+        "or": "ou",
+        "and": "et",
+        "all": "Tous",
+        "filter": "Filtrer",
+        "sort": "Trier",
+        "results": "Résultats",
+        "noResults": "Aucun résultat trouvé",
+        "tryAgain": "Réessayer"
+    },
+    "booking": {
+        "checkIn": "Arrivée",
+        "checkOut": "Départ",
+        "adults": "Adultes",
+        "children": "Enfants",
+        "rooms": "Chambres",
+        "selectDates": "Sélectionner dates",
+        "availability": "Vérifier Disponibilité",
+        "instantBooking": "Réservation Instantanée",
+        "freeCancel": "Annulation Gratuite",
+        "breakfast": "Petit-déjeuner Inclus",
+        "confirmBooking": "Confirmer Réservation",
+        "bookingConfirmed": "Réservation Confirmée!",
+        "confirmationCode": "Code de Confirmation",
+        "paymentDetails": "Détails de Paiement",
+        "guestDetails": "Détails du Client",
+        "specialRequests": "Demandes Spéciales"
+    },
+    "ferry": {
+        "departure": "Départ",
+        "arrival": "Arrivée",
+        "duration": "Durée",
+        "vessel": "Navire",
+        "class": "Classe",
+        "economy": "Économique",
+        "business": "Affaires",
+        "cabins": "Cabines",
+        "vehicles": "Véhicules",
+        "passengers": "Passagers",
+        "oneWay": "Aller Simple",
+        "roundTrip": "Aller-Retour",
+        "selectSeats": "Choisir Places",
+        "deckSeating": "Pont",
+        "airSeating": "Siège Avion"
+    },
+    "flight": {
+        "departure": "Départ",
+        "arrival": "Arrivée",
+        "duration": "Durée",
+        "airline": "Compagnie",
+        "flightNumber": "Numéro de Vol",
+        "direct": "Direct",
+        "stops": "Escales",
+        "baggage": "Bagages",
+        "handLuggage": "Bagage à Main",
+        "checkedBag": "Bagage en Soute"
+    },
+    "weather": {
+        "temperature": "Température",
+        "feelsLike": "Ressenti",
+        "humidity": "Humidité",
+        "wind": "Vent",
+        "waves": "Vagues",
+        "seaTemp": "Temp. de la Mer",
+        "uvIndex": "Indice UV",
+        "sunrise": "Lever du Soleil",
+        "sunset": "Coucher du Soleil",
+        "conditions": "Conditions",
+        "excellent": "Excellentes",
+        "good": "Bonnes",
+        "moderate": "Modérées",
+        "poor": "Mauvaises"
+    },
+    "touristas": {
+        "title": "Touristas AI",
+        "subtitle": "Votre Expert des Îles Grecques",
+        "greeting": "Bonjour! Je suis Touristas, votre compagnon de voyage IA pour les Cyclades!",
+        "askAnything": "Demandez-moi n'importe quoi sur les Cyclades...",
+        "voiceMode": "Mode Vocal",
+        "suggestions": {
+            "planTrip": "Planifier mon voyage",
+            "findHotels": "Trouver hôtels",
+            "ferrySchedules": "Horaires ferries",
+            "beachGuide": "Guide plages",
+            "restaurants": "Restaurants recommandés"
+        }
+    },
+    "footer": {
+        "about": "À Propos",
+        "contact": "Contact",
+        "privacy": "Confidentialité",
+        "terms": "Conditions d'Utilisation",
+        "copyright": "© 2024 Discover Cyclades. Tous droits réservés.",
+        "followUs": "Suivez-nous",
+        "newsletter": "Newsletter",
+        "subscribeText": "Abonnez-vous pour conseils voyage et offres",
+        "emailPlaceholder": "Entrez votre email",
+        "subscribe": "S'abonner"
+    },
+    "meta": {
+        "homeTitle": "Discover Cyclades | Guide Voyage Îles Grecques",
+        "homeDescription": "Planifiez vos vacances parfaites dans les îles grecques. Hôtels, ferries, vols et activités.",
+        "islandsTitle": "Îles des Cyclades | Guide Complet",
+        "islandsDescription": "Explorez les 24 îles des Cyclades. De Santorin aux joyaux cachés.",
+        "hotelsTitle": "Hôtels aux Cyclades | Meilleurs Hébergements",
+        "hotelsDescription": "Trouvez et réservez les meilleurs hôtels des Cyclades.",
+        "ferriesTitle": "Billets Ferry | Island Hopping Cyclades",
+        "ferriesDescription": "Réservez billets ferry entre îles grecques. Comparez prix et horaires."
+    }
+}

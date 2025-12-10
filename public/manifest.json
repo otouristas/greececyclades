@@ -1,0 +1,123 @@
+{
+    "name": "Discover Cyclades",
+    "short_name": "Cyclades",
+    "description": "Your Ultimate AI-Powered Greek Islands Travel Platform",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#1E2E48",
+    "theme_color": "#1E2E48",
+    "orientation": "portrait-primary",
+    "scope": "/",
+    "lang": "en",
+    "categories": [
+        "travel",
+        "tourism",
+        "lifestyle"
+    ],
+    "icons": [
+        {
+            "src": "/icons/icon-72.png",
+            "sizes": "72x72",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-96.png",
+            "sizes": "96x96",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-128.png",
+            "sizes": "128x128",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-144.png",
+            "sizes": "144x144",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-152.png",
+            "sizes": "152x152",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-192.png",
+            "sizes": "192x192",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-384.png",
+            "sizes": "384x384",
+            "type": "image/png",
+            "purpose": "maskable any"
+        },
+        {
+            "src": "/icons/icon-512.png",
+            "sizes": "512x512",
+            "type": "image/png",
+            "purpose": "maskable any"
+        }
+    ],
+    "screenshots": [
+        {
+            "src": "/screenshots/home.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Discover Cyclades Home"
+        },
+        {
+            "src": "/screenshots/planner.png",
+            "sizes": "1280x720",
+            "type": "image/png",
+            "form_factor": "wide",
+            "label": "Island Hopping Planner"
+        }
+    ],
+    "shortcuts": [
+        {
+            "name": "Plan Trip",
+            "short_name": "Planner",
+            "description": "Start planning your island hopping adventure",
+            "url": "/planner",
+            "icons": [
+                {
+                    "src": "/icons/planner-icon.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "AI Assistant",
+            "short_name": "Touristas",
+            "description": "Chat with our AI travel assistant",
+            "url": "/touristas-ai",
+            "icons": [
+                {
+                    "src": "/icons/ai-icon.png",
+                    "sizes": "192x192"
+                }
+            ]
+        },
+        {
+            "name": "Ferry Tickets",
+            "short_name": "Ferries",
+            "description": "Search and book ferry tickets",
+            "url": "/ferry-tickets",
+            "icons": [
+                {
+                    "src": "/icons/ferry-icon.png",
+                    "sizes": "192x192"
+                }
+            ]
+        }
+    ],
+    "related_applications": [],
+    "prefer_related_applications": false
+}

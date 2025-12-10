@@ -806,7 +806,7 @@ export default function HotelDetailPage() {
                   Explore More
                 </h3>
                 <a 
-                  href="https://greececyclades.com" 
+                  href="https://discovercyclades.gr" 
                   target="_blank" 
                   rel="dofollow"
                   className="block overflow-hidden rounded-md shadow-md hover:shadow-lg transition-shadow"

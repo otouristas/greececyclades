@@ -39,7 +39,7 @@ const IrakliaGuide: React.FC = () => {
       'Iraklia restaurants',
       'best time to visit Iraklia'
     ],
-    canonicalUrl: "https://greececyclades.com/guides/iraklia",
+    canonicalUrl: "https://discovercyclades.gr/guides/iraklia",
     ogImage: iraklia.image,
     ogType: 'article'
   };

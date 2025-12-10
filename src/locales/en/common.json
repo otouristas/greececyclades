@@ -1,0 +1,422 @@
+{
+    "nav": {
+        "home": "Home",
+        "islands": "Islands",
+        "guides": "Guides",
+        "hotels": "Hotels",
+        "ferries": "Ferries",
+        "flights": "Flights",
+        "activities": "Activities",
+        "restaurants": "Restaurants",
+        "transfers": "Transfers",
+        "planner": "Trip Planner",
+        "community": "Community",
+        "business": "For Business",
+        "signIn": "Sign In",
+        "signUp": "Sign Up",
+        "myAccount": "My Account",
+        "myTrips": "My Trips",
+        "myProfile": "My Profile",
+        "favorites": "Favorites",
+        "settings": "Settings",
+        "logout": "Log Out",
+        "signOut": "Sign Out",
+        "search": "Search",
+        "searchPlaceholder": "Search islands, guides, activities..."
+    },
+    "home": {
+        "hero": {
+            "badge": "AI-Powered Greek Island Travel",
+            "titlePart1": "Discover the",
+            "titleHighlight": "Cyclades",
+            "subtitle": "From iconic Santorini sunsets to hidden Milos beaches. Plan your perfect Greek island adventure with Touristas AI.",
+            "imageAlt": "Cyclades Islands - Beautiful Greek Islands in the Aegean Sea",
+            "ctaPrimary": "Meet Touristas AI",
+            "ctaSecondary": "Explore Islands",
+            "stats": {
+                "islands": "Islands",
+                "tips": "Local Tips",
+                "visitors": "Yearly Visitors",
+                "sunnyDays": "Sunny Days"
+            }
+        },
+        "socialProof": {
+            "happyTravelers": "Happy Travelers",
+            "avgRating": "Average Rating",
+            "secureBooking": "Secure Booking",
+            "aiAssistant": "AI Travel Assistant"
+        },
+        "destinations": {
+            "badge": "Island Discovery",
+            "titlePart1": "Explore the",
+            "titleHighlight": "Cyclades",
+            "subtitle": "24 stunning islands, each with its own unique character and charm",
+            "viewAll": "View All 24 Islands",
+            "exploreGuide": "Explore Guide",
+            "tags": {
+                "mostPopular": "Most Popular",
+                "trending": "Trending",
+                "bestValue": "Best Value",
+                "hiddenGem": "Hidden Gem"
+            },
+            "santorini": {
+                "desc": "Iconic sunsets & caldera views"
+            },
+            "mykonos": {
+                "desc": "Cosmopolitan charm & nightlife"
+            },
+            "naxos": {
+                "desc": "Family beaches & local cuisine"
+            },
+            "paros": {
+                "desc": "Golden beaches & windsurfing"
+            },
+            "milos": {
+                "desc": "Volcanic beaches & moon landscapes"
+            },
+            "ios": {
+                "desc": "Party paradise & beach life"
+            }
+        },
+        "services": {
+            "titlePart1": "Everything You",
+            "titleHighlight": "Need",
+            "subtitle": "Book hotels, ferries, tours, and car rentals - all in one place",
+            "needHelp": "Need help planning?",
+            "askAI": "Ask Touristas AI",
+            "hotels": {
+                "title": "Hotels & Villas",
+                "desc": "Handpicked accommodations across all islands",
+                "stats": "2,000+ properties"
+            },
+            "ferries": {
+                "title": "Ferry Tickets",
+                "desc": "Island hopping made seamless",
+                "stats": "50+ routes daily"
+            },
+            "tours": {
+                "title": "Tours & Activities",
+                "desc": "Unforgettable experiences await",
+                "stats": "500+ experiences"
+            },
+            "cars": {
+                "title": "Car Rentals",
+                "desc": "Explore at your own pace",
+                "stats": "From €35/day"
+            }
+        },
+        "newsletter": {
+            "title": "Stay Updated",
+            "subtitle": "Get travel tips and exclusive deals",
+            "placeholder": "Enter your email address",
+            "button": "Subscribe to Newsletter",
+            "disclaimer": "By subscribing, you agree to receive travel updates. Unsubscribe anytime.",
+            "successTitle": "You're all set!",
+            "successMessage": "Check your inbox for a welcome email from us."
+        },
+        "cta": {
+            "titlePart1": "Ready to Explore the",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Join thousands of travelers who discovered their perfect Greek island adventure with our AI-powered platform.",
+            "startPlanning": "Start Planning",
+            "browseIslands": "Browse Islands",
+            "freeToUse": "Free to use",
+            "noFees": "No booking fees",
+            "aiPowered": "AI-powered"
+        },
+        "touristasAI": {
+            "badge": "AI-Powered Travel",
+            "titlePart1": "Meet",
+            "titleHighlight": "Touristas AI",
+            "subtitle": "Your personal Greek islands oracle. Ask anything about the Cyclades - from hidden beaches to local restaurants, ferry schedules to island-hopping routes.",
+            "cta": {
+                "try": "Try Touristas AI",
+                "chat": "Start Chatting"
+            },
+            "features": {
+                "knowledge": {
+                    "title": "Local Knowledge",
+                    "desc": "Insider tips from experts"
+                },
+                "itineraries": {
+                    "title": "Smart Itineraries",
+                    "desc": "Personalized day-by-day plans"
+                },
+                "matching": {
+                    "title": "Island Matching",
+                    "desc": "Find your perfect island"
+                },
+                "instant": {
+                    "title": "Instant Answers",
+                    "desc": "24/7 travel assistance"
+                }
+            },
+            "queries": {
+                "plan7day": "Plan a 7-day island hopping trip...",
+                "milosBeaches": "Best beaches in Milos with less crowds...",
+                "honeymoon": "Romantic honeymoon itinerary in Santorini...",
+                "familyHotels": "Family-friendly hotels in Naxos...",
+                "nightlife": "Which island is best for nightlife?"
+            },
+            "demo": {
+                "status": "Online • Ready to help",
+                "response": "I'd love to help you plan your perfect Cyclades adventure...",
+                "placeholder": "Ask me anything about the Cyclades...",
+                "badge": "Powered by AI 🇬🇷"
+            }
+        },
+        "experiences": {
+            "badge": "Top Rated",
+            "titlePart1": "Unforgettable",
+            "titleHighlight": "Experiences",
+            "subtitle": "Curated tours and activities loved by thousands",
+            "viewAll": "View All Experiences",
+            "reviews": "reviews",
+            "parosTour": {
+                "title": "Paros Antiparos: Full-Day Boat Tour"
+            },
+            "milosTour": {
+                "title": "Guided Day Cruise to Kleftiko"
+            },
+            "santoriniTour": {
+                "title": "Santorini: Catamaran Tour with BBQ"
+            }
+        },
+        "faq": {
+            "title": "Cyclades Travel FAQ",
+            "subtitle": "Your questions about Greek island travel, answered",
+            "q1": "What are the Cyclades islands?",
+            "a1": "The Cyclades are a group of 24 inhabited Greek islands in the Aegean Sea. Famous islands include Santorini, Mykonos, Naxos, and Paros. Known for whitewashed villages, crystal-clear waters, and ancient history.",
+            "q2": "How do I get to the Cyclades?",
+            "a2": "Fly to Athens then take a ferry (2-5 hours) or fly directly to Santorini or Mykonos airports. Ferries run daily from Piraeus port to all major islands.",
+            "q3": "What's the best time to visit Cyclades?",
+            "a3": "September-October for perfect weather and fewer crowds. May-June is also excellent. July-August is peak season with higher prices and more tourists.",
+            "q4": "How many days do I need in the Cyclades?",
+            "a4": "7-10 days is ideal for visiting 3-4 islands. 2 weeks allows for deeper exploration of 5-6 islands. Even 5 days can work for 2-3 islands."
+        }
+    },
+    "footer": {
+        "prefooter": {
+            "title": "Plan with",
+            "titleHighlight": "Touristas AI",
+            "subtitle": "Your personal AI travel assistant for the perfect Cyclades adventure",
+            "cta": "Start Planning",
+            "stats": {
+                "islands": "Islands",
+                "activities": "Activities",
+                "travelers": "Travelers",
+                "rating": "Rating"
+            }
+        },
+        "brand": {
+            "description": "Your AI-powered guide to the Greek Cyclades. Discover authentic experiences, book with confidence, and create unforgettable island memories.",
+            "location": "Athens, Greece"
+        },
+        "sections": {
+            "popularIslands": "Popular Islands",
+            "viewAllIslands": "View All 24 Islands →",
+            "travelServices": "Travel Services",
+            "aiPlanning": "AI & Planning",
+            "support": "Support",
+            "legal": "Legal"
+        },
+        "services": {
+            "ferryTickets": "Ferry Tickets",
+            "hotelsVillas": "Hotels & Villas",
+            "toursActivities": "Tours & Activities",
+            "carRentals": "Car Rentals",
+            "flights": "Flights"
+        },
+        "links": {
+            "touristasAI": "Touristas AI",
+            "tripPlanner": "Trip Planner",
+            "helpCenter": "Help Center",
+            "aboutUs": "About Us",
+            "travelBlog": "Travel Blog",
+            "privacyPolicy": "Privacy Policy",
+            "termsOfService": "Terms of Service"
+        },
+        "trustBadges": {
+            "secureBooking": {
+                "title": "Secure Booking",
+                "desc": "SSL Protected"
+            },
+            "freeCancellation": {
+                "title": "Free Cancellation",
+                "desc": "Most Bookings"
+            },
+            "support247": {
+                "title": "24/7 Support",
+                "desc": "Always Available"
+            },
+            "bestPrices": {
+                "title": "Best Prices",
+                "desc": "Guaranteed"
+            }
+        },
+        "bottom": {
+            "copyright": "Greece Cyclades. Made with ❤️ by",
+            "sitemap": "Sitemap",
+            "poweredBy": "Powered by Touristas AI"
+        }
+    },
+    "hero": {
+        "title": "Discover the Cyclades",
+        "subtitle": "Your gateway to the most beautiful Greek islands",
+        "searchPlaceholder": "Where do you want to go?",
+        "searchButton": "Search",
+        "popularDestinations": "Popular Destinations"
+    },
+    "islands": {
+        "santorini": "Santorini",
+        "mykonos": "Mykonos",
+        "paros": "Paros",
+        "naxos": "Naxos",
+        "milos": "Milos",
+        "ios": "Ios",
+        "sifnos": "Sifnos",
+        "tinos": "Tinos",
+        "syros": "Syros",
+        "andros": "Andros",
+        "amorgos": "Amorgos",
+        "folegandros": "Folegandros",
+        "koufonisia": "Koufonisia",
+        "serifos": "Serifos",
+        "antiparos": "Antiparos",
+        "kimolos": "Kimolos",
+        "sikinos": "Sikinos",
+        "anafi": "Anafi",
+        "donousa": "Donousa",
+        "schinoussa": "Schinoussa",
+        "iraklia": "Iraklia",
+        "kea": "Kea",
+        "kythnos": "Kythnos",
+        "thirasia": "Thirasia"
+    },
+    "common": {
+        "search": "Search",
+        "book": "Book",
+        "bookNow": "Book Now",
+        "viewDetails": "View Details",
+        "learnMore": "Learn More",
+        "seeAll": "See All",
+        "from": "From",
+        "to": "To",
+        "date": "Date",
+        "guests": "Guests",
+        "nights": "Nights",
+        "perNight": "per night",
+        "perPerson": "per person",
+        "total": "Total",
+        "loading": "Loading...",
+        "error": "Error",
+        "success": "Success",
+        "cancel": "Cancel",
+        "confirm": "Confirm",
+        "save": "Save",
+        "delete": "Delete",
+        "edit": "Edit",
+        "share": "Share",
+        "close": "Close",
+        "back": "Back",
+        "next": "Next",
+        "previous": "Previous",
+        "yes": "Yes",
+        "no": "No",
+        "or": "or",
+        "and": "and",
+        "all": "All",
+        "filter": "Filter",
+        "sort": "Sort",
+        "results": "Results",
+        "noResults": "No results found",
+        "tryAgain": "Try again"
+    },
+    "booking": {
+        "checkIn": "Check-in",
+        "checkOut": "Check-out",
+        "adults": "Adults",
+        "children": "Children",
+        "rooms": "Rooms",
+        "selectDates": "Select dates",
+        "availability": "Check Availability",
+        "instantBooking": "Instant Booking",
+        "freeCancel": "Free Cancellation",
+        "breakfast": "Breakfast Included",
+        "confirmBooking": "Confirm Booking",
+        "bookingConfirmed": "Booking Confirmed!",
+        "confirmationCode": "Confirmation Code",
+        "paymentDetails": "Payment Details",
+        "guestDetails": "Guest Details",
+        "specialRequests": "Special Requests"
+    },
+    "ferry": {
+        "departure": "Departure",
+        "arrival": "Arrival",
+        "duration": "Duration",
+        "vessel": "Vessel",
+        "class": "Class",
+        "economy": "Economy",
+        "business": "Business",
+        "cabins": "Cabins",
+        "vehicles": "Vehicles",
+        "passengers": "Passengers",
+        "oneWay": "One Way",
+        "roundTrip": "Round Trip",
+        "selectSeats": "Select Seats",
+        "deckSeating": "Deck Seating",
+        "airSeating": "Air Seating"
+    },
+    "flight": {
+        "departure": "Departure",
+        "arrival": "Arrival",
+        "duration": "Duration",
+        "airline": "Airline",
+        "flightNumber": "Flight Number",
+        "direct": "Direct",
+        "stops": "Stops",
+        "baggage": "Baggage",
+        "handLuggage": "Hand Luggage",
+        "checkedBag": "Checked Bag"
+    },
+    "weather": {
+        "temperature": "Temperature",
+        "feelsLike": "Feels Like",
+        "humidity": "Humidity",
+        "wind": "Wind",
+        "waves": "Waves",
+        "seaTemp": "Sea Temperature",
+        "uvIndex": "UV Index",
+        "sunrise": "Sunrise",
+        "sunset": "Sunset",
+        "conditions": "Conditions",
+        "excellent": "Excellent",
+        "good": "Good",
+        "moderate": "Moderate",
+        "poor": "Poor"
+    },
+    "touristas": {
+        "title": "Touristas AI",
+        "subtitle": "Your Greek Islands Travel Expert",
+        "greeting": "Hello! I'm Touristas, your AI travel companion for the Greek Cyclades!",
+        "askAnything": "Ask me anything about the Cyclades...",
+        "voiceMode": "Voice Mode",
+        "suggestions": {
+            "planTrip": "Plan my trip",
+            "findHotels": "Find hotels",
+            "ferrySchedules": "Ferry schedules",
+            "beachGuide": "Beach guide",
+            "restaurants": "Restaurant recommendations"
+        }
+    },
+    "meta": {
+        "homeTitle": "Discover Cyclades | Greek Islands Travel Guide",
+        "homeDescription": "Plan your perfect Greek island vacation. Hotels, ferries, flights, and activities across all Cycladic islands.",
+        "islandsTitle": "Cyclades Islands | Complete Travel Guide",
+        "islandsDescription": "Explore all 24 Cycladic islands. From Santorini to hidden gems like Koufonisia.",
+        "hotelsTitle": "Hotels in the Cyclades | Best Accommodations",
+        "hotelsDescription": "Find and book the best hotels across the Greek Cyclades islands.",
+        "ferriesTitle": "Ferry Tickets | Cyclades Island Hopping",
+        "ferriesDescription": "Book ferry tickets between Greek islands. Compare prices and schedules."
+    }
+}

@@ -49,17 +49,17 @@ The best time to visit the Cyclades is from **late April to early October**, wit
 * **Summer (June-September):**
     * Temperature: $25-35^\circ C$ ($77-95^\circ F$)
     * Advantages: Perfect beach weather, warm seas, all attractions and businesses fully operational, vibrant atmosphere.
-    * Considerations: Peak tourist season means more crowds, higher prices for [accommodation](https://greececyclades.com/hotels) and [flights](https://greececyclades.com/flights). Advance bookings are essential.
+    * Considerations: Peak tourist season means more crowds, higher prices for [accommodation](https://discovercyclades.gr/hotels) and [flights](https://discovercyclades.gr/flights). Advance bookings are essential.
 * **Fall (September-October):**
     * Temperature: $20-28^\circ C$ ($68-82^\circ F$)
-    * Advantages: Warm sea temperatures persist, fewer crowds than summer, often more pleasant for [activities](https://greececyclades.com/activities) like hiking, local harvest festivals.
+    * Advantages: Warm sea temperatures persist, fewer crowds than summer, often more pleasant for [activities](https://discovercyclades.gr/activities) like hiking, local harvest festivals.
     * Considerations: Some businesses may begin closing towards the end of October, slightly increased chance of rain.
 * **Winter (November-March):**
     * Temperature: $10-15^\circ C$ ($50-59^\circ F$)
     * Advantages: Authentic local experience, lowest prices, peaceful atmosphere.
-    * Considerations: Many tourist-oriented businesses closed, limited [ferry services](https://greececyclades.com/ferry-guide), weather can be cool and rainy.
+    * Considerations: Many tourist-oriented businesses closed, limited [ferry services](https://discovercyclades.gr/ferry-guide), weather can be cool and rainy.
 
-For detailed weather information and the best times to visit specific islands, check our comprehensive [Weather Guide](https://greececyclades.com/weather).
+For detailed weather information and the best times to visit specific islands, check our comprehensive [Weather Guide](https://discovercyclades.gr/weather).
 
 ## Top 10 Islands in the Cyclades
 
@@ -82,13 +82,13 @@ Santorini needs no introduction. This crescent-shaped island, formed by one of h
     * **Wine Tasting:** Tour local vineyards and sample the crisp, mineral-rich Assyrtiko wines.
     * **Caldera Cruise:** Take a sailing tour around the caldera to appreciate Santorini's dramatic geology and visit the volcanic hot springs.
 * **Where to Stay:**
-    * For the classic Santorini experience, choose [accommodations in Oia or Fira](https://greececyclades.com/hotels) with caldera views. These typically feature infinity pools overlooking the sea and traditional cave-style architecture. For a more budget-friendly option, consider Kamari or Perissa near the beaches.
+    * For the classic Santorini experience, choose [accommodations in Oia or Fira](https://discovercyclades.gr/hotels) with caldera views. These typically feature infinity pools overlooking the sea and traditional cave-style architecture. For a more budget-friendly option, consider Kamari or Perissa near the beaches.
 * **Local Tip:**
     * Visit the less-crowded village of Pyrgos for authentic local cuisine and panoramic views. The sunset view from Prophet Elias Monastery is equally spectacular but far less crowded than Oia.
 * **Budget Planning:**
     * As one of the more expensive Cyclades islands, proper planning can help you manage costs.
 
-Explore our complete [Santorini Guide](https://greececyclades.com/islands/santorini) for detailed information on accommodations, activities, and local tips.
+Explore our complete [Santorini Guide](https://discovercyclades.gr/islands/santorini) for detailed information on accommodations, activities, and local tips.
 
 ### Mykonos: The Cosmopolitan Paradise
 
@@ -109,13 +109,13 @@ Mykonos is the most glamorous of the Cyclades, known for its vibrant nightlife, 
     * **Delos Day Trip:** Visit the nearby archaeological site of Delos, one of Greece's most important historical sites.
     * **Ano Mera:** Experience a more traditional side of Mykonos in this charming inland village.
 * **Where to Stay:**
-    * For nightlife and convenience, stay in [Mykonos Town](https://greececyclades.com/hotels/mykonos). For beach access, consider Ornos or Platis Gialos. For luxury, the beachfront resorts in Elia or Psarou offer privacy and exclusivity.
+    * For nightlife and convenience, stay in [Mykonos Town](https://discovercyclades.gr/hotels/mykonos). For beach access, consider Ornos or Platis Gialos. For luxury, the beachfront resorts in Elia or Psarou offer privacy and exclusivity.
 * **Local Tip:**
     * Visit during the shoulder seasons (May or September) to enjoy the island's beauty with fewer crowds. The water is still warm, and many beach clubs remain open.
 * **Budget Planning:**
     * Mykonos is one of the more expensive Greek islands. Consider visiting in May or September for better prices and fewer crowds.
 
-Discover more about the island's vibrant scene in our [Mykonos Guide](https://greececyclades.com/islands/mykonos), including the best beaches, nightlife spots, and luxury accommodations.
+Discover more about the island's vibrant scene in our [Mykonos Guide](https://discovercyclades.gr/islands/mykonos), including the best beaches, nightlife spots, and luxury accommodations.
 
 ### Milos: The Geological Wonder
 
@@ -136,13 +136,13 @@ Milos is a geological marvel that has been gaining popularity for its otherworld
     * **Ancient Theater of Milos:** Enjoy stunning sea views from this well-preserved Roman theater.
     * **Tsigrado Beach:** Accessible via a ladder and rope, this secluded beach is worth the adventure.
 * **Where to Stay:**
-    * For convenience, stay in [Adamas](https://greececyclades.com/hotels/milos) (the port town) or [Plaka](https://greececyclades.com/hotels/milos) (the capital) for traditional charm. For beach access, consider Pollonia or Provatas.
+    * For convenience, stay in [Adamas](https://discovercyclades.gr/hotels/milos) (the port town) or [Plaka](https://discovercyclades.gr/hotels/milos) (the capital) for traditional charm. For beach access, consider Pollonia or Provatas.
 * **Local Tip:**
     * Rent an ATV or car to explore the island's hidden beaches and villages at your own pace. The island is larger than it appears!
 * **Budget Planning:**
     * More affordable than Santorini or Mykonos, with a good range of accommodations and dining options.
 
-Discover more about this geological paradise in our [Milos Guide](https://greececyclades.com/islands/milos), including the best beaches, boat tours, and local experiences.
+Discover more about this geological paradise in our [Milos Guide](https://discovercyclades.gr/islands/milos), including the best beaches, boat tours, and local experiences.
 
 ### Naxos: The Natural Beauty
 
@@ -163,13 +163,13 @@ Naxos, the largest and most fertile of the Cyclades, offers an incredible divers
     * **Local Cuisine:** Try Naxian specialties like graviera cheese, potatoes, and seafood at traditional tavernas.
     * **Hiking Trails:** Discover ancient paths connecting villages and leading to Byzantine churches and Venetian towers.
 * **Where to Stay:**
-    * [Naxos Town (Chora)](https://greececyclades.com/hotels/naxos) for convenience and nightlife, or the beach resorts of Agios Prokopios and Plaka for a more relaxed atmosphere.
+    * [Naxos Town (Chora)](https://discovercyclades.gr/hotels/naxos) for convenience and nightlife, or the beach resorts of Agios Prokopios and Plaka for a more relaxed atmosphere.
 * **Local Tip:**
     * Rent a car to explore the mountain villages and hidden beaches. The island's size makes it perfect for day trips to discover different landscapes.
 * **Budget Planning:**
     * More affordable than Santorini or Mykonos, with excellent value for money in accommodations and dining.
 
-Explore our comprehensive [Naxos Guide](https://greececyclades.com/islands/naxos) for detailed information on beaches, villages, and local experiences.
+Explore our comprehensive [Naxos Guide](https://discovercyclades.gr/islands/naxos) for detailed information on beaches, villages, and local experiences.
 
 ### Paros: The Perfect Balance
 
@@ -190,13 +190,13 @@ Paros strikes the perfect balance between traditional charm and modern comforts,
     * **Antiparos Day Trip:** Take a short boat ride to the smaller, quieter island of Antiparos.
     * **Butterfly Valley:** Walk through this unique natural park filled with colorful butterflies in summer.
 * **Where to Stay:**
-    * [Naoussa](https://greececyclades.com/hotels/paros) for a charming village atmosphere with great dining and nightlife, or [Parikia](https://greececyclades.com/hotels/paros) for convenience near the port. For beach lovers, consider the areas around Golden Beach or Piso Livadi.
+    * [Naoussa](https://discovercyclades.gr/hotels/paros) for a charming village atmosphere with great dining and nightlife, or [Parikia](https://discovercyclades.gr/hotels/paros) for convenience near the port. For beach lovers, consider the areas around Golden Beach or Piso Livadi.
 * **Local Tip:**
     * Rent a car or ATV to explore the island's hidden gems, including secluded beaches and hilltop villages. The island has an excellent road network making it easy to get around.
 * **Budget Planning:**
     * Slightly more affordable than Santorini or Mykonos, with a good range of accommodations from budget to luxury.
 
-Discover more about this versatile island in our [Paros Guide](https://greececyclades.com/islands/paros), including the best beaches, villages, and activities.
+Discover more about this versatile island in our [Paros Guide](https://discovercyclades.gr/islands/paros), including the best beaches, villages, and activities.
 
 ## Hidden Gems Worth Exploring
 
@@ -219,13 +219,13 @@ Folegandros is a hidden paradise that has managed to retain its authentic Greek 
     * **Hiking Trails:** Explore the network of ancient trails connecting the island's villages and beaches.
     * **Local Cuisine:** Try traditional dishes like matsata (homemade pasta with rooster) and kalasouna (local cheese pie).
 * **Where to Stay:**
-    * [Chora](https://greececyclades.com/hotels/folegandros) for the most authentic experience, or [Karavostasis](https://greececyclades.com/hotels/folegandros) if you prefer to be near the port and beaches.
+    * [Chora](https://discovercyclades.gr/hotels/folegandros) for the most authentic experience, or [Karavostasis](https://discovercyclades.gr/hotels/folegandros) if you prefer to be near the port and beaches.
 * **Local Tip:**
     * Rent an ATV to explore the island's hidden corners, but be prepared for some steep and winding roads.
 * **Budget Planning:**
     * More affordable than the more popular islands, with charming small hotels and guesthouses.
 
-Discover the untouched beauty of Folegandros in our [Folegandros Guide](https://greececyclades.com/islands/folegandros), featuring the best accommodations, beaches, and local experiences.
+Discover the untouched beauty of Folegandros in our [Folegandros Guide](https://discovercyclades.gr/islands/folegandros), featuring the best accommodations, beaches, and local experiences.
 
 ### Sifnos: The Island of Flavors and Artisans
 
@@ -246,13 +246,13 @@ Sifnos is a haven for food lovers and culture enthusiasts, known for its excepti
     * **Chrissopigi Monastery:** Visit this stunning 17th-century monastery on a small peninsula.
     * **Beach Hopping:** Relax at beautiful beaches like Vathi, Platis Gialos, and Faros.
 * **Where to Stay:**
-    * [Platis Gialos](https://greececyclades.com/hotels/sifnos) for beach access, [Artemonas](https://greececyclades.com/hotels/sifnos) for a traditional village experience, or [Kamares](https://greececyclades.com/hotels/sifnos) for convenience near the port.
+    * [Platis Gialos](https://discovercyclades.gr/hotels/sifnos) for beach access, [Artemonas](https://discovercyclades.gr/hotels/sifnos) for a traditional village experience, or [Kamares](https://discovercyclades.gr/hotels/sifnos) for convenience near the port.
 * **Local Tip:**
     * Rent a scooter or car to explore the island's hidden corners and remote beaches. The island's size makes it perfect for day trips to discover different areas.
 * **Budget Planning:**
     * More affordable than the more touristy islands, with excellent value for money in accommodations and dining.
 
-Discover the culinary and cultural treasures of Sifnos in our [Sifnos Guide](https://greececyclades.com/islands/sifnos), featuring the best restaurants, accommodations, and local experiences.
+Discover the culinary and cultural treasures of Sifnos in our [Sifnos Guide](https://discovercyclades.gr/islands/sifnos), featuring the best restaurants, accommodations, and local experiences.
 
 ## When to Visit the Cyclades: A Month-by-Month Guide
 
@@ -310,7 +310,7 @@ Choosing the right time to visit the Cyclades can significantly impact your expe
 * **Budget Travel**: April-May and September-October (best balance of good weather and lower prices)
 * **Local Festivals**: July-August (but also the most crowded)
 
-For the most up-to-date information on weather and events, check our [Cyclades Weather Guide](https://greececyclades.com/weather) and [Events Calendar](https://greececyclades.com/events).
+For the most up-to-date information on weather and events, check our [Cyclades Weather Guide](https://discovercyclades.gr/weather) and [Events Calendar](https://discovercyclades.gr/events).
 
 ## Island Hopping in the Cyclades: Essential Tips and Advice
 
@@ -411,7 +411,7 @@ Island hopping is the best way to experience the diversity of the Cyclades. Here
     * Stay hydrated and protect yourself from the sun
     * Emergency number: 112 (European emergency number)
 
-For detailed ferry schedules and to book your island-hopping adventure, visit our [Ferry Guide](https://greececyclades.com/ferry-guide).
+For detailed ferry schedules and to book your island-hopping adventure, visit our [Ferry Guide](https://discovercyclades.gr/ferry-guide).
 
 ## Sustainable Tourism in the Cyclades: Traveling Responsibly
 
@@ -498,7 +498,7 @@ The Cyclades' natural beauty and cultural heritage are precious resources that n
     * Educate fellow travelers about responsible practices
     * Follow local environmental guidelines and encourage others to do the same
 
-For more information on sustainable travel in Greece, visit our [Sustainable Travel Guide](https://greececyclades.com/sustainable-travel) and learn how you can make a difference during your visit.
+For more information on sustainable travel in Greece, visit our [Sustainable Travel Guide](https://discovercyclades.gr/sustainable-travel) and learn how you can make a difference during your visit.
 
 ## Planning Your Trip to the Cyclades
 
@@ -624,7 +624,7 @@ Careful planning will help you make the most of your Cycladic adventure. Here's 
     * How much is it?: Πόσο κάνει; (POH-soh KAH-nee?)
     * Cheers!: Γεια μας! (YAH-mas!)
 
-For more detailed travel planning resources, visit our [Trip Planning Hub](https://greececyclades.com/plan-your-trip) with packing lists, budget calculators, and customizable itineraries.
+For more detailed travel planning resources, visit our [Trip Planning Hub](https://discovercyclades.gr/plan-your-trip) with packing lists, budget calculators, and customizable itineraries.
 
 ## Conclusion: Your Perfect Cycladic Adventure Awaits
 
@@ -650,7 +650,7 @@ The Cyclades represent the quintessential Greek island experience, offering an e
 
 Whether you're dreaming of a romantic getaway, an active adventure, or a cultural exploration, the Cyclades offer endless possibilities. Use this guide as your starting point, but remember that the true magic of the islands often lies in the unexpected moments – a quiet beach you discover on your own, a local taverna that becomes your favorite, or a sunset that takes your breath away.
 
-**Ready to begin your Cycladic adventure?** Explore our [island guides](https://greececyclades.com/islands), check out [recommended itineraries](https://greececyclades.com/itineraries), or [contact our travel experts](https://greececyclades.com/contact) to start planning your perfect Greek island getaway. The azure waters, whitewashed villages, and warm Greek sunshine are waiting for you!
+**Ready to begin your Cycladic adventure?** Explore our [island guides](https://discovercyclades.gr/islands), check out [recommended itineraries](https://discovercyclades.gr/itineraries), or [contact our travel experts](https://discovercyclades.gr/contact) to start planning your perfect Greek island getaway. The azure waters, whitewashed villages, and warm Greek sunshine are waiting for you!
 
 *What are you most excited to experience in the Cyclades? Share your dream itinerary in the comments below!*
 
@@ -748,4 +748,4 @@ Whether you're dreaming of a romantic getaway, an active adventure, or a cultura
     * Hotel staff: €1-2 per bag for porters, €1-2 per day for housekeeping
     * Tour guides: 10-15% of the tour cost
 
-For more specific questions or personalized travel advice, feel free to [contact our travel experts](https://greececyclades.com/contact) who can help plan your perfect Cycladic adventure!
+For more specific questions or personalized travel advice, feel free to [contact our travel experts](https://discovercyclades.gr/contact) who can help plan your perfect Cycladic adventure!

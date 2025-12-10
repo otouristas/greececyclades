@@ -38,7 +38,7 @@ file_size_limit = "50MiB"
 [auth]
 enabled = true
 site_url = "http://localhost:5173"
-additional_redirect_urls = ["https://greececyclades.com", "https://www.greececyclades.com"]
+additional_redirect_urls = ["https://discovercyclades.gr", "https://www.discovercyclades.gr"]
 jwt_expiry = 3600
 enable_refresh_token_rotation = true
 refresh_token_reuse_interval = 10
@@ -58,7 +58,7 @@ enable_confirmations = false
 enabled = true
 client_id = "env(GOOGLE_CLIENT_ID)"
 secret = "env(GOOGLE_CLIENT_SECRET)"
-redirect_uri = "https://greececyclades.com/auth/callback"
+redirect_uri = "https://discovercyclades.gr/auth/callback"
 
 [auth.external.apple]
 enabled = false

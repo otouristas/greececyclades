@@ -93,7 +93,7 @@ const NaxosGuide: React.FC = () => {
           "@type": "TouristDestination",
           "name": "Naxos Island, Greece",
           "description": "Naxos, the largest and most fertile island of the Cyclades, offers a perfect blend of ancient history, traditional mountain villages, and stunning beaches. With its rich mythology as the childhood home of Zeus and the place where Theseus abandoned Ariadne, Naxos captivates visitors with its diverse landscapes and authentic charm.",
-          "url": "https://greececyclades.com/islands/naxos",
+          "url": "https://discovercyclades.gr/islands/naxos",
           "touristType": {
             "@type": "Audience",
             "audienceType": [
@@ -113,25 +113,25 @@ const NaxosGuide: React.FC = () => {
               "@type": "TouristAttraction",
               "name": "Portara (Apollo's Gate)",
               "description": "The iconic marble doorway standing as the entrance to an unfinished temple of Apollo from 530 BC.",
-              "image": "https://greececyclades.com/images/islands/naxos/gallery/naxos-portara.jpg"
+              "image": "https://discovercyclades.gr/images/islands/naxos/gallery/naxos-portara.jpg"
             },
             {
               "@type": "TouristAttraction",
               "name": "Chora (Naxos Town)",
               "description": "The capital of Naxos with its medieval Kastro district, Venetian mansions, and waterfront promenade.",
-              "image": "https://greececyclades.com/images/islands/naxos/chora.jpg"
+              "image": "https://discovercyclades.gr/images/islands/naxos/chora.jpg"
             },
             {
               "@type": "TouristAttraction",
               "name": "Plaka Beach",
               "description": "One of Naxos' most beautiful beaches with crystal clear waters and golden sand.",
-              "image": "https://greececyclades.com/images/islands/naxos/gallery/naxos-beach.jpg"
+              "image": "https://discovercyclades.gr/images/islands/naxos/gallery/naxos-beach.jpg"
             },
             {
               "@type": "TouristAttraction",
               "name": "Mount Zas (Zeus)",
               "description": "The highest peak in the Cyclades with mythological significance as the childhood home of Zeus.",
-              "image": "https://greececyclades.com/images/islands/naxos/gallery/naxos-mountain.jpg"
+              "image": "https://discovercyclades.gr/images/islands/naxos/gallery/naxos-mountain.jpg"
             }
           ],
           "event": [

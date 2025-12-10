@@ -1,0 +1,340 @@
+{
+    "nav": {
+        "home": "Home",
+        "islands": "Eilanden",
+        "guides": "Gidsen",
+        "hotels": "Hotels",
+        "ferries": "Veerboten",
+        "flights": "Vluchten",
+        "activities": "Activiteiten",
+        "restaurants": "Restaurants",
+        "transfers": "Transfers",
+        "planner": "Reisplanner",
+        "community": "Community",
+        "business": "Voor Bedrijven",
+        "signIn": "Inloggen",
+        "signUp": "Registreren",
+        "myAccount": "Mijn Account",
+        "myTrips": "Mijn Reizen",
+        "myProfile": "Mijn Profiel",
+        "favorites": "Favorieten",
+        "settings": "Instellingen",
+        "logout": "Uitloggen",
+        "signOut": "Uitloggen",
+        "search": "Zoeken",
+        "searchPlaceholder": "Zoek eilanden, gidsen, activiteiten..."
+    },
+    "home": {
+        "hero": {
+            "badge": "AI-aangedreven reizen",
+            "titlePart1": "Ontdek de",
+            "titleHighlight": "Cycladen",
+            "subtitle": "Van de iconische zonsondergangen op Santorini tot de verborgen stranden van Milos. Plan uw perfecte Griekse avontuur met Touristas AI.",
+            "imageAlt": "Cycladen - De prachtige Griekse eilanden in de Egeïsche Zee",
+            "ctaPrimary": "Ontmoet Touristas AI",
+            "ctaSecondary": "Verken Eilanden",
+            "stats": {
+                "islands": "Eilanden",
+                "tips": "Lokale Tips",
+                "visitors": "Jaarlijkse Bezoekers",
+                "sunnyDays": "Zonnige Dagen"
+            }
+        },
+        "socialProof": {
+            "happyTravelers": "Tevreden Reizigers",
+            "avgRating": "Gemiddelde Beoordeling",
+            "secureBooking": "Veilig Boeken",
+            "aiAssistant": "AI Reisassistent"
+        },
+        "destinations": {
+            "badge": "Eilanden Ontdekken",
+            "titlePart1": "Verken de",
+            "titleHighlight": "Cycladen",
+            "subtitle": "24 prachtige eilanden, elk met zijn eigen unieke karakter en charme",
+            "viewAll": "Bekijk Alle 24 Eilanden",
+            "exploreGuide": "Verken de Gids",
+            "tags": {
+                "mostPopular": "Meest Populair",
+                "trending": "Trending",
+                "bestValue": "Beste Prijs-Kwaliteit",
+                "hiddenGem": "Verborgen Parel"
+            },
+            "santorini": {
+                "desc": "Iconische zonsondergangen & caldera-uitzichten"
+            },
+            "mykonos": {
+                "desc": "Kosmopolitische charme & nachtleven"
+            },
+            "naxos": {
+                "desc": "Familiestranden & lokale keuken"
+            },
+            "paros": {
+                "desc": "Gouden stranden & windsurfen"
+            },
+            "milos": {
+                "desc": "Vulkanische stranden & maanlandschappen"
+            },
+            "ios": {
+                "desc": "Feestparadijs & strandleven"
+            }
+        },
+        "services": {
+            "titlePart1": "Alles Wat U",
+            "titleHighlight": "Nodig Heeft",
+            "subtitle": "Boek hotels, veerboten, tours en huurauto's - alles op één plek",
+            "needHelp": "Hulp nodig bij plannen?",
+            "askAI": "Vraag Touristas AI",
+            "hotels": {
+                "title": "Hotels & Villa's",
+                "desc": "Geselecteerde accommodaties op alle eilanden",
+                "stats": "2.000+ accommodaties"
+            },
+            "ferries": {
+                "title": "Veerboot Tickets",
+                "desc": "Stressvrij eilandhoppen",
+                "stats": "50+ routes dagelijks"
+            },
+            "tours": {
+                "title": "Tours & Activiteiten",
+                "desc": "Onvergetelijke ervaringen wachten op u",
+                "stats": "500+ ervaringen"
+            },
+            "cars": {
+                "title": "Autoverhuur",
+                "desc": "Verken op uw eigen tempo",
+                "stats": "Vanaf €35/dag"
+            }
+        },
+        "newsletter": {
+            "title": "Blijf Op De Hoogte",
+            "subtitle": "Ontvang reistips en exclusieve aanbiedingen",
+            "placeholder": "Voer uw e-mailadres in",
+            "button": "Abonneren op Nieuwsbrief",
+            "disclaimer": "Door u te abonneren, stemt u in met het ontvangen van reisupdates. U kunt zich op elk moment uitschrijven.",
+            "successTitle": "Klaar!",
+            "successMessage": "Controleer uw inbox voor een welkomstmail."
+        },
+        "cta": {
+            "titlePart1": "Klaar om de",
+            "titleHighlight": "Cycladen te Verkennen",
+            "subtitle": "Sluit u aan bij duizenden reizigers die hun perfecte Griekse avontuur hebben ontdekt met ons AI-platform.",
+            "startPlanning": "Begin met Plannen",
+            "browseIslands": "Bekijk Eilanden",
+            "freeToUse": "Gratis te gebruiken",
+            "noFees": "Geen boekingskosten",
+            "aiPowered": "AI-aangedreven"
+        },
+        "touristasAI": {
+            "badge": "AI-aangedreven Reizen",
+            "titlePart1": "Ontmoet",
+            "titleHighlight": "Touristas AI",
+            "subtitle": "Uw persoonlijke orakel voor de Griekse eilanden. Vraag alles over de Cycladen - van verborgen stranden tot lokale restaurants.",
+            "cta": {
+                "try": "Probeer Touristas AI",
+                "chat": "Start Gesprek"
+            },
+            "features": {
+                "knowledge": {
+                    "title": "Lokale Kennis",
+                    "desc": "Insider tips van experts"
+                },
+                "itineraries": {
+                    "title": "Slimme Routes",
+                    "desc": "Gepersonaliseerde dagplannen"
+                },
+                "matching": {
+                    "title": "Eiland Matching",
+                    "desc": "Vind uw perfecte eiland"
+                },
+                "instant": {
+                    "title": "Directe Antwoorden",
+                    "desc": "24/7 reisassistentie"
+                }
+            },
+            "queries": {
+                "plan7day": "Plan een 7-daagse eilandhopping reis...",
+                "milosBeaches": "De beste stranden in Milos met minder drukte...",
+                "honeymoon": "Romantisch huwelijksreis schema in Santorini...",
+                "familyHotels": "Gezinsvriendelijke hotels in Naxos...",
+                "nightlife": "Welk eiland is het beste voor nachtleven?"
+            },
+            "demo": {
+                "status": "Online • Klaar om te helpen",
+                "response": "Ik help u graag bij het plannen van uw perfecte Cycladen avontuur...",
+                "placeholder": "Vraag me alles over de Cycladen...",
+                "badge": "Powered by AI 🇬🇷"
+            }
+        }
+    },
+    "hero": {
+        "title": "Ontdek de Cycladen",
+        "subtitle": "Uw poort naar de mooiste Griekse eilanden",
+        "searchPlaceholder": "Waar wilt u naartoe?",
+        "searchButton": "Zoeken",
+        "popularDestinations": "Populaire Bestemmingen"
+    },
+    "islands": {
+        "santorini": "Santorini",
+        "mykonos": "Mykonos",
+        "paros": "Paros",
+        "naxos": "Naxos",
+        "milos": "Milos",
+        "ios": "Ios",
+        "sifnos": "Sifnos",
+        "tinos": "Tinos",
+        "syros": "Syros",
+        "andros": "Andros",
+        "amorgos": "Amorgos",
+        "folegandros": "Folegandros",
+        "koufonisia": "Koufonisia",
+        "serifos": "Serifos",
+        "antiparos": "Antiparos",
+        "kimolos": "Kimolos",
+        "sikinos": "Sikinos",
+        "anafi": "Anafi",
+        "donousa": "Donousa",
+        "schinoussa": "Schinoussa",
+        "iraklia": "Iraklia",
+        "kea": "Kea",
+        "kythnos": "Kythnos",
+        "thirasia": "Thirasia"
+    },
+    "common": {
+        "search": "Zoeken",
+        "book": "Boeken",
+        "bookNow": "Nu Boeken",
+        "viewDetails": "Details Bekijken",
+        "learnMore": "Meer Info",
+        "seeAll": "Alles Bekijken",
+        "from": "Van",
+        "to": "Naar",
+        "date": "Datum",
+        "guests": "Gasten",
+        "nights": "Nachten",
+        "perNight": "per nacht",
+        "perPerson": "per persoon",
+        "total": "Totaal",
+        "loading": "Laden...",
+        "error": "Fout",
+        "success": "Succes",
+        "cancel": "Annuleren",
+        "confirm": "Bevestigen",
+        "save": "Opslaan",
+        "delete": "Verwijderen",
+        "edit": "Bewerken",
+        "share": "Delen",
+        "close": "Sluiten",
+        "back": "Terug",
+        "next": "Volgende",
+        "previous": "Vorige",
+        "yes": "Ja",
+        "no": "Nee",
+        "or": "of",
+        "and": "en",
+        "all": "Alle",
+        "filter": "Filteren",
+        "sort": "Sorteren",
+        "results": "Resultaten",
+        "noResults": "Geen resultaten gevonden",
+        "tryAgain": "Opnieuw proberen"
+    },
+    "booking": {
+        "checkIn": "Inchecken",
+        "checkOut": "Uitchecken",
+        "adults": "Volwassenen",
+        "children": "Kinderen",
+        "rooms": "Kamers",
+        "selectDates": "Selecteer data",
+        "availability": "Beschikbaarheid Controleren",
+        "instantBooking": "Direct Boeken",
+        "freeCancel": "Gratis Annuleren",
+        "breakfast": "Ontbijt Inbegrepen",
+        "confirmBooking": "Boeking Bevestigen",
+        "bookingConfirmed": "Boeking Bevestigd!",
+        "confirmationCode": "Bevestigingscode",
+        "paymentDetails": "Betalingsgegevens",
+        "guestDetails": "Gastgegevens",
+        "specialRequests": "Speciale Verzoeken"
+    },
+    "ferry": {
+        "departure": "Vertrek",
+        "arrival": "Aankomst",
+        "duration": "Duur",
+        "vessel": "Schip",
+        "class": "Klasse",
+        "economy": "Economy",
+        "business": "Business",
+        "cabins": "Hutten",
+        "vehicles": "Voertuigen",
+        "passengers": "Passagiers",
+        "oneWay": "Enkele Reis",
+        "roundTrip": "Retour",
+        "selectSeats": "Plaatsen Kiezen",
+        "deckSeating": "Dek",
+        "airSeating": "Vliegtuigstoel"
+    },
+    "flight": {
+        "departure": "Vertrek",
+        "arrival": "Aankomst",
+        "duration": "Duur",
+        "airline": "Luchtvaartmaatschappij",
+        "flightNumber": "Vluchtnummer",
+        "direct": "Direct",
+        "stops": "Tussenstops",
+        "baggage": "Bagage",
+        "handLuggage": "Handbagage",
+        "checkedBag": "Ruimbagage"
+    },
+    "weather": {
+        "temperature": "Temperatuur",
+        "feelsLike": "Gevoelstemperatuur",
+        "humidity": "Luchtvochtigheid",
+        "wind": "Wind",
+        "waves": "Golven",
+        "seaTemp": "Zeetemperatuur",
+        "uvIndex": "UV-Index",
+        "sunrise": "Zonsopgang",
+        "sunset": "Zonsondergang",
+        "conditions": "Omstandigheden",
+        "excellent": "Uitstekend",
+        "good": "Goed",
+        "moderate": "Matig",
+        "poor": "Slecht"
+    },
+    "touristas": {
+        "title": "Touristas AI",
+        "subtitle": "Uw Expert voor Griekse Eilanden",
+        "greeting": "Hallo! Ik ben Touristas, uw AI-reisgenoot voor de Cycladen!",
+        "askAnything": "Vraag me alles over de Cycladen...",
+        "voiceMode": "Spraakmodel",
+        "suggestions": {
+            "planTrip": "Plan mijn reis",
+            "findHotels": "Hotels zoeken",
+            "ferrySchedules": "Veerbootschema's",
+            "beachGuide": "Strandgids",
+            "restaurants": "Restaurant-aanbevelingen"
+        }
+    },
+    "footer": {
+        "about": "Over Ons",
+        "contact": "Contact",
+        "privacy": "Privacybeleid",
+        "terms": "Gebruiksvoorwaarden",
+        "copyright": "© 2024 Discover Cyclades. Alle rechten voorbehouden.",
+        "followUs": "Volg Ons",
+        "newsletter": "Nieuwsbrief",
+        "subscribeText": "Schrijf u in voor reistips en aanbiedingen",
+        "emailPlaceholder": "Uw e-mail",
+        "subscribe": "Inschrijven"
+    },
+    "meta": {
+        "homeTitle": "Discover Cyclades | Griekse Eilanden Reisgids",
+        "homeDescription": "Plan uw perfecte vakantie op de Griekse eilanden. Hotels, veerboten, vluchten en activiteiten.",
+        "islandsTitle": "Cycladen Eilanden | Complete Reisgids",
+        "islandsDescription": "Ontdek alle 24 Cycladen-eilanden. Van Santorini tot verborgen pareltjes.",
+        "hotelsTitle": "Hotels op de Cycladen | Beste Accommodaties",
+        "hotelsDescription": "Vind en boek de beste hotels op de Cycladen.",
+        "ferriesTitle": "Veerboottickets | Island Hopping Cycladen",
+        "ferriesDescription": "Boek veerboottickets tussen Griekse eilanden. Vergelijk prijzen en schema's."
+    }
+}

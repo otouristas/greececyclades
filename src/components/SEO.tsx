@@ -2,7 +2,7 @@
 import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router-dom';
 
-const SITE_URL = 'https://greececyclades.com';
+const SITE_URL = 'https://discovercyclades.gr';
 const SITE_NAME = 'Discover Cyclades';
 
 export interface FAQItem {

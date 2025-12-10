@@ -66,7 +66,7 @@ export default function Activities() {
       <SEO
         title="Best Cyclades Activities 2025: Water Sports, Hiking, Tours & More"
         description="Top things to do in Cyclades: sailing, diving, hiking, cooking classes, wine tours. Book activities on any island with local experts. Unforgettable experiences await."
-        canonicalUrl="https://greececyclades.com/activities"
+        canonicalUrl="https://discovercyclades.gr/activities"
         pageType="activities"
         breadcrumbs={[
           { name: 'Home', url: '/' },

@@ -1,22 +1,24 @@
 import { Link } from 'react-router-dom';
 import { Sparkles, MessageSquare, Compass, Map, Brain, Zap, ArrowRight } from 'lucide-react';
 import { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useTheme } from '../../contexts/ThemeContext';
-
-const typewriterQueries = [
-    "Plan a 7-day island hopping trip...",
-    "Best beaches in Milos with less crowds...",
-    "Romantic honeymoon itinerary in Santorini...",
-    "Family-friendly hotels in Naxos...",
-    "Which island is best for nightlife?",
-];
 
 export default function TouristasAIFeatureSection() {
     const { resolvedTheme } = useTheme();
+    const { t } = useTranslation();
     const isDark = resolvedTheme === 'dark';
     const [currentQuery, setCurrentQuery] = useState(0);
     const [displayText, setDisplayText] = useState('');
     const [isTyping, setIsTyping] = useState(true);
+
+    const typewriterQueries = [
+        t('home.touristasAI.queries.plan7day'),
+        t('home.touristasAI.queries.milosBeaches'),
+        t('home.touristasAI.queries.honeymoon'),
+        t('home.touristasAI.queries.familyHotels'),
+        t('home.touristasAI.queries.nightlife'),
+    ];
 
     useEffect(() => {
         const query = typewriterQueries[currentQuery];
@@ -42,7 +44,14 @@ export default function TouristasAIFeatureSection() {
                 setIsTyping(true);
             }
         }
-    }, [displayText, isTyping, currentQuery]);
+    }, [displayText, isTyping, currentQuery, typewriterQueries]);
+
+    const features = [
+        { icon: Brain, titleKey: 'home.touristasAI.features.knowledge.title', descKey: 'home.touristasAI.features.knowledge.desc' },
+        { icon: Compass, titleKey: 'home.touristasAI.features.itineraries.title', descKey: 'home.touristasAI.features.itineraries.desc' },
+        { icon: Map, titleKey: 'home.touristasAI.features.matching.title', descKey: 'home.touristasAI.features.matching.desc' },
+        { icon: Zap, titleKey: 'home.touristasAI.features.instant.title', descKey: 'home.touristasAI.features.instant.desc' },
+    ];
 
     return (
         <section className={`py-24 relative overflow-hidden transition-colors duration-300 ${isDark ? 'bg-gradient-to-br from-dark-card via-dark-bg to-dark-card' : 'bg-gradient-to-br from-gray-100 via-white to-gray-100'
@@ -57,39 +66,33 @@ export default function TouristasAIFeatureSection() {
                     <div>
                         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-cyclades-turquoise/10 text-cyclades-turquoise text-sm font-medium mb-6 border border-cyclades-turquoise/20">
                             <Sparkles className="h-4 w-4" />
-                            <span>AI-Powered Travel</span>
+                            <span>{t('home.touristasAI.badge')}</span>
                         </div>
 
                         <h2 className={`text-4xl md:text-5xl font-display font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                            Meet <span className="text-gradient">Touristas AI</span>
+                            {t('home.touristasAI.titlePart1')} <span className="text-gradient">{t('home.touristasAI.titleHighlight')}</span>
                         </h2>
 
                         <p className={`text-xl mb-8 leading-relaxed ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
-                            Your personal Greek islands oracle. Ask anything about the Cyclades -
-                            from hidden beaches to local restaurants, ferry schedules to island-hopping routes.
+                            {t('home.touristasAI.subtitle')}
                         </p>
 
                         {/* Feature list */}
                         <div className="grid sm:grid-cols-2 gap-4 mb-12">
-                            {[
-                                { icon: Brain, title: 'Local Knowledge', desc: 'Insider tips from experts' },
-                                { icon: Compass, title: 'Smart Itineraries', desc: 'Personalized day-by-day plans' },
-                                { icon: Map, title: 'Island Matching', desc: 'Find your perfect island' },
-                                { icon: Zap, title: 'Instant Answers', desc: '24/7 travel assistance' },
-                            ].map((feature) => (
+                            {features.map((feature) => (
                                 <div
-                                    key={feature.title}
+                                    key={feature.titleKey}
                                     className={`flex items-start gap-3 p-4 rounded-xl border group transition-colors ${isDark
-                                            ? 'bg-dark-card/50 border-dark-border/30 hover:border-cyclades-turquoise/30'
-                                            : 'bg-white border-gray-200 hover:border-cyclades-turquoise/50 shadow-sm'
+                                        ? 'bg-dark-card/50 border-dark-border/30 hover:border-cyclades-turquoise/30'
+                                        : 'bg-white border-gray-200 hover:border-cyclades-turquoise/50 shadow-sm'
                                         }`}
                                 >
                                     <div className="p-2 rounded-lg bg-cyclades-turquoise/10 group-hover:bg-cyclades-turquoise/20 transition-colors">
                                         <feature.icon className="w-5 h-5 text-cyclades-turquoise" />
                                     </div>
                                     <div>
-                                        <h4 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{feature.title}</h4>
-                                        <p className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>{feature.desc}</p>
+                                        <h4 className={`font-semibold ${isDark ? 'text-white' : 'text-gray-900'}`}>{t(feature.titleKey)}</h4>
+                                        <p className={`text-sm ${isDark ? 'text-white/60' : 'text-gray-500'}`}>{t(feature.descKey)}</p>
                                     </div>
                                 </div>
                             ))}
@@ -102,14 +105,14 @@ export default function TouristasAIFeatureSection() {
                                 className="inline-flex items-center px-6 py-3 bg-cyclades-turquoise text-dark-bg rounded-xl font-semibold hover:bg-cyclades-turquoise/90 transition-all shadow-glow"
                             >
                                 <Sparkles className="mr-2 h-5 w-5" />
-                                Try Touristas AI
+                                {t('home.touristasAI.cta.try')}
                             </Link>
                             <Link
                                 to="/touristas-ai/chat"
                                 className="inline-flex items-center px-6 py-3 glass-dark text-white rounded-xl font-semibold hover:bg-white/10 transition-all border border-dark-border/50"
                             >
                                 <MessageSquare className="mr-2 h-5 w-5" />
-                                Start Chatting
+                                {t('home.touristasAI.cta.chat')}
                             </Link>
                         </div>
                     </div>
@@ -129,7 +132,7 @@ export default function TouristasAIFeatureSection() {
                                 />
                                 <div>
                                     <h4 className="font-semibold text-white">Touristas AI</h4>
-                                    <p className="text-xs text-cyclades-turquoise">Online • Ready to help</p>
+                                    <p className="text-xs text-cyclades-turquoise">{t('home.touristasAI.demo.status')}</p>
                                 </div>
                             </div>
 
@@ -149,7 +152,7 @@ export default function TouristasAIFeatureSection() {
                                 <div className="flex justify-start">
                                     <div className="max-w-[80%] bg-dark-bg/50 rounded-2xl rounded-bl-sm px-4 py-3 border border-dark-border/30">
                                         <p className="text-white/80 text-sm">
-                                            <span className="text-cyclades-turquoise">✨ Γεια σου!</span> I'd love to help you plan your perfect Cyclades adventure...
+                                            <span className="text-cyclades-turquoise">✨ Γεια σου!</span> {t('home.touristasAI.demo.response')}
                                         </p>
                                     </div>
                                 </div>
@@ -159,7 +162,7 @@ export default function TouristasAIFeatureSection() {
                             <div className="flex items-center gap-3 p-3 bg-dark-bg/50 rounded-xl border border-dark-border/30">
                                 <input
                                     type="text"
-                                    placeholder="Ask me anything about the Cyclades..."
+                                    placeholder={t('home.touristasAI.demo.placeholder')}
                                     className="flex-1 bg-transparent text-white placeholder-white/40 outline-none text-sm"
                                     disabled
                                 />
@@ -171,7 +174,7 @@ export default function TouristasAIFeatureSection() {
 
                         {/* Floating badge */}
                         <div className="absolute -bottom-4 -right-4 bg-accent-gold text-dark-bg text-xs font-bold px-4 py-2 rounded-full shadow-lg">
-                            Powered by AI 🇬🇷
+                            {t('home.touristasAI.demo.badge')}
                         </div>
                     </div>
                 </div>

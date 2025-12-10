@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#1E2E48">
+    <title>Offline - Discover Cyclades</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+            background: linear-gradient(135deg, #1E2E48 0%, #2d4a6f 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            padding: 20px;
+        }
+
+        .offline-container {
+            text-align: center;
+            max-width: 400px;
+        }
+
+        .offline-icon {
+            width: 120px;
+            height: 120px;
+            margin-bottom: 24px;
+            opacity: 0.9;
+        }
+
+        h1 {
+            font-size: 28px;
+            margin-bottom: 16px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 16px;
+            opacity: 0.85;
+            line-height: 1.6;
+            margin-bottom: 24px;
+        }
+
+        .retry-btn {
+            background: #E3D7C3;
+            color: #1E2E48;
+            border: none;
+            padding: 14px 32px;
+            font-size: 16px;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .retry-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+        }
+
+        .cached-pages {
+            margin-top: 40px;
+            padding-top: 24px;
+            border-top: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .cached-pages h2 {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 16px;
+            opacity: 0.9;
+        }
+
+        .cached-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            justify-content: center;
+        }
+
+        .cached-links a {
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-size: 14px;
+            transition: background 0.2s;
+        }
+
+        .cached-links a:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .wave {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 1440 100'%3E%3Cpath fill='%23ffffff' fill-opacity='0.1' d='M0,40 C400,80 800,0 1440,40 L1440,100 L0,100 Z'%3E%3C/path%3E%3C/svg%3E");
+            background-size: cover;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="offline-container">
+        <svg class="offline-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+            <path
+                d="M18.364 5.636a9 9 0 0 1 0 12.728m-2.829-2.829a5 5 0 0 0 0-7.07M5.636 18.364a9 9 0 0 1 0-12.728m2.829 2.829a5 5 0 0 0 0 7.07"
+                stroke-linecap="round" />
+            <line x1="2" y1="2" x2="22" y2="22" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+            <circle cx="12" cy="12" r="2" fill="currentColor" />
+        </svg>
+
+        <h1>You're Offline</h1>
+        <p>It looks like you've lost your connection. Don't worry - you can still explore cached island guides!</p>
+
+        <button class="retry-btn" onclick="window.location.reload()">
+            Try Again
+        </button>
+
+        <div class="cached-pages">
+            <h2>Available Offline:</h2>
+            <div class="cached-links" id="cachedLinks">
+                <!-- Populated by JS -->
+            </div>
+        </div>
+    </div>
+
+    <div class="wave"></div>
+
+    <script>
+        // Check for cached pages and display links
+        async function showCachedPages() {
+            const container = document.getElementById('cachedLinks');
+
+            if ('caches' in window) {
+                try {
+                    const cache = await caches.open('island-guides-v1');
+                    const keys = await cache.keys();
+
+                    if (keys.length === 0) {
+                        container.innerHTML = '<span style="opacity: 0.7">No pages cached yet</span>';
+                        return;
+                    }
+
+                    const links = keys.map(request => {
+                        const url = new URL(request.url);
+                        const name = url.pathname.split('/').pop() || 'Home';
+                        const displayName = name.charAt(0).toUpperCase() + name.slice(1);
+                        return `<a href="${url.pathname}">${displayName}</a>`;
+                    });
+
+                    container.innerHTML = links.join('');
+                } catch (e) {
+                    container.innerHTML = '<span style="opacity: 0.7">Unable to check cache</span>';
+                }
+            } else {
+                container.innerHTML = '<span style="opacity: 0.7">Caching not supported</span>';
+            }
+        }
+
+        showCachedPages();
+    </script>
+</body>
+
+</html>

@@ -62,6 +62,21 @@ const BusinessSignIn = lazy(() => import('./pages/BusinessSignIn'));
 const BusinessDashboard = lazy(() => import('./pages/BusinessDashboard'));
 const Directory = lazy(() => import('./pages/Directory'));
 const HotelMarketplace = lazy(() => import('./pages/HotelMarketplace'));
+
+// New Mega Features
+const IslandHoppingPlannerPage = lazy(() => import('./pages/IslandHoppingPlannerPage'));
+const PackingListPage = lazy(() => import('./pages/PackingListPage'));
+const PriceAlertsPage = lazy(() => import('./pages/PriceAlertsPage'));
+const CommunityPage = lazy(() => import('./pages/CommunityPage'));
+const GroupTripPage = lazy(() => import('./pages/GroupTripPage'));
+const TravelStatsPage = lazy(() => import('./pages/TravelStatsPage'));
+const InspirationFeedPage = lazy(() => import('./pages/InspirationFeedPage'));
+const RestaurantBookingPage = lazy(() => import('./pages/RestaurantBookingPage'));
+const TransferComparisonPage = lazy(() => import('./pages/TransferComparisonPage'));
+const MicroclimateWeatherPage = lazy(() => import('./pages/MicroclimateWeatherPage'));
+const BusinessAnalyticsPage = lazy(() => import('./pages/BusinessAnalyticsPage'));
+const TouristasEnhancedPage = lazy(() => import('./pages/TouristasEnhancedPage'));
+
 // Booking pages
 const BookingPage = lazy(() => import('./pages/BookingPage'));
 const BookingResultsPage = lazy(() => import('./pages/BookingResultsPage'));
@@ -158,7 +173,25 @@ function AppContent() {
               <Route path="/terms-of-service" element={<Navigate to="/terms" replace />} />
               <Route path="/transportation" element={<Navigate to="/transfers" replace />} />
               <Route path="/business/signin" element={<Navigate to="/signin" replace />} />
-              <Route path="/planner" element={<Navigate to="/trip-planner" replace />} />
+
+              {/* New Mega Features */}
+              <Route path="/planner" element={<IslandHoppingPlannerPage />} />
+              <Route path="/island-hopper" element={<IslandHoppingPlannerPage />} />
+              <Route path="/packing-list" element={<PackingListPage />} />
+              <Route path="/price-alerts" element={<PriceAlertsPage />} />
+              <Route path="/community" element={<CommunityPage />} />
+              <Route path="/group/:id" element={<GroupTripPage />} />
+              <Route path="/my-stats" element={<TravelStatsPage />} />
+              <Route path="/inspiration" element={<InspirationFeedPage />} />
+              <Route path="/restaurants" element={<RestaurantBookingPage />} />
+              <Route path="/restaurant-booking" element={<RestaurantBookingPage />} />
+              <Route path="/transfer-comparison" element={<TransferComparisonPage />} />
+              <Route path="/taxi" element={<TransferComparisonPage />} />
+              <Route path="/microclimate-weather" element={<MicroclimateWeatherPage />} />
+              <Route path="/beach-weather" element={<MicroclimateWeatherPage />} />
+              <Route path="/business/analytics" element={<BusinessAnalyticsPage />} />
+              <Route path="/touristas" element={<TouristasEnhancedPage />} />
+              <Route path="/ai-assistant" element={<TouristasEnhancedPage />} />
 
               {/* Travel guide redirects */}
               <Route path="/travel-guide/santorini" element={<Navigate to="/guides/santorini" replace />} />

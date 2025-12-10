@@ -148,7 +148,7 @@ const helpCategories = [
       {
         id: 'contact',
         title: 'Contact Us',
-        content: 'Email: hello@greececyclades.com. Use our AI chat for instant answers. We typically respond to emails within 24 hours.',
+        content: 'Email: hello@discovercyclades.gr. Use our AI chat for instant answers. We typically respond to emails within 24 hours.',
         tip: 'Try our Touristas AI for instant answers to common questions!'
       },
       {

@@ -86,7 +86,7 @@ const SantoriniGuide: React.FC = () => {
           "@type": "TouristDestination",
           "name": "Santorini Island, Greece",
           "description": "Rising dramatically from the Aegean Sea, Santorini is a masterpiece of natural beauty and human architecture. This crescent-shaped island, born from one of history's largest volcanic eruptions, offers a spectacular blend of pristine white-washed buildings, multicolored cliffs, and the world's most breathtaking sunsets.",
-          "url": "https://greececyclades.com/islands/santorini",
+          "url": "https://discovercyclades.gr/islands/santorini",
           "touristType": {
             "@type": "Audience",
             "audienceType": [
@@ -106,25 +106,25 @@ const SantoriniGuide: React.FC = () => {
               "@type": "TouristAttraction",
               "name": "Oia Village",
               "description": "Famous for its stunning sunsets, blue-domed churches, and winding marble streets. The most photographed location in Santorini.",
-              "image": "https://greececyclades.com/images/islands/santorini/oia-sunset.jpg"
+              "image": "https://discovercyclades.gr/images/islands/santorini/oia-sunset.jpg"
             },
             {
               "@type": "TouristAttraction",
               "name": "Akrotiri Archaeological Site",
               "description": "Ancient ruins of Akrotiri, the 'Minoan Pompeii', preserved under layers of volcanic ash from the eruption around 1600 BC.",
-              "image": "https://greececyclades.com/images/islands/santorini/akrotiri.jpg"
+              "image": "https://discovercyclades.gr/images/islands/santorini/akrotiri.jpg"
             },
             {
               "@type": "TouristAttraction",
               "name": "Red Beach",
               "description": "The dramatic Red Beach with its volcanic cliffs and distinctive red sand, surrounded by steep red cliffs.",
-              "image": "https://greececyclades.com/images/islands/santorini/red-beach.jpg"
+              "image": "https://discovercyclades.gr/images/islands/santorini/red-beach.jpg"
             },
             {
               "@type": "TouristAttraction",
               "name": "Santorini Wineries",
               "description": "Unique vineyards with basket-trained vines growing in volcanic soil, producing distinctive wines like Assyrtiko.",
-              "image": "https://greececyclades.com/images/islands/santorini/vineyard.jpg"
+              "image": "https://discovercyclades.gr/images/islands/santorini/vineyard.jpg"
             }
           ],
           "event": [

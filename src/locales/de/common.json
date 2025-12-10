@@ -1,0 +1,340 @@
+{
+    "nav": {
+        "home": "Startseite",
+        "islands": "Inseln",
+        "guides": "Reiseführer",
+        "hotels": "Hotels",
+        "ferries": "Fähren",
+        "flights": "Flüge",
+        "activities": "Aktivitäten",
+        "restaurants": "Restaurants",
+        "transfers": "Transfers",
+        "planner": "Reiseplaner",
+        "community": "Community",
+        "business": "Für Unternehmen",
+        "signIn": "Anmelden",
+        "signUp": "Registrieren",
+        "myAccount": "Mein Konto",
+        "myTrips": "Meine Reisen",
+        "myProfile": "Mein Profil",
+        "favorites": "Favoriten",
+        "settings": "Einstellungen",
+        "logout": "Abmelden",
+        "signOut": "Abmelden",
+        "search": "Suchen",
+        "searchPlaceholder": "Inseln, Reiseführer, Aktivitäten suchen..."
+    },
+    "home": {
+        "hero": {
+            "badge": "KI-gestütztes Reisen",
+            "titlePart1": "Entdecken Sie die",
+            "titleHighlight": "Kykladen",
+            "subtitle": "Von den ikonischen Sonnenuntergängen auf Santorin bis zu den versteckten Stränden von Milos. Planen Sie Ihr perfektes griechisches Abenteuer mit Touristas AI.",
+            "imageAlt": "Kykladen - Die wunderschönen griechischen Inseln in der Ägäis",
+            "ctaPrimary": "Touristas AI Kennenlernen",
+            "ctaSecondary": "Inseln Erkunden",
+            "stats": {
+                "islands": "Inseln",
+                "tips": "Lokale Tipps",
+                "visitors": "Jährliche Besucher",
+                "sunnyDays": "Sonnentage"
+            }
+        },
+        "socialProof": {
+            "happyTravelers": "Zufriedene Reisende",
+            "avgRating": "Durchschnittsbewertung",
+            "secureBooking": "Sichere Buchung",
+            "aiAssistant": "KI-Reiseassistent"
+        },
+        "destinations": {
+            "badge": "Insel-Entdeckung",
+            "titlePart1": "Erkunden Sie die",
+            "titleHighlight": "Kykladen",
+            "subtitle": "24 atemberaubende Inseln, jede mit ihrem eigenen Charakter und Charme",
+            "viewAll": "Alle 24 Inseln Anzeigen",
+            "exploreGuide": "Guide Erkunden",
+            "tags": {
+                "mostPopular": "Beliebteste",
+                "trending": "Im Trend",
+                "bestValue": "Bestes Preis-Leistung",
+                "hiddenGem": "Geheimtipp"
+            },
+            "santorini": {
+                "desc": "Ikonische Sonnenuntergänge & Kaldera-Blick"
+            },
+            "mykonos": {
+                "desc": "Kosmopolitischer Charme & Nachtleben"
+            },
+            "naxos": {
+                "desc": "Familienstrände & lokale Küche"
+            },
+            "paros": {
+                "desc": "Goldene Strände & Windsurfen"
+            },
+            "milos": {
+                "desc": "Vulkanstrände & Mondlandschaften"
+            },
+            "ios": {
+                "desc": "Party-Paradies & Strandleben"
+            }
+        },
+        "services": {
+            "titlePart1": "Alles Was Sie",
+            "titleHighlight": "Brauchen",
+            "subtitle": "Buchen Sie Hotels, Fähren, Touren und Mietwagen - alles an einem Ort",
+            "needHelp": "Hilfe bei der Planung?",
+            "askAI": "Touristas AI Fragen",
+            "hotels": {
+                "title": "Hotels & Villen",
+                "desc": "Ausgewählte Unterkünfte auf allen Inseln",
+                "stats": "2.000+ Unterkünfte"
+            },
+            "ferries": {
+                "title": "Fährtickets",
+                "desc": "Stressfreies Inselhopping",
+                "stats": "50+ Routen täglich"
+            },
+            "tours": {
+                "title": "Touren & Aktivitäten",
+                "desc": "Unvergessliche Erlebnisse erwarten Sie",
+                "stats": "500+ Erlebnisse"
+            },
+            "cars": {
+                "title": "Mietwagen",
+                "desc": "Erkunden Sie in Ihrem Tempo",
+                "stats": "Ab €35/Tag"
+            }
+        },
+        "newsletter": {
+            "title": "Bleiben Sie Informiert",
+            "subtitle": "Erhalten Sie Reisetipps und exklusive Angebote",
+            "placeholder": "Geben Sie Ihre E-Mail-Adresse ein",
+            "button": "Newsletter Abonnieren",
+            "disclaimer": "Mit der Anmeldung stimmen Sie zu, Reise-Updates zu erhalten. Jederzeit abbestellbar.",
+            "successTitle": "Alles bereit!",
+            "successMessage": "Prüfen Sie Ihr Postfach für eine Willkommens-E-Mail."
+        },
+        "cta": {
+            "titlePart1": "Bereit die",
+            "titleHighlight": "Kykladen zu Erkunden",
+            "subtitle": "Schließen Sie sich Tausenden von Reisenden an, die ihr perfektes griechisches Abenteuer mit unserer KI-Plattform entdeckt haben.",
+            "startPlanning": "Planung Starten",
+            "browseIslands": "Inseln Durchsuchen",
+            "freeToUse": "Kostenlos nutzbar",
+            "noFees": "Keine Buchungsgebühren",
+            "aiPowered": "KI-gestützt"
+        },
+        "touristasAI": {
+            "badge": "KI-gestütztes Reisen",
+            "titlePart1": "Lernen Sie",
+            "titleHighlight": "Touristas AI kennen",
+            "subtitle": "Ihr persönliches Orakel für die griechischen Inseln. Fragen Sie alles über die Kykladen - von versteckten Stränden bis zu lokalen Restaurants.",
+            "cta": {
+                "try": "Touristas AI Ausprobieren",
+                "chat": "Chat Starten"
+            },
+            "features": {
+                "knowledge": {
+                    "title": "Lokales Wissen",
+                    "desc": "Insider-Tipps von Experten"
+                },
+                "itineraries": {
+                    "title": "Intelligente Routen",
+                    "desc": "Personalisierte Tagespläne"
+                },
+                "matching": {
+                    "title": "Insel-Matching",
+                    "desc": "Finden Sie Ihre perfekte Insel"
+                },
+                "instant": {
+                    "title": "Sofortige Antworten",
+                    "desc": "24/7 Reiseassistenz"
+                }
+            },
+            "queries": {
+                "plan7day": "Plane eine 7-tägige Inselhopping-Reise...",
+                "milosBeaches": "Die besten Strände in Milos mit weniger Menschenmenge...",
+                "honeymoon": "Romantische Flitterwochen-Route auf Santorin...",
+                "familyHotels": "Familienfreundliche Hotels auf Naxos...",
+                "nightlife": "Welche Insel ist am besten für Nachtleben?"
+            },
+            "demo": {
+                "status": "Online • Bereit zu helfen",
+                "response": "Ich würde Ihnen gerne bei der Planung Ihres perfekten Kykladen-Abenteuers helfen...",
+                "placeholder": "Fragen Sie mich alles über die Kykladen...",
+                "badge": "Powered by AI 🇬🇷"
+            }
+        }
+    },
+    "hero": {
+        "title": "Entdecken Sie die Kykladen",
+        "subtitle": "Ihr Tor zu den schönsten griechischen Inseln",
+        "searchPlaceholder": "Wohin möchten Sie?",
+        "searchButton": "Suchen",
+        "popularDestinations": "Beliebte Reiseziele"
+    },
+    "islands": {
+        "santorini": "Santorin",
+        "mykonos": "Mykonos",
+        "paros": "Paros",
+        "naxos": "Naxos",
+        "milos": "Milos",
+        "ios": "Ios",
+        "sifnos": "Sifnos",
+        "tinos": "Tinos",
+        "syros": "Syros",
+        "andros": "Andros",
+        "amorgos": "Amorgos",
+        "folegandros": "Folegandros",
+        "koufonisia": "Koufonisia",
+        "serifos": "Serifos",
+        "antiparos": "Antiparos",
+        "kimolos": "Kimolos",
+        "sikinos": "Sikinos",
+        "anafi": "Anafi",
+        "donousa": "Donousa",
+        "schinoussa": "Schinoussa",
+        "iraklia": "Iraklia",
+        "kea": "Kea",
+        "kythnos": "Kythnos",
+        "thirasia": "Thirasia"
+    },
+    "common": {
+        "search": "Suchen",
+        "book": "Buchen",
+        "bookNow": "Jetzt Buchen",
+        "viewDetails": "Details Ansehen",
+        "learnMore": "Mehr Erfahren",
+        "seeAll": "Alle Anzeigen",
+        "from": "Von",
+        "to": "Nach",
+        "date": "Datum",
+        "guests": "Gäste",
+        "nights": "Nächte",
+        "perNight": "pro Nacht",
+        "perPerson": "pro Person",
+        "total": "Gesamt",
+        "loading": "Laden...",
+        "error": "Fehler",
+        "success": "Erfolg",
+        "cancel": "Abbrechen",
+        "confirm": "Bestätigen",
+        "save": "Speichern",
+        "delete": "Löschen",
+        "edit": "Bearbeiten",
+        "share": "Teilen",
+        "close": "Schließen",
+        "back": "Zurück",
+        "next": "Weiter",
+        "previous": "Zurück",
+        "yes": "Ja",
+        "no": "Nein",
+        "or": "oder",
+        "and": "und",
+        "all": "Alle",
+        "filter": "Filtern",
+        "sort": "Sortieren",
+        "results": "Ergebnisse",
+        "noResults": "Keine Ergebnisse gefunden",
+        "tryAgain": "Erneut versuchen"
+    },
+    "booking": {
+        "checkIn": "Check-in",
+        "checkOut": "Check-out",
+        "adults": "Erwachsene",
+        "children": "Kinder",
+        "rooms": "Zimmer",
+        "selectDates": "Daten auswählen",
+        "availability": "Verfügbarkeit prüfen",
+        "instantBooking": "Sofortbuchung",
+        "freeCancel": "Kostenlose Stornierung",
+        "breakfast": "Frühstück inklusive",
+        "confirmBooking": "Buchung bestätigen",
+        "bookingConfirmed": "Buchung bestätigt!",
+        "confirmationCode": "Bestätigungscode",
+        "paymentDetails": "Zahlungsdetails",
+        "guestDetails": "Gastdaten",
+        "specialRequests": "Sonderwünsche"
+    },
+    "ferry": {
+        "departure": "Abfahrt",
+        "arrival": "Ankunft",
+        "duration": "Dauer",
+        "vessel": "Schiff",
+        "class": "Klasse",
+        "economy": "Economy",
+        "business": "Business",
+        "cabins": "Kabinen",
+        "vehicles": "Fahrzeuge",
+        "passengers": "Passagiere",
+        "oneWay": "Einfache Fahrt",
+        "roundTrip": "Hin- und Rückfahrt",
+        "selectSeats": "Plätze auswählen",
+        "deckSeating": "Deck",
+        "airSeating": "Flugzeugsitz"
+    },
+    "flight": {
+        "departure": "Abflug",
+        "arrival": "Ankunft",
+        "duration": "Dauer",
+        "airline": "Fluggesellschaft",
+        "flightNumber": "Flugnummer",
+        "direct": "Direkt",
+        "stops": "Zwischenstopps",
+        "baggage": "Gepäck",
+        "handLuggage": "Handgepäck",
+        "checkedBag": "Aufgabegepäck"
+    },
+    "weather": {
+        "temperature": "Temperatur",
+        "feelsLike": "Gefühlt",
+        "humidity": "Luftfeuchtigkeit",
+        "wind": "Wind",
+        "waves": "Wellen",
+        "seaTemp": "Meerestemperatur",
+        "uvIndex": "UV-Index",
+        "sunrise": "Sonnenaufgang",
+        "sunset": "Sonnenuntergang",
+        "conditions": "Bedingungen",
+        "excellent": "Ausgezeichnet",
+        "good": "Gut",
+        "moderate": "Mäßig",
+        "poor": "Schlecht"
+    },
+    "touristas": {
+        "title": "Touristas AI",
+        "subtitle": "Ihr Experte für griechische Inseln",
+        "greeting": "Hallo! Ich bin Touristas, Ihr KI-Reisebegleiter für die Kykladen!",
+        "askAnything": "Fragen Sie mich alles über die Kykladen...",
+        "voiceMode": "Sprachmodus",
+        "suggestions": {
+            "planTrip": "Reise planen",
+            "findHotels": "Hotels finden",
+            "ferrySchedules": "Fährfahrpläne",
+            "beachGuide": "Strandführer",
+            "restaurants": "Restaurant-Empfehlungen"
+        }
+    },
+    "footer": {
+        "about": "Über Uns",
+        "contact": "Kontakt",
+        "privacy": "Datenschutz",
+        "terms": "Nutzungsbedingungen",
+        "copyright": "© 2024 Discover Cyclades. Alle Rechte vorbehalten.",
+        "followUs": "Folgen Sie uns",
+        "newsletter": "Newsletter",
+        "subscribeText": "Abonnieren Sie für Reisetipps und Angebote",
+        "emailPlaceholder": "Ihre E-Mail",
+        "subscribe": "Abonnieren"
+    },
+    "meta": {
+        "homeTitle": "Discover Cyclades | Griechische Inseln Reiseführer",
+        "homeDescription": "Planen Sie Ihren perfekten Urlaub auf den griechischen Inseln. Hotels, Fähren, Flüge und Aktivitäten.",
+        "islandsTitle": "Kykladen Inseln | Kompletter Reiseführer",
+        "islandsDescription": "Entdecken Sie alle 24 Kykladen-Inseln. Von Santorin bis zu versteckten Juwelen.",
+        "hotelsTitle": "Hotels auf den Kykladen | Beste Unterkünfte",
+        "hotelsDescription": "Finden und buchen Sie die besten Hotels auf den Kykladen.",
+        "ferriesTitle": "Fährtickets | Inselhopping Kykladen",
+        "ferriesDescription": "Buchen Sie Fährtickets zwischen griechischen Inseln. Preise und Fahrpläne vergleichen."
+    }
+}
