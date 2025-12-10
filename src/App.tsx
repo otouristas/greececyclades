@@ -61,6 +61,7 @@ const BusinessSignUp = lazy(() => import('./pages/BusinessSignUp'));
 const BusinessSignIn = lazy(() => import('./pages/BusinessSignIn'));
 const BusinessDashboard = lazy(() => import('./pages/BusinessDashboard'));
 const Directory = lazy(() => import('./pages/Directory'));
+const HotelMarketplace = lazy(() => import('./pages/HotelMarketplace'));
 // Booking pages
 const BookingPage = lazy(() => import('./pages/BookingPage'));
 const BookingResultsPage = lazy(() => import('./pages/BookingResultsPage'));
@@ -232,7 +233,7 @@ function AppContent() {
               <Route path="/activities/:id" element={<ActivityDetail />} />
               <Route path="/hotels" element={<Hotels />} />
               <Route path="/hotels/:slug" element={<HotelDetail />} />
-              
+
               {/* Booking System */}
               <Route path="/book" element={<BookingPage />} />
               <Route path="/book/search" element={<BookingResultsPage />} />
@@ -240,6 +241,7 @@ function AppContent() {
               <Route path="/book/checkout" element={<BookingCheckoutPage />} />
               <Route path="/book/confirmation" element={<BookingConfirmationPage />} />
               <Route path="/directory" element={<Directory />} />
+              <Route path="/hotel-marketplace" element={<HotelMarketplace />} />
               <Route path="/hotels-test" element={<HotelsTest />} />
               <Route path="/greek-phrases" element={<GreekPhrases />} />
               <Route path="/ferry-tickets" element={<FerryTickets />} />

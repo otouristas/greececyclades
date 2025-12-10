@@ -182,9 +182,10 @@ export const megaMenuConfig = {
             {
                 title: 'Explore',
                 links: [
+                    { name: 'Compare Hotel Prices', path: '/hotel-marketplace', badge: 'New' },
                     { name: 'Book Hotels', path: '/book', badge: 'LiteAPI' },
                     { name: 'All Hotels', path: '/hotels' },
-                    { name: 'Business Directory', path: '/directory', badge: 'New' },
+                    { name: 'Business Directory', path: '/directory' },
                     { name: 'Restaurants & Bars', path: '/directory?type=restaurant' },
                     { name: 'List Your Property', path: '/list-property' },
                 ]

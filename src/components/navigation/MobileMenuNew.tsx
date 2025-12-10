@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import {
   X, ChevronRight, Sparkles, Search, Ship, Calendar, MapPin, Home, HelpCircle,
   Plane, Car, Globe, Calculator, MessageCircle, BookOpen, Compass, Cloud, Users,
-  Newspaper, Building2
+  Newspaper, Building2, TrendingUp
 } from 'lucide-react';
 import { useTheme } from '../../contexts/ThemeContext';
 
@@ -57,6 +57,7 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
       links: [
         { name: 'Touristas AI', path: '/touristas-ai', icon: Sparkles },
         { name: 'Trip Planner', path: '/trip-planner', icon: Calendar },
+        { name: 'Compare Hotels', path: '/hotel-marketplace', icon: TrendingUp },
         { name: 'Hotels', path: '/hotels', icon: Building2 },
         { name: 'Activities', path: '/activities', icon: Compass },
         { name: 'Ferry Tickets', path: '/ferry-tickets', icon: Ship },
@@ -88,8 +89,8 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
     <div className="fixed inset-0 z-[1000]">
       {/* Full-screen backdrop */}
       <div className={`absolute inset-0 ${isDark
-          ? 'bg-gradient-to-br from-dark-bg via-dark-card to-cyclades-caldera'
-          : 'bg-gradient-to-br from-cyclades-deep-blue via-cyclades-sea-blue to-cyclades-caldera'
+        ? 'bg-gradient-to-br from-dark-bg via-dark-card to-cyclades-caldera'
+        : 'bg-gradient-to-br from-cyclades-deep-blue via-cyclades-sea-blue to-cyclades-caldera'
         }`} />
 
       {/* Decorative elements */}
