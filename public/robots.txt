@@ -51,8 +51,8 @@ Disallow: /emergency-contacts
 # Disallow non-existent photo galleries
 Disallow: /photos/
 
-# Disallow old/legacy URL structure
-Disallow: /en/
+# Allow all language-prefixed URLs for multi-language support
+# Previously disallowed /en/ but this is now part of the active URL structure
 
 # Disallow removed hotel pages (redirect to /hotels)
 Disallow: /hotels/cavo-tagoo
