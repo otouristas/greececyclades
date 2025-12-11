@@ -28,7 +28,7 @@ const pages = [
     { path: 'ferry-tickets', priority: '0.9', changefreq: 'daily' },
     { path: 'flights', priority: '0.8', changefreq: 'daily' },
     { path: 'activities', priority: '0.8', changefreq: 'weekly' },
-    { path: 'restaurants', priority: '0.8', changefreq: 'weekly' },
+    { path: 'culinary', priority: '0.8', changefreq: 'weekly' },
     { path: 'about', priority: '0.5', changefreq: 'monthly' },
     { path: 'contact', priority: '0.5', changefreq: 'monthly' },
     { path: 'blog', priority: '0.7', changefreq: 'weekly' },
@@ -39,7 +39,6 @@ const pages = [
     { path: 'community', priority: '0.7', changefreq: 'daily' },
     { path: 'inspiration', priority: '0.7', changefreq: 'daily' },
     { path: 'hotel-marketplace', priority: '0.8', changefreq: 'daily' },
-    { path: 'culinary', priority: '0.7', changefreq: 'weekly' },
     { path: 'rent-a-car', priority: '0.7', changefreq: 'weekly' },
 ];
 

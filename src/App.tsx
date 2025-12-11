@@ -359,6 +359,50 @@ function AppContent() {
               <Route path="/test-map" element={<TestMap />} />
               <Route path="/transfers" element={<Transfers />} />
 
+              {/* Language-prefixed routes for multi-language support */}
+              {/* These support URLs like /en/islands/santorini, /gr/hotels, etc. */}
+              <Route path="/:lang" element={<HomeNew />} />
+              <Route path="/:lang/islands" element={<IslandsNew />} />
+              <Route path="/:lang/islands/:slug" element={<IslandDetail />} />
+              <Route path="/:lang/guides" element={<GuidesNew />} />
+              <Route path="/:lang/guides/:slug" element={<IslandGuidePage />} />
+              <Route path="/:lang/hotels" element={<Hotels />} />
+              <Route path="/:lang/hotels/:slug" element={<HotelDetail />} />
+              <Route path="/:lang/ferry-tickets" element={<FerryTickets />} />
+              <Route path="/:lang/flights" element={<Flights />} />
+              <Route path="/:lang/activities" element={<Activities />} />
+              <Route path="/:lang/activities/:id" element={<ActivityDetail />} />
+              <Route path="/:lang/culinary" element={<Culinary />} />
+              <Route path="/:lang/about" element={<About />} />
+              <Route path="/:lang/contact" element={<Contact />} />
+              <Route path="/:lang/blog" element={<Blog />} />
+              <Route path="/:lang/blog/:slug" element={<BlogPost />} />
+              <Route path="/:lang/weather" element={<Weather />} />
+              <Route path="/:lang/trip-planner" element={<TripPlanner />} />
+              <Route path="/:lang/touristas" element={<TouristasEnhancedPage />} />
+              <Route path="/:lang/touristas-ai" element={<TouristasAILanding />} />
+              <Route path="/:lang/planner" element={<IslandHoppingPlannerPage />} />
+              <Route path="/:lang/community" element={<CommunityPage />} />
+              <Route path="/:lang/inspiration" element={<InspirationFeedPage />} />
+              <Route path="/:lang/hotel-marketplace" element={<HotelMarketplace />} />
+              <Route path="/:lang/rent-a-car" element={<RentACar />} />
+              <Route path="/:lang/transfers" element={<Transfers />} />
+              <Route path="/:lang/help" element={<HelpDesk />} />
+              <Route path="/:lang/resources" element={<Resources />} />
+              <Route path="/:lang/greek-phrases" element={<GreekPhrases />} />
+              <Route path="/:lang/budget-calculator" element={<BudgetCalculator />} />
+              <Route path="/:lang/ferry-guide" element={<FerryGuide />} />
+              <Route path="/:lang/privacy" element={<Privacy />} />
+              <Route path="/:lang/terms" element={<Terms />} />
+              <Route path="/:lang/sitemap" element={<Sitemap />} />
+              <Route path="/:lang/signin" element={<SignIn />} />
+              <Route path="/:lang/signup" element={<SignUp />} />
+              <Route path="/:lang/book" element={<BookingPage />} />
+              <Route path="/:lang/book/search" element={<BookingResultsPage />} />
+              <Route path="/:lang/book/hotel/:hotelId" element={<BookingHotelPage />} />
+              <Route path="/:lang/directory" element={<Directory />} />
+              <Route path="/:lang/list-property" element={<ListProperty />} />
+
               <Route path="*" element={<NotFound />} />
             </Routes>
           </Suspense>
