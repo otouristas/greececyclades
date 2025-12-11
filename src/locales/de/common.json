@@ -164,7 +164,111 @@
                 "placeholder": "Fragen Sie mich alles über die Kykladen...",
                 "badge": "Powered by AI 🇬🇷"
             }
+        },
+        "experiences": {
+            "badge": "Top Bewertet",
+            "titlePart1": "Unvergessliche",
+            "titleHighlight": "Erlebnisse",
+            "subtitle": "Kuratierte Touren und Aktivitäten, die von Tausenden geliebt werden",
+            "viewAll": "Alle Erlebnisse Anzeigen",
+            "reviews": "Bewertungen",
+            "parosTour": {
+                "title": "Paros Antiparos: Ganztägige Bootstour"
+            },
+            "milosTour": {
+                "title": "Geführte Tageskreuzfahrt nach Kleftiko"
+            },
+            "santoriniTour": {
+                "title": "Santorin: Katamarantour mit BBQ"
+            }
+        },
+        "faq": {
+            "title": "Kykladen Reise FAQ",
+            "subtitle": "Ihre Fragen zum Reisen auf den griechischen Inseln, beantwortet",
+            "q1": "Was sind die Kykladen?",
+            "a1": "Die Kykladen sind eine Gruppe von 24 bewohnten griechischen Inseln in der Ägäis. Berühmte Inseln sind Santorin, Mykonos, Naxos und Paros. Bekannt für weiß getünchte Dörfer, kristallklares Wasser und antike Geschichte.",
+            "q2": "Wie komme ich zu den Kykladen?",
+            "a2": "Fliegen Sie nach Athen und nehmen Sie dann eine Fähre (2-5 Stunden) oder fliegen Sie direkt zu den Flughäfen Santorin oder Mykonos. Fähren fahren täglich vom Hafen Piräus zu allen großen Inseln.",
+            "q3": "Was ist die beste Reisezeit für die Kykladen?",
+            "a3": "September-Oktober für perfektes Wetter und weniger Menschenmassen. Mai-Juni ist auch ausgezeichnet. Juli-August ist Hochsaison mit höheren Preisen und mehr Touristen.",
+            "q4": "Wie viele Tage brauche ich für die Kykladen?",
+            "a4": "7-10 Tage sind ideal für den Besuch von 3-4 Inseln. 2 Wochen ermöglichen eine tiefere Erkundung von 5-6 Inseln. Selbst 5 Tage können für 2-3 Inseln funktionieren."
         }
+    },
+    "footer": {
+        "prefooter": {
+            "title": "Planen Sie mit",
+            "titleHighlight": "Touristas AI",
+            "subtitle": "Ihr persönlicher KI-Reiseassistent für das perfekte Kykladen-Abenteuer",
+            "cta": "Planung Starten",
+            "stats": {
+                "islands": "Inseln",
+                "activities": "Aktivitäten",
+                "travelers": "Reisende",
+                "rating": "Bewertung"
+            }
+        },
+        "brand": {
+            "description": "Ihr KI-gestützter Führer zu den griechischen Kykladen. Entdecken Sie authentische Erlebnisse, buchen Sie mit Vertrauen und schaffen Sie unvergessliche Insel-Erinnerungen.",
+            "location": "Athen, Griechenland"
+        },
+        "sections": {
+            "popularIslands": "Beliebte Inseln",
+            "viewAllIslands": "Alle 24 Inseln anzeigen →",
+            "travelServices": "Reisedienste",
+            "aiPlanning": "KI & Planung",
+            "support": "Support",
+            "legal": "Rechtliches"
+        },
+        "services": {
+            "ferryTickets": "Fährtickets",
+            "hotelsVillas": "Hotels & Villen",
+            "toursActivities": "Touren & Aktivitäten",
+            "carRentals": "Mietwagen",
+            "flights": "Flüge"
+        },
+        "links": {
+            "touristasAI": "Touristas AI",
+            "tripPlanner": "Reiseplaner",
+            "helpCenter": "Hilfecenter",
+            "aboutUs": "Über Uns",
+            "travelBlog": "Reiseblog",
+            "privacyPolicy": "Datenschutzrichtlinie",
+            "termsOfService": "Nutzungsbedingungen"
+        },
+        "trustBadges": {
+            "secureBooking": {
+                "title": "Sichere Buchung",
+                "desc": "SSL-geschützt"
+            },
+            "freeCancellation": {
+                "title": "Kostenlose Stornierung",
+                "desc": "Die meisten Buchungen"
+            },
+            "support247": {
+                "title": "24/7 Support",
+                "desc": "Immer verfügbar"
+            },
+            "bestPrices": {
+                "title": "Beste Preise",
+                "desc": "Garantiert"
+            }
+        },
+        "bottom": {
+            "copyright": "Greece Cyclades. Mit ❤️ gemacht von",
+            "sitemap": "Sitemap",
+            "poweredBy": "Powered by Touristas AI"
+        },
+        "about": "Über Uns",
+        "contact": "Kontakt",
+        "privacy": "Datenschutz",
+        "terms": "Nutzungsbedingungen",
+        "copyright": "© 2024 Discover Cyclades. Alle Rechte vorbehalten.",
+        "followUs": "Folgen Sie uns",
+        "newsletter": "Newsletter",
+        "subscribeText": "Abonnieren Sie für Reisetipps und Angebote",
+        "emailPlaceholder": "Ihre E-Mail",
+        "subscribe": "Abonnieren"
     },
     "hero": {
         "title": "Entdecken Sie die Kykladen",
@@ -314,18 +418,6 @@
             "beachGuide": "Strandführer",
             "restaurants": "Restaurant-Empfehlungen"
         }
-    },
-    "footer": {
-        "about": "Über Uns",
-        "contact": "Kontakt",
-        "privacy": "Datenschutz",
-        "terms": "Nutzungsbedingungen",
-        "copyright": "© 2024 Discover Cyclades. Alle Rechte vorbehalten.",
-        "followUs": "Folgen Sie uns",
-        "newsletter": "Newsletter",
-        "subscribeText": "Abonnieren Sie für Reisetipps und Angebote",
-        "emailPlaceholder": "Ihre E-Mail",
-        "subscribe": "Abonnieren"
     },
     "meta": {
         "homeTitle": "Discover Cyclades | Griechische Inseln Reiseführer",
