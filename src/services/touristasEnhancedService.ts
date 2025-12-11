@@ -348,7 +348,7 @@ Remember: You are the user's trusted local friend in Greece! 🇬🇷`;
                 responseText += `• 👨‍👩‍👧 **Plaka, Naxos** - Family-friendly, shallow waters\n`;
                 responseText += `• 🎉 **Paradise, Mykonos** - Famous beach parties\n\n`;
                 responseText += `Which vibe are you looking for?`;
-                suggestedActions.push('Quiet & Secluded', 'Family Friendly', 'Party Scene', 'Water Sports'];
+                suggestedActions.push('Quiet & Secluded', 'Family Friendly', 'Party Scene', 'Water Sports');
             } else {
                 responseText = `Γεια σου! (Hello!) I'm Touristas, your Greek islands expert! 🇬🇷\n\n`;
                 responseText += `I'm here to help you plan an unforgettable trip to the Cyclades. I can:\n\n`;
@@ -359,7 +359,7 @@ Remember: You are the user's trusted local friend in Greece! 🇬🇷`;
                 responseText += `• 🗺️ Create custom itineraries\n`;
                 responseText += `• ☀️ Check beach conditions\n\n`;
                 responseText += `What would you like to explore today?`;
-                suggestedActions.push('Plan a Trip', 'Find Hotels', 'Book Ferry', 'Beach Recommendations'];
+                suggestedActions.push('Plan a Trip', 'Find Hotels', 'Book Ferry', 'Beach Recommendations');
             }
         }
 
