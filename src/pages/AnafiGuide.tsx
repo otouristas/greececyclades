@@ -1,10 +1,11 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaWineGlass, 
-  FaMapMarkedAlt, 
-  FaShip, 
-  FaUtensils, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaWineGlass,
+  FaMapMarkedAlt,
+  FaShip,
+  FaUtensils,
   FaCalendarAlt,
   FaHistory
 } from 'react-icons/fa';
@@ -13,6 +14,7 @@ import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { cyclades } from '../data/islandsData';
 
 const AnafiGuide: React.FC = () => {
+  const { t } = useTranslation();
   const anafi = cyclades.find(island => island.slug === 'anafi');
 
   if (!anafi) {
@@ -133,34 +135,34 @@ const AnafiGuide: React.FC = () => {
       <SEO {...seoData} />
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...heroProps} />
-        
+
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Anafi</h2>
               <p className="text-gray-700 leading-relaxed">
-                Anafi, a hidden gem in the southeastern Cyclades, is a testament to untouched Greek island beauty. 
+                Anafi, a hidden gem in the southeastern Cyclades, is a testament to untouched Greek island beauty.
                 This small paradise rises dramatically from the Aegean Sea, crowned by Mount Kalamos, one of the largest monoliths in the Mediterranean.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                From the pristine Chora perched on the hillside to the ancient temple of Apollo Aegletes and golden beaches like Roukounas, 
-                Anafi offers a glimpse into authentic Cycladic life. Our comprehensive guide will help you discover the best of what this 
+                From the pristine Chora perched on the hillside to the ancient temple of Apollo Aegletes and golden beaches like Roukounas,
+                Anafi offers a glimpse into authentic Cycladic life. Our comprehensive guide will help you discover the best of what this
                 tranquil island has to offer.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/images/islands/anafi/intro.jpg" 
-                  alt="Anafi Island Landscape" 
+                <img
+                  src="/images/islands/anafi/intro.jpg"
+                  alt="Anafi Island Landscape"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-6 -left-6 w-1/2 aspect-[4/3] rounded-xl overflow-hidden shadow-lg border-4 border-white">
-                <img 
-                  src="/images/islands/anafi/intro-2.jpg" 
-                  alt="Anafi Chora" 
+                <img
+                  src="/images/islands/anafi/intro-2.jpg"
+                  alt="Anafi Chora"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -172,9 +174,9 @@ const AnafiGuide: React.FC = () => {
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Explore Anafi</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
               {categories.map((category, index) => (
-                <a 
-                  key={index} 
-                  href={category.link} 
+                <a
+                  key={index}
+                  href={category.link}
                   className="bg-white dark:bg-dark-card rounded-xl shadow-md p-6 transition-transform hover:scale-105 hover:shadow-lg"
                 >
                   <div className="flex items-start space-x-4">
@@ -224,9 +226,9 @@ const AnafiGuide: React.FC = () => {
                   </div>
                 </div>
                 <div className="relative h-full">
-                  <img 
-                    src="/images/islands/anafi/seasons.jpg" 
-                    alt="Anafi in different seasons" 
+                  <img
+                    src="/images/islands/anafi/seasons.jpg"
+                    alt="Anafi in different seasons"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
@@ -240,9 +242,9 @@ const AnafiGuide: React.FC = () => {
             <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
                 <div className="relative h-full min-h-[300px]">
-                  <img 
-                    src="/images/islands/anafi/ferry.jpg" 
-                    alt="Ferry to Anafi" 
+                  <img
+                    src="/images/islands/anafi/ferry.jpg"
+                    alt="Ferry to Anafi"
                     className="absolute inset-0 w-full h-full object-cover"
                   />
                 </div>
@@ -291,26 +293,26 @@ const AnafiGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/anafi/roukounas.jpg" 
-                    alt="Roukounas Beach" 
+                  <img
+                    src="/images/islands/anafi/roukounas.jpg"
+                    alt="Roukounas Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Roukounas Beach</h3>
                   <p className="text-gray-700 mb-4">
-                    The main beach of Anafi, featuring golden sand and crystal-clear waters. 
+                    The main beach of Anafi, featuring golden sand and crystal-clear waters.
                     It's partially organized with some umbrellas and a taverna nearby.
                   </p>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/anafi/kleisidi.jpg" 
-                    alt="Kleisidi Beach" 
+                  <img
+                    src="/images/islands/anafi/kleisidi.jpg"
+                    alt="Kleisidi Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -322,12 +324,12 @@ const AnafiGuide: React.FC = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/anafi/katalimatsa.jpg" 
-                    alt="Katalimatsa Beach" 
+                  <img
+                    src="/images/islands/anafi/katalimatsa.jpg"
+                    alt="Katalimatsa Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -339,12 +341,12 @@ const AnafiGuide: React.FC = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/anafi/monastery-beach.jpg" 
-                    alt="Monastery Beach" 
+                  <img
+                    src="/images/islands/anafi/monastery-beach.jpg"
+                    alt="Monastery Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -379,21 +381,21 @@ const AnafiGuide: React.FC = () => {
                     </ul>
                   </div>
                   <div className="relative h-full min-h-[300px]">
-                    <img 
-                      src="/images/islands/anafi/hiking.jpg" 
-                      alt="Hiking to Mount Kalamos" 
+                    <img
+                      src="/images/islands/anafi/hiking.jpg"
+                      alt="Hiking to Mount Kalamos"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-xl shadow-md overflow-hidden">
                 <div className="grid grid-cols-1 lg:grid-cols-2">
                   <div className="relative h-full min-h-[300px] order-2 lg:order-1">
-                    <img 
-                      src="/images/islands/anafi/apollo-temple.jpg" 
-                      alt="Temple of Apollo Aegletes" 
+                    <img
+                      src="/images/islands/anafi/apollo-temple.jpg"
+                      alt="Temple of Apollo Aegletes"
                       className="absolute inset-0 w-full h-full object-cover"
                     />
                   </div>
@@ -422,9 +424,9 @@ const AnafiGuide: React.FC = () => {
               {galleryImages.map((image, index) => (
                 <div key={index} className="bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <div className="aspect-w-16 aspect-h-12">
-                    <img 
-                      src={image.src} 
-                      alt={image.alt} 
+                    <img
+                      src={image.src}
+                      alt={image.alt}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -452,14 +454,14 @@ const AnafiGuide: React.FC = () => {
                     </span>
                   </div>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="/hotels/" 
+                    <a
+                      href="/hotels/"
                       className="inline-flex items-center justify-center px-6 py-3 bg-white text-blue-700 rounded-lg font-medium hover:bg-blue-50 dark:bg-cyan-600/10 transition-colors"
                     >
                       Find Accommodations
                     </a>
-                    <a 
-                      href="/ferry-tickets/" 
+                    <a
+                      href="/ferry-tickets/"
                       className="inline-flex items-center justify-center px-6 py-3 bg-blue-50 dark:bg-cyan-600/100 text-white rounded-lg font-medium hover:bg-blue-400 transition-colors"
                     >
                       How to get there
@@ -467,9 +469,9 @@ const AnafiGuide: React.FC = () => {
                   </div>
                 </div>
                 <div className="hidden lg:block relative">
-                  <img 
-                    src="/images/islands/anafi/cta-image.jpg" 
-                    alt="Anafi Island View" 
+                  <img
+                    src="/images/islands/anafi/cta-image.jpg"
+                    alt="Anafi Island View"
                     className="h-full w-full object-cover"
                   />
                 </div>

@@ -1,10 +1,11 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaWineGlass, 
-  FaMapMarkedAlt, 
-  FaShip, 
-  FaUtensils, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaWineGlass,
+  FaMapMarkedAlt,
+  FaShip,
+  FaUtensils,
   FaHistory
 } from 'react-icons/fa';
 import SEO from '../components/SEO';
@@ -12,6 +13,7 @@ import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
 
 const KimolosGuide: React.FC = () => {
+  const { t } = useTranslation();
   const kimolos = islandGuides.find(island => island.id === 'kimolos');
 
   if (!kimolos) {
@@ -34,7 +36,7 @@ const KimolosGuide: React.FC = () => {
       'best time to visit Kimolos'
     ],
     ogImage: kimolos.image,
-    ogType: 'article'
+    ogType: 'article' as const
   };
 
   // Photo gallery images
@@ -117,9 +119,9 @@ const KimolosGuide: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO {...seoData} />
-      
+
       {/* Parallax Hero Section */}
-      <IslandGuideHero 
+      <IslandGuideHero
         name="Kimolos"
         description={kimolos.description}
         image={kimolos.image}
@@ -136,36 +138,36 @@ const KimolosGuide: React.FC = () => {
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Discover Kimolos</h2>
               <div className="prose max-w-none">
                 <p className="text-lg text-gray-700 leading-relaxed mb-4">
-                  Kimolos is a hidden gem of the Western Cyclades, located just a stone's throw away from the more famous Milos. 
-                  This small volcanic island captivates visitors with its unspoiled beauty, pristine beaches with crystal-clear waters, 
+                  Kimolos is a hidden gem of the Western Cyclades, located just a stone's throw away from the more famous Milos.
+                  This small volcanic island captivates visitors with its unspoiled beauty, pristine beaches with crystal-clear waters,
                   and authentic Greek island atmosphere.
                 </p>
                 <p className="text-lg text-gray-700 leading-relaxed">
-                  With its traditional whitewashed houses, picturesque villages, unique geological formations, and warm hospitality, 
-                  Kimolos offers an authentic Greek island experience away from the crowds. Here, you can explore untouched beaches, 
+                  With its traditional whitewashed houses, picturesque villages, unique geological formations, and warm hospitality,
+                  Kimolos offers an authentic Greek island experience away from the crowds. Here, you can explore untouched beaches,
                   hike scenic trails, discover ancient ruins, and enjoy the simple pleasures of Greek island life.
                 </p>
               </div>
             </div>
             <div className="grid grid-cols-2 gap-4">
-              <img 
-                src="/images/islands/kimolos/kimolos-village.jpg" 
-                alt="Traditional village in Kimolos" 
+              <img
+                src="/images/islands/kimolos/kimolos-village.jpg"
+                alt="Traditional village in Kimolos"
                 className="rounded-lg shadow-md h-64 w-full object-cover"
               />
-              <img 
-                src="/images/islands/kimolos/kimolos-beach.jpg" 
-                alt="Beautiful beach in Kimolos" 
+              <img
+                src="/images/islands/kimolos/kimolos-beach.jpg"
+                alt="Beautiful beach in Kimolos"
                 className="rounded-lg shadow-md h-64 w-full object-cover"
               />
-              <img 
-                src="/images/islands/kimolos/kimolos-landscape.jpg" 
-                alt="Scenic landscape of Kimolos" 
+              <img
+                src="/images/islands/kimolos/kimolos-landscape.jpg"
+                alt="Scenic landscape of Kimolos"
                 className="rounded-lg shadow-md h-64 w-full object-cover"
               />
-              <img 
-                src="/images/islands/kimolos/kimolos-church.jpg" 
-                alt="Traditional church in Kimolos" 
+              <img
+                src="/images/islands/kimolos/kimolos-church.jpg"
+                alt="Traditional church in Kimolos"
                 className="rounded-lg shadow-md h-64 w-full object-cover"
               />
             </div>
@@ -177,7 +179,7 @@ const KimolosGuide: React.FC = () => {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Explore Kimolos</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {categories.map((category, index) => (
-              <a 
+              <a
                 key={index}
                 href={category.link}
                 className="group bg-white rounded-lg shadow-md p-6 hover:bg-blue-50 dark:bg-cyan-600/100 transition-colors duration-300"
@@ -205,16 +207,16 @@ const KimolosGuide: React.FC = () => {
           <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">When to Visit Kimolos</h2>
           <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
             <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              The best time to visit Kimolos is from May to September when the weather is warm and sunny. 
-              The peak tourist season is in July and August, but even then, Kimolos remains relatively uncrowded 
+              The best time to visit Kimolos is from May to September when the weather is warm and sunny.
+              The peak tourist season is in July and August, but even then, Kimolos remains relatively uncrowded
               compared to other Cycladic islands.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed mb-4">
-              June and September are ideal months to visit, offering warm temperatures, fewer tourists, 
+              June and September are ideal months to visit, offering warm temperatures, fewer tourists,
               and more affordable accommodation. The sea is warm enough for swimming from late May until early October.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              If you prefer to experience the authentic local life, consider visiting in May or October. 
+              If you prefer to experience the authentic local life, consider visiting in May or October.
               While some restaurants and accommodations might be closed, you'll get to see the island at its most peaceful.
             </p>
           </div>
@@ -226,9 +228,9 @@ const KimolosGuide: React.FC = () => {
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {galleryImages.map((image, index) => (
               <div key={index} className="overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src={image.src} 
-                  alt={image.alt} 
+                <img
+                  src={image.src}
+                  alt={image.alt}
                   className="w-full h-64 object-cover hover:scale-105 transition-transform duration-300"
                 />
               </div>
@@ -248,14 +250,14 @@ const KimolosGuide: React.FC = () => {
                     and discover how to reach this beautiful island.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="/hotels/" 
+                    <a
+                      href="/hotels/"
                       className="bg-white text-blue-700 hover:bg-blue-50 dark:bg-cyan-600/10 px-6 py-3 rounded-lg font-medium inline-block text-center transition-colors duration-300"
                     >
                       Find Accommodations
                     </a>
-                    <a 
-                      href="/ferry-tickets/" 
+                    <a
+                      href="/ferry-tickets/"
                       className="bg-transparent hover:bg-blue-700 border-2 border-white text-white px-6 py-3 rounded-lg font-medium inline-block text-center transition-colors duration-300"
                     >
                       How to get there
@@ -263,9 +265,9 @@ const KimolosGuide: React.FC = () => {
                   </div>
                 </div>
                 <div className="hidden md:block">
-                  <img 
-                    src="/images/islands/kimolos/kimolos-cta.jpg" 
-                    alt="Kimolos island view" 
+                  <img
+                    src="/images/islands/kimolos/kimolos-cta.jpg"
+                    alt="Kimolos island view"
                     className="rounded-lg shadow-lg"
                   />
                 </div>

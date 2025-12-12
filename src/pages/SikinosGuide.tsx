@@ -1,12 +1,13 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaWineGlass, 
-  FaMapMarkedAlt, 
-  FaShip, 
-  FaUtensils, 
-  FaSun, 
-  FaCameraRetro, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaWineGlass,
+  FaMapMarkedAlt,
+  FaShip,
+  FaUtensils,
+  FaSun,
+  FaCameraRetro,
   FaLeaf,
   FaCalendarAlt,
   FaGlassCheers,
@@ -19,6 +20,7 @@ import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { cyclades } from '../data/islandsData';
 
 const SikinosGuide: React.FC = () => {
+  const { t } = useTranslation();
   const sikinos = cyclades.find(island => island.slug === 'sikinos');
 
   if (!sikinos) {
@@ -41,7 +43,7 @@ const SikinosGuide: React.FC = () => {
       'best time to visit Sikinos'
     ],
     ogImage: sikinos.image,
-    ogType: 'article'
+    ogType: 'article' as const
   };
 
   // Photo gallery images
@@ -139,35 +141,35 @@ const SikinosGuide: React.FC = () => {
       <SEO {...seoData} />
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...heroProps} />
-        
+
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Sikinos</h2>
               <p className="text-gray-700 leading-relaxed">
-                Sikinos, a hidden gem in the Cyclades, offers unspoiled beauty, traditional architecture, and a peaceful escape from modern life. 
+                Sikinos, a hidden gem in the Cyclades, offers unspoiled beauty, traditional architecture, and a peaceful escape from modern life.
                 This small island between Ios and Folegandros provides an authentic Greek island experience far from the crowds of more popular destinations.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                From the charming Chora perched on the hillside to the ancient Episkopi Monastery and pristine beaches like Malta, 
-                Sikinos offers a glimpse into traditional Cycladic life. Our comprehensive guide will help you discover the best of what this 
+                From the charming Chora perched on the hillside to the ancient Episkopi Monastery and pristine beaches like Malta,
+                Sikinos offers a glimpse into traditional Cycladic life. Our comprehensive guide will help you discover the best of what this
                 tranquil island has to offer.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/images/islands/sikinos/landscape.jpg" 
-                  alt="Sikinos Landscape" 
+                <img
+                  src="/images/islands/sikinos/landscape.jpg"
+                  alt="Sikinos Landscape"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 w-2/3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/islands/sikinos/chora-detail.jpg" 
-                    alt="Chora Detail" 
+                  <img
+                    src="/images/islands/sikinos/chora-detail.jpg"
+                    alt="Chora Detail"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -180,9 +182,9 @@ const SikinosGuide: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
-                <a 
+                <a
                   key={index}
-                  href={category.link} 
+                  href={category.link}
                   className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
@@ -201,9 +203,9 @@ const SikinosGuide: React.FC = () => {
               {galleryImages.map((image, index) => (
                 <div key={index} className="bg-white dark:bg-dark-card rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
                   <div className="aspect-w-16 aspect-h-12">
-                    <img 
-                      src={image.src} 
-                      alt={image.alt} 
+                    <img
+                      src={image.src}
+                      alt={image.alt}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -272,17 +274,17 @@ const SikinosGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sikinos/villages/chora.jpg" 
-                    alt="Chora Village" 
+                  <img
+                    src="/images/islands/sikinos/villages/chora.jpg"
+                    alt="Chora Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Chora</h3>
                   <p className="text-gray-600 mb-4">
-                    The main settlement of Sikinos is a picturesque village perched on a hillside with stunning views of the Aegean Sea. 
-                    Chora consists of two connected settlements: Kastro and Chorio. Wander through the narrow whitewashed alleys, 
+                    The main settlement of Sikinos is a picturesque village perched on a hillside with stunning views of the Aegean Sea.
+                    Chora consists of two connected settlements: Kastro and Chorio. Wander through the narrow whitewashed alleys,
                     admire the traditional Cycladic architecture, and enjoy the peaceful atmosphere of this authentic Greek village.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -292,20 +294,20 @@ const SikinosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sikinos/villages/alopronia.jpg" 
-                    alt="Alopronia Village" 
+                  <img
+                    src="/images/islands/sikinos/villages/alopronia.jpg"
+                    alt="Alopronia Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Alopronia</h3>
                   <p className="text-gray-600 mb-4">
-                    The port village of Sikinos is a small, peaceful settlement with a few tavernas, cafes, and accommodations. 
-                    This is where ferries arrive and depart, and it's connected to Chora by a winding road. Alopronia has a small 
+                    The port village of Sikinos is a small, peaceful settlement with a few tavernas, cafes, and accommodations.
+                    This is where ferries arrive and depart, and it's connected to Chora by a winding road. Alopronia has a small
                     beach and offers basic amenities for visitors, making it a convenient base for exploring the island.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -324,17 +326,17 @@ const SikinosGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sikinos/beaches/malta.jpg" 
-                    alt="Malta Beach" 
+                  <img
+                    src="/images/islands/sikinos/beaches/malta.jpg"
+                    alt="Malta Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Malta Beach</h3>
                   <p className="text-gray-600 mb-4">
-                    The most popular beach on Sikinos, Malta offers crystal clear waters and a peaceful atmosphere. 
-                    This pebble beach is accessible by a short hike or by boat and provides a serene swimming experience 
+                    The most popular beach on Sikinos, Malta offers crystal clear waters and a peaceful atmosphere.
+                    This pebble beach is accessible by a short hike or by boat and provides a serene swimming experience
                     with stunning views of the surrounding cliffs.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -347,20 +349,20 @@ const SikinosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sikinos/beaches/alopronia.jpg" 
-                    alt="Alopronia Beach" 
+                  <img
+                    src="/images/islands/sikinos/beaches/alopronia.jpg"
+                    alt="Alopronia Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Alopronia Beach</h3>
                   <p className="text-gray-600 mb-4">
-                    Located right next to the port, Alopronia Beach is the most accessible beach on the island. 
-                    This small pebble beach offers basic amenities and is convenient for a quick swim. Several tavernas 
+                    Located right next to the port, Alopronia Beach is the most accessible beach on the island.
+                    This small pebble beach offers basic amenities and is convenient for a quick swim. Several tavernas
                     and cafes are within walking distance, making it perfect for a relaxed day by the sea.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -373,20 +375,20 @@ const SikinosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sikinos/beaches/dialiskari.jpg" 
-                    alt="Dialiskari Beach" 
+                  <img
+                    src="/images/islands/sikinos/beaches/dialiskari.jpg"
+                    alt="Dialiskari Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Dialiskari Beach</h3>
                   <p className="text-gray-600 mb-4">
-                    A remote and untouched beach accessible by boat or a hiking trail. Dialiskari offers a truly 
-                    secluded experience with its pristine waters and peaceful atmosphere. The beach is not organized, 
+                    A remote and untouched beach accessible by boat or a hiking trail. Dialiskari offers a truly
+                    secluded experience with its pristine waters and peaceful atmosphere. The beach is not organized,
                     so bring your own supplies for a day of complete relaxation in nature.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -401,7 +403,7 @@ const SikinosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Activities Section */}
           <section id="activities" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Sikinos</h2>
@@ -411,8 +413,8 @@ const SikinosGuide: React.FC = () => {
                   <FaHiking className="text-blue-500 mr-3" /> Hiking Adventures
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Sikinos offers excellent hiking opportunities with well-marked trails connecting the villages and leading to remote beaches. 
-                  The island's rugged landscape and minimal development make it perfect for nature lovers. Don't miss the trail from Chora to 
+                  Sikinos offers excellent hiking opportunities with well-marked trails connecting the villages and leading to remote beaches.
+                  The island's rugged landscape and minimal development make it perfect for nature lovers. Don't miss the trail from Chora to
                   Episkopi Monastery, which offers breathtaking views of the Aegean Sea.
                 </p>
                 <ul className="space-y-2 text-gray-600 dark:text-white/60">
@@ -434,14 +436,14 @@ const SikinosGuide: React.FC = () => {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <FaHistory className="text-blue-500 mr-3" /> Historical Exploration
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Visit the remarkable Episkopi Monastery, a Roman-era mausoleum converted into a Byzantine church. 
-                  This unique structure dates back to the 3rd century AD and offers a fascinating glimpse into the island's 
+                  Visit the remarkable Episkopi Monastery, a Roman-era mausoleum converted into a Byzantine church.
+                  This unique structure dates back to the 3rd century AD and offers a fascinating glimpse into the island's
                   rich history. Also explore the ancient winery, one of the best-preserved in the Cyclades.
                 </p>
                 <ul className="space-y-2 text-gray-600 dark:text-white/60">
@@ -463,14 +465,14 @@ const SikinosGuide: React.FC = () => {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <FaWineGlass className="text-blue-500 mr-3" /> Wine Tasting
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Sikinos has a long tradition of winemaking dating back to ancient times. Visit the local winery to taste 
-                  the island's distinctive wines made from indigenous grape varieties. The dry, volcanic soil gives these 
+                  Sikinos has a long tradition of winemaking dating back to ancient times. Visit the local winery to taste
+                  the island's distinctive wines made from indigenous grape varieties. The dry, volcanic soil gives these
                   wines their unique character and flavor profile.
                 </p>
                 <ul className="space-y-2 text-gray-600 dark:text-white/60">
@@ -492,14 +494,14 @@ const SikinosGuide: React.FC = () => {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <h3 className="text-xl font-semibold mb-4 flex items-center">
                   <FaGlassCheers className="text-blue-500 mr-3" /> Local Festivals
                 </h3>
                 <p className="text-gray-600 mb-4">
-                  Experience authentic Greek culture by attending one of Sikinos' traditional festivals (panigiria). 
-                  The most important is the feast of Panagia Pantanassa on August 15th, featuring live music, traditional 
+                  Experience authentic Greek culture by attending one of Sikinos' traditional festivals (panigiria).
+                  The most important is the feast of Panagia Pantanassa on August 15th, featuring live music, traditional
                   dancing, and local delicacies. These celebrations offer a genuine glimpse into local customs and traditions.
                 </p>
                 <ul className="space-y-2 text-gray-600 dark:text-white/60">
@@ -523,15 +525,15 @@ const SikinosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Cuisine Section */}
           <section id="cuisine" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine & Dining</h2>
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed mb-6">
-                  Sikinos offers an authentic culinary experience with dishes prepared using locally-sourced ingredients. 
-                  The island's cuisine is characterized by its simplicity and focus on high-quality products, including 
+                  Sikinos offers an authentic culinary experience with dishes prepared using locally-sourced ingredients.
+                  The island's cuisine is characterized by its simplicity and focus on high-quality products, including
                   fresh fish, locally-raised meat, and vegetables grown in the island's gardens.
                 </p>
                 <h3 className="text-xl font-semibold mb-3">Must-Try Local Specialties:</h3>
@@ -591,37 +593,37 @@ const SikinosGuide: React.FC = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
-                  <img 
-                    src="/images/islands/sikinos/food/local-dishes.jpg" 
-                    alt="Local Sikinos Dishes" 
+                  <img
+                    src="/images/islands/sikinos/food/local-dishes.jpg"
+                    alt="Local Sikinos Dishes"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
-                  <img 
-                    src="/images/islands/sikinos/food/wine.jpg" 
-                    alt="Sikinos Wine" 
+                  <img
+                    src="/images/islands/sikinos/food/wine.jpg"
+                    alt="Sikinos Wine"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
-                  <img 
-                    src="/images/islands/sikinos/food/taverna.jpg" 
-                    alt="Traditional Taverna" 
+                  <img
+                    src="/images/islands/sikinos/food/taverna.jpg"
+                    alt="Traditional Taverna"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
-                  <img 
-                    src="/images/islands/sikinos/food/honey.jpg" 
-                    alt="Local Honey" 
+                  <img
+                    src="/images/islands/sikinos/food/honey.jpg"
+                    alt="Local Honey"
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
             </div>
           </section>
-          
+
           {/* Transport Section */}
           <section id="transport" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Getting to Sikinos</h2>
@@ -632,7 +634,7 @@ const SikinosGuide: React.FC = () => {
                     <FaShip className="text-blue-500 mr-3" /> By Ferry
                   </h3>
                   <p className="text-gray-600 mb-4">
-                    Sikinos is accessible by ferry from Piraeus (Athens) and other Cycladic islands. Ferry schedules vary by season, 
+                    Sikinos is accessible by ferry from Piraeus (Athens) and other Cycladic islands. Ferry schedules vary by season,
                     with more frequent connections during the summer months.
                   </p>
                   <ul className="space-y-3 text-gray-600 dark:text-white/60">
@@ -699,7 +701,7 @@ const SikinosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Call to Action Section */}
           <section className="mb-16 rounded-xl overflow-hidden">
             <div className="bg-gradient-to-r from-blue-600 to-blue-800 text-white">
@@ -711,18 +713,18 @@ const SikinosGuide: React.FC = () => {
                     </div>
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Ready to Experience Sikinos?</h2>
                     <p className="text-lg mb-8 text-blue-100">
-                      Discover the authentic charm of this untouched Cycladic gem. Plan your perfect getaway to Sikinos and experience 
+                      Discover the authentic charm of this untouched Cycladic gem. Plan your perfect getaway to Sikinos and experience
                       traditional island life, stunning landscapes, and genuine Greek hospitality.
                     </p>
                     <div className="flex flex-wrap gap-4">
-                      <a 
-                        href="/hotels/" 
+                      <a
+                        href="/hotels/"
                         className="px-6 py-3 bg-white text-blue-700 font-medium rounded-lg shadow-md hover:bg-blue-50 dark:bg-cyan-600/10 transition duration-300"
                       >
                         Find Accommodations
                       </a>
-                      <a 
-                        href="/ferry-tickets/" 
+                      <a
+                        href="/ferry-tickets/"
                         className="px-6 py-3 bg-transparent border-2 border-white text-white font-medium rounded-lg hover:bg-white hover:bg-opacity-10 transition duration-300"
                       >
                         How to get there
@@ -730,9 +732,9 @@ const SikinosGuide: React.FC = () => {
                     </div>
                   </div>
                   <div className="relative">
-                    <img 
-                      src="/images/islands/sikinos/cta-image.jpg" 
-                      alt="Sikinos Island View" 
+                    <img
+                      src="/images/islands/sikinos/cta-image.jpg"
+                      alt="Sikinos Island View"
                       className="rounded-lg shadow-2xl"
                     />
                   </div>

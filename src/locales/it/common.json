@@ -419,6 +419,225 @@
             "restaurants": "Consigli ristoranti"
         }
     },
+    "community": {
+        "title": "Community",
+        "subtitle": "Condividi le tue avventure alle Cicladi con altri viaggiatori. Foto, storie e consigli locali sono i benvenuti!",
+        "filters": {
+            "all": "Tutti",
+            "photos": "Foto",
+            "stories": "Storie",
+            "allIslands": "Tutte le Isole"
+        },
+        "shareCta": {
+            "title": "Condividi la Tua Esperienza",
+            "subtitle": "Aiuta altri viaggiatori a scoprire la magia delle Cicladi",
+            "button": "Condividi Foto o Storia"
+        },
+        "meta": {
+            "title": "Community | Discover Cyclades",
+            "description": "Unisciti alla nostra community di viaggiatori delle Cicladi. Condividi foto, storie e consigli dalle tue avventure greche."
+        }
+    },
+    "hotels": {
+        "hero": {
+            "titlePart1": "Hotel nelle ",
+            "titleHighlight": "Cicladi",
+            "subtitle": "Scopri resort di lusso, hotel boutique e alloggi in grotta in tutte le isole greche"
+        },
+        "search": {
+            "destination": "Destinazione",
+            "button": "Cerca Hotel"
+        },
+        "destinations": {
+            "title": "Destinazioni Popolari",
+            "subtitle": "Esplora hotel nelle isole più belle delle Cicladi",
+            "hotelsAvailable": "hotel disponibili"
+        },
+        "types": {
+            "title": "Tipi di Alloggio"
+        },
+        "prices": {
+            "title": "Prezzi Medi degli Hotel per Isola",
+            "subtitle": "Confronta i costi degli alloggi nelle Cicladi per trovare la soluzione ideale per il tuo budget"
+        },
+        "cta": {
+            "title": "Pronto a Prenotare?",
+            "subtitle": "Trova l'alloggio perfetto per la tua avventura greca",
+            "searchButton": "Cerca Hotel",
+            "bookFerries": "Prenota Traghetti"
+        }
+    },
+    "ferryTickets": {
+        "hero": {
+            "titlePart1": "Biglietti Traghetto per le ",
+            "titleHighlight": "Cicladi",
+            "subtitle": "Confronta prezzi e prenota biglietti per Santorini, Mykonos, Naxos, Paros e tutte le isole greche"
+        },
+        "routes": {
+            "title": "Rotte Popolari",
+            "subtitle": "Le connessioni traghetto più popolari nelle Cicladi"
+        },
+        "companies": {
+            "title": "Compagnie di Traghetti"
+        },
+        "cta": {
+            "title": "Pronto a Esplorare le Isole?",
+            "subtitle": "Prenota i tuoi biglietti e inizia la tua avventura island hopping",
+            "searchButton": "Cerca Traghetti",
+            "bookHotels": "Prenota Hotel"
+        }
+    },
+    "activities": {
+        "hero": {
+            "title": "Esperienze ",
+            "titleHighlight": "Indimenticabili",
+            "subtitle": "Scopri e prenota i migliori tour ed esperienze nelle isole greche."
+        },
+        "browse": {
+            "title": "Sfoglia e Prenota Attività",
+            "subtitle": "Trova le esperienze perfette per la tua avventura sull'isola"
+        },
+        "whyBook": {
+            "title": "Perché Prenotare Con Noi",
+            "subtitle": "Collaboriamo con i migliori fornitori locali"
+        },
+        "destinations": {
+            "title": "Destinazioni Principali",
+            "subtitle": "Esplora le isole più popolari per le attività",
+            "viewAll": "Vedi tutte le isole"
+        },
+        "cta": {
+            "title": "Pronto per la Tua Avventura?",
+            "subtitle": "Prenota le tue attività e crea ricordi indimenticabili nelle Cicladi"
+        }
+    },
+    "flights": {
+        "hero": {
+            "titlePart1": "Vola alle ",
+            "titleHighlight": "Cicladi",
+            "subtitle": "Trova voli economici per Santorini, Mykonos, Paros, Naxos e altro."
+        },
+        "whyBook": {
+            "title": "Perché Prenotare Voli Con Noi"
+        },
+        "airports": {
+            "title": "Aeroporti delle Cicladi",
+            "subtitle": "La maggior parte delle isole ha aeroporti con collegamenti da Atene"
+        },
+        "tips": {
+            "title": "Consigli per la Prenotazione dei Voli"
+        },
+        "cta": {
+            "title": "Pronto per la Tua Avventura nelle Cicladi?",
+            "subtitle": "La magia delle isole greche ti aspetta."
+        }
+    },
+    "about": {
+        "hero": {
+            "title": "La Tua Porta per le Cicladi",
+            "subtitle": "Siamo viaggiatori appassionati, esperti locali e amanti della tecnologia uniti dall'amore per le isole greche."
+        },
+        "mission": {
+            "title": "La Nostra Missione"
+        },
+        "values": {
+            "title": "I Nostri Valori",
+            "subtitle": "I principi che guidano tutto ciò che facciamo"
+        },
+        "story": {
+            "title": "La Nostra Storia"
+        },
+        "cta": {
+            "title": "Pianifichiamo la Tua Avventura",
+            "subtitle": "Hai domande? Vuoi consigli personalizzati? Il nostro team è qui per aiutarti."
+        }
+    },
+    "contact": {
+        "hero": {
+            "title": "Contattaci",
+            "subtitle": "Hai domande sulla pianificazione della tua avventura nelle Cicladi? Siamo qui per aiutarti!"
+        },
+        "form": {
+            "title": "Inviaci un Messaggio",
+            "subtitle": "Compila il modulo e ti risponderemo il prima possibile."
+        },
+        "cta": {
+            "title": "Pronto a esplorare le Cicladi?",
+            "subtitle": "Inizia a pianificare la tua perfetta avventura nelle isole greche."
+        }
+    },
+    "rentACar": {
+        "hero": {
+            "title": "Noleggia un'Auto nelle",
+            "cyclades": "Cicladi",
+            "subtitle": "Esplora Santorini, Mykonos, Naxos e altre isole al tuo ritmo."
+        },
+        "vehicleSection": {
+            "title": "Scegli il Tuo Veicolo",
+            "subtitle": "Dalle auto economiche alle cabriolet di lusso"
+        },
+        "locations": {
+            "title": "Punti di Ritiro Popolari",
+            "subtitle": "Ritira la tua auto in aeroporti, porti o centri città"
+        },
+        "cta": {
+            "title": "Pronto a Esplorare le Isole?",
+            "subtitle": "Prenota la tua auto a noleggio e scopri spiagge nascoste."
+        }
+    },
+    "transfers": {
+        "hero": {
+            "title": "Prenota il Tuo Transfer in Grecia",
+            "subtitle": "Trasferimenti sicuri e affidabili da aeroporti e porti"
+        },
+        "howItWorks": {
+            "title": "Come Funzionano i Nostri Trasferimenti"
+        },
+        "routes": {
+            "title": "Percorsi di Trasferimento Popolari",
+            "subtitle": "Scopri i nostri percorsi più prenotati con prezzi fissi."
+        }
+    },
+    "guides": {
+        "hero": {
+            "title": "Guide delle Isole",
+            "titleHighlight": "Cicladi",
+            "subtitle": "Guide di viaggio complete con consigli esperti, itinerari dettagliati e tutto il necessario per pianificare la vacanza perfetta."
+        },
+        "featured": {
+            "title": "Guide in Evidenza"
+        },
+        "cta": {
+            "title": "Hai Bisogno di un Itinerario Personalizzato?",
+            "subtitle": "Racconta a Touristas AI delle tue date di viaggio, interessi e budget."
+        }
+    },
+    "blog": {
+        "hero": {
+            "title": "Esplora le",
+            "titleHighlight": "Cicladi",
+            "subtitle": "Consigli, guide di viaggio e storie affascinanti sulle magiche isole greche"
+        },
+        "cta": {
+            "title": "Pronto a Pianificare il Tuo Viaggio?",
+            "subtitle": "Usa il nostro trip planner AI per creare il tuo itinerario perfetto delle Cicladi"
+        },
+        "newsletter": {
+            "title": "Ricevi Consigli di Viaggio",
+            "subtitle": "Unisciti a oltre 10.000 viaggiatori che ricevono guide esclusive e offerte."
+        }
+    },
+    "islandsPage": {
+        "hero": {
+            "title": "Scopri le",
+            "titleHighlight": "Cicladi",
+            "subtitle": "Un arcipelago straordinario di isole greche nel cuore del Mar Egeo. Trova la tua avventura perfetta."
+        },
+        "cta": {
+            "title": "Non Sai Quale Isola Scegliere?",
+            "subtitle": "Lascia che Touristas AI ti aiuti a trovare l'isola perfetta delle Cicladi."
+        }
+    },
     "meta": {
         "homeTitle": "Discover Cyclades | Guida di Viaggio Isole Greche",
         "homeDescription": "Pianifica la tua vacanza perfetta nelle isole greche. Hotel, traghetti, voli e attività.",

@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Star, MapPin, Building2, Bed, Calendar, Search, Users, Shield, CheckCircle, Clock, Euro, Award, Heart, ArrowRight, Sparkles } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
 
 export default function Hotels() {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const [destination, setDestination] = useState('Santorini');
   const [checkIn, setCheckIn] = useState('');
@@ -79,10 +81,10 @@ export default function Hotels() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 md:mb-10">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
-                Hotels in the <span className="text-yellow-300">Cyclades</span>
+                {t('hotels.hero.titlePart1', 'Hotels in the ')} <span className="text-yellow-300">{t('hotels.hero.titleHighlight', 'Cyclades')}</span>
               </h1>
               <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto px-2">
-                Discover luxury resorts, boutique hotels, and cave accommodations across all Greek Islands
+                {t('hotels.hero.subtitle', 'Discover luxury resorts, boutique hotels, and cave accommodations across all Greek Islands')}
               </p>
             </div>
 
@@ -91,7 +93,7 @@ export default function Hotels() {
               <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
                   <div className="lg:col-span-2">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-white/70 mb-1">Destination</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-white/70 mb-1">{t('hotels.search.destination', 'Destination')}</label>
                     <div className="relative">
                       <MapPin className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                       <select
@@ -106,7 +108,7 @@ export default function Hotels() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-white/70 mb-1">Check-in</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-white/70 mb-1">{t('booking.checkIn', 'Check-in')}</label>
                     <div className="relative">
                       <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                       <input
@@ -118,7 +120,7 @@ export default function Hotels() {
                     </div>
                   </div>
                   <div>
-                    <label className="block text-sm font-medium text-gray-700 dark:text-white/70 mb-1">Check-out</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-white/70 mb-1">{t('booking.checkOut', 'Check-out')}</label>
                     <div className="relative">
                       <Calendar className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                       <input
@@ -132,7 +134,7 @@ export default function Hotels() {
                 </div>
                 <div className="flex flex-col sm:flex-row gap-4">
                   <div className="flex-1">
-                    <label className="block text-sm font-medium text-gray-700 dark:text-white/70 mb-1">Guests</label>
+                    <label className="block text-sm font-medium text-gray-700 dark:text-white/70 mb-1">{t('common.guests', 'Guests')}</label>
                     <div className="relative">
                       <Users className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400" />
                       <select
@@ -151,7 +153,7 @@ export default function Hotels() {
                     className="sm:mt-auto inline-flex items-center justify-center px-8 py-3 bg-gradient-to-r from-cyan-600 to-cyclades-turquoise text-white rounded-xl font-semibold hover:shadow-lg transition-all"
                   >
                     <Search className="w-5 h-5 mr-2" />
-                    Search Hotels
+                    {t('hotels.search.button', 'Search Hotels')}
                   </button>
                 </div>
               </form>
@@ -210,9 +212,9 @@ export default function Hotels() {
         {/* Popular Destinations */}
         <div className="py-20 bg-gray-50 dark:bg-dark-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">Popular Destinations</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">{t('hotels.destinations.title', 'Popular Destinations')}</h2>
             <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">
-              Explore hotels across the most beautiful islands in the Cyclades
+              {t('hotels.destinations.subtitle', 'Explore hotels across the most beautiful islands in the Cyclades')}
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -238,7 +240,7 @@ export default function Hotels() {
         {/* Hotel Types */}
         <div className="py-20 bg-white dark:bg-dark-card">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Types of Accommodation</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">{t('hotels.types.title', 'Types of Accommodation')}</h2>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {hotelTypes.map((type, idx) => (
@@ -258,9 +260,9 @@ export default function Hotels() {
         {/* Price Comparison by Island */}
         <div className="py-20 bg-gray-50 dark:bg-dark-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">Average Hotel Prices by Island</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">{t('hotels.prices.title', 'Average Hotel Prices by Island')}</h2>
             <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">
-              Compare accommodation costs across the Cyclades to find your perfect budget match
+              {t('hotels.prices.subtitle', 'Compare accommodation costs across the Cyclades to find your perfect budget match')}
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

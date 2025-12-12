@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     BookOpen, Sparkles, Search, Clock, Calendar, MapPin,
@@ -58,6 +59,7 @@ const guideMeta: Record<string, {
 const featuredSlugs = ['santorini', 'mykonos', 'milos'];
 
 export default function GuidesNew() {
+    const { t } = useTranslation();
     const { resolvedTheme } = useTheme();
     const { openChat } = useTouristas();
     const isDark = resolvedTheme === 'dark';
@@ -120,12 +122,11 @@ export default function GuidesNew() {
                             </span>
 
                             <h1 className={`text-4xl sm:text-5xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                                Cyclades Island <span className="text-cyclades-turquoise">Guides</span>
+                                {t('guides.hero.title', 'Cyclades Island')} <span className="text-cyclades-turquoise">{t('guides.hero.titleHighlight', 'Guides')}</span>
                             </h1>
 
                             <p className={`text-lg mb-8 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
-                                Comprehensive travel guides with insider tips, detailed itineraries,
-                                and everything you need to plan the perfect Greek island vacation.
+                                {t('guides.hero.subtitle', 'Comprehensive travel guides with insider tips, detailed itineraries, and everything you need to plan the perfect Greek island vacation.')}
                             </p>
 
                             {/* Search */}
@@ -152,7 +153,7 @@ export default function GuidesNew() {
                         <div className="flex items-center justify-between mb-8">
                             <h2 className={`text-2xl font-bold ${isDark ? 'text-white' : 'text-gray-900'}`}>
                                 <TrendingUp className="w-6 h-6 inline mr-2 text-cyclades-turquoise" />
-                                Featured Guides
+                                {t('guides.featured.title', 'Featured Guides')}
                             </h2>
                         </div>
 
@@ -369,11 +370,10 @@ export default function GuidesNew() {
                             <Sparkles className="w-8 h-8 text-cyclades-turquoise" />
                         </div>
                         <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                            Need a Custom Itinerary?
+                            {t('guides.cta.title', 'Need a Custom Itinerary?')}
                         </h2>
                         <p className={`text-lg mb-8 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
-                            Tell Touristas AI about your travel dates, interests, and budget.
-                            Get a personalized day-by-day itinerary in seconds.
+                            {t('guides.cta.subtitle', 'Tell Touristas AI about your travel dates, interests, and budget. Get a personalized day-by-day itinerary in seconds.')}
                         </p>
                         <button
                             onClick={() => openChat('Create a custom Cyclades island itinerary for me')}

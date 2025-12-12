@@ -419,6 +419,225 @@
             "restaurants": "餐厅推荐"
         }
     },
+    "community": {
+        "title": "社区",
+        "subtitle": "与其他旅行者分享您的基克拉迪群岛冒险。欢迎分享照片、故事和本地贴士！",
+        "filters": {
+            "all": "全部",
+            "photos": "照片",
+            "stories": "故事",
+            "allIslands": "所有岛屿"
+        },
+        "shareCta": {
+            "title": "分享您的体验",
+            "subtitle": "帮助其他旅行者发现基克拉迪群岛的魅力",
+            "button": "分享照片或故事"
+        },
+        "meta": {
+            "title": "社区 | Discover Cyclades",
+            "description": "加入我们的基克拉迪群岛旅行者社区。分享您希腊冒险中的照片、故事和贴士。"
+        }
+    },
+    "hotels": {
+        "hero": {
+            "titlePart1": "基克拉迪群岛",
+            "titleHighlight": "酒店",
+            "subtitle": "探索遍布希腊岛屿的豪华度假村、精品酒店和洞穴住宿"
+        },
+        "search": {
+            "destination": "目的地",
+            "button": "搜索酒店"
+        },
+        "destinations": {
+            "title": "热门目的地",
+            "subtitle": "探索基克拉迪群岛最美丽岛屿的酒店",
+            "hotelsAvailable": "家酒店可供选择"
+        },
+        "types": {
+            "title": "住宿类型"
+        },
+        "prices": {
+            "title": "各岛屿平均酒店价格",
+            "subtitle": "比较基克拉迪群岛的住宿费用，找到适合您预算的理想选择"
+        },
+        "cta": {
+            "title": "准备好预订了吗？",
+            "subtitle": "为您的希腊之旅找到完美的住宿",
+            "searchButton": "搜索酒店",
+            "bookFerries": "预订渡轮"
+        }
+    },
+    "ferryTickets": {
+        "hero": {
+            "titlePart1": "前往基克拉迪群岛的",
+            "titleHighlight": "渡轮船票",
+            "subtitle": "比较价格并预订前往圣托里尼、米克诺斯、纳克索斯、帕罗斯及所有希腊岛屿的渡轮船票"
+        },
+        "routes": {
+            "title": "热门航线",
+            "subtitle": "基克拉迪群岛最受欢迎的渡轮航线"
+        },
+        "companies": {
+            "title": "渡轮公司"
+        },
+        "cta": {
+            "title": "准备好探索岛屿了吗？",
+            "subtitle": "预订船票，开始您的跳岛之旅",
+            "searchButton": "搜索渡轮",
+            "bookHotels": "预订酒店"
+        }
+    },
+    "activities": {
+        "hero": {
+            "title": "难忘的",
+            "titleHighlight": "体验",
+            "subtitle": "探索并预订希腊岛屿上最好的旅游和体验活动。"
+        },
+        "browse": {
+            "title": "浏览活动",
+            "subtitle": "为您的岛屿冒险找到完美的体验"
+        },
+        "whyBook": {
+            "title": "为什么选择我们预订",
+            "subtitle": "我们与最好的当地供应商合作"
+        },
+        "destinations": {
+            "title": "热门目的地",
+            "subtitle": "探索最受欢迎的活动岛屿",
+            "viewAll": "查看所有岛屿"
+        },
+        "cta": {
+            "title": "准备好开始您的岛屿冒险了吗？",
+            "subtitle": "预订您的活动，在基克拉迪群岛创造难忘的回忆"
+        }
+    },
+    "flights": {
+        "hero": {
+            "titlePart1": "飞往",
+            "titleHighlight": "基克拉迪群岛",
+            "subtitle": "寻找飞往圣托里尼、米克诺斯、帕罗斯、纳克索斯等地的廉价航班。"
+        },
+        "whyBook": {
+            "title": "为什么选择我们预订航班"
+        },
+        "airports": {
+            "title": "基克拉迪群岛机场",
+            "subtitle": "大多数岛屿都有连接雅典的机场"
+        },
+        "tips": {
+            "title": "航班预订提示"
+        },
+        "cta": {
+            "title": "准备好开始您的基克拉迪群岛冒险了吗？",
+            "subtitle": "希腊岛屿的魔力正在等待着您。"
+        }
+    },
+    "about": {
+        "hero": {
+            "title": "您通往基克拉迪群岛的门户",
+            "subtitle": "我们是充满热情的旅行者、当地专家和技术爱好者，因对希腊岛屿的热爱而团结在一起。"
+        },
+        "mission": {
+            "title": "我们的使命"
+        },
+        "values": {
+            "title": "我们的价值观",
+            "subtitle": "指导我们所做一切的原则"
+        },
+        "story": {
+            "title": "我们的故事"
+        },
+        "cta": {
+            "title": "让我们规划您的冒险",
+            "subtitle": "有问题吗？想要个性化推荐？我们的团队随时为您服务。"
+        }
+    },
+    "contact": {
+        "hero": {
+            "title": "联系我们",
+            "subtitle": "对规划您的基克拉迪群岛冒险有疑问吗？我们随时为您服务！"
+        },
+        "form": {
+            "title": "给我们发送消息",
+            "subtitle": "填写表格，我们会尽快回复您。"
+        },
+        "cta": {
+            "title": "准备好探索基克拉迪群岛了吗？",
+            "subtitle": "立即开始规划您完美的希腊岛屿冒险。"
+        }
+    },
+    "rentACar": {
+        "hero": {
+            "title": "在基克拉迪群岛租车",
+            "cyclades": "基克拉迪群岛",
+            "subtitle": "按自己的节奏探索圣托里尼、米科诺斯、纳克索斯等。"
+        },
+        "vehicleSection": {
+            "title": "选择您的车辆",
+            "subtitle": "从经济型汽车到豪华敞篷车"
+        },
+        "locations": {
+            "title": "热门取车地点",
+            "subtitle": "在机场、港口或市中心取车"
+        },
+        "cta": {
+            "title": "准备好探索岛屿了吗？",
+            "subtitle": "预订租车，发现隐藏的海滩。"
+        }
+    },
+    "transfers": {
+        "hero": {
+            "title": "在希腊预订接送服务",
+            "subtitle": "从机场和港口的安全可靠接送"
+        },
+        "howItWorks": {
+            "title": "我们的接送服务如何运作"
+        },
+        "routes": {
+            "title": "热门接送路线",
+            "subtitle": "发现我们最受欢迎的固定价格路线。"
+        }
+    },
+    "guides": {
+        "hero": {
+            "title": "岛屿指南",
+            "titleHighlight": "基克拉迪群岛",
+            "subtitle": "包含专家建议和详细行程的全面旅行指南。"
+        },
+        "featured": {
+            "title": "精选指南"
+        },
+        "cta": {
+            "title": "需要定制行程吗？",
+            "subtitle": "告诉Touristas AI您的旅行日期、兴趣和预算。"
+        }
+    },
+    "blog": {
+        "hero": {
+            "title": "探索",
+            "titleHighlight": "基克拉迪群岛",
+            "subtitle": "关于神奇希腊岛屿的提示、旅行指南和迷人故事"
+        },
+        "cta": {
+            "title": "准备好规划您的旅程了吗？",
+            "subtitle": "使用我们的AI旅行规划器创建您完美的基克拉迪群岛行程"
+        },
+        "newsletter": {
+            "title": "获取旅行提示",
+            "subtitle": "加入10,000多名接收独家指南和优惠的旅行者。"
+        }
+    },
+    "islandsPage": {
+        "hero": {
+            "title": "发现",
+            "titleHighlight": "基克拉迪群岛",
+            "subtitle": "爱琴海心脏地带的壮丽希腊岛屿群岛。找到您完美的岛屿冒险。"
+        },
+        "cta": {
+            "title": "不确定选择哪个岛屿？",
+            "subtitle": "让Touristas AI帮助您找到完美的基克拉迪群岛。"
+        }
+    },
     "meta": {
         "homeTitle": "Discover Cyclades | 希腊岛屿旅行指南",
         "homeDescription": "规划您完美的希腊岛屿度假。酒店、渡轮、航班和活动。",

@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { ArrowRight, Sun, Map, Compass, Plane, Building2, Car, Camera, UtensilsCrossed, Sparkles, Waves, MessageSquare, Ship, ChevronDown, Search } from 'lucide-react';
 import SEO from '../components/SEO';
 import { SITE_TAGLINE } from '../constants/seo';
@@ -19,9 +20,10 @@ interface SearchResult {
 }
 
 export default function Home() {
+  const { t } = useTranslation();
   const seoData = {
     title: `Discover Cyclades Islands ${SITE_TAGLINE}`,
-    description: "Discover the magic of the Cyclades islands with our AI-powered travel guide. Plan your perfect Greek island-hopping adventure today."
+    description: t('home.seo.description', "Discover the magic of the Cyclades islands with our AI-powered travel guide. Plan your perfect Greek island-hopping adventure today.")
   };
 
   const jsonLD = {
@@ -84,7 +86,7 @@ export default function Home() {
 
   return (
     <>
-      <SEO 
+      <SEO
         {...seoData}
         structuredData={JSON.stringify(jsonLD)}
       />
@@ -94,9 +96,9 @@ export default function Home() {
         <div className="relative min-h-screen">
           {/* Background Video/Image with Overlay */}
           <div className="absolute inset-0 z-0">
-            <img 
-              src="/images/home-hero-final.jpg" 
-              alt="Greek Islands" 
+            <img
+              src="/images/home-hero-final.jpg"
+              alt="Greek Islands"
               className="w-full h-full object-cover"
             />
             <div className="absolute inset-0 bg-gradient-to-b from-[#1E2E48]/70 via-[#1E2E48]/50 to-[#1E2E48]/80" />
@@ -112,7 +114,7 @@ export default function Home() {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-white mb-12 max-w-3xl mx-auto drop-shadow-lg">
-                Discover the enchanting Cyclades islands. From pristine beaches to ancient ruins, 
+                Discover the enchanting Cyclades islands. From pristine beaches to ancient ruins,
                 plan your perfect Greek island adventure with us.
               </p>
 
@@ -158,7 +160,7 @@ export default function Home() {
 
               {/* Action Buttons */}
               <div className="flex flex-wrap justify-center gap-4 mt-12">
-                <Link 
+                <Link
                   to="/touristas-ai"
                   className="inline-flex items-center px-8 py-4 bg-[#1E2E48] text-white rounded-xl font-medium hover:bg-[#1E2E48]/90 transition-all transform hover:scale-105 shadow-lg"
                 >
@@ -189,20 +191,20 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-[#1E2E48] mb-4">Plan Your Perfect Cyclades Getaway</h2>
               <p className="text-lg text-[#1E2E48]/80">Everything you need for an unforgettable Greek island experience</p>
             </div>
-            
+
             {/* SEO Text for Services */}
             <div className="prose prose-lg mx-auto mb-12">
               <p className="text-[#1E2E48]/80 text-center">
                 From practical travel tips and weather information to immersive cultural experiences and off-the-beaten-path adventures, discovercyclades.gr provides everything you need to transform your Cyclades dreams into unforgettable memories. Start planning your journey today and discover why the Cyclades islands continue to captivate travelers year after year.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <Link to="/hotels" className="group transform transition-all duration-300 hover:-translate-y-2">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-lg">
-                  <img 
-                    src="/images/services/luxury-hotel.jpeg" 
-                    alt="Luxury Hotels" 
+                  <img
+                    src="/images/services/luxury-hotel.jpeg"
+                    alt="Luxury Hotels"
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/80 via-[#1E2E48]/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
@@ -212,9 +214,9 @@ export default function Home() {
                     <p className="text-white/90">Handpicked hotels & villas</p>
                   </div>
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
-                    <img 
-                      src="https://www.logoshape.com/wp-content/uploads/2024/09/agoda-logo-vector_logoshape.png" 
-                      alt="Agoda" 
+                    <img
+                      src="https://www.logoshape.com/wp-content/uploads/2024/09/agoda-logo-vector_logoshape.png"
+                      alt="Agoda"
                       className="h-6 w-auto"
                     />
                   </div>
@@ -223,9 +225,9 @@ export default function Home() {
 
               <Link to="/ferry-tickets" className="group transform transition-all duration-300 hover:-translate-y-2">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-lg">
-                  <img 
-                    src="/images/services/ferry-tickets.webp" 
-                    alt="Ferry Tickets" 
+                  <img
+                    src="/images/services/ferry-tickets.webp"
+                    alt="Ferry Tickets"
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/80 via-[#1E2E48]/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
@@ -235,9 +237,9 @@ export default function Home() {
                     <p className="text-white/90">Island hopping made easy</p>
                   </div>
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
-                    <img 
-                      src="https://cdn1.ferryhopper.com/img/ferryhopper-logo-small.svg" 
-                      alt="FerryHopper" 
+                    <img
+                      src="https://cdn1.ferryhopper.com/img/ferryhopper-logo-small.svg"
+                      alt="FerryHopper"
                       className="h-6 w-auto"
                     />
                   </div>
@@ -246,9 +248,9 @@ export default function Home() {
 
               <Link to="/activities" className="group transform transition-all duration-300 hover:-translate-y-2">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-lg">
-                  <img 
-                    src="/images/services/activities.jpg" 
-                    alt="Activities" 
+                  <img
+                    src="/images/services/activities.jpg"
+                    alt="Activities"
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/80 via-[#1E2E48]/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
@@ -258,22 +260,22 @@ export default function Home() {
                     <p className="text-white/90">Unforgettable experiences</p>
                   </div>
                   <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
-                    <img 
-                      src="https://www.vhv.rs/dpng/d/611-6116095_getyourguide-logo-logo-get-your-guide-hd-png.png" 
-                      alt="GetYourGuide" 
+                    <img
+                      src="https://www.vhv.rs/dpng/d/611-6116095_getyourguide-logo-logo-get-your-guide-hd-png.png"
+                      alt="GetYourGuide"
                       className="h-6 w-auto"
                     />
                   </div>
                 </div>
               </Link>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-8">
               <Link to="/rent-a-car" className="group transform transition-all duration-300 hover:-translate-y-2">
                 <div className="relative aspect-[4/3] rounded-2xl overflow-hidden mb-6 shadow-lg">
-                  <img 
-                    src="/images/services/car-rental.jpg" 
-                    alt="Car Rentals" 
+                  <img
+                    src="/images/services/car-rental.jpg"
+                    alt="Car Rentals"
                     className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/80 via-[#1E2E48]/40 to-transparent opacity-80 group-hover:opacity-90 transition-opacity" />
@@ -287,7 +289,7 @@ export default function Home() {
                   </div>
                 </div>
               </Link>
-              
+
               <div className="col-span-2">
                 <div className="h-full flex flex-col justify-center px-8 bg-white rounded-2xl shadow-lg p-8">
                   <h3 className="text-2xl font-bold text-[#1E2E48] mb-4">Complete Travel Services</h3>
@@ -320,8 +322,8 @@ export default function Home() {
                       <span className="text-[#1E2E48]">Activities</span>
                     </div>
                   </div>
-                  <Link 
-                    to="/touristas-ai" 
+                  <Link
+                    to="/touristas-ai"
                     className="inline-flex items-center text-[#1E2E48] font-medium hover:text-[#1E2E48]/80 transition-colors group"
                   >
                     Consult Touristas AI
@@ -378,24 +380,24 @@ export default function Home() {
                   link: "https://www.getyourguide.com/santorini-l753/ocean-voyager-74-sunset-tour-t31512/?ranking_uuid=fa7d77f6-3417-4c4a-8097-5f184d97606e"
                 }
               ].map((experience) => (
-                <a 
-                  key={experience.title} 
+                <a
+                  key={experience.title}
                   href={experience.link}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="group relative overflow-hidden rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="aspect-[4/3] relative">
-                    <img 
+                    <img
                       src={experience.image}
                       alt={experience.title}
                       className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/90 via-[#1E2E48]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
                     <div className="absolute top-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg px-4 py-2 shadow-lg">
-                      <img 
-                        src="https://www.vhv.rs/dpng/d/611-6116095_getyourguide-logo-logo-get-your-guide-hd-png.png" 
-                        alt="GetYourGuide" 
+                      <img
+                        src="https://www.vhv.rs/dpng/d/611-6116095_getyourguide-logo-logo-get-your-guide-hd-png.png"
+                        alt="GetYourGuide"
                         className="h-6 w-auto"
                       />
                     </div>
@@ -423,8 +425,8 @@ export default function Home() {
             </div>
 
             <div className="text-center mt-12">
-              <Link 
-                to="/activities" 
+              <Link
+                to="/activities"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#1E2E48] text-white rounded-xl hover:bg-[#1E2E48]/90 transition duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 View All Experiences
@@ -445,67 +447,67 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-[#1E2E48] mb-4">Explore Our Island Guides</h2>
               <p className="text-lg text-[#1E2E48]/80">Detailed guides to help you discover the unique charm of each Cycladic island</p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
-                { 
-                  name: 'Santorini', 
-                  route: '/guides/santorini', 
+                {
+                  name: 'Santorini',
+                  route: '/guides/santorini',
                   image: '/images/islands/santorini-island.webp',
                   description: 'Iconic sunsets & white-washed buildings',
                   highlights: ['Caldera Views', 'Wine Tours', 'Ancient Ruins'],
                   color: 'from-[#1E2E48]/90 to-[#1E2E48]/70'
                 },
-                { 
-                  name: 'Mykonos', 
-                  route: '/guides/mykonos', 
+                {
+                  name: 'Mykonos',
+                  route: '/guides/mykonos',
                   image: '/images/islands/mykonos-island.jpg',
                   description: 'Vibrant nightlife & cosmopolitan charm',
                   highlights: ['Beach Clubs', 'Windmills', 'Little Venice'],
                   color: 'from-[#1E2E48]/90 to-[#1E2E48]/70'
                 },
-                { 
-                  name: 'Paros', 
-                  route: '/guides/paros', 
+                {
+                  name: 'Paros',
+                  route: '/guides/paros',
                   image: '/images/islands/paros-island.jpg',
                   description: 'Perfect blend of tradition & luxury',
                   highlights: ['Golden Beaches', 'Marble Art', 'Windsurfing'],
                   color: 'from-[#1E2E48]/90 to-[#1E2E48]/70'
                 },
-                { 
-                  name: 'Naxos', 
-                  route: '/guides/naxos', 
+                {
+                  name: 'Naxos',
+                  route: '/guides/naxos',
                   image: '/images/islands/naxos-island.jpg',
                   description: 'Largest island with diverse landscapes',
                   highlights: ['Mount Zeus', 'Local Cuisine', 'Ancient Temples'],
                   color: 'from-[#1E2E48]/90 to-[#1E2E48]/70'
                 },
-                { 
-                  name: 'Milos', 
-                  route: '/guides/milos', 
+                {
+                  name: 'Milos',
+                  route: '/guides/milos',
                   image: '/images/islands/milos.jpg',
                   description: 'Volcanic beauty & hidden beaches',
                   highlights: ['Sarakiniko', 'Catacombs', 'Fishing Villages'],
                   color: 'from-[#1E2E48]/90 to-[#1E2E48]/70'
                 },
-                { 
-                  name: 'Ios', 
-                  route: '/guides/ios', 
+                {
+                  name: 'Ios',
+                  route: '/guides/ios',
                   image: '/images/islands/ios.jpg',
                   description: 'Party paradise with ancient history',
                   highlights: ['Nightlife', 'Homer\'s Tomb', 'Beaches'],
                   color: 'from-[#1E2E48]/90 to-[#1E2E48]/70'
                 }
               ].map((island) => (
-                <Link 
-                  key={island.name} 
-                  to={island.route} 
+                <Link
+                  key={island.name}
+                  to={island.route}
                   className="group relative overflow-hidden rounded-2xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-1"
                 >
                   <div className="aspect-[4/3] relative">
-                    <img 
+                    <img
                       src={island.image}
-                      alt={`${island.name} Guide`} 
+                      alt={`${island.name} Guide`}
                       className="w-full h-full object-cover transition duration-500 group-hover:scale-110"
                     />
                     <div className={`absolute inset-0 bg-gradient-to-t ${island.color} opacity-90 group-hover:opacity-95 transition-opacity`} />
@@ -514,7 +516,7 @@ export default function Home() {
                       <p className="text-white/90 mb-4">{island.description}</p>
                       <div className="flex flex-wrap gap-2">
                         {island.highlights.map((highlight) => (
-                          <span 
+                          <span
                             key={highlight}
                             className="px-3 py-1 bg-[#E3D7C3]/20 backdrop-blur-sm rounded-full text-sm text-white"
                           >
@@ -532,10 +534,10 @@ export default function Home() {
                 </Link>
               ))}
             </div>
-            
+
             <div className="text-center mt-12">
-              <Link 
-                to="/guides" 
+              <Link
+                to="/guides"
                 className="inline-flex items-center gap-2 px-8 py-4 bg-[#1E2E48] text-white rounded-xl hover:bg-[#1E2E48]/90 transition duration-200 shadow-lg hover:shadow-xl hover:-translate-y-0.5"
               >
                 View All Island Guides
@@ -551,7 +553,7 @@ export default function Home() {
             </div>
           </div>
         </section>
-          
+
         {/* Touristas AI Planner Promotional Banner */}
         <section className="py-24 relative overflow-hidden bg-gradient-to-br from-[#1E2E48] to-[#1E2E48]/95">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -562,15 +564,15 @@ export default function Home() {
                   <span>AI-Powered Travel Planning</span>
                 </div>
                 <div className="flex items-center gap-4 mb-6">
-                  <img 
-                    src="/touristas-ai-logo.svg" 
-                    alt="Touristas AI Logo" 
+                  <img
+                    src="/touristas-ai-logo.svg"
+                    alt="Touristas AI Logo"
                     className="h-16 w-auto drop-shadow-lg"
                   />
                   <div>
                     <h2 className="text-4xl md:text-5xl font-bold text-white mb-2">
                       Your Personal <span className="bg-gradient-to-r from-[#E3D7C3] to-[#E3D7C3]/80 bg-clip-text text-transparent">AI Travel Assistant</span>
-                </h2>
+                    </h2>
                     <p className="text-[#E3D7C3] text-xl font-medium">Powered by Touristas AI</p>
                   </div>
                 </div>
@@ -578,15 +580,15 @@ export default function Home() {
                   Experience Touristas AI - the world's first mystical Greek islands oracle that plans, books, and guides your perfect Cyclades adventure with revolutionary AI intelligence.
                 </p>
                 <div className="flex flex-wrap gap-4 mb-12">
-                  <Link 
-                    to="/touristas-ai" 
+                  <Link
+                    to="/touristas-ai"
                     className="inline-flex items-center px-8 py-4 rounded-xl bg-[#E3D7C3] text-[#1E2E48] font-medium shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1"
                   >
                     Experience Touristas AI
                     <ArrowRight className="ml-2 h-5 w-5" />
                   </Link>
-                  <Link 
-                    to="/touristas-ai/chat" 
+                  <Link
+                    to="/touristas-ai/chat"
                     className="inline-flex items-center px-8 py-4 rounded-xl bg-[#1E2E48]/10 backdrop-blur-sm text-[#E3D7C3] font-medium hover:bg-[#1E2E48]/20 transition-all duration-300 border border-[#E3D7C3]/20"
                   >
                     Chat with Touristas AI
@@ -677,7 +679,7 @@ export default function Home() {
                 </div>
                 <h2 className="text-3xl md:text-4xl font-bold text-[#1E2E48] mb-6">Experience the Best of Cyclades</h2>
                 <p className="text-base md:text-lg text-[#1E2E48]/80 mb-8 leading-relaxed">
-                  From pristine beaches and crystal-clear waters to charming villages and ancient ruins, 
+                  From pristine beaches and crystal-clear waters to charming villages and ancient ruins,
                   the Cyclades offers a perfect blend of relaxation, culture, and adventure.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6 mb-8 md:mb-12">
@@ -743,9 +745,9 @@ export default function Home() {
               </div>
               <div className="relative order-1 md:order-2 mb-12 md:mb-0">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/experience/santorini-view.jpg" 
-                    alt="Santorini View" 
+                  <img
+                    src="/images/experience/santorini-view.jpg"
+                    alt="Santorini View"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/90 via-[#1E2E48]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
@@ -756,9 +758,9 @@ export default function Home() {
                 </div>
                 <div className="absolute -bottom-6 -left-6 w-2/3 transform hover:-translate-y-2 transition-transform duration-300 hidden md:block">
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                    <img 
-                      src="/images/experience/beach-life.jpg" 
-                      alt="Beach Life" 
+                    <img
+                      src="/images/experience/beach-life.jpg"
+                      alt="Beach Life"
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/90 via-[#1E2E48]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
@@ -770,9 +772,9 @@ export default function Home() {
                 </div>
                 <div className="absolute -top-6 -right-6 w-1/2 transform hover:-translate-y-2 transition-transform duration-300 hidden md:block">
                   <div className="aspect-square rounded-2xl overflow-hidden shadow-xl">
-                    <img 
-                      src="/images/experience/local-cuisine.jpg" 
-                      alt="Local Cuisine" 
+                    <img
+                      src="/images/experience/local-cuisine.jpg"
+                      alt="Local Cuisine"
                       className="w-full h-full object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1E2E48]/90 via-[#1E2E48]/60 to-transparent opacity-90 group-hover:opacity-95 transition-opacity" />
@@ -805,7 +807,7 @@ export default function Home() {
               <h2 className="text-4xl font-bold text-[#1E2E48] mb-4">What Our Travelers Say</h2>
               <p className="text-lg text-[#1E2E48]/80">Real experiences from people who explored the Cyclades with us</p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {[
                 {
@@ -835,7 +837,7 @@ export default function Home() {
               ].map((testimonial) => (
                 <div key={testimonial.name} className="bg-white rounded-2xl p-8 shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1">
                   <div className="flex items-center gap-4 mb-6">
-                    <img 
+                    <img
                       src={testimonial.image}
                       alt={testimonial.name}
                       className="w-16 h-16 rounded-full object-cover"
@@ -850,11 +852,11 @@ export default function Home() {
                     <div className="flex items-center gap-1">
                       {[...Array(testimonial.rating)].map((_, i) => (
                         <Sparkles key={i} className="w-4 h-4 text-[#E3D7C3]" />
-              ))}
-            </div>
+                      ))}
+                    </div>
                     <span className="text-[#1E2E48]/60 text-sm">{testimonial.date}</span>
-            </div>
-          </div>
+                  </div>
+                </div>
               ))}
             </div>
           </div>

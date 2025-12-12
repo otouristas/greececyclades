@@ -1,4 +1,6 @@
 // Chat utilities for Cyclades Touristas AI
+import type { Hotel } from '@/lib/liteapi';
+import type { ChatFlightResult } from '../services/FlightSearchService';
 
 export interface Message {
     id: string;
@@ -9,7 +11,15 @@ export interface Message {
     location?: string;
     preferences?: Record<string, string>;
     typing?: boolean;
+    // LiteAPI hotel search results for chat display
+    bookingHotels?: Hotel[];
+    bookingSearchUrl?: string;
+    // Flight search results for chat display
+    chatFlights?: ChatFlightResult[];
+    flightSearchUrl?: string;
 }
+
+
 
 // Cyclades Islands for detection
 const CYCLADES_ISLANDS = [

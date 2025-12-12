@@ -419,6 +419,225 @@
             "restaurants": "Restaurant-Empfehlungen"
         }
     },
+    "community": {
+        "title": "Community",
+        "subtitle": "Teilen Sie Ihre Kykladen-Abenteuer mit anderen Reisenden. Fotos, Geschichten und lokale Tipps willkommen!",
+        "filters": {
+            "all": "Alle",
+            "photos": "Fotos",
+            "stories": "Geschichten",
+            "allIslands": "Alle Inseln"
+        },
+        "shareCta": {
+            "title": "Teilen Sie Ihre Erfahrung",
+            "subtitle": "Helfen Sie anderen Reisenden, die Magie der Kykladen zu entdecken",
+            "button": "Foto oder Geschichte teilen"
+        },
+        "meta": {
+            "title": "Community | Discover Cyclades",
+            "description": "Werden Sie Teil unserer Kykladen-Reisenden-Community. Teilen Sie Fotos, Geschichten und Tipps von Ihren griechischen Abenteuern."
+        }
+    },
+    "hotels": {
+        "hero": {
+            "titlePart1": "Hotels auf den ",
+            "titleHighlight": "Kykladen",
+            "subtitle": "Entdecken Sie Luxusresorts, Boutique-Hotels und Höhlenunterkünfte auf allen griechischen Inseln"
+        },
+        "search": {
+            "destination": "Reiseziel",
+            "button": "Hotels Suchen"
+        },
+        "destinations": {
+            "title": "Beliebte Reiseziele",
+            "subtitle": "Entdecken Sie Hotels auf den schönsten Inseln der Kykladen",
+            "hotelsAvailable": "Hotels verfügbar"
+        },
+        "types": {
+            "title": "Unterkunftsarten"
+        },
+        "prices": {
+            "title": "Durchschnittliche Hotelpreise pro Insel",
+            "subtitle": "Vergleichen Sie die Unterkunftskosten auf den Kykladen, um die ideale Lösung für Ihr Budget zu finden"
+        },
+        "cta": {
+            "title": "Bereit zu Buchen?",
+            "subtitle": "Finden Sie die perfekte Unterkunft für Ihr griechisches Abenteuer",
+            "searchButton": "Hotels Suchen",
+            "bookFerries": "Fähren Buchen"
+        }
+    },
+    "ferryTickets": {
+        "hero": {
+            "titlePart1": "Fährtickets zu den ",
+            "titleHighlight": "Kykladen",
+            "subtitle": "Vergleichen Sie Preise und buchen Sie Fährtickets nach Santorin, Mykonos, Naxos, Paros und alle griechischen Inseln"
+        },
+        "routes": {
+            "title": "Beliebte Routen",
+            "subtitle": "Die beliebtesten Fährverbindungen auf den Kykladen"
+        },
+        "companies": {
+            "title": "Fährunternehmen"
+        },
+        "cta": {
+            "title": "Bereit die Inseln zu Erkunden?",
+            "subtitle": "Buchen Sie Ihre Tickets und starten Sie Ihr Inselhopping-Abenteuer",
+            "searchButton": "Fähren Suchen",
+            "bookHotels": "Hotels Buchen"
+        }
+    },
+    "activities": {
+        "hero": {
+            "title": "Unvergessliche ",
+            "titleHighlight": "Erlebnisse",
+            "subtitle": "Entdecken und buchen Sie die besten Touren und Erlebnisse auf den griechischen Inseln."
+        },
+        "browse": {
+            "title": "Aktivitäten Durchsuchen",
+            "subtitle": "Finden Sie die perfekten Erlebnisse für Ihr Inselabenteuer"
+        },
+        "whyBook": {
+            "title": "Warum Bei Uns Buchen",
+            "subtitle": "Wir arbeiten mit den besten lokalen Anbietern zusammen"
+        },
+        "destinations": {
+            "title": "Top-Reiseziele",
+            "subtitle": "Entdecken Sie die beliebtesten Inseln für Aktivitäten",
+            "viewAll": "Alle Inseln anzeigen"
+        },
+        "cta": {
+            "title": "Bereit für Ihr Inselabenteuer?",
+            "subtitle": "Buchen Sie Ihre Aktivitäten und schaffen Sie unvergessliche Erinnerungen"
+        }
+    },
+    "flights": {
+        "hero": {
+            "titlePart1": "Fliegen Sie zu den ",
+            "titleHighlight": "Kykladen",
+            "subtitle": "Finden Sie günstige Flüge nach Santorin, Mykonos, Paros, Naxos und mehr."
+        },
+        "whyBook": {
+            "title": "Warum Flüge Bei Uns Buchen"
+        },
+        "airports": {
+            "title": "Kykladen Flughäfen",
+            "subtitle": "Die meisten Inseln haben Flughäfen mit Verbindungen von Athen"
+        },
+        "tips": {
+            "title": "Tipps zur Flugbuchung"
+        },
+        "cta": {
+            "title": "Bereit für Ihr Kykladen-Abenteuer?",
+            "subtitle": "Die Magie der griechischen Inseln wartet auf Sie."
+        }
+    },
+    "about": {
+        "hero": {
+            "title": "Ihr Tor zu den Kykladen",
+            "subtitle": "Wir sind leidenschaftliche Reisende, lokale Experten und Technologie-Enthusiasten, vereint durch unsere Liebe zu den griechischen Inseln."
+        },
+        "mission": {
+            "title": "Unsere Mission"
+        },
+        "values": {
+            "title": "Unsere Werte",
+            "subtitle": "Die Prinzipien, die alles leiten, was wir tun"
+        },
+        "story": {
+            "title": "Unsere Geschichte"
+        },
+        "cta": {
+            "title": "Planen Wir Ihr Abenteuer",
+            "subtitle": "Haben Sie Fragen? Möchten Sie personalisierte Empfehlungen? Unser Team ist hier, um Ihnen zu helfen."
+        }
+    },
+    "contact": {
+        "hero": {
+            "title": "Kontaktieren Sie Uns",
+            "subtitle": "Haben Sie Fragen zur Planung Ihres Kykladen-Abenteuers? Wir sind hier, um zu helfen!"
+        },
+        "form": {
+            "title": "Senden Sie uns eine Nachricht",
+            "subtitle": "Füllen Sie das Formular aus und wir melden uns schnellstmöglich."
+        },
+        "cta": {
+            "title": "Bereit, die Kykladen zu erkunden?",
+            "subtitle": "Beginnen Sie mit der Planung Ihres perfekten griechischen Inselabenteuers."
+        }
+    },
+    "rentACar": {
+        "hero": {
+            "title": "Mieten Sie ein Auto auf den",
+            "cyclades": "Kykladen",
+            "subtitle": "Erkunden Sie Santorin, Mykonos, Naxos und mehr in Ihrem eigenen Tempo."
+        },
+        "vehicleSection": {
+            "title": "Wählen Sie Ihr Fahrzeug",
+            "subtitle": "Von Economy-Autos bis zu Luxus-Cabrios"
+        },
+        "locations": {
+            "title": "Beliebte Abholorte",
+            "subtitle": "Holen Sie Ihr Auto am Flughafen, Hafen oder Stadtzentrum ab"
+        },
+        "cta": {
+            "title": "Bereit, die Inseln zu Erkunden?",
+            "subtitle": "Buchen Sie Ihren Mietwagen und entdecken Sie versteckte Strände."
+        }
+    },
+    "transfers": {
+        "hero": {
+            "title": "Buchen Sie Ihren Transfer in Griechenland",
+            "subtitle": "Sichere und zuverlässige Transfers von Flughäfen und Häfen"
+        },
+        "howItWorks": {
+            "title": "Wie Unsere Transfers Funktionieren"
+        },
+        "routes": {
+            "title": "Beliebte Transferrouten",
+            "subtitle": "Entdecken Sie unsere meistgebuchten Routen mit Festpreisen."
+        }
+    },
+    "guides": {
+        "hero": {
+            "title": "Inselführer",
+            "titleHighlight": "Kykladen",
+            "subtitle": "Umfassende Reiseführer mit Expertentipps, detaillierten Reiserouten und allem, was Sie brauchen."
+        },
+        "featured": {
+            "title": "Ausgewählte Guides"
+        },
+        "cta": {
+            "title": "Brauchen Sie eine Individuelle Reiseroute?",
+            "subtitle": "Erzählen Sie Touristas AI von Ihren Reisedaten, Interessen und Budget."
+        }
+    },
+    "blog": {
+        "hero": {
+            "title": "Entdecken Sie die",
+            "titleHighlight": "Kykladen",
+            "subtitle": "Tipps, Reiseführer und fesselnde Geschichten über die magischen griechischen Inseln"
+        },
+        "cta": {
+            "title": "Bereit, Ihre Reise zu Planen?",
+            "subtitle": "Verwenden Sie unseren KI-Reiseplaner für Ihre perfekte Kykladen-Reiseroute"
+        },
+        "newsletter": {
+            "title": "Erhalten Sie Reisetipps",
+            "subtitle": "Schließen Sie sich über 10.000 Reisenden an, die exklusive Guides und Angebote erhalten."
+        }
+    },
+    "islandsPage": {
+        "hero": {
+            "title": "Entdecken Sie die",
+            "titleHighlight": "Kykladen",
+            "subtitle": "Ein atemberaubender Archipel griechischer Inseln im Herzen der Ägäis. Finden Sie Ihr perfektes Inselabenteuer."
+        },
+        "cta": {
+            "title": "Sie Wissen Nicht, Welche Insel Sie Wählen Sollen?",
+            "subtitle": "Lassen Sie Touristas AI Ihnen helfen, die perfekte Kykladeninsel zu finden."
+        }
+    },
     "meta": {
         "homeTitle": "Discover Cyclades | Griechische Inseln Reiseführer",
         "homeDescription": "Planen Sie Ihren perfekten Urlaub auf den griechischen Inseln. Hotels, Fähren, Flüge und Aktivitäten.",

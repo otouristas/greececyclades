@@ -30,7 +30,7 @@ serve(async (req) => {
         const { messages, userContext } = await req.json() as RequestBody;
 
         // Build system prompt with user context
-        let systemPrompt = `You are Touristas, an expert AI travel assistant specialized in the Greek Cyclades islands.
+        let systemPrompt = `You are Touristas AI, an expert travel assistant specialized in the Greek Cyclades islands.
 
 PERSONALITY:
 - Warm, enthusiastic, and genuinely passionate about Greek island travel
@@ -40,22 +40,27 @@ PERSONALITY:
 
 KNOWLEDGE:
 - Expert on all 24 Cycladic islands: Santorini, Mykonos, Paros, Naxos, Milos, Sifnos, Ios, Tinos, Syros, Andros, Amorgos, Koufonisia, Serifos, Folegandros, Sikinos, Kimolos, Antiparos, Anafi, Thirasia, Kea, Kythnos, Donousa, Schinoussa, Iraklia
-- Ferry schedules between islands (Blue Star, SeaJets, Golden Star, Fast Ferries)
+- Ferry schedules between islands (Blue Star, SeaJets, Golden Star, Fast Ferries, Hellenic Seaways)
 - Beach conditions, restaurants, hotels, activities
 - Greek culture, food, and customs
+- Current prices (2024-2025):
+  * Ferry tickets: €35-75 from Athens depending on speed
+  * Hotels: €50-150 budget, €100-250 mid-range, €200-600 luxury
+  * Meals: €15-30 per person at tavernas
 
-CAPABILITIES:
-When user wants to book, respond with structured booking intent:
-[BOOKING_INTENT: type=hotel|ferry|activity, destination=..., dates=..., guests=...]
+FERRYHOPPER INTEGRATION:
+When users ask about ferries, mention they can book via our partner Ferryhopper at ferryhopper.com
 
 FORMATTING:
 - Use markdown for rich responses
 - Use bullet points for lists
 - Use **bold** for emphasis
-- Keep responses concise but informative`;
+- Keep responses concise but informative (max 250 words)`;
 
         if (userContext) {
-            systemPrompt += `\n\nUSER CONTEXT:
+            systemPrompt += `
+
+USER CONTEXT:
 - Favorite Islands: ${userContext.favoriteIslands?.join(', ') || 'Not specified'}
 - Travel Style: ${userContext.travelStyle || 'Not specified'}
 - Budget: ${userContext.budget || 'Not specified'}
@@ -64,56 +69,94 @@ FORMATTING:
 Use this context to personalize your recommendations!`;
         }
 
-        const apiMessages = [
-            { role: 'system', content: systemPrompt },
-            ...messages
-        ];
+        // Try Gemini API first (preferred)
+        const geminiKey = Deno.env.get('GEMINI_API_KEY');
 
-        // Call OpenAI API
+        if (geminiKey) {
+            const geminiMessages = [
+                { role: 'user', parts: [{ text: systemPrompt }] },
+                ...messages.map(m => ({
+                    role: m.role === 'assistant' ? 'model' : 'user',
+                    parts: [{ text: m.content }]
+                }))
+            ];
+
+            const geminiResponse = await fetch(
+                `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${geminiKey}`,
+                {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        contents: geminiMessages,
+                        generationConfig: {
+                            temperature: 0.7,
+                            maxOutputTokens: 1000,
+                        }
+                    })
+                }
+            );
+
+            if (geminiResponse.ok) {
+                const data = await geminiResponse.json();
+                const aiResponse = data.candidates?.[0]?.content?.parts?.[0]?.text || 'I apologize, I had trouble processing that. Could you try again?';
+
+                return new Response(
+                    JSON.stringify({
+                        response: aiResponse,
+                        success: true,
+                        model: 'gemini-2.0-flash'
+                    }),
+                    { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+                );
+            } else {
+                console.error('Gemini API error:', await geminiResponse.text());
+            }
+        }
+
+        // Fallback to OpenAI if Gemini fails
         const openaiKey = Deno.env.get('OPENAI_API_KEY');
 
-        if (!openaiKey) {
-            // Fallback response if no API key
-            return new Response(
-                JSON.stringify({
-                    response: generateFallbackResponse(messages[messages.length - 1].content),
-                    success: true
+        if (openaiKey) {
+            const apiMessages = [
+                { role: 'system', content: systemPrompt },
+                ...messages
+            ];
+
+            const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
+                method: 'POST',
+                headers: {
+                    'Authorization': `Bearer ${openaiKey}`,
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    model: 'gpt-4-turbo-preview',
+                    messages: apiMessages,
+                    max_tokens: 1000,
+                    temperature: 0.7,
                 }),
-                { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
-            );
+            });
+
+            if (openaiResponse.ok) {
+                const data = await openaiResponse.json();
+                const aiResponse = data.choices[0]?.message?.content || 'I apologize, I had trouble processing that. Could you try again?';
+
+                return new Response(
+                    JSON.stringify({
+                        response: aiResponse,
+                        success: true,
+                        model: 'gpt-4-turbo'
+                    }),
+                    { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
+                );
+            }
         }
 
-        const openaiResponse = await fetch('https://api.openai.com/v1/chat/completions', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${openaiKey}`,
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({
-                model: 'gpt-4-turbo-preview',
-                messages: apiMessages,
-                max_tokens: 1000,
-                temperature: 0.7,
-            }),
-        });
-
-        if (!openaiResponse.ok) {
-            const error = await openaiResponse.text();
-            console.error('OpenAI API error:', error);
-            throw new Error('Failed to get AI response');
-        }
-
-        const data = await openaiResponse.json();
-        const aiResponse = data.choices[0]?.message?.content || 'I apologize, I had trouble processing that. Could you try again?';
-
-        // Check for booking intent
-        const bookingIntent = extractBookingIntent(aiResponse);
-
+        // Final fallback response
         return new Response(
             JSON.stringify({
-                response: aiResponse.replace(/\[BOOKING_INTENT:.*?\]/g, '').trim(),
-                bookingIntent,
-                success: true
+                response: generateFallbackResponse(messages[messages.length - 1].content),
+                success: true,
+                model: 'fallback'
             }),
             { headers: { ...corsHeaders, 'Content-Type': 'application/json' } }
         );
@@ -129,19 +172,6 @@ Use this context to personalize your recommendations!`;
         );
     }
 });
-
-function extractBookingIntent(response: string): any | null {
-    const match = response.match(/\[BOOKING_INTENT:\s*type=(\w+),\s*destination=([^,]+),?\s*dates?=([^,\]]*),?\s*guests?=(\d*)\]/i);
-    if (match) {
-        return {
-            type: match[1],
-            destination: match[2].trim(),
-            dates: match[3].trim() || null,
-            guests: match[4] ? parseInt(match[4]) : null,
-        };
-    }
-    return null;
-}
 
 function generateFallbackResponse(userMessage: string): string {
     const message = userMessage.toLowerCase();
@@ -173,41 +203,28 @@ Which island interests you most? I can find specific recommendations based on yo
 • Mykonos: €35-70 (2-4.5 hours)
 • Paros: €30-65 (2-4 hours)
 
-Where are you traveling from and to? I'll find the best options for your dates!`;
+Book via our partner **Ferryhopper.com** for best prices! Where are you traveling from and to?`;
     }
 
-    if (message.includes('beach') || message.includes('swim')) {
-        return `The Cyclades have some of the world's most beautiful beaches! 🏖️
+    if (message.includes('weather') || message.includes('when') || message.includes('season')) {
+        return `Here's the best times to visit the Cyclades! ☀️
 
-**Top recommendations:**
+**Peak Season (July-August):**
+- 30-35°C, crowded, highest prices
+- Perfect beach weather, lively nightlife
 
-🌙 **Sarakiniko, Milos** - Lunar landscape, white rocks
-🔴 **Red Beach, Santorini** - Volcanic, dramatic cliffs
-💎 **Kolimbithres, Paros** - Rock formations, calm water
-🏄 **Mikri Vigla, Naxos** - Perfect for windsurfing
-🎊 **Paradise Beach, Mykonos** - Famous beach parties
+**Shoulder Season (May-June, Sept-Oct):**
+- 22-28°C, fewer crowds, better prices
+- **Best overall value!** Good swimming weather
 
-Would you like recommendations for calm family beaches or more adventurous spots?`;
+**Off Season (Nov-April):**
+- 12-18°C, many places closed
+- Great for hiking, authentic experience
+
+What dates are you considering?`;
     }
 
-    if (message.includes('food') || message.includes('eat') || message.includes('restaurant')) {
-        return `Greek island cuisine is amazing! 🍽️
-
-**Must-try dishes:**
-• **Fava** - Yellow split pea puree (Santorini specialty)
-• **Kopanisti** - Spicy cheese spread (Mykonos)
-• **Fresh seafood** - Everywhere! Try grilled octopus
-• **Mastelo** - Lamb baked in wine (Sifnos)
-
-**Restaurant tips:**
-- Book sunset tables 2-3 days ahead in high season
-- Ask locals for family tavernas away from tourist spots
-- Budget €25-50 per person for a nice meal
-
-Which island are you interested in? I can recommend specific restaurants!`;
-    }
-
-    return `Γεια σου! 👋 I'm Touristas, your Greek Cyclades travel expert!
+    return `Γεια σου! 👋 I'm Touristas AI, your Greek Cyclades travel expert!
 
 I can help you with:
 • 🏨 Finding and booking hotels

@@ -1,10 +1,11 @@
 import { useParams, Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { blogPosts } from '../data/blogPosts';
 import BlogContent from '../components/blog/BlogContent';
 import SocialShare from '../components/blog/SocialShare';
 import SEO from '../components/SEO';
 import { SITE_TAGLINE } from '../constants/seo';
-import { 
+import {
   MapPin,
   Ship,
   Hotel,
@@ -15,6 +16,7 @@ import {
 } from 'lucide-react';
 
 export default function BlogPost() {
+  const { t } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
   const location = useLocation();
   const post = blogPosts.find((p) => p.slug === slug);
@@ -29,8 +31,8 @@ export default function BlogPost() {
           <p className="text-gray-600 mb-6">
             The blog post you're looking for doesn't exist or has been moved.
           </p>
-          <Link 
-            to="/blog" 
+          <Link
+            to="/blog"
             className="inline-flex items-center px-6 py-3 border border-transparent text-base font-medium rounded-md shadow-sm text-white bg-blue-600 hover:bg-blue-700"
           >
             Return to Blog
@@ -52,11 +54,11 @@ export default function BlogPost() {
     const headingRegex = /^## (.+)$/gm;
     const headings: string[] = [];
     let match;
-    
+
     while ((match = headingRegex.exec(content)) !== null) {
       headings.push(match[1]);
     }
-    
+
     return headings;
   };
 
@@ -68,7 +70,7 @@ export default function BlogPost() {
       <nav className="space-y-2">
         {headings.length > 0 ? (
           headings.map((heading) => (
-            <a 
+            <a
               key={heading}
               href={`#${heading.toLowerCase().replace(/\s+/g, '-').replace(/[^\w-]/g, '')}`}
               className="block text-gray-600 hover:text-blue-600 transition-colors"
@@ -78,7 +80,7 @@ export default function BlogPost() {
           ))
         ) : (
           ['Overview', 'Getting There', 'Where to Stay', 'What to Do', 'Tips & Recommendations'].map((section) => (
-            <a 
+            <a
               key={section}
               href={`#${section.toLowerCase().replace(/\s+/g, '-')}`}
               className="block text-gray-600 hover:text-blue-600 transition-colors"
@@ -95,22 +97,22 @@ export default function BlogPost() {
     <div className="bg-white rounded-xl shadow-sm p-6 mb-6">
       <h3 className="text-lg font-bold text-gray-900 mb-4">Quick Links</h3>
       <div className="space-y-3">
-        <Link 
-          to="/ferry-tickets" 
+        <Link
+          to="/ferry-tickets"
           className="flex items-center text-gray-600 hover:text-blue-600 transition-colors"
         >
           <Ship className="w-4 h-4 mr-2" />
           Book Ferry Tickets
         </Link>
-        <Link 
-          to="/hotels" 
+        <Link
+          to="/hotels"
           className="flex items-center text-gray-600 hover:text-blue-600 transition-colors"
         >
           <Hotel className="w-4 h-4 mr-2" />
           Find Hotels
         </Link>
-        <Link 
-          to="/rent-a-car" 
+        <Link
+          to="/rent-a-car"
           className="flex items-center text-gray-600 hover:text-blue-600 transition-colors"
         >
           <Car className="w-4 h-4 mr-2" />
@@ -125,7 +127,7 @@ export default function BlogPost() {
       <h3 className="text-lg font-bold text-gray-900 mb-4">Related Content</h3>
       <div className="space-y-4">
         {post.relatedIslands?.map((island) => (
-          <Link 
+          <Link
             key={island}
             to={`/islands/${island}`}
             className="flex items-start group"
@@ -178,7 +180,7 @@ export default function BlogPost() {
 
   return (
     <>
-      <SEO 
+      <SEO
         title={`${post.title} ${SITE_TAGLINE}`}
         description={post.description}
         ogImage={post.featuredImage}

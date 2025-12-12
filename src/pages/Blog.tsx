@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { blogPosts } from '../data/blogPosts';
 import BlogCard from '../components/blog/BlogCard';
 import SEO from '../components/SEO';
@@ -7,6 +8,7 @@ import { generateBlogsSEO } from '../utils/seo';
 import { Search, Filter, Sparkles, ArrowRight, Mail, CheckCircle } from 'lucide-react';
 
 export default function Blog() {
+  const { t } = useTranslation();
   const [activeCategory, setActiveCategory] = useState('All');
   const [email, setEmail] = useState('');
   const [subscribed, setSubscribed] = useState(false);
@@ -48,11 +50,11 @@ export default function Blog() {
               </div>
 
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6">
-                Explore the <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">Cyclades</span>
+                {t('blog.hero.title', 'Explore the')} <span className="bg-gradient-to-r from-yellow-300 to-orange-400 bg-clip-text text-transparent">{t('blog.hero.titleHighlight', 'Cyclades')}</span>
               </h1>
 
               <p className="text-xl text-white/80 max-w-2xl mx-auto mb-8">
-                Insider tips, travel guides, and captivating stories about the magical Greek islands
+                {t('blog.hero.subtitle', 'Insider tips, travel guides, and captivating stories about the magical Greek islands')}
               </p>
 
               {/* Search Bar */}
@@ -118,8 +120,8 @@ export default function Blog() {
                 key={category}
                 onClick={() => setActiveCategory(category)}
                 className={`px-5 py-2.5 rounded-full font-medium transition-all duration-300 ${activeCategory === category
-                    ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
-                    : 'bg-white dark:bg-dark-card text-gray-700 dark:text-white/80 hover:bg-gray-100 dark:hover:bg-white/10 shadow-sm'
+                  ? 'bg-blue-600 text-white shadow-lg shadow-blue-500/25'
+                  : 'bg-white dark:bg-dark-card text-gray-700 dark:text-white/80 hover:bg-gray-100 dark:hover:bg-white/10 shadow-sm'
                   }`}
               >
                 {category}
@@ -148,10 +150,10 @@ export default function Blog() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center">
               <h2 className="text-3xl font-bold text-white mb-4">
-                Ready to Plan Your Trip?
+                {t('blog.cta.title', 'Ready to Plan Your Trip?')}
               </h2>
               <p className="text-white/80 mb-8 max-w-2xl mx-auto">
-                Use our AI-powered trip planner to create your perfect Cyclades itinerary
+                {t('blog.cta.subtitle', 'Use our AI-powered trip planner to create your perfect Cyclades itinerary')}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link
@@ -183,10 +185,10 @@ export default function Blog() {
                   Newsletter
                 </div>
                 <h3 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                  Get Insider Travel Tips
+                  {t('blog.newsletter.title', 'Get Insider Travel Tips')}
                 </h3>
                 <p className="text-gray-600 dark:text-white/70 mb-6">
-                  Join 10,000+ travelers receiving exclusive guides, deals, and expert advice for your Cyclades adventure.
+                  {t('blog.newsletter.subtitle', 'Join 10,000+ travelers receiving exclusive guides, deals, and expert advice for your Cyclades adventure.')}
                 </p>
 
                 {subscribed ? (

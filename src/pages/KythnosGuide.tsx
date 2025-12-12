@@ -1,9 +1,10 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaHiking, 
-  FaUtensils, 
-  FaShoppingBag, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaHiking,
+  FaUtensils,
+  FaShoppingBag,
   FaLandmark,
   FaShip,
   FaBus,
@@ -14,6 +15,7 @@ import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
 
 const KythnosGuide: React.FC = () => {
+  const { t } = useTranslation();
   const kythnos = islandGuides.find(island => island.id === 'kythnos');
 
   if (!kythnos) {
@@ -36,7 +38,7 @@ const KythnosGuide: React.FC = () => {
       'best time to visit Kythnos'
     ],
     ogImage: kythnos.image,
-    ogType: 'article'
+    ogType: 'article' as const
   };
 
   // Photo gallery images
@@ -76,17 +78,17 @@ const KythnosGuide: React.FC = () => {
         ogImage={seoData.ogImage}
         ogType={seoData.ogType}
       />
-      
+
       <div className="bg-gray-50">
         {/* Hero Section */}
-        <IslandGuideHero 
+        <IslandGuideHero
           name={kythnos.name}
           description={kythnos.description}
           image={kythnos.heroImage || kythnos.image}
-          bestTime={kythnos.bestTime.description}
+          bestTime={kythnos.bestTime as string || 'May to September'}
           idealFor={kythnos.idealFor}
         />
-        
+
         {/* Introduction Section */}
         <section className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -103,26 +105,26 @@ const KythnosGuide: React.FC = () => {
                   What makes Kythnos truly special is its unspoiled beauty and authentic atmosphere. Despite being close to Athens, it remains relatively untouched by mass tourism, offering visitors a genuine taste of Cycladic life.
                 </p>
               </div>
-              
+
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
-                  <img 
-                    src="/images/islands/kythnos/kythnos-village.jpg" 
-                    alt="Traditional village in Kythnos" 
+                  <img
+                    src="/images/islands/kythnos/kythnos-village.jpg"
+                    alt="Traditional village in Kythnos"
                     className="w-full h-64 object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
-                  <img 
-                    src="/images/islands/kythnos/kythnos-beach.jpg" 
-                    alt="Beautiful beach in Kythnos" 
+                  <img
+                    src="/images/islands/kythnos/kythnos-beach.jpg"
+                    alt="Beautiful beach in Kythnos"
                     className="w-full h-64 object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden shadow-md col-span-2">
-                  <img 
-                    src="/images/islands/kythnos/kythnos-panorama.jpg" 
-                    alt="Panoramic view of Kythnos" 
+                  <img
+                    src="/images/islands/kythnos/kythnos-panorama.jpg"
+                    alt="Panoramic view of Kythnos"
                     className="w-full h-64 object-cover"
                   />
                 </div>
@@ -130,7 +132,7 @@ const KythnosGuide: React.FC = () => {
             </div>
           </div>
         </section>
-        
+
         {/* Quick Navigation Section */}
         <section className="py-12 bg-white">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -140,7 +142,7 @@ const KythnosGuide: React.FC = () => {
                 Discover the best of what Kythnos has to offer with our comprehensive guide.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
               <a href="#transport" className="group">
                 <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 text-center h-full flex flex-col items-center justify-center">
@@ -150,7 +152,7 @@ const KythnosGuide: React.FC = () => {
                   <h3 className="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-300">How to Get There</h3>
                 </div>
               </a>
-              
+
               <a href="#beaches" className="group">
                 <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 text-center h-full flex flex-col items-center justify-center">
                   <div className="bg-blue-100 rounded-full p-4 mb-4">
@@ -159,7 +161,7 @@ const KythnosGuide: React.FC = () => {
                   <h3 className="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Where to Swim</h3>
                 </div>
               </a>
-              
+
               <a href="#activities" className="group">
                 <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 text-center h-full flex flex-col items-center justify-center">
                   <div className="bg-blue-100 rounded-full p-4 mb-4">
@@ -168,7 +170,7 @@ const KythnosGuide: React.FC = () => {
                   <h3 className="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-300">What to Do</h3>
                 </div>
               </a>
-              
+
               <a href="#cuisine" className="group">
                 <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 text-center h-full flex flex-col items-center justify-center">
                   <div className="bg-blue-100 rounded-full p-4 mb-4">
@@ -177,7 +179,7 @@ const KythnosGuide: React.FC = () => {
                   <h3 className="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Where to Eat & Drink</h3>
                 </div>
               </a>
-              
+
               <a href="#products" className="group">
                 <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 text-center h-full flex flex-col items-center justify-center">
                   <div className="bg-blue-100 rounded-full p-4 mb-4">
@@ -186,7 +188,7 @@ const KythnosGuide: React.FC = () => {
                   <h3 className="text-lg font-medium text-gray-900 group-hover:text-blue-600 transition-colors duration-300">Local Products</h3>
                 </div>
               </a>
-              
+
               <a href="#history" className="group">
                 <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6 shadow-sm hover:shadow-md transition-shadow duration-300 text-center h-full flex flex-col items-center justify-center">
                   <div className="bg-blue-100 rounded-full p-4 mb-4">
@@ -198,7 +200,7 @@ const KythnosGuide: React.FC = () => {
             </div>
           </div>
         </section>
-        
+
         {/* When to Visit Section */}
         <section id="when-to-visit" className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -208,7 +210,7 @@ const KythnosGuide: React.FC = () => {
                 Find the perfect time for your visit to Kythnos based on weather, crowds, and activities.
               </p>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="grid grid-cols-1 md:grid-cols-3">
                 <div className="p-8 border-b md:border-b-0 md:border-r border-gray-200">
@@ -232,7 +234,7 @@ const KythnosGuide: React.FC = () => {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div className="p-8 border-b md:border-b-0 md:border-r border-gray-200">
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">Shoulder Season (May, September)</h3>
                   <ul className="space-y-3 text-gray-600 dark:text-white/60">
@@ -254,7 +256,7 @@ const KythnosGuide: React.FC = () => {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div className="p-8">
                   <h3 className="text-xl font-semibold text-gray-900 mb-4">Low Season (October-April)</h3>
                   <ul className="space-y-3 text-gray-600 dark:text-white/60">
@@ -278,7 +280,7 @@ const KythnosGuide: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="mt-8 bg-blue-50 dark:bg-cyan-600/10 rounded-lg p-6">
               <h3 className="text-xl font-semibold text-gray-900 mb-4">Best Time to Visit</h3>
               <p className="text-gray-600 dark:text-white/60">
@@ -297,12 +299,12 @@ const KythnosGuide: React.FC = () => {
                 Kythnos is home to over 70 beaches, from organized sandy shores to secluded coves.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kythnos/kolona-beach.jpg" 
-                  alt="Kolona Beach in Kythnos" 
+                <img
+                  src="/images/islands/kythnos/kolona-beach.jpg"
+                  alt="Kolona Beach in Kythnos"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -320,11 +322,11 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kythnos/martinakia-beach.jpg" 
-                  alt="Martinakia Beach in Kythnos" 
+                <img
+                  src="/images/islands/kythnos/martinakia-beach.jpg"
+                  alt="Martinakia Beach in Kythnos"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -342,11 +344,11 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kythnos/apokrousi-beach.jpg" 
-                  alt="Apokrousi Beach in Kythnos" 
+                <img
+                  src="/images/islands/kythnos/apokrousi-beach.jpg"
+                  alt="Apokrousi Beach in Kythnos"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -364,11 +366,11 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kythnos/loutra-beach.jpg" 
-                  alt="Loutra Beach in Kythnos" 
+                <img
+                  src="/images/islands/kythnos/loutra-beach.jpg"
+                  alt="Loutra Beach in Kythnos"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -386,11 +388,11 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kythnos/kalo-livadi-beach.jpg" 
-                  alt="Kalo Livadi Beach in Kythnos" 
+                <img
+                  src="/images/islands/kythnos/kalo-livadi-beach.jpg"
+                  alt="Kalo Livadi Beach in Kythnos"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -408,11 +410,11 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kythnos/agios-dimitrios-beach.jpg" 
-                  alt="Agios Dimitrios Beach in Kythnos" 
+                <img
+                  src="/images/islands/kythnos/agios-dimitrios-beach.jpg"
+                  alt="Agios Dimitrios Beach in Kythnos"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -433,7 +435,7 @@ const KythnosGuide: React.FC = () => {
             </div>
           </div>
         </section>
-        
+
         {/* Villages Section */}
         <section id="villages" className="py-16">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -443,13 +445,13 @@ const KythnosGuide: React.FC = () => {
                 Explore the traditional settlements of Kythnos, each with its own unique character and charm.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2">
-                  <img 
-                    src="/images/islands/kythnos/chora-kythnos.jpg" 
-                    alt="Chora (Messaria) in Kythnos" 
+                  <img
+                    src="/images/islands/kythnos/chora-kythnos.jpg"
+                    alt="Chora (Messaria) in Kythnos"
                     className="w-full h-full object-cover"
                   />
                   <div className="p-6">
@@ -463,12 +465,12 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2">
-                  <img 
-                    src="/images/islands/kythnos/driopida-village.jpg" 
-                    alt="Driopida Village in Kythnos" 
+                  <img
+                    src="/images/islands/kythnos/driopida-village.jpg"
+                    alt="Driopida Village in Kythnos"
                     className="w-full h-full object-cover"
                   />
                   <div className="p-6">
@@ -482,12 +484,12 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2">
-                  <img 
-                    src="/images/islands/kythnos/loutra-village.jpg" 
-                    alt="Loutra Village in Kythnos" 
+                  <img
+                    src="/images/islands/kythnos/loutra-village.jpg"
+                    alt="Loutra Village in Kythnos"
                     className="w-full h-full object-cover"
                   />
                   <div className="p-6">
@@ -501,12 +503,12 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="grid grid-cols-1 md:grid-cols-2">
-                  <img 
-                    src="/images/islands/kythnos/merichas-port.jpg" 
-                    alt="Merichas Port in Kythnos" 
+                  <img
+                    src="/images/islands/kythnos/merichas-port.jpg"
+                    alt="Merichas Port in Kythnos"
                     className="w-full h-full object-cover"
                   />
                   <div className="p-6">
@@ -533,12 +535,12 @@ const KythnosGuide: React.FC = () => {
                 Beyond its beautiful beaches, Kythnos offers a variety of activities and attractions for visitors to enjoy.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kythnos/kythnos-thermal-springs.jpg" 
-                  alt="Thermal Springs in Loutra" 
+                <img
+                  src="/images/islands/kythnos/kythnos-thermal-springs.jpg"
+                  alt="Thermal Springs in Loutra"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -548,11 +550,11 @@ const KythnosGuide: React.FC = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kythnos/kythnos-hiking.jpg" 
-                  alt="Hiking trails in Kythnos" 
+                <img
+                  src="/images/islands/kythnos/kythnos-hiking.jpg"
+                  alt="Hiking trails in Kythnos"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -562,11 +564,11 @@ const KythnosGuide: React.FC = () => {
                   </p>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kythnos/kythnos-castle.jpg" 
-                  alt="Medieval Castle in Kythnos" 
+                <img
+                  src="/images/islands/kythnos/kythnos-castle.jpg"
+                  alt="Medieval Castle in Kythnos"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -589,14 +591,14 @@ const KythnosGuide: React.FC = () => {
                 Discover the traditional flavors and culinary specialties of Kythnos.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="grid grid-cols-3 gap-4 p-6">
                   <div className="col-span-3 md:col-span-1">
-                    <img 
-                      src="/images/islands/kythnos/sfougato.jpg" 
-                      alt="Sfougato - Traditional Kythnos dish" 
+                    <img
+                      src="/images/islands/kythnos/sfougato.jpg"
+                      alt="Sfougato - Traditional Kythnos dish"
                       className="w-full h-48 md:h-full object-cover rounded-lg"
                     />
                   </div>
@@ -611,13 +613,13 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="grid grid-cols-3 gap-4 p-6">
                   <div className="col-span-3 md:col-span-1">
-                    <img 
-                      src="/images/islands/kythnos/kythnos-cheese.jpg" 
-                      alt="Kythnos Cheese" 
+                    <img
+                      src="/images/islands/kythnos/kythnos-cheese.jpg"
+                      alt="Kythnos Cheese"
                       className="w-full h-48 md:h-full object-cover rounded-lg"
                     />
                   </div>
@@ -632,13 +634,13 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="grid grid-cols-3 gap-4 p-6">
                   <div className="col-span-3 md:col-span-1">
-                    <img 
-                      src="/images/islands/kythnos/karamelized-almonds.jpg" 
-                      alt="Karamelized Almonds" 
+                    <img
+                      src="/images/islands/kythnos/karamelized-almonds.jpg"
+                      alt="Karamelized Almonds"
                       className="w-full h-48 md:h-full object-cover rounded-lg"
                     />
                   </div>
@@ -653,13 +655,13 @@ const KythnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="grid grid-cols-3 gap-4 p-6">
                   <div className="col-span-3 md:col-span-1">
-                    <img 
-                      src="/images/islands/kythnos/loza-pasteli.jpg" 
-                      alt="Loza and Pasteli" 
+                    <img
+                      src="/images/islands/kythnos/loza-pasteli.jpg"
+                      alt="Loza and Pasteli"
                       className="w-full h-48 md:h-full object-cover rounded-lg"
                     />
                   </div>
@@ -675,11 +677,11 @@ const KythnosGuide: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="mt-12 bg-white rounded-lg shadow-md overflow-hidden">
               <div className="p-8">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Where to Eat & Drink</h3>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="text-xl font-medium text-gray-900 mb-3">Traditional Tavernas</h4>
@@ -690,7 +692,7 @@ const KythnosGuide: React.FC = () => {
                       Try "To Steki tou Ntetzima" in Chora or "Ostria" in Merichas for authentic local dishes in a charming setting.
                     </p>
                   </div>
-                  
+
                   <div>
                     <h4 className="text-xl font-medium text-gray-900 mb-3">Seaside Restaurants</h4>
                     <p className="text-gray-600 mb-4">
@@ -715,11 +717,11 @@ const KythnosGuide: React.FC = () => {
                 Everything you need to know about reaching Kythnos and getting around the island.
               </p>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden mb-8">
               <div className="p-8">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Ferry Information</h3>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="text-xl font-medium text-gray-900 mb-3">From Athens</h4>
@@ -740,7 +742,7 @@ const KythnosGuide: React.FC = () => {
                       During high season (June-September), there are daily ferry connections. In the off-season, ferries operate less frequently, typically 3-5 times per week.
                     </p>
                   </div>
-                  
+
                   <div>
                     <h4 className="text-xl font-medium text-gray-900 mb-3">From Other Islands</h4>
                     <p className="text-gray-600 mb-4">
@@ -764,11 +766,11 @@ const KythnosGuide: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-8">
                 <h3 className="text-2xl font-semibold text-gray-900 mb-6">Getting Around the Island</h3>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <h4 className="text-xl font-medium text-gray-900 mb-3">Public Transportation</h4>
@@ -786,7 +788,7 @@ const KythnosGuide: React.FC = () => {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h4 className="text-xl font-medium text-gray-900 mb-3">Car & Scooter Rental</h4>
                     <p className="text-gray-600 mb-4">
@@ -820,36 +822,36 @@ const KythnosGuide: React.FC = () => {
               <div>
                 <h2 className="text-3xl font-bold text-white mb-6">Ready to Experience Kythnos?</h2>
                 <p className="text-lg text-white mb-8">
-                  Plan your perfect getaway to this authentic Cycladic gem. Thermal springs, 
+                  Plan your perfect getaway to this authentic Cycladic gem. Thermal springs,
                   golden beaches, and traditional Greek hospitality await you on this enchanting island.
                 </p>
-                
+
                 <div className="bg-blue-50 dark:bg-cyan-600/100 bg-opacity-30 rounded-lg p-4 mb-8 inline-block">
                   <span className="text-white font-medium">
-                    Best time to visit: {kythnos.bestTime.description}
+                    Best time to visit: {kythnos.bestTime as string || 'May to September'}
                   </span>
                 </div>
-                
+
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a 
-                    href="/hotels/" 
+                  <a
+                    href="/hotels/"
                     className="bg-white text-blue-700 px-6 py-3 rounded-lg font-medium hover:bg-gray-100 transition-colors inline-block text-center"
                   >
                     Find Accommodations
                   </a>
-                  <a 
-                    href="/ferry-tickets/" 
+                  <a
+                    href="/ferry-tickets/"
                     className="bg-transparent text-white border border-white px-6 py-3 rounded-lg font-medium hover:bg-blue-700 transition-colors inline-block text-center"
                   >
                     How to get there
                   </a>
                 </div>
               </div>
-              
+
               <div className="rounded-lg overflow-hidden shadow-lg">
-                <img 
-                  src="/images/islands/kythnos/kythnos-cta.jpg" 
-                  alt="Stunning view of Kythnos" 
+                <img
+                  src="/images/islands/kythnos/kythnos-cta.jpg"
+                  alt="Stunning view of Kythnos"
                   className="w-full h-full object-cover"
                 />
               </div>

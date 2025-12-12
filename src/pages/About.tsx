@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { MapPin, Mail, Award, Users, Globe, Heart, Shield, Star, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -33,6 +34,7 @@ const values = [
 ];
 
 export default function About() {
+  const { t } = useTranslation();
   return (
     <>
       <SEO
@@ -61,10 +63,10 @@ export default function About() {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
-                Your Gateway to the Cyclades
+                {t('about.hero.title', 'Your Gateway to the Cyclades')}
               </h1>
               <p className="text-lg md:text-xl lg:text-2xl text-white/90 leading-relaxed px-1">
-                We're passionate travelers, local experts, and technology enthusiasts united by our love for the Greek islands.
+                {t('about.hero.subtitle', "We're passionate travelers, local experts, and technology enthusiasts united by our love for the Greek islands.")}
               </p>
             </div>
           </div>
@@ -148,10 +150,10 @@ export default function About() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-16">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-                Our Values
+                {t('about.values.title', 'Our Values')}
               </h2>
               <p className="text-lg text-gray-600 dark:text-white/60 max-w-2xl mx-auto">
-                The principles that guide everything we do
+                {t('about.values.subtitle', 'The principles that guide everything we do')}
               </p>
             </div>
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -172,7 +174,7 @@ export default function About() {
         <div className="py-20">
           <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-8 text-center">
-              Our Story
+              {t('about.story.title', 'Our Story')}
             </h2>
             <div className="prose prose-lg dark:prose-invert mx-auto">
               <p className="text-gray-700 dark:text-white/80 leading-relaxed">
@@ -199,10 +201,9 @@ export default function About() {
         <div className="py-20 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center text-white">
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Let's Plan Your Adventure</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6">{t('about.cta.title', "Let's Plan Your Adventure")}</h2>
               <p className="text-xl text-white/90 mb-8 max-w-2xl mx-auto">
-                Have questions? Want personalized recommendations? Our team is here to help you create
-                the perfect Cyclades experience.
+                {t('about.cta.subtitle', 'Have questions? Want personalized recommendations? Our team is here to help you create the perfect Cyclades experience.')}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link

@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Mail, MapPin, Send, Loader2, MessageCircle, Clock, Globe, ArrowRight } from 'lucide-react';
 import SEO from '../components/SEO';
 
@@ -11,6 +12,7 @@ interface FormData {
 }
 
 export default function Contact() {
+  const { t } = useTranslation();
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -92,11 +94,10 @@ export default function Contact() {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-3xl">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
-                Get in Touch
+                {t('contact.hero.title', 'Get in Touch')}
               </h1>
               <p className="text-lg md:text-xl text-white/90 leading-relaxed px-1">
-                Have questions about planning your Cyclades adventure? We're here to help!
-                Our team of local experts is ready to assist you in creating your perfect Greek island experience.
+                {t('contact.hero.subtitle', "Have questions about planning your Cyclades adventure? We're here to help! Our team of local experts is ready to assist you in creating your perfect Greek island experience.")}
               </p>
             </div>
           </div>
@@ -146,8 +147,8 @@ export default function Contact() {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <div className="bg-white dark:bg-dark-card rounded-2xl shadow-xl border border-gray-100 dark:border-white/10 p-8">
-              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">Send us a Message</h2>
-              <p className="text-gray-600 dark:text-white/60 mb-8">Fill out the form below and we'll get back to you as soon as possible.</p>
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('contact.form.title', 'Send us a Message')}</h2>
+              <p className="text-gray-600 dark:text-white/60 mb-8">{t('contact.form.subtitle', "Fill out the form below and we'll get back to you as soon as possible.")}</p>
 
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid sm:grid-cols-2 gap-6">
@@ -330,10 +331,10 @@ export default function Contact() {
           <div className="max-w-7xl mx-auto px-4 py-12">
             <div className="text-center">
               <h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4">
-                Ready to explore the Cyclades?
+                {t('contact.cta.title', 'Ready to explore the Cyclades?')}
               </h2>
               <p className="text-gray-600 dark:text-white/70 mb-8 max-w-2xl mx-auto">
-                Start planning your perfect Greek island adventure today.
+                {t('contact.cta.subtitle', 'Start planning your perfect Greek island adventure today.')}
               </p>
               <div className="flex flex-wrap justify-center gap-4">
                 <Link

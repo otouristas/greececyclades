@@ -11,8 +11,26 @@ import {
     Message,
     quickCategories,
     welcomeSuggestions,
-    extractUserPreferencesFromMessage
+    extractUserPreferencesFromMessage,
+    isHotelRelatedQuery,
+    extractIslandFromMessage,
+    extractLocationFromMessage
 } from './utils/chat-utils';
+import {
+    searchHotelsForChat,
+    buildBookingSearchUrl,
+    extractDatesFromMessage,
+    extractGuestsFromMessage,
+    shouldUseVibeSearch
+} from './services/BookingSearchService';
+import {
+    searchFlightsForChat,
+    buildFlightSearchUrl,
+    isFlightRelatedQuery,
+    extractFlightRouteFromMessage,
+    type ChatFlightResult
+} from './services/FlightSearchService';
+
 
 interface TouristasChatProps {
     isOpen: boolean;
@@ -158,11 +176,133 @@ What would you like to explore today?`,
             const updatedPreferences = { ...userPreferences, ...newPreferences };
             setUserPreferences(updatedPreferences);
 
+            // Check if this is a hotel-related query
+            let shouldSearchHotels = isHotelRelatedQuery(input);
+            let bookingHotels: import('@/lib/liteapi').Hotel[] = [];
+            let bookingSearchUrl = '';
+
+            // Extract search parameters from message first
+            const dates = extractDatesFromMessage(input);
+            const guests = extractGuestsFromMessage(input);
+            const island = extractIslandFromMessage(input);
+            const location = extractLocationFromMessage(input);
+
+            // CONTEXT AWARENESS: Check if previous messages were about hotels
+            // If user is providing dates as a follow-up to hotel question, still search
+            const hasDates = dates.checkin && dates.checkout;
+            if (!shouldSearchHotels && hasDates) {
+                // Check recent conversation for hotel context
+                const recentMessages = messages.slice(-4); // Last 4 messages
+                const hotelContextInRecent = recentMessages.some(m =>
+                    isHotelRelatedQuery(m.content) ||
+                    m.content.toLowerCase().includes('hotel') ||
+                    m.content.toLowerCase().includes('accommodation') ||
+                    m.content.toLowerCase().includes('stay') ||
+                    m.content.toLowerCase().includes('room')
+                );
+                if (hotelContextInRecent) {
+                    console.log('🔄 Context: Previous messages were about hotels, user providing dates - triggering search');
+                    shouldSearchHotels = true;
+                }
+            }
+
+            // Search hotels if: hotel query + has dates, OR follow-up with dates in hotel context
+            if (shouldSearchHotels && hasDates) {
+                console.log('🏨 Hotel query with dates detected, searching...');
+
+                // Get location from preferences or recent context if not in current message
+                let searchLocation = island || location;
+                if (!searchLocation) {
+                    // Check preferences from earlier in conversation
+                    searchLocation = updatedPreferences.location || updatedPreferences.island || 'Santorini';
+                }
+
+                // Get vibe query - use preferences or build from context
+                let vibeQuery = shouldUseVibeSearch(input) ? input : undefined;
+                if (!vibeQuery) {
+                    // Check if any previous message had vibe keywords
+                    const recentHotelMessage = messages.slice().reverse().find(m =>
+                        isHotelRelatedQuery(m.content) && m.role === 'user'
+                    );
+                    if (recentHotelMessage && shouldUseVibeSearch(recentHotelMessage.content)) {
+                        vibeQuery = recentHotelMessage.content;
+                        console.log('🎯 Using vibe query from previous message:', vibeQuery);
+                    }
+                }
+
+                // Build search params
+                const searchParams = {
+                    vibeQuery,
+                    cityName: searchLocation,
+                    countryCode: 'GR',
+                    checkin: dates.checkin,
+                    checkout: dates.checkout,
+                    adults: guests.adults || 2,
+                    children: guests.children,
+                    currency: 'EUR'
+                };
+
+                try {
+                    bookingHotels = await searchHotelsForChat(searchParams);
+                    bookingSearchUrl = buildBookingSearchUrl(searchParams);
+                    console.log(`✅ Found ${bookingHotels.length} hotels`);
+                } catch (err) {
+                    console.error('Hotel search error:', err);
+                }
+            } else if (shouldSearchHotels) {
+                console.log('🏨 Hotel query detected but NO DATES - letting AI ask for dates/guests');
+            }
+
+            // ==================== FLIGHT SEARCH ====================
+            let shouldSearchFlights = isFlightRelatedQuery(input);
+            let chatFlights: ChatFlightResult[] = [];
+            let flightSearchUrl = '';
+
+            // Extract flight route
+            const flightRoute = extractFlightRouteFromMessage(input);
+
+            // CONTEXT AWARENESS: Check if previous messages were about flights
+            if (!shouldSearchFlights && hasDates) {
+                const recentMessages = messages.slice(-4);
+                const flightContextInRecent = recentMessages.some(m =>
+                    isFlightRelatedQuery(m.content) ||
+                    m.content.toLowerCase().includes('flight') ||
+                    m.content.toLowerCase().includes('fly')
+                );
+                if (flightContextInRecent) {
+                    console.log('🔄 Context: Previous messages were about flights, user providing dates - triggering search');
+                    shouldSearchFlights = true;
+                }
+            }
+
+            // Search flights if query + has dates + has route
+            const hasFlightRoute = flightRoute.origin && flightRoute.destination;
+            if (shouldSearchFlights && hasDates && hasFlightRoute) {
+                console.log('🛫 Flight query with dates and route detected, searching...');
+
+                const flightParams = {
+                    origin: flightRoute.origin,
+                    destination: flightRoute.destination,
+                    departureDate: dates.checkin,
+                    adults: guests.adults || 1
+                };
+
+                try {
+                    chatFlights = await searchFlightsForChat(flightParams);
+                    flightSearchUrl = buildFlightSearchUrl(flightParams);
+                    console.log(`✅ Found ${chatFlights.length} flights`);
+                } catch (err) {
+                    console.error('Flight search error:', err);
+                }
+            } else if (shouldSearchFlights) {
+                console.log('🛫 Flight query detected but missing dates/route - letting AI ask');
+            }
+
             // Build chat history for Perplexity API
             const chatHistory: ChatMessage[] = messages
                 .filter(m => !m.typing && m.id !== 'welcome')
                 .map(m => ({ role: m.role, content: m.content }));
-            
+
             // Add current user message
             chatHistory.push({ role: 'user', content: input.trim() });
 
@@ -174,22 +314,30 @@ What would you like to explore today?`,
                     id: assistantMessageId,
                     role: 'assistant',
                     content: '',
-                    preferences: updatedPreferences
+                    preferences: updatedPreferences,
+                    // Attach hotel search results
+                    bookingHotels: bookingHotels.length > 0 ? bookingHotels : undefined,
+                    bookingSearchUrl: bookingHotels.length > 0 ? bookingSearchUrl : undefined,
+                    // Attach flight search results
+                    chatFlights: chatFlights.length > 0 ? chatFlights : undefined,
+                    flightSearchUrl: chatFlights.length > 0 ? flightSearchUrl : undefined
                 }
             ]);
+
 
             // Stream response from Perplexity API
             await sendChatMessage(chatHistory, {
                 budget: updatedPreferences.budget as any,
                 travelers: updatedPreferences.travelers ? parseInt(updatedPreferences.travelers) : undefined,
                 onChunk: (chunk) => {
-                    setMessages(prev => prev.map(m => 
-                        m.id === assistantMessageId 
+                    setMessages(prev => prev.map(m =>
+                        m.id === assistantMessageId
                             ? { ...m, content: m.content + chunk }
                             : m
                     ));
                 }
             });
+
 
         } catch (error) {
             console.error('Chat error:', error);
@@ -455,7 +603,7 @@ What would you like to explore today?`,
                     {/* Powered By Footer */}
                     <div className="mt-3 pt-2 border-t border-dark-border/30 flex items-center justify-center gap-2 text-[10px] text-white/40">
                         <Sparkles className="w-3 h-3 text-cyclades-turquoise" />
-                        <span>Powered by Perplexity AI • Specialized 100% in the Cyclades</span>
+                        <span>Powered by Gemini AI • 100% Cyclades Expertise</span>
                     </div>
                 </div>
             </motion.div>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { Search, TrendingUp, Shield, Award, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 import SEO from '@/components/SEO';
 import { HotelMarketplaceCard, MarketplaceSearchForm } from '@/components/marketplace';
@@ -11,6 +12,7 @@ import {
 import { useTouristas } from '@/contexts/TouristasContext';
 
 export default function HotelMarketplace() {
+    const { t } = useTranslation();
     const [searchResult, setSearchResult] = useState<MarketplaceSearchResult | null>(null);
     const [isLoading, setIsLoading] = useState(false);
     const [error, setError] = useState<string | null>(null);

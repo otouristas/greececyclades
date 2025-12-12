@@ -78,27 +78,24 @@ function processSSELine(line: string, onContent: (content: string) => void): voi
 }
 
 /**
- * Call the Perplexity-powered Cyclades Chat API with streaming
+ * Call the Touristas AI Orchestrator with REAL Weather/Hotel data
+ * Uses Gemini AI + WeatherAPI.com + LiteAPI
  */
 export async function sendChatMessage(
   messages: ChatMessage[],
   options: ChatOptions = {}
 ): Promise<string> {
-  const { islandContext, budget, travelers, onChunk } = options;
+  const { budget, travelers, onChunk } = options;
 
-  // Build preferences object
-  const preferences: Record<string, any> = {};
-  if (budget) preferences.budget = budget;
-  if (travelers) preferences.travelers = travelers;
-
-  // Build website context from our data
-  const websiteContext = buildWebsiteContext();
-  const dateContext = getDateContext();
+  // Build user context
+  const userContext: Record<string, any> = {};
+  if (budget) userContext.budget = budget;
+  if (travelers) userContext.travelers = travelers;
 
   try {
-    // Call Supabase Edge Function
+    // Call Supabase Edge Function - touristas-orchestrator with REAL data
     const response = await fetch(
-      `${SUPABASE_URL}/functions/v1/cyclades-chat`,
+      `${SUPABASE_URL}/functions/v1/touristas-orchestrator`,
       {
         method: 'POST',
         headers: {
@@ -107,10 +104,7 @@ export async function sendChatMessage(
         },
         body: JSON.stringify({
           messages: messages.map(m => ({ role: m.role, content: m.content })),
-          websiteContext,
-          dateContext,
-          islandContext: islandContext || null,
-          preferences: Object.keys(preferences).length > 0 ? preferences : null,
+          userContext,
         }),
       }
     );
@@ -120,52 +114,23 @@ export async function sendChatMessage(
       throw new Error(errorData.message || errorData.error || `API error: ${response.status}`);
     }
 
-    // Handle streaming response
-    if (!response.body) {
-      throw new Error('No response body');
+    const data = await response.json();
+
+    if (!data.success) {
+      throw new Error(data.error || 'Unknown error from orchestrator');
     }
 
-    const reader = response.body.getReader();
-    // Use TextDecoder with stream: false at end to flush incomplete bytes
-    const decoder = new TextDecoder('utf-8');
-    let fullContent = '';
-    let buffer = ''; // Buffer for incomplete SSE lines
+    const fullContent = data.response || '';
 
-    while (true) {
-      const { done, value } = await reader.read();
-
-      if (done) {
-        // Flush any remaining buffer
-        if (buffer.trim()) {
-          processSSELine(buffer, (content) => {
-            fullContent += content;
-            onChunk?.(content);
-          });
-        }
-        break;
-      }
-
-      // Decode with stream:true to handle multi-byte UTF-8 chars across chunks
-      const text = decoder.decode(value, { stream: true });
-      buffer += text;
-
-      // Process complete lines only (SSE lines end with \n)
-      const lines = buffer.split('\n');
-      // Keep the last incomplete line in buffer
-      buffer = lines.pop() || '';
-
-      for (const line of lines) {
-        processSSELine(line, (content) => {
-          fullContent += content;
-          onChunk?.(content);
-        });
-      }
+    // Call onChunk with full content (non-streaming for now)
+    if (onChunk && fullContent) {
+      onChunk(fullContent);
     }
 
     return fullContent;
 
   } catch (error) {
-    console.error('Chat API error:', error);
+    console.error('Touristas Orchestrator error:', error);
     throw error;
   }
 }

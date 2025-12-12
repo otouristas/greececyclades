@@ -1,12 +1,13 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaWineGlass, 
-  FaMapMarkedAlt, 
-  FaShip, 
-  FaUtensils, 
-  FaSun, 
-  FaCameraRetro, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaWineGlass,
+  FaMapMarkedAlt,
+  FaShip,
+  FaUtensils,
+  FaSun,
+  FaCameraRetro,
   FaLeaf,
   FaCalendarAlt,
   FaGlassCheers,
@@ -19,6 +20,7 @@ import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
 
 const AntiparosGuide: React.FC = () => {
+  const { t } = useTranslation();
   const antiparos = islandGuides.find(island => island.id === 'antiparos');
 
   if (!antiparos) {
@@ -129,37 +131,37 @@ const AntiparosGuide: React.FC = () => {
       <SEO {...seoData} />
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...antiparos} />
-        
+
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Antiparos</h2>
               <p className="text-gray-700 leading-relaxed">
-                Antiparos, a small gem in the heart of the Cyclades, is a charming island known for its beautiful beaches, 
-                impressive cave, and laid-back atmosphere. Just a short ferry ride from its larger neighbor Paros, Antiparos 
+                Antiparos, a small gem in the heart of the Cyclades, is a charming island known for its beautiful beaches,
+                impressive cave, and laid-back atmosphere. Just a short ferry ride from its larger neighbor Paros, Antiparos
                 offers an authentic Greek island experience with a perfect blend of natural beauty and traditional charm.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                From the famous Antiparos Cave with its stunning stalactites and stalagmites to the picturesque main village 
-                with its Venetian castle, and from golden sandy beaches to excellent water sports opportunities, Antiparos 
-                provides a complete island experience in a more relaxed setting than some of its more famous neighbors. 
+                From the famous Antiparos Cave with its stunning stalactites and stalagmites to the picturesque main village
+                with its Venetian castle, and from golden sandy beaches to excellent water sports opportunities, Antiparos
+                provides a complete island experience in a more relaxed setting than some of its more famous neighbors.
                 Our comprehensive guide will help you discover the best of what this magical island has to offer.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/images/islands/antiparos/landscape.jpg" 
-                  alt="Antiparos Landscape" 
+                <img
+                  src="/images/islands/antiparos/landscape.jpg"
+                  alt="Antiparos Landscape"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 w-2/3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/islands/antiparos/village-detail.jpg" 
-                    alt="Antiparos Village Detail" 
+                  <img
+                    src="/images/islands/antiparos/village-detail.jpg"
+                    alt="Antiparos Village Detail"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -172,9 +174,9 @@ const AntiparosGuide: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
-                <a 
+                <a
                   key={index}
-                  href={category.link} 
+                  href={category.link}
                   className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
@@ -236,24 +238,24 @@ const AntiparosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Villages Section */}
           <section id="villages" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Villages of Antiparos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/antiparos/chora.jpg" 
-                    alt="Antiparos Chora" 
+                  <img
+                    src="/images/islands/antiparos/chora.jpg"
+                    alt="Antiparos Chora"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-xl mb-2">Chora (Main Village)</h3>
                   <p className="text-gray-600 mb-4">
-                    The charming main settlement of Antiparos features a 15th-century Venetian castle at its center, 
-                    surrounded by traditional Cycladic houses with blue doors and windows. The pedestrian street is 
+                    The charming main settlement of Antiparos features a 15th-century Venetian castle at its center,
+                    surrounded by traditional Cycladic houses with blue doors and windows. The pedestrian street is
                     lined with shops, tavernas, and cafes, creating a lively atmosphere especially in the evenings.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -263,20 +265,20 @@ const AntiparosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/antiparos/agios-georgios.jpg" 
-                    alt="Agios Georgios" 
+                  <img
+                    src="/images/islands/antiparos/agios-georgios.jpg"
+                    alt="Agios Georgios"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-xl mb-2">Agios Georgios</h3>
                   <p className="text-gray-600 mb-4">
-                    A small fishing village on the southern tip of the island, Agios Georgios offers a peaceful 
-                    retreat with a beautiful beach, a few tavernas serving fresh seafood, and stunning sunset views. 
+                    A small fishing village on the southern tip of the island, Agios Georgios offers a peaceful
+                    retreat with a beautiful beach, a few tavernas serving fresh seafood, and stunning sunset views.
                     It's also the departure point for boat trips to the nearby uninhabited island of Despotiko.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -295,16 +297,16 @@ const AntiparosGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/antiparos/soros-beach.jpg" 
-                    alt="Soros Beach" 
+                  <img
+                    src="/images/islands/antiparos/soros-beach.jpg"
+                    alt="Soros Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-xl mb-2">Soros Beach</h3>
                   <p className="text-gray-600 mb-4">
-                    One of the most popular beaches on the island, featuring golden sand, 
+                    One of the most popular beaches on the island, featuring golden sand,
                     crystal clear waters, and beach bars offering sunbeds and refreshments.
                   </p>
                   <div className="flex items-center justify-between text-sm text-gray-500">
@@ -315,19 +317,19 @@ const AntiparosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/antiparos/psaraliki-beach.jpg" 
-                    alt="Psaraliki Beach" 
+                  <img
+                    src="/images/islands/antiparos/psaraliki-beach.jpg"
+                    alt="Psaraliki Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-xl mb-2">Psaraliki Beach</h3>
                   <p className="text-gray-600 mb-4">
-                    Located close to the main town, this sandy beach is family-friendly 
+                    Located close to the main town, this sandy beach is family-friendly
                     with shallow waters and convenient facilities. Perfect for those staying in Chora.
                   </p>
                   <div className="flex items-center justify-between text-sm text-gray-500">
@@ -338,19 +340,19 @@ const AntiparosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/antiparos/livadia-beach.jpg" 
-                    alt="Livadia Beach" 
+                  <img
+                    src="/images/islands/antiparos/livadia-beach.jpg"
+                    alt="Livadia Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-xl mb-2">Livadia Beach</h3>
                   <p className="text-gray-600 mb-4">
-                    A long sandy beach on the eastern coast with beautiful turquoise waters. 
+                    A long sandy beach on the eastern coast with beautiful turquoise waters.
                     Less crowded than other beaches, offering a more peaceful experience.
                   </p>
                   <div className="flex items-center justify-between text-sm text-gray-500">
@@ -370,17 +372,17 @@ const AntiparosGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/antiparos/cave.jpg" 
-                    alt="Antiparos Cave" 
+                  <img
+                    src="/images/islands/antiparos/cave.jpg"
+                    alt="Antiparos Cave"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-xl mb-2">Explore Antiparos Cave</h3>
                   <p className="text-gray-600 mb-4">
-                    One of the oldest and most spectacular caves in Europe, featuring impressive 
-                    stalactites and stalagmites. Descend 411 steps to explore this natural wonder 
+                    One of the oldest and most spectacular caves in Europe, featuring impressive
+                    stalactites and stalagmites. Descend 411 steps to explore this natural wonder
                     that has been visited by notable figures throughout history.
                   </p>
                   <div className="flex items-center text-sm text-gray-500">
@@ -389,20 +391,20 @@ const AntiparosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/antiparos/boat-trip.jpg" 
-                    alt="Boat Trip to Despotiko" 
+                  <img
+                    src="/images/islands/antiparos/boat-trip.jpg"
+                    alt="Boat Trip to Despotiko"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-xl mb-2">Boat Trip to Despotiko</h3>
                   <p className="text-gray-600 mb-4">
-                    Take a boat trip to the uninhabited island of Despotiko, home to an important 
-                    archaeological site with ancient temple ruins dedicated to Apollo. The island 
+                    Take a boat trip to the uninhabited island of Despotiko, home to an important
+                    archaeological site with ancient temple ruins dedicated to Apollo. The island
                     also features pristine beaches with crystal clear waters.
                   </p>
                   <div className="flex items-center text-sm text-gray-500">
@@ -411,20 +413,20 @@ const AntiparosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/antiparos/watersports.jpg" 
-                    alt="Water Sports" 
+                  <img
+                    src="/images/islands/antiparos/watersports.jpg"
+                    alt="Water Sports"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-xl mb-2">Water Sports</h3>
                   <p className="text-gray-600 mb-4">
-                    Enjoy various water sports activities available on the beaches of Antiparos, 
-                    including windsurfing, kitesurfing, paddleboarding, and kayaking. Equipment 
+                    Enjoy various water sports activities available on the beaches of Antiparos,
+                    including windsurfing, kitesurfing, paddleboarding, and kayaking. Equipment
                     rental and lessons are available for all skill levels.
                   </p>
                   <div className="flex items-center text-sm text-gray-500">
@@ -433,20 +435,20 @@ const AntiparosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/antiparos/hiking.jpg" 
-                    alt="Hiking Trails" 
+                  <img
+                    src="/images/islands/antiparos/hiking.jpg"
+                    alt="Hiking Trails"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="font-semibold text-xl mb-2">Hiking Trails</h3>
                   <p className="text-gray-600 mb-4">
-                    Explore the island's natural beauty through its network of hiking trails. 
-                    Walk from Chora to the cave, hike to Profitis Ilias hill for panoramic views, 
+                    Explore the island's natural beauty through its network of hiking trails.
+                    Walk from Chora to the cave, hike to Profitis Ilias hill for panoramic views,
                     or follow coastal paths to discover hidden coves and beaches.
                   </p>
                   <div className="flex items-center text-sm text-gray-500">
@@ -464,8 +466,8 @@ const AntiparosGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               <div className="prose prose-lg max-w-none">
                 <p className="text-gray-700 leading-relaxed">
-                  Antiparos offers a delightful culinary experience with fresh seafood, traditional Greek dishes, 
-                  and local specialties. The island's tavernas and restaurants serve authentic cuisine using locally 
+                  Antiparos offers a delightful culinary experience with fresh seafood, traditional Greek dishes,
+                  and local specialties. The island's tavernas and restaurants serve authentic cuisine using locally
                   sourced ingredients, while the laid-back beach bars provide refreshing drinks with sea views.
                 </p>
                 <h3 className="font-semibold text-xl mt-6 mb-3">Must-Try Local Dishes</h3>
@@ -479,36 +481,36 @@ const AntiparosGuide: React.FC = () => {
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="rounded-lg overflow-hidden">
-                  <img 
-                    src="/images/islands/antiparos/food-1.jpg" 
-                    alt="Fresh Seafood" 
+                  <img
+                    src="/images/islands/antiparos/food-1.jpg"
+                    alt="Fresh Seafood"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden">
-                  <img 
-                    src="/images/islands/antiparos/food-2.jpg" 
-                    alt="Greek Salad" 
+                  <img
+                    src="/images/islands/antiparos/food-2.jpg"
+                    alt="Greek Salad"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden">
-                  <img 
-                    src="/images/islands/antiparos/food-3.jpg" 
-                    alt="Local Cheese" 
+                  <img
+                    src="/images/islands/antiparos/food-3.jpg"
+                    alt="Local Cheese"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="rounded-lg overflow-hidden">
-                  <img 
-                    src="/images/islands/antiparos/food-4.jpg" 
-                    alt="Traditional Desserts" 
+                  <img
+                    src="/images/islands/antiparos/food-4.jpg"
+                    alt="Traditional Desserts"
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
               <h3 className="font-semibold text-xl mb-4">Where to Eat & Drink</h3>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
@@ -517,7 +519,7 @@ const AntiparosGuide: React.FC = () => {
                     <FaGlassCheers className="text-blue-500 mr-2" /> Beachfront Tavernas
                   </h4>
                   <p className="text-gray-600 text-sm">
-                    Enjoy fresh seafood and Greek specialties with your feet in the sand at tavernas 
+                    Enjoy fresh seafood and Greek specialties with your feet in the sand at tavernas
                     along Psaraliki and Soros beaches.
                   </p>
                 </div>
@@ -526,7 +528,7 @@ const AntiparosGuide: React.FC = () => {
                     <FaGlassCheers className="text-blue-500 mr-2" /> Chora Restaurants
                   </h4>
                   <p className="text-gray-600 text-sm">
-                    Explore the main street of Chora for traditional tavernas, international cuisine, 
+                    Explore the main street of Chora for traditional tavernas, international cuisine,
                     and cozy cafes with charming courtyard settings.
                   </p>
                 </div>
@@ -535,7 +537,7 @@ const AntiparosGuide: React.FC = () => {
                     <FaGlassCheers className="text-blue-500 mr-2" /> Sunset Bars
                   </h4>
                   <p className="text-gray-600 text-sm">
-                    Watch the sunset with a cocktail or local wine at bars offering panoramic views 
+                    Watch the sunset with a cocktail or local wine at bars offering panoramic views
                     of the Aegean Sea and neighboring islands.
                   </p>
                 </div>
@@ -549,9 +551,9 @@ const AntiparosGuide: React.FC = () => {
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
+                  <img
+                    src={image.src}
+                    alt={image.alt}
                     className="w-full h-64 object-cover hover:opacity-90 transition-opacity"
                   />
                 </div>
@@ -569,18 +571,18 @@ const AntiparosGuide: React.FC = () => {
                   </div>
                   <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Antiparos?</h2>
                   <p className="text-lg mb-8 text-blue-100">
-                    Plan your perfect getaway to this charming Cycladic gem with crystal clear waters, 
+                    Plan your perfect getaway to this charming Cycladic gem with crystal clear waters,
                     golden beaches, and authentic Greek atmosphere.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="/hotels/" 
+                    <a
+                      href="/hotels/"
                       className="inline-block px-6 py-3 bg-white text-blue-700 rounded-lg font-medium hover:bg-blue-50 dark:bg-cyan-600/10 transition-colors"
                     >
                       Find Accommodations
                     </a>
-                    <a 
-                      href="/ferry-tickets/" 
+                    <a
+                      href="/ferry-tickets/"
                       className="inline-block px-6 py-3 bg-transparent border border-white text-white rounded-lg font-medium hover:bg-white/10 transition-colors"
                     >
                       How to get there
@@ -588,9 +590,9 @@ const AntiparosGuide: React.FC = () => {
                   </div>
                 </div>
                 <div className="hidden lg:block relative">
-                  <img 
-                    src="/images/islands/antiparos/cta-image.jpg" 
-                    alt="Antiparos Beach Scene" 
+                  <img
+                    src="/images/islands/antiparos/cta-image.jpg"
+                    alt="Antiparos Beach Scene"
                     className="w-full h-full object-cover"
                   />
                 </div>

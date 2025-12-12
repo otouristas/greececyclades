@@ -1,4 +1,5 @@
 import { Car, Users, Clock, HeadphonesIcon, CalendarDays, ChevronDown, MapPin } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import WelcomePickupsLogo from '../components/WelcomePickupsLogo';
 import { Disclosure } from '@headlessui/react';
@@ -79,6 +80,7 @@ const faqs: FAQItem[] = [
 ];
 
 export default function Transfers() {
+  const { t } = useTranslation();
   const [form, setForm] = useState<BookingForm>({
     from: locations[0],
     to: locations[1],
@@ -97,7 +99,7 @@ export default function Transfers() {
 
   return (
     <div className={`min-h-screen ${isDark ? 'bg-dark-bg' : 'bg-white'}`}>
-      <SEO 
+      <SEO
         title="Greece Cyclades Transfer Booking"
         description="Book your ride to and from the airport, port or any destination, in just a few steps!Get Ready for Cyclades!"
       />
@@ -120,10 +122,10 @@ export default function Transfers() {
             {/* Left Content */}
             <div className="flex-1">
               <h1 className="text-4xl font-bold text-white mb-6">
-                Book Your Transfer in Greece
+                {t('transfers.hero.title', 'Book Your Transfer in Greece')}
               </h1>
               <p className="text-xl text-white/90 mb-12">
-                Safe and reliable transfers from airports, ports, and stations across Greece
+                {t('transfers.hero.subtitle', 'Safe and reliable transfers from airports, ports, and stations across Greece')}
               </p>
             </div>
 
@@ -296,7 +298,7 @@ export default function Transfers() {
       <div className={`py-16 ${isDark ? 'bg-dark-card' : 'bg-gray-50'}`}>
         <div className="container mx-auto px-4">
           <h2 className={`text-3xl font-bold text-center mb-12 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            How Our Transfers Work
+            {t('transfers.howItWorks.title', 'How Our Transfers Work')}
           </h2>
           <div className="grid md:grid-cols-3 gap-8 max-w-5xl mx-auto">
             <div className="text-center">
@@ -334,10 +336,10 @@ export default function Transfers() {
       <div className="py-16">
         <div className="container mx-auto px-4">
           <h2 className={`text-3xl font-bold text-center mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-            Popular Transfer Routes
+            {t('transfers.routes.title', 'Popular Transfer Routes')}
           </h2>
           <p className={`text-center mb-12 max-w-2xl mx-auto ${isDark ? 'text-white/60' : 'text-gray-600'}`}>
-            Discover our most frequently booked transfer routes with fixed prices and professional drivers.
+            {t('transfers.routes.subtitle', 'Discover our most frequently booked transfer routes with fixed prices and professional drivers.')}
           </p>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             <TransferRouteCard

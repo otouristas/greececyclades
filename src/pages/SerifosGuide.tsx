@@ -1,10 +1,11 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaWineGlass, 
-  FaMapMarkedAlt, 
-  FaShip, 
-  FaUtensils, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaWineGlass,
+  FaMapMarkedAlt,
+  FaShip,
+  FaUtensils,
   FaHistory,
   FaSun,
   FaCameraRetro,
@@ -21,6 +22,7 @@ import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSec
 import { siteLinks } from '../data/siteLinks';
 
 const SerifosGuide: React.FC = () => {
+  const { t } = useTranslation();
   const serifos = islandGuides.find(island => island.id === 'serifos');
 
   if (!serifos) {
@@ -43,7 +45,7 @@ const SerifosGuide: React.FC = () => {
       'best time to visit Serifos'
     ],
     ogImage: serifos.image,
-    ogType: 'article'
+    ogType: 'article' as const
   };
 
   // Photo gallery images
@@ -132,36 +134,36 @@ const SerifosGuide: React.FC = () => {
       <SEO {...seoData} />
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...serifos} />
-        
+
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Serifos</h2>
               <p className="text-gray-700 leading-relaxed">
-                Serifos, with its rugged landscapes and authentic Cycladic charm, offers a peaceful escape from the more 
-                crowded Greek islands. Known for its rich mining history, stunning beaches, and the impressive hilltop 
+                Serifos, with its rugged landscapes and authentic Cycladic charm, offers a peaceful escape from the more
+                crowded Greek islands. Known for its rich mining history, stunning beaches, and the impressive hilltop
                 Chora, Serifos provides a perfect blend of relaxation, adventure, and cultural experiences.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                From the bustling port of Livadi to the tranquil beaches of Psili Ammos and Ganema, from hiking trails 
-                with breathtaking views to traditional tavernas serving local delicacies, Serifos has something for every 
+                From the bustling port of Livadi to the tranquil beaches of Psili Ammos and Ganema, from hiking trails
+                with breathtaking views to traditional tavernas serving local delicacies, Serifos has something for every
                 traveler. Our comprehensive guide will help you discover the best of what this authentic Cycladic gem has to offer.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/images/islands/serifos/landscape.jpg" 
-                  alt="Serifos Landscape" 
+                <img
+                  src="/images/islands/serifos/landscape.jpg"
+                  alt="Serifos Landscape"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 w-2/3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/islands/serifos/chora-detail.jpg" 
-                    alt="Chora Detail" 
+                  <img
+                    src="/images/islands/serifos/chora-detail.jpg"
+                    alt="Chora Detail"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -174,9 +176,9 @@ const SerifosGuide: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
-                <a 
+                <a
                   key={index}
-                  href={category.link} 
+                  href={category.link}
                   className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
@@ -238,25 +240,25 @@ const SerifosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Villages Section */}
           <section id="villages" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Charming Villages of Serifos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/serifos/villages/chora.jpg" 
-                    alt="Chora Village" 
+                  <img
+                    src="/images/islands/serifos/villages/chora.jpg"
+                    alt="Chora Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Chora</h3>
                   <p className="text-gray-600 mb-4">
-                    The capital of Serifos, Chora is an impressive hilltop village that cascades down the slopes of a rocky hill, 
-                    offering breathtaking views of the Aegean Sea. With its whitewashed houses, blue-domed churches, and narrow 
-                    winding alleys, Chora embodies the quintessential Cycladic aesthetic. Visit the Venetian castle at the top, 
+                    The capital of Serifos, Chora is an impressive hilltop village that cascades down the slopes of a rocky hill,
+                    offering breathtaking views of the Aegean Sea. With its whitewashed houses, blue-domed churches, and narrow
+                    winding alleys, Chora embodies the quintessential Cycladic aesthetic. Visit the Venetian castle at the top,
                     explore the Archaeological Museum, and enjoy the sunset from one of the panoramic cafes.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -266,21 +268,21 @@ const SerifosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/serifos/villages/livadi.jpg" 
-                    alt="Livadi Village" 
+                  <img
+                    src="/images/islands/serifos/villages/livadi.jpg"
+                    alt="Livadi Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Livadi</h3>
                   <p className="text-gray-600 mb-4">
-                    The main port and commercial center of Serifos, Livadi is a picturesque seaside settlement with a long sandy beach. 
-                    This is where most of the island's accommodations, restaurants, cafes, and shops are located. The waterfront promenade 
-                    is perfect for evening strolls, while the beach offers various water sports activities. Livadi is also the starting point 
+                    The main port and commercial center of Serifos, Livadi is a picturesque seaside settlement with a long sandy beach.
+                    This is where most of the island's accommodations, restaurants, cafes, and shops are located. The waterfront promenade
+                    is perfect for evening strolls, while the beach offers various water sports activities. Livadi is also the starting point
                     for boat excursions around the island.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -290,21 +292,21 @@ const SerifosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/serifos/villages/megalo-livadi.jpg" 
-                    alt="Megalo Livadi Village" 
+                  <img
+                    src="/images/islands/serifos/villages/megalo-livadi.jpg"
+                    alt="Megalo Livadi Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Megalo Livadi</h3>
                   <p className="text-gray-600 mb-4">
-                    Once the industrial center of Serifos, Megalo Livadi is a historic settlement that tells the story of the island's mining past. 
-                    The abandoned mining facilities, the neoclassical building of the mining company, and the workers' memorial create a unique 
-                    atmosphere. The village is set in a beautiful bay with a small beach and a few tavernas serving fresh seafood. It's a must-visit 
+                    Once the industrial center of Serifos, Megalo Livadi is a historic settlement that tells the story of the island's mining past.
+                    The abandoned mining facilities, the neoclassical building of the mining company, and the workers' memorial create a unique
+                    atmosphere. The village is set in a beautiful bay with a small beach and a few tavernas serving fresh seafood. It's a must-visit
                     for those interested in industrial heritage.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -314,21 +316,21 @@ const SerifosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/serifos/villages/panagia.jpg" 
-                    alt="Panagia Village" 
+                  <img
+                    src="/images/islands/serifos/villages/panagia.jpg"
+                    alt="Panagia Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Panagia</h3>
                   <p className="text-gray-600 mb-4">
-                    A small, traditional village located on the road between Livadi and Chora, Panagia offers a glimpse into authentic island life. 
-                    Named after the church of Panagia (Virgin Mary) that dominates the village, it features traditional Cycladic architecture with 
-                    whitewashed houses and narrow streets. The village square with its old plane tree is a perfect spot to enjoy a coffee or local 
+                    A small, traditional village located on the road between Livadi and Chora, Panagia offers a glimpse into authentic island life.
+                    Named after the church of Panagia (Virgin Mary) that dominates the village, it features traditional Cycladic architecture with
+                    whitewashed houses and narrow streets. The village square with its old plane tree is a perfect spot to enjoy a coffee or local
                     delicacies at one of the few tavernas.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -340,25 +342,25 @@ const SerifosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beautiful Beaches of Serifos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/serifos/beaches/psili-ammos.jpg" 
-                    alt="Psili Ammos Beach" 
+                  <img
+                    src="/images/islands/serifos/beaches/psili-ammos.jpg"
+                    alt="Psili Ammos Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Psili Ammos</h3>
                   <p className="text-gray-600 mb-4">
-                    Considered one of the most beautiful beaches on Serifos, Psili Ammos (meaning "fine sand") lives up to its name 
-                    with soft golden sand and crystal-clear turquoise waters. Protected from strong winds, this beach offers ideal 
-                    swimming conditions and is perfect for families with children. There are a few tavernas nearby where you can 
+                    Considered one of the most beautiful beaches on Serifos, Psili Ammos (meaning "fine sand") lives up to its name
+                    with soft golden sand and crystal-clear turquoise waters. Protected from strong winds, this beach offers ideal
+                    swimming conditions and is perfect for families with children. There are a few tavernas nearby where you can
                     enjoy fresh seafood and local specialties while taking in the beautiful sea views.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -368,21 +370,21 @@ const SerifosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/serifos/beaches/livadakia.jpg" 
-                    alt="Livadakia Beach" 
+                  <img
+                    src="/images/islands/serifos/beaches/livadakia.jpg"
+                    alt="Livadakia Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Livadakia</h3>
                   <p className="text-gray-600 mb-4">
-                    Located near the port of Livadi, Livadakia is a popular and easily accessible beach with fine sand and shallow waters. 
-                    Well-organized with sunbeds, umbrellas, and beach bars, it's perfect for those who want convenience without sacrificing 
-                    beauty. The beach is lined with tamarisk trees providing natural shade, and there are several tavernas and cafes nearby 
+                    Located near the port of Livadi, Livadakia is a popular and easily accessible beach with fine sand and shallow waters.
+                    Well-organized with sunbeds, umbrellas, and beach bars, it's perfect for those who want convenience without sacrificing
+                    beauty. The beach is lined with tamarisk trees providing natural shade, and there are several tavernas and cafes nearby
                     for refreshments and meals.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -392,21 +394,21 @@ const SerifosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/serifos/beaches/ganema.jpg" 
-                    alt="Ganema Beach" 
+                  <img
+                    src="/images/islands/serifos/beaches/ganema.jpg"
+                    alt="Ganema Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Ganema</h3>
                   <p className="text-gray-600 mb-4">
-                    Ganema is a beautiful beach with coarse sand and pebbles, known for its crystal-clear deep blue waters. 
-                    The beach is partially organized with some sunbeds and umbrellas, and there's a charming taverna serving delicious 
-                    local cuisine. What makes Ganema special is the impressive backdrop of rocky hills and the remains of old 
+                    Ganema is a beautiful beach with coarse sand and pebbles, known for its crystal-clear deep blue waters.
+                    The beach is partially organized with some sunbeds and umbrellas, and there's a charming taverna serving delicious
+                    local cuisine. What makes Ganema special is the impressive backdrop of rocky hills and the remains of old
                     mining facilities, adding a touch of industrial heritage to the natural beauty.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -416,21 +418,21 @@ const SerifosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/serifos/beaches/agios-sostis.jpg" 
-                    alt="Agios Sostis Beach" 
+                  <img
+                    src="/images/islands/serifos/beaches/agios-sostis.jpg"
+                    alt="Agios Sostis Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Agios Sostis</h3>
                   <p className="text-gray-600 mb-4">
-                    Agios Sostis is a secluded beach with fine sand and shallow turquoise waters, ideal for those seeking tranquility. 
-                    Named after the small white chapel that stands on the rocky peninsula at the edge of the beach, it offers a 
-                    picturesque setting that's perfect for photography. The beach is not organized, so bring your own supplies, 
+                    Agios Sostis is a secluded beach with fine sand and shallow turquoise waters, ideal for those seeking tranquility.
+                    Named after the small white chapel that stands on the rocky peninsula at the edge of the beach, it offers a
+                    picturesque setting that's perfect for photography. The beach is not organized, so bring your own supplies,
                     and there are no facilities nearby, adding to its unspoiled charm.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -440,21 +442,21 @@ const SerifosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/serifos/beaches/vagia.jpg" 
-                    alt="Vagia Beach" 
+                  <img
+                    src="/images/islands/serifos/beaches/vagia.jpg"
+                    alt="Vagia Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Vagia</h3>
                   <p className="text-gray-600 mb-4">
-                    Vagia is a long, sandy beach with crystal-clear waters, located on the eastern side of the island. 
-                    Relatively quiet even during high season, it's perfect for those who want to escape the crowds. 
-                    The beach is partially organized with some sunbeds and umbrellas, and there's a taverna nearby for 
+                    Vagia is a long, sandy beach with crystal-clear waters, located on the eastern side of the island.
+                    Relatively quiet even during high season, it's perfect for those who want to escape the crowds.
+                    The beach is partially organized with some sunbeds and umbrellas, and there's a taverna nearby for
                     refreshments. The surrounding landscape of rocky hills creates a dramatic setting.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -464,21 +466,21 @@ const SerifosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/serifos/beaches/kalo-ampeli.jpg" 
-                    alt="Kalo Ampeli Beach" 
+                  <img
+                    src="/images/islands/serifos/beaches/kalo-ampeli.jpg"
+                    alt="Kalo Ampeli Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Kalo Ampeli</h3>
                   <p className="text-gray-600 mb-4">
-                    Kalo Ampeli is a small, secluded beach with a mix of sand and pebbles, surrounded by impressive rock formations. 
-                    Accessible by a dirt road or by boat, this hidden gem offers privacy and natural beauty. The waters are deep and 
-                    crystal-clear, perfect for snorkeling enthusiasts. There are no facilities on the beach, so come prepared with 
+                    Kalo Ampeli is a small, secluded beach with a mix of sand and pebbles, surrounded by impressive rock formations.
+                    Accessible by a dirt road or by boat, this hidden gem offers privacy and natural beauty. The waters are deep and
+                    crystal-clear, perfect for snorkeling enthusiasts. There are no facilities on the beach, so come prepared with
                     everything you need for a day of complete relaxation.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -490,7 +492,7 @@ const SerifosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine & Gastronomy</h2>
@@ -498,19 +500,19 @@ const SerifosGuide: React.FC = () => {
               <div className="lg:col-span-2">
                 <div className="prose prose-lg max-w-none">
                   <p className="mb-4">
-                    Serifos offers a delightful culinary experience that combines traditional Cycladic flavors with local specialties. 
-                    Fresh seafood, locally-sourced ingredients, and time-honored recipes create a gastronomic journey that's an essential 
+                    Serifos offers a delightful culinary experience that combines traditional Cycladic flavors with local specialties.
+                    Fresh seafood, locally-sourced ingredients, and time-honored recipes create a gastronomic journey that's an essential
                     part of experiencing the island's culture.
                   </p>
-                  
+
                   <h3 className="text-xl font-semibold mt-6 mb-4">Traditional Dishes</h3>
                   <ul className="list-disc pl-6 mb-6 space-y-2">
                     <li>
-                      <strong>Marathon Pie (Marathopita)</strong> - A traditional herb pie made with fennel, local cheese, and olive oil, 
+                      <strong>Marathon Pie (Marathopita)</strong> - A traditional herb pie made with fennel, local cheese, and olive oil,
                       baked to perfection.
                     </li>
                     <li>
-                      <strong>Revithada</strong> - Chickpeas slow-cooked in clay pots with olive oil, onions, and herbs, a Sunday tradition 
+                      <strong>Revithada</strong> - Chickpeas slow-cooked in clay pots with olive oil, onions, and herbs, a Sunday tradition
                       in many Cycladic homes.
                     </li>
                     <li>
@@ -523,7 +525,7 @@ const SerifosGuide: React.FC = () => {
                       <strong>Chtapodi Krasato</strong> - Octopus cooked in red wine sauce with herbs and spices, a delicious seafood specialty.
                     </li>
                   </ul>
-                  
+
                   <h3 className="text-xl font-semibold mt-6 mb-4">Local Products</h3>
                   <ul className="list-disc pl-6 mb-6 space-y-2">
                     <li>
@@ -533,14 +535,14 @@ const SerifosGuide: React.FC = () => {
                       <strong>Capers</strong> - Wild capers grow abundantly on Serifos and are used in many local dishes.
                     </li>
                     <li>
-                      <strong>Local Wines</strong> - Though not as famous as other Cycladic islands for wine, Serifos has a small but 
+                      <strong>Local Wines</strong> - Though not as famous as other Cycladic islands for wine, Serifos has a small but
                       growing wine production.
                     </li>
                     <li>
                       <strong>Olive Oil</strong> - High-quality olive oil is produced from the island's olive groves and is a staple in local cuisine.
                     </li>
                   </ul>
-                  
+
                   <h3 className="text-xl font-semibold mt-6 mb-4">Where to Eat</h3>
                   <ul className="list-disc pl-6 mb-6 space-y-2">
                     <li>
@@ -558,7 +560,7 @@ const SerifosGuide: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <FaGlassCheers className="text-3xl text-blue-500 mb-4" />
@@ -585,7 +587,7 @@ const SerifosGuide: React.FC = () => {
                       <p>Experience a local panigiri (festival) with traditional food, music, and dancing</p>
                     </li>
                   </ul>
-                  
+
                   <div className="mt-8">
                     <h3 className="text-xl font-semibold mb-4">Best Restaurants</h3>
                     <div className="space-y-3">
@@ -611,11 +613,11 @@ const SerifosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Activities Section */}
           <section id="activities" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Serifos</h2>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
@@ -653,7 +655,7 @@ const SerifosGuide: React.FC = () => {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
                 <div className="flex items-center mb-4">
                   <FaHiking className="text-3xl text-blue-500 mr-4" />
@@ -691,7 +693,7 @@ const SerifosGuide: React.FC = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6">
               <h3 className="text-xl font-semibold mb-4">Unique Experiences</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -714,16 +716,16 @@ const SerifosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Serifos Photo Gallery</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="relative overflow-hidden rounded-lg shadow-md aspect-w-4 aspect-h-3">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
+                  <img
+                    src={image.src}
+                    alt={image.alt}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-105"
                   />
                   <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
@@ -733,7 +735,7 @@ const SerifosGuide: React.FC = () => {
               ))}
             </div>
           </section>
-          
+
           {/* Call to Action Section */}
           <section id="cta" className="mb-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-md overflow-hidden">
             <div className="container mx-auto px-6 py-12 text-white">
@@ -745,14 +747,14 @@ const SerifosGuide: React.FC = () => {
                     Serifos offers the perfect blend of authentic Cycladic charm, beautiful beaches, and rich history.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="/hotels/" 
+                    <a
+                      href="/hotels/"
                       className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition duration-300 text-center"
                     >
                       Find Accommodations
                     </a>
-                    <a 
-                      href="/ferry-tickets/" 
+                    <a
+                      href="/ferry-tickets/"
                       className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition duration-300 text-center"
                     >
                       How to get there
@@ -760,9 +762,9 @@ const SerifosGuide: React.FC = () => {
                   </div>
                 </div>
                 <div className="relative h-64 md:h-auto">
-                  <img 
-                    src="/images/islands/serifos/cta-image.jpg" 
-                    alt="Serifos Island View" 
+                  <img
+                    src="/images/islands/serifos/cta-image.jpg"
+                    alt="Serifos Island View"
                     className="w-full h-full object-cover rounded-lg shadow-lg"
                   />
                   <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-4 py-2 rounded-lg">
@@ -772,7 +774,7 @@ const SerifosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           <RelatedDestinationsSection groups={[
             siteLinks.popularIslands,
             siteLinks.topActivities,

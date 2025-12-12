@@ -8,6 +8,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import AuthStateHandler from './components/AuthStateHandler';
 import CookieConsent from './components/CookieConsent';
 import { useAuthStore } from './stores/authStore';
+import LanguageWrapper from './components/LanguageWrapper';
 
 // Immediate load components (critical for initial render)
 import HomeNew from './pages/HomeNew';
@@ -28,6 +29,7 @@ const RentACar = lazy(() => import('./pages/RentACar'));
 const Profile = lazy(() => import('./pages/Profile'));
 const TripPlanner = lazy(() => import('./pages/TripPlannerNew'));
 const EnhancedTripPlanner = lazy(() => import('./pages/EnhancedTripPlanner'));
+const IslandHopBuilder = lazy(() => import('./pages/IslandHopBuilder'));
 const MyTrips = lazy(() => import('./pages/MyTrips'));
 const ForgotPassword = lazy(() => import('./pages/ForgotPassword'));
 const Hotels = lazy(() => import('./pages/Hotels'));
@@ -307,6 +309,8 @@ function AppContent() {
               {/* New AI Trip Planner */}
               <Route path="/trip-planner" element={<TripPlanner />} />
               <Route path="/plan-trip" element={<TripPlanner />} />
+              <Route path="/island-hop-builder" element={<IslandHopBuilder />} />
+              <Route path="/build-trip" element={<IslandHopBuilder />} />
 
               {/* Legacy Enhanced Trip Planner - keeping for backward compatibility */}
               <Route
@@ -360,48 +364,50 @@ function AppContent() {
               <Route path="/transfers" element={<Transfers />} />
 
               {/* Language-prefixed routes for multi-language support */}
-              {/* These support URLs like /en/islands/santorini, /gr/hotels, etc. */}
-              <Route path="/:lang" element={<HomeNew />} />
-              <Route path="/:lang/islands" element={<IslandsNew />} />
-              <Route path="/:lang/islands/:slug" element={<IslandDetail />} />
-              <Route path="/:lang/guides" element={<GuidesNew />} />
-              <Route path="/:lang/guides/:slug" element={<IslandGuidePage />} />
-              <Route path="/:lang/hotels" element={<Hotels />} />
-              <Route path="/:lang/hotels/:slug" element={<HotelDetail />} />
-              <Route path="/:lang/ferry-tickets" element={<FerryTickets />} />
-              <Route path="/:lang/flights" element={<Flights />} />
-              <Route path="/:lang/activities" element={<Activities />} />
-              <Route path="/:lang/activities/:id" element={<ActivityDetail />} />
-              <Route path="/:lang/culinary" element={<Culinary />} />
-              <Route path="/:lang/about" element={<About />} />
-              <Route path="/:lang/contact" element={<Contact />} />
-              <Route path="/:lang/blog" element={<Blog />} />
-              <Route path="/:lang/blog/:slug" element={<BlogPost />} />
-              <Route path="/:lang/weather" element={<Weather />} />
-              <Route path="/:lang/trip-planner" element={<TripPlanner />} />
-              <Route path="/:lang/touristas" element={<TouristasEnhancedPage />} />
-              <Route path="/:lang/touristas-ai" element={<TouristasAILanding />} />
-              <Route path="/:lang/planner" element={<IslandHoppingPlannerPage />} />
-              <Route path="/:lang/community" element={<CommunityPage />} />
-              <Route path="/:lang/inspiration" element={<InspirationFeedPage />} />
-              <Route path="/:lang/hotel-marketplace" element={<HotelMarketplace />} />
-              <Route path="/:lang/rent-a-car" element={<RentACar />} />
-              <Route path="/:lang/transfers" element={<Transfers />} />
-              <Route path="/:lang/help" element={<HelpDesk />} />
-              <Route path="/:lang/resources" element={<Resources />} />
-              <Route path="/:lang/greek-phrases" element={<GreekPhrases />} />
-              <Route path="/:lang/budget-calculator" element={<BudgetCalculator />} />
-              <Route path="/:lang/ferry-guide" element={<FerryGuide />} />
-              <Route path="/:lang/privacy" element={<Privacy />} />
-              <Route path="/:lang/terms" element={<Terms />} />
-              <Route path="/:lang/sitemap" element={<Sitemap />} />
-              <Route path="/:lang/signin" element={<SignIn />} />
-              <Route path="/:lang/signup" element={<SignUp />} />
-              <Route path="/:lang/book" element={<BookingPage />} />
-              <Route path="/:lang/book/search" element={<BookingResultsPage />} />
-              <Route path="/:lang/book/hotel/:hotelId" element={<BookingHotelPage />} />
-              <Route path="/:lang/directory" element={<Directory />} />
-              <Route path="/:lang/list-property" element={<ListProperty />} />
+              {/* These support URLs like /en/islands/santorini, /ru/hotels, etc. */}
+              <Route path="/:lang" element={<LanguageWrapper />}>
+                <Route index element={<HomeNew />} />
+                <Route path="islands" element={<IslandsNew />} />
+                <Route path="islands/:slug" element={<IslandDetail />} />
+                <Route path="guides" element={<GuidesNew />} />
+                <Route path="guides/:slug" element={<IslandGuidePage />} />
+                <Route path="hotels" element={<Hotels />} />
+                <Route path="hotels/:slug" element={<HotelDetail />} />
+                <Route path="ferry-tickets" element={<FerryTickets />} />
+                <Route path="flights" element={<Flights />} />
+                <Route path="activities" element={<Activities />} />
+                <Route path="activities/:id" element={<ActivityDetail />} />
+                <Route path="culinary" element={<Culinary />} />
+                <Route path="about" element={<About />} />
+                <Route path="contact" element={<Contact />} />
+                <Route path="blog" element={<Blog />} />
+                <Route path="blog/:slug" element={<BlogPost />} />
+                <Route path="weather" element={<Weather />} />
+                <Route path="trip-planner" element={<TripPlanner />} />
+                <Route path="touristas" element={<TouristasEnhancedPage />} />
+                <Route path="touristas-ai" element={<TouristasAILanding />} />
+                <Route path="planner" element={<IslandHoppingPlannerPage />} />
+                <Route path="community" element={<CommunityPage />} />
+                <Route path="inspiration" element={<InspirationFeedPage />} />
+                <Route path="hotel-marketplace" element={<HotelMarketplace />} />
+                <Route path="rent-a-car" element={<RentACar />} />
+                <Route path="transfers" element={<Transfers />} />
+                <Route path="help" element={<HelpDesk />} />
+                <Route path="resources" element={<Resources />} />
+                <Route path="greek-phrases" element={<GreekPhrases />} />
+                <Route path="budget-calculator" element={<BudgetCalculator />} />
+                <Route path="ferry-guide" element={<FerryGuide />} />
+                <Route path="privacy" element={<Privacy />} />
+                <Route path="terms" element={<Terms />} />
+                <Route path="sitemap" element={<Sitemap />} />
+                <Route path="signin" element={<SignIn />} />
+                <Route path="signup" element={<SignUp />} />
+                <Route path="book" element={<BookingPage />} />
+                <Route path="book/search" element={<BookingResultsPage />} />
+                <Route path="book/hotel/:hotelId" element={<BookingHotelPage />} />
+                <Route path="directory" element={<Directory />} />
+                <Route path="list-property" element={<ListProperty />} />
+              </Route>
 
               <Route path="*" element={<NotFound />} />
             </Routes>

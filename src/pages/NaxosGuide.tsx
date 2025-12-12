@@ -1,12 +1,13 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaWineGlass, 
-  FaMapMarkedAlt, 
-  FaShip, 
-  FaUtensils, 
-  FaSun, 
-  FaCameraRetro, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaWineGlass,
+  FaMapMarkedAlt,
+  FaShip,
+  FaUtensils,
+  FaSun,
+  FaCameraRetro,
   FaLeaf,
   FaCalendarAlt,
   FaGlassCheers,
@@ -24,6 +25,7 @@ import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSec
 import { siteLinks } from '../data/siteLinks';
 
 const NaxosGuide: React.FC = () => {
+  const { t } = useTranslation();
   const naxos = islandGuides.find(island => island.id === 'naxos');
 
   if (!naxos) {
@@ -87,7 +89,7 @@ const NaxosGuide: React.FC = () => {
 
   return (
     <>
-      <SEO {...seoData} 
+      <SEO {...seoData}
         jsonLD={{
           "@context": "https://schema.org",
           "@type": "TouristDestination",
@@ -163,36 +165,36 @@ const NaxosGuide: React.FC = () => {
       />
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...naxos} />
-        
+
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Naxos</h2>
               <p className="text-gray-700 leading-relaxed">
-                Naxos, the largest and most fertile island of the Cyclades, offers a perfect blend of ancient history, 
-                traditional mountain villages, and stunning beaches. With its rich mythology as the childhood home of Zeus 
+                Naxos, the largest and most fertile island of the Cyclades, offers a perfect blend of ancient history,
+                traditional mountain villages, and stunning beaches. With its rich mythology as the childhood home of Zeus
                 and the place where Theseus abandoned Ariadne, Naxos captivates visitors with its diverse landscapes and authentic charm.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                From the iconic Portara (Apollo's Gate) greeting visitors at the harbor to the lush valleys, marble villages, 
-                and golden beaches, Naxos provides a complete Greek island experience. Our comprehensive guide will help you 
+                From the iconic Portara (Apollo's Gate) greeting visitors at the harbor to the lush valleys, marble villages,
+                and golden beaches, Naxos provides a complete Greek island experience. Our comprehensive guide will help you
                 discover the best of what this magical island has to offer.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/images/islands/naxos/landscape.jpg" 
-                  alt="Naxos Landscape" 
+                <img
+                  src="/images/islands/naxos/landscape.jpg"
+                  alt="Naxos Landscape"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 w-2/3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/islands/naxos/portara-detail.jpg" 
-                    alt="Portara Detail" 
+                  <img
+                    src="/images/islands/naxos/portara-detail.jpg"
+                    alt="Portara Detail"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -204,8 +206,8 @@ const NaxosGuide: React.FC = () => {
           <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-              <a 
-                href="#villages" 
+              <a
+                href="#villages"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
@@ -213,8 +215,8 @@ const NaxosGuide: React.FC = () => {
                 </div>
                 <span className="font-medium text-sm">Villages</span>
               </a>
-              <a 
-                href="#beaches" 
+              <a
+                href="#beaches"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
@@ -222,8 +224,8 @@ const NaxosGuide: React.FC = () => {
                 </div>
                 <span className="font-medium text-sm">Beaches</span>
               </a>
-              <a 
-                href="#dining" 
+              <a
+                href="#dining"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
@@ -231,8 +233,8 @@ const NaxosGuide: React.FC = () => {
                 </div>
                 <span className="font-medium text-sm">Local Cuisine</span>
               </a>
-              <a 
-                href="#activities" 
+              <a
+                href="#activities"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
@@ -240,8 +242,8 @@ const NaxosGuide: React.FC = () => {
                 </div>
                 <span className="font-medium text-sm">Activities</span>
               </a>
-              <a 
-                href="#gallery" 
+              <a
+                href="#gallery"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
@@ -249,8 +251,8 @@ const NaxosGuide: React.FC = () => {
                 </div>
                 <span className="font-medium text-sm">Photo Gallery</span>
               </a>
-              <a 
-                href="#when-to-visit" 
+              <a
+                href="#when-to-visit"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
               >
                 <div className="text-2xl mb-2">
@@ -271,18 +273,18 @@ const NaxosGuide: React.FC = () => {
                   <h3 className="text-2xl font-semibold">Ancient Heritage</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Naxos has been inhabited since at least 4000 BC, with evidence of Early Cycladic settlements. 
-                  According to mythology, Zeus was raised in a cave on Mount Zas, and the island was where Theseus 
+                  Naxos has been inhabited since at least 4000 BC, with evidence of Early Cycladic settlements.
+                  According to mythology, Zeus was raised in a cave on Mount Zas, and the island was where Theseus
                   abandoned Ariadne after she helped him defeat the Minotaur.
                 </p>
                 <p className="text-gray-600 mb-4">
-                  The island's most iconic landmark, the Portara (Apollo's Gate), is the entrance to an unfinished 
-                  temple of Apollo from 530 BC. This massive marble doorway stands as a testament to the island's 
+                  The island's most iconic landmark, the Portara (Apollo's Gate), is the entrance to an unfinished
+                  temple of Apollo from 530 BC. This massive marble doorway stands as a testament to the island's
                   ancient significance and greets visitors as they enter the harbor.
                 </p>
                 <p className="text-gray-600 dark:text-white/60">
-                  Throughout its history, Naxos has been influenced by various civilizations including the Minoans, 
-                  Mycenaeans, Venetians, and Ottomans. The Venetian period (1207-1566) left a particularly strong mark, 
+                  Throughout its history, Naxos has been influenced by various civilizations including the Minoans,
+                  Mycenaeans, Venetians, and Ottomans. The Venetian period (1207-1566) left a particularly strong mark,
                   evident in the Kastro area of Naxos Town and the defensive towers scattered across the island.
                 </p>
               </div>
@@ -292,18 +294,18 @@ const NaxosGuide: React.FC = () => {
                   <h3 className="text-2xl font-semibold">Cultural Landscape</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Unlike many other Cycladic islands, Naxos is remarkably fertile, with abundant water sources, 
-                  valleys, and mountains. This natural abundance has shaped the island's culture, with agriculture 
+                  Unlike many other Cycladic islands, Naxos is remarkably fertile, with abundant water sources,
+                  valleys, and mountains. This natural abundance has shaped the island's culture, with agriculture
                   playing a central role in local life for millennia.
                 </p>
                 <p className="text-gray-600 mb-4">
-                  The island is famous for its marble quarries, which have been in use since antiquity. The fine 
-                  Naxian marble was used for sculptures and buildings throughout the ancient Greek world. Unfinished 
+                  The island is famous for its marble quarries, which have been in use since antiquity. The fine
+                  Naxian marble was used for sculptures and buildings throughout the ancient Greek world. Unfinished
                   kouros statues can still be seen lying in ancient quarries at Apollonas and Melanes.
                 </p>
                 <p className="text-gray-600 dark:text-white/60">
-                  Naxos maintains strong cultural traditions, with local festivals (panigiria) celebrating patron 
-                  saints in villages throughout the summer. These events feature traditional music, dance, and 
+                  Naxos maintains strong cultural traditions, with local festivals (panigiria) celebrating patron
+                  saints in villages throughout the summer. These events feature traditional music, dance, and
                   feasting, offering visitors an authentic glimpse into Cycladic culture.
                 </p>
               </div>
@@ -326,7 +328,7 @@ const NaxosGuide: React.FC = () => {
                   <li>• Busy beaches</li>
                 </ul>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
@@ -372,28 +374,28 @@ const NaxosGuide: React.FC = () => {
                 <div>
                   <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Spring (April-May)</h5>
                   <p className="text-gray-700 text-sm">
-                    The island blooms with wildflowers, and the landscape turns lush green. Easter celebrations 
+                    The island blooms with wildflowers, and the landscape turns lush green. Easter celebrations
                     offer a glimpse into local traditions with processions and special ceremonies.
                   </p>
                 </div>
                 <div>
                   <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Summer (June-August)</h5>
                   <p className="text-gray-700 text-sm">
-                    Village festivals (panigiria) take place throughout the island. The Naxos Festival brings 
+                    Village festivals (panigiria) take place throughout the island. The Naxos Festival brings
                     cultural performances to the Bazeos Tower and other venues.
                   </p>
                 </div>
                 <div>
                   <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Autumn (September-October)</h5>
                   <p className="text-gray-700 text-sm">
-                    Harvest season brings special events and the chance to participate in traditional agricultural activities. 
+                    Harvest season brings special events and the chance to participate in traditional agricultural activities.
                     The sea remains warm enough for swimming while the crowds diminish.
                   </p>
                 </div>
                 <div>
                   <h5 className="font-medium text-blue-800 dark:text-cyclades-turquoise">Winter (November-March)</h5>
                   <p className="text-gray-700 text-sm">
-                    A quiet, authentic experience with mostly locals. The island turns green, and while some 
+                    A quiet, authentic experience with mostly locals. The island turns green, and while some
                     businesses close, you'll experience the true character of Naxos.
                   </p>
                 </div>
@@ -407,17 +409,17 @@ const NaxosGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/chora.jpg" 
-                    alt="Naxos Chora" 
+                  <img
+                    src="/images/islands/naxos/chora.jpg"
+                    alt="Naxos Chora"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Chora (Naxos Town)</h3>
                   <p className="text-gray-600 mb-4">
-                    The capital of Naxos welcomes visitors with its iconic Portara gateway. Explore the medieval Kastro district 
-                    with its Venetian mansions, winding alleys, and the Archaeological Museum. The waterfront promenade offers 
+                    The capital of Naxos welcomes visitors with its iconic Portara gateway. Explore the medieval Kastro district
+                    with its Venetian mansions, winding alleys, and the Archaeological Museum. The waterfront promenade offers
                     numerous restaurants and shops with views of the harbor.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -430,17 +432,17 @@ const NaxosGuide: React.FC = () => {
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/apiranthos.jpg" 
-                    alt="Apiranthos Village" 
+                  <img
+                    src="/images/islands/naxos/apiranthos.jpg"
+                    alt="Apiranthos Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Apiranthos</h3>
                   <p className="text-gray-600 mb-4">
-                    Known as the "marble village," Apiranthos is perched on the slopes of Mount Fanari. Its marble-paved streets, 
-                    Venetian architecture, and distinct culture make it one of the most picturesque villages on the island. 
+                    Known as the "marble village," Apiranthos is perched on the slopes of Mount Fanari. Its marble-paved streets,
+                    Venetian architecture, and distinct culture make it one of the most picturesque villages on the island.
                     Visit its four small museums and enjoy panoramic mountain views.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -453,17 +455,17 @@ const NaxosGuide: React.FC = () => {
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/halki.jpg" 
-                    alt="Halki Village" 
+                  <img
+                    src="/images/islands/naxos/halki.jpg"
+                    alt="Halki Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Halki (Chalki)</h3>
                   <p className="text-gray-600 mb-4">
-                    Once the commercial center of Naxos, Halki is now a charming village in the Tragaia region. Visit the Vallindras 
-                    Distillery to learn about kitron liqueur production, explore neoclassical buildings, and discover Byzantine churches 
+                    Once the commercial center of Naxos, Halki is now a charming village in the Tragaia region. Visit the Vallindras
+                    Distillery to learn about kitron liqueur production, explore neoclassical buildings, and discover Byzantine churches
                     with remarkable frescoes in the surrounding area.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -476,17 +478,17 @@ const NaxosGuide: React.FC = () => {
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/filoti.jpg" 
-                    alt="Filoti Village" 
+                  <img
+                    src="/images/islands/naxos/filoti.jpg"
+                    alt="Filoti Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Filoti</h3>
                   <p className="text-gray-600 mb-4">
-                    The largest village in the mountainous region of Naxos sits at the foot of Mount Zas (Zeus). With its whitewashed 
-                    houses cascading down the hillside, Filoti offers authentic tavernas and serves as the starting point for hiking 
+                    The largest village in the mountainous region of Naxos sits at the foot of Mount Zas (Zeus). With its whitewashed
+                    houses cascading down the hillside, Filoti offers authentic tavernas and serves as the starting point for hiking
                     to the highest peak in the Cyclades and the Cave of Zeus.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -526,17 +528,17 @@ const NaxosGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/plaka-beach.jpg" 
-                    alt="Plaka Beach" 
+                  <img
+                    src="/images/islands/naxos/plaka-beach.jpg"
+                    alt="Plaka Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Plaka Beach</h3>
                   <p className="text-gray-600 mb-4">
-                    A stunning 4km stretch of golden sand with crystal clear turquoise waters. 
-                    The beach offers both organized sections with sunbeds and tavernas, as well as 
+                    A stunning 4km stretch of golden sand with crystal clear turquoise waters.
+                    The beach offers both organized sections with sunbeds and tavernas, as well as
                     quieter, more secluded areas.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -553,17 +555,17 @@ const NaxosGuide: React.FC = () => {
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/agios-prokopios.jpg" 
-                    alt="Agios Prokopios Beach" 
+                  <img
+                    src="/images/islands/naxos/agios-prokopios.jpg"
+                    alt="Agios Prokopios Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Agios Prokopios</h3>
                   <p className="text-gray-600 mb-4">
-                    Consistently rated among the best beaches in Greece, this blue flag beach 
-                    features fine golden sand and shallow turquoise waters. Well-organized with 
+                    Consistently rated among the best beaches in Greece, this blue flag beach
+                    features fine golden sand and shallow turquoise waters. Well-organized with
                     plenty of amenities and water sports.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -580,17 +582,17 @@ const NaxosGuide: React.FC = () => {
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/agia-anna.jpg" 
-                    alt="Agia Anna Beach" 
+                  <img
+                    src="/images/islands/naxos/agia-anna.jpg"
+                    alt="Agia Anna Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Agia Anna</h3>
                   <p className="text-gray-600 mb-4">
-                    A continuation of Agios Prokopios, this beach offers a more laid-back atmosphere 
-                    with a charming fishing port at one end. Lined with tavernas and accommodations, 
+                    A continuation of Agios Prokopios, this beach offers a more laid-back atmosphere
+                    with a charming fishing port at one end. Lined with tavernas and accommodations,
                     it's perfect for those who want convenience.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -607,17 +609,17 @@ const NaxosGuide: React.FC = () => {
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/mikri-vigla.jpg" 
-                    alt="Mikri Vigla Beach" 
+                  <img
+                    src="/images/islands/naxos/mikri-vigla.jpg"
+                    alt="Mikri Vigla Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Mikri Vigla</h3>
                   <p className="text-gray-600 mb-4">
-                    A windsurfer's paradise with two distinct beaches on either side of a peninsula. 
-                    The north-facing beach catches the meltemi winds perfect for windsurfing, while the 
+                    A windsurfer's paradise with two distinct beaches on either side of a peninsula.
+                    The north-facing beach catches the meltemi winds perfect for windsurfing, while the
                     southern side remains calmer for swimming.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -634,16 +636,16 @@ const NaxosGuide: React.FC = () => {
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/aliko.jpg" 
-                    alt="Aliko Beach" 
+                  <img
+                    src="/images/islands/naxos/aliko.jpg"
+                    alt="Aliko Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Aliko Cedar Forest</h3>
                   <p className="text-gray-600 mb-4">
-                    A unique protected area with multiple small coves and beaches surrounded by cedar trees. 
+                    A unique protected area with multiple small coves and beaches surrounded by cedar trees.
                     This natural reserve offers pristine waters and a more secluded experience away from crowds.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -660,17 +662,17 @@ const NaxosGuide: React.FC = () => {
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/apollonas.jpg" 
-                    alt="Apollonas Beach" 
+                  <img
+                    src="/images/islands/naxos/apollonas.jpg"
+                    alt="Apollonas Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Apollonas</h3>
                   <p className="text-gray-600 mb-4">
-                    A picturesque beach in the northern village of the same name. Besides swimming, 
-                    visitors can explore the nearby unfinished ancient kouros statue and enjoy fresh 
+                    A picturesque beach in the northern village of the same name. Besides swimming,
+                    visitors can explore the nearby unfinished ancient kouros statue and enjoy fresh
                     seafood at local tavernas.
                   </p>
                   <div className="flex flex-wrap gap-2 mb-4">
@@ -718,32 +720,32 @@ const NaxosGuide: React.FC = () => {
                   <h3 className="text-2xl font-semibold">Naxian Specialties</h3>
                 </div>
                 <p className="text-gray-600 mb-6">
-                  Naxos is known as the "green island" of the Cyclades due to its agricultural richness. 
-                  The island's fertile soil produces exceptional ingredients that form the basis of its 
+                  Naxos is known as the "green island" of the Cyclades due to its agricultural richness.
+                  The island's fertile soil produces exceptional ingredients that form the basis of its
                   distinctive cuisine.
                 </p>
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-medium text-lg mb-1">Famous Naxian Potatoes</h4>
                     <p className="text-gray-600 text-sm">
-                      The island's potatoes are renowned throughout Greece for their exceptional taste and 
-                      quality. Look for dishes featuring these local potatoes, from simple fried potatoes to 
+                      The island's potatoes are renowned throughout Greece for their exceptional taste and
+                      quality. Look for dishes featuring these local potatoes, from simple fried potatoes to
                       more complex preparations.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-medium text-lg mb-1">Naxian Cheeses</h4>
                     <p className="text-gray-600 text-sm">
-                      Naxos produces several distinctive cheeses, including arseniko (a hard cheese similar to 
-                      gruyère), xinomizithra (a soft, sour cheese), and the famous graviera Naxou (a PDO-protected 
+                      Naxos produces several distinctive cheeses, including arseniko (a hard cheese similar to
+                      gruyère), xinomizithra (a soft, sour cheese), and the famous graviera Naxou (a PDO-protected
                       sweet, buttery cheese with nutty flavors).
                     </p>
                   </div>
                   <div>
                     <h4 className="font-medium text-lg mb-1">Kitron Liqueur</h4>
                     <p className="text-gray-600 text-sm">
-                      This unique citrus liqueur is made from the leaves and fruit of the citron tree. Available 
-                      in three varieties (green, yellow, and clear) with varying sweetness levels. Visit the Vallindras 
+                      This unique citrus liqueur is made from the leaves and fruit of the citron tree. Available
+                      in three varieties (green, yellow, and clear) with varying sweetness levels. Visit the Vallindras
                       Distillery in Halki to learn about its production.
                     </p>
                   </div>
@@ -799,16 +801,16 @@ const NaxosGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/naxian-cheese.jpg" 
-                    alt="Naxian Cheese" 
+                  <img
+                    src="/images/islands/naxos/naxian-cheese.jpg"
+                    alt="Naxian Cheese"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Cheese Tasting</h3>
                   <p className="text-gray-600 mb-4">
-                    Visit local dairies to sample the island's famous cheeses. Many offer tours where you can 
+                    Visit local dairies to sample the island's famous cheeses. Many offer tours where you can
                     learn about traditional production methods and taste various aged varieties.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -821,17 +823,17 @@ const NaxosGuide: React.FC = () => {
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/kitron.jpg" 
-                    alt="Kitron Liqueur" 
+                  <img
+                    src="/images/islands/naxos/kitron.jpg"
+                    alt="Kitron Liqueur"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Kitron Distillery</h3>
                   <p className="text-gray-600 mb-4">
-                    The Vallindras Distillery in Halki has been producing the island's signature citrus 
-                    liqueur since 1896. Take a tour to learn about the production process and sample the 
+                    The Vallindras Distillery in Halki has been producing the island's signature citrus
+                    liqueur since 1896. Take a tour to learn about the production process and sample the
                     different varieties.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -844,16 +846,16 @@ const NaxosGuide: React.FC = () => {
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/naxos/taverna.jpg" 
-                    alt="Traditional Taverna" 
+                  <img
+                    src="/images/islands/naxos/taverna.jpg"
+                    alt="Traditional Taverna"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Mountain Tavernas</h3>
                   <p className="text-gray-600 mb-4">
-                    For the most authentic dining experiences, head to the mountain villages where family-run 
+                    For the most authentic dining experiences, head to the mountain villages where family-run
                     tavernas serve traditional dishes made with locally-sourced ingredients and time-honored recipes.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -892,15 +894,14 @@ const NaxosGuide: React.FC = () => {
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Photo Gallery</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
-                <div 
-                  key={index} 
-                  className={`overflow-hidden rounded-lg shadow-md ${
-                    index === 0 || index === 7 ? 'col-span-2 row-span-2' : ''
-                  }`}
+                <div
+                  key={index}
+                  className={`overflow-hidden rounded-lg shadow-md ${index === 0 || index === 7 ? 'col-span-2 row-span-2' : ''
+                    }`}
                 >
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
+                  <img
+                    src={image.src}
+                    alt={image.alt}
                     className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
                   />
                 </div>
@@ -918,7 +919,7 @@ const NaxosGuide: React.FC = () => {
                   <h3 className="text-xl font-semibold">Water Sports</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Naxos is a premier destination for windsurfing and kitesurfing, especially at Mikri Vigla 
+                  Naxos is a premier destination for windsurfing and kitesurfing, especially at Mikri Vigla
                   and Plaka beaches. Equipment rental and lessons are available for all skill levels.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -934,7 +935,7 @@ const NaxosGuide: React.FC = () => {
                   <h3 className="text-xl font-semibold">Hiking Trails</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Explore ancient paths connecting mountain villages, with stunning views of the Aegean Sea. 
+                  Explore ancient paths connecting mountain villages, with stunning views of the Aegean Sea.
                   The hike to Mount Zeus (Zas), the highest peak in the Cyclades at 1,004m, is particularly rewarding.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -950,7 +951,7 @@ const NaxosGuide: React.FC = () => {
                   <h3 className="text-xl font-semibold">Swimming & Snorkeling</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  With crystal clear waters and diverse marine life, Naxos offers excellent swimming and 
+                  With crystal clear waters and diverse marine life, Naxos offers excellent swimming and
                   snorkeling opportunities. The secluded coves around Aliko and the southern beaches are ideal spots.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -966,7 +967,7 @@ const NaxosGuide: React.FC = () => {
                   <h3 className="text-xl font-semibold">Cultural Experiences</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Visit traditional marble workshops in Apiranthos, attend local festivals (panigiria), or explore 
+                  Visit traditional marble workshops in Apiranthos, attend local festivals (panigiria), or explore
                   the Archaeological Museum in Naxos Town to learn about the island's rich 5,000-year history.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -982,7 +983,7 @@ const NaxosGuide: React.FC = () => {
                   <h3 className="text-xl font-semibold">Food & Wine Tours</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Join guided tours of local farms, cheese producers, and the Kitron distillery. Several wineries 
+                  Join guided tours of local farms, cheese producers, and the Kitron distillery. Several wineries
                   also offer tastings of wines made from indigenous grape varieties grown on the island.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -998,7 +999,7 @@ const NaxosGuide: React.FC = () => {
                   <h3 className="text-xl font-semibold">Island Hopping</h3>
                 </div>
                 <p className="text-gray-600 mb-4">
-                  Naxos is perfectly positioned for day trips to nearby islands. Visit the sacred island of Delos, 
+                  Naxos is perfectly positioned for day trips to nearby islands. Visit the sacred island of Delos,
                   the pristine beaches of Koufonisia, or the traditional charm of Iraklia and Schinoussa.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -1017,18 +1018,18 @@ const NaxosGuide: React.FC = () => {
                 <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Naxos?</h2>
                 <p className="text-lg mb-6">
                   Book your accommodations, tours, and activities for an unforgettable Greek island getaway.
-                  Discover the authentic charm, stunning landscapes, and rich traditions of this 
+                  Discover the authentic charm, stunning landscapes, and rich traditions of this
                   magnificent Cycladic island.
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <a 
-                    href="/hotels/" 
+                  <a
+                    href="/hotels/"
                     className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition duration-300 text-center"
                   >
                     Find Accommodations
                   </a>
-                  <a 
-                    href="/ferry-tickets/" 
+                  <a
+                    href="/ferry-tickets/"
                     className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition duration-300 text-center"
                   >
                     How to get there
@@ -1036,9 +1037,9 @@ const NaxosGuide: React.FC = () => {
                 </div>
               </div>
               <div className="relative h-64 md:h-auto">
-                <img 
-                  src="/images/islands/naxos/naxos-cta.jpg" 
-                  alt="Naxos Island View" 
+                <img
+                  src="/images/islands/naxos/naxos-cta.jpg"
+                  alt="Naxos Island View"
                   className="w-full h-full object-cover"
                 />
                 <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-4 py-2 rounded-lg">

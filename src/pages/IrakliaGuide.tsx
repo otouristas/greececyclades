@@ -1,12 +1,13 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaWineGlass, 
-  FaMapMarkedAlt, 
-  FaShip, 
-  FaUtensils, 
-  FaSun, 
-  FaCameraRetro, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaWineGlass,
+  FaMapMarkedAlt,
+  FaShip,
+  FaUtensils,
+  FaSun,
+  FaCameraRetro,
   FaLeaf,
   FaCalendarAlt,
   FaGlassCheers,
@@ -18,6 +19,7 @@ import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
 
 const IrakliaGuide: React.FC = () => {
+  const { t } = useTranslation();
   const iraklia = islandGuides.find(island => island.id === 'iraklia');
 
   if (!iraklia) {
@@ -41,7 +43,7 @@ const IrakliaGuide: React.FC = () => {
     ],
     canonicalUrl: "https://discovercyclades.gr/guides/iraklia",
     ogImage: iraklia.image,
-    ogType: 'article'
+    ogType: 'article' as const
   };
 
   // Photo gallery images
@@ -127,7 +129,7 @@ const IrakliaGuide: React.FC = () => {
 
   return (
     <>
-      <SEO 
+      <SEO
         title={seoData.title}
         description={seoData.description}
         keywords={seoData.keywords}
@@ -159,17 +161,17 @@ const IrakliaGuide: React.FC = () => {
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/images/islands/iraklia/landscape.jpg" 
-                  alt="Iraklia Landscape" 
+                <img
+                  src="/images/islands/iraklia/landscape.jpg"
+                  alt="Iraklia Landscape"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 w-2/3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/islands/iraklia/agios-georgios-detail.jpg" 
-                    alt="Agios Georgios Detail" 
+                  <img
+                    src="/images/islands/iraklia/agios-georgios-detail.jpg"
+                    alt="Agios Georgios Detail"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -182,9 +184,9 @@ const IrakliaGuide: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
-                <a 
+                <a
                   key={index}
-                  href={category.link} 
+                  href={category.link}
                   className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
@@ -211,7 +213,7 @@ const IrakliaGuide: React.FC = () => {
                   <li>• Busiest period (still quiet)</li>
                 </ul>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Shoulder Season</h3>
@@ -223,7 +225,7 @@ const IrakliaGuide: React.FC = () => {
                   <li>• Lower accommodation prices</li>
                 </ul>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Low Season</h3>
@@ -235,7 +237,7 @@ const IrakliaGuide: React.FC = () => {
                   <li>• Authentic local experience</li>
                 </ul>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCameraRetro className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Best For Photography</h3>
@@ -248,7 +250,7 @@ const IrakliaGuide: React.FC = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="mt-8 bg-blue-50 dark:bg-cyan-600/10 p-6 rounded-lg">
               <h3 className="font-semibold text-xl mb-4">Weather Overview</h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -287,9 +289,9 @@ const IrakliaGuide: React.FC = () => {
                 </p>
               </div>
               <div>
-                <img 
-                  src="/images/islands/iraklia/agios-georgios.jpg" 
-                  alt="The picturesque port village of Agios Georgios" 
+                <img
+                  src="/images/islands/iraklia/agios-georgios.jpg"
+                  alt="The picturesque port village of Agios Georgios"
                   className="rounded-lg shadow-md w-full h-full object-cover"
                 />
               </div>
@@ -297,9 +299,9 @@ const IrakliaGuide: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
               <div>
-                <img 
-                  src="/images/islands/iraklia/panagia-village.jpg" 
-                  alt="The hillside village of Panagia" 
+                <img
+                  src="/images/islands/iraklia/panagia-village.jpg"
+                  alt="The hillside village of Panagia"
                   className="rounded-lg shadow-md w-full h-full object-cover"
                 />
               </div>
@@ -329,9 +331,9 @@ const IrakliaGuide: React.FC = () => {
                 </p>
               </div>
               <div>
-                <img 
-                  src="/images/islands/iraklia/livadi-beach-full.jpg" 
-                  alt="The golden sands of Livadi Beach" 
+                <img
+                  src="/images/islands/iraklia/livadi-beach-full.jpg"
+                  alt="The golden sands of Livadi Beach"
                   className="rounded-lg shadow-md w-full h-full object-cover"
                 />
               </div>
@@ -339,9 +341,9 @@ const IrakliaGuide: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
               <div>
-                <img 
-                  src="/images/islands/iraklia/alimia-beach.jpg" 
-                  alt="The secluded Alimia Beach" 
+                <img
+                  src="/images/islands/iraklia/alimia-beach.jpg"
+                  alt="The secluded Alimia Beach"
                   className="rounded-lg shadow-md w-full h-full object-cover"
                 />
               </div>
@@ -371,9 +373,9 @@ const IrakliaGuide: React.FC = () => {
                 </p>
               </div>
               <div>
-                <img 
-                  src="/images/islands/iraklia/hiking-trail.jpg" 
-                  alt="Scenic hiking trail on Iraklia" 
+                <img
+                  src="/images/islands/iraklia/hiking-trail.jpg"
+                  alt="Scenic hiking trail on Iraklia"
                   className="rounded-lg shadow-md w-full h-full object-cover"
                 />
               </div>
@@ -381,9 +383,9 @@ const IrakliaGuide: React.FC = () => {
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mt-8">
               <div>
-                <img 
-                  src="/images/islands/iraklia/cave-agios-ioannis.jpg" 
-                  alt="The impressive Cave of Agios Ioannis" 
+                <img
+                  src="/images/islands/iraklia/cave-agios-ioannis.jpg"
+                  alt="The impressive Cave of Agios Ioannis"
                   className="rounded-lg shadow-md w-full h-full object-cover"
                 />
               </div>
@@ -397,7 +399,7 @@ const IrakliaGuide: React.FC = () => {
                 </p>
               </div>
             </div>
-            
+
             <div className="mt-8 grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaSwimmer className="text-3xl text-blue-500 mb-4" />
@@ -410,7 +412,7 @@ const IrakliaGuide: React.FC = () => {
                   <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Marine Life</span>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaHistory className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Birdwatching</h3>
@@ -422,7 +424,7 @@ const IrakliaGuide: React.FC = () => {
                   <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Migratory Species</span>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaShip className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Boat Trips</h3>
@@ -436,7 +438,7 @@ const IrakliaGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine of Iraklia</h2>
@@ -444,9 +446,9 @@ const IrakliaGuide: React.FC = () => {
               <div className="lg:col-span-1">
                 <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="aspect-w-1 aspect-h-1">
-                    <img 
-                      src="/images/islands/iraklia/cuisine/iraklia-food.jpg" 
-                      alt="Traditional Iraklian Cuisine" 
+                    <img
+                      src="/images/islands/iraklia/cuisine/iraklia-food.jpg"
+                      alt="Traditional Iraklian Cuisine"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -464,7 +466,7 @@ const IrakliaGuide: React.FC = () => {
                   <li><strong>Marathotiganites</strong> - Fennel fritters, a traditional Cycladic appetizer</li>
                   <li><strong>Mizithra Cheese</strong> - Local soft cheese made from goat's milk</li>
                 </ul>
-                
+
                 <h3 className="font-semibold text-xl mt-6 mb-4">Local Products</h3>
                 <ul className="space-y-2">
                   <li><strong>Thyme Honey</strong> - Produced from the abundant thyme plants on the island's hills</li>
@@ -475,7 +477,7 @@ const IrakliaGuide: React.FC = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaUtensils className="text-3xl text-blue-500 mb-4" />
@@ -488,7 +490,7 @@ const IrakliaGuide: React.FC = () => {
                   <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Sea View</span>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaWineGlass className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Local Wines</h3>
@@ -500,7 +502,7 @@ const IrakliaGuide: React.FC = () => {
                   <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Local Tradition</span>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaLeaf className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Farm to Table</h3>
@@ -514,16 +516,16 @@ const IrakliaGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Iraklia Photo Gallery</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="aspect-w-1 aspect-h-1 overflow-hidden rounded-lg">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
+                  <img
+                    src={image.src}
+                    alt={image.alt}
                     className="w-full h-full object-cover transition-transform duration-300 hover:scale-110"
                   />
                 </div>
@@ -535,7 +537,7 @@ const IrakliaGuide: React.FC = () => {
               </p>
             </div>
           </section>
-          
+
           {/* Call to Action Section */}
           <section id="cta" className="mb-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-md overflow-hidden">
             <div className="container mx-auto px-6 py-12 text-white">
@@ -547,14 +549,14 @@ const IrakliaGuide: React.FC = () => {
                     Iraklia offers the perfect blend of natural beauty, tranquility, and authentic Greek hospitality.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="/hotels/" 
+                    <a
+                      href="/hotels/"
                       className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition duration-300 text-center"
                     >
                       Find Accommodations
                     </a>
-                    <a 
-                      href="/ferry-tickets/" 
+                    <a
+                      href="/ferry-tickets/"
                       className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition duration-300 text-center"
                     >
                       How to get there
@@ -562,9 +564,9 @@ const IrakliaGuide: React.FC = () => {
                   </div>
                 </div>
                 <div className="relative h-64 md:h-auto">
-                  <img 
-                    src="/images/islands/iraklia/cta-image.jpg" 
-                    alt="Iraklia Island View" 
+                  <img
+                    src="/images/islands/iraklia/cta-image.jpg"
+                    alt="Iraklia Island View"
                     className="w-full h-full object-cover rounded-lg shadow-lg"
                   />
                   <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-4 py-2 rounded-lg">

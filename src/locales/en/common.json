@@ -409,6 +409,268 @@
             "restaurants": "Restaurant recommendations"
         }
     },
+    "community": {
+        "title": "Community",
+        "subtitle": "Share your Cyclades adventures with fellow travelers. Photos, stories, and local tips welcome!",
+        "filters": {
+            "all": "All",
+            "photos": "Photos",
+            "stories": "Stories",
+            "allIslands": "All Islands"
+        },
+        "shareCta": {
+            "title": "Share Your Experience",
+            "subtitle": "Help other travelers discover the magic of the Cyclades",
+            "button": "Share Photo or Story"
+        },
+        "meta": {
+            "title": "Community | Discover Cyclades",
+            "description": "Join our community of Cyclades travelers. Share photos, stories, and tips from your Greek island adventures."
+        }
+    },
+    "hotels": {
+        "hero": {
+            "titlePart1": "Hotels in the ",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Discover luxury resorts, boutique hotels, and cave accommodations across all Greek Islands"
+        },
+        "search": {
+            "destination": "Destination",
+            "button": "Search Hotels"
+        },
+        "destinations": {
+            "title": "Popular Destinations",
+            "subtitle": "Explore hotels across the most beautiful islands in the Cyclades",
+            "hotelsAvailable": "hotels available"
+        },
+        "types": {
+            "title": "Types of Accommodation",
+            "luxuryResorts": "Luxury Resorts",
+            "boutiqueHotels": "Boutique Hotels",
+            "caveHotels": "Cave Hotels",
+            "beachResorts": "Beach Resorts",
+            "familyHotels": "Family Hotels",
+            "budgetHotels": "Budget Hotels"
+        },
+        "prices": {
+            "title": "Average Hotel Prices by Island",
+            "subtitle": "Compare accommodation costs across the Cyclades to find your perfect budget match",
+            "budget": "Budget",
+            "midRange": "Mid-Range",
+            "luxury": "Luxury"
+        },
+        "features": {
+            "bestPrice": "Best Price Guarantee",
+            "bestPriceDesc": "Find it lower? We match +10%",
+            "freeCancel": "Free Cancellation",
+            "freeCancelDesc": "Up to 48 hours before arrival",
+            "support": "24/7 Support",
+            "supportDesc": "Help whenever you need it"
+        },
+        "cta": {
+            "title": "Ready to Book Your Stay?",
+            "subtitle": "Find the perfect accommodation for your Greek island adventure",
+            "searchButton": "Search Hotels",
+            "bookFerries": "Book Ferries"
+        },
+        "ai": {
+            "title": "Advanced Hotel Search with AI",
+            "subtitle": "Search by vibe, compare real-time prices across booking sites, and find the perfect stay with our LiteAPI-powered search."
+        },
+        "tips": {
+            "title": "💡 Money-Saving Tips"
+        },
+        "related": {
+            "ferryTickets": "Ferry Tickets",
+            "carRental": "Car Rental",
+            "activities": "Activities",
+            "tripPlanner": "Trip Planner"
+        }
+    },
+    "ferryTickets": {
+        "hero": {
+            "titlePart1": "Ferry Tickets to the ",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Compare prices and book ferry tickets to Santorini, Mykonos, Naxos, Paros and all Greek islands"
+        },
+        "routes": {
+            "title": "Popular Routes",
+            "subtitle": "Most popular ferry connections in the Cyclades",
+            "duration": "Duration",
+            "price": "Price",
+            "frequency": "Frequency"
+        },
+        "companies": {
+            "title": "Ferry Companies"
+        },
+        "tips": {
+            "title": "Island Hopping Tips"
+        },
+        "cta": {
+            "title": "Ready to Explore the Islands?",
+            "subtitle": "Book your ferry tickets and start your island hopping adventure",
+            "searchButton": "Search Ferries",
+            "bookHotels": "Book Hotels"
+        }
+    },
+    "activities": {
+        "hero": {
+            "title": "Unforgettable ",
+            "titleHighlight": "Experiences",
+            "subtitle": "Discover and book the best tours, experiences, and things to do across the Greek islands. From sailing adventures to cultural immersion."
+        },
+        "browse": {
+            "title": "Browse & Book Activities",
+            "subtitle": "Find the perfect experiences for your island adventure with our curated selection"
+        },
+        "whyBook": {
+            "title": "Why Book With Us",
+            "subtitle": "We partner with the best local providers for exceptional experiences"
+        },
+        "destinations": {
+            "title": "Top Destinations",
+            "subtitle": "Explore the most popular islands for activities",
+            "viewAll": "View all islands"
+        },
+        "cta": {
+            "title": "Ready for Your Island Adventure?",
+            "subtitle": "Book your activities now and create unforgettable memories in the Cyclades",
+            "browseButton": "Browse Activities",
+            "exploreIslands": "Explore Islands"
+        }
+    },
+    "flights": {
+        "hero": {
+            "titlePart1": "Fly to the ",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Find cheap flights to Santorini, Mykonos, Paros, Naxos and more. Compare airlines and book with confidence."
+        },
+        "whyBook": {
+            "title": "Why Book Flights With Us"
+        },
+        "airports": {
+            "title": "Cyclades Island Airports",
+            "subtitle": "Most islands have their own airports with connections from Athens"
+        },
+        "tips": {
+            "title": "Flight Booking Tips"
+        },
+        "cta": {
+            "title": "Ready for Your Cyclades Adventure?",
+            "subtitle": "The magic of the Greek Islands awaits. Book your flight and start your dream vacation.",
+            "searchButton": "Search Flights",
+            "ferryTickets": "Ferry Tickets",
+            "findHotels": "Find Hotels"
+        }
+    },
+    "about": {
+        "hero": {
+            "title": "Your Gateway to the Cyclades",
+            "subtitle": "We're passionate travelers, local experts, and technology enthusiasts united by our love for the Greek islands."
+        },
+        "mission": {
+            "title": "Our Mission"
+        },
+        "values": {
+            "title": "Our Values",
+            "subtitle": "The principles that guide everything we do"
+        },
+        "story": {
+            "title": "Our Story"
+        },
+        "cta": {
+            "title": "Let's Plan Your Adventure",
+            "subtitle": "Have questions? Want personalized recommendations? Our team is here to help you create the perfect Cyclades experience.",
+            "contactButton": "Contact Us",
+            "chatButton": "Chat with AI Assistant"
+        }
+    },
+    "contact": {
+        "hero": {
+            "title": "Get in Touch",
+            "subtitle": "Have questions about planning your Cyclades adventure? We're here to help! Our team of local experts is ready to assist you in creating your perfect Greek island experience."
+        },
+        "form": {
+            "title": "Send us a Message",
+            "subtitle": "Fill out the form below and we'll get back to you as soon as possible."
+        },
+        "cta": {
+            "title": "Ready to explore the Cyclades?",
+            "subtitle": "Start planning your perfect Greek island adventure today."
+        }
+    },
+    "rentACar": {
+        "hero": {
+            "title": "Rent a Car in the",
+            "cyclades": "Cyclades",
+            "subtitle": "Explore Santorini, Mykonos, Naxos and more at your own pace. Compare deals from top rental companies."
+        },
+        "vehicleSection": {
+            "title": "Choose Your Vehicle",
+            "subtitle": "From economy cars to luxury convertibles, find the perfect vehicle for your island adventure"
+        },
+        "locations": {
+            "title": "Popular Pickup Locations",
+            "subtitle": "Pick up your car at airports, ports, or town centers across the Cyclades"
+        },
+        "cta": {
+            "title": "Ready to Explore the Islands?",
+            "subtitle": "Book your rental car and discover hidden beaches, traditional villages, and breathtaking views."
+        }
+    },
+    "transfers": {
+        "hero": {
+            "title": "Book Your Transfer in Greece",
+            "subtitle": "Safe and reliable transfers from airports, ports, and stations across Greece"
+        },
+        "howItWorks": {
+            "title": "How Our Transfers Work"
+        },
+        "routes": {
+            "title": "Popular Transfer Routes",
+            "subtitle": "Discover our most frequently booked transfer routes with fixed prices and professional drivers."
+        }
+    },
+    "guides": {
+        "hero": {
+            "title": "Cyclades Island",
+            "titleHighlight": "Guides",
+            "subtitle": "Comprehensive travel guides with insider tips, detailed itineraries, and everything you need to plan the perfect Greek island vacation."
+        },
+        "featured": {
+            "title": "Featured Guides"
+        },
+        "cta": {
+            "title": "Need a Custom Itinerary?",
+            "subtitle": "Tell Touristas AI about your travel dates, interests, and budget. Get a personalized day-by-day itinerary in seconds."
+        }
+    },
+    "blog": {
+        "hero": {
+            "title": "Explore the",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Insider tips, travel guides, and captivating stories about the magical Greek islands"
+        },
+        "cta": {
+            "title": "Ready to Plan Your Trip?",
+            "subtitle": "Use our AI-powered trip planner to create your perfect Cyclades itinerary"
+        },
+        "newsletter": {
+            "title": "Get Insider Travel Tips",
+            "subtitle": "Join 10,000+ travelers receiving exclusive guides, deals, and expert advice for your Cyclades adventure."
+        }
+    },
+    "islandsPage": {
+        "hero": {
+            "title": "Discover the",
+            "titleHighlight": "Cyclades",
+            "subtitle": "A stunning archipelago of Greek islands in the heart of the Aegean Sea. Find your perfect island adventure."
+        },
+        "cta": {
+            "title": "Not Sure Which Island to Choose?",
+            "subtitle": "Let Touristas AI help you find the perfect Cyclades island based on your preferences, travel style, and what you're looking for in a Greek island vacation."
+        }
+    },
     "meta": {
         "homeTitle": "Discover Cyclades | Greek Islands Travel Guide",
         "homeDescription": "Plan your perfect Greek island vacation. Hotels, ferries, flights, and activities across all Cycladic islands.",

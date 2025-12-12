@@ -419,6 +419,225 @@
             "restaurants": "Recommandations restaurants"
         }
     },
+    "community": {
+        "title": "Communauté",
+        "subtitle": "Partagez vos aventures aux Cyclades avec d'autres voyageurs. Photos, histoires et conseils locaux bienvenus!",
+        "filters": {
+            "all": "Tout",
+            "photos": "Photos",
+            "stories": "Histoires",
+            "allIslands": "Toutes les Îles"
+        },
+        "shareCta": {
+            "title": "Partagez Votre Expérience",
+            "subtitle": "Aidez d'autres voyageurs à découvrir la magie des Cyclades",
+            "button": "Partager Photo ou Histoire"
+        },
+        "meta": {
+            "title": "Communauté | Discover Cyclades",
+            "description": "Rejoignez notre communauté de voyageurs des Cyclades. Partagez photos, histoires et conseils de vos aventures grecques."
+        }
+    },
+    "hotels": {
+        "hero": {
+            "titlePart1": "Hôtels dans les ",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Découvrez des resorts de luxe, des hôtels boutique et des hébergements troglodytes sur toutes les îles grecques"
+        },
+        "search": {
+            "destination": "Destination",
+            "button": "Rechercher des Hôtels"
+        },
+        "destinations": {
+            "title": "Destinations Populaires",
+            "subtitle": "Explorez les hôtels des plus belles îles des Cyclades",
+            "hotelsAvailable": "hôtels disponibles"
+        },
+        "types": {
+            "title": "Types d'Hébergement"
+        },
+        "prices": {
+            "title": "Prix Moyens des Hôtels par Île",
+            "subtitle": "Comparez les coûts d'hébergement dans les Cyclades pour trouver la solution idéale pour votre budget"
+        },
+        "cta": {
+            "title": "Prêt à Réserver?",
+            "subtitle": "Trouvez l'hébergement parfait pour votre aventure grecque",
+            "searchButton": "Rechercher des Hôtels",
+            "bookFerries": "Réserver des Ferries"
+        }
+    },
+    "ferryTickets": {
+        "hero": {
+            "titlePart1": "Billets de Ferry pour les ",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Comparez les prix et réservez vos billets pour Santorin, Mykonos, Naxos, Paros et toutes les îles grecques"
+        },
+        "routes": {
+            "title": "Itinéraires Populaires",
+            "subtitle": "Les connexions ferry les plus populaires dans les Cyclades"
+        },
+        "companies": {
+            "title": "Compagnies de Ferry"
+        },
+        "cta": {
+            "title": "Prêt à Explorer les Îles?",
+            "subtitle": "Réservez vos billets et commencez votre aventure island hopping",
+            "searchButton": "Rechercher des Ferries",
+            "bookHotels": "Réserver des Hôtels"
+        }
+    },
+    "activities": {
+        "hero": {
+            "title": "Expériences ",
+            "titleHighlight": "Inoubliables",
+            "subtitle": "Découvrez et réservez les meilleures visites et expériences sur les îles grecques."
+        },
+        "browse": {
+            "title": "Parcourir les Activités",
+            "subtitle": "Trouvez les expériences parfaites pour votre aventure insulaire"
+        },
+        "whyBook": {
+            "title": "Pourquoi Réserver Avec Nous",
+            "subtitle": "Nous collaborons avec les meilleurs prestataires locaux"
+        },
+        "destinations": {
+            "title": "Destinations Populaires",
+            "subtitle": "Explorez les îles les plus populaires pour les activités",
+            "viewAll": "Voir toutes les îles"
+        },
+        "cta": {
+            "title": "Prêt pour Votre Aventure Insulaire?",
+            "subtitle": "Réservez vos activités et créez des souvenirs inoubliables dans les Cyclades"
+        }
+    },
+    "flights": {
+        "hero": {
+            "titlePart1": "Volez vers les ",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Trouvez des vols pas chers pour Santorin, Mykonos, Paros, Naxos et plus."
+        },
+        "whyBook": {
+            "title": "Pourquoi Réserver des Vols Avec Nous"
+        },
+        "airports": {
+            "title": "Aéroports des Cyclades",
+            "subtitle": "La plupart des îles ont des aéroports avec des connexions depuis Athènes"
+        },
+        "tips": {
+            "title": "Conseils pour la Réservation de Vols"
+        },
+        "cta": {
+            "title": "Prêt pour Votre Aventure aux Cyclades?",
+            "subtitle": "La magie des îles grecques vous attend."
+        }
+    },
+    "about": {
+        "hero": {
+            "title": "Votre Porte vers les Cyclades",
+            "subtitle": "Nous sommes des voyageurs passionnés, des experts locaux et des amateurs de technologie unis par notre amour pour les îles grecques."
+        },
+        "mission": {
+            "title": "Notre Mission"
+        },
+        "values": {
+            "title": "Nos Valeurs",
+            "subtitle": "Les principes qui guident tout ce que nous faisons"
+        },
+        "story": {
+            "title": "Notre Histoire"
+        },
+        "cta": {
+            "title": "Planifions Votre Aventure",
+            "subtitle": "Des questions? Vous souhaitez des recommandations personnalisées? Notre équipe est là pour vous aider."
+        }
+    },
+    "contact": {
+        "hero": {
+            "title": "Contactez-nous",
+            "subtitle": "Des questions sur la planification de votre aventure dans les Cyclades? Nous sommes là pour vous aider!"
+        },
+        "form": {
+            "title": "Envoyez-nous un Message",
+            "subtitle": "Remplissez le formulaire et nous vous répondrons dès que possible."
+        },
+        "cta": {
+            "title": "Prêt à explorer les Cyclades?",
+            "subtitle": "Commencez à planifier votre parfaite aventure dans les îles grecques."
+        }
+    },
+    "rentACar": {
+        "hero": {
+            "title": "Louez une Voiture dans les",
+            "cyclades": "Cyclades",
+            "subtitle": "Explorez Santorin, Mykonos, Naxos et plus encore à votre rythme."
+        },
+        "vehicleSection": {
+            "title": "Choisissez Votre Véhicule",
+            "subtitle": "Des voitures économiques aux cabriolets de luxe"
+        },
+        "locations": {
+            "title": "Points de Prise en Charge Populaires",
+            "subtitle": "Récupérez votre voiture dans les aéroports, ports ou centres-villes"
+        },
+        "cta": {
+            "title": "Prêt à Explorer les Îles?",
+            "subtitle": "Réservez votre voiture de location et découvrez des plages cachées."
+        }
+    },
+    "transfers": {
+        "hero": {
+            "title": "Réservez Votre Transfert en Grèce",
+            "subtitle": "Transferts sûrs et fiables depuis les aéroports et les ports"
+        },
+        "howItWorks": {
+            "title": "Comment Fonctionnent Nos Transferts"
+        },
+        "routes": {
+            "title": "Itinéraires de Transfert Populaires",
+            "subtitle": "Découvrez nos itinéraires les plus réservés avec des prix fixes."
+        }
+    },
+    "guides": {
+        "hero": {
+            "title": "Guides des Îles",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Guides de voyage complets avec conseils d'experts, itinéraires détaillés et tout ce dont vous avez besoin."
+        },
+        "featured": {
+            "title": "Guides en Vedette"
+        },
+        "cta": {
+            "title": "Besoin d'un Itinéraire Personnalisé?",
+            "subtitle": "Parlez à Touristas AI de vos dates de voyage, intérêts et budget."
+        }
+    },
+    "blog": {
+        "hero": {
+            "title": "Explorez les",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Conseils, guides de voyage et histoires captivantes sur les îles grecques magiques"
+        },
+        "cta": {
+            "title": "Prêt à Planifier Votre Voyage?",
+            "subtitle": "Utilisez notre planificateur AI pour créer votre itinéraire parfait des Cyclades"
+        },
+        "newsletter": {
+            "title": "Recevez des Conseils de Voyage",
+            "subtitle": "Rejoignez plus de 10 000 voyageurs recevant des guides et offres exclusives."
+        }
+    },
+    "islandsPage": {
+        "hero": {
+            "title": "Découvrez les",
+            "titleHighlight": "Cyclades",
+            "subtitle": "Un archipel magnifique d'îles grecques au cœur de la mer Égée. Trouvez votre aventure parfaite."
+        },
+        "cta": {
+            "title": "Vous Ne Savez Pas Quelle Île Choisir?",
+            "subtitle": "Laissez Touristas AI vous aider à trouver l'île parfaite des Cyclades."
+        }
+    },
     "meta": {
         "homeTitle": "Discover Cyclades | Guide de Voyage Îles Grecques",
         "homeDescription": "Planifiez vos vacances parfaites dans les îles grecques. Hôtels, ferries, vols et activités.",

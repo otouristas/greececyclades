@@ -419,6 +419,225 @@
             "restaurants": "Restaurant aanbevelingen"
         }
     },
+    "community": {
+        "title": "Community",
+        "subtitle": "Deel je Cycladen avonturen met medereizigers. Foto's, verhalen en lokale tips welkom!",
+        "filters": {
+            "all": "Alles",
+            "photos": "Foto's",
+            "stories": "Verhalen",
+            "allIslands": "Alle Eilanden"
+        },
+        "shareCta": {
+            "title": "Deel Je Ervaring",
+            "subtitle": "Help andere reizigers de magie van de Cycladen te ontdekken",
+            "button": "Deel Foto of Verhaal"
+        },
+        "meta": {
+            "title": "Community | Discover Cyclades",
+            "description": "Word lid van onze Cycladen reizigers community. Deel foto's, verhalen en tips van je Griekse avonturen."
+        }
+    },
+    "hotels": {
+        "hero": {
+            "titlePart1": "Hotels op de ",
+            "titleHighlight": "Cycladen",
+            "subtitle": "Ontdek luxe resorts, boutique hotels en grotaccommodaties op alle Griekse eilanden"
+        },
+        "search": {
+            "destination": "Bestemming",
+            "button": "Hotels Zoeken"
+        },
+        "destinations": {
+            "title": "Populaire Bestemmingen",
+            "subtitle": "Ontdek hotels op de mooiste eilanden van de Cycladen",
+            "hotelsAvailable": "hotels beschikbaar"
+        },
+        "types": {
+            "title": "Soorten Accommodatie"
+        },
+        "prices": {
+            "title": "Gemiddelde Hotelprijzen per Eiland",
+            "subtitle": "Vergelijk accommodatiekosten op de Cycladen om de ideale optie voor je budget te vinden"
+        },
+        "cta": {
+            "title": "Klaar om te Boeken?",
+            "subtitle": "Vind de perfecte accommodatie voor je Griekse avontuur",
+            "searchButton": "Hotels Zoeken",
+            "bookFerries": "Ferry's Boeken"
+        }
+    },
+    "ferryTickets": {
+        "hero": {
+            "titlePart1": "Ferry Tickets naar de ",
+            "titleHighlight": "Cycladen",
+            "subtitle": "Vergelijk prijzen en boek ferry tickets naar Santorini, Mykonos, Naxos, Paros en alle Griekse eilanden"
+        },
+        "routes": {
+            "title": "Populaire Routes",
+            "subtitle": "De meest populaire ferry verbindingen in de Cycladen"
+        },
+        "companies": {
+            "title": "Ferry Maatschappijen"
+        },
+        "cta": {
+            "title": "Klaar om de Eilanden te Verkennen?",
+            "subtitle": "Boek je tickets en begin je island hopping avontuur",
+            "searchButton": "Ferry's Zoeken",
+            "bookHotels": "Hotels Boeken"
+        }
+    },
+    "activities": {
+        "hero": {
+            "title": "Onvergetelijke ",
+            "titleHighlight": "Ervaringen",
+            "subtitle": "Ontdek en boek de beste tours en ervaringen op de Griekse eilanden."
+        },
+        "browse": {
+            "title": "Activiteiten Bekijken",
+            "subtitle": "Vind de perfecte ervaringen voor je eilandavontuur"
+        },
+        "whyBook": {
+            "title": "Waarom Bij Ons Boeken",
+            "subtitle": "We werken samen met de beste lokale aanbieders"
+        },
+        "destinations": {
+            "title": "Top Bestemmingen",
+            "subtitle": "Ontdek de populairste eilanden voor activiteiten",
+            "viewAll": "Alle eilanden bekijken"
+        },
+        "cta": {
+            "title": "Klaar voor je Eilandavontuur?",
+            "subtitle": "Boek je activiteiten en creëer onvergetelijke herinneringen"
+        }
+    },
+    "flights": {
+        "hero": {
+            "titlePart1": "Vlieg naar de ",
+            "titleHighlight": "Cycladen",
+            "subtitle": "Vind goedkope vluchten naar Santorini, Mykonos, Paros, Naxos en meer."
+        },
+        "whyBook": {
+            "title": "Waarom Vluchten Bij Ons Boeken"
+        },
+        "airports": {
+            "title": "Cycladen Luchthavens",
+            "subtitle": "De meeste eilanden hebben luchthavens met verbindingen vanuit Athene"
+        },
+        "tips": {
+            "title": "Tips voor het Boeken van Vluchten"
+        },
+        "cta": {
+            "title": "Klaar voor je Cycladen Avontuur?",
+            "subtitle": "De magie van de Griekse eilanden wacht op je."
+        }
+    },
+    "about": {
+        "hero": {
+            "title": "Jouw Poort naar de Cycladen",
+            "subtitle": "We zijn gepassioneerde reizigers, lokale experts en technologie-enthousiastelingen verenigd door onze liefde voor de Griekse eilanden."
+        },
+        "mission": {
+            "title": "Onze Missie"
+        },
+        "values": {
+            "title": "Onze Waarden",
+            "subtitle": "De principes die alles sturen wat we doen"
+        },
+        "story": {
+            "title": "Ons Verhaal"
+        },
+        "cta": {
+            "title": "Laten We Je Avontuur Plannen",
+            "subtitle": "Heb je vragen? Wil je gepersonaliseerde aanbevelingen? Ons team staat klaar om je te helpen."
+        }
+    },
+    "contact": {
+        "hero": {
+            "title": "Neem Contact Op",
+            "subtitle": "Heb je vragen over het plannen van je Cycladen-avontuur? We zijn er om te helpen!"
+        },
+        "form": {
+            "title": "Stuur ons een Bericht",
+            "subtitle": "Vul het formulier in en we nemen zo snel mogelijk contact op."
+        },
+        "cta": {
+            "title": "Klaar om de Cycladen te verkennen?",
+            "subtitle": "Begin met het plannen van je perfecte Griekse eilandavontuur."
+        }
+    },
+    "rentACar": {
+        "hero": {
+            "title": "Huur een Auto op de",
+            "cyclades": "Cycladen",
+            "subtitle": "Verken Santorini, Mykonos, Naxos en meer op je eigen tempo."
+        },
+        "vehicleSection": {
+            "title": "Kies Je Voertuig",
+            "subtitle": "Van budgetauto's tot luxe cabriolets"
+        },
+        "locations": {
+            "title": "Populaire Ophaallocaties",
+            "subtitle": "Haal je auto op bij luchthavens, havens of stadscentra"
+        },
+        "cta": {
+            "title": "Klaar om de Eilanden te Verkennen?",
+            "subtitle": "Boek je huurauto en ontdek verborgen stranden."
+        }
+    },
+    "transfers": {
+        "hero": {
+            "title": "Boek Je Transfer in Griekenland",
+            "subtitle": "Veilige en betrouwbare transfers vanaf luchthavens en havens"
+        },
+        "howItWorks": {
+            "title": "Hoe Onze Transfers Werken"
+        },
+        "routes": {
+            "title": "Populaire Transferroutes",
+            "subtitle": "Ontdek onze meest geboekte routes met vaste prijzen."
+        }
+    },
+    "guides": {
+        "hero": {
+            "title": "Eilandgidsen",
+            "titleHighlight": "Cycladen",
+            "subtitle": "Complete reisgidsen met experttips en gedetailleerde reisroutes."
+        },
+        "featured": {
+            "title": "Uitgelichte Gidsen"
+        },
+        "cta": {
+            "title": "Heb je een Gepersonaliseerde Reisroute Nodig?",
+            "subtitle": "Vertel Touristas AI over je reisdata, interesses en budget."
+        }
+    },
+    "blog": {
+        "hero": {
+            "title": "Ontdek de",
+            "titleHighlight": "Cycladen",
+            "subtitle": "Tips, reisgidsen en boeiende verhalen over de magische Griekse eilanden"
+        },
+        "cta": {
+            "title": "Klaar om je Reis te Plannen?",
+            "subtitle": "Gebruik onze AI-reisplanner voor je perfecte Cycladen-reisroute"
+        },
+        "newsletter": {
+            "title": "Ontvang Reistips",
+            "subtitle": "Sluit je aan bij meer dan 10.000 reizigers die exclusieve gidsen en aanbiedingen ontvangen."
+        }
+    },
+    "islandsPage": {
+        "hero": {
+            "title": "Ontdek de",
+            "titleHighlight": "Cycladen",
+            "subtitle": "Een prachtige archipel van Griekse eilanden in het hart van de Egeïsche Zee."
+        },
+        "cta": {
+            "title": "Weet je Niet Welk Eiland je Moet Kiezen?",
+            "subtitle": "Laat Touristas AI je helpen het perfecte Cycladen-eiland te vinden."
+        }
+    },
     "meta": {
         "homeTitle": "Discover Cyclades | Griekse Eilanden Reisgids",
         "homeDescription": "Plan je perfecte vakantie op de Griekse eilanden. Hotels, ferry's, vluchten en activiteiten.",

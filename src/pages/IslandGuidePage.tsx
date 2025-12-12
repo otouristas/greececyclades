@@ -1,10 +1,12 @@
 import { useParams } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { FaUmbrellaBeach, FaMapMarkedAlt, FaUtensils, FaSun, FaCameraRetro } from 'react-icons/fa';
 import { islandGuides } from '../data/islandsData';
 import { allIslandGuides, GuideContent } from '../data/allIslandGuides';
 import IslandGuideTemplateNew from '../components/guides/IslandGuideTemplateNew';
 
 export default function IslandGuidePage() {
+  const { t } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
   const island = islandGuides.find(g => g.id.toLowerCase() === slug?.toLowerCase());
 
@@ -14,8 +16,8 @@ export default function IslandGuidePage() {
         <div className="text-center px-4">
           <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">Island Guide Not Found</h1>
           <p className="text-gray-600 dark:text-white/60 mb-8">We couldn't find the guide you're looking for.</p>
-          <a 
-            href="/guides" 
+          <a
+            href="/guides"
             className="inline-flex items-center gap-2 px-6 py-3 bg-cyan-600 text-white rounded-xl font-semibold hover:bg-cyan-600/90 transition-colors"
           >
             View all island guides

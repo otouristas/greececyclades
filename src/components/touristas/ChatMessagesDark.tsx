@@ -1,8 +1,12 @@
 import { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
-import { Sparkles, User, ExternalLink } from 'lucide-react';
+import { Sparkles, User, ExternalLink, ArrowRight } from 'lucide-react';
 import { Message } from './utils/chat-utils';
+import { BookingHotelCard } from './BookingHotelCard';
+import { FlightResultsCard } from './FlightResultsCard';
+import { Button } from '@/components/ui/button';
+
 
 interface ChatMessagesDarkProps {
     messages: Message[];
@@ -184,8 +188,8 @@ export default function ChatMessagesDark({
                         <div className={`flex-1 min-w-0 ${message.role === 'user' ? 'flex flex-col items-end' : ''}`}>
                             {/* Message Bubble */}
                             <div className={`relative max-w-[90%] ${message.role === 'user'
-                                    ? 'bg-gradient-to-br from-cyclades-turquoise to-cyan-600 text-white rounded-2xl rounded-tr-md px-4 py-3 shadow-lg shadow-cyclades-turquoise/20'
-                                    : 'bg-dark-card text-white rounded-2xl rounded-tl-md px-4 py-3 shadow-md border border-dark-border/30'
+                                ? 'bg-gradient-to-br from-cyclades-turquoise to-cyan-600 text-white rounded-2xl rounded-tr-md px-4 py-3 shadow-lg shadow-cyclades-turquoise/20'
+                                : 'bg-dark-card text-white rounded-2xl rounded-tl-md px-4 py-3 shadow-md border border-dark-border/30'
                                 }`}>
                                 {/* AI Label for assistant messages */}
                                 {message.role === 'assistant' && message.id !== 'welcome' && (
@@ -221,7 +225,62 @@ export default function ChatMessagesDark({
                                 )}
                             </div>
 
+                            {/* Hotel Cards from LiteAPI vibe search */}
+                            {message.bookingHotels && message.bookingHotels.length > 0 && (
+                                <div className="mt-4 space-y-3 max-w-[95%]">
+                                    <div className="flex items-center gap-2 mb-2">
+                                        <h3 className="text-sm font-semibold text-white">
+                                            Hotels Found ({message.bookingHotels.length})
+                                        </h3>
+                                    </div>
+                                    <div className="space-y-3">
+                                        {message.bookingHotels.slice(0, 5).map((hotel) => (
+                                            <BookingHotelCard
+                                                key={hotel.id}
+                                                hotel={hotel}
+                                            />
+                                        ))}
+                                    </div>
+                                    {message.bookingSearchUrl && (
+                                        <div className="pt-2">
+                                            <Link to={message.bookingSearchUrl}>
+                                                <Button
+                                                    className="w-full bg-cyclades-turquoise hover:bg-cyan-500 text-white font-semibold"
+                                                >
+                                                    View All Hotels with Live Rates
+                                                    <ArrowRight className="w-4 h-4 ml-2" />
+                                                </Button>
+                                            </Link>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
+                            {/* Flight Cards from search */}
+                            {message.chatFlights && message.chatFlights.length > 0 && (
+                                <div className="mt-4 space-y-3 max-w-[95%]">
+                                    <FlightResultsCard
+                                        flights={message.chatFlights}
+                                        title="Available Flights"
+                                        maxResults={5}
+                                    />
+                                    {message.flightSearchUrl && (
+                                        <div className="pt-2">
+                                            <Link to={message.flightSearchUrl}>
+                                                <Button
+                                                    className="w-full bg-cyclades-turquoise hover:bg-cyan-500 text-white font-semibold"
+                                                >
+                                                    View All Flights
+                                                    <ArrowRight className="w-4 h-4 ml-2" />
+                                                </Button>
+                                            </Link>
+                                        </div>
+                                    )}
+                                </div>
+                            )}
+
                             {/* Show suggestion buttons for welcome message */}
+
                             {message.id === 'welcome' && suggestions && suggestions.length > 0 && onSuggestionClick && (
                                 <div className="mt-4 flex flex-wrap gap-2">
                                     {suggestions.map((suggestion, idx) => (

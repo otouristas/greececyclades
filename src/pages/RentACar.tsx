@@ -1,11 +1,13 @@
 import { useEffect, useRef } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Car, MapPin, Shield, Zap, Truck, Wind, Award, Star, CheckCircle, Clock, ArrowRight, Fuel } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
 import RelatedLinks from '../components/RelatedLinks';
 
 export default function RentACar() {
+  const { t } = useTranslation();
   const searchContainerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -74,10 +76,10 @@ export default function RentACar() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 md:mb-10">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
-                Rent a Car in the <span className="text-yellow-300">Cyclades</span>
+                {t('rentACar.hero.title', 'Rent a Car in the')} <span className="text-yellow-300">{t('rentACar.hero.cyclades', 'Cyclades')}</span>
               </h1>
               <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-6 md:mb-8 px-2">
-                Explore Santorini, Mykonos, Naxos and more at your own pace. Compare deals from top rental companies.
+                {t('rentACar.hero.subtitle', 'Explore Santorini, Mykonos, Naxos and more at your own pace. Compare deals from top rental companies.')}
               </p>
 
               {/* Trust Signals */}
@@ -127,8 +129,8 @@ export default function RentACar() {
         {/* Car Types */}
         <div className="py-20 bg-gray-50 dark:bg-dark-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">Choose Your Vehicle</h2>
-            <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">From economy cars to luxury convertibles, find the perfect vehicle for your island adventure</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">{t('rentACar.vehicleSection.title', 'Choose Your Vehicle')}</h2>
+            <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">{t('rentACar.vehicleSection.subtitle', 'From economy cars to luxury convertibles, find the perfect vehicle for your island adventure')}</p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {carTypes.map((car, idx) => (
@@ -153,8 +155,8 @@ export default function RentACar() {
         {/* Pickup Locations */}
         <div className="py-20 bg-white dark:bg-dark-card">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">Popular Pickup Locations</h2>
-            <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">Pick up your car at airports, ports, or town centers across the Cyclades</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">{t('rentACar.locations.title', 'Popular Pickup Locations')}</h2>
+            <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">{t('rentACar.locations.subtitle', 'Pick up your car at airports, ports, or town centers across the Cyclades')}</p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {locations.map((loc, idx) => (
@@ -228,9 +230,9 @@ export default function RentACar() {
         {/* CTA */}
         <div className="py-20 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready to Explore the Islands?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{t('rentACar.cta.title', 'Ready to Explore the Islands?')}</h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              Book your rental car and discover hidden beaches, traditional villages, and breathtaking views.
+              {t('rentACar.cta.subtitle', 'Book your rental car and discover hidden beaches, traditional villages, and breathtaking views.')}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a href="#car-rental-search-container" className="inline-flex items-center px-8 py-4 bg-white text-cyan-600 rounded-xl font-semibold hover:bg-white/90 transition-colors">

@@ -1,10 +1,11 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaWineGlass, 
-  FaMapMarkedAlt, 
-  FaShip, 
-  FaUtensils, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaWineGlass,
+  FaMapMarkedAlt,
+  FaShip,
+  FaUtensils,
   FaHistory,
   FaCalendarAlt,
   FaSun
@@ -15,6 +16,7 @@ import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
 
 const KeaGuide: React.FC = () => {
+  const { t } = useTranslation();
   const navigate = useNavigate();
   const kea = islandGuides.find(island => island.id === 'kea');
 
@@ -25,7 +27,7 @@ const KeaGuide: React.FC = () => {
   const seoData = {
     title: 'Kea Island Guide | Greece Cyclades',
     description: 'Explore Kea island with our comprehensive guide. Discover the best beaches, villages, activities, and local experiences on this authentic Greek island.',
-    ogType: 'article'
+    ogType: 'article' as const
   };
 
   const categories = [
@@ -76,9 +78,9 @@ const KeaGuide: React.FC = () => {
   return (
     <div className="min-h-screen bg-white">
       <SEO {...seoData} />
-      
+
       {/* Parallax Hero Section */}
-      <IslandGuideHero 
+      <IslandGuideHero
         name={kea.name}
         description={kea.description}
         image={kea.image}
@@ -94,43 +96,43 @@ const KeaGuide: React.FC = () => {
             <div>
               <h2 className="text-3xl font-bold text-gray-900 mb-6">Discover Kea</h2>
               <p className="text-lg text-gray-700 mb-4">
-                Welcome to Kea, also known as Tzia, the closest Cycladic island to Athens yet 
-                refreshingly authentic and undiscovered. Unlike the typical Cycladic scenery, 
-                Kea's landscape features terracotta-colored houses blending into rolling hills 
+                Welcome to Kea, also known as Tzia, the closest Cycladic island to Athens yet
+                refreshingly authentic and undiscovered. Unlike the typical Cycladic scenery,
+                Kea's landscape features terracotta-colored houses blending into rolling hills
                 covered in ancient oak forests and almond groves.
               </p>
               <p className="text-lg text-gray-700 mb-4">
-                The main town, Ioulida, is a maze of stepped alleys and traditional architecture, 
-                watched over by the island's mascot - an ancient stone lion carved from the native rock. 
-                Kea's rich maritime history is evident in its numerous shipwrecks, including the famous 
+                The main town, Ioulida, is a maze of stepped alleys and traditional architecture,
+                watched over by the island's mascot - an ancient stone lion carved from the native rock.
+                Kea's rich maritime history is evident in its numerous shipwrecks, including the famous
                 HMHS Britannic, making it a paradise for diving enthusiasts.
               </p>
               <p className="text-lg text-gray-700 dark:text-white/80">
-                The island's extensive network of ancient paths, recently restored and well-marked, 
-                connects four ancient city-states through landscapes of dramatic variety. Whether you're 
-                hiking through oak forests, exploring ancient ruins, or relaxing on golden beaches, 
+                The island's extensive network of ancient paths, recently restored and well-marked,
+                connects four ancient city-states through landscapes of dramatic variety. Whether you're
+                hiking through oak forests, exploring ancient ruins, or relaxing on golden beaches,
                 Kea offers an authentic Greek island experience just a short ferry ride from Athens.
               </p>
             </div>
             <div className="grid grid-cols-2 gap-4">
               <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src="/images/islands/kea/kea-intro-1.jpg" 
-                  alt="Ioulida village view" 
+                <img
+                  src="/images/islands/kea/kea-intro-1.jpg"
+                  alt="Ioulida village view"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="rounded-lg overflow-hidden shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src="/images/islands/kea/kea-intro-2.jpg" 
-                  alt="Lion of Kea" 
+                <img
+                  src="/images/islands/kea/kea-intro-2.jpg"
+                  alt="Lion of Kea"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="rounded-lg overflow-hidden shadow-md col-span-2">
-                <img 
-                  src="/images/islands/kea/kea-intro-3.jpg" 
-                  alt="Panoramic view of Kea" 
+                <img
+                  src="/images/islands/kea/kea-intro-3.jpg"
+                  alt="Panoramic view of Kea"
                   className="w-full h-64 object-cover"
                 />
               </div>
@@ -144,8 +146,8 @@ const KeaGuide: React.FC = () => {
             <h2 className="text-3xl font-bold text-center text-gray-900 mb-12">Explore Kea</h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
               {categories.map((category, index) => (
-                <a 
-                  key={index} 
+                <a
+                  key={index}
                   href={category.link}
                   className="block bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow"
                 >
@@ -173,7 +175,7 @@ const KeaGuide: React.FC = () => {
                 The best time to experience Kea's beauty is from May to September, with May, June, and September being ideal for hiking and exploring.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
               <div>
                 <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
@@ -184,26 +186,26 @@ const KeaGuide: React.FC = () => {
                       </div>
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Seasonal Guide</h3>
                     </div>
-                    
+
                     <div className="space-y-4">
                       <div>
                         <h4 className="font-medium text-gray-900 dark:text-white">Summer (June to August)</h4>
                         <p className="text-gray-600 dark:text-white/60">{kea.weather.summer}</p>
                         <p className="text-gray-600 dark:text-white/60">Peak tourist season with warm temperatures perfect for swimming and beach activities.</p>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-medium text-gray-900 dark:text-white">Spring (April to May)</h4>
                         <p className="text-gray-600 dark:text-white/60">{kea.weather.spring}</p>
                         <p className="text-gray-600 dark:text-white/60">Ideal for hiking with mild temperatures and blooming wildflowers covering the landscape.</p>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-medium text-gray-900 dark:text-white">Autumn (September to October)</h4>
                         <p className="text-gray-600 dark:text-white/60">{kea.weather.autumn}</p>
                         <p className="text-gray-600 dark:text-white/60">Pleasant temperatures for hiking and swimming with fewer crowds.</p>
                       </div>
-                      
+
                       <div>
                         <h4 className="font-medium text-gray-900 dark:text-white">Winter (November to March)</h4>
                         <p className="text-gray-600 dark:text-white/60">{kea.weather.winter}</p>
@@ -213,7 +215,7 @@ const KeaGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div>
                 <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="p-6">
@@ -223,7 +225,7 @@ const KeaGuide: React.FC = () => {
                       </div>
                       <h3 className="text-xl font-semibold text-gray-900 dark:text-white">Travel Tips</h3>
                     </div>
-                    
+
                     <ul className="space-y-3 text-gray-600 dark:text-white/60">
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
@@ -261,12 +263,12 @@ const KeaGuide: React.FC = () => {
         <section className="mb-16">
           <div className="prose max-w-none">
             <p className="text-lg text-gray-700 leading-relaxed">
-              Explore Kea, the closest Cycladic island to Athens, where ancient trails meet 
-              pristine beaches and traditional island life thrives year-round. Known for its 
-              walking paths, diving sites, and authentic Greek atmosphere, Kea offers a perfect 
-              escape from the mainland. From the iconic Lion of Kea carved in stone to the 
-              ancient city of Karthaia, from oak forests to golden beaches, this guide will help 
-              you discover an island that combines natural beauty with rich history and local 
+              Explore Kea, the closest Cycladic island to Athens, where ancient trails meet
+              pristine beaches and traditional island life thrives year-round. Known for its
+              walking paths, diving sites, and authentic Greek atmosphere, Kea offers a perfect
+              escape from the mainland. From the iconic Lion of Kea carved in stone to the
+              ancient city of Karthaia, from oak forests to golden beaches, this guide will help
+              you discover an island that combines natural beauty with rich history and local
               traditions.
             </p>
           </div>
@@ -281,7 +283,7 @@ const KeaGuide: React.FC = () => {
                 Kea is easily accessible from Athens, making it a perfect weekend getaway or the start of your island-hopping adventure.
               </p>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -307,7 +309,7 @@ const KeaGuide: React.FC = () => {
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h3 className="text-xl font-semibold text-gray-900 mb-4">Travel Tips</h3>
                     <ul className="space-y-3 text-gray-600 dark:text-white/60">
@@ -344,12 +346,12 @@ const KeaGuide: React.FC = () => {
                 Kea offers a variety of beaches from organized sandy shores to secluded coves with crystal-clear waters.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kea/koundouros-beach.jpg" 
-                  alt="Koundouros Beach" 
+                <img
+                  src="/images/islands/kea/koundouros-beach.jpg"
+                  alt="Koundouros Beach"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -365,11 +367,11 @@ const KeaGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kea/otzias-beach.jpg" 
-                  alt="Otzias Beach" 
+                <img
+                  src="/images/islands/kea/otzias-beach.jpg"
+                  alt="Otzias Beach"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -385,11 +387,11 @@ const KeaGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kea/pisses-beach.jpg" 
-                  alt="Pisses Beach" 
+                <img
+                  src="/images/islands/kea/pisses-beach.jpg"
+                  alt="Pisses Beach"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -406,7 +408,7 @@ const KeaGuide: React.FC = () => {
                 </div>
               </div>
             </div>
-            
+
             <div className="mt-12 text-center">
               <p className="text-gray-600 mb-4">
                 Other notable beaches include Xyla (secluded), Spathi (pristine waters), and Gialiskari (family-friendly).
@@ -424,12 +426,12 @@ const KeaGuide: React.FC = () => {
                 From hiking ancient trails to exploring underwater shipwrecks, Kea offers diverse activities for every type of traveler.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kea/hiking-trails.jpg" 
-                  alt="Hiking Trails in Kea" 
+                <img
+                  src="/images/islands/kea/hiking-trails.jpg"
+                  alt="Hiking Trails in Kea"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -453,11 +455,11 @@ const KeaGuide: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kea/diving.jpg" 
-                  alt="Diving in Kea" 
+                <img
+                  src="/images/islands/kea/diving.jpg"
+                  alt="Diving in Kea"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -481,11 +483,11 @@ const KeaGuide: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kea/ioulida.jpg" 
-                  alt="Ioulida Village" 
+                <img
+                  src="/images/islands/kea/ioulida.jpg"
+                  alt="Ioulida Village"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -509,11 +511,11 @@ const KeaGuide: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/kea/local-products.jpg" 
-                  alt="Local Products of Kea" 
+                <img
+                  src="/images/islands/kea/local-products.jpg"
+                  alt="Local Products of Kea"
                   className="w-full h-64 object-cover"
                 />
                 <div className="p-6">
@@ -569,7 +571,7 @@ const KeaGuide: React.FC = () => {
                 Navigating Kea is relatively easy with several transportation options available.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
@@ -595,7 +597,7 @@ const KeaGuide: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
@@ -624,7 +626,7 @@ const KeaGuide: React.FC = () => {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
@@ -666,47 +668,47 @@ const KeaGuide: React.FC = () => {
                 Explore the beauty of Kea through our curated collection of images.
               </p>
             </div>
-            
+
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
               <div className="col-span-2 row-span-2">
-                <img 
-                  src="/images/islands/kea/gallery-1.jpg" 
-                  alt="Panoramic view of Ioulida" 
+                <img
+                  src="/images/islands/kea/gallery-1.jpg"
+                  alt="Panoramic view of Ioulida"
                   className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
               <div>
-                <img 
-                  src="/images/islands/kea/gallery-2.jpg" 
-                  alt="Kea beach" 
+                <img
+                  src="/images/islands/kea/gallery-2.jpg"
+                  alt="Kea beach"
                   className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
               <div>
-                <img 
-                  src="/images/islands/kea/gallery-3.jpg" 
-                  alt="Traditional architecture" 
+                <img
+                  src="/images/islands/kea/gallery-3.jpg"
+                  alt="Traditional architecture"
                   className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
               <div>
-                <img 
-                  src="/images/islands/kea/gallery-4.jpg" 
-                  alt="Lion of Kea" 
+                <img
+                  src="/images/islands/kea/gallery-4.jpg"
+                  alt="Lion of Kea"
                   className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
               <div>
-                <img 
-                  src="/images/islands/kea/gallery-5.jpg" 
-                  alt="Hiking trail" 
+                <img
+                  src="/images/islands/kea/gallery-5.jpg"
+                  alt="Hiking trail"
                   className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
               <div className="col-span-2">
-                <img 
-                  src="/images/islands/kea/gallery-6.jpg" 
-                  alt="Koundouros beach" 
+                <img
+                  src="/images/islands/kea/gallery-6.jpg"
+                  alt="Koundouros beach"
                   className="w-full h-full object-cover rounded-lg shadow-md border border-gray-100 dark:border-white/10"
                 />
               </div>
@@ -731,13 +733,13 @@ const KeaGuide: React.FC = () => {
                   From hiking ancient trails to relaxing on golden beaches, Kea offers a unique Greek island experience.
                 </p>
                 <div className="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                  <button 
+                  <button
                     onClick={() => navigate('/hotels/')}
                     className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-blue-700 bg-white hover:bg-blue-50 dark:bg-cyan-600/10 shadow-sm"
                   >
                     Find Accommodations
                   </button>
-                  <button 
+                  <button
                     onClick={() => navigate('/ferry-tickets/')}
                     className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-white bg-blue-700 bg-opacity-60 hover:bg-opacity-70 shadow-sm"
                   >
@@ -746,9 +748,9 @@ const KeaGuide: React.FC = () => {
                 </div>
               </div>
               <div className="hidden lg:block">
-                <img 
-                  src="/images/islands/kea/cta-image.jpg" 
-                  alt="Kea island view" 
+                <img
+                  src="/images/islands/kea/cta-image.jpg"
+                  alt="Kea island view"
                   className="rounded-lg shadow-xl max-h-96 object-cover"
                 />
               </div>

@@ -2,9 +2,9 @@ import { useState, useRef, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
   Send, X, MessageCircle, Mic, MicOff, Minimize2, Maximize2,
-  Sparkles, Loader2
+  Sparkles, Loader2, Hotel, Cloud, MapPin
 } from 'lucide-react';
-import { generateConversationalTrip } from '../../utils/ai';
+import { sendToOrchestrator, type OrchestratorMessage, type OrchestratorMetadata } from '../../services/touristasOrchestrator';
 
 interface Message {
   id: string;
@@ -12,6 +12,7 @@ interface Message {
   content: string;
   timestamp: Date;
   typing?: boolean;
+  metadata?: OrchestratorMetadata;
 }
 
 interface TouristasAIChatProps {
@@ -33,7 +34,7 @@ export default function TouristasAIChat({ initialMessage, onClose }: TouristasAI
   const [inputValue, setInputValue] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [isListening, setIsListening] = useState(false);
-  
+
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const recognition = useRef<any>(null);
@@ -46,13 +47,13 @@ export default function TouristasAIChat({ initialMessage, onClose }: TouristasAI
       recognition.current.continuous = false;
       recognition.current.interimResults = false;
       recognition.current.lang = 'en-US';
-      
+
       recognition.current.onresult = (event: any) => {
         const transcript = event.results[0][0].transcript;
         setInputValue(transcript);
         setIsListening(false);
       };
-      
+
       recognition.current.onerror = () => setIsListening(false);
     }
   }, []);
@@ -74,19 +75,19 @@ export default function TouristasAIChat({ initialMessage, onClose }: TouristasAI
   const handleSend = async (e?: React.FormEvent) => {
     if (e) e.preventDefault();
     if (!inputValue.trim() || isLoading) return;
-    
+
     const userMessage: Message = {
       id: Date.now().toString(),
       role: 'user',
       content: inputValue,
       timestamp: new Date()
     };
-    
+
     setMessages(prev => [...prev, userMessage]);
     const currentInput = inputValue;
     setInputValue('');
     setIsLoading(true);
-    
+
     const typingMessage: Message = {
       id: 'typing',
       role: 'assistant',
@@ -97,20 +98,31 @@ export default function TouristasAIChat({ initialMessage, onClose }: TouristasAI
     setMessages(prev => [...prev, typingMessage]);
 
     try {
-      const conversationHistory = messages
+      // Build message history for orchestrator
+      const orchestratorMessages: OrchestratorMessage[] = messages
         .filter(msg => msg.id !== 'typing')
-        .map(msg => `${msg.role === 'user' ? 'User' : 'Touristas AI'}: ${msg.content}`)
-        .join('\n');
-      
-      const response = await generateConversationalTrip(currentInput, conversationHistory);
-      
+        .map(msg => ({
+          role: msg.role,
+          content: msg.content
+        }));
+
+      // Add current user message
+      orchestratorMessages.push({
+        role: 'user',
+        content: currentInput
+      });
+
+      // Call the new Gemini orchestrator
+      const response = await sendToOrchestrator(orchestratorMessages);
+
       setMessages(prev => {
         const filtered = prev.filter(msg => msg.id !== 'typing');
         return [...filtered, {
           id: Date.now().toString(),
           role: 'assistant',
-          content: response,
-          timestamp: new Date()
+          content: response.response,
+          timestamp: new Date(),
+          metadata: response.metadata
         }];
       });
     } catch (error) {
@@ -232,11 +244,10 @@ export default function TouristasAIChat({ initialMessage, onClose }: TouristasAI
                       className={`flex ${message.role === 'user' ? 'justify-end' : 'justify-start'}`}
                     >
                       <div
-                        className={`max-w-[80%] rounded-2xl px-4 py-3 ${
-                          message.role === 'user'
+                        className={`max-w-[80%] rounded-2xl px-4 py-3 ${message.role === 'user'
                             ? 'bg-sifnos-deep-blue text-white rounded-br-md'
                             : 'bg-white text-gray-900 rounded-bl-md border border-gray-200'
-                        }`}
+                          }`}
                       >
                         {message.typing ? (
                           <div className="flex items-center gap-2">
@@ -273,11 +284,10 @@ export default function TouristasAIChat({ initialMessage, onClose }: TouristasAI
                       <button
                         type="button"
                         onClick={toggleVoiceRecording}
-                        className={`p-3 rounded-xl transition-colors ${
-                          isListening
+                        className={`p-3 rounded-xl transition-colors ${isListening
                             ? 'bg-red-500 text-white hover:bg-red-600'
                             : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                        }`}
+                          }`}
                         aria-label={isListening ? 'Stop recording' : 'Start voice input'}
                       >
                         {isListening ? <MicOff className="w-5 h-5" /> : <Mic className="w-5 h-5" />}

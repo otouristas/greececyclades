@@ -223,7 +223,8 @@ export const megaMenuConfig = {
                 links: [
                     { name: 'Touristas AI Chat', path: '/touristas-ai/chat', badge: 'New' },
                     { name: 'Trip Planner', path: '/trip-planner', badge: 'AI' },
-                    { name: 'Hotel Finder', path: '/hotels' },
+                    { name: 'Island Hop Builder', path: '/island-hop-builder', badge: 'New' },
+                    { name: 'Packing List', path: '/packing-list' },
                 ]
             },
             {
@@ -232,6 +233,7 @@ export const megaMenuConfig = {
                     { name: 'Help Center', path: '/help' },
                     { name: 'FAQ', path: '/help#faq' },
                     { name: 'Contact Us', path: '/contact' },
+                    { name: 'Community', path: '/community' },
                 ]
             }
         ],

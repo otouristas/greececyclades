@@ -57,6 +57,7 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
       links: [
         { name: 'Touristas AI', path: '/touristas-ai', icon: Sparkles },
         { name: 'Trip Planner', path: '/trip-planner', icon: Calendar },
+        { name: 'Island Hop Builder', path: '/island-hop-builder', icon: Ship },
         { name: 'Compare Hotels', path: '/hotel-marketplace', icon: TrendingUp },
         { name: 'Hotels', path: '/hotels', icon: Building2 },
         { name: 'Activities', path: '/activities', icon: Compass },
@@ -68,6 +69,8 @@ export default function MobileMenuNew({ isOpen, onClose }: MobileMenuNewProps) {
         { name: 'Weather Guide', path: '/weather', icon: Cloud },
         { name: 'Budget Calculator', path: '/budget-calculator', icon: Calculator },
         { name: 'Greek Phrases', path: '/greek-phrases', icon: MessageCircle },
+        { name: 'Packing List', path: '/packing-list', icon: BookOpen },
+        { name: 'Community', path: '/community', icon: Users },
         { name: 'Travel Resources', path: '/resources', icon: BookOpen },
       ]
     },

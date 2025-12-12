@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import { useState, useMemo } from 'react';
+import { useTranslation } from 'react-i18next';
 import { motion, AnimatePresence } from 'framer-motion';
 import {
     MapPin, Sparkles, Grid, List, Search,
@@ -78,6 +79,7 @@ const faqData = [
 ];
 
 export default function IslandsNew() {
+    const { t } = useTranslation();
     const { resolvedTheme } = useTheme();
     const { openChat } = useTouristas();
     const isDark = resolvedTheme === 'dark';
@@ -131,8 +133,8 @@ export default function IslandsNew() {
                             className="w-full h-full object-cover"
                         />
                         <div className={`absolute inset-0 ${isDark
-                                ? 'bg-gradient-to-b from-dark-bg/60 via-dark-bg/40 to-dark-bg'
-                                : 'bg-gradient-to-b from-black/50 via-black/30 to-white'
+                            ? 'bg-gradient-to-b from-dark-bg/60 via-dark-bg/40 to-dark-bg'
+                            : 'bg-gradient-to-b from-black/50 via-black/30 to-white'
                             }`} />
                     </div>
 
@@ -149,12 +151,11 @@ export default function IslandsNew() {
                             </span>
 
                             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6">
-                                Discover the <span className="text-cyclades-turquoise">Cyclades</span>
+                                {t('islands.hero.title', 'Discover the')} <span className="text-cyclades-turquoise">{t('islands.hero.titleHighlight', 'Cyclades')}</span>
                             </h1>
 
                             <p className="text-lg sm:text-xl text-white/80 max-w-2xl mx-auto mb-8">
-                                A stunning archipelago of Greek islands in the heart of the Aegean Sea.
-                                Find your perfect island adventure.
+                                {t('islands.hero.subtitle', 'A stunning archipelago of Greek islands in the heart of the Aegean Sea. Find your perfect island adventure.')}
                             </p>
 
                             <div className="flex flex-wrap justify-center gap-4">
@@ -191,8 +192,8 @@ export default function IslandsNew() {
                                     value={searchQuery}
                                     onChange={(e) => setSearchQuery(e.target.value)}
                                     className={`w-full pl-10 pr-4 py-2.5 rounded-xl border transition-colors ${isDark
-                                            ? 'bg-dark-card border-dark-border focus:border-cyclades-turquoise'
-                                            : 'bg-gray-50 border-gray-200 focus:border-cyclades-turquoise'
+                                        ? 'bg-dark-card border-dark-border focus:border-cyclades-turquoise'
+                                        : 'bg-gray-50 border-gray-200 focus:border-cyclades-turquoise'
                                         } outline-none`}
                                 />
                             </div>
@@ -207,10 +208,10 @@ export default function IslandsNew() {
                                             key={cat.id}
                                             onClick={() => setActiveCategory(cat.id)}
                                             className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium whitespace-nowrap transition-all ${isActive
-                                                    ? 'bg-cyclades-turquoise text-dark-bg shadow-lg shadow-cyclades-turquoise/30'
-                                                    : isDark
-                                                        ? 'bg-dark-card text-white/70 hover:text-white hover:bg-dark-border'
-                                                        : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+                                                ? 'bg-cyclades-turquoise text-dark-bg shadow-lg shadow-cyclades-turquoise/30'
+                                                : isDark
+                                                    ? 'bg-dark-card text-white/70 hover:text-white hover:bg-dark-border'
+                                                    : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
                                                 }`}
                                         >
                                             <Icon className="w-4 h-4" />
@@ -225,8 +226,8 @@ export default function IslandsNew() {
                                 <button
                                     onClick={() => setViewMode('grid')}
                                     className={`p-2 rounded-lg transition-colors ${viewMode === 'grid'
-                                            ? 'bg-cyclades-turquoise text-dark-bg'
-                                            : isDark ? 'text-white/50 hover:text-white' : 'text-gray-400 hover:text-gray-900'
+                                        ? 'bg-cyclades-turquoise text-dark-bg'
+                                        : isDark ? 'text-white/50 hover:text-white' : 'text-gray-400 hover:text-gray-900'
                                         }`}
                                 >
                                     <Grid className="w-5 h-5" />
@@ -234,8 +235,8 @@ export default function IslandsNew() {
                                 <button
                                     onClick={() => setViewMode('list')}
                                     className={`p-2 rounded-lg transition-colors ${viewMode === 'list'
-                                            ? 'bg-cyclades-turquoise text-dark-bg'
-                                            : isDark ? 'text-white/50 hover:text-white' : 'text-gray-400 hover:text-gray-900'
+                                        ? 'bg-cyclades-turquoise text-dark-bg'
+                                        : isDark ? 'text-white/50 hover:text-white' : 'text-gray-400 hover:text-gray-900'
                                         }`}
                                 >
                                     <List className="w-5 h-5" />
@@ -266,14 +267,14 @@ export default function IslandsNew() {
                         <motion.div
                             layout
                             className={`grid gap-6 ${viewMode === 'grid'
-                                    ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
-                                    : 'grid-cols-1'
+                                ? 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4'
+                                : 'grid-cols-1'
                                 }`}
                         >
                             <AnimatePresence mode="popLayout">
                                 {filteredIslands.map((island, index) => {
                                     const slug = island.slug || '';
-            const meta = islandMeta[slug] || { categories: [] };
+                                    const meta = islandMeta[slug] || { categories: [] };
                                     return (
                                         <motion.div
                                             key={island.id}
@@ -286,8 +287,8 @@ export default function IslandsNew() {
                                             <Link
                                                 to={`/islands/${island.slug}`}
                                                 className={`group block rounded-2xl overflow-hidden transition-all hover:shadow-xl ${isDark
-                                                        ? 'bg-dark-card hover:shadow-cyclades-turquoise/10'
-                                                        : 'bg-white hover:shadow-gray-200'
+                                                    ? 'bg-dark-card hover:shadow-cyclades-turquoise/10'
+                                                    : 'bg-white hover:shadow-gray-200'
                                                     } ${viewMode === 'list' ? 'flex' : ''}`}
                                             >
                                                 {/* Image */}
@@ -387,11 +388,10 @@ export default function IslandsNew() {
                             <Sparkles className="w-8 h-8 text-cyclades-turquoise" />
                         </div>
                         <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
-                            Not Sure Which Island to Choose?
+                            {t('islands.cta.title', 'Not Sure Which Island to Choose?')}
                         </h2>
                         <p className={`text-lg mb-8 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
-                            Let Touristas AI help you find the perfect Cyclades island based on your preferences,
-                            travel style, and what you're looking for in a Greek island vacation.
+                            {t('islands.cta.subtitle', 'Let Touristas AI help you find the perfect Cyclades island based on your preferences, travel style, and what you\'re looking for in a Greek island vacation.')}
                         </p>
                         <button
                             onClick={() => openChat('Help me choose the best Cyclades island for my trip')}
@@ -415,8 +415,8 @@ export default function IslandsNew() {
                                 <div
                                     key={index}
                                     className={`rounded-xl overflow-hidden transition-all ${isDark
-                                            ? 'bg-dark-card border border-dark-border'
-                                            : 'bg-gray-50 border border-gray-200'
+                                        ? 'bg-dark-card border border-dark-border'
+                                        : 'bg-gray-50 border border-gray-200'
                                         }`}
                                 >
                                     <button
@@ -466,8 +466,8 @@ export default function IslandsNew() {
                                     key={link.path}
                                     to={link.path}
                                     className={`px-6 py-3 rounded-full font-medium transition-all ${isDark
-                                            ? 'bg-dark-border text-white hover:bg-cyclades-turquoise hover:text-dark-bg'
-                                            : 'bg-white text-gray-700 hover:bg-cyclades-turquoise hover:text-dark-bg shadow-sm'
+                                        ? 'bg-dark-border text-white hover:bg-cyclades-turquoise hover:text-dark-bg'
+                                        : 'bg-white text-gray-700 hover:bg-cyclades-turquoise hover:text-dark-bg shadow-sm'
                                         }`}
                                 >
                                     {link.label}

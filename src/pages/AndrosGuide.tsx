@@ -1,9 +1,10 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaShip, 
-  FaUtensils, 
-  FaSun, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaShip,
+  FaUtensils,
+  FaSun,
   FaHome,
   FaRoute,
   FaHistory,
@@ -22,6 +23,7 @@ import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSec
 import { siteLinks } from '../data/siteLinks';
 
 const AndrosGuide: React.FC = () => {
+  const { t } = useTranslation();
   const andros = islandGuides.find(island => island.id === 'andros');
 
   if (!andros) {
@@ -97,14 +99,14 @@ const AndrosGuide: React.FC = () => {
     <>
       <SEO {...seoData} />
       <div className="bg-gray-50">
-        <IslandGuideHero 
+        <IslandGuideHero
           name={andros.name}
           description={andros.description}
           image={andros.heroImage}
           bestTime={andros.bestTimeToVisit}
           idealFor={andros.idealFor}
         />
-        
+
         <div className="container mx-auto px-4 py-12">
           {/* Introduction Section */}
           <div className="mb-16">
@@ -112,35 +114,35 @@ const AndrosGuide: React.FC = () => {
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
                 <p className="text-lg leading-relaxed mb-6">
-                  Andros, the northernmost island of the Cyclades, stands apart from its neighbors with its lush landscapes, 
-                  abundant water sources, and elegant architecture. Known as the "Island of the Captains" due to its rich maritime history, 
+                  Andros, the northernmost island of the Cyclades, stands apart from its neighbors with its lush landscapes,
+                  abundant water sources, and elegant architecture. Known as the "Island of the Captains" due to its rich maritime history,
                   Andros offers a perfect blend of natural beauty, cultural heritage, and authentic Greek island life.
                 </p>
                 <p className="text-lg leading-relaxed mb-6">
-                  Unlike the typical arid Cycladic islands, Andros is blessed with flowing streams, waterfalls, and verdant valleys. 
-                  Its diverse terrain ranges from pristine beaches to mountainous hiking trails, making it an ideal destination for 
-                  nature lovers and outdoor enthusiasts. The island's main town, Chora, impresses visitors with its neoclassical mansions, 
+                  Unlike the typical arid Cycladic islands, Andros is blessed with flowing streams, waterfalls, and verdant valleys.
+                  Its diverse terrain ranges from pristine beaches to mountainous hiking trails, making it an ideal destination for
+                  nature lovers and outdoor enthusiasts. The island's main town, Chora, impresses visitors with its neoclassical mansions,
                   marble-paved square, and the iconic Maritime Museum.
                 </p>
                 <p className="text-lg leading-relaxed">
-                  Whether you're seeking relaxation on golden beaches, adventure on hiking paths, or cultural immersion in traditional villages, 
-                  Andros offers an authentic Greek island experience away from the crowds. This comprehensive guide will help you discover the best 
+                  Whether you're seeking relaxation on golden beaches, adventure on hiking paths, or cultural immersion in traditional villages,
+                  Andros offers an authentic Greek island experience away from the crowds. This comprehensive guide will help you discover the best
                   of what this captivating island has to offer.
                 </p>
               </div>
               <div className="relative">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/islands/andros/landscape.jpg" 
-                    alt="Andros Landscape" 
+                  <img
+                    src="/images/islands/andros/landscape.jpg"
+                    alt="Andros Landscape"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="absolute -bottom-8 -left-8 w-2/3">
                   <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                    <img 
-                      src="/images/islands/andros/chora-detail.jpg" 
-                      alt="Chora Detail" 
+                    <img
+                      src="/images/islands/andros/chora-detail.jpg"
+                      alt="Chora Detail"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -154,9 +156,9 @@ const AndrosGuide: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
-                <a 
+                <a
                   key={index}
-                  href={category.link} 
+                  href={category.link}
                   className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
@@ -225,18 +227,18 @@ const AndrosGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/villages/chora.jpg" 
-                    alt="Chora Village" 
+                  <img
+                    src="/images/islands/andros/villages/chora.jpg"
+                    alt="Chora Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Chora (Andros Town)</h3>
                   <p className="text-gray-600 mb-4">
-                    The elegant capital of Andros is known for its neoclassical mansions, marble-paved main square, and impressive 
-                    maritime heritage. Built on a narrow peninsula with the sea on both sides, Chora features a unique stone bridge 
-                    connecting to a small islet with the ruins of a Venetian castle. The town is home to several museums, including 
+                    The elegant capital of Andros is known for its neoclassical mansions, marble-paved main square, and impressive
+                    maritime heritage. Built on a narrow peninsula with the sea on both sides, Chora features a unique stone bridge
+                    connecting to a small islet with the ruins of a Venetian castle. The town is home to several museums, including
                     the renowned Museum of Contemporary Art, the Maritime Museum, and the Archaeological Museum.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -246,21 +248,21 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/villages/batsi.jpg" 
-                    alt="Batsi Village" 
+                  <img
+                    src="/images/islands/andros/villages/batsi.jpg"
+                    alt="Batsi Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Batsi</h3>
                   <p className="text-gray-600 mb-4">
-                    Once a small fishing village, Batsi has developed into the island's main tourist resort without losing its 
-                    traditional charm. Built amphitheatrically around a beautiful bay with a sandy beach, the village offers a 
-                    picturesque setting with white-washed houses cascading down the hillside. Batsi is known for its lively 
+                    Once a small fishing village, Batsi has developed into the island's main tourist resort without losing its
+                    traditional charm. Built amphitheatrically around a beautiful bay with a sandy beach, the village offers a
+                    picturesque setting with white-washed houses cascading down the hillside. Batsi is known for its lively
                     waterfront with tavernas, cafes, and bars, making it an ideal base for exploring the island.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -270,21 +272,21 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/villages/stenies.jpg" 
-                    alt="Stenies Village" 
+                  <img
+                    src="/images/islands/andros/villages/stenies.jpg"
+                    alt="Stenies Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Stenies</h3>
                   <p className="text-gray-600 mb-4">
-                    Located just 4 km from Chora, Stenies is one of the most beautiful villages on Andros. This historic settlement 
-                    was once home to wealthy ship owners, as evidenced by the impressive mansions that still stand today. The village 
-                    is built on the slopes of a verdant valley with a stream running through it, creating a lush environment with stone 
+                    Located just 4 km from Chora, Stenies is one of the most beautiful villages on Andros. This historic settlement
+                    was once home to wealthy ship owners, as evidenced by the impressive mansions that still stand today. The village
+                    is built on the slopes of a verdant valley with a stream running through it, creating a lush environment with stone
                     bridges, watermills, and abundant vegetation that's rare in the Cyclades.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -294,21 +296,21 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/villages/korthi.jpg" 
-                    alt="Korthi Village" 
+                  <img
+                    src="/images/islands/andros/villages/korthi.jpg"
+                    alt="Korthi Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Korthi</h3>
                   <p className="text-gray-600 mb-4">
-                    Situated on the southeastern coast of Andros, Korthi (or Ormos Korthiou) is a peaceful coastal village built around 
-                    a beautiful bay. The area offers a more authentic, laid-back atmosphere compared to the more developed parts of the island. 
-                    Nearby, you'll find the ruins of a Venetian castle (Faneromeni) perched on a hill, offering panoramic views of the Aegean Sea. 
+                    Situated on the southeastern coast of Andros, Korthi (or Ormos Korthiou) is a peaceful coastal village built around
+                    a beautiful bay. The area offers a more authentic, laid-back atmosphere compared to the more developed parts of the island.
+                    Nearby, you'll find the ruins of a Venetian castle (Faneromeni) perched on a hill, offering panoramic views of the Aegean Sea.
                     The surrounding area is known for its beautiful beaches and traditional inland villages.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -320,25 +322,25 @@ const AndrosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beautiful Beaches of Andros</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/beaches/golden-sand.jpg" 
-                    alt="Golden Sand Beach" 
+                  <img
+                    src="/images/islands/andros/beaches/golden-sand.jpg"
+                    alt="Golden Sand Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Golden Sand (Chryssi Ammos)</h3>
                   <p className="text-gray-600 mb-4">
-                    As its name suggests, Golden Sand is known for its beautiful golden sand and crystal-clear turquoise waters. 
-                    Located near Batsi, this organized beach offers sunbeds, umbrellas, and water sports facilities. The beach is 
-                    partially protected from winds, making it a good option even on breezier days. With several tavernas and beach 
+                    As its name suggests, Golden Sand is known for its beautiful golden sand and crystal-clear turquoise waters.
+                    Located near Batsi, this organized beach offers sunbeds, umbrellas, and water sports facilities. The beach is
+                    partially protected from winds, making it a good option even on breezier days. With several tavernas and beach
                     bars nearby, it's perfect for spending a full day by the sea.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -348,21 +350,21 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/beaches/achla.jpg" 
-                    alt="Achla Beach" 
+                  <img
+                    src="/images/islands/andros/beaches/achla.jpg"
+                    alt="Achla Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Achla</h3>
                   <p className="text-gray-600 mb-4">
-                    Often cited as one of the most beautiful beaches in Greece, Achla is a pristine stretch of sand where a river meets 
-                    the sea, creating a unique ecosystem. Surrounded by lush greenery and accessible primarily by boat or a challenging 
-                    dirt road, this beach remains relatively unspoiled. The combination of crystal-clear waters, white pebbles, and the 
+                    Often cited as one of the most beautiful beaches in Greece, Achla is a pristine stretch of sand where a river meets
+                    the sea, creating a unique ecosystem. Surrounded by lush greenery and accessible primarily by boat or a challenging
+                    dirt road, this beach remains relatively unspoiled. The combination of crystal-clear waters, white pebbles, and the
                     verdant backdrop makes it a paradise for nature lovers seeking tranquility.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -372,21 +374,21 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/beaches/tis-grias.jpg" 
-                    alt="Tis Grias to Pidima Beach" 
+                  <img
+                    src="/images/islands/andros/beaches/tis-grias.jpg"
+                    alt="Tis Grias to Pidima Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Tis Grias to Pidima (Old Lady's Jump)</h3>
                   <p className="text-gray-600 mb-4">
-                    This small but stunning beach gets its unusual name from a local legend about an old woman who jumped from the 
-                    distinctive rock formation that rises from the sea. The beach features a mix of sand and small pebbles, with 
-                    emerald waters that are perfect for swimming and snorkeling. The dramatic rock pillar standing in the water makes 
+                    This small but stunning beach gets its unusual name from a local legend about an old woman who jumped from the
+                    distinctive rock formation that rises from the sea. The beach features a mix of sand and small pebbles, with
+                    emerald waters that are perfect for swimming and snorkeling. The dramatic rock pillar standing in the water makes
                     it one of the most photographed spots on Andros.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -396,21 +398,21 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/beaches/zorkos.jpg" 
-                    alt="Zorkos Beach" 
+                  <img
+                    src="/images/islands/andros/beaches/zorkos.jpg"
+                    alt="Zorkos Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Zorkos</h3>
                   <p className="text-gray-600 mb-4">
-                    Located on the northern coast of Andros, Zorkos is a large, sandy beach with crystal-clear waters. Despite being 
-                    somewhat remote, it has basic facilities including a taverna serving fresh seafood. The beach is partially organized 
-                    with sunbeds and umbrellas but maintains its natural beauty and relaxed atmosphere. It's ideal for those seeking a 
+                    Located on the northern coast of Andros, Zorkos is a large, sandy beach with crystal-clear waters. Despite being
+                    somewhat remote, it has basic facilities including a taverna serving fresh seafood. The beach is partially organized
+                    with sunbeds and umbrellas but maintains its natural beauty and relaxed atmosphere. It's ideal for those seeking a
                     less crowded beach experience with stunning scenery.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -420,21 +422,21 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/beaches/fellos.jpg" 
-                    alt="Fellos Beach" 
+                  <img
+                    src="/images/islands/andros/beaches/fellos.jpg"
+                    alt="Fellos Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Fellos</h3>
                   <p className="text-gray-600 mb-4">
-                    Just a short drive from Gavrio port, Fellos is a sheltered sandy beach with calm waters, making it ideal for families 
-                    with children. The beach is surrounded by trees providing natural shade and has a relaxed atmosphere. While it offers 
-                    basic amenities including a beach bar and taverna, it remains relatively quiet even during the high season, offering a 
+                    Just a short drive from Gavrio port, Fellos is a sheltered sandy beach with calm waters, making it ideal for families
+                    with children. The beach is surrounded by trees providing natural shade and has a relaxed atmosphere. While it offers
+                    basic amenities including a beach bar and taverna, it remains relatively quiet even during the high season, offering a
                     peaceful alternative to the more popular beaches.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -444,21 +446,21 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/beaches/vitali.jpg" 
-                    alt="Vitali Beach" 
+                  <img
+                    src="/images/islands/andros/beaches/vitali.jpg"
+                    alt="Vitali Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Vitali</h3>
                   <p className="text-gray-600 mb-4">
-                    Nestled in a picturesque cove on the northeastern coast of Andros, Vitali is a beautiful beach with coarse sand and 
-                    pebbles. The crystal-clear waters and stunning landscape make it a favorite among locals and visitors who appreciate 
-                    natural beauty. The beach has a small taverna serving traditional Greek cuisine and limited facilities, preserving its 
+                    Nestled in a picturesque cove on the northeastern coast of Andros, Vitali is a beautiful beach with coarse sand and
+                    pebbles. The crystal-clear waters and stunning landscape make it a favorite among locals and visitors who appreciate
+                    natural beauty. The beach has a small taverna serving traditional Greek cuisine and limited facilities, preserving its
                     authentic character and peaceful ambiance.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -470,7 +472,7 @@ const AndrosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine of Andros</h2>
@@ -478,9 +480,9 @@ const AndrosGuide: React.FC = () => {
               <div className="lg:col-span-1">
                 <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="aspect-w-1 aspect-h-1">
-                    <img 
-                      src="/images/islands/andros/cuisine/andros-food.jpg" 
-                      alt="Traditional Andrian Cuisine" 
+                    <img
+                      src="/images/islands/andros/cuisine/andros-food.jpg"
+                      alt="Traditional Andrian Cuisine"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -488,7 +490,7 @@ const AndrosGuide: React.FC = () => {
               </div>
               <div className="lg:col-span-2 prose max-w-none">
                 <p className="text-gray-700 leading-relaxed">
-                  Andros offers a distinctive culinary tradition that reflects its unique position as a fertile, water-rich island in the typically arid Cyclades. 
+                  Andros offers a distinctive culinary tradition that reflects its unique position as a fertile, water-rich island in the typically arid Cyclades.
                   The island's cuisine combines fresh local ingredients with traditional cooking methods, creating dishes that are both authentic and delicious.
                 </p>
                 <h3 className="font-semibold text-xl mt-6 mb-4">Local Specialties</h3>
@@ -499,7 +501,7 @@ const AndrosGuide: React.FC = () => {
                   <li><strong>Kaltsounia</strong> - Sweet cheese pies with honey and cinnamon</li>
                   <li><strong>Amygdalota</strong> - Almond sweets that are a specialty of the island</li>
                 </ul>
-                
+
                 <h3 className="font-semibold text-xl mt-6 mb-4">Local Products</h3>
                 <ul className="space-y-2">
                   <li><strong>Andros Cheeses</strong> - Try the local volaki, a soft, white cheese similar to mozzarella</li>
@@ -510,13 +512,13 @@ const AndrosGuide: React.FC = () => {
                 </ul>
               </div>
             </div>
-            
+
             <div className="mt-12 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaWineGlass className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Local Drinks</h3>
                 <p className="text-gray-600 mb-4">
-                  Sample local spirits including "Koumaro," a traditional drink made from arbutus berries, 
+                  Sample local spirits including "Koumaro," a traditional drink made from arbutus berries,
                   and "Rakomelo," a warming blend of raki and honey with cinnamon and herbs.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -524,12 +526,12 @@ const AndrosGuide: React.FC = () => {
                   <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Rakomelo</span>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaUtensils className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Seaside Tavernas</h3>
                 <p className="text-gray-600 mb-4">
-                  Enjoy authentic Greek cuisine at traditional tavernas in Batsi, Chora, and coastal villages, 
+                  Enjoy authentic Greek cuisine at traditional tavernas in Batsi, Chora, and coastal villages,
                   where fresh seafood and local specialties are served with stunning sea views.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -537,12 +539,12 @@ const AndrosGuide: React.FC = () => {
                   <span className="px-3 py-1 bg-blue-100 text-blue-800 rounded-full text-sm">Sea View</span>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaGlassCheers className="text-3xl text-blue-500 mb-4" />
                 <h3 className="font-semibold text-xl mb-2">Dining in Chora</h3>
                 <p className="text-gray-600 mb-4">
-                  The capital offers some of the island's finest dining experiences, from traditional tavernas 
+                  The capital offers some of the island's finest dining experiences, from traditional tavernas
                   in the old town to upscale restaurants serving creative Greek cuisine with a modern twist.
                 </p>
                 <div className="flex flex-wrap gap-2">
@@ -552,16 +554,16 @@ const AndrosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Activities Section */}
           <section id="activities" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Andros</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/activities/hiking.jpg" 
-                    alt="Hiking in Andros" 
+                  <img
+                    src="/images/islands/andros/activities/hiking.jpg"
+                    alt="Hiking in Andros"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -571,9 +573,9 @@ const AndrosGuide: React.FC = () => {
                     <h3 className="text-xl font-semibold">Hiking</h3>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Andros is known as a hiker's paradise with over 300 km of well-maintained and signposted trails. 
-                    The "Andros Routes" network includes paths that cross verdant valleys, pass by waterfalls, and connect 
-                    traditional villages. The island's diverse landscape offers trails for all levels, from easy coastal walks 
+                    Andros is known as a hiker's paradise with over 300 km of well-maintained and signposted trails.
+                    The "Andros Routes" network includes paths that cross verdant valleys, pass by waterfalls, and connect
+                    traditional villages. The island's diverse landscape offers trails for all levels, from easy coastal walks
                     to challenging mountain hikes with breathtaking views.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -583,12 +585,12 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/activities/water-sports.jpg" 
-                    alt="Water Sports in Andros" 
+                  <img
+                    src="/images/islands/andros/activities/water-sports.jpg"
+                    alt="Water Sports in Andros"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -598,9 +600,9 @@ const AndrosGuide: React.FC = () => {
                     <h3 className="text-xl font-semibold">Water Sports</h3>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    The island's coastline offers excellent conditions for various water sports. Golden Sand Beach is popular 
-                    for windsurfing and kitesurfing, with schools providing equipment and lessons. Snorkeling and diving enthusiasts 
-                    can explore the clear waters around Andros, discovering underwater caves, reefs, and marine life. Kayaking along 
+                    The island's coastline offers excellent conditions for various water sports. Golden Sand Beach is popular
+                    for windsurfing and kitesurfing, with schools providing equipment and lessons. Snorkeling and diving enthusiasts
+                    can explore the clear waters around Andros, discovering underwater caves, reefs, and marine life. Kayaking along
                     the coast allows you to discover secluded beaches and impressive rock formations.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -610,12 +612,12 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/activities/museums.jpg" 
-                    alt="Museums in Andros" 
+                  <img
+                    src="/images/islands/andros/activities/museums.jpg"
+                    alt="Museums in Andros"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -625,9 +627,9 @@ const AndrosGuide: React.FC = () => {
                     <h3 className="text-xl font-semibold">Museums & Culture</h3>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Andros has a rich cultural scene with several notable museums. The Museum of Contemporary Art in Chora hosts 
-                    exhibitions by renowned Greek and international artists. The Maritime Museum showcases the island's naval heritage, 
-                    while the Archaeological Museum displays artifacts from ancient times. Don't miss the Cyclades Olive Museum in Ano Pitrofos, 
+                    Andros has a rich cultural scene with several notable museums. The Museum of Contemporary Art in Chora hosts
+                    exhibitions by renowned Greek and international artists. The Maritime Museum showcases the island's naval heritage,
+                    while the Archaeological Museum displays artifacts from ancient times. Don't miss the Cyclades Olive Museum in Ano Pitrofos,
                     offering insights into traditional olive oil production.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -637,12 +639,12 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/activities/monasteries.jpg" 
-                    alt="Monasteries in Andros" 
+                  <img
+                    src="/images/islands/andros/activities/monasteries.jpg"
+                    alt="Monasteries in Andros"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -652,9 +654,9 @@ const AndrosGuide: React.FC = () => {
                     <h3 className="text-xl font-semibold">Monasteries</h3>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Explore the island's spiritual heritage by visiting its historic monasteries. The Monastery of Panachrantou, 
-                    founded in the 10th century and perched at an altitude of 750 meters, offers breathtaking views and houses 
-                    important religious relics. The Monastery of Zoodochos Pigi near Batsi and the Monastery of Agia Marina are also 
+                    Explore the island's spiritual heritage by visiting its historic monasteries. The Monastery of Panachrantou,
+                    founded in the 10th century and perched at an altitude of 750 meters, offers breathtaking views and houses
+                    important religious relics. The Monastery of Zoodochos Pigi near Batsi and the Monastery of Agia Marina are also
                     worth visiting for their architecture, frescoes, and peaceful atmosphere.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -664,12 +666,12 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/activities/boat-tour.jpg" 
-                    alt="Boat Tours in Andros" 
+                  <img
+                    src="/images/islands/andros/activities/boat-tour.jpg"
+                    alt="Boat Tours in Andros"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -679,9 +681,9 @@ const AndrosGuide: React.FC = () => {
                     <h3 className="text-xl font-semibold">Boat Tours</h3>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Take a boat tour around Andros to discover hidden coves and beaches accessible only by sea. 
-                    Day trips from Batsi or Chora allow you to explore the island's rugged coastline, visit secluded 
-                    beaches like Achla, and enjoy swimming in crystal-clear waters. Some tours include stops for snorkeling, 
+                    Take a boat tour around Andros to discover hidden coves and beaches accessible only by sea.
+                    Day trips from Batsi or Chora allow you to explore the island's rugged coastline, visit secluded
+                    beaches like Achla, and enjoy swimming in crystal-clear waters. Some tours include stops for snorkeling,
                     fishing, or lunch at seaside tavernas in remote locations.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -691,12 +693,12 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/andros/activities/springs.jpg" 
-                    alt="Springs and Waterfalls in Andros" 
+                  <img
+                    src="/images/islands/andros/activities/springs.jpg"
+                    alt="Springs and Waterfalls in Andros"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -706,9 +708,9 @@ const AndrosGuide: React.FC = () => {
                     <h3 className="text-xl font-semibold">Springs & Waterfalls</h3>
                   </div>
                   <p className="text-gray-600 mb-4">
-                    Discover the natural freshwater sources that make Andros unique among the Cyclades. Visit the picturesque 
-                    Pithara waterfalls near Apikia village, where water cascades down moss-covered rocks into natural pools. 
-                    Explore the Sariza spring in Apikia, known for its healing mineral water that's bottled and sold throughout Greece. 
+                    Discover the natural freshwater sources that make Andros unique among the Cyclades. Visit the picturesque
+                    Pithara waterfalls near Apikia village, where water cascades down moss-covered rocks into natural pools.
+                    Explore the Sariza spring in Apikia, known for its healing mineral water that's bottled and sold throughout Greece.
                     The lush valleys around Menites village feature springs with water flowing from lion-head spouts.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -726,86 +728,86 @@ const AndrosGuide: React.FC = () => {
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Photo Gallery</h2>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src="/images/islands/andros/gallery/andros-chora.jpg" 
-                  alt="Chora, Andros" 
+                <img
+                  src="/images/islands/andros/gallery/andros-chora.jpg"
+                  alt="Chora, Andros"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                   <p className="text-white text-sm font-medium">Chora</p>
                 </div>
               </div>
-              
+
               <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src="/images/islands/andros/gallery/andros-batsi.jpg" 
-                  alt="Batsi, Andros" 
+                <img
+                  src="/images/islands/andros/gallery/andros-batsi.jpg"
+                  alt="Batsi, Andros"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                   <p className="text-white text-sm font-medium">Batsi</p>
                 </div>
               </div>
-              
+
               <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src="/images/islands/andros/gallery/andros-achla-beach.jpg" 
-                  alt="Achla Beach, Andros" 
+                <img
+                  src="/images/islands/andros/gallery/andros-achla-beach.jpg"
+                  alt="Achla Beach, Andros"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                   <p className="text-white text-sm font-medium">Achla Beach</p>
                 </div>
               </div>
-              
+
               <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src="/images/islands/andros/gallery/andros-tis-grias-to-pidima.jpg" 
-                  alt="Tis Grias to Pidima, Andros" 
+                <img
+                  src="/images/islands/andros/gallery/andros-tis-grias-to-pidima.jpg"
+                  alt="Tis Grias to Pidima, Andros"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                   <p className="text-white text-sm font-medium">Tis Grias to Pidima</p>
                 </div>
               </div>
-              
+
               <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src="/images/islands/andros/gallery/andros-monastery.jpg" 
-                  alt="Monastery, Andros" 
+                <img
+                  src="/images/islands/andros/gallery/andros-monastery.jpg"
+                  alt="Monastery, Andros"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                   <p className="text-white text-sm font-medium">Monastery of Panachrantou</p>
                 </div>
               </div>
-              
+
               <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src="/images/islands/andros/gallery/andros-hiking.jpg" 
-                  alt="Hiking Trail, Andros" 
+                <img
+                  src="/images/islands/andros/gallery/andros-hiking.jpg"
+                  alt="Hiking Trail, Andros"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                   <p className="text-white text-sm font-medium">Hiking Trail</p>
                 </div>
               </div>
-              
+
               <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src="/images/islands/andros/gallery/andros-waterfalls.jpg" 
-                  alt="Waterfalls, Andros" 
+                <img
+                  src="/images/islands/andros/gallery/andros-waterfalls.jpg"
+                  alt="Waterfalls, Andros"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
                   <p className="text-white text-sm font-medium">Pithara Waterfalls</p>
                 </div>
               </div>
-              
+
               <div className="relative aspect-square overflow-hidden rounded-lg shadow-md border border-gray-100 dark:border-white/10">
-                <img 
-                  src="/images/islands/andros/gallery/andros-cuisine.jpg" 
-                  alt="Local Cuisine, Andros" 
+                <img
+                  src="/images/islands/andros/gallery/andros-cuisine.jpg"
+                  alt="Local Cuisine, Andros"
                   className="w-full h-full object-cover hover:scale-105 transition-transform duration-300"
                 />
                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3">
@@ -826,14 +828,14 @@ const AndrosGuide: React.FC = () => {
                     Andros offers the perfect blend of natural beauty, rich history, and authentic Greek hospitality.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="/hotels/" 
+                    <a
+                      href="/hotels/"
                       className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition duration-300 text-center"
                     >
                       Find Accommodations
                     </a>
-                    <a 
-                      href="/ferry-tickets/" 
+                    <a
+                      href="/ferry-tickets/"
                       className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition duration-300 text-center"
                     >
                       How to get there
@@ -841,9 +843,9 @@ const AndrosGuide: React.FC = () => {
                   </div>
                 </div>
                 <div className="relative h-64 md:h-auto">
-                  <img 
-                    src="/images/islands/santorini/santorini-view.jpg" 
-                    alt="Andros Island View" 
+                  <img
+                    src="/images/islands/santorini/santorini-view.jpg"
+                    alt="Andros Island View"
                     className="w-full h-full object-cover rounded-lg shadow-lg"
                   />
                   {/* Note: Replace with Andros-specific image when available at /images/islands/andros/cta-image.jpg */}

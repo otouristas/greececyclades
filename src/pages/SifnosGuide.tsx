@@ -1,12 +1,13 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaWineGlass, 
-  FaMapMarkedAlt, 
-  FaShip, 
-  FaUtensils, 
-  FaSun, 
-  FaCameraRetro, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaWineGlass,
+  FaMapMarkedAlt,
+  FaShip,
+  FaUtensils,
+  FaSun,
+  FaCameraRetro,
   FaLeaf,
   FaCalendarAlt,
   FaGlassCheers,
@@ -19,6 +20,7 @@ import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
 
 const SifnosGuide: React.FC = () => {
+  const { t } = useTranslation();
   const sifnos = islandGuides.find(island => island.id === 'sifnos');
 
   if (!sifnos) {
@@ -41,7 +43,7 @@ const SifnosGuide: React.FC = () => {
       'best time to visit Sifnos'
     ],
     ogImage: sifnos.image,
-    ogType: 'article'
+    ogType: 'article' as const
   };
 
   // Photo gallery images
@@ -130,36 +132,36 @@ const SifnosGuide: React.FC = () => {
       <SEO {...seoData} />
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...sifnos} />
-        
+
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Sifnos</h2>
               <p className="text-gray-700 leading-relaxed">
-                Sifnos, the gastronomic capital of the Cyclades, is an island where culinary tradition meets architectural elegance. 
-                The island's rich clay deposits have fostered a long tradition of pottery making, evident in its distinctive chimney pots 
+                Sifnos, the gastronomic capital of the Cyclades, is an island where culinary tradition meets architectural elegance.
+                The island's rich clay deposits have fostered a long tradition of pottery making, evident in its distinctive chimney pots
                 and the earthenware casseroles used in its famous slow-cooked recipes.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                From the medieval village of Kastro to the vibrant capital of Apollonia, and from the iconic Chrysopigi Monastery to 
-                the beautiful beaches like Vathi and Platis Gialos, Sifnos offers a complete Greek island experience. Our comprehensive 
+                From the medieval village of Kastro to the vibrant capital of Apollonia, and from the iconic Chrysopigi Monastery to
+                the beautiful beaches like Vathi and Platis Gialos, Sifnos offers a complete Greek island experience. Our comprehensive
                 guide will help you discover the best of what this magical island has to offer.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/images/islands/sifnos/landscape.jpg" 
-                  alt="Sifnos Landscape" 
+                <img
+                  src="/images/islands/sifnos/landscape.jpg"
+                  alt="Sifnos Landscape"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 w-2/3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/islands/sifnos/kastro-detail.jpg" 
-                    alt="Kastro Detail" 
+                  <img
+                    src="/images/islands/sifnos/kastro-detail.jpg"
+                    alt="Kastro Detail"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -172,9 +174,9 @@ const SifnosGuide: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
-                <a 
+                <a
                   key={index}
-                  href={category.link} 
+                  href={category.link}
                   className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
@@ -236,25 +238,25 @@ const SifnosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Villages Section */}
           <section id="villages" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Charming Villages of Sifnos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sifnos/villages/kastro.jpg" 
-                    alt="Kastro Village" 
+                  <img
+                    src="/images/islands/sifnos/villages/kastro.jpg"
+                    alt="Kastro Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Kastro</h3>
                   <p className="text-gray-600 mb-4">
-                    The medieval village of Kastro, built on top of an ancient acropolis, stands as a remarkable example of continuous 
-                    habitation from ancient times. Its walls incorporate ancient marble columns and architectural elements. Wander through 
-                    the narrow streets, visit the Archaeological Museum, and enjoy breathtaking views of the Aegean Sea from this 
+                    The medieval village of Kastro, built on top of an ancient acropolis, stands as a remarkable example of continuous
+                    habitation from ancient times. Its walls incorporate ancient marble columns and architectural elements. Wander through
+                    the narrow streets, visit the Archaeological Museum, and enjoy breathtaking views of the Aegean Sea from this
                     amphitheatrically built settlement.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -264,20 +266,20 @@ const SifnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sifnos/villages/apollonia.jpg" 
-                    alt="Apollonia Village" 
+                  <img
+                    src="/images/islands/sifnos/villages/apollonia.jpg"
+                    alt="Apollonia Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Apollonia</h3>
                   <p className="text-gray-600 mb-4">
-                    The capital of Sifnos, Apollonia, comes alive at night with its string of bars and restaurants along the "Steno" (narrow street). 
-                    This charming settlement is a maze of whitewashed houses, blue-domed churches, and narrow alleys. Visit the Folklore Museum, 
+                    The capital of Sifnos, Apollonia, comes alive at night with its string of bars and restaurants along the "Steno" (narrow street).
+                    This charming settlement is a maze of whitewashed houses, blue-domed churches, and narrow alleys. Visit the Folklore Museum,
                     shop at boutique stores, and enjoy the island's vibrant nightlife in this central hub.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -287,20 +289,20 @@ const SifnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sifnos/villages/artemonas.jpg" 
-                    alt="Artemonas Village" 
+                  <img
+                    src="/images/islands/sifnos/villages/artemonas.jpg"
+                    alt="Artemonas Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Artemonas</h3>
                   <p className="text-gray-600 mb-4">
-                    Known for its neoclassical architecture and aristocratic character, Artemonas is one of the most elegant villages on Sifnos. 
-                    Stroll through its marble-paved streets lined with impressive mansions and beautiful gardens. The village is also famous for 
+                    Known for its neoclassical architecture and aristocratic character, Artemonas is one of the most elegant villages on Sifnos.
+                    Stroll through its marble-paved streets lined with impressive mansions and beautiful gardens. The village is also famous for
                     its traditional pastry shops where you can taste local sweets like almond cookies and honey pie.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -310,20 +312,20 @@ const SifnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sifnos/villages/faros.jpg" 
-                    alt="Faros Village" 
+                  <img
+                    src="/images/islands/sifnos/villages/faros.jpg"
+                    alt="Faros Village"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Faros</h3>
                   <p className="text-gray-600 mb-4">
-                    This picturesque fishing village on the southeastern coast of Sifnos features a natural harbor and three consecutive sandy beaches. 
-                    Once the main port of the island, Faros now offers a peaceful retreat with excellent seafood tavernas and a relaxed atmosphere. 
+                    This picturesque fishing village on the southeastern coast of Sifnos features a natural harbor and three consecutive sandy beaches.
+                    Once the main port of the island, Faros now offers a peaceful retreat with excellent seafood tavernas and a relaxed atmosphere.
                     It's also the starting point for scenic hiking trails leading to Chrysopigi Monastery and Apokofto Beach.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -335,24 +337,24 @@ const SifnosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Beaches Section */}
           <section id="beaches" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Beautiful Beaches of Sifnos</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sifnos/beaches/platis-gialos.jpg" 
-                    alt="Platis Gialos Beach" 
+                  <img
+                    src="/images/islands/sifnos/beaches/platis-gialos.jpg"
+                    alt="Platis Gialos Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Platis Gialos</h3>
                   <p className="text-gray-600 mb-4">
-                    The longest beach on Sifnos, Platis Gialos is a family-friendly stretch of golden sand with shallow, crystal-clear waters. 
-                    The beach is well-organized with sunbeds, umbrellas, and water sports facilities. The beachfront is lined with tavernas, 
+                    The longest beach on Sifnos, Platis Gialos is a family-friendly stretch of golden sand with shallow, crystal-clear waters.
+                    The beach is well-organized with sunbeds, umbrellas, and water sports facilities. The beachfront is lined with tavernas,
                     cafes, and accommodations, making it perfect for a full day of beach enjoyment.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -362,20 +364,20 @@ const SifnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sifnos/beaches/vathi.jpg" 
-                    alt="Vathi Beach" 
+                  <img
+                    src="/images/islands/sifnos/beaches/vathi.jpg"
+                    alt="Vathi Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Vathi</h3>
                   <p className="text-gray-600 mb-4">
-                    Nestled in a protected bay on the southwestern coast of Sifnos, Vathi is a picturesque beach with fine golden sand and 
-                    turquoise waters. The beach is surrounded by a traditional village with a beautiful church right on the sand. The calm, 
+                    Nestled in a protected bay on the southwestern coast of Sifnos, Vathi is a picturesque beach with fine golden sand and
+                    turquoise waters. The beach is surrounded by a traditional village with a beautiful church right on the sand. The calm,
                     shallow waters make it ideal for families with children, while the beachfront tavernas serve fresh seafood and local specialties.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -385,20 +387,20 @@ const SifnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sifnos/beaches/chrysopigi.jpg" 
-                    alt="Chrysopigi Beach" 
+                  <img
+                    src="/images/islands/sifnos/beaches/chrysopigi.jpg"
+                    alt="Chrysopigi Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Chrysopigi</h3>
                   <p className="text-gray-600 mb-4">
-                    Named after the iconic monastery that stands on a rocky peninsula nearby, Chrysopigi is a beautiful beach with crystal-clear 
-                    waters. The beach is divided into two parts by the monastery's promontory, offering both organized and more secluded areas. 
+                    Named after the iconic monastery that stands on a rocky peninsula nearby, Chrysopigi is a beautiful beach with crystal-clear
+                    waters. The beach is divided into two parts by the monastery's promontory, offering both organized and more secluded areas.
                     The unique landscape makes it a favorite spot for photographers, while the clear waters are perfect for snorkeling.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -408,20 +410,20 @@ const SifnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sifnos/beaches/kamares.jpg" 
-                    alt="Kamares Beach" 
+                  <img
+                    src="/images/islands/sifnos/beaches/kamares.jpg"
+                    alt="Kamares Beach"
                     className="w-full h-full object-cover"
                   />
                 </div>
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Kamares</h3>
                   <p className="text-gray-600 mb-4">
-                    The main port of Sifnos, Kamares boasts a long, sandy beach with shallow waters, making it ideal for families. 
-                    The beach is well-organized with sunbeds, umbrellas, and water sports facilities. The surrounding area offers a 
+                    The main port of Sifnos, Kamares boasts a long, sandy beach with shallow waters, making it ideal for families.
+                    The beach is well-organized with sunbeds, umbrellas, and water sports facilities. The surrounding area offers a
                     variety of accommodations, restaurants, cafes, and shops, making it a convenient base for exploring the island.
                   </p>
                   <div className="flex flex-wrap gap-2">
@@ -433,7 +435,7 @@ const SifnosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Local Cuisine Section */}
           <section id="cuisine" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Local Cuisine of Sifnos</h2>
@@ -478,45 +480,45 @@ const SifnosGuide: React.FC = () => {
                   </div>
                 </div>
               </div>
-              
+
               <div className="lg:col-span-2">
                 <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="grid grid-cols-1 md:grid-cols-2">
                     <div className="p-6">
                       <h3 className="text-xl font-semibold mb-4">Where to Eat in Sifnos</h3>
                       <p className="text-gray-600 mb-4">
-                        Sifnos is known as the culinary capital of the Cyclades, with a rich gastronomic tradition that dates back centuries. 
+                        Sifnos is known as the culinary capital of the Cyclades, with a rich gastronomic tradition that dates back centuries.
                         The island's pottery tradition is closely linked to its cuisine, with many dishes slow-cooked in traditional clay pots.
                       </p>
                       <div className="space-y-4">
                         <div className="border-l-4 border-blue-500 pl-4">
                           <h4 className="font-semibold">Fine Dining</h4>
                           <p className="text-sm text-gray-600 dark:text-white/60">
-                            <strong>Omega3</strong> in Platis Gialos offers creative fish and seafood dishes with a modern twist. 
+                            <strong>Omega3</strong> in Platis Gialos offers creative fish and seafood dishes with a modern twist.
                             <strong>Cayenne</strong> in Apollonia serves Mediterranean cuisine with local ingredients in an elegant setting.
                           </p>
                         </div>
                         <div className="border-l-4 border-blue-500 pl-4">
                           <h4 className="font-semibold">Traditional Tavernas</h4>
                           <p className="text-sm text-gray-600 dark:text-white/60">
-                            <strong>Leonidas</strong> in Kastro serves authentic Sifnian dishes in a historic setting. 
-                            <strong>Drimoni</strong> in Apollonia offers fresh seafood right on the beach. 
+                            <strong>Leonidas</strong> in Kastro serves authentic Sifnian dishes in a historic setting.
+                            <strong>Drimoni</strong> in Apollonia offers fresh seafood right on the beach.
                             <strong>To Tsikali</strong> in Vathi beach serves traditional dishes cooked in clay pots.
                           </p>
                         </div>
                         <div className="border-l-4 border-blue-500 pl-4">
                           <h4 className="font-semibold">Sweet Treats</h4>
                           <p className="text-sm text-gray-600 dark:text-white/60">
-                            <strong>Theodorou Sweet Shop</strong> in Artemonas is famous for its traditional almond cookies and honey pie. 
+                            <strong>Theodorou Sweet Shop</strong> in Artemonas is famous for its traditional almond cookies and honey pie.
                             <strong>Grigoris</strong> in Apollonia offers excellent pastries and local sweets.
                           </p>
                         </div>
                       </div>
                     </div>
                     <div className="aspect-w-16 aspect-h-9 md:aspect-auto">
-                      <img 
-                        src="/images/islands/sifnos/cuisine/sifnos-food.jpg" 
-                        alt="Traditional Sifnian Cuisine" 
+                      <img
+                        src="/images/islands/sifnos/cuisine/sifnos-food.jpg"
+                        alt="Traditional Sifnian Cuisine"
                         className="w-full h-full object-cover"
                       />
                     </div>
@@ -548,7 +550,7 @@ const SifnosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Activities Section */}
           <section id="activities" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Things to Do in Sifnos</h2>
@@ -587,14 +589,14 @@ const SifnosGuide: React.FC = () => {
                   </ul>
                 </div>
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sifnos/activities/water-activities.jpg" 
-                    alt="Water Activities in Sifnos" 
+                  <img
+                    src="/images/islands/sifnos/activities/water-activities.jpg"
+                    alt="Water Activities in Sifnos"
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                 <div className="p-6">
                   <div className="flex items-center mb-4">
@@ -629,14 +631,14 @@ const SifnosGuide: React.FC = () => {
                   </ul>
                 </div>
                 <div className="aspect-w-16 aspect-h-9">
-                  <img 
-                    src="/images/islands/sifnos/activities/hiking.jpg" 
-                    alt="Hiking in Sifnos" 
+                  <img
+                    src="/images/islands/sifnos/activities/hiking.jpg"
+                    alt="Hiking in Sifnos"
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden md:col-span-2">
                 <div className="grid grid-cols-1 md:grid-cols-3">
                   <div className="p-6 md:col-span-2">
@@ -645,37 +647,37 @@ const SifnosGuide: React.FC = () => {
                       <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Panigiri Festivals</h4>
                         <p className="text-sm text-gray-600 dark:text-white/60">
-                          Experience a traditional Greek festival at one of the many church celebrations throughout summer. 
+                          Experience a traditional Greek festival at one of the many church celebrations throughout summer.
                           Enjoy local music, dancing, and free food and wine in a joyful atmosphere.
                         </p>
                       </div>
                       <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Sunset at Kastro</h4>
                         <p className="text-sm text-gray-600 dark:text-white/60">
-                          Climb to the Church of Seven Martyrs near Kastro for one of the most spectacular sunset views in the Cyclades, 
+                          Climb to the Church of Seven Martyrs near Kastro for one of the most spectacular sunset views in the Cyclades,
                           with the church silhouetted against the golden sky.
                         </p>
                       </div>
                       <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Sifnos Gastronomy Festival</h4>
                         <p className="text-sm text-gray-600 dark:text-white/60">
-                          Visit during the annual food festival in September to taste dishes prepared by local and guest chefs, 
+                          Visit during the annual food festival in September to taste dishes prepared by local and guest chefs,
                           attend cooking demonstrations, and participate in food-related events.
                         </p>
                       </div>
                       <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                         <h4 className="font-medium text-blue-800 mb-2">Monastery of Chrysopigi</h4>
                         <p className="text-sm text-gray-600 dark:text-white/60">
-                          Visit the island's patron saint monastery built on a dramatic rock formation jutting into the sea. 
+                          Visit the island's patron saint monastery built on a dramatic rock formation jutting into the sea.
                           The monastery celebrates its feast day on Ascension Day with special events.
                         </p>
                       </div>
                     </div>
                   </div>
                   <div className="aspect-w-16 aspect-h-9 md:aspect-auto">
-                    <img 
-                      src="/images/islands/sifnos/activities/chrysopigi-monastery.jpg" 
-                      alt="Chrysopigi Monastery" 
+                    <img
+                      src="/images/islands/sifnos/activities/chrysopigi-monastery.jpg"
+                      alt="Chrysopigi Monastery"
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -683,7 +685,7 @@ const SifnosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
           {/* Photo Gallery Section */}
           <section id="gallery" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Sifnos Photo Gallery</h2>
@@ -691,9 +693,9 @@ const SifnosGuide: React.FC = () => {
               {galleryImages.map((image, index) => (
                 <div key={index} className="rounded-lg overflow-hidden shadow-md hover:shadow-xl transition-shadow duration-300">
                   <div className="aspect-w-4 aspect-h-3">
-                    <img 
-                      src={image.src} 
-                      alt={image.alt} 
+                    <img
+                      src={image.src}
+                      alt={image.alt}
                       className="w-full h-full object-cover"
                     />
                   </div>
@@ -705,13 +707,13 @@ const SifnosGuide: React.FC = () => {
             </div>
             <div className="mt-8 text-center">
               <p className="text-gray-600 italic">
-                Experience the beauty of Sifnos through our curated photo gallery. From the medieval village of Kastro to the 
-                iconic Chrysopigi Monastery, the charming capital of Apollonia, and the beautiful beaches, these images showcase 
+                Experience the beauty of Sifnos through our curated photo gallery. From the medieval village of Kastro to the
+                iconic Chrysopigi Monastery, the charming capital of Apollonia, and the beautiful beaches, these images showcase
                 the diverse beauty of this culinary paradise in the Cyclades.
               </p>
             </div>
           </section>
-          
+
           {/* Call to Action Section */}
           <section id="cta" className="mb-16 bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-md overflow-hidden">
             <div className="container mx-auto px-6 py-12 text-white">
@@ -723,14 +725,14 @@ const SifnosGuide: React.FC = () => {
                     Sifnos offers the perfect blend of culinary excellence, natural beauty, and authentic Greek hospitality.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4">
-                    <a 
-                      href="/hotels/" 
+                    <a
+                      href="/hotels/"
                       className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition duration-300 text-center"
                     >
                       Find Accommodations
                     </a>
-                    <a 
-                      href="/ferry-tickets/" 
+                    <a
+                      href="/ferry-tickets/"
                       className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition duration-300 text-center"
                     >
                       How to get there
@@ -738,9 +740,9 @@ const SifnosGuide: React.FC = () => {
                   </div>
                 </div>
                 <div className="relative h-64 md:h-auto">
-                  <img 
-                    src="/images/islands/sifnos/cta-image.jpg" 
-                    alt="Sifnos Island View" 
+                  <img
+                    src="/images/islands/sifnos/cta-image.jpg"
+                    alt="Sifnos Island View"
                     className="w-full h-full object-cover rounded-lg shadow-lg"
                   />
                   <div className="absolute bottom-4 left-4 bg-white bg-opacity-90 px-4 py-2 rounded-lg">
@@ -750,7 +752,7 @@ const SifnosGuide: React.FC = () => {
               </div>
             </div>
           </section>
-          
+
         </div>
       </div>
     </>

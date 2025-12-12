@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { Plane, Calendar, Ticket, Briefcase, Clock, DollarSign, ArrowLeftRight, ArrowRight, Star, Shield, Zap, MapPin, Search } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
@@ -14,6 +15,7 @@ import {
 } from '../services/flightApiService';
 
 export default function Flights() {
+  const { t } = useTranslation();
   const [isLoading, setIsLoading] = useState(false);
   const [searchError, setSearchError] = useState<string | undefined>();
   const [flights, setFlights] = useState<(OnewayFlight | RoundtripFlight)[]>([]);
@@ -86,10 +88,10 @@ export default function Flights() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-8 md:mb-10">
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 md:mb-6 tracking-tight">
-                Fly to the <span className="text-yellow-300">Cyclades</span>
+                {t('flights.hero.titlePart1', 'Fly to the ')} <span className="text-yellow-300">{t('flights.hero.titleHighlight', 'Cyclades')}</span>
               </h1>
               <p className="text-lg md:text-xl text-white/90 max-w-3xl mx-auto mb-6 md:mb-8 px-2">
-                Find cheap flights to Santorini, Mykonos, Paros, Naxos and more. Compare airlines and book with confidence.
+                {t('flights.hero.subtitle', 'Find cheap flights to Santorini, Mykonos, Paros, Naxos and more. Compare airlines and book with confidence.')}
               </p>
 
               {/* Trust Signals */}
@@ -133,7 +135,7 @@ export default function Flights() {
         {!hasSearched && (
           <div className="py-20 bg-white dark:bg-dark-card">
             <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Why Book Flights With Us</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">{t('flights.whyBook.title', 'Why Book Flights With Us')}</h2>
               <div className="grid md:grid-cols-3 gap-8">
                 {[
                   { icon: Ticket, title: 'Best Price Guarantee', desc: 'We scan hundreds of airlines to find you the lowest prices.' },
@@ -156,8 +158,8 @@ export default function Flights() {
         {/* Cyclades Airports */}
         <div className="py-20 bg-white dark:bg-dark-card">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">Cyclades Island Airports</h2>
-            <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">Most islands have their own airports with connections from Athens</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-4">{t('flights.airports.title', 'Cyclades Island Airports')}</h2>
+            <p className="text-gray-600 dark:text-white/60 text-center mb-12 max-w-2xl mx-auto">{t('flights.airports.subtitle', 'Most islands have their own airports with connections from Athens')}</p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {airports.map((airport, idx) => (
@@ -184,7 +186,7 @@ export default function Flights() {
         {/* Tips */}
         <div className="py-20 bg-gray-50 dark:bg-dark-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">Flight Booking Tips</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white text-center mb-12">{t('flights.tips.title', 'Flight Booking Tips')}</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
                 { icon: Calendar, title: 'Book Early for Summer', desc: 'For June-August, book 2-4 months in advance.' },
@@ -228,9 +230,9 @@ export default function Flights() {
         {/* CTA */}
         <div className="py-20 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready for Your Cyclades Adventure?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{t('flights.cta.title', 'Ready for Your Cyclades Adventure?')}</h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              The magic of the Greek Islands awaits. Book your flight and start your dream vacation.
+              {t('flights.cta.subtitle', 'The magic of the Greek Islands awaits. Book your flight and start your dream vacation.')}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <button

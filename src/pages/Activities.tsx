@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { MapPin, Calendar, Users, Star, Info, Compass, Sailboat, Utensils, ArrowRight, Waves } from 'lucide-react';
 import SEO from '../components/SEO';
 import FAQSection from '../components/FAQSection';
@@ -6,6 +7,7 @@ import RelatedLinks from '../components/RelatedLinks';
 import GetYourGuideWidget, { GYG_LOCATIONS } from '../components/activities/GetYourGuideWidget';
 
 export default function Activities() {
+  const { t } = useTranslation();
   const categories = [
     {
       title: 'Sailing & Boat Tours',
@@ -94,11 +96,10 @@ export default function Activities() {
           <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 md:py-28 w-full">
             <div className="max-w-3xl mb-10 md:mb-12">
               <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-white mb-4 md:mb-6 tracking-tight">
-                Unforgettable <span className="text-cyclades-turquoise">Experiences</span>
+                {t('activities.hero.title', 'Unforgettable ')} <span className="text-cyclades-turquoise">{t('activities.hero.titleHighlight', 'Experiences')}</span>
               </h1>
               <p className="text-lg md:text-xl text-white/90 leading-relaxed px-1">
-                Discover and book the best tours, experiences, and things to do across the Greek islands.
-                From sailing adventures to cultural immersion.
+                {t('activities.hero.subtitle', 'Discover and book the best tours, experiences, and things to do across the Greek islands. From sailing adventures to cultural immersion.')}
               </p>
             </div>
 
@@ -137,9 +138,9 @@ export default function Activities() {
         <div className="py-20 bg-white dark:bg-dark-card">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Browse & Book Activities</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('activities.browse.title', 'Browse & Book Activities')}</h2>
               <p className="text-lg text-gray-600 dark:text-white/60 max-w-3xl mx-auto">
-                Find the perfect experiences for your island adventure with our curated selection
+                {t('activities.browse.subtitle', 'Find the perfect experiences for your island adventure with our curated selection')}
               </p>
             </div>
 
@@ -157,9 +158,9 @@ export default function Activities() {
         <div className="py-20 bg-gray-50 dark:bg-dark-bg">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="text-center mb-12">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">Why Book With Us</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">{t('activities.whyBook.title', 'Why Book With Us')}</h2>
               <p className="text-lg text-gray-600 dark:text-white/60 max-w-3xl mx-auto">
-                We partner with the best local providers for exceptional experiences
+                {t('activities.whyBook.subtitle', 'We partner with the best local providers for exceptional experiences')}
               </p>
             </div>
 
@@ -186,13 +187,13 @@ export default function Activities() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="flex items-center justify-between mb-12">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">Top Destinations</h2>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">{t('activities.destinations.title', 'Top Destinations')}</h2>
                 <p className="text-lg text-gray-600 dark:text-white/60">
-                  Explore the most popular islands for activities
+                  {t('activities.destinations.subtitle', 'Explore the most popular islands for activities')}
                 </p>
               </div>
               <Link to="/islands" className="hidden md:flex items-center gap-2 text-cyan-600 dark:text-cyclades-turquoise font-medium hover:underline">
-                View all islands <ArrowRight className="w-4 h-4" />
+                {t('activities.destinations.viewAll', 'View all islands')} <ArrowRight className="w-4 h-4" />
               </Link>
             </div>
 
@@ -249,9 +250,9 @@ export default function Activities() {
         {/* CTA */}
         <div className="py-20 bg-gradient-to-br from-cyan-600 to-cyclades-turquoise">
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">Ready for Your Island Adventure?</h2>
+            <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">{t('activities.cta.title', 'Ready for Your Island Adventure?')}</h2>
             <p className="text-xl text-white/90 max-w-2xl mx-auto mb-8">
-              Book your activities now and create unforgettable memories in the Cyclades
+              {t('activities.cta.subtitle', 'Book your activities now and create unforgettable memories in the Cyclades')}
             </p>
             <div className="flex flex-wrap justify-center gap-4">
               <a

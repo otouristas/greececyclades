@@ -1,11 +1,12 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaMapMarkedAlt, 
-  FaShip, 
-  FaUtensils, 
-  FaSun, 
-  FaCameraRetro, 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaMapMarkedAlt,
+  FaShip,
+  FaUtensils,
+  FaSun,
+  FaCameraRetro,
   FaSwimmer,
   FaHiking,
   FaHome,
@@ -18,6 +19,7 @@ import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSec
 import { siteLinks } from '../data/siteLinks';
 
 const AmorgosGuide: React.FC = () => {
+  const { t } = useTranslation();
   const amorgos = islandGuides.find(island => island.id === 'amorgos');
 
   if (!amorgos) {
@@ -120,45 +122,45 @@ const AmorgosGuide: React.FC = () => {
   return (
     <>
       <SEO {...seoData} />
-      
+
       <div className="bg-gray-50">
-        <IslandGuideHero 
+        <IslandGuideHero
           name={amorgos.name || "Amorgos"}
           description={amorgos.description || "The Dramatic Island of the Big Blue"}
           image={amorgos.image}
           bestTime={amorgos.bestTime || "April to October, with May-June and September being ideal"}
           idealFor={amorgos.idealFor || ["Nature Lovers", "Hikers", "Spiritual Seekers", "Authentic Experience"]}
         />
-        
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Amorgos</h2>
               <p className="text-gray-700 leading-relaxed">
-                Discover Amorgos, a captivating island in the eastern Cyclades known for its dramatic landscapes, 
-                crystal-clear waters, and authentic Greek charm. Made famous by Luc Besson's film "The Big Blue," 
-                this elongated island offers a perfect blend of natural beauty, spiritual energy, and traditional 
+                Discover Amorgos, a captivating island in the eastern Cyclades known for its dramatic landscapes,
+                crystal-clear waters, and authentic Greek charm. Made famous by Luc Besson's film "The Big Blue,"
+                this elongated island offers a perfect blend of natural beauty, spiritual energy, and traditional
                 Cycladic culture.
               </p>
               <p className="text-gray-700 leading-relaxed">
-                From the breathtaking Monastery of Hozoviotissa clinging to a cliff face to 
-                picturesque villages and pristine beaches, Amorgos provides an unforgettable experience for 
+                From the breathtaking Monastery of Hozoviotissa clinging to a cliff face to
+                picturesque villages and pristine beaches, Amorgos provides an unforgettable experience for
                 travelers seeking to connect with the authentic spirit of the Greek islands.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/images/islands/amorgos/landscape.jpg" 
-                  alt="Amorgos Landscape" 
+                <img
+                  src="/images/islands/amorgos/landscape.jpg"
+                  alt="Amorgos Landscape"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 w-2/3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/islands/amorgos/monastery-detail.jpg" 
-                    alt="Monastery of Hozoviotissa Detail" 
+                  <img
+                    src="/images/islands/amorgos/monastery-detail.jpg"
+                    alt="Monastery of Hozoviotissa Detail"
                     className="w-full h-full object-cover"
                   />
                 </div>
@@ -171,9 +173,9 @@ const AmorgosGuide: React.FC = () => {
             <h3 className="text-xl font-semibold mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
               {categories.map((category, index) => (
-                <a 
+                <a
                   key={index}
-                  href={category.link} 
+                  href={category.link}
                   className="flex items-center justify-center flex-col text-center px-4 py-3 bg-blue-50 dark:bg-cyan-600/10 text-blue-800 rounded-lg hover:bg-blue-100 transition duration-300"
                 >
                   <div className="text-2xl mb-2">
@@ -194,11 +196,11 @@ const AmorgosGuide: React.FC = () => {
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <p className="text-gray-700 mb-6">
-                  Amorgos enjoys a typical Mediterranean climate with hot, dry summers and mild winters. 
-                  The island's weather is influenced by the meltemi winds that can be quite strong during 
+                  Amorgos enjoys a typical Mediterranean climate with hot, dry summers and mild winters.
+                  The island's weather is influenced by the meltemi winds that can be quite strong during
                   the peak summer months.
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
                   <div>
                     <h3 className="text-xl font-semibold mb-3">High Season (July-August)</h3>
@@ -209,7 +211,7 @@ const AmorgosGuide: React.FC = () => {
                       <li>• All facilities, restaurants, and accommodations operating</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Shoulder Season (May-June, September-October)</h3>
                     <ul className="space-y-2 text-gray-600 dark:text-white/60">
@@ -220,7 +222,7 @@ const AmorgosGuide: React.FC = () => {
                     </ul>
                   </div>
                 </div>
-                
+
                 <div className="mb-6">
                   <h3 className="text-xl font-semibold mb-3">Low Season (November-April)</h3>
                   <p className="text-gray-600 mb-3">
@@ -234,13 +236,13 @@ const AmorgosGuide: React.FC = () => {
                     <li>• Occasional rainfall, especially December through February</li>
                   </ul>
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-semibold mb-3">Best Time to Visit</h3>
                   <p className="text-gray-600 dark:text-white/60">
-                    The ideal times to visit Amorgos are late May to early July and September, when the 
-                    weather is warm but not too hot, the meltemi winds are less intense, and there are 
-                    fewer tourists. These periods are perfect for hiking the island's many trails and 
+                    The ideal times to visit Amorgos are late May to early July and September, when the
+                    weather is warm but not too hot, the meltemi winds are less intense, and there are
+                    fewer tourists. These periods are perfect for hiking the island's many trails and
                     enjoying its beaches without the crowds.
                   </p>
                 </div>
@@ -254,28 +256,28 @@ const AmorgosGuide: React.FC = () => {
               <FaHome className="text-2xl text-blue-500 mr-3" />
               <h2 className="text-3xl font-bold">Villages</h2>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <p className="text-gray-700 mb-6">
-                  Amorgos is home to charming villages that showcase authentic Cycladic architecture and 
-                  offer a glimpse into traditional island life. Each settlement has its own unique character 
+                  Amorgos is home to charming villages that showcase authentic Cycladic architecture and
+                  offer a glimpse into traditional island life. Each settlement has its own unique character
                   and attractions worth exploring.
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <div className="aspect-w-16 aspect-h-9 mb-4">
-                      <img 
-                        src="/images/islands/amorgos/chora.jpg" 
-                        alt="Chora of Amorgos" 
+                      <img
+                        src="/images/islands/amorgos/chora.jpg"
+                        alt="Chora of Amorgos"
                         className="w-full h-64 object-cover rounded-lg"
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Chora</h3>
                     <p className="text-gray-600 mb-3">
-                      The capital of Amorgos is a stunning example of Cycladic architecture, perched on a hill 
-                      with panoramic views. Its maze-like streets, whitewashed houses, blue-domed churches, and 
+                      The capital of Amorgos is a stunning example of Cycladic architecture, perched on a hill
+                      with panoramic views. Its maze-like streets, whitewashed houses, blue-domed churches, and
                       Venetian castle (Kastro) create a picturesque setting. Chora is known for:
                     </p>
                     <ul className="space-y-1 text-gray-600 mb-3">
@@ -286,19 +288,19 @@ const AmorgosGuide: React.FC = () => {
                       <li>• The Archaeological Collection of Amorgos</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <div className="aspect-w-16 aspect-h-9 mb-4">
-                      <img 
-                        src="/images/islands/amorgos/katapola.jpg" 
-                        alt="Katapola port" 
+                      <img
+                        src="/images/islands/amorgos/katapola.jpg"
+                        alt="Katapola port"
                         className="w-full h-64 object-cover rounded-lg"
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Katapola</h3>
                     <p className="text-gray-600 mb-3">
-                      One of the main ports of Amorgos, Katapola is a picturesque harbor village with a 
-                      relaxed atmosphere. The village is actually composed of three smaller settlements: 
+                      One of the main ports of Amorgos, Katapola is a picturesque harbor village with a
+                      relaxed atmosphere. The village is actually composed of three smaller settlements:
                       Katapola, Rachidi, and Xylokeratidi. Highlights include:
                     </p>
                     <ul className="space-y-1 text-gray-600 mb-3">
@@ -310,20 +312,20 @@ const AmorgosGuide: React.FC = () => {
                     </ul>
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <div className="aspect-w-16 aspect-h-9 mb-4">
-                      <img 
-                        src="/images/islands/amorgos/aegiali.jpg" 
-                        alt="Aegiali village and bay" 
+                      <img
+                        src="/images/islands/amorgos/aegiali.jpg"
+                        alt="Aegiali village and bay"
                         className="w-full h-64 object-cover rounded-lg"
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Aegiali</h3>
                     <p className="text-gray-600 mb-3">
-                      The second main port of Amorgos, Aegiali is a beautiful bay with a sandy beach and 
-                      a vibrant village. It's known for its relaxed atmosphere and is popular with younger 
+                      The second main port of Amorgos, Aegiali is a beautiful bay with a sandy beach and
+                      a vibrant village. It's known for its relaxed atmosphere and is popular with younger
                       travelers. The area includes:
                     </p>
                     <ul className="space-y-1 text-gray-600 mb-3">
@@ -334,19 +336,19 @@ const AmorgosGuide: React.FC = () => {
                       <li>• Yoga and wellness centers</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <div className="aspect-w-16 aspect-h-9 mb-4">
-                      <img 
-                        src="/images/islands/amorgos/tholaria.jpg" 
-                        alt="Tholaria village" 
+                      <img
+                        src="/images/islands/amorgos/tholaria.jpg"
+                        alt="Tholaria village"
                         className="w-full h-64 object-cover rounded-lg"
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Tholaria & Langada</h3>
                     <p className="text-gray-600 mb-3">
-                      These traditional mountain villages above Aegiali offer authentic experiences and 
-                      breathtaking views. Connected by scenic hiking paths, they provide a glimpse into 
+                      These traditional mountain villages above Aegiali offer authentic experiences and
+                      breathtaking views. Connected by scenic hiking paths, they provide a glimpse into
                       traditional Amorgian life:
                     </p>
                     <ul className="space-y-1 text-gray-600 mb-3">
@@ -358,7 +360,7 @@ const AmorgosGuide: React.FC = () => {
                     </ul>
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-semibold mb-3">Other Notable Settlements</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -398,28 +400,28 @@ const AmorgosGuide: React.FC = () => {
               <FaUmbrellaBeach className="text-2xl text-blue-500 mr-3" />
               <h2 className="text-3xl font-bold">Beaches</h2>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <p className="text-gray-700 mb-6">
-                  Amorgos is known for its pristine beaches with crystal-clear waters. While not as famous for 
-                  sandy beaches as other Cycladic islands, Amorgos offers unique swimming spots with dramatic 
+                  Amorgos is known for its pristine beaches with crystal-clear waters. While not as famous for
+                  sandy beaches as other Cycladic islands, Amorgos offers unique swimming spots with dramatic
                   backdrops and unspoiled natural beauty.
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <div className="aspect-w-16 aspect-h-9 mb-4">
-                      <img 
-                        src="/images/islands/amorgos/agia-anna.jpg" 
-                        alt="Agia Anna Beach" 
+                      <img
+                        src="/images/islands/amorgos/agia-anna.jpg"
+                        alt="Agia Anna Beach"
                         className="w-full h-64 object-cover rounded-lg"
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Agia Anna</h3>
                     <p className="text-gray-600 mb-3">
-                      Made famous by Luc Besson's film "The Big Blue," this small pebble beach features 
-                      dramatic cliffs and incredibly clear deep blue waters. Located near the Monastery 
+                      Made famous by Luc Besson's film "The Big Blue," this small pebble beach features
+                      dramatic cliffs and incredibly clear deep blue waters. Located near the Monastery
                       of Hozoviotissa, it's one of the most photographed spots on the island.
                     </p>
                     <div className="flex flex-wrap gap-2 mb-3">
@@ -429,19 +431,19 @@ const AmorgosGuide: React.FC = () => {
                       <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Deep waters</span>
                     </div>
                   </div>
-                  
+
                   <div>
                     <div className="aspect-w-16 aspect-h-9 mb-4">
-                      <img 
-                        src="/images/islands/amorgos/aegiali-beach.jpg" 
-                        alt="Aegiali Beach" 
+                      <img
+                        src="/images/islands/amorgos/aegiali-beach.jpg"
+                        alt="Aegiali Beach"
                         className="w-full h-64 object-cover rounded-lg"
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Aegiali Beach</h3>
                     <p className="text-gray-600 mb-3">
-                      The largest sandy beach on Amorgos, Aegiali offers a long stretch of golden sand 
-                      and shallow waters, making it ideal for families. With full amenities and beachfront 
+                      The largest sandy beach on Amorgos, Aegiali offers a long stretch of golden sand
+                      and shallow waters, making it ideal for families. With full amenities and beachfront
                       tavernas, it's the most organized beach on the island.
                     </p>
                     <div className="flex flex-wrap gap-2 mb-3">
@@ -453,20 +455,20 @@ const AmorgosGuide: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <div className="aspect-w-16 aspect-h-9 mb-4">
-                      <img 
-                        src="/images/islands/amorgos/mouros.jpg" 
-                        alt="Mouros Beach" 
+                      <img
+                        src="/images/islands/amorgos/mouros.jpg"
+                        alt="Mouros Beach"
                         className="w-full h-64 object-cover rounded-lg"
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Mouros Beach</h3>
                     <p className="text-gray-600 mb-3">
-                      A stunning beach with large pebbles and crystal-clear turquoise waters. Surrounded by 
-                      impressive rock formations and accessible by a path from the main road, Mouros offers 
+                      A stunning beach with large pebbles and crystal-clear turquoise waters. Surrounded by
+                      impressive rock formations and accessible by a path from the main road, Mouros offers
                       a secluded swimming experience with dramatic natural beauty.
                     </p>
                     <div className="flex flex-wrap gap-2 mb-3">
@@ -476,19 +478,19 @@ const AmorgosGuide: React.FC = () => {
                       <span className="bg-blue-100 text-blue-800 text-xs font-medium px-2.5 py-0.5 rounded">Scenic</span>
                     </div>
                   </div>
-                  
+
                   <div>
                     <div className="aspect-w-16 aspect-h-9 mb-4">
-                      <img 
-                        src="/images/islands/amorgos/kalotaritissa.jpg" 
-                        alt="Kalotaritissa Beach" 
+                      <img
+                        src="/images/islands/amorgos/kalotaritissa.jpg"
+                        alt="Kalotaritissa Beach"
                         className="w-full h-64 object-cover rounded-lg"
                       />
                     </div>
                     <h3 className="text-xl font-semibold mb-2">Kalotaritissa</h3>
                     <p className="text-gray-600 mb-3">
-                      Located at the southwestern tip of Amorgos, this remote beach offers a peaceful 
-                      environment with shallow waters. Nearby is the shipwreck of "Olympia," which can 
+                      Located at the southwestern tip of Amorgos, this remote beach offers a peaceful
+                      environment with shallow waters. Nearby is the shipwreck of "Olympia," which can
                       be visited by boat. The area includes several small coves to explore.
                     </p>
                     <div className="flex flex-wrap gap-2 mb-3">
@@ -499,7 +501,7 @@ const AmorgosGuide: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-semibold mb-3">Other Notable Beaches</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -539,20 +541,20 @@ const AmorgosGuide: React.FC = () => {
               <FaHiking className="text-2xl text-blue-500 mr-3" />
               <h2 className="text-3xl font-bold">Activities</h2>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <p className="text-gray-700 mb-6">
-                  Amorgos offers a variety of activities beyond its beaches, with a particular focus on 
-                  outdoor adventures, cultural experiences, and spiritual exploration. The island's dramatic 
+                  Amorgos offers a variety of activities beyond its beaches, with a particular focus on
+                  outdoor adventures, cultural experiences, and spiritual exploration. The island's dramatic
                   landscapes and rich heritage provide the perfect backdrop for memorable experiences.
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Hiking & Nature</h3>
                     <p className="text-gray-600 mb-3">
-                      Amorgos is a hiker's paradise with an extensive network of well-marked trails that 
+                      Amorgos is a hiker's paradise with an extensive network of well-marked trails that
                       connect villages and traverse stunning landscapes:
                     </p>
                     <ul className="space-y-2 text-gray-600 mb-4">
@@ -563,7 +565,7 @@ const AmorgosGuide: React.FC = () => {
                       <li>• <span className="font-medium">Asfontylitis Windmills</span> - Hike to the abandoned windmills for panoramic views</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Cultural & Spiritual Experiences</h3>
                     <p className="text-gray-600 mb-3">
@@ -578,7 +580,7 @@ const AmorgosGuide: React.FC = () => {
                     </ul>
                   </div>
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Water Activities</h3>
@@ -593,7 +595,7 @@ const AmorgosGuide: React.FC = () => {
                       <li>• <span className="font-medium">Swimming</span> - Enjoy the exceptionally clear waters at various beaches and coves</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Food & Shopping</h3>
                     <p className="text-gray-600 mb-3">
@@ -608,7 +610,7 @@ const AmorgosGuide: React.FC = () => {
                     </ul>
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-semibold mb-3">Organized Activities & Tours</h3>
                   <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
@@ -648,14 +650,14 @@ const AmorgosGuide: React.FC = () => {
               <FaUtensils className="text-2xl text-blue-500 mr-3" />
               <h2 className="text-3xl font-bold">Cuisine</h2>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <p className="text-gray-700 mb-6">
-                  Amorgos offers a rich culinary tradition that reflects its agricultural heritage and maritime location. 
+                  Amorgos offers a rich culinary tradition that reflects its agricultural heritage and maritime location.
                   The island's cuisine is characterized by fresh ingredients, simple preparation methods, and bold flavors.
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Local Specialties</h3>
@@ -663,41 +665,41 @@ const AmorgosGuide: React.FC = () => {
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
-                          <span className="font-medium">Patatato</span> - A traditional meat stew with potatoes, 
+                          <span className="font-medium">Patatato</span> - A traditional meat stew with potatoes,
                           cooked with onions, tomatoes, and local herbs.
                         </div>
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
-                          <span className="font-medium">Xerotigana</span> - Sweet pastries made of thin dough, 
+                          <span className="font-medium">Xerotigana</span> - Sweet pastries made of thin dough,
                           fried and then dipped in honey and sprinkled with cinnamon and walnuts.
                         </div>
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
-                          <span className="font-medium">Ladotyri</span> - A local cheese preserved in olive oil, 
+                          <span className="font-medium">Ladotyri</span> - A local cheese preserved in olive oil,
                           giving it a unique flavor and texture.
                         </div>
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
-                          <span className="font-medium">Psimeni Raki</span> - A traditional spirit flavored with 
+                          <span className="font-medium">Psimeni Raki</span> - A traditional spirit flavored with
                           honey, herbs, and cinnamon, often served as a digestif.
                         </div>
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
-                          <span className="font-medium">Pasteli</span> - A sweet made with sesame seeds and honey, 
+                          <span className="font-medium">Pasteli</span> - A sweet made with sesame seeds and honey,
                           a healthy energy snack enjoyed throughout Greece.
                         </div>
                       </li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Seafood & Main Dishes</h3>
                     <ul className="space-y-3 text-gray-600 dark:text-white/60">
@@ -710,14 +712,14 @@ const AmorgosGuide: React.FC = () => {
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
-                          <span className="font-medium">Kakavia</span> - A traditional fisherman's soup made with 
+                          <span className="font-medium">Kakavia</span> - A traditional fisherman's soup made with
                           the catch of the day, potatoes, and vegetables.
                         </div>
                       </li>
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
-                          <span className="font-medium">Amorgian Fava</span> - Yellow split pea puree topped with 
+                          <span className="font-medium">Amorgian Fava</span> - Yellow split pea puree topped with
                           onions, capers, and olive oil.
                         </div>
                       </li>
@@ -730,14 +732,14 @@ const AmorgosGuide: React.FC = () => {
                       <li className="flex items-start">
                         <span className="text-blue-500 mr-2">•</span>
                         <div>
-                          <span className="font-medium">Marathotiganites</span> - Fennel fritters, a delicious appetizer 
+                          <span className="font-medium">Marathotiganites</span> - Fennel fritters, a delicious appetizer
                           made with local wild fennel.
                         </div>
                       </li>
                     </ul>
                   </div>
                 </div>
-                
+
                 <div className="mb-8">
                   <h3 className="text-xl font-semibold mb-3">Where to Eat</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -755,7 +757,7 @@ const AmorgosGuide: React.FC = () => {
                     </div>
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-semibold mb-3">Culinary Experiences</h3>
                   <ul className="space-y-2 text-gray-600 dark:text-white/60">
@@ -776,14 +778,14 @@ const AmorgosGuide: React.FC = () => {
               <FaCameraRetro className="text-2xl text-blue-500 mr-3" />
               <h2 className="text-3xl font-bold">Photo Gallery</h2>
             </div>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
                   <div className="aspect-w-16 aspect-h-9">
-                    <img 
-                      src={image.src} 
-                      alt={image.alt} 
+                    <img
+                      src={image.src}
+                      alt={image.alt}
                       className="w-full h-64 object-cover hover:opacity-90 transition-opacity"
                     />
                   </div>
@@ -801,14 +803,14 @@ const AmorgosGuide: React.FC = () => {
               <FaShip className="text-2xl text-blue-500 mr-3" />
               <h2 className="text-3xl font-bold">How to Get There</h2>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <p className="text-gray-700 mb-6">
-                  Amorgos is accessible primarily by ferry from Athens and other nearby islands. The island 
+                  Amorgos is accessible primarily by ferry from Athens and other nearby islands. The island
                   has two main ports: Katapola and Aegiali, both serving ferries from various destinations.
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                   <div>
                     <h3 className="text-xl font-semibold mb-3">By Ferry</h3>
@@ -820,7 +822,7 @@ const AmorgosGuide: React.FC = () => {
                       <li>• <span className="font-medium">From Small Cyclades</span> - Regular connections to Koufonisia, Donoussa, etc.</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Getting Around</h3>
                     <ul className="space-y-2 text-gray-600 dark:text-white/60">
@@ -832,7 +834,7 @@ const AmorgosGuide: React.FC = () => {
                     </ul>
                   </div>
                 </div>
-                
+
                 <div>
                   <h3 className="text-xl font-semibold mb-3">Accommodation</h3>
                   <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -863,13 +865,13 @@ const AmorgosGuide: React.FC = () => {
               <FaSwimmer className="text-2xl text-blue-500 mr-3" />
               <h2 className="text-3xl font-bold">Water Activities</h2>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <p className="text-gray-700 mb-6">
                   The crystal-clear waters surrounding Amorgos offer excellent opportunities for various water activities.
                 </p>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Swimming & Snorkeling</h3>
@@ -883,7 +885,7 @@ const AmorgosGuide: React.FC = () => {
                       <li>• Plakes - Rocky platforms with direct access to deep waters</li>
                     </ul>
                   </div>
-                  
+
                   <div>
                     <h3 className="text-xl font-semibold mb-3">Diving</h3>
                     <p className="text-gray-600 mb-3">
@@ -907,22 +909,22 @@ const AmorgosGuide: React.FC = () => {
               <FaMapMarkedAlt className="text-2xl text-blue-500 mr-3" />
               <h2 className="text-3xl font-bold">Exploration Map</h2>
             </div>
-            
+
             <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
               <div className="p-6">
                 <p className="text-gray-700 mb-6">
-                  Use this map to plan your exploration of Amorgos. The island is elongated, with a length of about 33 km, 
+                  Use this map to plan your exploration of Amorgos. The island is elongated, with a length of about 33 km,
                   and features dramatic landscapes, charming villages, and beautiful beaches.
                 </p>
-                
+
                 <div className="aspect-w-16 aspect-h-9 mb-4">
-                  <img 
-                    src="/images/islands/amorgos/amorgos-map.jpg" 
-                    alt="Map of Amorgos Island" 
+                  <img
+                    src="/images/islands/amorgos/amorgos-map.jpg"
+                    alt="Map of Amorgos Island"
                     className="w-full h-auto object-contain rounded-lg"
                   />
                 </div>
-                
+
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mt-6">
                   <div className="bg-blue-50 dark:bg-cyan-600/10 p-4 rounded-lg">
                     <h4 className="font-medium mb-1">Northern Region</h4>
@@ -949,18 +951,18 @@ const AmorgosGuide: React.FC = () => {
                   <div className="text-white">
                     <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">Ready to Experience Amorgos?</h2>
                     <p className="text-lg mb-8 opacity-90">
-                      Start planning your perfect getaway to this dramatic Cycladic island with its stunning monastery, 
+                      Start planning your perfect getaway to this dramatic Cycladic island with its stunning monastery,
                       crystal-clear waters, and authentic Greek charm.
                     </p>
                     <div className="flex flex-col sm:flex-row gap-4">
-                      <a 
-                        href="/hotels/" 
+                      <a
+                        href="/hotels/"
                         className="bg-white text-blue-600 px-8 py-3 rounded-lg hover:bg-blue-50 dark:bg-cyan-600/10 transition-colors inline-block font-medium"
                       >
                         Find Accommodations
                       </a>
-                      <a 
-                        href="/ferry-tickets/" 
+                      <a
+                        href="/ferry-tickets/"
                         className="bg-transparent text-white border border-white px-8 py-3 rounded-lg hover:bg-blue-600 transition-colors inline-block font-medium"
                       >
                         How to get there
@@ -969,9 +971,9 @@ const AmorgosGuide: React.FC = () => {
                   </div>
                   <div className="relative hidden lg:block">
                     <div className="aspect-[4/3] rounded-2xl overflow-hidden">
-                      <img 
-                        src="/images/islands/amorgos/best-time.jpg" 
-                        alt="Best time to visit Amorgos" 
+                      <img
+                        src="/images/islands/amorgos/best-time.jpg"
+                        alt="Best time to visit Amorgos"
                         className="w-full h-full object-cover"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent flex items-end">

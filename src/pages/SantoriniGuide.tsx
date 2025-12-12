@@ -1,16 +1,17 @@
 import React from 'react';
-import { 
-  FaUmbrellaBeach, 
-  FaRoute, 
-  FaWineGlass, 
-  FaCameraRetro, 
-  FaSun, 
-  FaCalendarAlt, 
-  FaUtensils, 
-  FaHistory, 
-  FaWater, 
-  FaHiking, 
-  FaMapMarkedAlt 
+import { useTranslation } from 'react-i18next';
+import {
+  FaUmbrellaBeach,
+  FaRoute,
+  FaWineGlass,
+  FaCameraRetro,
+  FaSun,
+  FaCalendarAlt,
+  FaUtensils,
+  FaHistory,
+  FaWater,
+  FaHiking,
+  FaMapMarkedAlt
 } from 'react-icons/fa';
 import SEO from '../components/SEO';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
@@ -19,6 +20,7 @@ import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSec
 import { siteLinks } from '../data/siteLinks';
 
 const SantoriniGuide: React.FC = () => {
+  const { t } = useTranslation();
   const santorini = islandGuides.find(island => island.id === 'santorini');
 
   if (!santorini) {
@@ -80,7 +82,7 @@ const SantoriniGuide: React.FC = () => {
 
   return (
     <>
-      <SEO {...seoData} 
+      <SEO {...seoData}
         jsonLD={{
           "@context": "https://schema.org",
           "@type": "TouristDestination",
@@ -156,49 +158,49 @@ const SantoriniGuide: React.FC = () => {
       />
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...santorini} />
-        
+
         {/* Introduction Section with Enhanced Visual */}
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center mb-16">
             <div className="prose prose-lg max-w-none">
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Welcome to Santorini</h2>
               <p className="text-gray-700 dark:text-white/80 leading-relaxed">
-                Rising dramatically from the Aegean Sea, Santorini is a masterpiece of natural beauty and human architecture. 
-                This crescent-shaped island, born from one of history's largest volcanic eruptions, offers a spectacular blend 
+                Rising dramatically from the Aegean Sea, Santorini is a masterpiece of natural beauty and human architecture.
+                This crescent-shaped island, born from one of history's largest volcanic eruptions, offers a spectacular blend
                 of pristine white-washed buildings, multicolored cliffs, and the world's most breathtaking sunsets.
               </p>
               <p className="text-gray-700 dark:text-white/80 leading-relaxed">
-                Whether you're seeking a romantic getaway, a photography adventure, or a cultural journey through ancient history, 
-                Santorini promises an unforgettable experience. Our comprehensive guide will help you discover the best of what 
+                Whether you're seeking a romantic getaway, a photography adventure, or a cultural journey through ancient history,
+                Santorini promises an unforgettable experience. Our comprehensive guide will help you discover the best of what
                 this magical island has to offer.
               </p>
             </div>
             <div className="relative">
               <div className="aspect-w-4 aspect-h-3 rounded-2xl overflow-hidden shadow-xl">
-                <img 
-                  src="/images/islands/santorini/caldera-view.jpg" 
-                  alt="Santorini Caldera View" 
+                <img
+                  src="/images/islands/santorini/caldera-view.jpg"
+                  alt="Santorini Caldera View"
                   className="w-full h-full object-cover"
                 />
               </div>
               <div className="absolute -bottom-8 -left-8 w-2/3">
                 <div className="aspect-[4/3] rounded-2xl overflow-hidden shadow-xl">
-                  <img 
-                    src="/images/islands/santorini/oia-detail.jpg" 
-                    alt="Oia Detail" 
+                  <img
+                    src="/images/islands/santorini/oia-detail.jpg"
+                    alt="Oia Detail"
                     className="w-full h-full object-cover"
                   />
                 </div>
               </div>
             </div>
           </div>
-          
+
           {/* Quick Navigation */}
           <div className="bg-white dark:bg-dark-card rounded-lg shadow-md p-6 mb-8">
             <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">Quick Navigation</h3>
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-3">
-              <a 
-                href="#villages" 
+              <a
+                href="#villages"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-cyan-600/5 dark:bg-cyan-600/10 text-cyan-600 dark:text-cyclades-turquoise rounded-lg hover:bg-cyan-600/10 dark:hover:bg-cyan-600/20 transition duration-300 border border-cyan-600/10 dark:border-white/10"
               >
                 <div className="text-2xl mb-2">
@@ -206,8 +208,8 @@ const SantoriniGuide: React.FC = () => {
                 </div>
                 <span className="font-medium text-sm">Villages</span>
               </a>
-              <a 
-                href="#beaches" 
+              <a
+                href="#beaches"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-cyan-600/5 dark:bg-cyan-600/10 text-cyan-600 dark:text-cyclades-turquoise rounded-lg hover:bg-cyan-600/10 dark:hover:bg-cyan-600/20 transition duration-300 border border-cyan-600/10 dark:border-white/10"
               >
                 <div className="text-2xl mb-2">
@@ -215,8 +217,8 @@ const SantoriniGuide: React.FC = () => {
                 </div>
                 <span className="font-medium text-sm">Beaches</span>
               </a>
-              <a 
-                href="#dining" 
+              <a
+                href="#dining"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-cyan-600/5 dark:bg-cyan-600/10 text-cyan-600 dark:text-cyclades-turquoise rounded-lg hover:bg-cyan-600/10 dark:hover:bg-cyan-600/20 transition duration-300 border border-cyan-600/10 dark:border-white/10"
               >
                 <div className="text-2xl mb-2">
@@ -224,8 +226,8 @@ const SantoriniGuide: React.FC = () => {
                 </div>
                 <span className="font-medium text-sm">Local Cuisine</span>
               </a>
-              <a 
-                href="#activities" 
+              <a
+                href="#activities"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-cyan-600/5 dark:bg-cyan-600/10 text-cyan-600 dark:text-cyclades-turquoise rounded-lg hover:bg-cyan-600/10 dark:hover:bg-cyan-600/20 transition duration-300 border border-cyan-600/10 dark:border-white/10"
               >
                 <div className="text-2xl mb-2">
@@ -233,8 +235,8 @@ const SantoriniGuide: React.FC = () => {
                 </div>
                 <span className="font-medium text-sm">Activities</span>
               </a>
-              <a 
-                href="#photos" 
+              <a
+                href="#photos"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-cyan-600/5 dark:bg-cyan-600/10 text-cyan-600 dark:text-cyclades-turquoise rounded-lg hover:bg-cyan-600/10 dark:hover:bg-cyan-600/20 transition duration-300 border border-cyan-600/10 dark:border-white/10"
               >
                 <div className="text-2xl mb-2">
@@ -242,8 +244,8 @@ const SantoriniGuide: React.FC = () => {
                 </div>
                 <span className="font-medium text-sm">Photo Gallery</span>
               </a>
-              <a 
-                href="#when-to-visit" 
+              <a
+                href="#when-to-visit"
                 className="flex items-center justify-center flex-col text-center px-4 py-3 bg-cyan-600/5 dark:bg-cyan-600/10 text-cyan-600 dark:text-cyclades-turquoise rounded-lg hover:bg-cyan-600/10 dark:hover:bg-cyan-600/20 transition duration-300 border border-cyan-600/10 dark:border-white/10"
               >
                 <div className="text-2xl mb-2">
@@ -264,17 +266,17 @@ const SantoriniGuide: React.FC = () => {
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Ancient Origins</h3>
                 </div>
                 <p className="text-gray-600 dark:text-white/60 mb-4">
-                  Santorini's history dates back to the 3rd millennium BC when it was home to the advanced Minoan civilization. 
-                  The catastrophic volcanic eruption around 1600 BC, one of the largest in recorded history, shaped the island's 
+                  Santorini's history dates back to the 3rd millennium BC when it was home to the advanced Minoan civilization.
+                  The catastrophic volcanic eruption around 1600 BC, one of the largest in recorded history, shaped the island's
                   current crescent form and may have contributed to the decline of the Minoan civilization on Crete.
                 </p>
                 <p className="text-gray-600 dark:text-white/60 mb-4">
-                  The ancient city of Akrotiri, often called the "Minoan Pompeii," was preserved under layers of volcanic ash, 
-                  providing a remarkable glimpse into Bronze Age life. The settlement featured multi-story buildings, advanced 
+                  The ancient city of Akrotiri, often called the "Minoan Pompeii," was preserved under layers of volcanic ash,
+                  providing a remarkable glimpse into Bronze Age life. The settlement featured multi-story buildings, advanced
                   plumbing systems, and beautiful frescoes that can still be admired today.
                 </p>
                 <p className="text-gray-600 dark:text-white/60">
-                  Throughout its history, Santorini has been influenced by various civilizations including the Phoenicians, 
+                  Throughout its history, Santorini has been influenced by various civilizations including the Phoenicians,
                   Dorians, Romans, Byzantines, Venetians, and Ottomans, each leaving their mark on the island's culture and architecture.
                 </p>
               </div>
@@ -284,18 +286,18 @@ const SantoriniGuide: React.FC = () => {
                   <h3 className="text-2xl font-semibold text-gray-900 dark:text-white">Volcanic Landscape</h3>
                 </div>
                 <p className="text-gray-600 dark:text-white/60 mb-4">
-                  Santorini sits on the Aegean Volcanic Arc, formed by the subduction of the African tectonic plate beneath the Eurasian plate. 
-                  The island's distinctive caldera (volcanic crater) was created by the Minoan eruption, which caused the center of the 
+                  Santorini sits on the Aegean Volcanic Arc, formed by the subduction of the African tectonic plate beneath the Eurasian plate.
+                  The island's distinctive caldera (volcanic crater) was created by the Minoan eruption, which caused the center of the
                   original island to collapse into the emptied magma chamber below.
                 </p>
                 <p className="text-gray-600 dark:text-white/60 mb-4">
-                  The dramatic cliffs of the caldera, rising up to 300 meters from the sea, showcase layers of volcanic deposits in 
-                  striking colors of red, black, and white. These layers tell the story of different eruptions throughout the island's 
+                  The dramatic cliffs of the caldera, rising up to 300 meters from the sea, showcase layers of volcanic deposits in
+                  striking colors of red, black, and white. These layers tell the story of different eruptions throughout the island's
                   geological history.
                 </p>
                 <p className="text-gray-600 dark:text-white/60">
-                  The volcano remains active, with the most recent significant eruption occurring in 1950. The volcanic islands of 
-                  Palea Kameni and Nea Kameni in the center of the caldera continue to exhibit geothermal activity, with hot springs 
+                  The volcano remains active, with the most recent significant eruption occurring in 1950. The volcanic islands of
+                  Palea Kameni and Nea Kameni in the center of the caldera continue to exhibit geothermal activity, with hot springs
                   and gas emissions that attract visitors for their therapeutic properties.
                 </p>
               </div>
@@ -318,7 +320,7 @@ const SantoriniGuide: React.FC = () => {
                   <li>• Crowded popular spots</li>
                 </ul>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card p-6 rounded-lg shadow-md border border-gray-100 dark:border-white/10">
                 <FaCalendarAlt className="text-3xl text-cyan-600 dark:text-cyclades-turquoise mb-4" />
                 <h3 className="font-semibold text-xl text-gray-900 dark:text-white mb-2">Shoulder Season</h3>
@@ -364,28 +366,28 @@ const SantoriniGuide: React.FC = () => {
                 <div>
                   <h5 className="font-medium text-cyan-600 dark:text-cyclades-turquoise">Spring (April-May)</h5>
                   <p className="text-gray-600 dark:text-white/70 text-sm">
-                    Wildflowers bloom across the island, creating a colorful landscape. Easter celebrations 
+                    Wildflowers bloom across the island, creating a colorful landscape. Easter celebrations
                     offer a glimpse into local traditions with candlelit processions and special ceremonies.
                   </p>
                 </div>
                 <div>
                   <h5 className="font-medium text-cyan-600 dark:text-cyclades-turquoise">Summer (June-August)</h5>
                   <p className="text-gray-600 dark:text-white/70 text-sm">
-                    The Santorini Arts Factory hosts cultural events and exhibitions. The International Music Festival 
+                    The Santorini Arts Factory hosts cultural events and exhibitions. The International Music Festival
                     brings classical performances to unique venues around the island.
                   </p>
                 </div>
                 <div>
                   <h5 className="font-medium text-cyan-600 dark:text-cyclades-turquoise">Autumn (September-October)</h5>
                   <p className="text-gray-600 dark:text-white/70 text-sm">
-                    Wine harvest season brings special events at local wineries. The Ifestia Festival in September 
+                    Wine harvest season brings special events at local wineries. The Ifestia Festival in September
                     features fireworks that recreate the volcanic eruption.
                   </p>
                 </div>
                 <div>
                   <h5 className="font-medium text-cyan-600 dark:text-cyclades-turquoise">Winter (November-March)</h5>
                   <p className="text-gray-600 dark:text-white/70 text-sm">
-                    A quiet, authentic experience with mostly locals. Christmas and New Year celebrations offer 
+                    A quiet, authentic experience with mostly locals. Christmas and New Year celebrations offer
                     a unique perspective on island traditions.
                   </p>
                 </div>
@@ -398,15 +400,15 @@ const SantoriniGuide: React.FC = () => {
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Must-Visit Villages</h2>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/oia.jpg" 
-                  alt="Oia Village" 
+                <img
+                  src="/images/islands/santorini/oia.jpg"
+                  alt="Oia Village"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Oia</h3>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    Famous for its stunning sunsets, blue-domed churches, and winding marble streets. 
+                    Famous for its stunning sunsets, blue-domed churches, and winding marble streets.
                     The most photographed location in Santorini.
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
@@ -420,15 +422,15 @@ const SantoriniGuide: React.FC = () => {
               </div>
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/fira.jpg" 
-                  alt="Fira Town" 
+                <img
+                  src="/images/islands/santorini/fira.jpg"
+                  alt="Fira Town"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Fira</h3>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    The vibrant capital of Santorini, offering a perfect blend of shopping, 
+                    The vibrant capital of Santorini, offering a perfect blend of shopping,
                     dining, and nightlife with spectacular caldera views.
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
@@ -442,15 +444,15 @@ const SantoriniGuide: React.FC = () => {
               </div>
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/pyrgos.jpg" 
-                  alt="Pyrgos Village" 
+                <img
+                  src="/images/islands/santorini/pyrgos.jpg"
+                  alt="Pyrgos Village"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Pyrgos</h3>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    A well-preserved medieval village built around a Venetian castle, offering panoramic views 
+                    A well-preserved medieval village built around a Venetian castle, offering panoramic views
                     of the entire island from its hilltop location.
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
@@ -465,15 +467,15 @@ const SantoriniGuide: React.FC = () => {
             </div>
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/imerovigli.jpg" 
-                  alt="Imerovigli Village" 
+                <img
+                  src="/images/islands/santorini/imerovigli.jpg"
+                  alt="Imerovigli Village"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Imerovigli</h3>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    Known as "The Balcony to the Aegean," this quiet village offers some of the most 
+                    Known as "The Balcony to the Aegean," this quiet village offers some of the most
                     spectacular views of the caldera and the Aegean Sea.
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
@@ -486,15 +488,15 @@ const SantoriniGuide: React.FC = () => {
               </div>
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/megalochori.jpg" 
-                  alt="Megalochori Village" 
+                <img
+                  src="/images/islands/santorini/megalochori.jpg"
+                  alt="Megalochori Village"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-2">Megalochori</h3>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    A picturesque village with neoclassical mansions, traditional cave houses, and 
+                    A picturesque village with neoclassical mansions, traditional cave houses, and
                     beautiful bell towers, surrounded by vineyards.
                   </p>
                   <ul className="space-y-2 text-sm text-gray-600 dark:text-white/60">
@@ -512,14 +514,14 @@ const SantoriniGuide: React.FC = () => {
           <section id="beaches" className="mb-16">
             <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-8">Volcanic Beaches</h2>
             <p className="text-gray-600 dark:text-white/70 mb-8">
-              Santorini's beaches are unlike any others in Greece, featuring volcanic sand and pebbles in various colors, 
+              Santorini's beaches are unlike any others in Greece, featuring volcanic sand and pebbles in various colors,
               dramatic cliffs, and crystal-clear waters. Each beach has its own unique character and atmosphere.
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/perissa-beach.jpg" 
-                  alt="Perissa Beach" 
+                <img
+                  src="/images/islands/santorini/perissa-beach.jpg"
+                  alt="Perissa Beach"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -529,7 +531,7 @@ const SantoriniGuide: React.FC = () => {
                     <span className="px-2 py-1 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/70 rounded text-xs">Black Sand</span>
                   </div>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    A long stretch of black sand backed by Mesa Vouno mountain, offering water sports, 
+                    A long stretch of black sand backed by Mesa Vouno mountain, offering water sports,
                     beach bars, and tavernas. Perfect for families and those seeking amenities.
                   </p>
                   <ul className="text-sm text-gray-600 dark:text-white/60">
@@ -541,9 +543,9 @@ const SantoriniGuide: React.FC = () => {
               </div>
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/red-beach.jpg" 
-                  alt="Red Beach" 
+                <img
+                  src="/images/islands/santorini/red-beach.jpg"
+                  alt="Red Beach"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -553,7 +555,7 @@ const SantoriniGuide: React.FC = () => {
                     <span className="px-2 py-1 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/70 rounded text-xs">Red Sand</span>
                   </div>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    Famous for its striking red cliffs and sand, this small beach offers a unique 
+                    Famous for its striking red cliffs and sand, this small beach offers a unique
                     landscape. Access requires a short hike, and caution is advised due to occasional rockfalls.
                   </p>
                   <ul className="text-sm text-gray-600 dark:text-white/60">
@@ -565,9 +567,9 @@ const SantoriniGuide: React.FC = () => {
               </div>
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/kamari-beach.jpg" 
-                  alt="Kamari Beach" 
+                <img
+                  src="/images/islands/santorini/kamari-beach.jpg"
+                  alt="Kamari Beach"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -577,7 +579,7 @@ const SantoriniGuide: React.FC = () => {
                     <span className="px-2 py-1 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/70 rounded text-xs">Black Sand</span>
                   </div>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    A cosmopolitan beach with a beautiful promenade lined with shops, restaurants, and bars. 
+                    A cosmopolitan beach with a beautiful promenade lined with shops, restaurants, and bars.
                     The dark volcanic sand and clear waters make it popular with tourists.
                   </p>
                   <ul className="text-sm text-gray-600 dark:text-white/60">
@@ -589,9 +591,9 @@ const SantoriniGuide: React.FC = () => {
               </div>
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/white-beach.jpg" 
-                  alt="White Beach" 
+                <img
+                  src="/images/islands/santorini/white-beach.jpg"
+                  alt="White Beach"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -601,7 +603,7 @@ const SantoriniGuide: React.FC = () => {
                     <span className="px-2 py-1 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/70 rounded text-xs">Dark Sand/White Cliffs</span>
                   </div>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    Named for its towering white cliffs, this small, secluded beach is accessible only by boat. 
+                    Named for its towering white cliffs, this small, secluded beach is accessible only by boat.
                     Its isolation makes it perfect for those seeking tranquility.
                   </p>
                   <ul className="text-sm text-gray-600 dark:text-white/60">
@@ -613,9 +615,9 @@ const SantoriniGuide: React.FC = () => {
               </div>
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/vlychada-beach.jpg" 
-                  alt="Vlychada Beach" 
+                <img
+                  src="/images/islands/santorini/vlychada-beach.jpg"
+                  alt="Vlychada Beach"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -625,7 +627,7 @@ const SantoriniGuide: React.FC = () => {
                     <span className="px-2 py-1 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/70 rounded text-xs">Dark Sand</span>
                   </div>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    Known for its lunar-like landscape with sculpted cliffs, this quieter beach offers a more 
+                    Known for its lunar-like landscape with sculpted cliffs, this quieter beach offers a more
                     relaxed atmosphere away from the crowds.
                   </p>
                   <ul className="text-sm text-gray-600 dark:text-white/60">
@@ -637,9 +639,9 @@ const SantoriniGuide: React.FC = () => {
               </div>
 
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/monolithos-beach.jpg" 
-                  alt="Monolithos Beach" 
+                <img
+                  src="/images/islands/santorini/monolithos-beach.jpg"
+                  alt="Monolithos Beach"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
@@ -649,7 +651,7 @@ const SantoriniGuide: React.FC = () => {
                     <span className="px-2 py-1 bg-gray-100 dark:bg-white/10 text-gray-700 dark:text-white/70 rounded text-xs">Black Sand</span>
                   </div>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    A family-friendly beach with shallow waters and a playground, making it ideal for 
+                    A family-friendly beach with shallow waters and a playground, making it ideal for
                     those traveling with children. Less crowded than other beaches.
                   </p>
                   <ul className="text-sm text-gray-600 dark:text-white/60">
@@ -672,29 +674,29 @@ const SantoriniGuide: React.FC = () => {
                   <h3 className="text-2xl font-semibold">Traditional Santorinian Dishes</h3>
                 </div>
                 <p className="text-gray-600 dark:text-white/60 mb-4">
-                  Santorini's cuisine is shaped by its volcanic soil, limited rainfall, and strong winds, resulting in 
-                  intensely flavored local products. The island's culinary tradition focuses on simple preparations 
+                  Santorini's cuisine is shaped by its volcanic soil, limited rainfall, and strong winds, resulting in
+                  intensely flavored local products. The island's culinary tradition focuses on simple preparations
                   that highlight these unique ingredients.
                 </p>
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-medium text-gray-900 dark:text-white">Fava</h4>
                     <p className="text-sm text-gray-600 dark:text-white/60">
-                      A velvety yellow split pea purée, often topped with capers, onions, and olive oil. 
+                      A velvety yellow split pea purée, often topped with capers, onions, and olive oil.
                       Santorini's volcanic soil gives the local fava beans a distinctive sweet flavor.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-900 dark:text-white">Tomatokeftedes</h4>
                     <p className="text-sm text-gray-600 dark:text-white/60">
-                      Tomato fritters made with the island's famous small, sweet tomatoes, mixed with herbs, 
+                      Tomato fritters made with the island's famous small, sweet tomatoes, mixed with herbs,
                       onions, and flour, then fried to perfection.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-900 dark:text-white">White Eggplant</h4>
                     <p className="text-sm text-gray-600 dark:text-white/60">
-                      A local variety that's sweeter and less bitter than purple eggplants, often grilled 
+                      A local variety that's sweeter and less bitter than purple eggplants, often grilled
                       and served with garlic and herbs.
                     </p>
                   </div>
@@ -712,29 +714,29 @@ const SantoriniGuide: React.FC = () => {
                   <h3 className="text-2xl font-semibold">Volcanic Wines</h3>
                 </div>
                 <p className="text-gray-600 dark:text-white/60 mb-4">
-                  Santorini's winemaking tradition dates back over 3,500 years. The island's unique viticulture 
-                  involves training the vines into basket-like shapes (kouloura) close to the ground to protect 
+                  Santorini's winemaking tradition dates back over 3,500 years. The island's unique viticulture
+                  involves training the vines into basket-like shapes (kouloura) close to the ground to protect
                   them from strong winds and to capture morning dew.
                 </p>
                 <div className="space-y-4">
                   <div>
                     <h4 className="font-medium text-gray-900 dark:text-white">Assyrtiko</h4>
                     <p className="text-sm text-gray-600 dark:text-white/60">
-                      The flagship grape variety of Santorini, producing crisp, mineral-driven white wines with 
+                      The flagship grape variety of Santorini, producing crisp, mineral-driven white wines with
                       high acidity and citrus notes. Perfect with seafood.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-900 dark:text-white">Vinsanto</h4>
                     <p className="text-sm text-gray-600 dark:text-white/60">
-                      A traditional sweet wine made from sun-dried grapes, aged in oak barrels for at least 
+                      A traditional sweet wine made from sun-dried grapes, aged in oak barrels for at least
                       24 months. Rich with flavors of dried fruits, honey, and caramel.
                     </p>
                   </div>
                   <div>
                     <h4 className="font-medium text-gray-900 dark:text-white">Nykteri</h4>
                     <p className="text-sm text-gray-600 dark:text-white/60">
-                      Traditionally harvested at night ("nykta" means night in Greek), this white wine is 
+                      Traditionally harvested at night ("nykta" means night in Greek), this white wine is
                       barrel-aged and has a fuller body than typical Assyrtiko.
                     </p>
                   </div>
@@ -743,45 +745,45 @@ const SantoriniGuide: React.FC = () => {
             </div>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/winery.jpg" 
-                  alt="Santorini Winery" 
+                <img
+                  src="/images/islands/santorini/winery.jpg"
+                  alt="Santorini Winery"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Wine Tasting</h3>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    Visit one of Santorini's many wineries for a tasting experience with caldera views. 
+                    Visit one of Santorini's many wineries for a tasting experience with caldera views.
                     Most offer tours explaining the unique kouloura vine-training method.
                   </p>
                   <p className="text-sm text-cyan-600 dark:text-cyclades-turquoise">Recommended: Santo Wines, Venetsanos Winery, Domaine Sigalas</p>
                 </div>
               </div>
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/taverna.jpg" 
-                  alt="Traditional Taverna" 
+                <img
+                  src="/images/islands/santorini/taverna.jpg"
+                  alt="Traditional Taverna"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Traditional Tavernas</h3>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    For authentic local cuisine, head to family-run tavernas in villages like Megalochori, 
+                    For authentic local cuisine, head to family-run tavernas in villages like Megalochori,
                     Pyrgos, or Exo Gonia, away from tourist centers.
                   </p>
                   <p className="text-sm text-cyan-600 dark:text-cyclades-turquoise">Recommended: Metaxi Mas, To Psaraki, Raki Restaurant</p>
                 </div>
               </div>
               <div className="bg-white dark:bg-dark-card rounded-lg shadow-md overflow-hidden">
-                <img 
-                  src="/images/islands/santorini/fine-dining.jpg" 
-                  alt="Fine Dining" 
+                <img
+                  src="/images/islands/santorini/fine-dining.jpg"
+                  alt="Fine Dining"
                   className="w-full h-48 object-cover"
                 />
                 <div className="p-6">
                   <h3 className="text-xl font-semibold mb-2">Fine Dining</h3>
                   <p className="text-gray-600 dark:text-white/60 mb-4">
-                    Experience gourmet interpretations of local ingredients at Santorini's upscale 
+                    Experience gourmet interpretations of local ingredients at Santorini's upscale
                     restaurants, many offering spectacular sunset views.
                   </p>
                   <p className="text-sm text-cyan-600 dark:text-cyclades-turquoise">Recommended: Lycabettus, Selene, La Maison</p>
@@ -796,9 +798,9 @@ const SantoriniGuide: React.FC = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
               {galleryImages.map((image, index) => (
                 <div key={index} className="relative group overflow-hidden rounded-lg">
-                  <img 
-                    src={image.src} 
-                    alt={image.alt} 
+                  <img
+                    src={image.src}
+                    alt={image.alt}
                     className="w-full aspect-[4/3] object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
@@ -809,8 +811,8 @@ const SantoriniGuide: React.FC = () => {
               ))}
             </div>
             <div className="mt-8 text-center">
-              <a 
-                href="/photos/santorini" 
+              <a
+                href="/photos/santorini"
                 className="inline-flex items-center gap-2 px-6 py-3 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-colors"
               >
                 <FaCameraRetro className="h-5 w-5" />

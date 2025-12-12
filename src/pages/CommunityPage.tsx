@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useTranslation } from 'react-i18next';
 import {
     Users,
     Image,
@@ -84,6 +85,7 @@ const mockContent: ContentItem[] = [
 ];
 
 const CommunityPage: React.FC = () => {
+    const { t } = useTranslation();
     const { theme } = useTheme();
     const isDarkMode = theme === 'dark';
     const [content, setContent] = useState<ContentItem[]>(mockContent);
@@ -100,8 +102,8 @@ const CommunityPage: React.FC = () => {
     return (
         <>
             <SEO
-                title="Community | Discover Cyclades"
-                description="Join our community of Cyclades travelers. Share photos, stories, and tips from your Greek island adventures."
+                title={t('community.meta.title', 'Community | Discover Cyclades')}
+                description={t('community.meta.description', 'Join our community of Cyclades travelers. Share photos, stories, and tips from your Greek island adventures.')}
             />
 
             <div className={`min-h-screen ${isDarkMode ? 'bg-gray-900' : 'bg-gray-50'}`}>
@@ -110,10 +112,10 @@ const CommunityPage: React.FC = () => {
                     <div className="max-w-6xl mx-auto">
                         <div className="flex items-center gap-3 mb-4">
                             <Users className="w-8 h-8" />
-                            <h1 className="text-3xl md:text-4xl font-bold">Community</h1>
+                            <h1 className="text-3xl md:text-4xl font-bold">{t('community.title', 'Community')}</h1>
                         </div>
                         <p className="text-lg opacity-90 max-w-2xl">
-                            Share your Cyclades adventures with fellow travelers. Photos, stories, and local tips welcome!
+                            {t('community.subtitle', 'Share your Cyclades adventures with fellow travelers. Photos, stories, and local tips welcome!')}
                         </p>
                     </div>
                 </div>
@@ -128,13 +130,13 @@ const CommunityPage: React.FC = () => {
                                         key={f}
                                         onClick={() => setFilter(f as any)}
                                         className={`px-4 py-2 rounded-xl font-medium capitalize transition-all ${filter === f
-                                                ? 'bg-purple-500 text-white'
-                                                : isDarkMode
-                                                    ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
-                                                    : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                                            ? 'bg-purple-500 text-white'
+                                            : isDarkMode
+                                                ? 'bg-gray-700 text-gray-300 hover:bg-gray-600'
+                                                : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
                                             }`}
                                     >
-                                        {f === 'all' ? 'All' : f === 'photo' ? '📷 Photos' : '📖 Stories'}
+                                        {f === 'all' ? t('community.filters.all', 'All') : f === 'photo' ? `📷 ${t('community.filters.photos', 'Photos')}` : `📖 ${t('community.filters.stories', 'Stories')}`}
                                     </button>
                                 ))}
                             </div>
@@ -144,11 +146,11 @@ const CommunityPage: React.FC = () => {
                                     value={selectedIsland}
                                     onChange={e => setSelectedIsland(e.target.value)}
                                     className={`px-4 py-2 rounded-xl border ${isDarkMode
-                                            ? 'bg-gray-700 border-gray-600 text-white'
-                                            : 'bg-white border-gray-300 text-gray-900'
+                                        ? 'bg-gray-700 border-gray-600 text-white'
+                                        : 'bg-white border-gray-300 text-gray-900'
                                         }`}
                                 >
-                                    <option value="">All Islands</option>
+                                    <option value="">{t('community.filters.allIslands', 'All Islands')}</option>
                                     {cyclades.map(island => (
                                         <option key={island.id} value={island.slug}>{island.name}</option>
                                     ))}
@@ -176,15 +178,15 @@ const CommunityPage: React.FC = () => {
                     <div className={`${isDarkMode ? 'bg-gradient-to-r from-purple-800 to-pink-800' : 'bg-gradient-to-r from-purple-500 to-pink-500'} rounded-2xl p-6 mb-8 text-white`}>
                         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
                             <div>
-                                <h2 className="text-xl font-semibold mb-1">Share Your Experience</h2>
-                                <p className="opacity-90">Help other travelers discover the magic of the Cyclades</p>
+                                <h2 className="text-xl font-semibold mb-1">{t('community.shareCta.title', 'Share Your Experience')}</h2>
+                                <p className="opacity-90">{t('community.shareCta.subtitle', 'Help other travelers discover the magic of the Cyclades')}</p>
                             </div>
                             <Link
                                 to="/profile"
                                 className="px-6 py-3 bg-white text-purple-600 rounded-xl font-semibold hover:bg-gray-100 transition-colors flex items-center gap-2"
                             >
                                 <Plus className="w-5 h-5" />
-                                Share Photo or Story
+                                {t('community.shareCta.button', 'Share Photo or Story')}
                             </Link>
                         </div>
                     </div>
