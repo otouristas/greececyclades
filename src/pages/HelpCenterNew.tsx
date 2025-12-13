@@ -191,6 +191,7 @@ const helpCategories = [
 const quickLinks = [
     { title: 'All Islands', url: '/islands', icon: MapPin },
     { title: 'Island Guides', url: '/guides', icon: BookOpen },
+    { title: 'Island Quiz', url: '/quiz', icon: Sparkles },
     { title: 'Ferry Tickets', url: '/ferry-tickets', icon: Ship },
     { title: 'Hotels', url: '/hotels', icon: Hotel },
     { title: 'Touristas AI', url: '/touristas-ai', icon: Sparkles },
@@ -281,8 +282,8 @@ export default function HelpCenterNew() {
                                                 key={category.id}
                                                 onClick={() => setActiveCategory(category.id)}
                                                 className={`w-full flex items-center gap-3 px-3 py-2.5 rounded-lg text-left transition-colors ${activeCategory === category.id
-                                                        ? 'bg-cyclades-turquoise text-white'
-                                                        : 'hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-white/80'
+                                                    ? 'bg-cyclades-turquoise text-white'
+                                                    : 'hover:bg-gray-100 dark:hover:bg-white/10 text-gray-700 dark:text-white/80'
                                                     }`}
                                             >
                                                 <Icon className="h-5 w-5 flex-shrink-0" />

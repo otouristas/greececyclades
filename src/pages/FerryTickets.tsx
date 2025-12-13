@@ -82,7 +82,7 @@ export default function FerryTickets() {
   return (
     <>
       <SEO
-        title="Book Cyclades Ferry Tickets: Compare Prices & Schedules [2025]"
+        title="Book Cyclades Ferry Tickets: Compare Prices & Schedules [2026]"
         description="Search all Cyclades ferry routes. Compare prices across Blue Star, SeaJets, Golden Star. Check real-time schedules, book online. Best prices guaranteed."
         pageType="ferry-tickets"
         breadcrumbs={[

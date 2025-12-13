@@ -78,6 +78,9 @@ const TransferComparisonPage = lazy(() => import('./pages/TransferComparisonPage
 const MicroclimateWeatherPage = lazy(() => import('./pages/MicroclimateWeatherPage'));
 const BusinessAnalyticsPage = lazy(() => import('./pages/BusinessAnalyticsPage'));
 const TouristasEnhancedPage = lazy(() => import('./pages/TouristasEnhancedPage'));
+const IslandQuiz = lazy(() => import('./pages/IslandQuiz'));
+const BestTimeToVisit = lazy(() => import('./pages/BestTimeToVisit'));
+const FerryRoute = lazy(() => import('./pages/FerryRoute'));
 
 // Booking pages
 const BookingPage = lazy(() => import('./pages/BookingPage'));
@@ -194,6 +197,12 @@ function AppContent() {
               <Route path="/business/analytics" element={<BusinessAnalyticsPage />} />
               <Route path="/touristas" element={<TouristasEnhancedPage />} />
               <Route path="/ai-assistant" element={<TouristasEnhancedPage />} />
+              <Route path="/island-quiz" element={<IslandQuiz />} />
+              <Route path="/quiz" element={<IslandQuiz />} />
+              <Route path="/budget-calculator" element={<BudgetCalculator />} />
+              <Route path="/budget" element={<BudgetCalculator />} />
+              <Route path="/best-time-to-visit/:island" element={<BestTimeToVisit />} />
+              <Route path="/ferry/:route" element={<FerryRoute />} />
 
               {/* Travel guide redirects */}
               <Route path="/travel-guide/santorini" element={<Navigate to="/guides/santorini" replace />} />
@@ -389,6 +398,8 @@ function AppContent() {
                 <Route path="planner" element={<IslandHoppingPlannerPage />} />
                 <Route path="community" element={<CommunityPage />} />
                 <Route path="inspiration" element={<InspirationFeedPage />} />
+                <Route path="island-quiz" element={<IslandQuiz />} />
+                <Route path="quiz" element={<IslandQuiz />} />
                 <Route path="hotel-marketplace" element={<HotelMarketplace />} />
                 <Route path="rent-a-car" element={<RentACar />} />
                 <Route path="transfers" element={<Transfers />} />

@@ -647,5 +647,74 @@
         "hotelsDescription": "Vind en boek de beste hotels op de Cycladen.",
         "ferriesTitle": "Ferry Tickets | Island Hopping Cycladen",
         "ferriesDescription": "Boek ferry tickets tussen Griekse eilanden. Vergelijk prijzen en schema's."
+    },
+    "quiz": {
+        "badge": "Interactieve Eilandzoeker",
+        "title": "Welk Cycladen Eiland Past Bij Jou?",
+        "subtitle": "Beantwoord 5 vragen en ontdek je perfecte eiland",
+        "questionOf": "Vraag {{current}} van {{total}}",
+        "meta": {
+            "title": "Eiland Quiz | Vind Je Perfecte Eiland",
+            "description": "Ontdek welk Grieks eiland bij jouw reisstijl past!"
+        },
+        "questions": {
+            "vibe": {
+                "question": "Wat is je ideale vakantiesfeer?",
+                "answers": {
+                    "romantic": "Romantiek & Zonsondergangen",
+                    "party": "Nachtleven & Energie",
+                    "adventure": "Avontuur & Verkenning",
+                    "authentic": "Cultuur & Authenticiteit"
+                }
+            },
+            "travel": {
+                "question": "Met wie reis je?",
+                "answers": {
+                    "couple": "Alleen Wij Tweeën",
+                    "solo": "Solo Avontuur",
+                    "family": "Familie met Kinderen",
+                    "friends": "Vriendengroep"
+                }
+            },
+            "budget": {
+                "question": "Wat is je budgetstijl?",
+                "answers": {
+                    "budget": "Budget-Bewust",
+                    "midRange": "Comfortabel Midden",
+                    "luxury": "Luxe Ervaring",
+                    "flexible": "Flexibel"
+                }
+            },
+            "priority": {
+                "question": "Wat is het belangrijkste voor je?",
+                "answers": {
+                    "beaches": "Geweldige Stranden",
+                    "food": "Lekker Eten",
+                    "sunsets": "Adembenemende Zonsondergangen",
+                    "nightlife": "Levendig Nachtleven"
+                }
+            },
+            "crowd": {
+                "question": "Hoe voel je je bij drukte?",
+                "answers": {
+                    "popular": "Ik hou van de sfeer!",
+                    "balanced": "Wat activiteit is fijn",
+                    "offPath": "Liever rustigere plekken",
+                    "hidden": "Alleen verborgen pareltjes"
+                }
+            }
+        },
+        "results": {
+            "badge": "Je Perfecte Match!",
+            "title": "Jouw Eilanden",
+            "subtitle": "Op basis van je antwoorden zijn deze eilanden perfect voor jou",
+            "retake": "Quiz Opnieuw",
+            "exploreTop": "Verken Je Top Match",
+            "matchText": {
+                "perfect": "Perfecte match voor jou!",
+                "great": "Geweldig alternatief",
+                "good": "Ook een aanrader"
+            }
+        }
     }
 }

@@ -14,6 +14,8 @@ import {
   FaMapMarkedAlt
 } from 'react-icons/fa';
 import SEO from '../components/SEO';
+import FAQSchema from '../components/FAQSchema';
+import BreadcrumbSchema, { breadcrumbPaths } from '../components/BreadcrumbSchema';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
 import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
@@ -26,6 +28,34 @@ const SantoriniGuide: React.FC = () => {
   if (!santorini) {
     return <div>Island not found</div>;
   }
+
+  // FAQ data for rich snippets
+  const santoriniFaqs = [
+    {
+      question: "When is the best time to visit Santorini?",
+      answer: "The best time to visit Santorini is during the shoulder seasons: April-May and September-October. You'll enjoy mild weather (18-25°C), fewer crowds, and better prices. Peak season (June-August) offers perfect weather but higher prices and larger crowds."
+    },
+    {
+      question: "How many days do I need in Santorini?",
+      answer: "3-5 days is ideal for Santorini. This gives you enough time to explore Oia and Fira, visit beaches, tour wineries, see Akrotiri archaeological site, take a volcano boat trip, and enjoy the famous sunsets without feeling rushed."
+    },
+    {
+      question: "How do I get to Santorini?",
+      answer: "You can reach Santorini by ferry from Athens (Piraeus port, 5-8 hours) or by direct flight to Santorini Airport (JTR) from Athens (45 min) and many European cities. High-speed ferries are faster (2-3 hours) but more expensive."
+    },
+    {
+      question: "Is Santorini expensive?",
+      answer: "Santorini is one of Greece's more expensive islands. Budget travelers can expect €100-150/day, mid-range €200-350/day, and luxury €500+/day. Caldera-view hotels are 2-3x more expensive than inland options. Shoulder season offers 20-40% savings."
+    },
+    {
+      question: "What is Santorini famous for?",
+      answer: "Santorini is famous for its dramatic caldera views, stunning sunsets in Oia, whitewashed buildings with blue domes, volcanic beaches (red, black, and white sand), unique wines from volcanic soil (especially Assyrtiko and Vinsanto), and the ancient Akrotiri archaeological site."
+    },
+    {
+      question: "Do I need a car in Santorini?",
+      answer: "A car isn't essential but helpful. Buses connect major towns and beaches, and ATV/quad rentals are popular. For beach hopping or exploring remote areas, renting a car gives more flexibility. In Oia and Fira, parking is difficult and walking is preferred."
+    }
+  ];
 
   const seoData = {
     title: "Santorini Travel Guide 2026 - Best Places to Visit & Things to Do",
@@ -82,6 +112,8 @@ const SantoriniGuide: React.FC = () => {
 
   return (
     <>
+      <BreadcrumbSchema items={breadcrumbPaths.islandGuide('Santorini', 'santorini')} />
+      <FAQSchema faqs={santoriniFaqs} pageUrl="https://discovercyclades.gr/guides/santorini" />
       <SEO {...seoData}
         jsonLD={{
           "@context": "https://schema.org",

@@ -1,5 +1,5 @@
 export const cycladesCarRentalContent = `
-# Cyclades Car Rental Guide 2025
+# Cyclades Car Rental Guide 2026
 
 ![Car rental options for exploring Cyclades islands](/images/car-rental/cyclades-rental.jpg)
 

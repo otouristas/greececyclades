@@ -647,5 +647,74 @@
         "hotelsDescription": "Encuentra y reserva los mejores hoteles en las Cícladas.",
         "ferriesTitle": "Billetes de Ferry | Island Hopping Cícladas",
         "ferriesDescription": "Reserva billetes de ferry entre islas griegas. Compara precios y horarios."
+    },
+    "quiz": {
+        "badge": "Selector de Islas Interactivo",
+        "title": "¿Qué Isla de las Cícladas Es Para Ti?",
+        "subtitle": "Responde 5 preguntas y descubre tu isla perfecta",
+        "questionOf": "Pregunta {{current}} de {{total}}",
+        "meta": {
+            "title": "Quiz de Islas | Encuentra Tu Isla Perfecta",
+            "description": "¡Descubre qué isla griega se adapta a tu estilo de viaje!"
+        },
+        "questions": {
+            "vibe": {
+                "question": "¿Cuál es tu ambiente de vacaciones ideal?",
+                "answers": {
+                    "romantic": "Romance y Atardeceres",
+                    "party": "Vida Nocturna y Energía",
+                    "adventure": "Aventura y Exploración",
+                    "authentic": "Cultura y Autenticidad"
+                }
+            },
+            "travel": {
+                "question": "¿Con quién viajas?",
+                "answers": {
+                    "couple": "Solo Nosotros Dos",
+                    "solo": "Aventura en Solitario",
+                    "family": "Familia con Niños",
+                    "friends": "Grupo de Amigos"
+                }
+            },
+            "budget": {
+                "question": "¿Cuál es tu estilo de presupuesto?",
+                "answers": {
+                    "budget": "Económico",
+                    "midRange": "Gama Media Cómoda",
+                    "luxury": "Experiencia de Lujo",
+                    "flexible": "Flexible"
+                }
+            },
+            "priority": {
+                "question": "¿Qué es lo más importante para ti?",
+                "answers": {
+                    "beaches": "Playas Increíbles",
+                    "food": "Buena Comida",
+                    "sunsets": "Atardeceres Impresionantes",
+                    "nightlife": "Vida Nocturna Vibrante"
+                }
+            },
+            "crowd": {
+                "question": "¿Cómo te sientes con las multitudes?",
+                "answers": {
+                    "popular": "¡Me encanta el ambiente!",
+                    "balanced": "Algo de actividad está bien",
+                    "offPath": "Prefiero lugares tranquilos",
+                    "hidden": "Solo joyas ocultas"
+                }
+            }
+        },
+        "results": {
+            "badge": "¡Tu Match Perfecto!",
+            "title": "Tus Islas",
+            "subtitle": "Según tus respuestas, estas islas son perfectas para ti",
+            "retake": "Repetir Quiz",
+            "exploreTop": "Explora Tu Top Match",
+            "matchText": {
+                "perfect": "¡Match perfecto para ti!",
+                "great": "Gran alternativa",
+                "good": "También vale la pena considerar"
+            }
+        }
     }
 }

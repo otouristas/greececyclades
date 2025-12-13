@@ -157,14 +157,14 @@ export default function Weather() {
   const [selectedIsland, setSelectedIsland] = useState('all');
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === 'dark';
-  
+
   // Get current weather data based on selected month
   const currentWeather = weatherData[selectedMonth as keyof typeof weatherData];
-  
+
   return (
     <div className={`min-h-screen ${isDark ? 'bg-dark-bg' : 'bg-gray-50'}`}>
-      <SEO 
-        title="Cyclades Weather 2025: Best Time to Visit by Month"
+      <SEO
+        title="Cyclades Weather 2026: Best Time to Visit by Month"
         description="Month-by-month weather guide: temperatures, sea warmth, crowds, prices. When to visit for beaches, hiking, or avoiding crowds. Expert advice."
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -177,7 +177,7 @@ export default function Weather() {
           { question: 'What about the Meltemi wind?', answer: 'Strong north winds blow July-August, especially in northern Cyclades. Great for sailing/windsurfing, less ideal for beach lovers. Southern islands are calmer.' }
         ]}
       />
-      
+
       {/* Hero Section */}
       <div className={`relative pt-24 pb-16 md:pt-32 md:pb-24 ${isDark ? 'bg-gradient-to-r from-cyclades-deep-blue to-cyclades-caldera' : 'bg-gradient-to-r from-cyclades-deep-blue to-cyclades-sea-blue'}`}>
         <div className="absolute inset-0 overflow-hidden">
@@ -195,11 +195,11 @@ export default function Weather() {
           </p>
           <div className="inline-flex items-center gap-2 bg-green-500/20 backdrop-blur-sm border border-green-400/30 rounded-full px-4 py-2 text-white text-sm font-medium">
             <Calendar className="w-4 h-4" />
-            Updated December 2025
+            Updated December 2026
           </div>
         </div>
       </div>
-      
+
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Selection Controls */}
@@ -215,18 +215,17 @@ export default function Weather() {
                   <button
                     key={month}
                     onClick={() => setSelectedMonth(month)}
-                    className={`px-3 py-2 text-sm rounded-xl capitalize transition-all ${
-                      selectedMonth === month
-                        ? 'bg-cyclades-turquoise text-dark-bg font-semibold'
-                        : isDark ? 'bg-dark-bg text-white/70 hover:bg-dark-border' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
-                    }`}
+                    className={`px-3 py-2 text-sm rounded-xl capitalize transition-all ${selectedMonth === month
+                      ? 'bg-cyclades-turquoise text-dark-bg font-semibold'
+                      : isDark ? 'bg-dark-bg text-white/70 hover:bg-dark-border' : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      }`}
                   >
                     {month.substring(0, 3)}
                   </button>
                 ))}
               </div>
             </div>
-            
+
             {/* Island Selector */}
             <div>
               <label className={`block text-sm font-medium mb-2 ${isDark ? 'text-white/80' : 'text-gray-700'}`}>
@@ -247,13 +246,13 @@ export default function Weather() {
             </div>
           </div>
         </div>
-        
+
         {/* Current Weather Display */}
         <div className="mb-12">
           <h2 className={`text-3xl font-bold mb-6 capitalize ${isDark ? 'text-white' : 'text-gray-900'}`}>
             {selectedMonth} Weather in the Cyclades
           </h2>
-          
+
           {/* Weather Overview Cards */}
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
             {/* Temperature Card */}
@@ -269,7 +268,7 @@ export default function Weather() {
                 </p>
               </div>
             </div>
-            
+
             {/* Precipitation Card */}
             <div className={`rounded-xl p-4 ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white shadow-sm border'}`}>
               <div className="flex items-center justify-center mb-2">
@@ -281,7 +280,7 @@ export default function Weather() {
                 <p className={`text-xs ${isDark ? 'text-white/50' : 'text-gray-500'}`}>Monthly Average</p>
               </div>
             </div>
-            
+
             {/* Humidity Card */}
             <div className={`rounded-xl p-4 ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white shadow-sm border'}`}>
               <div className="flex items-center justify-center mb-2">
@@ -293,7 +292,7 @@ export default function Weather() {
                 <p className={`text-xs ${isDark ? 'text-white/50' : 'text-gray-500'}`}>Average</p>
               </div>
             </div>
-            
+
             {/* Wind Card */}
             <div className={`rounded-xl p-4 ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white shadow-sm border'}`}>
               <div className="flex items-center justify-center mb-2">
@@ -305,7 +304,7 @@ export default function Weather() {
                 <p className={`text-xs ${isDark ? 'text-white/50' : 'text-gray-500'}`}>Average Speed</p>
               </div>
             </div>
-            
+
             {/* Sea Temperature Card */}
             <div className={`rounded-xl p-4 ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white shadow-sm border'}`}>
               <div className="flex items-center justify-center mb-2">
@@ -317,7 +316,7 @@ export default function Weather() {
                 <p className={`text-xs ${isDark ? 'text-white/50' : 'text-gray-500'}`}>Average</p>
               </div>
             </div>
-            
+
             {/* Sunshine Card */}
             <div className={`rounded-xl p-4 ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white shadow-sm border'}`}>
               <div className="flex items-center justify-center mb-2">
@@ -330,7 +329,7 @@ export default function Weather() {
               </div>
             </div>
           </div>
-          
+
           {/* Weather Description */}
           <div className={`rounded-2xl p-6 mb-8 ${isDark ? 'bg-dark-card border border-dark-border' : 'bg-white shadow-sm border'}`}>
             <h3 className={`text-xl font-semibold mb-4 capitalize ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -339,7 +338,7 @@ export default function Weather() {
             <p className={`mb-6 ${isDark ? 'text-white/70' : 'text-gray-700'}`}>
               {currentWeather.description}
             </p>
-            
+
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {/* Recommended Clothing */}
               <div className={`rounded-xl p-4 ${isDark ? 'bg-dark-bg' : 'bg-gray-50'}`}>
@@ -351,7 +350,7 @@ export default function Weather() {
                   {currentWeather.clothing}
                 </p>
               </div>
-              
+
               {/* Recommended Activities */}
               <div className={`rounded-xl p-4 ${isDark ? 'bg-dark-bg' : 'bg-gray-50'}`}>
                 <h4 className={`font-medium mb-2 flex items-center gap-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -369,7 +368,7 @@ export default function Weather() {
             </div>
           </div>
         </div>
-        
+
         {/* Island-Specific Weather */}
         {selectedIsland !== 'all' && (
           <div className="mb-12">
@@ -383,19 +382,19 @@ export default function Weather() {
                 </div>
                 <div>
                   <p className={`mb-4 ${isDark ? 'text-white/70' : 'text-gray-700'}`}>
-                    While the general Cyclades weather patterns apply to {cyclades.find(i => i.slug === selectedIsland)?.name}, 
+                    While the general Cyclades weather patterns apply to {cyclades.find(i => i.slug === selectedIsland)?.name},
                     each island can have its own microclimate and specific conditions.
                   </p>
                   <p className={isDark ? 'text-white/70' : 'text-gray-700'}>
-                    {cyclades.find(i => i.slug === selectedIsland)?.weather?.summer || 
-                    `${cyclades.find(i => i.slug === selectedIsland)?.name} generally follows the typical Cycladic weather patterns with hot, dry summers and mild, occasionally rainy winters. The island can experience strong meltemi winds during summer months.`}
+                    {cyclades.find(i => i.slug === selectedIsland)?.weather?.summer ||
+                      `${cyclades.find(i => i.slug === selectedIsland)?.name} generally follows the typical Cycladic weather patterns with hot, dry summers and mild, occasionally rainy winters. The island can experience strong meltemi winds during summer months.`}
                   </p>
                 </div>
               </div>
             </div>
           </div>
         )}
-        
+
         {/* Weather Comparison Chart */}
         <div className="mb-12">
           <h2 className={`text-3xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>Year-Round Weather Comparison</h2>
@@ -414,7 +413,7 @@ export default function Weather() {
               <tbody className={`divide-y ${isDark ? 'divide-dark-border' : 'divide-gray-200'}`}>
                 {months.map((month) => {
                   const data = weatherData[month as keyof typeof weatherData];
-                  
+
                   // Determine crowd level
                   let crowdLevel = 'Low';
                   if (['july', 'august'].includes(month)) {
@@ -424,7 +423,7 @@ export default function Weather() {
                   } else if (['may', 'october'].includes(month)) {
                     crowdLevel = 'Medium';
                   }
-                  
+
                   return (
                     <tr key={month} className={selectedMonth === month ? (isDark ? 'bg-cyclades-turquoise/10' : 'bg-blue-50') : ''}>
                       <td className={`px-4 py-3 whitespace-nowrap text-sm font-medium capitalize ${isDark ? 'text-white' : 'text-gray-900'}`}>{month}</td>
@@ -440,7 +439,7 @@ export default function Weather() {
             </table>
           </div>
         </div>
-        
+
         {/* Best Time to Visit */}
         <div className="mb-12">
           <h2 className={`text-3xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>Best Time to Visit the Cyclades</h2>
@@ -480,7 +479,7 @@ export default function Weather() {
                 </div>
               </div>
             </div>
-            
+
             {/* Shoulder Season */}
             <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
               <div className="bg-green-500 px-6 py-4">
@@ -516,7 +515,7 @@ export default function Weather() {
                 </div>
               </div>
             </div>
-            
+
             {/* Winter Season */}
             <div className="bg-white rounded-xl shadow-sm border overflow-hidden">
               <div className="bg-blue-500 px-6 py-4">
@@ -554,9 +553,9 @@ export default function Weather() {
             </div>
           </div>
         </div>
-        
+
       </div>
-      
+
       {/* FAQ Section */}
       <FAQSection
         faqs={[

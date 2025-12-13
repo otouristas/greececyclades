@@ -223,6 +223,7 @@ export const megaMenuConfig = {
                 links: [
                     { name: 'Touristas AI Chat', path: '/touristas-ai/chat', badge: 'New' },
                     { name: 'Trip Planner', path: '/trip-planner', badge: 'AI' },
+                    { name: 'Island Quiz', path: '/quiz', badge: 'Fun' },
                     { name: 'Island Hop Builder', path: '/island-hop-builder', badge: 'New' },
                     { name: 'Packing List', path: '/packing-list' },
                 ]

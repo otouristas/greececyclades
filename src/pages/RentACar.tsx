@@ -55,7 +55,7 @@ export default function RentACar() {
   return (
     <>
       <SEO
-        title="Rent a Car in Cyclades 2025: Best Deals by Island [Compared]"
+        title="Rent a Car in Cyclades 2026: Best Deals by Island [Compared]"
         description="Car & ATV rental on every Cyclades island. Compare local vs international companies, prices by island. Driving tips, license requirements & insider advice."
         breadcrumbs={[
           { name: 'Home', url: '/' },

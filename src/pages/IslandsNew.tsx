@@ -105,7 +105,7 @@ export default function IslandsNew() {
     return (
         <>
             <SEO
-                title="25 Best Cyclades Islands Ranked: Hidden Gems to Famous Hotspots [2025]"
+                title="25 Best Cyclades Islands Ranked: Hidden Gems to Famous Hotspots [2026]"
                 description="Discover which Cyclades island is perfect for YOU. Compare party islands, romantic escapes, family beaches & budget gems. Interactive island finder + ferry routes."
                 ogImage="/photos/cyclades-overview.jpg"
                 pageType="islands"

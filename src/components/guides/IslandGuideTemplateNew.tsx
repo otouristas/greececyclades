@@ -385,7 +385,7 @@ const IslandGuideTemplateNew: React.FC<Props> = ({ island, content }) => {
                   </span>
                   <span className="inline-flex items-center gap-2 bg-green-500/20 backdrop-blur-md border border-green-400/30 rounded-full px-4 py-2 text-white text-sm font-medium">
                     <Calendar className="w-4 h-4" />
-                    Updated December 2025
+                    Updated December 2026
                   </span>
                 </div>
 

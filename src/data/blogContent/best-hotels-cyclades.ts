@@ -1,5 +1,5 @@
 export const bestHotelsCycladesContent = `
-# Best Hotels in the Cyclades 2025
+# Best Hotels in the Cyclades 2026
 
 ![Luxury cave house with caldera views in Santorini](/images/islands/santorini.jpg)
 

@@ -22,16 +22,21 @@ interface SearchResult {
 export default function Home() {
   const { t } = useTranslation();
   const seoData = {
-    title: `Discover Cyclades Islands ${SITE_TAGLINE}`,
-    description: t('home.seo.description', "Discover the magic of the Cyclades islands with our AI-powered travel guide. Plan your perfect Greek island-hopping adventure today.")
+    title: `Discover Cyclades 2026 | #1 Greek Islands Travel Hub | AI Trip Planner`,
+    description: t('home.seo.description', "Plan your perfect Cyclades adventure with AI-powered trip planning. Expert guides to 25 Greek islands, ferry booking, hotels & activities. Trusted by 50,000+ travelers. Book now!")
   };
 
   const jsonLD = {
     "@context": "https://schema.org",
     "@type": "TravelAgency",
-    "name": "discovercyclades.gr",
-    "description": "Your complete guide to the Cyclades islands in Greece",
+    "name": "Discover Cyclades",
+    "alternateName": "discovercyclades.gr",
+    "description": "Your complete AI-powered guide to the Cyclades islands in Greece. Ferry tickets, hotels, activities, and personalized trip planning.",
     "url": "https://discovercyclades.gr",
+    "logo": "https://discovercyclades.gr/touristas-ai-logo.svg",
+    "sameAs": [
+      "https://twitter.com/greececyclades"
+    ],
     "areaServed": {
       "@type": "AdministrativeArea",
       "name": "Cyclades Islands",
@@ -39,6 +44,29 @@ export default function Home() {
         "@type": "Country",
         "name": "Greece"
       }
+    },
+    "hasOfferCatalog": {
+      "@type": "OfferCatalog",
+      "name": "Cyclades Travel Services",
+      "itemListElement": [
+        {
+          "@type": "OfferCatalog",
+          "name": "Island Guides",
+          "itemListElement": [
+            { "@type": "Offer", "itemOffered": { "@type": "TravelGuide", "name": "Santorini Travel Guide" } },
+            { "@type": "Offer", "itemOffered": { "@type": "TravelGuide", "name": "Mykonos Travel Guide" } },
+            { "@type": "Offer", "itemOffered": { "@type": "TravelGuide", "name": "Naxos Travel Guide" } }
+          ]
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Ferry Tickets"
+        },
+        {
+          "@type": "OfferCatalog",
+          "name": "Hotel Bookings"
+        }
+      ]
     }
   };
 

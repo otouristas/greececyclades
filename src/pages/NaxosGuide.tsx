@@ -19,6 +19,8 @@ import {
   FaWater
 } from 'react-icons/fa';
 import SEO from '../components/SEO';
+import FAQSchema from '../components/FAQSchema';
+import BreadcrumbSchema, { breadcrumbPaths } from '../components/BreadcrumbSchema';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
 import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
@@ -31,6 +33,34 @@ const NaxosGuide: React.FC = () => {
   if (!naxos) {
     return <div>Island not found</div>;
   }
+
+  // FAQ data for rich snippets
+  const naxosFaqs = [
+    {
+      question: "When is the best time to visit Naxos?",
+      answer: "The best time to visit Naxos is May-June and September-October for ideal weather, fewer crowds, and lower prices. Peak season (July-August) offers the best beach weather but higher prices. Spring is perfect for hiking."
+    },
+    {
+      question: "How do I get to Naxos?",
+      answer: "You can reach Naxos by ferry from Athens Piraeus (3-6 hours depending on speed) or by domestic flight to Naxos Airport (JNX) from Athens (45 min). Naxos is also well-connected by ferry to other Cycladic islands."
+    },
+    {
+      question: "How many days do I need in Naxos?",
+      answer: "4-7 days is ideal for Naxos due to its size and diversity. This allows time for beaches (Plaka, Agios Prokopios), mountain villages (Apiranthos, Halki), the Portara, hiking Mount Zas, and local food experiences."
+    },
+    {
+      question: "Is Naxos good for families?",
+      answer: "Yes, Naxos is one of the best Greek islands for families. It offers safe, shallow beaches (Plaka, Agios Prokopios), affordable accommodations, local authentic experiences, and many activities suitable for children."
+    },
+    {
+      question: "What is Naxos famous for?",
+      answer: "Naxos is famous for the iconic Portara (Apollo's Gate), excellent beaches, Mount Zas (highest peak in the Cyclades and legendary birthplace of Zeus), marble villages like Apiranthos, local cheeses, potatoes, and kitron liqueur."
+    },
+    {
+      question: "Do I need a car in Naxos?",
+      answer: "A car is highly recommended in Naxos due to its large size. While buses serve main beaches and villages, a car gives freedom to explore mountain villages, remote beaches, and hiking trails. Renting a car or ATV is easy."
+    }
+  ];
 
   const seoData = {
     title: "Naxos Travel Guide: Top Attractions, Beaches & Local Tips [2026 Update]",
@@ -48,7 +78,7 @@ const NaxosGuide: React.FC = () => {
       'best time to visit Naxos'
     ],
     ogImage: naxos.image,
-    ogType: 'article'
+    ogType: 'article' as const
   };
 
   // Photo gallery images
@@ -89,6 +119,8 @@ const NaxosGuide: React.FC = () => {
 
   return (
     <>
+      <BreadcrumbSchema items={breadcrumbPaths.islandGuide('Naxos', 'naxos')} />
+      <FAQSchema faqs={naxosFaqs} pageUrl="https://discovercyclades.gr/guides/naxos" />
       <SEO {...seoData}
         jsonLD={{
           "@context": "https://schema.org",

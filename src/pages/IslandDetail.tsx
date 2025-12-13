@@ -35,8 +35,8 @@ export default function IslandDetail() {
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
       <SEO
-        title={`${island.name} Island 2025: Complete Travel Guide | Cyclades Greece`}
-        description={`Everything about ${island.name}: best beaches, where to stay, top restaurants, ferry info & travel tips. Expert 2025 guide with insider recommendations.`}
+        title={`${island.name} Island 2026: Complete Travel Guide | Cyclades Greece`}
+        description={`Everything about ${island.name}: best beaches, where to stay, top restaurants, ferry info & travel tips. Expert 2026 guide with insider recommendations.`}
         ogImage={island.heroImage || island.image}
         pageType="islands"
         islandData={{

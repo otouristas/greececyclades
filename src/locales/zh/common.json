@@ -647,5 +647,74 @@
         "hotelsDescription": "查找并预订基克拉迪群岛最佳酒店。",
         "ferriesTitle": "渡轮船票 | 基克拉迪群岛跳岛游",
         "ferriesDescription": "预订希腊岛屿间渡轮船票。比较价格和时刻表。"
+    },
+    "quiz": {
+        "badge": "互动岛屿选择器",
+        "title": "哪个基克拉迪群岛适合你？",
+        "subtitle": "回答5个问题，发现你的完美岛屿",
+        "questionOf": "第{{current}}题 / 共{{total}}题",
+        "meta": {
+            "title": "岛屿测验 | 找到你的完美岛屿",
+            "description": "发现哪个希腊岛屿适合你的旅行风格！"
+        },
+        "questions": {
+            "vibe": {
+                "question": "你理想的度假氛围是什么？",
+                "answers": {
+                    "romantic": "浪漫与日落",
+                    "party": "夜生活与活力",
+                    "adventure": "冒险与探索",
+                    "authentic": "文化与真实"
+                }
+            },
+            "travel": {
+                "question": "你和谁一起旅行？",
+                "answers": {
+                    "couple": "只有我们两个",
+                    "solo": "独自冒险",
+                    "family": "带孩子的家庭",
+                    "friends": "朋友团"
+                }
+            },
+            "budget": {
+                "question": "你的预算风格是什么？",
+                "answers": {
+                    "budget": "预算型",
+                    "midRange": "舒适中档",
+                    "luxury": "奢华体验",
+                    "flexible": "灵活"
+                }
+            },
+            "priority": {
+                "question": "什么对你最重要？",
+                "answers": {
+                    "beaches": "美丽海滩",
+                    "food": "美食",
+                    "sunsets": "壮观日落",
+                    "nightlife": "热闹夜生活"
+                }
+            },
+            "crowd": {
+                "question": "你对人群感觉如何？",
+                "answers": {
+                    "popular": "我喜欢热闹！",
+                    "balanced": "适度活动不错",
+                    "offPath": "更喜欢安静的地方",
+                    "hidden": "只要隐藏的宝藏"
+                }
+            }
+        },
+        "results": {
+            "badge": "你的完美匹配！",
+            "title": "你的岛屿",
+            "subtitle": "根据你的回答，这些岛屿非常适合你",
+            "retake": "重新测试",
+            "exploreTop": "探索最佳匹配",
+            "matchText": {
+                "perfect": "完美匹配！",
+                "great": "很好的选择",
+                "good": "也值得考虑"
+            }
+        }
     }
 }

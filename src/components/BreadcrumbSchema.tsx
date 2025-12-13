@@ -1,5 +1,7 @@
 import { Helmet } from 'react-helmet-async';
 
+const SITE_URL = 'https://discovercyclades.gr';
+
 export interface BreadcrumbItem {
   name: string;
   url: string;
@@ -18,7 +20,7 @@ export default function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
 
   // Always start with homepage
   const fullItems: BreadcrumbItem[] = [
-    { name: 'Home', url: 'https://hotelssantorini.gr/' },
+    { name: 'Home', url: `${SITE_URL}/` },
     ...items
   ];
 
@@ -46,28 +48,35 @@ export default function BreadcrumbSchema({ items }: BreadcrumbSchemaProps) {
  * Helper to generate common breadcrumb paths
  */
 export const breadcrumbPaths = {
-  hotels: [
-    { name: 'Hotels', url: 'https://hotelssantorini.gr/hotels' }
+  islands: [
+    { name: 'Islands', url: `${SITE_URL}/islands` }
   ],
-  locations: (locationName: string, locationSlug: string) => [
-    { name: 'Locations', url: 'https://hotelssantorini.gr/locations' },
-    { name: locationName, url: `https://hotelssantorini.gr/locations/${locationSlug}` }
+  islandGuide: (islandName: string, islandSlug: string) => [
+    { name: 'Islands', url: `${SITE_URL}/islands` },
+    { name: islandName, url: `${SITE_URL}/guides/${islandSlug}` }
+  ],
+  hotels: [
+    { name: 'Hotels', url: `${SITE_URL}/hotels` }
   ],
   hotelDetail: (hotelName: string, hotelSlug: string, location?: string) => [
-    { name: 'Hotels', url: 'https://hotelssantorini.gr/hotels' },
-    ...(location ? [{ name: location, url: `https://hotelssantorini.gr/locations/${location.toLowerCase()}` }] : []),
-    { name: hotelName, url: `https://hotelssantorini.gr/hotels/${hotelSlug}` }
+    { name: 'Hotels', url: `${SITE_URL}/hotels` },
+    ...(location ? [{ name: location, url: `${SITE_URL}/hotels?location=${location.toLowerCase()}` }] : []),
+    { name: hotelName, url: `${SITE_URL}/hotels/${hotelSlug}` }
   ],
   blog: (postTitle: string, postSlug: string) => [
-    { name: 'Blog', url: 'https://hotelssantorini.gr/blog' },
-    { name: postTitle, url: `https://hotelssantorini.gr/blog/${postSlug}` }
+    { name: 'Blog', url: `${SITE_URL}/blog` },
+    { name: postTitle, url: `${SITE_URL}/blog/${postSlug}` }
   ],
-  thingsToDo: (categoryName?: string, categorySlug?: string) => [
-    { name: 'Things to Do', url: 'https://hotelssantorini.gr/things-to-do' },
-    ...(categoryName && categorySlug ? [{ name: categoryName, url: `https://hotelssantorini.gr/things-to-do/${categorySlug}` }] : [])
+  activities: [
+    { name: 'Activities', url: `${SITE_URL}/activities` }
   ],
-  transport: (pageName: string, pageSlug: string) => [
-    { name: 'Getting to Santorini', url: 'https://hotelssantorini.gr/how-to-get-to-santorini' },
-    { name: pageName, url: `https://hotelssantorini.gr/${pageSlug}` }
+  ferries: [
+    { name: 'Ferry Tickets', url: `${SITE_URL}/ferry-tickets` }
+  ],
+  flights: [
+    { name: 'Flights', url: `${SITE_URL}/flights` }
+  ],
+  quiz: [
+    { name: 'Island Quiz', url: `${SITE_URL}/quiz` }
   ]
 };

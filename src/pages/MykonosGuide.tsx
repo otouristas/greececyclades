@@ -15,6 +15,8 @@ import {
   FaLandmark
 } from 'react-icons/fa';
 import SEO from '../components/SEO';
+import FAQSchema from '../components/FAQSchema';
+import BreadcrumbSchema, { breadcrumbPaths } from '../components/BreadcrumbSchema';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
 import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
@@ -27,6 +29,34 @@ const MykonosGuide: React.FC = () => {
   if (!mykonos) {
     return <div>Island not found</div>;
   }
+
+  // FAQ data for rich snippets
+  const mykonosFaqs = [
+    {
+      question: "When is the best time to visit Mykonos?",
+      answer: "The best time to visit Mykonos is May-June and September for great weather with fewer crowds and better prices. Peak season (July-August) offers the best nightlife and beach club scene but expect crowded beaches and premium prices."
+    },
+    {
+      question: "Is Mykonos expensive?",
+      answer: "Yes, Mykonos is one of Greece's most expensive islands. Budget €150-200/day minimum, mid-range €300-500/day, luxury €700+/day. Beach club sunbeds can cost €50-200+. Shoulder season (May, September) offers 30-40% savings."
+    },
+    {
+      question: "How do I get to Mykonos?",
+      answer: "You can reach Mykonos by direct flights to Mykonos Airport (JMK) from Athens (40 min) and major European cities, or by ferry from Athens Piraeus or Rafina (2.5-5 hours depending on ferry speed)."
+    },
+    {
+      question: "What is Mykonos known for?",
+      answer: "Mykonos is famous for its vibrant nightlife and beach clubs (Paradise Beach, Scorpios), iconic windmills, Little Venice waterfront, whitewashed Cycladic architecture, luxury hotels, celebrity visitors, and the nearby ancient site of Delos."
+    },
+    {
+      question: "How many days do I need in Mykonos?",
+      answer: "3-5 days is ideal for Mykonos. This allows time to explore Mykonos Town, visit beaches, experience nightlife, take a day trip to Delos, and enjoy the island's restaurants and bars without feeling rushed."
+    },
+    {
+      question: "Is Mykonos good for families?",
+      answer: "Mykonos can work for families but is better suited for couples and groups. Family-friendly areas include Ornos Beach, Agios Stefanos, and Platis Gialos. Avoid Paradise and Super Paradise beaches if traveling with children."
+    }
+  ];
 
   const seoData = {
     title: "Mykonos Travel Guide 2026 - Best Beaches, Nightlife & Things to Do",
@@ -83,6 +113,8 @@ const MykonosGuide: React.FC = () => {
 
   return (
     <>
+      <BreadcrumbSchema items={breadcrumbPaths.islandGuide('Mykonos', 'mykonos')} />
+      <FAQSchema faqs={mykonosFaqs} pageUrl="https://discovercyclades.gr/guides/mykonos" />
       <SEO {...seoData}
         jsonLD={{
           "@context": "https://schema.org",

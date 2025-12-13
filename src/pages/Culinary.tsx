@@ -21,15 +21,15 @@ export default function Culinary() {
   const filteredExperiences = culinaryData.filter((experience) => {
     const matchesCategory = selectedCategory === 'all' || experience.category === selectedCategory;
     const matchesSearch = experience.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         experience.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
-                         experience.location.toLowerCase().includes(searchQuery.toLowerCase());
+      experience.description.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      experience.location.toLowerCase().includes(searchQuery.toLowerCase());
     return matchesCategory && matchesSearch;
   });
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white">
-      <SEO 
-        title="Cyclades Food Guide 2025: Best Restaurants, Local Dishes & Wine"
+      <SEO
+        title="Cyclades Food Guide 2026: Best Restaurants, Local Dishes & Wine"
         description="Discover Cycladic cuisine: Sifnos pottery cooking, Naxos cheeses, Santorini wines, Mykonos seafood. Best tavernas, cooking classes & food tours on every island."
         ogImage="/images/culinary-hero.jpg"
         breadcrumbs={[
@@ -102,11 +102,10 @@ export default function Culinary() {
                           <button
                             key={category.id}
                             onClick={() => setSelectedCategory(category.id as CulinaryCategory | 'all')}
-                            className={`px-5 py-4 rounded-xl text-sm font-medium transition-all duration-300 ${
-                              selectedCategory === category.id
+                            className={`px-5 py-4 rounded-xl text-sm font-medium transition-all duration-300 ${selectedCategory === category.id
                                 ? 'bg-blue-500/20 text-blue-200 border border-blue-400/30'
                                 : 'bg-white/[0.06] text-blue-100/70 border border-white/10 hover:bg-white/[0.1]'
-                            }`}
+                              }`}
                           >
                             {category.name}
                           </button>
@@ -129,12 +128,12 @@ export default function Culinary() {
             <h2 className="text-3xl lg:text-4xl font-bold text-gray-900 mb-8">
               Discover Authentic Greek Cuisine in the Cyclades
             </h2>
-            
+
             <div className="prose prose-lg prose-blue">
               <p>
                 Embark on an unforgettable culinary journey through the Cyclades islands, where centuries-old Greek cooking traditions meet the Mediterranean's finest ingredients. Our carefully curated experiences offer you the chance to explore the authentic flavors, cooking methods, and cultural significance of Cycladic cuisine.
               </p>
-              
+
               <p>
                 From hands-on cooking classes led by local chefs to wine tasting tours in traditional vineyards, each experience is designed to immerse you in the rich gastronomic heritage of the Greek islands.
               </p>
@@ -187,8 +186,8 @@ export default function Culinary() {
         {/* Section Title */}
         <div className="mb-12">
           <h2 className="text-3xl lg:text-4xl font-bold text-gray-900">
-            {selectedCategory === 'all' 
-              ? 'All Experiences' 
+            {selectedCategory === 'all'
+              ? 'All Experiences'
               : `${selectedCategory} Experiences`}
           </h2>
           <p className="mt-2 text-gray-600">
@@ -198,8 +197,8 @@ export default function Culinary() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredExperiences.map((experience) => (
-            <div 
-              key={experience.id} 
+            <div
+              key={experience.id}
               className="group bg-white rounded-2xl overflow-hidden hover:shadow-xl transition-all duration-300 border border-gray-100"
             >
               {/* Image Container */}
@@ -312,7 +311,7 @@ export default function Culinary() {
               answer: "Yes! We offer private cooking classes and customized culinary experiences for special occasions, team building, or groups. Contact us for more information about private bookings."
             }
           ].map((faq, index) => (
-            <div 
+            <div
               key={index}
               className="bg-white rounded-2xl p-6 shadow-sm border border-gray-100 hover:shadow-md transition-shadow"
             >

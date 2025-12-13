@@ -176,6 +176,11 @@ export default function FooterNew() {
                                     {t('footer.links.tripPlanner')}
                                 </Link>
                             </li>
+                            <li>
+                                <Link to="/quiz" className="text-sm text-white/60 hover:text-white transition-colors">
+                                    {t('footer.links.islandQuiz') || 'Island Quiz'}
+                                </Link>
+                            </li>
                         </ul>
                     </div>
 

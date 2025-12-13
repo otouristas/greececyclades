@@ -29,6 +29,9 @@ import { luxuryVillasCycladesContent } from './luxury-villas-cyclades';
 import { cycladesHikingContent } from './cyclades-hiking';
 import { cycladesWaterSportsContent } from './cyclades-water-sports';
 import { cycladesCarRentalContent } from './cyclades-car-rental';
+import { santoriniVsMykonosContent } from './santorini-vs-mykonos';
+import { budgetCycladesGuideContent } from './budget-cyclades-guide';
+import { islandHoppingGuideContent } from './island-hopping-guide';
 
 export const blogContent = {
   // Main Featured Guides
@@ -80,4 +83,11 @@ export const blogContent = {
   // Activities
   cycladesHiking: cycladesHikingContent,
   cycladesWaterSports: cycladesWaterSportsContent,
+
+  // Comparisons
+  santoriniVsMykonos: santoriniVsMykonosContent,
+
+  // Budget & Practical
+  budgetCycladesGuide: budgetCycladesGuideContent,
+  islandHoppingGuide: islandHoppingGuideContent,
 };

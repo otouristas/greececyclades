@@ -230,6 +230,7 @@
         "links": {
             "touristasAI": "Touristas AI",
             "tripPlanner": "Trip Planner",
+            "islandQuiz": "Island Quiz",
             "helpCenter": "Help Center",
             "aboutUs": "About Us",
             "travelBlog": "Travel Blog",
@@ -672,13 +673,82 @@
         }
     },
     "meta": {
-        "homeTitle": "Discover Cyclades | Greek Islands Travel Guide",
-        "homeDescription": "Plan your perfect Greek island vacation. Hotels, ferries, flights, and activities across all Cycladic islands.",
-        "islandsTitle": "Cyclades Islands | Complete Travel Guide",
-        "islandsDescription": "Explore all 24 Cycladic islands. From Santorini to hidden gems like Koufonisia.",
-        "hotelsTitle": "Hotels in the Cyclades | Best Accommodations",
-        "hotelsDescription": "Find and book the best hotels across the Greek Cyclades islands.",
-        "ferriesTitle": "Ferry Tickets | Cyclades Island Hopping",
-        "ferriesDescription": "Book ferry tickets between Greek islands. Compare prices and schedules."
+        "homeTitle": "Discover Cyclades 2025 | #1 Greek Islands Travel Hub | AI Trip Planner",
+        "homeDescription": "Plan your perfect Cyclades adventure with AI-powered trip planning. Expert guides to 25 Greek islands, ferry booking, hotels & activities. Trusted by 50,000+ travelers. Book now!",
+        "islandsTitle": "25 Best Cyclades Islands 2025 | Find YOUR Perfect Greek Island",
+        "islandsDescription": "Compare all 25 Cyclades islands by vibe: party, romantic, family, budget. Interactive finder, ferry connections, insider tips. Plan your Greek island adventure!",
+        "hotelsTitle": "Cyclades Hotels 2025 | Best Prices on 2,000+ Properties",
+        "hotelsDescription": "Find & compare hotels across all Cyclades islands. Cave hotels, beachfront villas, budget gems. Real reviews, best prices guaranteed. Book now!",
+        "ferriesTitle": "Cyclades Ferry Tickets 2025 | 50+ Routes | Book Online",
+        "ferriesDescription": "Compare ferry prices Santorini, Mykonos, Naxos & all islands. Real-time schedules, instant booking. Island hopping made easy!"
+    },
+    "quiz": {
+        "badge": "Interactive Island Finder",
+        "title": "Which Cyclades Island Is For You?",
+        "subtitle": "Answer 5 quick questions and discover your perfect Greek island match",
+        "questionOf": "Question {{current}} of {{total}}",
+        "meta": {
+            "title": "Island Quiz | Find Your Perfect Cyclades Island",
+            "description": "Take our interactive quiz to discover which Greek island matches your travel style. Answer 5 questions and get personalized island recommendations!"
+        },
+        "questions": {
+            "vibe": {
+                "question": "What's your ideal vacation vibe?",
+                "answers": {
+                    "romantic": "Romance & Sunsets",
+                    "party": "Nightlife & Energy",
+                    "adventure": "Adventure & Exploration",
+                    "authentic": "Culture & Authenticity"
+                }
+            },
+            "travel": {
+                "question": "Who are you traveling with?",
+                "answers": {
+                    "couple": "Just Us Two",
+                    "solo": "Solo Adventure",
+                    "family": "Family with Kids",
+                    "friends": "Friends Group"
+                }
+            },
+            "budget": {
+                "question": "What's your budget style?",
+                "answers": {
+                    "budget": "Budget-Conscious",
+                    "midRange": "Comfortable Mid-Range",
+                    "luxury": "Luxury Experience",
+                    "flexible": "Flexible"
+                }
+            },
+            "priority": {
+                "question": "What matters most to you?",
+                "answers": {
+                    "beaches": "Amazing Beaches",
+                    "food": "Great Food & Dining",
+                    "sunsets": "Stunning Sunsets",
+                    "nightlife": "Vibrant Nightlife"
+                }
+            },
+            "crowd": {
+                "question": "How do you feel about crowds?",
+                "answers": {
+                    "popular": "Love the buzz!",
+                    "balanced": "Some activity is nice",
+                    "offPath": "Prefer quieter spots",
+                    "hidden": "True hidden gems only"
+                }
+            }
+        },
+        "results": {
+            "badge": "Your Perfect Match!",
+            "title": "Your Island Matches",
+            "subtitle": "Based on your answers, these islands are perfect for you",
+            "retake": "Retake Quiz",
+            "exploreTop": "Explore Your Top Match",
+            "matchText": {
+                "perfect": "Perfect match for you!",
+                "great": "Great alternative",
+                "good": "Also worth considering"
+            }
+        }
     }
 }

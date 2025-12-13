@@ -27,10 +27,21 @@ export default function Islands() {
 
   return (
     <>
-      <SEO 
-        title={`Cyclades Islands: Complete Travel Guide ${SITE_TAGLINE}`}
-        description="Explore the stunning Cyclades islands in Greece. Find detailed information about each island, including Santorini, Mykonos, Naxos, and more. Plan your perfect Greek island vacation."
+      <SEO
+        title="25 Best Cyclades Islands 2026 | Find YOUR Perfect Greek Island"
+        description="Compare all 25 Cyclades islands by vibe: party 🎉, romantic 💕, family 👨‍👩‍👧, budget 💰. Interactive finder, ferry connections, insider tips. Plan your Greek island adventure!"
         ogImage="/assets/images/cyclades-islands.jpg"
+        pageType="islands"
+        breadcrumbs={[
+          { name: 'Home', url: '/' },
+          { name: 'Islands', url: '/islands' }
+        ]}
+        faqs={[
+          { question: 'What is the best time to visit the Cyclades islands?', answer: 'The best time to visit is late April to early October. September-October offers perfect weather with fewer crowds. July-August is peak season with higher prices.' },
+          { question: 'How many Cyclades islands should I visit?', answer: 'For a week, visit 2-3 islands. For two weeks, 4-5 islands is ideal. Allow 3 nights minimum per island to properly explore.' },
+          { question: 'Which Cyclades islands are best for first-time visitors?', answer: 'Santorini and Mykonos are iconic but crowded. Paros and Naxos offer excellent balance of beaches, villages, and fewer tourists.' },
+          { question: 'How do I get to the Cyclades islands?', answer: 'Ferries from Athens ports (Piraeus, Rafina) take 2-8 hours. Major islands have airports with domestic flights from Athens.' }
+        ]}
       />
 
       <div className="bg-gray-50">
@@ -114,24 +125,24 @@ export default function Islands() {
           <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-3xl font-bold text-gray-900 mb-8 text-center">The Enchanting Cyclades Islands</h2>
-              
+
               <div className="prose prose-lg prose-blue mx-auto">
                 <p>
                   The <strong>Cyclades Islands</strong> form one of Greece's most iconic and beloved island groups, situated in the heart of the Aegean Sea. Named for the circle ("kyklos" in Greek) they form around the sacred island of Delos, these islands are characterized by their stunning white-washed buildings with blue domes, crystal-clear turquoise waters, and sun-drenched landscapes.
                 </p>
-                
+
                 <p>
                   Each of the Cyclades islands offers its own unique charm and character. <strong>Santorini</strong>, with its dramatic caldera views and spectacular sunsets, is world-renowned for its romantic atmosphere and luxury accommodations. <strong>Mykonos</strong> captivates visitors with its cosmopolitan vibe, vibrant nightlife, and beautiful beaches. <strong>Naxos</strong>, the largest of the Cyclades, boasts fertile valleys, mountain villages, and some of the finest beaches in Greece.
                 </p>
-                
+
                 <p>
                   For those seeking a more authentic experience, islands like <strong>Paros</strong>, <strong>Milos</strong>, <strong>Sifnos</strong>, and <strong>Folegandros</strong> offer traditional villages, exceptional cuisine, and a slower pace of life. Meanwhile, lesser-known gems such as <strong>Amorgos</strong>, <strong>Tinos</strong>, <strong>Syros</strong>, and <strong>Serifos</strong> provide opportunities to experience Greek island life away from the crowds.
                 </p>
-                
+
                 <p>
                   The Cyclades are easily accessible from Athens, with regular ferry connections and flights to the major islands. Island hopping is a popular way to experience multiple destinations, with an extensive network of ferry routes connecting the islands during the summer months. The best time to visit is from late April to early October, with peak season falling in July and August.
                 </p>
-                
+
                 <p>
                   Whether you're drawn to the Cyclades for their stunning beaches, ancient history, traditional architecture, delicious cuisine, or vibrant culture, these islands offer an unforgettable Greek experience that keeps visitors returning year after year.
                 </p>
@@ -148,7 +159,7 @@ export default function Islands() {
                 <h2 className="text-3xl font-bold text-gray-900 mb-4">Frequently Asked Questions</h2>
                 <p className="text-gray-600">Everything you need to know about planning your Cyclades island adventure</p>
               </div>
-              
+
               <div className="space-y-4">
                 {/* FAQ Item 1 */}
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
@@ -171,7 +182,7 @@ export default function Islands() {
                     </div>
                   )}
                 </div>
-                
+
                 {/* FAQ Item 2 */}
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
                   <button
@@ -193,7 +204,7 @@ export default function Islands() {
                     </div>
                   )}
                 </div>
-                
+
                 {/* FAQ Item 3 */}
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
                   <button
@@ -215,7 +226,7 @@ export default function Islands() {
                     </div>
                   )}
                 </div>
-                
+
                 {/* FAQ Item 4 */}
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
                   <button
@@ -237,7 +248,7 @@ export default function Islands() {
                     </div>
                   )}
                 </div>
-                
+
                 {/* FAQ Item 5 */}
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
                   <button
@@ -259,7 +270,7 @@ export default function Islands() {
                     </div>
                   )}
                 </div>
-                
+
                 {/* FAQ Item 6 */}
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
                   <button
@@ -281,7 +292,7 @@ export default function Islands() {
                     </div>
                   )}
                 </div>
-                
+
                 {/* FAQ Item 7 */}
                 <div className="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
                   <button
@@ -304,7 +315,7 @@ export default function Islands() {
                   )}
                 </div>
               </div>
-              
+
               <div className="mt-10 text-center">
                 <Link
                   to="/ferry-guide"

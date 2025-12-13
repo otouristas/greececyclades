@@ -61,12 +61,15 @@ i18n
   .init({
     debug: process.env.NODE_ENV === 'development',
     fallbackLng: 'en',
+    lng: 'en', // Force English as default language
     supportedLngs: supportedLangCodes,
     interpolation: {
       escapeValue: false,
     },
     detection: {
-      order: ['path', 'localStorage', 'navigator', 'htmlTag'],
+      // Only check path and localStorage, NOT navigator (browser language)
+      // This prevents defaulting to Russian/Chinese based on browser settings
+      order: ['path', 'localStorage'],
       lookupFromPathIndex: 0,
       caches: ['localStorage'],
     },

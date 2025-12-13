@@ -7,28 +7,28 @@ import { useTheme } from '../contexts/ThemeContext';
 
 // Ferry companies operating in the Cyclades
 const ferryCompanies = [
-  { 
-    name: 'Blue Star Ferries', 
+  {
+    name: 'Blue Star Ferries',
     logo: '/images/ferry-companies/blue-star.png',
     website: 'https://www.bluestarferries.com/en/'
   },
-  { 
-    name: 'Seajets', 
+  {
+    name: 'Seajets',
     logo: '/images/ferry-companies/seajets.png',
     website: 'https://www.seajets.com/en/'
   },
-  { 
-    name: 'Golden Star Ferries', 
+  {
+    name: 'Golden Star Ferries',
     logo: '/images/ferry-companies/golden-star.png',
     website: 'https://goldenstarferries.gr/en/'
   },
-  { 
-    name: 'Fast Ferries', 
+  {
+    name: 'Fast Ferries',
     logo: '/images/ferry-companies/fast-ferries.png',
     website: 'https://www.fastferries.com.gr/en/'
   },
-  { 
-    name: 'Hellenic Seaways', 
+  {
+    name: 'Hellenic Seaways',
     logo: '/images/ferry-companies/hellenic.png',
     website: 'https://www.hellenicseaways.gr/en/'
   }
@@ -49,11 +49,11 @@ export default function FerryGuide() {
   const [activeTab, setActiveTab] = useState('general');
   const { resolvedTheme } = useTheme();
   const isDark = resolvedTheme === 'dark';
-  
+
   return (
     <div className={`min-h-screen ${isDark ? 'bg-dark-bg' : 'bg-gray-50'}`}>
-      <SEO 
-        title="Cyclades Ferry Guide 2025: Routes, Prices & Booking Tips"
+      <SEO
+        title="Cyclades Ferry Guide 2026: Routes, Prices & Booking Tips"
         description="Everything about Cyclades ferries: Athens to islands, island hopping routes, live schedules, booking tips. Compare Blue Star, SeaJets, Golden Star & save money."
         breadcrumbs={[
           { name: 'Home', url: '/' },
@@ -66,7 +66,7 @@ export default function FerryGuide() {
           { question: 'When should I book Cyclades ferries?', answer: 'Book 1-2 weeks ahead in shoulder season, 3-4 weeks for July-August. Last minute is possible but risky for popular routes.' }
         ]}
       />
-      
+
       {/* Hero Section */}
       <div className={`relative pt-24 pb-16 md:pt-32 md:pb-24 ${isDark ? 'bg-gradient-to-r from-cyclades-deep-blue to-cyclades-caldera' : 'bg-gradient-to-r from-cyclades-deep-blue to-cyclades-sea-blue'}`}>
         <div className="absolute inset-0 overflow-hidden">
@@ -83,8 +83,8 @@ export default function FerryGuide() {
             Everything you need to know about traveling by ferry between the Greek islands
           </p>
           <div className="mt-8">
-            <Link 
-              to="/ferry-tickets" 
+            <Link
+              to="/ferry-tickets"
               className="inline-flex items-center gap-2 bg-cyclades-turquoise text-dark-bg hover:bg-cyclades-turquoise/90 px-6 py-3 rounded-xl font-semibold transition-colors duration-300"
             >
               <Ship className="h-5 w-5" />
@@ -93,7 +93,7 @@ export default function FerryGuide() {
           </div>
         </div>
       </div>
-      
+
       {/* Main Content */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
         {/* Navigation Tabs */}
@@ -101,54 +101,50 @@ export default function FerryGuide() {
           <nav className="-mb-px flex space-x-8 overflow-x-auto">
             <button
               onClick={() => setActiveTab('general')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
-                activeTab === 'general'
+              className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${activeTab === 'general'
                   ? 'border-cyclades-turquoise text-cyclades-turquoise'
                   : isDark ? 'border-transparent text-white/60 hover:text-white hover:border-dark-border' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+                }`}
             >
               General Information
             </button>
             <button
               onClick={() => setActiveTab('companies')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
-                activeTab === 'companies'
+              className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${activeTab === 'companies'
                   ? 'border-cyclades-turquoise text-cyclades-turquoise'
                   : isDark ? 'border-transparent text-white/60 hover:text-white hover:border-dark-border' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+                }`}
             >
               Ferry Companies
             </button>
             <button
               onClick={() => setActiveTab('routes')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
-                activeTab === 'routes'
+              className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${activeTab === 'routes'
                   ? 'border-cyclades-turquoise text-cyclades-turquoise'
                   : isDark ? 'border-transparent text-white/60 hover:text-white hover:border-dark-border' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+                }`}
             >
               Popular Routes
             </button>
             <button
               onClick={() => setActiveTab('tips')}
-              className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${
-                activeTab === 'tips'
+              className={`py-4 px-1 border-b-2 font-medium text-sm whitespace-nowrap ${activeTab === 'tips'
                   ? 'border-cyclades-turquoise text-cyclades-turquoise'
                   : isDark ? 'border-transparent text-white/60 hover:text-white hover:border-dark-border' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-300'
-              }`}
+                }`}
             >
               Travel Tips
             </button>
           </nav>
         </div>
-        
+
         {/* Tab Content */}
         <div className="mb-12">
           {/* General Information */}
           {activeTab === 'general' && (
             <div>
               <h2 className={`text-3xl font-bold mb-6 ${isDark ? 'text-white' : 'text-gray-900'}`}>Ferry Travel in the Cyclades</h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div>
                   <p className={`mb-4 ${isDark ? 'text-white/70' : 'text-gray-600'}`}>
@@ -162,7 +158,7 @@ export default function FerryGuide() {
                     <li><strong>High-speed Ferries/Catamarans:</strong> Faster vessels that significantly reduce travel time but are more expensive and may be canceled in bad weather.</li>
                   </ul>
                 </div>
-                
+
                 <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-xl p-6">
                   <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                     <Info className="h-5 w-5 text-cyan-600 dark:text-cyclades-turquoise" />
@@ -200,7 +196,7 @@ export default function FerryGuide() {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="bg-white dark:bg-dark-card rounded-xl shadow-sm border p-6 mb-8">
                 <h3 className="text-xl font-semibold mb-4">Seasonal Considerations</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -242,10 +238,10 @@ export default function FerryGuide() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="text-center">
-                <Link 
-                  to="/ferry-tickets" 
+                <Link
+                  to="/ferry-tickets"
                   className="inline-flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg font-medium transition-colors duration-300"
                 >
                   <Ship className="h-5 w-5" />
@@ -254,7 +250,7 @@ export default function FerryGuide() {
               </div>
             </div>
           )}
-          
+
           {/* Ferry Companies */}
           {activeTab === 'companies' && (
             <div>
@@ -262,19 +258,19 @@ export default function FerryGuide() {
               <p className="text-gray-600 mb-8">
                 Several ferry companies operate in the Cyclades, each with different types of vessels, routes, and schedules. Here are the main operators:
               </p>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8">
                 {ferryCompanies.map((company) => (
                   <div key={company.name} className="bg-white dark:bg-dark-card rounded-xl shadow-sm border p-6 flex flex-col items-center">
                     <div className="h-16 w-full flex items-center justify-center mb-4">
-                      <img 
-                        src={company.logo} 
-                        alt={`${company.name} logo`} 
+                      <img
+                        src={company.logo}
+                        alt={`${company.name} logo`}
                         className="h-full object-contain"
                       />
                     </div>
                     <h3 className="text-lg font-semibold mb-2">{company.name}</h3>
-                    <a 
+                    <a
                       href={company.website}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -285,7 +281,7 @@ export default function FerryGuide() {
                   </div>
                 ))}
               </div>
-              
+
               {/* Ferry Operator Comparison Table */}
               <div className="bg-white dark:bg-dark-card rounded-xl shadow-sm border p-6 mb-8 overflow-x-auto">
                 <h3 className="text-xl font-semibold mb-4">Ferry Operator Comparison</h3>
@@ -338,7 +334,7 @@ export default function FerryGuide() {
                   </tbody>
                 </table>
               </div>
-              
+
               <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-xl p-6">
                 <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                   <Info className="h-5 w-5 text-cyan-600 dark:text-cyclades-turquoise" />
@@ -366,8 +362,8 @@ export default function FerryGuide() {
                   </li>
                 </ul>
                 <div className="mt-6">
-                  <Link 
-                    to="/ferry-tickets" 
+                  <Link
+                    to="/ferry-tickets"
                     className="inline-flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700 px-4 py-2 rounded-lg text-sm font-medium transition-colors duration-300"
                   >
                     Book Tickets Now
@@ -376,7 +372,7 @@ export default function FerryGuide() {
               </div>
             </div>
           )}
-          
+
           {/* Popular Routes */}
           {activeTab === 'routes' && (
             <div>
@@ -384,7 +380,7 @@ export default function FerryGuide() {
               <p className="text-gray-600 mb-8">
                 The Cyclades islands are well-connected by ferry routes. Here are the main ports and their connections:
               </p>
-              
+
               <div className="space-y-6 mb-8">
                 {mainPorts.map((port) => (
                   <div key={port.name} className="bg-white dark:bg-dark-card rounded-xl shadow-sm border p-6">
@@ -395,8 +391,8 @@ export default function FerryGuide() {
                     <p className="text-gray-700 mb-2">Direct connections to:</p>
                     <div className="flex flex-wrap gap-2">
                       {port.islands.map((island) => (
-                        <span 
-                          key={island} 
+                        <span
+                          key={island}
                           className="bg-blue-100 text-blue-800 text-xs px-2.5 py-1 rounded"
                         >
                           {island}
@@ -406,7 +402,7 @@ export default function FerryGuide() {
                   </div>
                 ))}
               </div>
-              
+
               <div className="bg-amber-50 rounded-xl p-6 mb-8">
                 <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                   <AlertTriangle className="h-5 w-5 text-amber-600" />
@@ -431,10 +427,10 @@ export default function FerryGuide() {
                   </li>
                 </ul>
               </div>
-              
+
               <div className="text-center">
-                <Link 
-                  to="/ferry-tickets" 
+                <Link
+                  to="/ferry-tickets"
                   className="inline-flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg font-medium transition-colors duration-300"
                 >
                   Search Routes and Schedules
@@ -442,12 +438,12 @@ export default function FerryGuide() {
               </div>
             </div>
           )}
-          
+
           {/* Travel Tips */}
           {activeTab === 'tips' && (
             <div>
               <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-6">Ferry Travel Tips</h2>
-              
+
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
                 <div className="bg-white dark:bg-dark-card rounded-xl shadow-sm border p-6">
                   <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
@@ -477,7 +473,7 @@ export default function FerryGuide() {
                     </li>
                   </ul>
                 </div>
-                
+
                 <div className="bg-white dark:bg-dark-card rounded-xl shadow-sm border p-6">
                   <h3 className="text-xl font-semibold mb-4 flex items-center gap-2">
                     <Ship className="h-5 w-5 text-cyan-600 dark:text-cyclades-turquoise" />
@@ -507,7 +503,7 @@ export default function FerryGuide() {
                   </ul>
                 </div>
               </div>
-              
+
               <div className="bg-blue-50 dark:bg-cyan-600/10 rounded-xl p-6 mb-8">
                 <h3 className="text-xl font-semibold mb-4">Ticket Types & Seating Options</h3>
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
@@ -533,10 +529,10 @@ export default function FerryGuide() {
                   </div>
                 </div>
               </div>
-              
+
               <div className="text-center">
-                <Link 
-                  to="/ferry-tickets" 
+                <Link
+                  to="/ferry-tickets"
                   className="inline-flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-700 px-6 py-3 rounded-lg font-medium transition-colors duration-300"
                 >
                   Book Your Ferry Tickets
@@ -545,9 +541,9 @@ export default function FerryGuide() {
             </div>
           )}
         </div>
-        
+
       </div>
-      
+
       {/* FAQ Section */}
       <FAQSection
         faqs={[

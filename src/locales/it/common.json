@@ -647,5 +647,74 @@
         "hotelsDescription": "Trova e prenota i migliori hotel nelle Cicladi.",
         "ferriesTitle": "Biglietti Traghetto | Island Hopping Cicladi",
         "ferriesDescription": "Prenota biglietti traghetto tra le isole greche. Confronta prezzi e orari."
+    },
+    "quiz": {
+        "badge": "Selettore Isole Interattivo",
+        "title": "Quale Isola delle Cicladi Fa Per Te?",
+        "subtitle": "Rispondi a 5 domande e scopri la tua isola perfetta",
+        "questionOf": "Domanda {{current}} di {{total}}",
+        "meta": {
+            "title": "Quiz Isole | Trova la Tua Isola Perfetta",
+            "description": "Scopri quale isola greca corrisponde al tuo stile di viaggio!"
+        },
+        "questions": {
+            "vibe": {
+                "question": "Qual è la tua atmosfera di vacanza ideale?",
+                "answers": {
+                    "romantic": "Romanticismo & Tramonti",
+                    "party": "Vita Notturna & Energia",
+                    "adventure": "Avventura & Esplorazione",
+                    "authentic": "Cultura & Autenticità"
+                }
+            },
+            "travel": {
+                "question": "Con chi viaggi?",
+                "answers": {
+                    "couple": "Solo Noi Due",
+                    "solo": "Avventura in Solitaria",
+                    "family": "Famiglia con Bambini",
+                    "friends": "Gruppo di Amici"
+                }
+            },
+            "budget": {
+                "question": "Qual è il tuo stile di budget?",
+                "answers": {
+                    "budget": "Economico",
+                    "midRange": "Fascia Media Comoda",
+                    "luxury": "Esperienza di Lusso",
+                    "flexible": "Flessibile"
+                }
+            },
+            "priority": {
+                "question": "Cosa conta di più per te?",
+                "answers": {
+                    "beaches": "Spiagge Fantastiche",
+                    "food": "Ottimo Cibo",
+                    "sunsets": "Tramonti Mozzafiato",
+                    "nightlife": "Vita Notturna Vibrante"
+                }
+            },
+            "crowd": {
+                "question": "Come ti senti con la folla?",
+                "answers": {
+                    "popular": "Adoro il fermento!",
+                    "balanced": "Un po' di attività va bene",
+                    "offPath": "Preferisco posti tranquilli",
+                    "hidden": "Solo gemme nascoste"
+                }
+            }
+        },
+        "results": {
+            "badge": "Il Tuo Match Perfetto!",
+            "title": "Le Tue Isole",
+            "subtitle": "In base alle tue risposte, queste isole sono perfette per te",
+            "retake": "Rifai il Quiz",
+            "exploreTop": "Esplora il Top Match",
+            "matchText": {
+                "perfect": "Match perfetto per te!",
+                "great": "Ottima alternativa",
+                "good": "Da considerare anche"
+            }
+        }
     }
 }

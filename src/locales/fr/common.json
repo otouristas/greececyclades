@@ -647,5 +647,74 @@
         "hotelsDescription": "Trouvez et réservez les meilleurs hôtels des Cyclades.",
         "ferriesTitle": "Billets de Ferry | Island Hopping Cyclades",
         "ferriesDescription": "Réservez des billets de ferry entre les îles grecques. Comparez prix et horaires."
+    },
+    "quiz": {
+        "badge": "Sélecteur d'Île Interactif",
+        "title": "Quelle Île des Cyclades Vous Correspond?",
+        "subtitle": "Répondez à 5 questions et découvrez votre île idéale",
+        "questionOf": "Question {{current}} sur {{total}}",
+        "meta": {
+            "title": "Quiz Îles | Trouvez Votre Île Parfaite",
+            "description": "Découvrez quelle île grecque correspond à votre style de voyage!"
+        },
+        "questions": {
+            "vibe": {
+                "question": "Quelle est votre ambiance de vacances idéale?",
+                "answers": {
+                    "romantic": "Romance & Couchers de Soleil",
+                    "party": "Vie Nocturne & Énergie",
+                    "adventure": "Aventure & Exploration",
+                    "authentic": "Culture & Authenticité"
+                }
+            },
+            "travel": {
+                "question": "Avec qui voyagez-vous?",
+                "answers": {
+                    "couple": "Juste Nous Deux",
+                    "solo": "Aventure Solo",
+                    "family": "Famille avec Enfants",
+                    "friends": "Groupe d'Amis"
+                }
+            },
+            "budget": {
+                "question": "Quel est votre style de budget?",
+                "answers": {
+                    "budget": "Économique",
+                    "midRange": "Milieu de Gamme Confortable",
+                    "luxury": "Expérience Luxe",
+                    "flexible": "Flexible"
+                }
+            },
+            "priority": {
+                "question": "Qu'est-ce qui compte le plus pour vous?",
+                "answers": {
+                    "beaches": "Plages Magnifiques",
+                    "food": "Bonne Cuisine",
+                    "sunsets": "Couchers de Soleil Époustouflants",
+                    "nightlife": "Vie Nocturne Animée"
+                }
+            },
+            "crowd": {
+                "question": "Comment vous sentez-vous dans la foule?",
+                "answers": {
+                    "popular": "J'adore l'animation!",
+                    "balanced": "Un peu d'activité c'est bien",
+                    "offPath": "Préfère les endroits calmes",
+                    "hidden": "Uniquement des joyaux cachés"
+                }
+            }
+        },
+        "results": {
+            "badge": "Votre Match Parfait!",
+            "title": "Vos Îles Correspondantes",
+            "subtitle": "D'après vos réponses, ces îles sont parfaites pour vous",
+            "retake": "Refaire le Quiz",
+            "exploreTop": "Explorer Votre Top Match",
+            "matchText": {
+                "perfect": "Match parfait pour vous!",
+                "great": "Excellente alternative",
+                "good": "Aussi à considérer"
+            }
+        }
     }
 }

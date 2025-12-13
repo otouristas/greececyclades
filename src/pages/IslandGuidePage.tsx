@@ -5,6 +5,16 @@ import { islandGuides } from '../data/islandsData';
 import { allIslandGuides, GuideContent } from '../data/allIslandGuides';
 import IslandGuideTemplateNew from '../components/guides/IslandGuideTemplateNew';
 
+// Import custom island guide components
+import KimolosGuide from './KimolosGuide';
+import SantoriniGuide from './SantoriniGuide';
+
+// Map of islands that have custom guide components
+const customGuideComponents: Record<string, React.ComponentType> = {
+  'kimolos': KimolosGuide,
+  'santorini': SantoriniGuide,
+};
+
 export default function IslandGuidePage() {
   const { t } = useTranslation();
   const { slug } = useParams<{ slug: string }>();
@@ -27,7 +37,13 @@ export default function IslandGuidePage() {
     );
   }
 
-  // Get the content based on the island ID
+  // Check if this island has a custom guide component
+  const CustomGuideComponent = customGuideComponents[island.id.toLowerCase()];
+  if (CustomGuideComponent) {
+    return <CustomGuideComponent />;
+  }
+
+  // Fall back to generic template for islands without custom components
   const content = allIslandGuides[island.id.toLowerCase()] || {
     introduction: {
       text1: `Welcome to ${island.name}, a beautiful island in the Cyclades archipelago.`,
@@ -125,4 +141,5 @@ export default function IslandGuidePage() {
 
   return <IslandGuideTemplateNew island={island} content={content} />;
 }
+
 

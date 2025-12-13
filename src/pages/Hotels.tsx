@@ -58,7 +58,7 @@ export default function Hotels() {
   return (
     <>
       <SEO
-        title="Best Cyclades Hotels 2025: €50 Budget to €500 Luxury [Tested & Reviewed]"
+        title="Best Cyclades Hotels 2026: €50 Budget to €500 Luxury [Tested & Reviewed]"
         description="We stayed at 200+ hotels across 25 islands. See our honest picks by budget, style & island. Real reviews, real prices. Book direct for best rates."
         pageType="hotels"
         breadcrumbs={[

@@ -65,7 +65,7 @@ export default function Flights() {
   return (
     <>
       <SEO
-        title="Flights to Cyclades 2025: Athens to Santorini & Mykonos Deals"
+        title="Flights to Cyclades 2026: Athens to Santorini & Mykonos Deals"
         description="Find cheap flights to Greek islands: Santorini, Mykonos airports. Compare airlines, best booking times. Ferry vs flight comparison & tips."
         breadcrumbs={[
           { name: 'Home', url: '/' },

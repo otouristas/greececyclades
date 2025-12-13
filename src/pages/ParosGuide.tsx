@@ -16,6 +16,8 @@ import {
   FaHistory
 } from 'react-icons/fa';
 import SEO from '../components/SEO';
+import FAQSchema from '../components/FAQSchema';
+import BreadcrumbSchema, { breadcrumbPaths } from '../components/BreadcrumbSchema';
 import IslandGuideHero from '../components/guides/IslandGuideHero';
 import { islandGuides } from '../data/islandsData';
 import RelatedDestinationsSection from '../components/seo/RelatedDestinationsSection';
@@ -28,6 +30,34 @@ const ParosGuide: React.FC = () => {
   if (!paros) {
     return <div>Island not found</div>;
   }
+
+  // FAQ data for rich snippets
+  const parosFaqs = [
+    {
+      question: "When is the best time to visit Paros?",
+      answer: "The best time to visit Paros is May-June and September for great weather, fewer crowds, and good prices. July-August is peak season with perfect beach weather but more tourists. Shoulder season is ideal for windsurfing."
+    },
+    {
+      question: "How do I get to Paros?",
+      answer: "You can reach Paros by ferry from Athens Piraeus (3-5 hours) or from other Cycladic islands. Paros also has an airport (PAS) with domestic flights from Athens (45 min). The island is a major ferry hub in the Cyclades."
+    },
+    {
+      question: "What is Paros known for?",
+      answer: "Paros is famous for its charming villages (Naoussa, Parikia), beautiful beaches (Kolymbithres, Golden Beach), world-class windsurfing, Parian marble, excellent local wine, and the historic Church of Panagia Ekatontapiliani."
+    },
+    {
+      question: "How many days do I need in Paros?",
+      answer: "3-5 days is ideal for Paros. This allows time to explore Naoussa and Parikia, visit beaches, try water sports, take a day trip to Antiparos, and enjoy local cuisine. Add more days if you want to windsurf or island hop."
+    },
+    {
+      question: "Is Paros expensive?",
+      answer: "Paros is moderately priced - more affordable than Mykonos and Santorini but pricier than Naxos. Budget €80-120/day, mid-range €150-250/day, luxury €350+/day. Naoussa is the most expensive area."
+    },
+    {
+      question: "Is Paros good for windsurfing?",
+      answer: "Yes! Paros is one of the best windsurfing destinations in Europe. Golden Beach and New Golden Beach host international competitions with ideal meltemi wind conditions from June to September. Schools cater to all levels."
+    }
+  ];
 
   const seoData = {
     title: "Paros Travel Guide 2026 - Best Places to Visit & Things to Do",
@@ -45,7 +75,7 @@ const ParosGuide: React.FC = () => {
       'best time to visit Paros'
     ],
     ogImage: paros.image,
-    ogType: 'article'
+    ogType: 'article' as const
   };
 
   // Photo gallery images
@@ -131,6 +161,8 @@ const ParosGuide: React.FC = () => {
 
   return (
     <>
+      <BreadcrumbSchema items={breadcrumbPaths.islandGuide('Paros', 'paros')} />
+      <FAQSchema faqs={parosFaqs} pageUrl="https://discovercyclades.gr/guides/paros" />
       <SEO {...seoData} />
       <div className="min-h-screen bg-gray-50 dark:bg-dark-bg transition-colors duration-300">
         <IslandGuideHero {...paros} />

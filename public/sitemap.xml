@@ -145,6 +145,151 @@
     <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en"/>
   </url>
+  <!-- Island Quiz Pages -->
+  <url>
+    <loc>https://discovercyclades.gr/en/quiz</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discovercyclades.gr/en/quiz"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://discovercyclades.gr/gr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://discovercyclades.gr/it/quiz"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://discovercyclades.gr/fr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://discovercyclades.gr/de/quiz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://discovercyclades.gr/es/quiz"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://discovercyclades.gr/nl/quiz"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://discovercyclades.gr/zh/quiz"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru/quiz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en/quiz"/>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/gr/quiz</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discovercyclades.gr/en/quiz"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://discovercyclades.gr/gr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://discovercyclades.gr/it/quiz"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://discovercyclades.gr/fr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://discovercyclades.gr/de/quiz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://discovercyclades.gr/es/quiz"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://discovercyclades.gr/nl/quiz"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://discovercyclades.gr/zh/quiz"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru/quiz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en/quiz"/>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/it/quiz</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discovercyclades.gr/en/quiz"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://discovercyclades.gr/gr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://discovercyclades.gr/it/quiz"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://discovercyclades.gr/fr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://discovercyclades.gr/de/quiz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://discovercyclades.gr/es/quiz"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://discovercyclades.gr/nl/quiz"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://discovercyclades.gr/zh/quiz"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru/quiz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en/quiz"/>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/fr/quiz</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discovercyclades.gr/en/quiz"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://discovercyclades.gr/gr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://discovercyclades.gr/it/quiz"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://discovercyclades.gr/fr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://discovercyclades.gr/de/quiz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://discovercyclades.gr/es/quiz"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://discovercyclades.gr/nl/quiz"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://discovercyclades.gr/zh/quiz"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru/quiz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en/quiz"/>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/de/quiz</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discovercyclades.gr/en/quiz"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://discovercyclades.gr/gr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://discovercyclades.gr/it/quiz"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://discovercyclades.gr/fr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://discovercyclades.gr/de/quiz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://discovercyclades.gr/es/quiz"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://discovercyclades.gr/nl/quiz"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://discovercyclades.gr/zh/quiz"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru/quiz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en/quiz"/>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/es/quiz</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discovercyclades.gr/en/quiz"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://discovercyclades.gr/gr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://discovercyclades.gr/it/quiz"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://discovercyclades.gr/fr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://discovercyclades.gr/de/quiz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://discovercyclades.gr/es/quiz"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://discovercyclades.gr/nl/quiz"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://discovercyclades.gr/zh/quiz"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru/quiz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en/quiz"/>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/nl/quiz</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discovercyclades.gr/en/quiz"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://discovercyclades.gr/gr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://discovercyclades.gr/it/quiz"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://discovercyclades.gr/fr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://discovercyclades.gr/de/quiz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://discovercyclades.gr/es/quiz"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://discovercyclades.gr/nl/quiz"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://discovercyclades.gr/zh/quiz"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru/quiz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en/quiz"/>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/zh/quiz</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discovercyclades.gr/en/quiz"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://discovercyclades.gr/gr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://discovercyclades.gr/it/quiz"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://discovercyclades.gr/fr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://discovercyclades.gr/de/quiz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://discovercyclades.gr/es/quiz"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://discovercyclades.gr/nl/quiz"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://discovercyclades.gr/zh/quiz"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru/quiz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en/quiz"/>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ru/quiz</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://discovercyclades.gr/en/quiz"/>
+    <xhtml:link rel="alternate" hreflang="el" href="https://discovercyclades.gr/gr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="it" href="https://discovercyclades.gr/it/quiz"/>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://discovercyclades.gr/fr/quiz"/>
+    <xhtml:link rel="alternate" hreflang="de" href="https://discovercyclades.gr/de/quiz"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://discovercyclades.gr/es/quiz"/>
+    <xhtml:link rel="alternate" hreflang="nl" href="https://discovercyclades.gr/nl/quiz"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://discovercyclades.gr/zh/quiz"/>
+    <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru/quiz"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en/quiz"/>
+  </url>
   <url>
     <loc>https://discovercyclades.gr/en/islands</loc>
     <lastmod>2025-12-11</lastmod>
@@ -7344,5 +7489,146 @@
     <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://discovercyclades.gr/zh/guides/kimolos"/>
     <xhtml:link rel="alternate" hreflang="ru" href="https://discovercyclades.gr/ru/guides/kimolos"/>
     <xhtml:link rel="alternate" hreflang="x-default" href="https://discovercyclades.gr/en/guides/kimolos"/>
+  </url>
+  <!-- Interactive Tools -->
+  <url>
+    <loc>https://discovercyclades.gr/budget-calculator</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/packing-list</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/quiz</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.7</priority>
+  </url>
+  <!-- Best Time to Visit Pages (Programmatic SEO) -->
+  <url>
+    <loc>https://discovercyclades.gr/best-time-to-visit/santorini</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/best-time-to-visit/mykonos</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/best-time-to-visit/naxos</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/best-time-to-visit/paros</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/best-time-to-visit/milos</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/best-time-to-visit/ios</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/best-time-to-visit/folegandros</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/best-time-to-visit/sifnos</loc>
+    <lastmod>2025-12-12</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <!-- Ferry Route Pages (Programmatic SEO) -->
+  <url>
+    <loc>https://discovercyclades.gr/ferry/piraeus-santorini</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/santorini-mykonos</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/piraeus-mykonos</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/santorini-naxos</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/mykonos-naxos</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/piraeus-naxos</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/piraeus-paros</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/paros-naxos</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/santorini-ios</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/piraeus-milos</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/santorini-paros</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://discovercyclades.gr/ferry/mykonos-paros</loc>
+    <lastmod>2025-12-13</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
   </url>
 </urlset>

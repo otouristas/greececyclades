@@ -92,7 +92,7 @@ export default function GuidesNew() {
     return (
         <>
             <SEO
-                title="Cyclades Island Guides 2025: Expert Tips & Local Secrets"
+                title="Cyclades Island Guides 2026: Expert Tips & Local Secrets"
                 description="In-depth guides for all 25 Cyclades islands. Santorini, Mykonos, Naxos, Paros & hidden gems. Insider tips, best beaches, hotels, and activities. Updated weekly."
                 ogImage="/photos/guides-hero.jpg"
                 pageType="guides"

@@ -176,9 +176,9 @@ const BestCycladesIslands: React.FC = () => {
   ];
 
   const seoData = {
-    title: '15 Best Cyclades Islands to Visit in 2025 (Local Guide)',
+    title: '15 Best Cyclades Islands to Visit in 2026 (Local Guide)',
     description: optimizeMetaDescription(
-      'Discover the 15 best Greek islands in the Cyclades from hidden gems to famous favorites. Updated 2025 travel guide with maps, tips & island hopping routes. Compare Santorini, Mykonos, Naxos, Paros, Milos, Sifnos, and more to plan your perfect Greek island adventure.'
+      'Discover the 15 best Greek islands in the Cyclades from hidden gems to famous favorites. Updated 2026 travel guide with maps, tips & island hopping routes. Compare Santorini, Mykonos, Naxos, Paros, Milos, Sifnos, and more to plan your perfect Greek island adventure.'
     ),
     keywords: generateKeywordsWithLSI(
       ['best cyclades islands to visit', 'best cyclades islands', 'top cyclades islands'],
@@ -202,20 +202,20 @@ const BestCycladesIslands: React.FC = () => {
           <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
             <div className="text-center max-w-4xl mx-auto">
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
-                15 Best Cyclades Islands to Visit in 2025
+                15 Best Cyclades Islands to Visit in 2026
               </h1>
               <p className="text-xl md:text-2xl text-blue-100 mb-8">
-                Your complete guide to the most beautiful Greek islands in the Cyclades archipelago. 
+                Your complete guide to the most beautiful Greek islands in the Cyclades archipelago.
                 From world-famous Santorini to hidden gems, discover your perfect island paradise.
               </p>
               <div className="flex flex-wrap justify-center gap-4">
-                <Link 
+                <Link
                   to="/blog/cyclades-7-day-island-hopping-itinerary"
                   className="px-6 py-3 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition"
                 >
                   Plan Your Itinerary
                 </Link>
-                <Link 
+                <Link
                   to="/ferry-tickets"
                   className="px-6 py-3 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition"
                 >
@@ -230,14 +230,14 @@ const BestCycladesIslands: React.FC = () => {
           {/* Introduction */}
           <div className="prose prose-lg max-w-none mb-12">
             <p className="text-lg text-gray-700 leading-relaxed">
-              The Cyclades archipelago, scattered like pearls across the azure Aegean Sea, represents the quintessential 
-              Greek island experience. With their iconic whitewashed villages, blue-domed churches, crystal-clear waters, 
-              and ancient history, these islands offer an intoxicating blend of natural beauty, cultural heritage, and 
+              The Cyclades archipelago, scattered like pearls across the azure Aegean Sea, represents the quintessential
+              Greek island experience. With their iconic whitewashed villages, blue-domed churches, crystal-clear waters,
+              and ancient history, these islands offer an intoxicating blend of natural beauty, cultural heritage, and
               Mediterranean charm.
             </p>
             <p className="text-lg text-gray-700 leading-relaxed">
-              Whether you're dreaming of Santorini's dramatic volcanic landscapes, Mykonos' cosmopolitan nightlife, or 
-              the authentic charm of lesser-known gems like Sifnos and Folegandros, this comprehensive guide will help 
+              Whether you're dreaming of Santorini's dramatic volcanic landscapes, Mykonos' cosmopolitan nightlife, or
+              the authentic charm of lesser-known gems like Sifnos and Folegandros, this comprehensive guide will help
               you discover the 15 most spectacular islands in the Cyclades.
             </p>
           </div>
@@ -248,7 +248,7 @@ const BestCycladesIslands: React.FC = () => {
               <div key={island.slug} className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-xl transition-shadow">
                 <Link to={island.link}>
                   <div className="aspect-w-16 aspect-h-9">
-                    <img 
+                    <img
                       src={`/images/islands/${island.slug}/hero.jpg`}
                       alt={`${island.name} island in the Cyclades Greece`}
                       className="w-full h-48 object-cover"
@@ -271,7 +271,7 @@ const BestCycladesIslands: React.FC = () => {
                         </span>
                       ))}
                     </div>
-                    <Link 
+                    <Link
                       to={island.link}
                       className="inline-flex items-center text-blue-600 font-semibold hover:text-blue-800 transition"
                     >
@@ -302,43 +302,43 @@ const BestCycladesIslands: React.FC = () => {
           <section className="mb-16 bg-blue-50 rounded-lg p-8">
             <h2 className="text-2xl font-bold mb-6">Plan Your Cyclades Adventure</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
-              <Link 
-                to="/blog/cyclades-7-day-island-hopping-itinerary" 
+              <Link
+                to="/blog/cyclades-7-day-island-hopping-itinerary"
                 className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <h3 className="font-semibold text-blue-800 mb-2">7-Day Cyclades Itinerary</h3>
                 <p className="text-sm text-gray-600">Plan your perfect week-long island hopping adventure through the Cyclades.</p>
               </Link>
-              <Link 
-                to="/blog/cyclades-10-day-itinerary-guide" 
+              <Link
+                to="/blog/cyclades-10-day-itinerary-guide"
                 className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <h3 className="font-semibold text-blue-800 mb-2">10-Day Cyclades Itinerary</h3>
                 <p className="text-sm text-gray-600">Extended island hopping route covering more islands with a relaxed pace.</p>
               </Link>
-              <Link 
-                to="/ferry-guide" 
+              <Link
+                to="/ferry-guide"
                 className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <h3 className="font-semibold text-blue-800 mb-2">Cyclades Ferry Guide</h3>
                 <p className="text-sm text-gray-600">Complete guide to ferry routes, schedules, and booking tips for island hopping.</p>
               </Link>
-              <Link 
-                to="/blog/best-time-visit-cyclades" 
+              <Link
+                to="/blog/best-time-visit-cyclades"
                 className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <h3 className="font-semibold text-blue-800 mb-2">Best Time to Visit Cyclades</h3>
                 <p className="text-sm text-gray-600">Learn when to visit for the best weather, prices, and experiences.</p>
               </Link>
-              <Link 
-                to="/blog/cyclades-budget-travel-guide" 
+              <Link
+                to="/blog/cyclades-budget-travel-guide"
                 className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <h3 className="font-semibold text-blue-800 mb-2">Cyclades Budget Guide</h3>
                 <p className="text-sm text-gray-600">Money-saving tips and budget planning for your Cyclades vacation.</p>
               </Link>
-              <Link 
-                to="/hotels" 
+              <Link
+                to="/hotels"
                 className="bg-white p-4 rounded-lg shadow-sm hover:shadow-md transition-shadow"
               >
                 <h3 className="font-semibold text-blue-800 mb-2">Find Accommodations</h3>
@@ -351,32 +351,32 @@ const BestCycladesIslands: React.FC = () => {
           <section className="mb-16">
             <h2 className="text-3xl font-bold text-gray-800 mb-8">Plan Your Cyclades Adventure</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              <Link 
-                to="/ferry-tickets" 
+              <Link
+                to="/ferry-tickets"
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
               >
                 <Ship className="w-8 h-8 text-blue-600 mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Book Ferry Tickets</h3>
                 <p className="text-sm text-gray-600">Find the best ferry routes and prices for island hopping in the Cyclades.</p>
               </Link>
-              <Link 
-                to="/hotels" 
+              <Link
+                to="/hotels"
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
               >
                 <Hotel className="w-8 h-8 text-blue-600 mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Find Hotels</h3>
                 <p className="text-sm text-gray-600">Discover the best accommodations across all Cyclades islands.</p>
               </Link>
-              <Link 
-                to="/blog/cyclades-7-day-island-hopping-itinerary" 
+              <Link
+                to="/blog/cyclades-7-day-island-hopping-itinerary"
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
               >
                 <Calendar className="w-8 h-8 text-blue-600 mb-3" />
                 <h3 className="font-semibold text-lg mb-2">Island Hopping Itineraries</h3>
                 <p className="text-sm text-gray-600">7-day, 10-day, and 2-week island hopping routes.</p>
               </Link>
-              <Link 
-                to="/guides" 
+              <Link
+                to="/guides"
                 className="bg-white p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow border-l-4 border-blue-600"
               >
                 <MapPin className="w-8 h-8 text-blue-600 mb-3" />
@@ -390,23 +390,23 @@ const BestCycladesIslands: React.FC = () => {
           <section className="bg-gradient-to-r from-blue-600 to-blue-800 rounded-lg shadow-xl p-12 text-white text-center">
             <h2 className="text-3xl font-bold mb-4">Ready to Explore the Cyclades?</h2>
             <p className="text-xl text-blue-100 mb-8 max-w-2xl mx-auto">
-              Start planning your perfect Greek island adventure. Book ferries, find accommodations, and discover 
+              Start planning your perfect Greek island adventure. Book ferries, find accommodations, and discover
               amazing activities across all the Cyclades islands.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link 
+              <Link
                 to="/ferry-tickets"
                 className="px-8 py-4 bg-white text-blue-600 font-semibold rounded-lg hover:bg-gray-100 transition"
               >
                 Book Ferry Tickets
               </Link>
-              <Link 
+              <Link
                 to="/hotels"
                 className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition"
               >
                 Find Hotels
               </Link>
-              <Link 
+              <Link
                 to="/touristas-ai"
                 className="px-8 py-4 bg-transparent border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-blue-600 transition"
               >

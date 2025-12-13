@@ -647,5 +647,74 @@
         "hotelsDescription": "Finden und buchen Sie die besten Hotels auf den Kykladen.",
         "ferriesTitle": "Fährtickets | Inselhopping Kykladen",
         "ferriesDescription": "Buchen Sie Fährtickets zwischen griechischen Inseln. Preise und Fahrpläne vergleichen."
+    },
+    "quiz": {
+        "badge": "Interaktiver Inselfinder",
+        "title": "Welche Kykladeninsel passt zu Ihnen?",
+        "subtitle": "Beantworten Sie 5 Fragen und entdecken Sie Ihre perfekte Insel",
+        "questionOf": "Frage {{current}} von {{total}}",
+        "meta": {
+            "title": "Insel-Quiz | Finden Sie Ihre perfekte Insel",
+            "description": "Entdecken Sie, welche griechische Insel zu Ihrem Reisestil passt!"
+        },
+        "questions": {
+            "vibe": {
+                "question": "Was ist Ihre ideale Urlaubsstimmung?",
+                "answers": {
+                    "romantic": "Romantik & Sonnenuntergänge",
+                    "party": "Nachtleben & Energie",
+                    "adventure": "Abenteuer & Erkundung",
+                    "authentic": "Kultur & Authentizität"
+                }
+            },
+            "travel": {
+                "question": "Mit wem reisen Sie?",
+                "answers": {
+                    "couple": "Nur wir zwei",
+                    "solo": "Solo-Abenteuer",
+                    "family": "Familie mit Kindern",
+                    "friends": "Freundesgruppe"
+                }
+            },
+            "budget": {
+                "question": "Was ist Ihr Budget-Stil?",
+                "answers": {
+                    "budget": "Budgetbewusst",
+                    "midRange": "Komfortable Mittelklasse",
+                    "luxury": "Luxuserlebnis",
+                    "flexible": "Flexibel"
+                }
+            },
+            "priority": {
+                "question": "Was ist Ihnen am wichtigsten?",
+                "answers": {
+                    "beaches": "Traumhafte Strände",
+                    "food": "Tolles Essen",
+                    "sunsets": "Atemberaubende Sonnenuntergänge",
+                    "nightlife": "Lebhaftes Nachtleben"
+                }
+            },
+            "crowd": {
+                "question": "Wie stehen Sie zu Menschenmengen?",
+                "answers": {
+                    "popular": "Ich liebe das Treiben!",
+                    "balanced": "Etwas Aktivität ist schön",
+                    "offPath": "Bevorzuge ruhigere Orte",
+                    "hidden": "Nur echte Geheimtipps"
+                }
+            }
+        },
+        "results": {
+            "badge": "Ihr perfektes Match!",
+            "title": "Ihre Insel-Matches",
+            "subtitle": "Basierend auf Ihren Antworten sind diese Inseln perfekt für Sie",
+            "retake": "Quiz wiederholen",
+            "exploreTop": "Top-Match erkunden",
+            "matchText": {
+                "perfect": "Perfektes Match für Sie!",
+                "great": "Tolle Alternative",
+                "good": "Auch empfehlenswert"
+            }
+        }
     }
 }

@@ -6,8 +6,8 @@ export interface BlogPost {
   content: string;
   author: string;
   authorRole?: string;
-  publishedAt: string; 
-  updatedAt?: string; 
+  publishedAt: string;
+  updatedAt?: string;
   featuredImage: string;
   category: BlogCategory;
   tags: string[];
@@ -18,10 +18,12 @@ export interface BlogPost {
   relatedHotels?: string[]; // ids of related hotels
 }
 
-export type BlogCategory = 
-  | 'Island Guides' 
-  | 'Travel Tips' 
-  | 'Activities' 
-  | 'Accommodation' 
-  | 'Food & Dining' 
-  | 'Culture & History';
+export type BlogCategory =
+  | 'Island Guides'
+  | 'Travel Tips'
+  | 'Activities'
+  | 'Accommodation'
+  | 'Food & Dining'
+  | 'Culture & History'
+  | 'Beaches'
+  | 'Itineraries';
